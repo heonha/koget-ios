@@ -3,25 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */; };
 		3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */; };
-		3ABA6C1B28C6043F005AA8E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1A28C6043F005AA8E4 /* ViewController.swift */; };
-		3ABA6C1E28C6043F005AA8E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1C28C6043F005AA8E4 /* Main.storyboard */; };
+		3ABA6C1B28C6043F005AA8E4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1A28C6043F005AA8E4 /* MainViewController.swift */; };
 		3ABA6C2128C6043F005AA8E4 /* BackgroundMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1F28C6043F005AA8E4 /* BackgroundMaker.xcdatamodeld */; };
 		3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */; };
+		3ABA6C3028C60A62005AA8E4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C2F28C60A62005AA8E4 /* SnapKit */; };
+		3ABA6C3328C60A7F005AA8E4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3228C60A7F005AA8E4 /* RxCocoa */; };
+		3ABA6C3528C60A7F005AA8E4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3428C60A7F005AA8E4 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3ABA6C1A28C6043F005AA8E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3ABA6C1D28C6043F005AA8E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3ABA6C1A28C6043F005AA8E4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3ABA6C2028C6043F005AA8E4 /* BackgroundMaker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BackgroundMaker.xcdatamodel; sourceTree = "<group>"; };
 		3ABA6C2228C60440005AA8E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3ABA6C2528C60440005AA8E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,6 +34,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ABA6C3528C60A7F005AA8E4 /* RxSwift in Frameworks */,
+				3ABA6C3328C60A7F005AA8E4 /* RxCocoa in Frameworks */,
+				3ABA6C3028C60A62005AA8E4 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,14 +64,21 @@
 			children = (
 				3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */,
 				3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */,
-				3ABA6C1A28C6043F005AA8E4 /* ViewController.swift */,
-				3ABA6C1C28C6043F005AA8E4 /* Main.storyboard */,
+				3ABA6C1A28C6043F005AA8E4 /* MainViewController.swift */,
+				3ABA6C2D28C60465005AA8E4 /* Files */,
+			);
+			path = BackgroundMaker;
+			sourceTree = "<group>";
+		};
+		3ABA6C2D28C60465005AA8E4 /* Files */ = {
+			isa = PBXGroup;
+			children = (
 				3ABA6C2228C60440005AA8E4 /* Assets.xcassets */,
 				3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */,
 				3ABA6C2728C60440005AA8E4 /* Info.plist */,
 				3ABA6C1F28C6043F005AA8E4 /* BackgroundMaker.xcdatamodeld */,
 			);
-			path = BackgroundMaker;
+			name = Files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +97,11 @@
 			dependencies = (
 			);
 			name = BackgroundMaker;
+			packageProductDependencies = (
+				3ABA6C2F28C60A62005AA8E4 /* SnapKit */,
+				3ABA6C3228C60A7F005AA8E4 /* RxCocoa */,
+				3ABA6C3428C60A7F005AA8E4 /* RxSwift */,
+			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */;
 			productType = "com.apple.product-type.application";
@@ -106,7 +122,7 @@
 				};
 			};
 			buildConfigurationList = 3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "BackgroundMaker" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -114,6 +130,10 @@
 				Base,
 			);
 			mainGroup = 3ABA6C0A28C6043F005AA8E4;
+			packageReferences = (
+				3ABA6C2E28C60A62005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -130,7 +150,6 @@
 			files = (
 				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
 				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
-				3ABA6C1E28C6043F005AA8E4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ABA6C2128C6043F005AA8E4 /* BackgroundMaker.xcdatamodeld in Sources */,
-				3ABA6C1B28C6043F005AA8E4 /* ViewController.swift in Sources */,
+				3ABA6C1B28C6043F005AA8E4 /* MainViewController.swift in Sources */,
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
 			);
@@ -151,14 +170,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3ABA6C1C28C6043F005AA8E4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3ABA6C1D28C6043F005AA8E4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,11 +305,12 @@
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BackgroundMaker/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -322,11 +334,12 @@
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BackgroundMaker/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,6 +375,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3ABA6C2E28C60A62005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3ABA6C2F28C60A62005AA8E4 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3ABA6C2E28C60A62005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3ABA6C3228C60A7F005AA8E4 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		3ABA6C3428C60A7F005AA8E4 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3ABA6C1F28C6043F005AA8E4 /* BackgroundMaker.xcdatamodeld */ = {
