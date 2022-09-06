@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A112F9828C7409B00BC3E9D /* Concept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A112F9728C7409B00BC3E9D /* Concept.storyboard */; };
+		3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */; };
+		3A5E82BC28C7393700C10AAC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = 3A5E82BB28C7393700C10AAC /* Mantis */; };
+		3A5E82BE28C739C200C10AAC /* MantisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E82BD28C739C200C10AAC /* MantisManager.swift */; };
 		3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */; };
 		3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */; };
 		3ABA6C1B28C6043F005AA8E4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1A28C6043F005AA8E4 /* MainViewController.swift */; };
@@ -19,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A112F9728C7409B00BC3E9D /* Concept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Concept.storyboard; sourceTree = "<group>"; };
+		3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModel.swift; sourceTree = "<group>"; };
+		3A5E82BD28C739C200C10AAC /* MantisManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantisManager.swift; sourceTree = "<group>"; };
 		3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +43,7 @@
 			files = (
 				3ABA6C3828C6361B005AA8E4 /* SnapKit in Frameworks */,
 				3ABA6C3528C60A7F005AA8E4 /* RxSwift in Frameworks */,
+				3A5E82BC28C7393700C10AAC /* Mantis in Frameworks */,
 				3ABA6C3328C60A7F005AA8E4 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +73,8 @@
 				3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */,
 				3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */,
 				3ABA6C1A28C6043F005AA8E4 /* MainViewController.swift */,
+				3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */,
+				3A5E82BD28C739C200C10AAC /* MantisManager.swift */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
 			path = BackgroundMaker;
@@ -73,6 +83,7 @@
 		3ABA6C2D28C60465005AA8E4 /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				3A112F9728C7409B00BC3E9D /* Concept.storyboard */,
 				3ABA6C2228C60440005AA8E4 /* Assets.xcassets */,
 				3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */,
 				3ABA6C2728C60440005AA8E4 /* Info.plist */,
@@ -101,6 +112,7 @@
 				3ABA6C3228C60A7F005AA8E4 /* RxCocoa */,
 				3ABA6C3428C60A7F005AA8E4 /* RxSwift */,
 				3ABA6C3728C6361B005AA8E4 /* SnapKit */,
+				3A5E82BB28C7393700C10AAC /* Mantis */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */;
@@ -133,6 +145,7 @@
 			packageReferences = (
 				3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -148,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A112F9828C7409B00BC3E9D /* Concept.storyboard in Resources */,
 				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
 				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
 			);
@@ -163,6 +177,8 @@
 				3ABA6C2128C6043F005AA8E4 /* BackgroundMaker.xcdatamodeld in Sources */,
 				3ABA6C1B28C6043F005AA8E4 /* MainViewController.swift in Sources */,
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
+				3A5E82BE28C739C200C10AAC /* MantisManager.swift in Sources */,
+				3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +393,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/guoyingtao/Mantis.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 		3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -396,6 +420,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3A5E82BB28C7393700C10AAC /* Mantis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis" */;
+			productName = Mantis;
+		};
 		3ABA6C3228C60A7F005AA8E4 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
