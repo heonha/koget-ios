@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3A112F9828C7409B00BC3E9D /* Concept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A112F9728C7409B00BC3E9D /* Concept.storyboard */; };
+		3A112F9A28C76B1300BC3E9D /* CustomCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A112F9928C76B1300BC3E9D /* CustomCropView.swift */; };
 		3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */; };
 		3A5E82BC28C7393700C10AAC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = 3A5E82BB28C7393700C10AAC /* Mantis */; };
-		3A5E82BE28C739C200C10AAC /* MantisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E82BD28C739C200C10AAC /* MantisManager.swift */; };
+		3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A82318E28C78F0700F958FE /* UIImage+Utils.swift */; };
 		3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */; };
 		3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */; };
 		3ABA6C1B28C6043F005AA8E4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1A28C6043F005AA8E4 /* MainViewController.swift */; };
@@ -24,8 +25,9 @@
 
 /* Begin PBXFileReference section */
 		3A112F9728C7409B00BC3E9D /* Concept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Concept.storyboard; sourceTree = "<group>"; };
+		3A112F9928C76B1300BC3E9D /* CustomCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCropView.swift; sourceTree = "<group>"; };
 		3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModel.swift; sourceTree = "<group>"; };
-		3A5E82BD28C739C200C10AAC /* MantisManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantisManager.swift; sourceTree = "<group>"; };
+		3A82318E28C78F0700F958FE /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A0F429E28C89742002F1CAD /* Extension+Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3A82318E28C78F0700F958FE /* UIImage+Utils.swift */,
+			);
+			path = "Extension+Utils";
+			sourceTree = "<group>";
+		};
 		3ABA6C0A28C6043F005AA8E4 = {
 			isa = PBXGroup;
 			children = (
@@ -74,7 +84,8 @@
 				3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */,
 				3ABA6C1A28C6043F005AA8E4 /* MainViewController.swift */,
 				3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */,
-				3A5E82BD28C739C200C10AAC /* MantisManager.swift */,
+				3A0F429E28C89742002F1CAD /* Extension+Utils */,
+				3A112F9928C76B1300BC3E9D /* CustomCropView.swift */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
 			path = BackgroundMaker;
@@ -177,9 +188,10 @@
 				3ABA6C2128C6043F005AA8E4 /* BackgroundMaker.xcdatamodeld in Sources */,
 				3ABA6C1B28C6043F005AA8E4 /* MainViewController.swift in Sources */,
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
-				3A5E82BE28C739C200C10AAC /* MantisManager.swift in Sources */,
 				3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */,
+				3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
+				3A112F9A28C76B1300BC3E9D /* CustomCropView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
