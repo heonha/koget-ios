@@ -12,8 +12,11 @@ import Mantis
 
 class MainViewController: UIViewController {
     
-    /// 선택한 이미지가 들어갈 이미지뷰
+    /// 편집할 이미지가 들어갈 이미지 뷰
     let sourceImageView = UIImageView()
+    
+    /// 편집할 이미지 뒤에 나타날 배경 이미지
+    let bgImageView = UIImageView()
     
     // MARK: PlaceHolder 초기화
     // "여기를 눌러 사진을 추가하세요" 문구 및 투명 버튼을 통해 Photo Library 띄우는 역할
@@ -24,79 +27,78 @@ class MainViewController: UIViewController {
     let placeHolderImageView = UIImageView() // 사진 추가하기를 의미하는 이미지
     let placeHolderButton = UIButton() // 사진 라이브러리를 띄울 투명버튼
     
-    lazy var addImageButton: UIBarButtonItem = self.makeAddImageButton() // 이미지 PHPickerVC를 띄우는 버튼 셋업(Right BarButton)
-    lazy var cropButton: UIBarButtonItem = self.makeCropImageButton() // 이미지 자르기 버튼 추가
+    let imageModel = ImageEditModel.shared
+    
+    // MARK: 기능버튼 초기화 (현재는 RightBarButton에만 추가 한 상태)
+    lazy var addButton: UIBarButtonItem = makeBarButton(systemName: "plus.square.fill.on.square.fill", selector: #selector(presentPHPickerVC), isEnable: true) // 이미지 자르기 버튼 추가
+
+    lazy var saveButton: UIBarButtonItem = makeBarButton(systemName: "checkmark.circle.fill", selector: #selector(saveImage), isEnable: false)
+    lazy var mergeButton: UIBarButtonItem = makeBarButton(systemName: "arrow.triangle.merge", selector: #selector(getMergeImage), isEnable: false)
+
     
     
     //MARK: - View Load
     override func viewDidLoad() {
         super.viewDidLoad()
                         
-        self.navigationItem.rightBarButtonItems = []
-        self.navigationItem.rightBarButtonItems?.append(addImageButton) // 우측 추가 버튼
-        self.navigationItem.rightBarButtonItems?.append(cropButton)
+        /// 네비게이션 바 버튼을 구성합니다.
+        self.navigationItem.rightBarButtonItems = [addButton, saveButton, mergeButton] // 사진추가, 저장, 자르기 버튼
 
-
-        // View 셋업
-        setImageView() // 선택한 이미지를 받을 이미지뷰
+        /// 뷰 셋업
+        setImageView() // 선택한 사진이 배치 될 이미지뷰를 셋업합니다.
         
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.sourceImageView.image != nil {
+        
+        
+        // 현재 이미지가 셋팅되어있는지에 따라 Place Holder 또는 버튼을 활성화 합니다.
+        if self.sourceImageView.image == nil {
+            setPlaceHolder()// placeholder 셋업 (이미지가 없을때만 호출)
+        } else {
+            self.sourceImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 이미지뷰 크기 초기화
             self.hidePlaceHolder() // 이미지가 셋업되면 숨김
             self.makePinchGesture(action: #selector(pinchZoomAction)) // 이미지 확대 축소 제스쳐 추가
             self.addDoubleTapRecognizer(selector: #selector(doubleTapZoomAction)) // 더블탭 제스쳐 추가 (더블탭 시 배율 확대, 축소)
-            self.enableCropImageButton()
-        } else {
-            setPlaceHolder()// placeholder 셋업 (이미지가 없을때만 호출)
+            self.enableBarButtons(buttons: [saveButton, mergeButton]) // 이미지 로드 전 비활성화 된 바 버튼을 활성화 합니다.
+
         }
+        
     }
+    
     
     //MARK: View Load END -
 
-    /// 사진추가 버튼을 구성하고 우측상단 네비게이션 바에 추가합니다. (Right Bar Button)
-    func makeAddImageButton() -> UIBarButtonItem {
-
-        let barButtonImage = UIImage(systemName: "plus")?.withTintColor(.systemPink, renderingMode: .automatic)
-        let addBarButton = UIBarButtonItem(image: barButtonImage, style: .plain, target: self, action: #selector(presentPHPickerVC))
-        return addBarButton
-    }
     
-    /// 이미지 자르기 버튼을 구성합니다. (Right Bar Button)
-    func makeCropImageButton() -> UIBarButtonItem {
-        
-        let buttonImage = UIImage(systemName: "crop")?.withTintColor(.systemPink, renderingMode: .automatic)
-        let button = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(makeCropMantis))
-        button.isEnabled = false
+    //MARK: - 뷰 관련 메소드 구성 (네비게이션, 버튼 등)
+    /// 네비게이션 바에 구성하고 네비게이션 뷰에 추가합니다.
+    func makeBarButton(systemName: String, selector: Selector, isEnable: Bool = true) -> UIBarButtonItem {
+        let buttonImage = UIImage(systemName: systemName)?.withRenderingMode(.automatic)
+        let button = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: selector)
+        button.isEnabled = isEnable
         
         return button
     }
     
-    func enableCropImageButton() {
+    /// 가져온 이미지가 있는 경우 네비게이션 바의 버튼을 활성화 합니다.
+    func enableBarButtons(buttons: [UIBarButtonItem]) {
         if self.sourceImageView.image != nil {
-            cropButton.isEnabled = true
+            buttons.forEach {
+                $0.isEnabled = true
+            }
         } else {
-            cropButton.isEnabled = false
+            buttons.forEach {
+                $0.isEnabled = false
+            }
         }
     }
     
-    /// CropButton의 액션 메소드입니다.
-    @objc func takeImageCropping() {
-        
-        if let image = sourceImageView.image {
-            let model = ImageEditModel.shared
-            print("이미지 크롭시작")
-            let croppedImage = model.cropImage(image: image)
-            DispatchQueue.main.async {
-                self.sourceImageView.image = croppedImage
-            }
-        } else {
-            print("셋업된 이미지 없음")
-        }
-        
+    /// 현재 View를 캡쳐하고 Image를 반환합니다.
+    func takeScreenViewCapture() -> UIImage? {
+        let captureImage = view.renderToImage(afterScreenUpdates: true)
+        return captureImage
     }
     
     /// CropButton의 액션 메소드입니다.
@@ -106,12 +108,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    /// Process photo saving result
-    @objc func saveImage(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let error = error {
-            print("ERROR: \(error)")
-        }
-    }
+    
     
     //MARK: - Gesture 셋업
     
@@ -128,6 +125,9 @@ class MainViewController: UIViewController {
     /// 두손가락으로 이미지를 확대, 축소 할수 있는 핀치액션을 구성합니다.
     @objc func pinchZoomAction(_ pinch: UIPinchGestureRecognizer) {
         sourceImageView.transform = sourceImageView.transform.scaledBy(x: pinch.scale, y: pinch.scale)
+        print(sourceImageView.transform)
+        print(sourceImageView.frame)
+
         pinch.scale = 1
     }
     
@@ -175,7 +175,6 @@ class MainViewController: UIViewController {
         placeHolderLabel.textAlignment = .center
         placeHolderLabel.font = .preferredFont(forTextStyle: .body)
         placeHolderLabel.adjustsFontSizeToFitWidth = true
-
         placeholderStackView.addArrangedSubview(placeHolderLabel)
         
         
@@ -218,6 +217,15 @@ class MainViewController: UIViewController {
     
     /// 선택 된 사진을 삽입할 ImageView를 구성하는 메소드입니다.
     private func setImageView() {
+        
+        bgImageView.translatesAutoresizingMaskIntoConstraints = false
+        bgImageView.contentMode = .scaleAspectFill
+        bgImageView.isUserInteractionEnabled = false
+        view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.width.height.equalToSuperview()
+        }
+        
         sourceImageView.translatesAutoresizingMaskIntoConstraints = false
         sourceImageView.contentMode = .scaleAspectFit
         view.addSubview(sourceImageView)
@@ -225,9 +233,10 @@ class MainViewController: UIViewController {
         sourceImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
     }
 
-    /// PickerViewController를 반환하는 메소드입니다. PHPicker 사진 선택기에 대한 Config, Delegate 를 정의합니다.
+    /// PickerViewController를 구성하고 반환하는 메소드입니다. PHPicker 사진 선택기에 대한 Config, Delegate 를 정의합니다.
     private func makePHPickerVC() -> PHPickerViewController {
         var config = PHPickerConfiguration()
         config.filter = .images // 가져올 라이브러리 필터
@@ -243,13 +252,70 @@ class MainViewController: UIViewController {
         let pickerVC = makePHPickerVC()
         present(pickerVC, animated: true)
     }
+    
+    @objc func saveImage() {
+        
+        if let image = takeScreenViewCapture() {
+            saveImageToAlbum(image: image)
+        } else {
+            print("저장할 이미지 없음")
+        }
+
+    }
+    
+    /// 사진을 디바이스에 저장하는 메소드
+    func saveImageToAlbum(image: UIImage) {
+            UIImageWriteToSavedPhotosAlbum(image, self,
+                                           #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+        
+    
+    /// 사진 저장 처리결과를 Alert로 Present합니다.
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        
+        /// 앨범에 사진 저장이 성공 / 실패 했을 때 알럿을 띄웁니다.
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        let apply = UIAlertAction(title: "확인", style: .default, handler: nil)
+        
+        if let error = error {
+            print("ERROR: \(error)")
+            alert.title = "저장 실패"
+            alert.message = "사진 저장이 실패했습니다. 앨범 접근 권한이 허용되어있는지 확인해주세요."
+        } else {
+            alert.title = "저장 성공"
+            alert.message = "앨범에 사진이 저장되었습니다."
+        }
+        alert.addAction(apply)
+        present(alert, animated: true)
+    }
+    
+
+    ///사진을 자르고 뷰에 띄웁니다.
+    @objc func getCropImage() {
+        if let image = self.sourceImageView.image {
+            self.sourceImageView.image = self.imageModel.cropImageForScreenSize(image)
+        }
+    }
+    
+    /// 병합된 이미지를 뷰에 반영합니다.
+    @objc func getMergeImage() {
+        
+        if let source = self.sourceImageView.image, let background = self.bgImageView.image {
+            
+            let mergedImage = self.imageModel.mergeImages(image: source, imageRect: sourceImageView.frame.integral, backgroundImage: background)
+//            let mergedImage = source.mergeWith(topImage: background)
+            self.sourceImageView.image = mergedImage
+        } else {
+            print("병합할 이미지 없음.")
+        }
+    }
+
     //MARK: END -
 
 }
 
 //MARK: - Photo Picker 관련 응답을 받는 PHPickerController Delegate 구성
 extension MainViewController: PHPickerViewControllerDelegate {
-
 
     /// PHPicker에서 사진 선택했을 때 호출되는 Delegate입니다. PHPicker에서 선택한 아이템을 가져옵니다.
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -262,8 +328,17 @@ extension MainViewController: PHPickerViewControllerDelegate {
                         // 에러발생
                         print("사진 LoadObject Error : \(error)")
                     } else {
+                        let image = image as? UIImage
+                        
+                        let blurImage = self.imageModel.makeBlurImage(image: image ?? UIImage())
+                        let croppedImage = self.imageModel.cropImageForScreenSize(blurImage)
+                        
                         DispatchQueue.main.async {
-                            self.sourceImageView.image = image as? UIImage
+                            self.sourceImageView.image = image
+                            self.bgImageView.image = croppedImage
+                            self.bgImageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+
+                            
                             self.viewDidAppear(true)
                         }
                     }
@@ -282,22 +357,9 @@ extension MainViewController: PHPickerViewControllerDelegate {
 
 //MARK: - Crop ViewController 구성 (Mantis Library 사용)
 extension MainViewController: CropViewControllerDelegate {
-    func cropViewControllerDidCrop(_ cropViewController: Mantis.CropViewController, cropped: UIImage, transformation: Mantis.Transformation) {
-        
-        print("크롭")
-        DispatchQueue.main.async {
-            self.sourceImageView.image = cropped
-        }
-        dismiss(animated: true)
-    }
     
-    func cropViewControllerDidCancel(_ cropViewController: Mantis.CropViewController, original: UIImage) {
-        self.dismiss(animated: true)
-    }
-    
-    
-    /// 맨티스 라이브러리를 이용한 Crop ViewController를 구성하고 띄우는 메소드
-    @objc func makeCropMantis() {
+    /// 맨티스 라이브러리를 이용한 Crop ViewController를 구성하고 띄우는 메소드입니다.
+    @objc func presentCropVC() {
         
         if let image = self.sourceImageView.image { // 불러온 이미지가 있는지 확인합니다.
             /// CropVC로 크롭할 때 사용할 설정을 구성합니다.
@@ -307,12 +369,27 @@ extension MainViewController: CropViewControllerDelegate {
             /// Crop을 수행할 뷰 컨트롤러입니다.
             let cropVC = Mantis.cropViewController(image: image, config: config)
             cropVC.delegate = self // CropVC에서 Delegate 를 받습니다.
-            present(cropVC, animated: true)
+            self.navigationController?.pushViewController(cropVC, animated: true)
         } else {
             print("크롭할 이미지 없음")
         }
     }
     
+    /// [Delegate] 이미지가 크롭되었는지 감지하고 알리는 Delegate 메소드입니다.
+    func cropViewControllerDidCrop(_ cropViewController: Mantis.CropViewController, cropped: UIImage, transformation: Mantis.Transformation) {
+                DispatchQueue.main.async {
+            self.sourceImageView.image = cropped
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    /// [Delegate] CropViewController에서 취소 버튼을 눌렀을 때의 메소드입니다.
+    func cropViewControllerDidCancel(_ cropViewController: Mantis.CropViewController, original: UIImage) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+
     
 }
 
