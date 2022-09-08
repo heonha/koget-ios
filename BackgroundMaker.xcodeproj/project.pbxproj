@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */; };
+		3A0F42A428C982D8002F1CAD /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F42A328C982D8002F1CAD /* BottomMenuView.swift */; };
 		3A112F9A28C76B1300BC3E9D /* CustomCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A112F9928C76B1300BC3E9D /* CustomCropView.swift */; };
+		3A17665928C9DAFF006DE579 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17665828C9DAFF006DE579 /* ViewModel.swift */; };
 		3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */; };
 		3A5E82BC28C7393700C10AAC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = 3A5E82BB28C7393700C10AAC /* Mantis */; };
 		3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A82318E28C78F0700F958FE /* UIImage+Utils.swift */; };
@@ -26,7 +28,9 @@
 /* Begin PBXFileReference section */
 		3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		3A0F42A128C8DC19002F1CAD /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		3A0F42A328C982D8002F1CAD /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
 		3A112F9928C76B1300BC3E9D /* CustomCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCropView.swift; sourceTree = "<group>"; };
+		3A17665828C9DAFF006DE579 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModel.swift; sourceTree = "<group>"; };
 		3A82318E28C78F0700F958FE /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +67,24 @@
 			path = "Extension+Utils";
 			sourceTree = "<group>";
 		};
+		3A0F42A228C982D0002F1CAD /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				3A0F42A328C982D8002F1CAD /* BottomMenuView.swift */,
+				3A112F9928C76B1300BC3E9D /* CustomCropView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		3A17665A28C9DC7B006DE579 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */,
+				3A17665828C9DAFF006DE579 /* ViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3ABA6C0A28C6043F005AA8E4 = {
 			isa = PBXGroup;
 			children = (
@@ -85,9 +107,9 @@
 				3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */,
 				3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */,
 				3ABA6C1A28C6043F005AA8E4 /* MainViewController.swift */,
-				3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */,
+				3A0F42A228C982D0002F1CAD /* SubViews */,
+				3A17665A28C9DC7B006DE579 /* Models */,
 				3A0F429E28C89742002F1CAD /* Extension+Utils */,
-				3A112F9928C76B1300BC3E9D /* CustomCropView.swift */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
 			path = BackgroundMaker;
@@ -186,11 +208,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A17665928C9DAFF006DE579 /* ViewModel.swift in Sources */,
 				3ABA6C2128C6043F005AA8E4 /* BackgroundMaker.xcdatamodeld in Sources */,
 				3ABA6C1B28C6043F005AA8E4 /* MainViewController.swift in Sources */,
 				3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */,
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
 				3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */,
+				3A0F42A428C982D8002F1CAD /* BottomMenuView.swift in Sources */,
 				3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
 				3A112F9A28C76B1300BC3E9D /* CustomCropView.swift in Sources */,
@@ -338,6 +362,8 @@
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BackgroundMaker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "크로퍼";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -367,6 +393,8 @@
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BackgroundMaker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "크로퍼";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
