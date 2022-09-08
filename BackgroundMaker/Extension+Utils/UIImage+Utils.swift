@@ -38,11 +38,10 @@ extension UIImage {
         }
         return nil
     }
- }
-// MARK: Merge Image
-
-extension UIImage {
-
+    
+    // MARK: - Merge Image
+    
+    /// 이미지 병합 후보 1
     func mergeImage(with secondImage: UIImage, point: CGPoint? = nil) -> UIImage {
 
         let firstImage = self
@@ -69,6 +68,7 @@ extension UIImage {
         return image ?? self
     }
     
+    /// 이미지 병합 후보 2
       func mergeWith(topImage: UIImage) -> UIImage {
         let bottomImage = self
 
