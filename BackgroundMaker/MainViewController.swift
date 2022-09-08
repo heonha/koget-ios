@@ -28,20 +28,25 @@ class MainViewController: UIViewController {
     let placeHolderButton = UIButton() // 사진 라이브러리를 띄울 투명버튼
     
     let imageModel = ImageEditModel.shared
+    let viewModel = ViewModel.shared
+    
+    /// 기능버튼들이 들어갈 하단 뷰입니다.
+    let trayView = BottomMenuView()
+    var trayOriginalCenter: CGPoint = CGPoint() // 트레이뷰의 중앙을 인식하는 포인터입니다.
     
     // MARK: 기능버튼 초기화 (현재는 RightBarButton에만 추가 한 상태)
     
     /// 사진을 추가하는 기능을 하는 버튼입니다.
-    lazy var addButton: UIBarButtonItem = makeBarButton(systemName: "plus.square.fill.on.square.fill", selector: #selector(presentPHPickerVC), isEnable: true) // 이미지 자르기 버튼 추가
+    lazy var addButton: UIBarButtonItem = makeBarButtonWithSystemImage(systemName: "plus.square.fill.on.square.fill", selector: #selector(presentPHPickerVC), isHidden: true) // 이미지 자르기 버튼 추가
 
     /// 현재화면을 캡쳐하고 저장하는 버튼입니다.
-    lazy var saveButton: UIBarButtonItem = makeBarButton(systemName: "checkmark.circle.fill", selector: #selector(saveImage), isEnable: false)
+    lazy var saveButton: UIBarButtonItem = makeBarButtonWithTitle(title: "저장", selector: #selector(saveImage), isEnable: false)
     
     /// 불러온 이미지를 자르는 버튼입니다.
-    lazy var mergeButton: UIBarButtonItem = makeBarButton(systemName: "arrow.triangle.merge", selector: #selector(getMergeImage), isEnable: false)
+    lazy var cropButton: UIBarButtonItem = makeBarButtonWithSystemImage(systemName: "crop", selector: #selector(presentCropVC), isHidden: false)
     
     /// 공유하기 버튼 입니다.
-    lazy var shareButton: UIBarButtonItem = makeBarButton(systemName: "square.and.arrow.up", selector: #selector(takeShareImage), isEnable: false)
+    lazy var shareButton: UIBarButtonItem = makeBarButtonWithSystemImage(systemName: "square.and.arrow.up", selector: #selector(takeShareImage), isHidden: false)
 
 
     
@@ -51,11 +56,10 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
                         
         /// 네비게이션 바 버튼을 구성합니다.
-        self.navigationItem.rightBarButtonItems = [addButton, saveButton, mergeButton, shareButton] // 사진추가, 저장, 자르기 버튼
+        self.navigationItem.rightBarButtonItems = [addButton, saveButton, cropButton, shareButton] // 사진추가, 저장, 자르기 버튼
 
         /// 뷰 셋업
         setImageView() // 선택한 사진이 배치 될 이미지뷰를 셋업합니다.
-        
         
     }
     
@@ -68,12 +72,34 @@ class MainViewController: UIViewController {
             setPlaceHolder()// placeholder 셋업 (이미지가 없을때만 호출)
         } else {
             self.hidePlaceHolder() // 이미지가 셋업되면 숨김
-            self.makePinchGesture(action: #selector(pinchZoomAction)) // 이미지 확대 축소 제스쳐 추가
+            self.makePinchGesture(selector: #selector(pinchZoomAction)) // 이미지 확대 축소 제스쳐 추가
+            self.makeTrayView() // 트레이 뷰 띄우기
+            self.addPanGesture(selector: #selector(makeDragImageGesture)) // 이미지 드래그 제스쳐 추가.
+            self.addEdgeGesture(selector: #selector(makeSwipeMenuGesture)) // 메뉴 꺼내기 제스쳐 추가.
+
             self.addDoubleTapRecognizer(selector: #selector(doubleTapZoomAction)) // 더블탭 제스쳐 추가 (더블탭 시 배율 확대, 축소)
-            self.enableBarButtons(buttons: [saveButton, mergeButton, shareButton]) // 이미지 로드 전 비활성화 된 바 버튼을 활성화 합니다.
+            self.enableBarButtons(buttons: [saveButton, cropButton, shareButton]) // 이미지 로드 전 비활성화 된 바 버튼을 활성화 합니다.
+            self.barButtonReplace(buttons: [saveButton, cropButton, shareButton, addButton])
         }
         
     }
+
+    /// 바 버튼의 순서를 재배치합니다..
+    func barButtonReplace(buttons: [UIBarButtonItem]) {
+        self.navigationItem.rightBarButtonItems = buttons
+    }
+    
+    func makeTrayView() {
+        
+        trayView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(trayView)
+        
+        trayView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.lastBaseline.equalToSuperview()
+        }
+    }
+    
     
     
     //MARK: View Load END -
@@ -81,10 +107,20 @@ class MainViewController: UIViewController {
     
     //MARK: - 뷰 관련 메소드 구성 (네비게이션, 버튼 등)
     /// 네비게이션 바에 구성하고 네비게이션 뷰에 추가합니다.
-    func makeBarButton(systemName: String, selector: Selector, isEnable: Bool = true) -> UIBarButtonItem {
+    func makeBarButtonWithSystemImage(systemName: String, selector: Selector, isHidden: Bool = true) -> UIBarButtonItem {
         let buttonImage = UIImage(systemName: systemName)?.withRenderingMode(.automatic)
         let button = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: selector)
+        button.isEnabled = isHidden
+        button.tintColor = .label
+        
+        return button
+    }
+    
+    /// 네비게이션 바에 구성하고 네비게이션 뷰에 추가합니다.
+    func makeBarButtonWithTitle(title: String, selector: Selector, isEnable: Bool = true) -> UIBarButtonItem {
+        let button = UIBarButtonItem(title: title, style: .plain, target: self, action: selector)
         button.isEnabled = isEnable
+        button.tintColor = .label
         
         return button
     }
@@ -102,11 +138,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    /// 현재 View를 캡쳐하고 Image를 반환합니다.
-    func takeScreenViewCapture() -> UIImage? {
-        let captureImage = view.renderToImage(afterScreenUpdates: true)
-        return captureImage
-    }
+
     
     /// CropButton의 액션 메소드입니다.
     func makeImageButton() {
@@ -116,16 +148,15 @@ class MainViewController: UIViewController {
     }
     
     
-    
     //MARK: - Gesture 셋업
     
     //MARK: 사진 확대/축소 제스쳐
     
-    /// 두손가락으로 핀치하는 제스쳐를 SuperView에 추가합니다. 
-    private func makePinchGesture(action: Selector) {
+    /// 두손가락으로 핀치하는 제스쳐를 SuperView에 추가합니다.
+    private func makePinchGesture(selector: Selector) {
         var pinch = UIPinchGestureRecognizer()
         
-        pinch = UIPinchGestureRecognizer(target: self, action: action)
+        pinch = UIPinchGestureRecognizer(target: self, action: selector)
         self.view.addGestureRecognizer(pinch)
     }
     
@@ -139,8 +170,8 @@ class MainViewController: UIViewController {
     }
     
     //MARK: 더블 탭 제스쳐
-    
     /// 화면을 두번 탭하면 이벤트가 발생하는 TapRecognizer를 구성합니다.
+    /// - selector : 제스쳐의 action을 구성할 objc 메소드입니다.
     func addDoubleTapRecognizer(selector: Selector) {
         let doubleTap = UITapGestureRecognizer(target: self, action: selector)
         doubleTap.numberOfTapsRequired = 2
@@ -154,18 +185,81 @@ class MainViewController: UIViewController {
                 self.sourceImageView.transform = CGAffineTransform(scaleX: 2, y: 2)
                 
             } else {
+                self.sourceImageView.center = self.view.center
                 self.sourceImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
         }
     }
     
     
+    /// PanGesture를 추가합니다.
+    /// - selector : 제스쳐의 action을 구성할 objc 메소드입니다.
+    func addPanGesture(selector: Selector) {
+        let gesture = UIPanGestureRecognizer(target: self, action: selector)
+        self.view.addGestureRecognizer(gesture)
+    }
+    
+    /// 메뉴를 드래그 할수 있는 제스쳐를 만듭니다.
+    @objc func makeDragImageGesture(_ sender: UIPanGestureRecognizer) {
+//        지정된 보기의 좌표계에서 팬 제스처를 해석합니다.
+        var translation = sender.translation(in: sourceImageView)
+        // print("Pan Gesture Translation(CGPoint) : \(translation)")
+         
+        ///.Began각 제스처 인식의 맨 처음에 한 번 호출됩니다.
+        ///.Changed사용자가 "제스처" 과정에 있으므로 계속 호출됩니다.
+        ///.Ended제스처의 끝에서 한 번 호출됩니다.
+        switch sender.state {
+       case .began:
+            /// 처음 클릭하기 시작했을 때
+           trayOriginalCenter = sourceImageView.center // TrayView의 센터포인트를 저장합니다.
+            
+        case .changed:
+            sourceImageView.center = CGPoint(x: trayOriginalCenter.x + translation.x, y: trayOriginalCenter.y + translation.y)
+        default:
+            break
+        }
+        
+    }
+    
+    /// PanGesture를 추가합니다.
+    /// - selector : 제스쳐의 action을 구성할 objc 메소드입니다.
+    func addEdgeGesture(selector: Selector) {
+        let gesture = UIScreenEdgePanGestureRecognizer(target: self, action: selector)
+        gesture.edges = .bottom
+        self.view.addGestureRecognizer(gesture)
+    }
+    
+    /// [Todo] 스와이프하여 꺼낼수 있는 메뉴를 만듭니다.
+    @objc func makeSwipeMenuGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
+        //        지정된 보기의 좌표계에서 팬 제스처를 해석합니다.
+                var translation = sender.translation(in: sourceImageView)
+                // print("Pan Gesture Translation(CGPoint) : \(translation)")
+                 
+                ///.Began각 제스처 인식의 맨 처음에 한 번 호출됩니다.
+                ///.Changed사용자가 "제스처" 과정에 있으므로 계속 호출됩니다.
+                ///.Ended제스처의 끝에서 한 번 호출됩니다.
+                switch sender.state {
+               case .began:
+                    /// 처음 클릭하기 시작했을 때
+                   trayOriginalCenter = sourceImageView.center // TrayView의 센터포인트를 저장합니다.
+                    
+                case .changed:
+                    sourceImageView.center = CGPoint(x: trayOriginalCenter.x, y: trayOriginalCenter.y + translation.y)
+                    print("엣지 호출됨")
+                default:
+                    break
+                }
+    }
+    
+    
+    
     //MARK: Gesture 셋업 END -
    
     // MARK: - PlaceHolder 셋업
     
-    /// 사진을 선택하기 전에 표시할 Placeholder Set을 구성하는 메소드입니다.
-    /// 이 메소드를 추가하면 Placeholder가 나타납니다. (Config, Layout을 포함합니다)
+    /**
+     사진을 선택하기 전에 표시할 Placeholder Set을 구성하는 메소드입니다.
+     이 메소드를 추가하면 Placeholder가 나타납니다. (Config, Layout을 포함합니다) */
     private func setPlaceHolder() {
 
         // PlaceHolder 스택뷰 셋업 (라벨, 이미지뷰 추가됨)
@@ -262,7 +356,7 @@ class MainViewController: UIViewController {
     
     /// 현재 뷰를 캡쳐하고 그 이미지를 앨범에 저장하는 메소드입니다.
     @objc func saveImage() {
-        if let image = takeScreenViewCapture() {
+        if let image = viewModel.takeScreenViewCapture(withoutView: [trayView], target: self) {
             saveImageToAlbum(image: image)
         } else {
             print("저장할 이미지 없음")
@@ -329,7 +423,7 @@ class MainViewController: UIViewController {
     
     /// 현재 뷰를 캡쳐하고 그 이미지를 공유합니다.
     @objc func takeShareImage() {
-        if let image = takeScreenViewCapture() {
+        if let image = viewModel.takeScreenViewCapture(withoutView: [trayView], target: self) {
             imageModel.shareImageButton(image: image, target: self)
         }
     }
@@ -360,6 +454,7 @@ extension MainViewController: PHPickerViewControllerDelegate {
                         DispatchQueue.main.async {
                             self.sourceImageView.image = image // 선택한 이미지를 뷰에 띄웁니다.
                             self.sourceImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 선택한 이미지의 크기를 초기화합니다.
+
                             self.bgImageView.image = croppedImage // 선택한 이미지를 블러처리하여 백그라운드에 띄웁니다.
                             self.bgImageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1) // 백그라운드 이미지의 크기를 초기화합니다. (결과물 비네팅방지를 위해 1.1배로 설정)
 
