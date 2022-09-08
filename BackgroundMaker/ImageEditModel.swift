@@ -21,7 +21,6 @@ class ImageEditModel {
         let xOffset = (sourceSize.width - sideLenth) / 2.0
         let yOffset = (sourceSize.height - sideLenth) / 2.0
         
-        let screenSize = UIScreen.main.bounds
         
         /// CropRect는 보관할 이미지의 rect입니다.
         let cropRect = CGRect(x: xOffset, y: yOffset, width: sideLenth, height: sideLenth).integral
@@ -36,29 +35,27 @@ class ImageEditModel {
         return croppedImage
     }
     
-
-    
     /// 여러개의 이미지를 병합합니다. (현재는 2개)
     func mergeImages(image: UIImage, imageRect: CGRect, backgroundImage: UIImage) -> UIImage {
         
-        var backImage = backgroundImage
-        var frontImage = image
+        let backImage = backgroundImage
+        let frontImage = image
 
         /// 이미지의 기본 판을 형성합니다.
         let screenSize = UIScreen.main.bounds
-        var size = CGSize(width: screenSize.width, height: screenSize.height)
+        let size = CGSize(width: screenSize.width, height: screenSize.height)
         UIGraphicsBeginImageContext(size)
         
         
         let backAreaSize = screenSize
         backImage.draw(in: backAreaSize)
 
-//        let sourceAreaSize = imageRect
-//        print(imageRect)
-//        frontImage.draw(in: sourceAreaSize)
+        let sourceAreaSize = imageRect
+        print(imageRect)
+        frontImage.draw(in: sourceAreaSize)
 
 
-        var mergedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let mergedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
 
         return mergedImage
@@ -77,23 +74,19 @@ class ImageEditModel {
         return croppedImage
     }
     
-    
-    
-
-    
-}
-public extension UIView {
-    @available(iOS 10.0, *)
-    
-    ///현재 화면에 보이는 View를 캡쳐하고 Image를 반환합니다.
-    public func renderToImage(afterScreenUpdates: Bool = false) -> UIImage {
-        let rendererFormat = UIGraphicsImageRendererFormat.default()
-        rendererFormat.opaque = isOpaque
-        let renderer = UIGraphicsImageRenderer(size: bounds.size, format: rendererFormat)
-
-        let snapshotImage = renderer.image { _ in
-            drawHierarchy(in: bounds, afterScreenUpdates: afterScreenUpdates)
-        }
-        return snapshotImage
+    ///이미지 공유를 위한 ActivityViewController를 구성하고 띄웁니다.
+    func shareImageButton(image: UIImage, target: UIViewController) {
+        
+        /// 액티비티 뷰 컨트롤러 설정
+        let imageToShare = [ image ]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = target.view // so that iPads won't crash
+        /// 목록에서 일부 활동 유형 제외하기
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.postToFacebook ]
+        
+        // activityViewController 띄우기
+        target.present(activityViewController, animated: true, completion: nil)
+        
     }
+    
 }

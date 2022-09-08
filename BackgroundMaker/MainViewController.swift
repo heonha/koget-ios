@@ -23,17 +23,26 @@ class MainViewController: UIViewController {
     /// 라벨과 이미지뷰를 추가할 스택뷰
     let placeholderStackView = UIStackView()
     /// "여기를 눌러 사진을 추가하세요" 문구
-    let placeHolderLabel = UILabel()
+    let placeHolderLabel = UILabel() // '사진을 추가하세요' 라는 문구의 안내라벨
     let placeHolderImageView = UIImageView() // 사진 추가하기를 의미하는 이미지
     let placeHolderButton = UIButton() // 사진 라이브러리를 띄울 투명버튼
     
     let imageModel = ImageEditModel.shared
     
     // MARK: 기능버튼 초기화 (현재는 RightBarButton에만 추가 한 상태)
+    
+    /// 사진을 추가하는 기능을 하는 버튼입니다.
     lazy var addButton: UIBarButtonItem = makeBarButton(systemName: "plus.square.fill.on.square.fill", selector: #selector(presentPHPickerVC), isEnable: true) // 이미지 자르기 버튼 추가
 
+    /// 현재화면을 캡쳐하고 저장하는 버튼입니다.
     lazy var saveButton: UIBarButtonItem = makeBarButton(systemName: "checkmark.circle.fill", selector: #selector(saveImage), isEnable: false)
+    
+    /// 불러온 이미지를 자르는 버튼입니다.
     lazy var mergeButton: UIBarButtonItem = makeBarButton(systemName: "arrow.triangle.merge", selector: #selector(getMergeImage), isEnable: false)
+    
+    /// 공유하기 버튼 입니다.
+    lazy var shareButton: UIBarButtonItem = makeBarButton(systemName: "square.and.arrow.up", selector: #selector(takeShareImage), isEnable: false)
+
 
     
     
@@ -42,7 +51,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
                         
         /// 네비게이션 바 버튼을 구성합니다.
-        self.navigationItem.rightBarButtonItems = [addButton, saveButton, mergeButton] // 사진추가, 저장, 자르기 버튼
+        self.navigationItem.rightBarButtonItems = [addButton, saveButton, mergeButton, shareButton] // 사진추가, 저장, 자르기 버튼
 
         /// 뷰 셋업
         setImageView() // 선택한 사진이 배치 될 이미지뷰를 셋업합니다.
@@ -58,12 +67,10 @@ class MainViewController: UIViewController {
         if self.sourceImageView.image == nil {
             setPlaceHolder()// placeholder 셋업 (이미지가 없을때만 호출)
         } else {
-            self.sourceImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 이미지뷰 크기 초기화
             self.hidePlaceHolder() // 이미지가 셋업되면 숨김
             self.makePinchGesture(action: #selector(pinchZoomAction)) // 이미지 확대 축소 제스쳐 추가
             self.addDoubleTapRecognizer(selector: #selector(doubleTapZoomAction)) // 더블탭 제스쳐 추가 (더블탭 시 배율 확대, 축소)
-            self.enableBarButtons(buttons: [saveButton, mergeButton]) // 이미지 로드 전 비활성화 된 바 버튼을 활성화 합니다.
-
+            self.enableBarButtons(buttons: [saveButton, mergeButton, shareButton]) // 이미지 로드 전 비활성화 된 바 버튼을 활성화 합니다.
         }
         
     }
@@ -114,7 +121,7 @@ class MainViewController: UIViewController {
     
     //MARK: 사진 확대/축소 제스쳐
     
-    /// 두손가락으로 핀치하는 제스쳐를 SuperView에 추가합니다. (
+    /// 두손가락으로 핀치하는 제스쳐를 SuperView에 추가합니다. 
     private func makePinchGesture(action: Selector) {
         var pinch = UIPinchGestureRecognizer()
         
@@ -253,8 +260,8 @@ class MainViewController: UIViewController {
         present(pickerVC, animated: true)
     }
     
+    /// 현재 뷰를 캡쳐하고 그 이미지를 앨범에 저장하는 메소드입니다.
     @objc func saveImage() {
-        
         if let image = takeScreenViewCapture() {
             saveImageToAlbum(image: image)
         } else {
@@ -263,7 +270,7 @@ class MainViewController: UIViewController {
 
     }
     
-    /// 사진을 디바이스에 저장하는 메소드
+    /// 사진을 디바이스에 저장하는 메소드입니다.
     func saveImageToAlbum(image: UIImage) {
             UIImageWriteToSavedPhotosAlbum(image, self,
                                            #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
@@ -276,17 +283,30 @@ class MainViewController: UIViewController {
         /// 앨범에 사진 저장이 성공 / 실패 했을 때 알럿을 띄웁니다.
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         let apply = UIAlertAction(title: "확인", style: .default, handler: nil)
-        
+
+
         if let error = error {
+            /// 사진 접근권한 확인을 위해 앱의 설정 화면으로 가는 딥링크를 만듭니다.
+            let setting = UIAlertAction(title: "설정하기", style: .default) { _ in
+                self.openUserAppSettings()
+            }
+            alert.addAction(setting)
             print("ERROR: \(error)")
             alert.title = "저장 실패"
-            alert.message = "사진 저장이 실패했습니다. 앨범 접근 권한이 허용되어있는지 확인해주세요."
+            alert.message = "사진 저장이 실패했습니다. 아래 설정버튼을 눌러 사진 접근 권한을 확인해주세요."
         } else {
             alert.title = "저장 성공"
-            alert.message = "앨범에 사진이 저장되었습니다."
+            alert.message = "앨범에서 저장된 사진을 확인하세요."
         }
         alert.addAction(apply)
         present(alert, animated: true)
+    }
+    
+    /// 앱의 접근권한 확인을 위해 앱의 설정 화면으로 가는 딥링크를 만듭니다.
+    func openUserAppSettings() {
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+        }
     }
     
 
@@ -299,14 +319,18 @@ class MainViewController: UIViewController {
     
     /// 병합된 이미지를 뷰에 반영합니다.
     @objc func getMergeImage() {
-        
         if let source = self.sourceImageView.image, let background = self.bgImageView.image {
             
             let mergedImage = self.imageModel.mergeImages(image: source, imageRect: sourceImageView.frame.integral, backgroundImage: background)
 //            let mergedImage = source.mergeWith(topImage: background)
             self.sourceImageView.image = mergedImage
-        } else {
-            print("병합할 이미지 없음.")
+        }
+    }
+    
+    /// 현재 뷰를 캡쳐하고 그 이미지를 공유합니다.
+    @objc func takeShareImage() {
+        if let image = takeScreenViewCapture() {
+            imageModel.shareImageButton(image: image, target: self)
         }
     }
 
@@ -334,11 +358,11 @@ extension MainViewController: PHPickerViewControllerDelegate {
                         let croppedImage = self.imageModel.cropImageForScreenSize(blurImage)
                         
                         DispatchQueue.main.async {
-                            self.sourceImageView.image = image
-                            self.bgImageView.image = croppedImage
-                            self.bgImageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                            self.sourceImageView.image = image // 선택한 이미지를 뷰에 띄웁니다.
+                            self.sourceImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 선택한 이미지의 크기를 초기화합니다.
+                            self.bgImageView.image = croppedImage // 선택한 이미지를 블러처리하여 백그라운드에 띄웁니다.
+                            self.bgImageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1) // 백그라운드 이미지의 크기를 초기화합니다. (결과물 비네팅방지를 위해 1.1배로 설정)
 
-                            
                             self.viewDidAppear(true)
                         }
                     }
