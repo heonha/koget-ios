@@ -89,4 +89,18 @@ class ImageEditModel {
         
     }
     
+    /// 이미지 끝부분을 블러처리합니다.
+    func makeImageRoundBlur(imageView: UIImageView) {
+        let maskLayer = CAGradientLayer()
+
+        maskLayer.frame = imageView.bounds
+        maskLayer.shadowRadius = 10
+        maskLayer.shadowPath = CGPath(roundedRect: imageView.bounds.insetBy(dx: 20, dy: 20), cornerWidth: 0, cornerHeight: 0, transform: nil)
+        maskLayer.shadowOpacity = 1;
+        maskLayer.shadowOffset = CGSize.zero;
+        maskLayer.shadowColor = UIColor.white.cgColor
+        imageView.layer.mask = maskLayer;
+        
+    }
+    
 }

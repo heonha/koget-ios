@@ -13,7 +13,10 @@ import Mantis
 class MainViewController: UIViewController {
     
     /// 편집할 이미지가 들어갈 이미지 뷰
-    let sourceImageView = UIImageView()
+    var sourceImageView = UIImageView()
+    let editImageView = UIImageView()
+    var sourceImageSize: CGRect?
+    var archiveSourceImage = UIImage()
     
     /// 편집할 이미지 뒤에 나타날 배경 이미지
     let bgImageView = UIImageView()
@@ -33,6 +36,11 @@ class MainViewController: UIViewController {
     /// 기능버튼들이 들어갈 하단 뷰입니다.
     let trayView = BottomMenuView()
     var trayOriginalCenter: CGPoint = CGPoint() // 트레이뷰의 중앙을 인식하는 포인터입니다.
+    var trayDownOffset: CGFloat?
+    var trayUp: CGPoint?
+    var trayDown: CGPoint?
+    
+    
     
     // MARK: 기능버튼 초기화 (현재는 RightBarButton에만 추가 한 상태)
     
@@ -43,7 +51,7 @@ class MainViewController: UIViewController {
     lazy var saveButton: UIBarButtonItem = makeBarButtonWithTitle(title: "저장", selector: #selector(saveImage), isEnable: false)
     
     /// 불러온 이미지를 자르는 버튼입니다.
-    lazy var cropButton: UIBarButtonItem = makeBarButtonWithSystemImage(systemName: "crop", selector: #selector(presentCropVC), isHidden: false)
+    lazy var cropButton: UIBarButtonItem = makeBarButtonWithSystemImage(systemName: "square.dashed", selector: #selector(takeImageBlur), isHidden: false)
     
     /// 공유하기 버튼 입니다.
     lazy var shareButton: UIBarButtonItem = makeBarButtonWithSystemImage(systemName: "square.and.arrow.up", selector: #selector(takeShareImage), isHidden: false)
@@ -59,13 +67,12 @@ class MainViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [addButton, saveButton, cropButton, shareButton] // 사진추가, 저장, 자르기 버튼
 
         /// 뷰 셋업
-        setImageView() // 선택한 사진이 배치 될 이미지뷰를 셋업합니다.
+        setImageViews() // 선택한 사진이 배치 될 이미지뷰를 셋업합니다.
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         
         // 현재 이미지가 셋팅되어있는지에 따라 Place Holder 또는 버튼을 활성화 합니다.
         if self.sourceImageView.image == nil {
@@ -89,6 +96,7 @@ class MainViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = buttons
     }
     
+    /// 기능버튼이 들어갈 트레이뷰를 구성합니다.
     func makeTrayView() {
         
         trayView.translatesAutoresizingMaskIntoConstraints = false
@@ -138,14 +146,14 @@ class MainViewController: UIViewController {
         }
     }
     
-
-    
     /// CropButton의 액션 메소드입니다.
     func makeImageButton() {
         if let image = self.sourceImageView.image {
             UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
         }
     }
+    
+    
     
     
     //MARK: - Gesture 셋업
@@ -163,8 +171,6 @@ class MainViewController: UIViewController {
     /// 두손가락으로 이미지를 확대, 축소 할수 있는 핀치액션을 구성합니다.
     @objc func pinchZoomAction(_ pinch: UIPinchGestureRecognizer) {
         sourceImageView.transform = sourceImageView.transform.scaledBy(x: pinch.scale, y: pinch.scale)
-        print(sourceImageView.transform)
-        print(sourceImageView.frame)
 
         pinch.scale = 1
     }
@@ -201,7 +207,7 @@ class MainViewController: UIViewController {
     
     /// 메뉴를 드래그 할수 있는 제스쳐를 만듭니다.
     @objc func makeDragImageGesture(_ sender: UIPanGestureRecognizer) {
-//        지정된 보기의 좌표계에서 팬 제스처를 해석합니다.
+        // 지정된 보기의 좌표계에서 팬 제스처를 해석합니다.
         var translation = sender.translation(in: sourceImageView)
         // print("Pan Gesture Translation(CGPoint) : \(translation)")
          
@@ -229,6 +235,9 @@ class MainViewController: UIViewController {
         self.view.addGestureRecognizer(gesture)
     }
     
+    //MARK: - Tray
+
+    
     /// [Todo] 스와이프하여 꺼낼수 있는 메뉴를 만듭니다.
     @objc func makeSwipeMenuGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
         //        지정된 보기의 좌표계에서 팬 제스처를 해석합니다.
@@ -245,14 +254,23 @@ class MainViewController: UIViewController {
                     
                 case .changed:
                     sourceImageView.center = CGPoint(x: trayOriginalCenter.x, y: trayOriginalCenter.y + translation.y)
-                    print("엣지 호출됨")
+                case .ended:
+                    var velocity = sender.velocity(in: view)
+                                        
+                    if velocity.y > 0 {
+                        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                            self.trayView.center = self.trayDown!
+                       })
+                    } else {
+                        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                            self.trayView.center = self.trayUp!
+                       })
+                    }
                 default:
                     break
                 }
     }
-    
-    
-    
+
     //MARK: Gesture 셋업 END -
    
     // MARK: - PlaceHolder 셋업
@@ -317,14 +335,14 @@ class MainViewController: UIViewController {
     //MARK: - ImageView, PHPicker(ImagePicker) 셋업
     
     /// 선택 된 사진을 삽입할 ImageView를 구성하는 메소드입니다.
-    private func setImageView() {
+    private func setImageViews() {
         
         bgImageView.translatesAutoresizingMaskIntoConstraints = false
         bgImageView.contentMode = .scaleAspectFill
         bgImageView.isUserInteractionEnabled = false
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
-            make.width.height.equalToSuperview()
+            make.edges.edges.equalToSuperview()
         }
         
         sourceImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -335,6 +353,14 @@ class MainViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
+        editImageView.translatesAutoresizingMaskIntoConstraints = false
+        editImageView.contentMode = .scaleAspectFit
+        // editImageView.isHidden = true
+        view.addSubview(editImageView)
+        
+        editImageView.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+        }
     }
 
     /// PickerViewController를 구성하고 반환하는 메소드입니다. PHPicker 사진 선택기에 대한 Config, Delegate 를 정의합니다.
@@ -361,7 +387,6 @@ class MainViewController: UIViewController {
         } else {
             print("저장할 이미지 없음")
         }
-
     }
     
     /// 사진을 디바이스에 저장하는 메소드입니다.
@@ -369,7 +394,6 @@ class MainViewController: UIViewController {
             UIImageWriteToSavedPhotosAlbum(image, self,
                                            #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
-        
     
     /// 사진 저장 처리결과를 Alert로 Present합니다.
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
@@ -403,7 +427,6 @@ class MainViewController: UIViewController {
         }
     }
     
-
     ///사진을 자르고 뷰에 띄웁니다.
     @objc func getCropImage() {
         if let image = self.sourceImageView.image {
@@ -416,7 +439,6 @@ class MainViewController: UIViewController {
         if let source = self.sourceImageView.image, let background = self.bgImageView.image {
             
             let mergedImage = self.imageModel.mergeImages(image: source, imageRect: sourceImageView.frame.integral, backgroundImage: background)
-//            let mergedImage = source.mergeWith(topImage: background)
             self.sourceImageView.image = mergedImage
         }
     }
@@ -425,6 +447,22 @@ class MainViewController: UIViewController {
     @objc func takeShareImage() {
         if let image = viewModel.takeScreenViewCapture(withoutView: [trayView], target: self) {
             imageModel.shareImageButton(image: image, target: self)
+        }
+    }
+    
+    /// 이미지 가장자리에 블러효과를 주는 VC를 띄웁니다.
+    @objc func takeImageBlur() {
+        if let image = sourceImageView.image {
+            
+            let vc = EditImageViewController()
+            
+            let imageSize = sourceImageView.image?.size
+            vc.imageSize = imageSize
+            vc.editImageView.image = image
+            vc.archiveSource = self.archiveSourceImage
+
+            vc.delegate = self
+            self.navigationController?.pushViewController(vc, animated: false)
         }
     }
 
@@ -454,7 +492,7 @@ extension MainViewController: PHPickerViewControllerDelegate {
                         DispatchQueue.main.async {
                             self.sourceImageView.image = image // 선택한 이미지를 뷰에 띄웁니다.
                             self.sourceImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 선택한 이미지의 크기를 초기화합니다.
-
+                            self.archiveSourceImage = image!
                             self.bgImageView.image = croppedImage // 선택한 이미지를 블러처리하여 백그라운드에 띄웁니다.
                             self.bgImageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1) // 백그라운드 이미지의 크기를 초기화합니다. (결과물 비네팅방지를 위해 1.1배로 설정)
 
@@ -507,9 +545,13 @@ extension MainViewController: CropViewControllerDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-
-    
 }
 
 
+
+extension MainViewController : EditImageViewControllerDelegate {
+    /// EditImageViewController에서 작업하거나 취소한 이미지를 업데이트합니다.
+    func editImageSet(image: UIImage) {
+        self.sourceImageView.image = image
+    }
+}
