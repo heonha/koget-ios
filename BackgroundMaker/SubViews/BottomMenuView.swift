@@ -25,11 +25,10 @@ class BottomMenuView: UIView {
         backgroundColor = .clear
         
         setupBackgroundView(view: backgroundView)
-        setupViewAlphaValue(view: backgroundView, alpha: 0.5)
+        setupViewAlphaValue(view: backgroundView, alpha: 0.4)
         setupContentView(view: contentView)
         setupStackView()
 
-        
     }
     
     required init?(coder: NSCoder) {
@@ -39,14 +38,19 @@ class BottomMenuView: UIView {
     
     override var intrinsicContentSize: CGSize {
         let screenSize = UIScreen.main.bounds
-        return CGSize(width: screenSize.width, height: 130)
+        return CGSize(width: screenSize.width, height: 100)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+
+    }
     /// 컨텐츠의 배경 뷰를 만듭니다.
     func setupBackgroundView(view: UIView) {
         self.addSubview(view)
         
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemBackground
         
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -57,7 +61,7 @@ class BottomMenuView: UIView {
     func setupContentView(view: UIView) {
         self.addSubview(view)
         
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .clear
         
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -74,12 +78,10 @@ class BottomMenuView: UIView {
     func setupStackView() {
         contentView.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .red
+        stackView.backgroundColor = .clear
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
-        
-        
         
         stackView.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(contentView)
@@ -88,8 +90,20 @@ class BottomMenuView: UIView {
     }
     
     func functionButtons() {
-   
+        /// 현재화면을 캡쳐하고 저장하는 버튼입니다.
+        // let saveButton: UIBarButtonItem = makeBarButtonWithTitle(title: "저장", selector: #selector(saveImage), isEnable: false)
     }
     
+
+    
+    /// 네비게이션 바에 구성하고 네비게이션 뷰에 추가합니다.
+    func makeBarButtonWithTitle(title: String, selector: Selector, isEnable: Bool = true) -> UIButton {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.isEnabled = isEnable
+        
+        return button
+    }
 
 }
