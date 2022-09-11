@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Lottie
 
 class ImageViewModel {
     
@@ -34,5 +35,15 @@ class ImageViewModel {
         imageView.image = photo
     }
     
+    func makeLottieAnimation(named animationName: String, targetView: UIView, targetVC: UIViewController, size: CGSize) -> AnimationView {
+        let animationView = AnimationView(name: animationName)
+        animationView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        animationView.center = targetView.center
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        targetView.addSubview(animationView)
+        
+        return animationView
+    }
 
 }

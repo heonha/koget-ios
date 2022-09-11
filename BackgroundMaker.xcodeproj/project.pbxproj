@@ -25,6 +25,7 @@
 		3ABA6C3528C60A7F005AA8E4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3428C60A7F005AA8E4 /* RxSwift */; };
 		3ABA6C3828C6361B005AA8E4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3728C6361B005AA8E4 /* SnapKit */; };
 		3ACD923C28CDC63F00345E6C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3ACD923B28CDC63F00345E6C /* Lottie */; };
+		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
 		3AD12D9428CD960E00CF431C /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9328CD960E00CF431C /* ImageViewModel.swift */; };
 		3AD12D9628CDA4C900CF431C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9528CDA4C900CF431C /* MainViewController.swift */; };
 		3AD12D9828CDA72300CF431C /* ImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */; };
@@ -47,6 +48,7 @@
 		3ABA6C2228C60440005AA8E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3ABA6C2528C60440005AA8E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3ABA6C2728C60440005AA8E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingIndicatorGray.json; sourceTree = "<group>"; };
 		3AD12D9328CD960E00CF431C /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		3AD12D9528CDA4C900CF431C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerModel.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				3A26150328CB7E2B000D17A3 /* TestEditImageViewController.swift */,
 				3ABA6C2228C60440005AA8E4 /* Assets.xcassets */,
+				3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */,
 				3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */,
 				3ABA6C2728C60440005AA8E4 /* Info.plist */,
 				3ABA6C1F28C6043F005AA8E4 /* BackgroundMaker.xcdatamodeld */,
@@ -212,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */,
 				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
 				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
 			);
