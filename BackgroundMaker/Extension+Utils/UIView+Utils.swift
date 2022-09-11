@@ -8,7 +8,6 @@
 import UIKit
 
 public extension UIView {
-    @available(iOS 10.0, *)
     
     ///현재 화면에 보이는 View를 캡쳐하고 Image를 반환합니다.
     func renderToImage(afterScreenUpdates: Bool = false) -> UIImage {

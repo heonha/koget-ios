@@ -7,14 +7,16 @@
 
 import UIKit
 import SnapKit
-
-protocol EditImageViewControllerDelegate {
-    func editImageSet(image: UIImage)
-}
-
+import RxSwift
 
 class EditImageViewController: UIViewController {
+ 
+    let disposeBag = DisposeBag()
+    var senderVC: PhotoViewController?
     
+    let imageViewModel = ImageViewModel.shared
+    
+    /// 이미지 편집을 수행할 이미지 뷰입니다.
     var editImageView = UIImageView()
     var imageSize: CGSize?
     let applyButton = UIButton()
@@ -22,58 +24,71 @@ class EditImageViewController: UIViewController {
 
     var archiveSource = UIImage()
     
-    var delegate: EditImageViewControllerDelegate?
-    let menuStackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
         self.navigationItem.setHidesBackButton(true, animated: false)
-        makeStackView(stackView: menuStackView, subView: [applyButton, cancelButton])
+        // makeStackView(stackView: menuStackView, subView: [applyButton, cancelButton])
 
         setImageViews()
-        let action = UIAction { _ in
-            ImageEditModel.shared.makeImageRoundBlur(imageView: self.editImageView)
-            let blurImage = ViewModel.shared.takeViewCapture(targetView: self.editImageView)
-            self.delegate?.editImageSet(image: blurImage)
-            self.navigationController?.popViewController(animated: false)
-        }
-        
-        let cancelAction = UIAction { _ in
-            self.delegate?.editImageSet(image: self.archiveSource)
-            self.navigationController?.popViewController(animated: false)
-        }
-        makeButtonWithTitle(button: applyButton, title: "가장자리 흐림 적용", action: action, target: self)
-        applyButton.backgroundColor = .systemBlue
-        makeButtonWithTitle(button: cancelButton, title: "되돌리기", action: cancelAction, target: self)
-        cancelButton.backgroundColor = .systemGray
+        setButtons()
+        editingImageRxSubscribe(targetImageView: editImageView)
         
     }
     
+    /// [Rx] 편집할 이미지를 담는 비동기 구독입니다.
+    func editingImageRxSubscribe(targetImageView: UIImageView) {
+        self.imageViewModel.editingPhoto.subscribe { [weak self] image in
+            print("Rx: 서브뷰가 이미지를 받았습니다.")
+            guard let self = self else {return}
+            self.imageViewModel.updateImage(photo: image, imageView: self.editImageView) // 이미지 업데이트
+        } onError: { error in
+            print("SourceImage Error : \(error.localizedDescription)")
+        } onCompleted: {
+            print("SourceImage Completed")
+        } onDisposed: {
+            print("SourceImage Disposed")
+        }.disposed(by: disposeBag)
+    }
+    
+    
     func makeButtonWithTitle(button: UIButton, title: String, action: UIAction, target: UIViewController) {
+        view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)
         // button.layer.cornerRadius = 8
         button.addAction(action, for: .touchDown)
     }
     
-    /// 적용, 취소버튼을 넣을 스택뷰를 구성합니다.
-    func makeStackView(stackView: UIStackView, subView: [UIView]) {
-        view.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        
-        subView.forEach { views in
-            stackView.addArrangedSubview(views)
+    /// 적용, 취소와 같은 기능을 수행할 버튼을 초기화하고 액션을 설정합니다.
+    func setButtons() {
+        let action = UIAction { _ in
+            ImageEditModel.shared.makeImageRoundBlur(imageView: self.editImageView)
+            let blurImage = ViewModel.shared.takeViewCapture(targetView: self.editImageView)
+            self.imageViewModel.editingPhotoSubject.onNext(blurImage)
+            self.navigationController?.popViewController(animated: false)
         }
         
-        stackView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(60)
-            make.leading.trailing.equalToSuperview()
+        let cancelAction = UIAction { _ in
+            self.imageViewModel.editingPhotoSubject.onNext(self.senderVC?.archiveSourceImage)
+            self.navigationController?.popViewController(animated: false)
+        }
+        makeButtonWithTitle(button: applyButton, title: "가장자리 흐림 적용", action: action, target: self)
+        makeButtonWithTitle(button: cancelButton, title: "되돌리기", action: cancelAction, target: self)
+        
+        applyButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(44)
+            make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(100)
         }
+        
+        cancelButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(44)
+            make.leading.equalToSuperview().inset(30)
+            make.height.equalTo(100)
+        }
+        
     }
     
     
@@ -100,8 +115,4 @@ class EditImageViewController: UIViewController {
         }
         
     }
-    
-
-    
-    
 }

@@ -8,18 +8,12 @@
 import UIKit
 import SnapKit
 
-protocol TestEditImageViewControllerDelegate {
-    func editImageSet(image: UIImage)
-}
-
-
 class TestEditImageViewController: UIViewController {
     
     var editImageView = UIImageView()
     var imageSize: CGSize?
     let button = UIButton()
     
-    var delegate: EditImageViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +22,6 @@ class TestEditImageViewController: UIViewController {
         let action = UIAction { _ in
             ImageEditModel.shared.makeImageRoundBlur(imageView: self.editImageView)
             let blurImage = ViewModel.shared.takeViewCapture(targetView: self.editImageView)
-            self.delegate?.editImageSet(image: blurImage)
         }
         makeButtonWithTitle(button: button, title: "액션", action: action, target: self)
     }
@@ -77,7 +70,6 @@ class TestEditImageViewController: UIViewController {
     func setBlur() {
         ImageEditModel.shared.makeImageRoundBlur(imageView: self.editImageView)
         let blurImage = ViewModel.shared.takeViewCapture(targetView: self.editImageView)
-        self.delegate?.editImageSet(image: blurImage)
     }
     
     

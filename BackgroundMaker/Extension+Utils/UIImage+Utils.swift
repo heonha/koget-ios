@@ -38,49 +38,5 @@ extension UIImage {
         }
         return nil
     }
-    
-    // MARK: - Merge Image
-    
-    /// 이미지 병합 후보 1
-    func mergeImage(with secondImage: UIImage, point: CGPoint? = nil) -> UIImage {
 
-        let firstImage = self
-        let newImageWidth = max(firstImage.size.width, secondImage.size.width)
-        let newImageHeight = max(firstImage.size.height, secondImage.size.height)
-        let newImageSize = CGSize(width: newImageWidth, height: newImageHeight)
-        let deviceScale = UIScreen.main.scale
-        
-        UIGraphicsBeginImageContextWithOptions(newImageSize, true, deviceScale)
-
-        let firstImagePoint = CGPoint(x: round((newImageSize.width - firstImage.size.width) / 2),
-                                      y: round((newImageSize.height - firstImage.size.height) / 2))
-
-        let secondImagePoint = point ?? CGPoint(x: round((newImageSize.width - secondImage.size.width) / 2),
-                                                y: round((newImageSize.height - secondImage.size.height) / 2))
-
-        firstImage.draw(at: firstImagePoint)
-        secondImage.draw(at: secondImagePoint)
-
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-
-        UIGraphicsEndImageContext()
-
-        return image ?? self
-    }
-    
-    /// 이미지 병합 후보 2
-      func mergeWith(topImage: UIImage) -> UIImage {
-        let bottomImage = self
-
-        UIGraphicsBeginImageContext(size)
-
-        let areaSize = CGRect(x: 0, y: 0, width: bottomImage.size.width, height: bottomImage.size.height)
-        bottomImage.draw(in: areaSize)
-
-        topImage.draw(in: areaSize, blendMode: .normal, alpha: 1.0)
-
-        let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return mergedImage
-      }
 }
