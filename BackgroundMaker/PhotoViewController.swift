@@ -10,6 +10,7 @@ import SnapKit
 import PhotosUI
 import Mantis
 import RxSwift
+import Lottie
 
 
 class PhotoViewController: UIViewController {
@@ -22,7 +23,8 @@ class PhotoViewController: UIViewController {
     //MARK: End RxSwift Init -
     
     
-    
+    var loadingIndicatorView = AnimationView()
+
     /// 편집할 이미지가 들어갈 이미지 뷰
     var sourceImageView = UIImageView()
     let editImageView = UIImageView()
@@ -93,6 +95,8 @@ class PhotoViewController: UIViewController {
         /// RxSwift 구성
         editingImageRxSubscribe()
         
+        getPickedImage()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -100,9 +104,8 @@ class PhotoViewController: UIViewController {
         
         // 현재 이미지가 셋팅되어있는지에 따라 Place Holder 또는 버튼을 활성화 합니다.
         if self.sourceImageView.image == nil {
-            // makeImageLoadIndicator()// placeholder 셋업 (이미지가 없을때만 호출)
+            getLoadingIndicator()
         } else {
-            // self.hidePlaceHolder() // 이미지가 셋업되면 숨김
             self.makePinchGesture(selector: #selector(pinchZoomAction)) // 이미지 확대 축소 제스쳐 추가
             self.makeTrayView() // 트레이 뷰 띄우기
             self.addPanGesture(selector: #selector(makeDragImageGesture)) // 이미지 드래그 제스쳐 추가.
@@ -111,8 +114,19 @@ class PhotoViewController: UIViewController {
             self.addDoubleTapRecognizer(selector: #selector(doubleTapZoomAction)) // 더블탭 제스쳐 추가 (더블탭 시 배율 확대, 축소)
             self.enableBarButtons(buttons: [saveButton, cropButton, shareButton, refreshButton]) // 이미지 로드 전 비활성화 된 바 버튼을 활성화 합니다.
             self.barButtonReplace(buttons: [saveButton, cropButton, shareButton])
+            self.hideLoadingIndicator() // 이미지가 셋업되면 숨김
+
         }
         
+    }
+    
+    func getLoadingIndicator() {
+        self.loadingIndicatorView = imageViewModel.makeLottieAnimation(named: "LoadingIndicatorGray", targetView: self.view, targetVC: self, size: CGSize(width: 200, height: 200))
+        self.loadingIndicatorView.play()
+    }
+    
+    func hideLoadingIndicator() {
+        self.loadingIndicatorView.isHidden = true
     }
     
 
@@ -181,6 +195,7 @@ class PhotoViewController: UIViewController {
     
     @objc func takeRefreshImage() {
         self.imageViewModel.editingPhotoSubject.onNext(nil)
+        self.loadingIndicatorView.isHidden = false
         self.navigationController?.popViewController(animated: false)
     }
     
@@ -392,12 +407,12 @@ class PhotoViewController: UIViewController {
     }
 
     /// PHPickerViewController(사진선택기) 를 Present하는 메소드입니다. (setPHPicker 구성에 따릅니다.)
-    @objc func presentPHPickerVC(_ sender: UIButton) {
-                
-        getPickedImage()
-        
-        present(imagePickerModel.makePHPickerVC(), animated: true)
-    }
+    // @objc func presentPHPickerVC(_ sender: UIButton) {
+    //             
+    //     getPickedImage()
+    //     
+    //     present(imagePickerModel.makePHPickerVC(), animated: true)
+    // }
     
     /// 현재 뷰를 캡쳐하고 그 이미지를 앨범에 저장하는 메소드입니다.
     @objc func saveImage() {
@@ -492,6 +507,7 @@ class PhotoViewController: UIViewController {
     func getPickedImage() {
         
         imagePickerModel.selectedPhotoSubject
+            .element(at: 1)
             .take(1)
             .subscribe { image in
             
@@ -500,7 +516,6 @@ class PhotoViewController: UIViewController {
             let blurImage = self.imageModel.makeBlurImage(image: image)
             
             DispatchQueue.main.async {
-                
                 self.imageViewModel.editingPhotoSubject.onNext(image)
                 self.sourceImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 선택한 이미지의 크기를 초기화합니다.
                 self.archiveSourceImage = image
@@ -619,7 +634,6 @@ extension PhotoViewController {
         }.disposed(by: disposeBag)
 
     }
-    
     
 }
 
