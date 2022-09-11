@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class BottomMenuView: UIView {
     
@@ -19,6 +21,12 @@ class BottomMenuView: UIView {
     /// 기능 버튼이 들어갈 스택뷰입니다.
     let stackView = UIStackView()
     
+    var collectionView: UICollectionView = {
+        let layout = UICollectionViewLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectionView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -28,6 +36,7 @@ class BottomMenuView: UIView {
         setupViewAlphaValue(view: backgroundView, alpha: 0.4)
         setupContentView(view: contentView)
         setupStackView()
+        
 
     }
     
@@ -56,6 +65,7 @@ class BottomMenuView: UIView {
             make.edges.equalToSuperview()
         }
     }
+
     
     /// 컨텐츠를 표현할 뷰를 만듭니다.
     func setupContentView(view: UIView) {
@@ -67,6 +77,25 @@ class BottomMenuView: UIView {
             make.edges.equalToSuperview()
         }
     }
+    
+    /// 적용, 취소버튼을 넣을 스택뷰를 구성합니다.
+    func makeStackView(stackView: UIStackView, subView: [UIView]) {
+        addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        
+        subView.forEach { views in
+            stackView.addArrangedSubview(views)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
+        }
+    }
+    
     
     /// 뷰의 배경색이 투명하도록 설정합니다.
     func setupViewAlphaValue(view: UIView, alpha: CGFloat) {
@@ -89,15 +118,8 @@ class BottomMenuView: UIView {
         }
     }
     
-    func functionButtons() {
-        /// 현재화면을 캡쳐하고 저장하는 버튼입니다.
-        // let saveButton: UIBarButtonItem = makeBarButtonWithTitle(title: "저장", selector: #selector(saveImage), isEnable: false)
-    }
-    
-
-    
     /// 네비게이션 바에 구성하고 네비게이션 뷰에 추가합니다.
-    func makeBarButtonWithTitle(title: String, selector: Selector, isEnable: Bool = true) -> UIButton {
+    func makeButtonWithTitle(title: String, selector: Selector, isEnable: Bool = true) -> UIButton {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         

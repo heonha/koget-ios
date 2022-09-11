@@ -34,6 +34,15 @@ struct ViewModel {
         return image
     }
     
+    /// 네비게이션 바에 구성하고 네비게이션 뷰에 추가합니다.
+    func makeBarButtonWithSystemImage(systemName: String, selector: Selector, isHidden: Bool = true, target: UIViewController) -> UIBarButtonItem {
+        let buttonImage = UIImage(systemName: systemName)?.withRenderingMode(.automatic)
+        let button = UIBarButtonItem(image: buttonImage, style: .plain, target: target, action: selector)
+        button.isEnabled = isHidden
+        button.tintColor = .label
+        
+        return button
+    }
     
     
 }

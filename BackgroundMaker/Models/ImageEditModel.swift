@@ -68,9 +68,7 @@ class ImageEditModel {
     
     /// 사진을 가져와서 화면 크기에 맞게 자릅니다.
     func cropImageForScreenSize(_ image: UIImage) -> UIImage {
-        let model = ImageEditModel.shared
-        let croppedImage = model.cropImage(image: image)
-        
+        let croppedImage = cropImage(image: image)
         return croppedImage
     }
     
