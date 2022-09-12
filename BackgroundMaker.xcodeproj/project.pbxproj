@@ -15,6 +15,7 @@
 		3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */; };
 		3A5E82BC28C7393700C10AAC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = 3A5E82BB28C7393700C10AAC /* Mantis */; };
 		3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A82318E28C78F0700F958FE /* UIImage+Utils.swift */; };
+		3AA33F0228CE339C004127ED /* RoundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA33F0128CE339C004127ED /* RoundShadowView.swift */; };
 		3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */; };
 		3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */; };
 		3ABA6C1B28C6043F005AA8E4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1A28C6043F005AA8E4 /* PhotoViewController.swift */; };
@@ -29,6 +30,7 @@
 		3AD12D9428CD960E00CF431C /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9328CD960E00CF431C /* ImageViewModel.swift */; };
 		3AD12D9628CDA4C900CF431C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9528CDA4C900CF431C /* MainViewController.swift */; };
 		3AD12D9828CDA72300CF431C /* ImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */; };
+		3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,7 @@
 		3A26150328CB7E2B000D17A3 /* TestEditImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEditImageViewController.swift; sourceTree = "<group>"; };
 		3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModel.swift; sourceTree = "<group>"; };
 		3A82318E28C78F0700F958FE /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
+		3AA33F0128CE339C004127ED /* RoundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowView.swift; sourceTree = "<group>"; };
 		3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 		3AD12D9328CD960E00CF431C /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		3AD12D9528CDA4C900CF431C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerModel.swift; sourceTree = "<group>"; };
+		3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 			children = (
 				3A82318E28C78F0700F958FE /* UIImage+Utils.swift */,
 				3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */,
+				3AA33F0128CE339C004127ED /* RoundShadowView.swift */,
 			);
 			path = "Extension+Utils";
 			sourceTree = "<group>";
@@ -84,6 +89,7 @@
 			children = (
 				3A0F42A328C982D8002F1CAD /* BottomMenuView.swift */,
 				3A26150128CAF6FF000D17A3 /* EditImageViewController.swift */,
+				3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -97,6 +103,14 @@
 				3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3AB4A3EB28CF01390062EC18 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		3ABA6C0A28C6043F005AA8E4 = {
@@ -125,6 +139,7 @@
 				3A0F42A228C982D0002F1CAD /* SubViews */,
 				3A17665A28C9DC7B006DE579 /* Models */,
 				3A0F429E28C89742002F1CAD /* Extension+Utils */,
+				3AB4A3EB28CF01390062EC18 /* Animation */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
 			path = BackgroundMaker;
@@ -135,7 +150,6 @@
 			children = (
 				3A26150328CB7E2B000D17A3 /* TestEditImageViewController.swift */,
 				3ABA6C2228C60440005AA8E4 /* Assets.xcassets */,
-				3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */,
 				3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */,
 				3ABA6C2728C60440005AA8E4 /* Info.plist */,
 				3ABA6C1F28C6043F005AA8E4 /* BackgroundMaker.xcdatamodeld */,
@@ -237,11 +251,13 @@
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
 				3AD12D9428CD960E00CF431C /* ImageViewModel.swift in Sources */,
 				3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */,
+				3AA33F0228CE339C004127ED /* RoundShadowView.swift in Sources */,
 				3A0F42A428C982D8002F1CAD /* BottomMenuView.swift in Sources */,
 				3A26150228CAF6FF000D17A3 /* EditImageViewController.swift in Sources */,
 				3AD12D9828CDA72300CF431C /* ImagePickerModel.swift in Sources */,
 				3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
+				3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

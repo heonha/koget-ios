@@ -8,9 +8,15 @@
 import UIKit
 import SnapKit
 import RxSwift
-import RxCocoa
 
+/**
+ `BottomMenuView는 PhotoVC의 하단 편집 메뉴를 구성합니다.`
+ >  Properties
+ */
 class BottomMenuView: UIView {
+    
+    /// 이 뷰를 호출한 뷰컨트롤러입니다.
+    var parentVC: PhotoViewController?
     
     /// 뷰의 배경 레이어 입니다. 컨텐츠와 같이 투명해지지 않도록 배경을 분리합니다.
     let backgroundView = UIView()
@@ -19,25 +25,20 @@ class BottomMenuView: UIView {
     let contentView = UIView()
 
     /// 기능 버튼이 들어갈 스택뷰입니다.
-    let stackView = UIStackView()
+    let centerStackView = UIStackView()
+    let rightStackView = UIStackView()
     
-    var collectionView: UICollectionView = {
-        let layout = UICollectionViewLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        return collectionView
-    }()
-    
+    /// 현재 뷰를 초기화합니다.
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = .clear
-        
         setupBackgroundView(view: backgroundView)
-        setupViewAlphaValue(view: backgroundView, alpha: 0.4)
+        setupViewAlphaValue(view: backgroundView, alpha: 0.2)
+        backgroundView.backgroundColor = .systemBackground
         setupContentView(view: contentView)
-        setupStackView()
+        setupStackView(stackView: centerStackView)
+        setupStackView(stackView: rightStackView)
+        stackViewLayout()
         
-
     }
     
     required init?(coder: NSCoder) {
@@ -45,16 +46,21 @@ class BottomMenuView: UIView {
     }
     
     
+    /// 현재 뷰의 사이즈를 구성합니다.
     override var intrinsicContentSize: CGSize {
         let screenSize = UIScreen.main.bounds
-        return CGSize(width: screenSize.width, height: 100)
+        return CGSize(width: screenSize.width, height: 80)
     }
     
+    //MARK: - Layout Subview
     override func layoutSubviews() {
         super.layoutSubviews()
         
 
     }
+    
+    //MARK: END Layout Subview -
+
     /// 컨텐츠의 배경 뷰를 만듭니다.
     func setupBackgroundView(view: UIView) {
         self.addSubview(view)
@@ -66,7 +72,6 @@ class BottomMenuView: UIView {
         }
     }
 
-    
     /// 컨텐츠를 표현할 뷰를 만듭니다.
     func setupContentView(view: UIView) {
         self.addSubview(view)
@@ -78,54 +83,39 @@ class BottomMenuView: UIView {
         }
     }
     
-    /// 적용, 취소버튼을 넣을 스택뷰를 구성합니다.
-    func makeStackView(stackView: UIStackView, subView: [UIView]) {
-        addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        
-        subView.forEach { views in
-            stackView.addArrangedSubview(views)
-        }
-        
-        stackView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.top.leading.trailing.equalToSuperview()
-        }
-    }
-    
-    
     /// 뷰의 배경색이 투명하도록 설정합니다.
     func setupViewAlphaValue(view: UIView, alpha: CGFloat) {
         view.alpha = alpha
     }
-    
-    
+
     /// 기능버튼이 들어갈 스택뷰를 구성합니다.
-    func setupStackView() {
+    func setupStackView(stackView: UIStackView) {
         contentView.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.backgroundColor = .clear
         stackView.axis = .horizontal
-        stackView.distribution = .fill
+        stackView.distribution = .fillEqually
         stackView.alignment = .fill
-        
-        stackView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(contentView)
-            make.bottom.equalTo(contentView).inset(44)
-        }
+        stackView.spacing = 5
+        stackView.backgroundColor = .clear
     }
     
-    /// 네비게이션 바에 구성하고 네비게이션 뷰에 추가합니다.
-    func makeButtonWithTitle(title: String, selector: Selector, isEnable: Bool = true) -> UIButton {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+    func stackViewLayout() {
+        centerStackView.snp.makeConstraints { make in
+            make.bottom.equalTo(contentView).inset(15)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(100 + 5)
+            make.height.equalTo(50)
+        }
+        rightStackView.snp.makeConstraints { make in
+            make.bottom.equalTo(contentView).inset(15)
+            make.trailing.equalToSuperview().inset(10)
+            make.width.height.equalTo(50)
+        }
         
-        button.isEnabled = isEnable
-        
-        return button
     }
+    
 
+    
+  
 }
