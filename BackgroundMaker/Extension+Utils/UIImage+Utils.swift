@@ -39,4 +39,26 @@ extension UIImage {
         return nil
     }
 
+    /// 이미지에 그림자를 추가합니다.
+    func addShadow(blurSize: CGFloat = 7.0, color: UIColor) -> UIImage {
+                    
+        let shadowColor = color.cgColor
+        
+        let context = CGContext(data: nil,
+                                width: Int(self.size.width + blurSize),
+                                height: Int(self.size.height + blurSize),
+                                bitsPerComponent: self.cgImage!.bitsPerComponent,
+                                bytesPerRow: 0,
+                                space: CGColorSpaceCreateDeviceRGB(),
+                                bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+        
+        context.setShadow(offset: CGSize(width: blurSize/2,height: -blurSize/2),
+                          blur: blurSize,
+                          color: shadowColor)
+        context.draw(self.cgImage!,
+                     in: CGRect(x: 0, y: blurSize, width: self.size.width, height: self.size.height),
+                     byTiling:false)
+        
+        return UIImage(cgImage: context.makeImage()!)
+    }
 }

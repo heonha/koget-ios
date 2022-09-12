@@ -11,10 +11,13 @@ import RxSwift
 import PhotosUI
 import Lottie
 
-
+/**
+ `MainViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
+ >
+ */
 class MainViewController: UIViewController {
     
-    let disposeBag = DisposeBag()
+    
     // MARK: PlaceHolder 초기화
     // "여기를 눌러 사진을 추가하세요" 문구 및 투명 버튼을 통해 Photo Library 띄우는 역할
     /// 라벨과 이미지뷰를 추가할 스택뷰
@@ -24,31 +27,30 @@ class MainViewController: UIViewController {
     let placeHolderImageView = UIImageView() // 사진 추가하기를 의미하는 이미지
     let placeHolderButton = UIButton() // 사진 라이브러리를 띄울 투명버튼
     
+    /// 모델을 불러옵니다.
     let viewModel = ViewModel.shared
     let imagePickerModel = ImagePickerModel.shared
     let imageViewModel = ImageViewModel.shared
     
+    let disposeBag = DisposeBag()
 
     ///사진을 추가하는 기능을 하는 버튼입니다.
-    lazy var addButton: UIBarButtonItem = viewModel.makeBarButtonWithSystemImage(systemName: "plus.square.fill.on.square.fill", selector: #selector(presentPHPickerVC), isHidden: true, target: self)
+    lazy var addButton: UIBarButtonItem = viewModel.makeBarButtonWithTitle(title: "추가", selector: #selector(presentPHPickerVC), target: self)
+
     
-    
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItems = [addButton] // 사진추가, 저장, 자르기 버튼
         setPlaceHolder()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-
-    }
+    //MARK:  ViewDidLoad -
     
-    
-    @objc func presentPHPickerVC(_ sender: UIButton) {
+    /// 이미지 선택기를 띄웁니다.
+    @objc func presentPHPickerVC() {
         
-        imagePickerModel.isSuccess
+        imagePickerModel.isSelected
             .element(at: 1)
             .take(1)
             .subscribe { bool in
@@ -73,15 +75,13 @@ class MainViewController: UIViewController {
         self.present(picker, animated: true)
     }
   
-    
+    /// 선택한 사진을 가져오고 ViewController를 Push합니다.
     func pushPhotoVC() {
-        print("호출됨")
         DispatchQueue.main.async {
             let photoVC = PhotoViewController()
             self.navigationController?.pushViewController(photoVC, animated: false)
         }
     }
-    
     
     /**
      사진을 선택하기 전에 표시할 Placeholder Set을 구성하는 메소드입니다.
