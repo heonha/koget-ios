@@ -453,27 +453,58 @@ class PhotoViewController: UIViewController {
     }
     
     /// 이미지 가장자리에 블러효과를 주는 VC를 띄웁니다.
+    // @objc func imageBlurAction() {
+    //     imageViewModel.editingPhotoSubject
+    //         .take(1)
+    //         .subscribe(onNext: { image in
+    //             let vc = EditImageViewController()
+    //             vc.senderVC = self
+    //
+    //             let imageSize = image?.size
+    //             vc.imageSize = imageSize
+    //             // vc.editImageView.image = image
+    //             vc.archiveSource = self.archiveSourceImage
+    //             self.navigationController?.pushViewController(vc, animated: false)
+    //
+    //         }, onError: { error in
+    //             print(error)
+    //         }, onCompleted: {
+    //             print("onCompleted")
+    //
+    //         }, onDisposed: {
+    //             print("Disposed")
+    //         }).disposed(by: disposeBag)
+    //
+    // }
+    
+    /// 이미지 가장자리에 블러효과를 주는 VC를 띄웁니다.
     @objc func imageBlurAction() {
-        imageViewModel.editingPhotoSubject
-            .take(1)
-            .subscribe(onNext: { image in
-                let vc = EditImageViewController()
-                vc.senderVC = self
-                
-                let imageSize = image?.size
-                vc.imageSize = imageSize
-                // vc.editImageView.image = image
-                vc.archiveSource = self.archiveSourceImage
-                self.navigationController?.pushViewController(vc, animated: false)
-                
-            }, onError: { error in
-                print(error)
-            }, onCompleted: {
-                print("onCompleted")
-                
-            }, onDisposed: {
-                print("Disposed")
-            }).disposed(by: disposeBag)
+        // ImageViewModel.shared.setImageViews(imageView: sourceImageView)
+            imageViewModel.editingPhotoSubject
+                .take(1)
+                .subscribe(onNext: { image in
+
+                    guard let image = image else {return}
+                    
+                    let ciImg = image.ciImage
+                    
+                    
+                    let bluredImage = ImageEditModel.shared.makeImageEdgeBlurFilter(image: ciImg)
+                    print("이미지 가장자리 변경됨")
+                    
+                    let uiImg = UIImage(ciImage: bluredImage!, scale: image.scale, orientation: image.imageOrientation)
+                    
+                    ImageViewModel.shared.editingPhotoSubject.onNext(uiImg)
+                    
+                }, onError: { error in
+                    print(error)
+                }, onCompleted: {
+                    print("onCompleted")
+        
+                }, onDisposed: {
+                    print("Disposed")
+                }).disposed(by: disposeBag)
+        
         
     }
     
@@ -555,14 +586,14 @@ extension PhotoViewController {
     /// 편집할 소스 이미지를 담는 비동기 구독입니다.
     func editingImageRxSubscribe() {
         self.imageViewModel.editingPhoto.subscribe { image in
-            print("Rx: 이미지가 변경되었습니다.")
+            print("Rx EditingImage : 이미지가 변경되었습니다.")
             self.sourceImageView.image = image
         } onError: { error in
-            print("SourceImage Error : \(error.localizedDescription)")
+            print("EditingImage Error : \(error.localizedDescription)")
         } onCompleted: {
-            print("SourceImage Completed")
+            print("EditingImage Completed")
         } onDisposed: {
-            print("SourceImage Disposed")
+            print("EditingImage Disposed")
         }.disposed(by: disposeBag)
         
     }

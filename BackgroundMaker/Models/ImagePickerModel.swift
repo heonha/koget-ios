@@ -11,8 +11,13 @@ import RxSwift
 
 class ImagePickerModel {
     
+    //MARK: - Singleton
     static let shared = ImagePickerModel()
-    
+
+    //MARK: - Init
+    private init() {
+        
+    }
     /// PickerViewController를 구성하고 반환하는 메소드입니다. PHPicker 사진 선택기에 대한 Config, Delegate 를 정의합니다.
     func makePHPickerVC() -> PHPickerViewController {
         var config = PHPickerConfiguration()
