@@ -9,7 +9,14 @@ import UIKit
 import SnapKit
 
 struct ViewModel {
+    
+    //MARK: - Singleton
     static let shared = ViewModel()
+
+    //MARK: - Init
+    private init() {
+        
+    }
     
     /// 현재 ViewController를 캡쳐하고 Image를 반환합니다. (withoutView: 스크린 찍을 동안 숨길 뷰)
     func takeScreenViewCapture(withoutView: [UIView]?, target: UIViewController) -> UIImage? {
@@ -79,6 +86,7 @@ struct ViewModel {
         return button
     }
     
+    // 버튼의 그림자를 만듭니다.
     func makeButtonShadow(to button: UIButton) {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -86,8 +94,8 @@ struct ViewModel {
         button.layer.shadowOpacity = 4
     }
     
+    // 바버튼의 그림자를 만듭니다.
     func makeBarButtonShadow(barButton: UIBarButtonItem, imageView: UIImageView){
-        
         barButton.customView = imageView
         barButton.customView?.layer.shadowColor = UIColor.black.cgColor
         barButton.customView?.layer.shadowOffset = CGSize(width: 1, height: 1)

@@ -9,7 +9,14 @@ import UIKit
 
 class ImageEditModel {
     
+    //MARK: - Singleton
     static let shared = ImageEditModel()
+    
+    //MARK: - Init
+    private init() {
+        
+    }
+    
     
     /// [개발중] 이미지 자르기
     func cropImage(image: UIImage) -> UIImage {
@@ -89,6 +96,8 @@ class ImageEditModel {
     
     /// 이미지 끝부분을 블러처리합니다.
     func makeImageRoundBlur(imageView: UIImageView) {
+        
+        // 그래디언트 레이어 초기화
         let maskLayer = CAGradientLayer()
 
         maskLayer.frame = imageView.bounds
@@ -99,6 +108,76 @@ class ImageEditModel {
         maskLayer.shadowColor = UIColor.white.cgColor
         imageView.layer.mask = maskLayer;
         
+    }
+    
+    
+    //MARK: - [Todo] Image 가장자리 블러 필터 만들기
+    func makeImageEdgeBlurFilter(image: CIImage?) -> CIImage? {
+        
+            // 이미지의 높이
+        guard let image = image else {return nil}
+        
+            let imageHeight = image.extent.size.height
+            
+            // 필터 만들기
+            let topGradientFilter = makeTopBlurFilter(height: imageHeight, startY: 0.8, endY: 0.6)
+            let bottomGradientFilter = makeTopBlurFilter(height: imageHeight, startY: 0.3, endY: 0.6)
+            
+            let mergedFilter = mergeFilters(topFilter: topGradientFilter, bottomFilter: bottomGradientFilter)
+            
+            let filteredImage = applyImageEdgeBlurFilter(blurFilter: mergedFilter, image: image)
+            
+            return filteredImage
+
+    }
+
+    /// startY, endY는 그라데이션이 시작하는 지점과 끝나는 지점입니다. 초기값은 녹색 이미지입니다.
+    /// 녹색이미지에 그라디언트를 생성하여 녹색 - 하얀색으로 그라디언트 되는 이미지를 만듭니다.
+    /// 녹색 부분에는 이미지가 흐림 처리됩니다.
+    /// 흰색부분에는 처리가 적용 되지 않습니다.
+    ///  start : 0.85, end : 0.6 이라면
+    /// 상단 그라디언트를 만들때는 시작점이 크고 끝점이 작게 만드세요.
+    /// 하단 그라디언트의 경우에는 시작점이 작고 끝점이 크게 만드세요.
+    private func makeTopBlurFilter(height h: CGFloat,
+                                   startY: CGFloat, endY: CGFloat) -> CIFilter? {
+        guard let filter = CIFilter(name:"CILinearGradient") else {
+            fatalError("필터 생성 오류")
+        }
+        
+        filter.setValue(CIVector(x:0, y: startY * h), forKey:"inputPoint0")
+        filter.setValue(CIColor.green, forKey:"inputColor0")
+        filter.setValue(CIVector(x:0, y: endY * h), forKey:"inputPoint1")
+        filter.setValue(CIColor(red:0, green:1, blue:0, alpha:0), forKey:"inputColor1")
+        
+        return filter
+    }
+    
+    private func mergeFilters(topFilter: CIFilter?, bottomFilter: CIFilter?) -> CIFilter? {
+        
+        guard let mergedFilter = CIFilter(name:"CIAdditionCompositing") else {
+            fatalError("필터 병합 오류")
+        }
+        
+        mergedFilter.setValue(topFilter?.outputImage,
+                              forKey: kCIInputImageKey)
+        mergedFilter.setValue(bottomFilter?.outputImage,
+                              forKey: kCIInputBackgroundImageKey)
+        
+        return mergedFilter
+        
+    }
+    
+    func applyImageEdgeBlurFilter(blurFilter: CIFilter?, image: CIImage?) -> CIImage? {
+        
+        guard let maskedVariableBlur = CIFilter(name:"CIMaskedVariableBlur") else {
+            fatalError("필터 적용 오류")
+        }
+        maskedVariableBlur.setValue(image, forKey: kCIInputImageKey)
+        maskedVariableBlur.setValue(10, forKey: kCIInputRadiusKey)
+        maskedVariableBlur.setValue(blurFilter?.outputImage, forKey: "inputMask")
+        let selectivelyFocusedCIImage = maskedVariableBlur.outputImage
+        
+        return selectivelyFocusedCIImage
     }
     
 }
