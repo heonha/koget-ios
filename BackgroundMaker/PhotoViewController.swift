@@ -483,18 +483,24 @@ class PhotoViewController: UIViewController {
             imageViewModel.editingPhotoSubject
                 .take(1)
                 .subscribe(onNext: { image in
-
-                    guard let image = image else {return}
                     
-                    let ciImg = image.ciImage
+                    
+                    print("이미지를 확인합니다.")
+                    guard let unwrappedImage = image else {return}
+                    
+                    print("CI이미지를 변경합니다.")
+                    let ciImg = CIImage(image: unwrappedImage)!
                     
                     
                     let bluredImage = ImageEditModel.shared.makeImageEdgeBlurFilter(image: ciImg)
                     print("이미지 가장자리 변경됨")
                     
-                    let uiImg = UIImage(ciImage: bluredImage!, scale: image.scale, orientation: image.imageOrientation)
+                    self.sourceImageView.image = UIImage(ciImage: bluredImage)
                     
-                    ImageViewModel.shared.editingPhotoSubject.onNext(uiImg)
+                    
+                    // let uiImg = UIImage(ciImage: bluredImage, scale: unwrappedImage.scale, orientation: unwrappedImage.imageOrientation)
+                    //
+                    // ImageViewModel.shared.editingPhotoSubject.onNext(uiImg)
                     
                 }, onError: { error in
                     print(error)

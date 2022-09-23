@@ -112,22 +112,29 @@ class ImageEditModel {
     
     
     //MARK: - [Todo] Image 가장자리 블러 필터 만들기
-    func makeImageEdgeBlurFilter(image: CIImage?) -> CIImage? {
+    func makeImageEdgeBlurFilter(image: CIImage) -> CIImage {
         
+        print("이미지를 받아옵니다.")
+
             // 이미지의 높이
-        guard let image = image else {return nil}
-        
             let imageHeight = image.extent.size.height
             
             // 필터 만들기
+        print("필터를 만들고 있습니다.")
             let topGradientFilter = makeTopBlurFilter(height: imageHeight, startY: 0.8, endY: 0.6)
             let bottomGradientFilter = makeTopBlurFilter(height: imageHeight, startY: 0.3, endY: 0.6)
             
             let mergedFilter = mergeFilters(topFilter: topGradientFilter, bottomFilter: bottomGradientFilter)
             
-            let filteredImage = applyImageEdgeBlurFilter(blurFilter: mergedFilter, image: image)
+        print("필터를 만들었습니다.")
+
+            let filteredImage = applyImageEdgeBlurFilter(blurFilter: topGradientFilter, sourceImage: image)
             
-            return filteredImage
+        print("필터를 적용했습니다.")
+        
+        print("이미지를 반환합니다.")
+
+            return filteredImage!
 
     }
 
@@ -139,8 +146,8 @@ class ImageEditModel {
     /// 상단 그라디언트를 만들때는 시작점이 크고 끝점이 작게 만드세요.
     /// 하단 그라디언트의 경우에는 시작점이 작고 끝점이 크게 만드세요.
     private func makeTopBlurFilter(height h: CGFloat,
-                                   startY: CGFloat, endY: CGFloat) -> CIFilter? {
-        guard let filter = CIFilter(name:"CILinearGradient") else {
+                                   startY: CGFloat, endY: CGFloat) -> CIFilter {
+        guard let filter = CIFilter(name: FilterName.linearGradient.rawValue ) else {
             fatalError("필터 생성 오류")
         }
         
@@ -152,27 +159,42 @@ class ImageEditModel {
         return filter
     }
     
-    private func mergeFilters(topFilter: CIFilter?, bottomFilter: CIFilter?) -> CIFilter? {
+    /// 두개 이상의 필터를 병합합니다.
+    private func mergeFilters(topFilter: CIFilter, bottomFilter: CIFilter) -> CIFilter {
         
-        guard let mergedFilter = CIFilter(name:"CIAdditionCompositing") else {
+        guard let mergedFilter = CIFilter(name: FilterName.additionCompositing.rawValue) else {
             fatalError("필터 병합 오류")
         }
         
-        mergedFilter.setValue(topFilter?.outputImage,
+        mergedFilter.setValue(topFilter.outputImage,
                               forKey: kCIInputImageKey)
-        mergedFilter.setValue(bottomFilter?.outputImage,
+        mergedFilter.setValue(bottomFilter.outputImage,
                               forKey: kCIInputBackgroundImageKey)
         
         return mergedFilter
         
     }
     
-    func applyImageEdgeBlurFilter(blurFilter: CIFilter?, image: CIImage?) -> CIImage? {
+    enum FilterName: String {
         
-        guard let maskedVariableBlur = CIFilter(name:"CIMaskedVariableBlur") else {
+        /// 이미지에 마스크를 입힙니다.
+        case maskedVariableBlur = "CIMaskedVariableBlur"
+        
+        /// CILinearGradient 가로 라인의 그라디언트를 만듭니다.
+        case linearGradient = "CILinearGradient"
+        
+        /// 다수의 필터를 병합하는 필터입니다.
+        case additionCompositing = "CIAdditionCompositing"
+        
+    }
+    
+    /// 이미지에 필터 적용하기
+    func applyImageEdgeBlurFilter(blurFilter: CIFilter?, sourceImage: CIImage?) -> CIImage? {
+        
+        guard let maskedVariableBlur = CIFilter(name: FilterName.maskedVariableBlur.rawValue ) else {
             fatalError("필터 적용 오류")
         }
-        maskedVariableBlur.setValue(image, forKey: kCIInputImageKey)
+        maskedVariableBlur.setValue(sourceImage, forKey: kCIInputImageKey)
         maskedVariableBlur.setValue(10, forKey: kCIInputRadiusKey)
         maskedVariableBlur.setValue(blurFilter?.outputImage, forKey: "inputMask")
         let selectivelyFocusedCIImage = maskedVariableBlur.outputImage
