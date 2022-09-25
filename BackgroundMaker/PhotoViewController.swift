@@ -453,67 +453,67 @@ class PhotoViewController: UIViewController {
     }
     
     /// 이미지 가장자리에 블러효과를 주는 VC를 띄웁니다.
-    // @objc func imageBlurAction() {
-    //     imageViewModel.editingPhotoSubject
-    //         .take(1)
-    //         .subscribe(onNext: { image in
-    //             let vc = EditImageViewController()
-    //             vc.senderVC = self
-    //
-    //             let imageSize = image?.size
-    //             vc.imageSize = imageSize
-    //             // vc.editImageView.image = image
-    //             vc.archiveSource = self.archiveSourceImage
-    //             self.navigationController?.pushViewController(vc, animated: false)
-    //
-    //         }, onError: { error in
-    //             print(error)
-    //         }, onCompleted: {
-    //             print("onCompleted")
-    //
-    //         }, onDisposed: {
-    //             print("Disposed")
-    //         }).disposed(by: disposeBag)
-    //
-    // }
-    
-    /// 이미지 가장자리에 블러효과를 주는 VC를 띄웁니다.
     @objc func imageBlurAction() {
-        // ImageViewModel.shared.setImageViews(imageView: sourceImageView)
-            imageViewModel.editingPhotoSubject
-                .take(1)
-                .subscribe(onNext: { image in
-                    
-                    
-                    print("이미지를 확인합니다.")
-                    guard let unwrappedImage = image else {return}
-                    
-                    print("CI이미지를 변경합니다.")
-                    let ciImg = CIImage(image: unwrappedImage)!
-                    
-                    
-                    let bluredImage = ImageEditModel.shared.makeImageEdgeBlurFilter(image: ciImg)
-                    print("이미지 가장자리 변경됨")
-                    
-                    self.sourceImageView.image = UIImage(ciImage: bluredImage)
-                    
-                    
-                    // let uiImg = UIImage(ciImage: bluredImage, scale: unwrappedImage.scale, orientation: unwrappedImage.imageOrientation)
-                    //
-                    // ImageViewModel.shared.editingPhotoSubject.onNext(uiImg)
-                    
-                }, onError: { error in
-                    print(error)
-                }, onCompleted: {
-                    print("onCompleted")
-        
-                }, onDisposed: {
-                    print("Disposed")
-                }).disposed(by: disposeBag)
-        
-        
+        imageViewModel.editingPhotoSubject
+            .take(1)
+            .subscribe(onNext: { image in
+                let vc = EditImageViewController()
+                vc.senderVC = self
+    
+                let imageSize = image?.size
+                vc.imageSize = imageSize
+                // vc.editImageView.image = image
+                vc.archiveSource = self.archiveSourceImage
+                self.navigationController?.pushViewController(vc, animated: false)
+    
+            }, onError: { error in
+                print(error)
+            }, onCompleted: {
+                print("onCompleted")
+    
+            }, onDisposed: {
+                print("Disposed")
+            }).disposed(by: disposeBag)
+    
     }
     
+    /// 이미지 가장자리에 블러효과를 주는 VC를 띄웁니다.
+    // @objc func imageBlurAction() {
+    //     // ImageViewModel.shared.setImageViews(imageView: sourceImageView)
+    //         imageViewModel.editingPhotoSubject
+    //             .take(1)
+    //             .subscribe(onNext: { image in
+    //
+    //
+    //                 print("이미지를 확인합니다.")
+    //                 guard let unwrappedImage = image else {return}
+    //
+    //                 print("CI이미지를 변경합니다.")
+    //                 let ciImg = CIImage(image: unwrappedImage)!
+    //
+    //
+    //                 let bluredImage = ImageEditModel.shared.makeImageEdgeBlurFilter(image: ciImg)
+    //                 print("이미지 가장자리 변경됨")
+    //
+    //                 self.sourceImageView.image = UIImage(ciImage: bluredImage)
+    //
+    //
+    //                 // let uiImg = UIImage(ciImage: bluredImage, scale: unwrappedImage.scale, orientation: unwrappedImage.imageOrientation)
+    //                 //
+    //                 // ImageViewModel.shared.editingPhotoSubject.onNext(uiImg)
+    //
+    //             }, onError: { error in
+    //                 print(error)
+    //             }, onCompleted: {
+    //                 print("onCompleted")
+    //
+    //             }, onDisposed: {
+    //                 print("Disposed")
+    //             }).disposed(by: disposeBag)
+    //
+    //
+    // }
+    //
     
     
     //MARK: END -
