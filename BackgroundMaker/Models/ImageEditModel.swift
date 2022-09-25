@@ -112,29 +112,78 @@ class ImageEditModel {
     
     
     //MARK: - [Todo] Image 가장자리 블러 필터 만들기
+    // func makeImageEdgeBlurFilter(image: CIImage) -> CIImage {
+    //
+    //     print("이미지를 받아옵니다.")
+    //
+    //         // 이미지의 높이
+    //         let imageHeight = image.extent.size.height
+    //
+    //         // 필터 만들기
+    //     print("필터를 만들고 있습니다.")
+    //         let topGradientFilter = makeTopBlurFilter(height: imageHeight, startY: 0.8, endY: 0.6)
+    //         let bottomGradientFilter = makeTopBlurFilter(height: imageHeight, startY: 0.3, endY: 0.6)
+    //
+    //         let mergedFilter = mergeFilters(topFilter: topGradientFilter, bottomFilter: bottomGradientFilter)
+    //
+    //     print("필터를 만들었습니다.")
+    //
+    //         let filteredImage = applyImageEdgeBlurFilter(blurFilter: topGradientFilter, sourceImage: image)
+    //
+    //     print("필터를 적용했습니다.")
+    //
+    //     print("이미지를 반환합니다.")
+    //
+    //         return filteredImage!
+    //
+    // }
+    
     func makeImageEdgeBlurFilter(image: CIImage) -> CIImage {
         
         print("이미지를 받아옵니다.")
 
             // 이미지의 높이
-            let imageHeight = image.extent.size.height
+            let h = image.extent.size.height
             
             // 필터 만들기
         print("필터를 만들고 있습니다.")
-            let topGradientFilter = makeTopBlurFilter(height: imageHeight, startY: 0.8, endY: 0.6)
-            let bottomGradientFilter = makeTopBlurFilter(height: imageHeight, startY: 0.3, endY: 0.6)
+        guard let topGradientFilter = CIFilter(name: FilterName.linearGradient.rawValue ) else {
+            fatalError("필터 생성 오류")
+        }
+        
+        topGradientFilter.setValue(CIVector(x:0, y: 0.85 * h), forKey:"inputPoint0")
+        topGradientFilter.setValue(CIColor.green, forKey:"inputColor0")
+        topGradientFilter.setValue(CIVector(x:0, y: 0.6 * h), forKey:"inputPoint1")
+        topGradientFilter.setValue(CIColor(red:0, green:1, blue:0, alpha:0), forKey:"inputColor1")
+        
+        guard let bottomGradientFilter = CIFilter(name: FilterName.linearGradient.rawValue ) else {
+            fatalError("필터 생성 오류")
+        }
+        
+        bottomGradientFilter.setValue(CIVector(x:0, y: 0.3 * h), forKey:"inputPoint0")
+        bottomGradientFilter.setValue(CIColor.green, forKey:"inputColor0")
+        bottomGradientFilter.setValue(CIVector(x:0, y: 0.6 * h), forKey:"inputPoint1")
+        bottomGradientFilter.setValue(CIColor(red:0, green:1, blue:0, alpha:0), forKey:"inputColor1")
+        
             
-            let mergedFilter = mergeFilters(topFilter: topGradientFilter, bottomFilter: bottomGradientFilter)
-            
+        guard let mergedFilter = CIFilter(name: FilterName.additionCompositing.rawValue) else {
+            fatalError("필터 병합 오류")
+        }
+        
+        mergedFilter.setValue(topGradientFilter.outputImage,
+                              forKey: kCIInputImageKey)
+        mergedFilter.setValue(bottomGradientFilter.outputImage,
+                              forKey: kCIInputBackgroundImageKey)
+        
         print("필터를 만들었습니다.")
 
-            let filteredImage = applyImageEdgeBlurFilter(blurFilter: topGradientFilter, sourceImage: image)
+        let filteredImage = applyImageEdgeBlurFilter(blurFilter: topGradientFilter, sourceImage: image)
             
         print("필터를 적용했습니다.")
         
         print("이미지를 반환합니다.")
 
-            return filteredImage!
+        return filteredImage!
 
     }
 
