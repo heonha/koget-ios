@@ -16,7 +16,7 @@ class ImageViewModel {
 
     //MARK: - Init
     private init() {
-        
+
     }
     
     

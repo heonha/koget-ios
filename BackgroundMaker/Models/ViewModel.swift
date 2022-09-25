@@ -32,14 +32,7 @@ struct ViewModel {
         return captureImage
     }
     
-    /// 해당 하는 뷰만 캡쳐합니다.
-    func takeViewCapture(targetView: UIView) -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: targetView.bounds.size)
-        let image = renderer.image { ctx in
-            targetView.drawHierarchy(in: targetView.bounds, afterScreenUpdates: true)
-        }
-        return image
-    }
+
     
     /// 네비게이션 바에 구성하고 네비게이션 뷰에 추가합니다.
     func makeBarButtonWithSystemImage(systemName: String, selector: Selector, isHidden: Bool = true, target: UIViewController) -> UIBarButtonItem {
