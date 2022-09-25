@@ -17,23 +17,7 @@ struct ViewModel {
     private init() {
         
     }
-    
-    /// 현재 ViewController를 캡쳐하고 Image를 반환합니다. (withoutView: 스크린 찍을 동안 숨길 뷰)
-    func takeScreenViewCapture(withoutView: [UIView]?, target: UIViewController) -> UIImage? {
-        withoutView?.forEach({ views in
-            views.isHidden = true
-        })
-        
-        let captureImage = target.view.renderToImage(afterScreenUpdates: true)
-        
-        withoutView?.forEach({ views in
-            views.isHidden = false
-        })
-        return captureImage
-    }
-    
 
-    
     /// 네비게이션 바에 구성하고 네비게이션 뷰에 추가합니다.
     func makeBarButtonWithSystemImage(systemName: String, selector: Selector, isHidden: Bool = true, target: UIViewController) -> UIBarButtonItem {
         let renderedImage = UIImage(systemName: systemName)!.withTintColor(.label, renderingMode: .alwaysOriginal).applyingSymbolConfiguration(UIImage.SymbolConfiguration(font: .systemFont(ofSize: 23), scale: .default))
@@ -43,7 +27,7 @@ struct ViewModel {
         return button
     }
     
-    
+    /// 타이틀이 있는 UIBarButton 을 만듭니다.
     func makeBarButtonWithTitle(title: String, selector: Selector, isEnabled: Bool = true, target: UIViewController) -> UIBarButtonItem {
         let button = UIBarButtonItem(title: title, style: .plain, target: target, action: selector)
         button.isEnabled = isEnabled
@@ -52,39 +36,41 @@ struct ViewModel {
         return button
     }
     
-    
-    func makeButtonWithTitle(title: String, action: UIAction, target: UIViewController) -> UIButton {
+    /// 타이틀이 있는 UIButton을 만듭니다.
+    func makeButtonWithTitle(title: String, action: UIAction, target: UIViewController,
+                             backgroundColor: UIColor = .clear, isEnabled: Bool = true) -> UIButton {
         let button = UIButton()
         target.view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)
-        // button.layer.cornerRadius = 8
         button.addAction(action, for: .touchDown)
         button.setTitleColor(.label, for: .normal)
-        makeButtonShadow(to: button)
+        button.backgroundColor = backgroundColor
+        button.isEnabled = isEnabled
+        makeLayerShadow(to: button.layer)
 
         return button
     }
     
+    /// 이미지가 있는 UIButton을 만듭니다.
     func makeButtonWithImage(image: UIImage, action: UIAction, target: UIViewController) -> UIButton {
         let button = UIButton()
         target.view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image, for: .normal)
-        // button.layer.cornerRadius = 8
         button.addAction(action, for: .touchDown)
 
-        makeButtonShadow(to: button)
+        makeLayerShadow(to: button.layer)
         
         return button
     }
     
     // 버튼의 그림자를 만듭니다.
-    func makeButtonShadow(to button: UIButton) {
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 1, height: 1)
-        button.layer.shadowRadius = 3
-        button.layer.shadowOpacity = 4
+    func makeLayerShadow(to layer: CALayer) {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 1, height: 1)
+        layer.shadowRadius = 3
+        layer.shadowOpacity = 4
     }
     
     // 바버튼의 그림자를 만듭니다.
