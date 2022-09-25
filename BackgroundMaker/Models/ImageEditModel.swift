@@ -18,9 +18,9 @@ class ImageEditModel {
     }
     
     /// 이미지 가장자리에 블러효과를 주는 VC를 띄웁니다.
-    func imageEdgeBlur(imageView: UIImageView) -> UIImage {
+    func imageEdgeBlur(imageView: UIImageView, inset: CGFloat) -> UIImage {
         /// 블러를 수행할 액션
-        makeImageRoundBlur(imageView: imageView)
+        makeImageRoundBlur(imageView: imageView, inset: inset)
         let blurImage = takeViewCapture(targetView: imageView)
         return blurImage
     }
@@ -117,6 +117,22 @@ class ImageEditModel {
         
     }
     
+    /// 현재 ViewController를 캡쳐하고 Image를 반환합니다. (withoutView: 스크린 찍을 동안 숨길 뷰)
+    func takeScreenViewCapture(withoutView: [UIView]?, target: UIViewController) -> UIImage? {
+        withoutView?.forEach({ views in
+            views.isHidden = true
+        })
+        
+        let captureImage = target.view.renderToImage(afterScreenUpdates: true)
+        
+        withoutView?.forEach({ views in
+            views.isHidden = false
+        })
+        return captureImage
+    }
+    
+    
+    
     /// 이미지 끝부분을 블러처리합니다.
     func makeImageRoundBlur(imageView: UIImageView) {
         
@@ -129,7 +145,22 @@ class ImageEditModel {
         maskLayer.shadowOpacity = 1;
         maskLayer.shadowOffset = CGSize.zero;
         maskLayer.shadowColor = UIColor.white.cgColor
-        imageView.layer.mask = maskLayer;
+        imageView.layer.mask = maskLayer
+        
+    }
+    
+    func makeImageRoundBlur(imageView: UIImageView, inset: CGFloat) {
+        
+        // 그래디언트 레이어 초기화
+        let maskLayer = CAGradientLayer()
+
+        maskLayer.frame = imageView.bounds
+        maskLayer.shadowRadius = 10
+        maskLayer.shadowPath = CGPath(roundedRect: imageView.bounds.insetBy(dx: 0, dy: inset), cornerWidth: 0, cornerHeight: 0, transform: nil)
+        maskLayer.shadowOpacity = 1;
+        maskLayer.shadowOffset = CGSize.zero;
+        maskLayer.shadowColor = UIColor.white.cgColor
+        imageView.layer.mask = maskLayer
         
     }
     
