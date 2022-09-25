@@ -27,9 +27,8 @@ class PhotoViewController: UIViewController {
     var loadingIndicatorView = AnimationView()
     
     /// 편집할 이미지가 들어갈 이미지 뷰
-    var sourceImageView = UIImageView()
-    let editImageView = UIImageView()
-    var sourceImageSize: CGRect?
+    var mainImageView = UIImageView()
+    // let editImageView = UIImageView()
     var archiveSourceImage = UIImage()
     
     /// 편집할 이미지 뒤에 나타날 배경 이미지
@@ -52,6 +51,8 @@ class PhotoViewController: UIViewController {
     // var imageDownOffset: CGFloat?
     var trayUp: CGPoint?
     var trayDown: CGPoint?
+    
+    var isBlured = false
     
     /// 공유하기 버튼 입니다.
     lazy var shareButton: UIBarButtonItem = makeBarButtonWithSystemImage(systemName: "square.and.arrow.up", selector: #selector(shareImageTapped), isHidden: false, target: self)
@@ -85,7 +86,7 @@ class PhotoViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // 현재 이미지가 셋팅되어있는지에 따라 Place Holder 또는 버튼을 활성화 합니다.
-        if self.sourceImageView.image == nil {
+        if self.mainImageView.image == nil {
             getLoadingIndicator()
         } else {
             self.makePinchGesture(selector: #selector(pinchZoomAction)) // 이미지 확대 축소 제스쳐 추가
@@ -97,7 +98,7 @@ class PhotoViewController: UIViewController {
             self.enableBarButtons(buttons: [shareButton, backButton]) // 이미지 로드 전 비활성화 된 바 버튼을 활성화 합니다.
             self.barButtonReplace(buttons: [shareButton])
             self.hideLoadingIndicator() // 이미지가 셋업되면 숨김
-            
+            self.resizeImageView() /// 이미지 흐림효과를 위한 리사이즈
         }
         
     }
@@ -157,7 +158,7 @@ class PhotoViewController: UIViewController {
     
     /// 가져온 이미지가 있는 경우 네비게이션 바의 버튼을 활성화 합니다.
     func enableBarButtons(buttons: [UIBarButtonItem]) {
-        if self.sourceImageView.image != nil {
+        if self.mainImageView.image != nil {
             buttons.forEach {
                 $0.isEnabled = true
             }
@@ -170,7 +171,7 @@ class PhotoViewController: UIViewController {
     
     /// CropButton의 액션 메소드입니다.
     func makeImageButton() {
-        if let image = self.sourceImageView.image {
+        if let image = self.mainImageView.image {
             UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
         }
     }
@@ -197,7 +198,7 @@ class PhotoViewController: UIViewController {
     
     /// 두손가락으로 이미지를 확대, 축소 할수 있는 핀치액션을 구성합니다.
     @objc func pinchZoomAction(_ pinch: UIPinchGestureRecognizer) {
-        sourceImageView.transform = sourceImageView.transform.scaledBy(x: pinch.scale, y: pinch.scale)
+        mainImageView.transform = mainImageView.transform.scaledBy(x: pinch.scale, y: pinch.scale)
         pinch.scale = 1
     }
     
@@ -213,12 +214,12 @@ class PhotoViewController: UIViewController {
     /// 더블 탭 액션 ( 기본배율에서 더블탭하면 배율 2배, 그외에는 1배로 초기화, )
     @objc func doubleTapZoomAction(_ recognizer: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.3) {
-            if self.sourceImageView.transform == CGAffineTransform(scaleX: 1, y: 1) {
-                self.sourceImageView.transform = CGAffineTransform(scaleX: 2, y: 2)
+            if self.mainImageView.transform == CGAffineTransform(scaleX: 1, y: 1) {
+                self.mainImageView.transform = CGAffineTransform(scaleX: 2, y: 2)
                 
             } else {
-                self.sourceImageView.center = self.view.center
-                self.sourceImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                self.mainImageView.center = self.view.center
+                self.mainImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
         }
     }
@@ -234,7 +235,7 @@ class PhotoViewController: UIViewController {
     /// 메뉴를 드래그 할수 있는 제스쳐를 만듭니다.
     @objc func makeDragImageGesture(_ sender: UIPanGestureRecognizer) {
         // 지정된 보기의 좌표계에서 팬 제스처를 해석합니다.
-        var translation = sender.translation(in: sourceImageView)
+        var translation = sender.translation(in: mainImageView)
         // print("Pan Gesture Translation(CGPoint) : \(translation)")
         
         ///.Began각 제스처 인식의 맨 처음에 한 번 호출됩니다.
@@ -243,10 +244,10 @@ class PhotoViewController: UIViewController {
         switch sender.state {
         case .began:
             /// 처음 클릭하기 시작했을 때
-            imageOriginalCenter = sourceImageView.center // TrayView의 센터포인트를 저장합니다.
+            imageOriginalCenter = mainImageView.center // TrayView의 센터포인트를 저장합니다.
             
         case .changed:
-            sourceImageView.center = CGPoint(x: imageOriginalCenter.x + translation.x, y: imageOriginalCenter.y + translation.y)
+            mainImageView.center = CGPoint(x: imageOriginalCenter.x + translation.x, y: imageOriginalCenter.y + translation.y)
         default:
             break
         }
@@ -261,13 +262,29 @@ class PhotoViewController: UIViewController {
         self.view.addGestureRecognizer(gesture)
     }
     
+    func resizeImageView() {
+        /// 이미지뷰 레이아웃
+        let screenSize = UIScreen.main.bounds
+        let imageSize = mainImageView.image?.size
+        print("DEBUG: ImageSize \(imageSize)")
+
+        let imageHeight = (imageSize!.height * screenSize.width) / imageSize!.width
+        let resizeHeight = (screenSize.height - imageHeight) / 2
+        
+        mainImageView.snp.remakeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.width.equalTo(screenSize.width)
+            make.height.equalToSuperview().inset(resizeHeight)
+        }
+    }
+    
     //MARK: - Tray
     
     
     /// [Todo] 스와이프하여 꺼낼수 있는 메뉴를 만듭니다.
     @objc func makeSwipeMenuGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
         //        지정된 보기의 좌표계에서 팬 제스처를 해석합니다.
-        var translation = sender.translation(in: sourceImageView)
+        var translation = sender.translation(in: mainImageView)
         // print("Pan Gesture Translation(CGPoint) : \(translation)")
         
         ///.Began각 제스처 인식의 맨 처음에 한 번 호출됩니다.
@@ -276,10 +293,10 @@ class PhotoViewController: UIViewController {
         switch sender.state {
         case .began:
             /// 처음 클릭하기 시작했을 때
-            imageOriginalCenter = sourceImageView.center // TrayView의 센터포인트를 저장합니다.
+            imageOriginalCenter = mainImageView.center // TrayView의 센터포인트를 저장합니다.
             
         case .changed:
-            sourceImageView.center = CGPoint(x: imageOriginalCenter.x, y: imageOriginalCenter.y + translation.y)
+            mainImageView.center = CGPoint(x: imageOriginalCenter.x, y: imageOriginalCenter.y + translation.y)
         case .ended:
             var velocity = sender.velocity(in: view)
             
@@ -307,27 +324,20 @@ class PhotoViewController: UIViewController {
         bgImageView.translatesAutoresizingMaskIntoConstraints = false
         bgImageView.contentMode = .scaleAspectFill
         bgImageView.isUserInteractionEnabled = false
+        
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.edges.edges.equalToSuperview()
         }
         
-        sourceImageView.translatesAutoresizingMaskIntoConstraints = false
-        sourceImageView.contentMode = .scaleAspectFit
-        view.addSubview(sourceImageView)
+        mainImageView.translatesAutoresizingMaskIntoConstraints = false
+        mainImageView.contentMode = .scaleAspectFit
+        view.addSubview(mainImageView)
         
-        sourceImageView.snp.makeConstraints { make in
+        mainImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        editImageView.translatesAutoresizingMaskIntoConstraints = false
-        editImageView.contentMode = .scaleAspectFit
-        // editImageView.isHidden = true
-        view.addSubview(editImageView)
-        
-        editImageView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-        }
+
     }
     
     /// BottomMenuView에 넣을  버튼을 구성합니다.
@@ -337,7 +347,8 @@ class PhotoViewController: UIViewController {
         let blurAction = UIAction { _ in
             self.imageBlurAction()
         }
-        let blurImage = UIImage(systemName: "square.dashed")!.withTintColor(.label, renderingMode: .alwaysOriginal)
+        
+        let blurImage = UIImage(systemName: "drop.circle")!.withTintColor(.label, renderingMode: .alwaysOriginal)
         let blurButton = viewModel.makeButtonWithImage(image: blurImage, action: blurAction, target: self)
         
         self.trayView.centerStackView.addArrangedSubview(blurButton)
@@ -360,7 +371,7 @@ class PhotoViewController: UIViewController {
         
         /// 백그라운드 변경 버튼
         let changeBGAction = UIAction { _ in
-            self.changeBGButtonTapped()
+            // self.changeBGButtonTapped()
         }
         
         let changeBGButtonImage = UIImage(systemName: "square.3.layers.3d.down.left")!.withTintColor(.label, renderingMode: .alwaysOriginal)
@@ -372,13 +383,7 @@ class PhotoViewController: UIViewController {
         changeBGButton.isEnabled = true
     }
     
-    @objc func changeBGButtonTapped() {
-        
-     
 
-        
-        
-    }
     
     
     
@@ -390,6 +395,8 @@ class PhotoViewController: UIViewController {
             print("저장할 이미지 없음")
         }
     }
+    
+
     
     /// 사진을 디바이스에 저장하는 메소드입니다.
     func saveImageToAlbum(image: UIImage) {
@@ -429,22 +436,25 @@ class PhotoViewController: UIViewController {
         }
     }
     
-    ///사진을 자르고 뷰에 띄웁니다.
+    
+    ///사진을 자르고 소스이미지에 반영합니다.
     @objc func getCropImage() {
-        if let image = self.sourceImageView.image {
-            self.sourceImageView.image = self.imageModel.cropImageForScreenSize(image)
+        if let image = self.mainImageView.image {
+            self.mainImageView.image = ImageEditModel.shared.cropImageForScreenSize(image)
         }
     }
+    
     
     /// 병합된 이미지를 뷰에 반영합니다.
     @objc func getMergeImage() {
-        if let source = self.sourceImageView.image, let background = self.bgImageView.image {
+        if let source = self.mainImageView.image, let background = self.bgImageView.image {
             
-            let mergedImage = self.imageModel.mergeImages(image: source, imageRect: sourceImageView.frame.integral, backgroundImage: background)
-            self.sourceImageView.image = mergedImage
+            let mergedImage = self.imageModel.mergeImages(image: source, imageRect: mainImageView.frame.integral, backgroundImage: background)
+            self.mainImageView.image = mergedImage
         }
     }
     
+    //MARK: [Todo Refactoring]
     /// 현재 뷰를 캡쳐하고 그 이미지를 공유합니다.
     @objc func shareImageTapped() {
         if let image = viewModel.takeScreenViewCapture(withoutView: [trayView], target: self) {
@@ -452,68 +462,18 @@ class PhotoViewController: UIViewController {
         }
     }
     
-    /// 이미지 가장자리에 블러효과를 주는 VC를 띄웁니다.
-    @objc func imageBlurAction() {
-        imageViewModel.editingPhotoSubject
-            .take(1)
-            .subscribe(onNext: { image in
-                let vc = EditImageViewController()
-                vc.senderVC = self
-    
-                let imageSize = image?.size
-                vc.imageSize = imageSize
-                // vc.editImageView.image = image
-                vc.archiveSource = self.archiveSourceImage
-                self.navigationController?.pushViewController(vc, animated: false)
-    
-            }, onError: { error in
-                print(error)
-            }, onCompleted: {
-                print("onCompleted")
-    
-            }, onDisposed: {
-                print("Disposed")
-            }).disposed(by: disposeBag)
-    
+    /// 이미지 가장자리에 블러효과를 주는 마스크를 씌웁니다.
+    func imageBlurAction() {
+        
+        if isBlured == false {
+            let blurImage = ImageEditModel.shared.imageEdgeBlur(imageView: self.mainImageView)
+        } else {
+            mainImageView.layer.mask = nil
+        }
+        
+        self.isBlured = !self.isBlured
+  
     }
-    
-    /// 이미지 가장자리에 블러효과를 주는 VC를 띄웁니다.
-    // @objc func imageBlurAction() {
-    //     // ImageViewModel.shared.setImageViews(imageView: sourceImageView)
-    //         imageViewModel.editingPhotoSubject
-    //             .take(1)
-    //             .subscribe(onNext: { image in
-    //
-    //
-    //                 print("이미지를 확인합니다.")
-    //                 guard let unwrappedImage = image else {return}
-    //
-    //                 print("CI이미지를 변경합니다.")
-    //                 let ciImg = CIImage(image: unwrappedImage)!
-    //
-    //
-    //                 let bluredImage = ImageEditModel.shared.makeImageEdgeBlurFilter(image: ciImg)
-    //                 print("이미지 가장자리 변경됨")
-    //
-    //                 self.sourceImageView.image = UIImage(ciImage: bluredImage)
-    //
-    //
-    //                 // let uiImg = UIImage(ciImage: bluredImage, scale: unwrappedImage.scale, orientation: unwrappedImage.imageOrientation)
-    //                 //
-    //                 // ImageViewModel.shared.editingPhotoSubject.onNext(uiImg)
-    //
-    //             }, onError: { error in
-    //                 print(error)
-    //             }, onCompleted: {
-    //                 print("onCompleted")
-    //
-    //             }, onDisposed: {
-    //                 print("Disposed")
-    //             }).disposed(by: disposeBag)
-    //
-    //
-    // }
-    //
     
     
     //MARK: END -
@@ -532,7 +492,7 @@ class PhotoViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.imageViewModel.editingPhotoSubject.onNext(image)
-                    self.sourceImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 선택한 이미지의 크기를 초기화합니다.
+                    self.mainImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 선택한 이미지의 크기를 초기화합니다.
                     self.archiveSourceImage = image
                     self.bgImageView.image = blurImage // 선택한 이미지를 블러처리하여 백그라운드에 띄웁니다.
                     self.bgImageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1) // 백그라운드 이미지의 크기를 초기화합니다. (결과물 비네팅방지를 위해 1.1배로 설정)
@@ -557,7 +517,7 @@ extension PhotoViewController: CropViewControllerDelegate {
     /// 맨티스 라이브러리를 이용한 Crop ViewController를 구성하고 띄우는 메소드입니다.
     @objc func presentCropVC() {
         
-        if let image = self.sourceImageView.image { // 불러온 이미지가 있는지 확인합니다.
+        if let image = self.mainImageView.image { // 불러온 이미지가 있는지 확인합니다.
             /// CropVC로 크롭할 때 사용할 설정을 구성합니다.
             var config = Mantis.Config()
             config.cropShapeType = .circle()
@@ -574,7 +534,7 @@ extension PhotoViewController: CropViewControllerDelegate {
     /// [Delegate] 이미지가 크롭되었는지 감지하고 알리는 Delegate 메소드입니다.
     func cropViewControllerDidCrop(_ cropViewController: Mantis.CropViewController, cropped: UIImage, transformation: Mantis.Transformation) {
         DispatchQueue.main.async {
-            self.sourceImageView.image = cropped
+            self.mainImageView.image = cropped
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -593,7 +553,7 @@ extension PhotoViewController {
     func editingImageRxSubscribe() {
         self.imageViewModel.editingPhoto.subscribe { image in
             print("Rx EditingImage : 이미지가 변경되었습니다.")
-            self.sourceImageView.image = image
+            self.mainImageView.image = image
         } onError: { error in
             print("EditingImage Error : \(error.localizedDescription)")
         } onCompleted: {

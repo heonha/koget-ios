@@ -17,6 +17,29 @@ class ImageEditModel {
         
     }
     
+    /// 이미지 가장자리에 블러효과를 주는 VC를 띄웁니다.
+    func imageEdgeBlur(imageView: UIImageView) -> UIImage {
+        /// 블러를 수행할 액션
+        makeImageRoundBlur(imageView: imageView)
+        let blurImage = takeViewCapture(targetView: imageView)
+        return blurImage
+    }
+    
+    func cancelImageEdgeBlur(imageView: UIImageView) -> UIImage {
+        /// 블러를 수행할 액션
+        makeImageRoundBlur(imageView: imageView)
+        let blurImage = takeViewCapture(targetView: imageView)
+        return blurImage
+    }
+    
+    /// 해당 하는 뷰만 캡쳐합니다.
+    func takeViewCapture(targetView: UIView) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: targetView.bounds.size)
+        let image = renderer.image { ctx in
+            targetView.drawHierarchy(in: targetView.bounds, afterScreenUpdates: true)
+        }
+        return image
+    }
     
     /// [개발중] 이미지 자르기
     func cropImage(image: UIImage) -> UIImage {

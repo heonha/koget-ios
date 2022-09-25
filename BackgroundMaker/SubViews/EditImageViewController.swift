@@ -73,7 +73,7 @@ class EditImageViewController: UIViewController {
         /// 블러를 수행할 액션
         let action = UIAction { _ in
             ImageEditModel.shared.makeImageRoundBlur(imageView: self.editImageView)
-            let blurImage = ViewModel.shared.takeViewCapture(targetView: self.editImageView)
+            let blurImage = ImageEditModel.shared.takeViewCapture(targetView: self.editImageView)
             self.imageViewModel.editingPhotoSubject.onNext(blurImage)
             self.navigationController?.popViewController(animated: false)
         }
