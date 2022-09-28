@@ -20,7 +20,7 @@ class TestEditImageViewController: UIViewController {
         view.backgroundColor = .clear
         setImageViews()
         let action = UIAction { _ in
-            ImageEditModel.shared.makeImageRoundBlur(imageView: self.editImageView)
+            self.makeImageRoundBlur(imageView: self.editImageView)
             let blurImage = ImageEditModel.shared.takeViewCapture(targetView: self.editImageView)
         }
         makeButtonWithTitle(button: button, title: "액션", action: action, target: self)
@@ -68,9 +68,25 @@ class TestEditImageViewController: UIViewController {
     
     
     func setBlur() {
-        ImageEditModel.shared.makeImageRoundBlur(imageView: self.editImageView)
+        self.makeImageRoundBlur(imageView: self.editImageView)
         let blurImage = ImageEditModel.shared.takeViewCapture(targetView: self.editImageView)
     }
     
+    
+    /// 이미지 끝부분을 블러처리합니다.
+    func makeImageRoundBlur(imageView: UIImageView) {
+        
+        // 그래디언트 레이어 초기화
+        let maskLayer = CAGradientLayer()
+
+        maskLayer.frame = imageView.bounds
+        maskLayer.shadowRadius = 10
+        maskLayer.shadowPath = CGPath(roundedRect: imageView.bounds.insetBy(dx: 20, dy: 20), cornerWidth: 0, cornerHeight: 0, transform: nil)
+        maskLayer.shadowOpacity = 1;
+        maskLayer.shadowOffset = CGSize.zero;
+        maskLayer.shadowColor = UIColor.white.cgColor
+        imageView.layer.mask = maskLayer
+        
+    }
     
 }

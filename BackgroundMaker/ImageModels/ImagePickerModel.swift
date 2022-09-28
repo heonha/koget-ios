@@ -28,13 +28,11 @@ class ImagePickerModel {
         return picker
     }
         
-    
     /// 소스포토 Observable
     var selectedPhotoSubject = BehaviorSubject<UIImage?>(value: nil)
 
     /// 사진 선택을 했는지 확인하는 Subject
     var isSelected = BehaviorSubject<Bool?>(value: nil)
-
 
 }
 
@@ -42,7 +40,6 @@ class ImagePickerModel {
 //MARK: - Photo Picker 관련 응답을 받는 PHPickerController Delegate 구성
 
 extension ImagePickerModel: PHPickerViewControllerDelegate {
-    
 
     /// PHPicker에서 사진 선택했을 때 호출되는 Delegate입니다. PHPicker에서 선택한 아이템을 가져옵니다.
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
