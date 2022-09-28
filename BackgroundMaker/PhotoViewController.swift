@@ -24,6 +24,9 @@ class PhotoViewController: UIViewController {
     
     var sliderDisposeBag = DisposeBag()
     
+    lazy var sliderObservable: Observable<Float> = editSlider.rx.value.asObservable()
+    
+    
     //MARK: End RxSwift Init -
     
     /// 이미지가 로딩되는 동안 표시할 인디케이터뷰 입니다.
@@ -85,7 +88,7 @@ class PhotoViewController: UIViewController {
     lazy var shareButton: UIBarButtonItem = makeBarButtonWithSystemImage(systemName: "square.and.arrow.up", selector: #selector(shareImageTapped), isHidden: false, target: self)
     
     /// 초기상태로 다시불러오는 리프레시 버튼 입니다.
-    lazy var backButton: UIBarButtonItem = makeBarButtonWithSystemImage(systemName: "x.circle", selector: #selector(backButtonTapped), isHidden: false, target: self)
+    lazy var backButton: UIBarButtonItem = makeBarButtonWithSystemImage(systemName: "arrow.backward", selector: #selector(backButtonTapped), isHidden: false, target: self)
     
     //MARK: - View Load
     override func viewDidLoad() {
@@ -369,6 +372,10 @@ class PhotoViewController: UIViewController {
         let saveAction = UIAction { _ in self.saveImage() }
         let saveButton = viewModel.makeButtonWithTitle(title: "저장", action: saveAction, target: self)
         
+        /// `취소` 버튼
+        let cancelAction = UIAction { _ in self.backButtonTapped() }
+        let cancelButton = viewModel.makeButtonWithTitle(title: "취소", action: cancelAction, target: self)
+        
         /// `백그라운드 변경` 버튼
         let changeBGAction = UIAction { _ in }
         let changeBGButtonImage = UIImage(systemName: "square.3.layers.3d.down.left")!
@@ -384,6 +391,7 @@ class PhotoViewController: UIViewController {
         trayView.centerStackView.addArrangedSubview(blurButton)
         trayView.centerStackView.addArrangedSubview(changeBGButton)
         trayView.rightStackView.addArrangedSubview(saveButton)
+        trayView.leftStackView.addArrangedSubview(cancelButton)
 
     }
             
@@ -434,13 +442,6 @@ class PhotoViewController: UIViewController {
         }
     }
     
-    ///사진을 자르고 소스이미지에 반영합니다.
-    @objc func getCropImage() {
-        if let image = self.mainImageView.image {
-            self.mainImageView.image = ImageEditModel.shared.cropImageForScreenSize(image)
-        }
-    }
-    
     /// 병합된 이미지를 뷰에 반영합니다.
     @objc func getMergeImage() {
         if let source = self.mainImageView.image, let background = self.bgImageView.image {
@@ -464,7 +465,7 @@ class PhotoViewController: UIViewController {
         
         
         if isBlured == false {
-            subscribeSlider()
+            sliderSubscriber()
             
         } else {
             sliderDisposeBag = .init()
@@ -529,22 +530,23 @@ extension PhotoViewController {
 }
 
 extension PhotoViewController {
-    
-    func subscribeSlider() {
-        var sliderObservable = self.editSlider.rx.value.map { float in
+
+    /// 슬라이더 Value를 구독합니다.
+    func sliderSubscriber() {
+        sliderObservable
+        .debounce(.milliseconds(10), scheduler: MainScheduler.instance) // 업데이트 시간 조절으로 리소스 최적화
+        .map { float in
             CGFloat(float) * 40
-        }.subscribe { value in
-            ImageEditModel.shared.imageEdgeBlur(imageView: self.mainImageView, inset: value)
-        
+        }
+        .subscribe { value in
+            ImageEditModel.shared.makeImageRoundBlur(imageView: self.mainImageView, insetY: value)
         } onError: { error in
             print("DEBUG: sliderObservable Error: \(error.localizedDescription)")
-        
         } onCompleted: {
             print("DEBUG: sliderObservable Completed")
-        
+            
         } onDisposed: {
             print("DEBUG: sliderObservable Disposed")
         }.disposed(by: sliderDisposeBag)
-
     }
 }

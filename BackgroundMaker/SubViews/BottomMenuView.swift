@@ -25,8 +25,10 @@ class BottomMenuView: UIView {
     let contentView = UIView()
 
     /// 기능 버튼이 들어갈 스택뷰입니다.
-    let centerStackView = UIStackView()
-    let rightStackView = UIStackView()
+    lazy var centerStackView = makeStackView()
+    lazy var rightStackView = makeStackView()
+    lazy var leftStackView = makeStackView()
+
     
     /// 현재 뷰를 초기화합니다.
     override init(frame: CGRect) {
@@ -35,8 +37,8 @@ class BottomMenuView: UIView {
         setupViewAlphaValue(view: backgroundView, alpha: 0.2)
         backgroundView.backgroundColor = .systemBackground
         setupContentView(view: contentView)
-        setupStackView(stackView: centerStackView)
-        setupStackView(stackView: rightStackView)
+
+
         stackViewLayout()
         
     }
@@ -89,7 +91,8 @@ class BottomMenuView: UIView {
     }
 
     /// 기능버튼이 들어갈 스택뷰를 구성합니다.
-    func setupStackView(stackView: UIStackView) {
+    func makeStackView() -> UIStackView {
+        let stackView = UIStackView()
         contentView.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.backgroundColor = .clear
@@ -98,6 +101,7 @@ class BottomMenuView: UIView {
         stackView.alignment = .fill
         stackView.spacing = 5
         stackView.backgroundColor = .clear
+        return stackView
     }
     
     func stackViewLayout() {
@@ -110,6 +114,12 @@ class BottomMenuView: UIView {
         rightStackView.snp.makeConstraints { make in
             make.bottom.equalTo(contentView).inset(15)
             make.trailing.equalToSuperview().inset(10)
+            make.width.height.equalTo(50)
+        }
+        
+        leftStackView.snp.makeConstraints { make in
+            make.bottom.equalTo(contentView).inset(15)
+            make.leading.equalToSuperview().inset(10)
             make.width.height.equalTo(50)
         }
         
