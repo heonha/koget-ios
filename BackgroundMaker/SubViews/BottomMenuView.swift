@@ -29,17 +29,31 @@ class BottomMenuView: UIView {
     lazy var rightStackView = makeStackView()
     lazy var leftStackView = makeStackView()
 
+    var viewHeight: CGFloat?
+    var rightButtonCount: CGFloat?
+    var centerButtonCount: CGFloat?
+    var leftButtonCount: CGFloat?
+    var backgroundAlphaValue: CGFloat?
     
     /// 현재 뷰를 초기화합니다.
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(height: CGFloat, rightBtnCount: CGFloat = 0, centerBtnCount: CGFloat = 0, leftBtnCount: CGFloat = 0, backgroundAlpha: CGFloat = 0.2) {
+        let screenSize = UIScreen.main.bounds
+        
+        self.rightButtonCount = rightBtnCount
+        self.centerButtonCount = centerBtnCount
+        self.leftButtonCount = leftBtnCount
+        self.viewHeight = height
+        self.backgroundAlphaValue = backgroundAlpha
+        super.init(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: height))
+        
         setupBackgroundView(view: backgroundView)
-        setupViewAlphaValue(view: backgroundView, alpha: 0.2)
+        setupViewAlphaValue(view: backgroundView, alpha: backgroundAlphaValue!)
         backgroundView.backgroundColor = .systemBackground
         setupContentView(view: contentView)
-
-
+        
         stackViewLayout()
+        
+        
         
     }
     
@@ -51,9 +65,12 @@ class BottomMenuView: UIView {
     /// 현재 뷰의 사이즈를 구성합니다.
     override var intrinsicContentSize: CGSize {
         let screenSize = UIScreen.main.bounds
-        return CGSize(width: screenSize.width, height: 80)
+        return CGSize(width: screenSize.width, height: viewHeight!)
     }
     
+
+    
+
     //MARK: - Layout Subview
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -101,31 +118,38 @@ class BottomMenuView: UIView {
         stackView.alignment = .fill
         stackView.spacing = 5
         stackView.backgroundColor = .clear
+        
         return stackView
     }
     
     func stackViewLayout() {
+        
+        let buttonWidth: CGFloat = 50
+        
+        
         centerStackView.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView).inset(15)
+            make.bottom.equalTo(contentView)
+            make.centerY.equalTo(contentView)
+
             make.centerX.equalToSuperview()
-            make.width.equalTo(100 + 5)
-            make.height.equalTo(50)
+            make.width.equalTo( centerButtonCount! * buttonWidth )
         }
+        
         rightStackView.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView).inset(15)
+            make.bottom.equalTo(contentView)
+            make.centerY.equalTo(contentView)
+
             make.trailing.equalToSuperview().inset(10)
-            make.width.height.equalTo(50)
+            make.width.equalTo( rightButtonCount! * buttonWidth )
         }
         
         leftStackView.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView).inset(15)
-            make.leading.equalToSuperview().inset(10)
-            make.width.height.equalTo(50)
-        }
-        
-    }
-    
+            make.bottom.equalTo(contentView)
+            make.centerY.equalTo(contentView)
 
-    
-  
+            make.leading.equalToSuperview().inset(10)
+            make.width.equalTo( leftButtonCount! * buttonWidth )
+
+        }
+    }
 }

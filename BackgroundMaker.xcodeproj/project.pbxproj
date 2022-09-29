@@ -12,10 +12,34 @@
 		3A16865728E1FB49004090DA /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16865628E1FB49004090DA /* FilterModel.swift */; };
 		3A17665928C9DAFF006DE579 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17665828C9DAFF006DE579 /* ViewModel.swift */; };
 		3A26150428CB7E2B000D17A3 /* TestEditImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26150328CB7E2B000D17A3 /* TestEditImageViewController.swift */; };
+		3A420D8E28E4669000C8426D /* PhotoViewController+RulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A420D8D28E4669000C8426D /* PhotoViewController+RulerView.swift */; };
 		3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */; };
 		3A5E82BC28C7393700C10AAC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = 3A5E82BB28C7393700C10AAC /* Mantis */; };
 		3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A82318E28C78F0700F958FE /* UIImage+Utils.swift */; };
+		3A8E3A0428E3E6AA00390F8A /* RulerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */; };
+		3A8E3A0728E3E7B900390F8A /* RulerView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A0628E3E7B900390F8A /* RulerView */; };
+		3A8E3A1E28E3E94E00390F8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E3A1D28E3E94E00390F8A /* AppDelegate.swift */; };
+		3A8E3A2028E3E94E00390F8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E3A1F28E3E94E00390F8A /* SceneDelegate.swift */; };
+		3A8E3A2228E3E94E00390F8A /* RulerViewUITester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E3A2128E3E94E00390F8A /* RulerViewUITester.swift */; };
+		3A8E3A2728E3E94F00390F8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E3A2628E3E94F00390F8A /* Assets.xcassets */; };
+		3A8E3A2A28E3E94F00390F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E3A2828E3E94F00390F8A /* LaunchScreen.storyboard */; };
+		3A8E3A3128E3E99500390F8A /* RulerView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A3028E3E99500390F8A /* RulerView */; };
+		3A8E3A3328E3E9F000390F8A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A3228E3E9F000390F8A /* SnapKit */; };
+		3A8E3A3728E3EA8300390F8A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A3628E3EA8300390F8A /* RxCocoa */; };
+		3A8E3A3928E3EA8300390F8A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A3828E3EA8300390F8A /* RxRelay */; };
+		3A8E3A3B28E3EA8300390F8A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A3A28E3EA8300390F8A /* RxSwift */; };
+		3A9EABA028E51FFA00ED2BF2 /* SliderUITester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EAB9F28E51FFA00ED2BF2 /* SliderUITester.swift */; };
+		3A9EABA428E520DE00ED2BF2 /* SubmenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABA328E520DE00ED2BF2 /* SubmenuType.swift */; };
+		3A9EABA728E5380100ED2BF2 /* ImageEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABA628E5380100ED2BF2 /* ImageEditModel.swift */; };
+		3A9EABAA28E538BA00ED2BF2 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABA928E538BA00ED2BF2 /* UIImage+Ext.swift */; };
+		3A9EABAC28E538D800ED2BF2 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABAB28E538D800ED2BF2 /* UIView+Ext.swift */; };
+		3A9EABAE28E53ACB00ED2BF2 /* UITestContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABAD28E53ACB00ED2BF2 /* UITestContainerVC.swift */; };
+		3A9EABB028E5703700ED2BF2 /* SubviewUITester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABAF28E5703700ED2BF2 /* SubviewUITester.swift */; };
+		3A9EABB228E57FF700ED2BF2 /* PhotoViewController+bgEditSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB128E57FF700ED2BF2 /* PhotoViewController+bgEditSubview.swift */; };
+		3A9EABB428E5C41800ED2BF2 /* PhotoViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB328E5C41800ED2BF2 /* PhotoViewController+Gesture.swift */; };
+		3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */; };
 		3AA33F0228CE339C004127ED /* RoundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA33F0128CE339C004127ED /* RoundShadowView.swift */; };
+		3AA81CA828E457B6009EE95B /* RulerSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA81CA728E457B6009EE95B /* RulerSubview.swift */; };
 		3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */; };
 		3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */; };
 		3ABA6C1B28C6043F005AA8E4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1A28C6043F005AA8E4 /* PhotoViewController.swift */; };
@@ -39,9 +63,29 @@
 		3A16865628E1FB49004090DA /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		3A17665828C9DAFF006DE579 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		3A26150328CB7E2B000D17A3 /* TestEditImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEditImageViewController.swift; sourceTree = "<group>"; };
+		3A420D8D28E4669000C8426D /* PhotoViewController+RulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoViewController+RulerView.swift"; sourceTree = "<group>"; };
 		3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModel.swift; sourceTree = "<group>"; };
 		3A82318E28C78F0700F958FE /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
+		3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerSlider.swift; sourceTree = "<group>"; };
+		3A8E3A1B28E3E94E00390F8A /* BMUITester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMUITester.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A8E3A1D28E3E94E00390F8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3A8E3A1F28E3E94E00390F8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3A8E3A2128E3E94E00390F8A /* RulerViewUITester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerViewUITester.swift; sourceTree = "<group>"; };
+		3A8E3A2628E3E94F00390F8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A8E3A2928E3E94F00390F8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3A8E3A2B28E3E94F00390F8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A9EAB9F28E51FFA00ED2BF2 /* SliderUITester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderUITester.swift; sourceTree = "<group>"; };
+		3A9EABA328E520DE00ED2BF2 /* SubmenuType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmenuType.swift; sourceTree = "<group>"; };
+		3A9EABA628E5380100ED2BF2 /* ImageEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModel.swift; sourceTree = "<group>"; };
+		3A9EABA928E538BA00ED2BF2 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		3A9EABAB28E538D800ED2BF2 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		3A9EABAD28E53ACB00ED2BF2 /* UITestContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestContainerVC.swift; sourceTree = "<group>"; };
+		3A9EABAF28E5703700ED2BF2 /* SubviewUITester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubviewUITester.swift; sourceTree = "<group>"; };
+		3A9EABB128E57FF700ED2BF2 /* PhotoViewController+bgEditSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoViewController+bgEditSubview.swift"; sourceTree = "<group>"; };
+		3A9EABB328E5C41800ED2BF2 /* PhotoViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoViewController+Gesture.swift"; sourceTree = "<group>"; };
+		3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		3AA33F0128CE339C004127ED /* RoundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowView.swift; sourceTree = "<group>"; };
+		3AA81CA728E457B6009EE95B /* RulerSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerSubview.swift; sourceTree = "<group>"; };
 		3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +101,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3A8E3A1828E3E94E00390F8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8E3A3728E3EA8300390F8A /* RxCocoa in Frameworks */,
+				3A8E3A3128E3E99500390F8A /* RulerView in Frameworks */,
+				3A8E3A3B28E3EA8300390F8A /* RxSwift in Frameworks */,
+				3A8E3A3928E3EA8300390F8A /* RxRelay in Frameworks */,
+				3A8E3A3328E3E9F000390F8A /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ABA6C1028C6043F005AA8E4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,6 +121,7 @@
 				3ABA6C3828C6361B005AA8E4 /* SnapKit in Frameworks */,
 				3ABA6C3528C60A7F005AA8E4 /* RxSwift in Frameworks */,
 				3A5E82BC28C7393700C10AAC /* Mantis in Frameworks */,
+				3A8E3A0728E3E7B900390F8A /* RulerView in Frameworks */,
 				3ABA6C3328C60A7F005AA8E4 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +135,8 @@
 				3A82318E28C78F0700F958FE /* UIImage+Utils.swift */,
 				3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */,
 				3AA33F0128CE339C004127ED /* RoundShadowView.swift */,
+				3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */,
+				3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */,
 			);
 			path = "Extension+Utils";
 			sourceTree = "<group>";
@@ -85,7 +144,12 @@
 		3A0F42A228C982D0002F1CAD /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				3A9EABB328E5C41800ED2BF2 /* PhotoViewController+Gesture.swift */,
+				3A420D8D28E4669000C8426D /* PhotoViewController+RulerView.swift */,
+				3A9EABB128E57FF700ED2BF2 /* PhotoViewController+bgEditSubview.swift */,
 				3A0F42A328C982D8002F1CAD /* BottomMenuView.swift */,
+				3AA81CA728E457B6009EE95B /* RulerSubview.swift */,
+				3A9EABA328E520DE00ED2BF2 /* SubmenuType.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -101,6 +165,64 @@
 			path = ImageModels;
 			sourceTree = "<group>";
 		};
+		3A8E3A1C28E3E94E00390F8A /* BMUITester */ = {
+			isa = PBXGroup;
+			children = (
+				3A8E3A1D28E3E94E00390F8A /* AppDelegate.swift */,
+				3A8E3A1F28E3E94E00390F8A /* SceneDelegate.swift */,
+				3A9EABAD28E53ACB00ED2BF2 /* UITestContainerVC.swift */,
+				3A9EABA828E538B000ED2BF2 /* Utils */,
+				3A9EABA528E537F600ED2BF2 /* Models */,
+				3A9EABA128E5200200ED2BF2 /* UITester */,
+				3A9EABA228E5204900ED2BF2 /* Files */,
+			);
+			path = BMUITester;
+			sourceTree = "<group>";
+		};
+		3A8E3A2F28E3E99500390F8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A9EABA128E5200200ED2BF2 /* UITester */ = {
+			isa = PBXGroup;
+			children = (
+				3A8E3A2128E3E94E00390F8A /* RulerViewUITester.swift */,
+				3A9EAB9F28E51FFA00ED2BF2 /* SliderUITester.swift */,
+				3A9EABAF28E5703700ED2BF2 /* SubviewUITester.swift */,
+			);
+			path = UITester;
+			sourceTree = "<group>";
+		};
+		3A9EABA228E5204900ED2BF2 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A8E3A2628E3E94F00390F8A /* Assets.xcassets */,
+				3A8E3A2828E3E94F00390F8A /* LaunchScreen.storyboard */,
+				3A8E3A2B28E3E94F00390F8A /* Info.plist */,
+			);
+			name = Files;
+			sourceTree = "<group>";
+		};
+		3A9EABA528E537F600ED2BF2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A9EABA628E5380100ED2BF2 /* ImageEditModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3A9EABA828E538B000ED2BF2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3A9EABA928E538BA00ED2BF2 /* UIImage+Ext.swift */,
+				3A9EABAB28E538D800ED2BF2 /* UIView+Ext.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		3AB4A3EB28CF01390062EC18 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +235,9 @@
 			isa = PBXGroup;
 			children = (
 				3ABA6C1528C6043F005AA8E4 /* BackgroundMaker */,
+				3A8E3A1C28E3E94E00390F8A /* BMUITester */,
 				3ABA6C1428C6043F005AA8E4 /* Products */,
+				3A8E3A2F28E3E99500390F8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */,
+				3A8E3A1B28E3E94E00390F8A /* BMUITester.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,6 +290,30 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3A8E3A1A28E3E94E00390F8A /* BMUITester */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A8E3A2C28E3E94F00390F8A /* Build configuration list for PBXNativeTarget "BMUITester" */;
+			buildPhases = (
+				3A8E3A1728E3E94E00390F8A /* Sources */,
+				3A8E3A1828E3E94E00390F8A /* Frameworks */,
+				3A8E3A1928E3E94E00390F8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BMUITester;
+			packageProductDependencies = (
+				3A8E3A3028E3E99500390F8A /* RulerView */,
+				3A8E3A3228E3E9F000390F8A /* SnapKit */,
+				3A8E3A3628E3EA8300390F8A /* RxCocoa */,
+				3A8E3A3828E3EA8300390F8A /* RxRelay */,
+				3A8E3A3A28E3EA8300390F8A /* RxSwift */,
+			);
+			productName = BMUITester;
+			productReference = 3A8E3A1B28E3E94E00390F8A /* BMUITester.app */;
+			productType = "com.apple.product-type.application";
+		};
 		3ABA6C1228C6043F005AA8E4 /* BackgroundMaker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ABA6C2A28C60440005AA8E4 /* Build configuration list for PBXNativeTarget "BackgroundMaker" */;
@@ -184,6 +333,7 @@
 				3ABA6C3728C6361B005AA8E4 /* SnapKit */,
 				3A5E82BB28C7393700C10AAC /* Mantis */,
 				3ACD923B28CDC63F00345E6C /* Lottie */,
+				3A8E3A0628E3E7B900390F8A /* RulerView */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */;
@@ -199,6 +349,9 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					3A8E3A1A28E3E94E00390F8A = {
+						CreatedOnToolsVersion = 14.0;
+					};
 					3ABA6C1228C6043F005AA8E4 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -219,17 +372,28 @@
 				3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis" */,
 				3ACD923A28CDC63F00345E6C /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				3ABA6C1228C6043F005AA8E4 /* BackgroundMaker */,
+				3A8E3A1A28E3E94E00390F8A /* BMUITester */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3A8E3A1928E3E94E00390F8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8E3A2A28E3E94F00390F8A /* LaunchScreen.storyboard in Resources */,
+				3A8E3A2728E3E94F00390F8A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ABA6C1128C6043F005AA8E4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,6 +407,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3A8E3A1728E3E94E00390F8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8E3A2228E3E94E00390F8A /* RulerViewUITester.swift in Sources */,
+				3A8E3A1E28E3E94E00390F8A /* AppDelegate.swift in Sources */,
+				3A9EABB028E5703700ED2BF2 /* SubviewUITester.swift in Sources */,
+				3A8E3A2028E3E94E00390F8A /* SceneDelegate.swift in Sources */,
+				3A9EABAA28E538BA00ED2BF2 /* UIImage+Ext.swift in Sources */,
+				3A9EABAE28E53ACB00ED2BF2 /* UITestContainerVC.swift in Sources */,
+				3A9EABAC28E538D800ED2BF2 /* UIView+Ext.swift in Sources */,
+				3A9EABA728E5380100ED2BF2 /* ImageEditModel.swift in Sources */,
+				3A9EABA028E51FFA00ED2BF2 /* SliderUITester.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ABA6C0F28C6043F005AA8E4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,24 +430,39 @@
 				3A16865728E1FB49004090DA /* FilterModel.swift in Sources */,
 				3A17665928C9DAFF006DE579 /* ViewModel.swift in Sources */,
 				3AD12D9628CDA4C900CF431C /* MainViewController.swift in Sources */,
+				3A9EABA428E520DE00ED2BF2 /* SubmenuType.swift in Sources */,
 				3ABA6C1B28C6043F005AA8E4 /* PhotoViewController.swift in Sources */,
 				3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */,
 				3A26150428CB7E2B000D17A3 /* TestEditImageViewController.swift in Sources */,
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
 				3AD12D9428CD960E00CF431C /* ImageViewModel.swift in Sources */,
 				3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */,
+				3AA81CA828E457B6009EE95B /* RulerSubview.swift in Sources */,
+				3A8E3A0428E3E6AA00390F8A /* RulerSlider.swift in Sources */,
+				3A9EABB228E57FF700ED2BF2 /* PhotoViewController+bgEditSubview.swift in Sources */,
 				3AA33F0228CE339C004127ED /* RoundShadowView.swift in Sources */,
 				3A0F42A428C982D8002F1CAD /* BottomMenuView.swift in Sources */,
 				3AD12D9828CDA72300CF431C /* ImagePickerModel.swift in Sources */,
 				3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */,
+				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
 				3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */,
+				3A420D8E28E4669000C8426D /* PhotoViewController+RulerView.swift in Sources */,
+				3A9EABB428E5C41800ED2BF2 /* PhotoViewController+Gesture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		3A8E3A2828E3E94F00390F8A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A8E3A2928E3E94F00390F8A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -280,6 +475,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3A8E3A2D28E3E94F00390F8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZH5GA3W8UP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BMUITester/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BMUITester;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3A8E3A2E28E3E94F00390F8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZH5GA3W8UP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BMUITester/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BMUITester;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		3ABA6C2828C60440005AA8E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -465,6 +716,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3A8E3A2C28E3E94F00390F8A /* Build configuration list for PBXNativeTarget "BMUITester" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A8E3A2D28E3E94F00390F8A /* Debug */,
+				3A8E3A2E28E3E94F00390F8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "BackgroundMaker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -492,6 +752,14 @@
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 1.7.0;
+			};
+		};
+		3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/selivandex/RulerView.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.3;
 			};
 		};
 		3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
@@ -525,6 +793,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis" */;
 			productName = Mantis;
+		};
+		3A8E3A0628E3E7B900390F8A /* RulerView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */;
+			productName = RulerView;
+		};
+		3A8E3A3028E3E99500390F8A /* RulerView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */;
+			productName = RulerView;
+		};
+		3A8E3A3228E3E9F000390F8A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3A8E3A3628E3EA8300390F8A /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		3A8E3A3828E3EA8300390F8A /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		3A8E3A3A28E3EA8300390F8A /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 		3ABA6C3228C60A7F005AA8E4 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -34,10 +34,11 @@ class ImageViewModel {
     }
     
     /// 배경사진 Observable
-    var backgroundPhotoSubject = ReplaySubject<UIImage?>.create(bufferSize: 5)
+    var backgroundPhotoSubject = BehaviorSubject<UIImage?>(value: nil)
     var backgroundPhoto: Observable<UIImage?> {
         return backgroundPhotoSubject.asObserver()
     }
+    
     
     
     //MARK: - Methods

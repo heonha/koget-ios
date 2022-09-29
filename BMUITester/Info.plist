@@ -1,0 +1,23 @@
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+	<key>UIApplicationSceneManifest</key>
+	***REMOVED***
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		***REMOVED***
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				***REMOVED***
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+				***REMOVED***
+			</array>
+		***REMOVED***
+	***REMOVED***
+***REMOVED***
+***REMOVED***

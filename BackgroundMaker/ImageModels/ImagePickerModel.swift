@@ -69,7 +69,9 @@ extension ImagePickerModel: PHPickerViewControllerDelegate {
                 print("이미지 선택 오류")
                 self.isSelected.onNext(false)
             }
+        
         picker.dismiss(animated: true)
+        
         }
     
 }
