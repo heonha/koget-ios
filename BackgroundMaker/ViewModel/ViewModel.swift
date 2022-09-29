@@ -57,8 +57,24 @@ struct ViewModel {
         let button = UIButton()
         target.view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(image, for: .normal)
+        button.setImage(image.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        button.setImage(image.withTintColor(.yellow, renderingMode: .alwaysOriginal), for: .selected)
         button.addAction(action, for: .touchDown)
+
+        makeLayerShadow(to: button.layer)
+        
+        return button
+    }
+    
+    func makeButtonWithImageWithTarget(image: UIImage, action: Selector, target: UIViewController
+                                       , submenuType: SubmenuType = .none) -> UIButton {
+        let button = UIButton()
+        target.view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(image.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        button.setImage(image.withTintColor(.yellow, renderingMode: .alwaysOriginal), for: .selected)
+
+        button.addTarget(target, action: action, for: .touchDown)
 
         makeLayerShadow(to: button.layer)
         

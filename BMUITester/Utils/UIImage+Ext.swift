@@ -10,7 +10,7 @@ import UIKit
 extension UIImage {
     
     /// 현재 이미지에 가우시안 블러효과를 줍니다. (radius : CGFloat)
-    func blurImage(radius: CGFloat = 40) -> UIImage? {
+    func blurImage(radius: CGFloat = 10) -> UIImage? {
         
         guard let cgImage = cgImage else { return nil }
         /// CGImage 타입을 필터 반영이 가능한 CIImage로 변환합니다..

@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "rulerview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/selivandex/RulerView.git",
+      "state" : {
+        "revision" : "212d316a49b7f6b250bd8354111bcc56fc8adf23",
+        "version" : "0.1.3"
+      }
+    },
+    {
       "identity" : "rxswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveX/RxSwift.git",
