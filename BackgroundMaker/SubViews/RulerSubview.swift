@@ -13,22 +13,6 @@ import RxCocoa
 
 class RulerSubview: UIView {
     
-    var selectedType: SubmenuType = .none
-    
-    var btnFirstReponderSubject = PublishSubject<SubmenuType>.init()
-    lazy var btnFirstReponderObservable = btnFirstReponderSubject.asObservable()
-        .subscribe { button in
-        
-    } onError: { error in
-        print("DEBUG: BtnFirstResponder Error \(error.localizedDescription)")
-
-    } onCompleted: {
-        print("Completed")
-    } onDisposed: {
-        print("btnFirstReponderSubject Disposed")
-    }
-
-
     //MARK: - Init
     
     override init(frame: CGRect) {
@@ -51,27 +35,6 @@ class RulerSubview: UIView {
     }
     
 
-    
-    func blurBtnAction() {
-        btnFirstReponderSubject.onNext(.blur)
-
-    }
-    
-    func bgBtnAction() {
-        btnFirstReponderSubject.onNext(.editBackground)
-    }
-    
-    func btnHiddenManager() {
-        
-    }
-    // 1. 블러 버튼을 눌렀다. -> blur button Tapped
-    // 2. 블러 슬라이더가 표시된다. -> rulerView.isHidden = false
-    // 3. 배경변경 버튼을 누른다.  -> bgButton Tapped
-    // 4. 블러 슬라이더가 숨겨진다, 배경변경 뷰가 표시된다.
-    // if buttontapped != blurBtn ? rulerView.isHidden = true, BGView.isHidden = false : 동작없음
-
-
-    
     //MARK: - LayoutSubview
     
 }

@@ -29,7 +29,6 @@
 		3A8E3A3928E3EA8300390F8A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A3828E3EA8300390F8A /* RxRelay */; };
 		3A8E3A3B28E3EA8300390F8A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A3A28E3EA8300390F8A /* RxSwift */; };
 		3A9EABA028E51FFA00ED2BF2 /* SliderUITester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EAB9F28E51FFA00ED2BF2 /* SliderUITester.swift */; };
-		3A9EABA428E520DE00ED2BF2 /* SubmenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABA328E520DE00ED2BF2 /* SubmenuType.swift */; };
 		3A9EABA728E5380100ED2BF2 /* ImageEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABA628E5380100ED2BF2 /* ImageEditModel.swift */; };
 		3A9EABAA28E538BA00ED2BF2 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABA928E538BA00ED2BF2 /* UIImage+Ext.swift */; };
 		3A9EABAC28E538D800ED2BF2 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABAB28E538D800ED2BF2 /* UIView+Ext.swift */; };
@@ -48,13 +47,45 @@
 		3ABA6C3328C60A7F005AA8E4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3228C60A7F005AA8E4 /* RxCocoa */; };
 		3ABA6C3528C60A7F005AA8E4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3428C60A7F005AA8E4 /* RxSwift */; };
 		3ABA6C3828C6361B005AA8E4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3728C6361B005AA8E4 /* SnapKit */; };
+		3AC3E1E228E68A9000BFF455 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3E1E128E68A9000BFF455 /* WidgetView.swift */; };
+		3AC3E1E928E690B800BFF455 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC3E1E828E690B800BFF455 /* WidgetKit.framework */; };
+		3AC3E1EB28E690B800BFF455 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC3E1EA28E690B800BFF455 /* SwiftUI.framework */; };
+		3AC3E1EE28E690B800BFF455 /* LockScreenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3E1ED28E690B800BFF455 /* LockScreenWidget.swift */; };
+		3AC3E1F128E690BA00BFF455 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AC3E1F028E690BA00BFF455 /* Assets.xcassets */; };
+		3AC3E1F328E690BA00BFF455 /* LockScreenWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3E1EF28E690B800BFF455 /* LockScreenWidget.intentdefinition */; };
+		3AC3E1F428E690BA00BFF455 /* LockScreenWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3E1EF28E690B800BFF455 /* LockScreenWidget.intentdefinition */; };
+		3AC3E1F728E690BA00BFF455 /* LockScreenWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3AC3E1E728E690B800BFF455 /* LockScreenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3ACD923C28CDC63F00345E6C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3ACD923B28CDC63F00345E6C /* Lottie */; };
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
 		3AD12D9428CD960E00CF431C /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9328CD960E00CF431C /* ImageViewModel.swift */; };
-		3AD12D9628CDA4C900CF431C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9528CDA4C900CF431C /* MainViewController.swift */; };
+		3AD12D9628CDA4C900CF431C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9528CDA4C900CF431C /* HomeViewController.swift */; };
 		3AD12D9828CDA72300CF431C /* ImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */; };
 		3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3AC3E1F528E690BA00BFF455 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3ABA6C0B28C6043F005AA8E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AC3E1E628E690B800BFF455;
+			remoteInfo = LockScreenWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3AC3E1FB28E690BA00BFF455 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3AC3E1F728E690BA00BFF455 /* LockScreenWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
@@ -75,7 +106,6 @@
 		3A8E3A2928E3E94F00390F8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A8E3A2B28E3E94F00390F8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A9EAB9F28E51FFA00ED2BF2 /* SliderUITester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderUITester.swift; sourceTree = "<group>"; };
-		3A9EABA328E520DE00ED2BF2 /* SubmenuType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmenuType.swift; sourceTree = "<group>"; };
 		3A9EABA628E5380100ED2BF2 /* ImageEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModel.swift; sourceTree = "<group>"; };
 		3A9EABA928E538BA00ED2BF2 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		3A9EABAB28E538D800ED2BF2 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
@@ -93,9 +123,17 @@
 		3ABA6C2228C60440005AA8E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3ABA6C2528C60440005AA8E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3ABA6C2728C60440005AA8E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AC3E1E128E68A9000BFF455 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		3AC3E1E728E690B800BFF455 /* LockScreenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC3E1E828E690B800BFF455 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		3AC3E1EA28E690B800BFF455 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		3AC3E1ED28E690B800BFF455 /* LockScreenWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidget.swift; sourceTree = "<group>"; };
+		3AC3E1EF28E690B800BFF455 /* LockScreenWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = LockScreenWidget.intentdefinition; sourceTree = "<group>"; };
+		3AC3E1F028E690BA00BFF455 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AC3E1F228E690BA00BFF455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingIndicatorGray.json; sourceTree = "<group>"; };
 		3AD12D9328CD960E00CF431C /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
-		3AD12D9528CDA4C900CF431C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3AD12D9528CDA4C900CF431C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerModel.swift; sourceTree = "<group>"; };
 		3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +164,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3AC3E1E428E690B800BFF455 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AC3E1EB28E690B800BFF455 /* SwiftUI.framework in Frameworks */,
+				3AC3E1E928E690B800BFF455 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -144,12 +191,8 @@
 		3A0F42A228C982D0002F1CAD /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				3A9EABB328E5C41800ED2BF2 /* PhotoViewController+Gesture.swift */,
-				3A420D8D28E4669000C8426D /* PhotoViewController+RulerView.swift */,
-				3A9EABB128E57FF700ED2BF2 /* PhotoViewController+bgEditSubview.swift */,
 				3A0F42A328C982D8002F1CAD /* BottomMenuView.swift */,
 				3AA81CA728E457B6009EE95B /* RulerSubview.swift */,
-				3A9EABA328E520DE00ED2BF2 /* SubmenuType.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -182,6 +225,8 @@
 		3A8E3A2F28E3E99500390F8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AC3E1E828E690B800BFF455 /* WidgetKit.framework */,
+				3AC3E1EA28E690B800BFF455 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -223,6 +268,17 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		3A9EABB728E5DCB300ED2BF2 /* BGMaker */ = {
+			isa = PBXGroup;
+			children = (
+				3ABA6C1A28C6043F005AA8E4 /* PhotoViewController.swift */,
+				3A9EABB328E5C41800ED2BF2 /* PhotoViewController+Gesture.swift */,
+				3A420D8D28E4669000C8426D /* PhotoViewController+RulerView.swift */,
+				3A9EABB128E57FF700ED2BF2 /* PhotoViewController+bgEditSubview.swift */,
+			);
+			path = BGMaker;
+			sourceTree = "<group>";
+		};
 		3AB4A3EB28CF01390062EC18 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +292,7 @@
 			children = (
 				3ABA6C1528C6043F005AA8E4 /* BackgroundMaker */,
 				3A8E3A1C28E3E94E00390F8A /* BMUITester */,
+				3AC3E1EC28E690B800BFF455 /* LockScreenWidget */,
 				3ABA6C1428C6043F005AA8E4 /* Products */,
 				3A8E3A2F28E3E99500390F8A /* Frameworks */,
 			);
@@ -246,6 +303,7 @@
 			children = (
 				3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */,
 				3A8E3A1B28E3E94E00390F8A /* BMUITester.app */,
+				3AC3E1E728E690B800BFF455 /* LockScreenWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -255,8 +313,9 @@
 			children = (
 				3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */,
 				3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */,
-				3AD12D9528CDA4C900CF431C /* MainViewController.swift */,
-				3ABA6C1A28C6043F005AA8E4 /* PhotoViewController.swift */,
+				3AD12D9528CDA4C900CF431C /* HomeViewController.swift */,
+				3AC3E1E028E68A6D00BFF455 /* WidgetMaker */,
+				3A9EABB728E5DCB300ED2BF2 /* BGMaker */,
 				3A0F42A228C982D0002F1CAD /* SubViews */,
 				3A17665A28C9DC7B006DE579 /* ImageModels */,
 				3AF29FFC28E0ACB900CA6E15 /* ViewModel */,
@@ -277,6 +336,25 @@
 				3ABA6C2728C60440005AA8E4 /* Info.plist */,
 			);
 			name = Files;
+			sourceTree = "<group>";
+		};
+		3AC3E1E028E68A6D00BFF455 /* WidgetMaker */ = {
+			isa = PBXGroup;
+			children = (
+				3AC3E1E128E68A9000BFF455 /* WidgetView.swift */,
+			);
+			path = WidgetMaker;
+			sourceTree = "<group>";
+		};
+		3AC3E1EC28E690B800BFF455 /* LockScreenWidget */ = {
+			isa = PBXGroup;
+			children = (
+				3AC3E1ED28E690B800BFF455 /* LockScreenWidget.swift */,
+				3AC3E1EF28E690B800BFF455 /* LockScreenWidget.intentdefinition */,
+				3AC3E1F028E690BA00BFF455 /* Assets.xcassets */,
+				3AC3E1F228E690BA00BFF455 /* Info.plist */,
+			);
+			path = LockScreenWidget;
 			sourceTree = "<group>";
 		};
 		3AF29FFC28E0ACB900CA6E15 /* ViewModel */ = {
@@ -321,10 +399,12 @@
 				3ABA6C0F28C6043F005AA8E4 /* Sources */,
 				3ABA6C1028C6043F005AA8E4 /* Frameworks */,
 				3ABA6C1128C6043F005AA8E4 /* Resources */,
+				3AC3E1FB28E690BA00BFF455 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3AC3E1F628E690BA00BFF455 /* PBXTargetDependency */,
 			);
 			name = BackgroundMaker;
 			packageProductDependencies = (
@@ -338,6 +418,23 @@
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */;
 			productType = "com.apple.product-type.application";
+		};
+		3AC3E1E628E690B800BFF455 /* LockScreenWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AC3E1F828E690BA00BFF455 /* Build configuration list for PBXNativeTarget "LockScreenWidgetExtension" */;
+			buildPhases = (
+				3AC3E1E328E690B800BFF455 /* Sources */,
+				3AC3E1E428E690B800BFF455 /* Frameworks */,
+				3AC3E1E528E690B800BFF455 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LockScreenWidgetExtension;
+			productName = LockScreenWidgetExtension;
+			productReference = 3AC3E1E728E690B800BFF455 /* LockScreenWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -354,6 +451,9 @@
 					};
 					3ABA6C1228C6043F005AA8E4 = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					3AC3E1E628E690B800BFF455 = {
+						CreatedOnToolsVersion = 14.0.1;
 					};
 				};
 			};
@@ -380,6 +480,7 @@
 			targets = (
 				3ABA6C1228C6043F005AA8E4 /* BackgroundMaker */,
 				3A8E3A1A28E3E94E00390F8A /* BMUITester */,
+				3AC3E1E628E690B800BFF455 /* LockScreenWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -401,6 +502,14 @@
 				3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */,
 				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
 				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AC3E1E528E690B800BFF455 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AC3E1F128E690BA00BFF455 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,8 +538,7 @@
 			files = (
 				3A16865728E1FB49004090DA /* FilterModel.swift in Sources */,
 				3A17665928C9DAFF006DE579 /* ViewModel.swift in Sources */,
-				3AD12D9628CDA4C900CF431C /* MainViewController.swift in Sources */,
-				3A9EABA428E520DE00ED2BF2 /* SubmenuType.swift in Sources */,
+				3AD12D9628CDA4C900CF431C /* HomeViewController.swift in Sources */,
 				3ABA6C1B28C6043F005AA8E4 /* PhotoViewController.swift in Sources */,
 				3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */,
 				3A26150428CB7E2B000D17A3 /* TestEditImageViewController.swift in Sources */,
@@ -443,16 +551,35 @@
 				3AA33F0228CE339C004127ED /* RoundShadowView.swift in Sources */,
 				3A0F42A428C982D8002F1CAD /* BottomMenuView.swift in Sources */,
 				3AD12D9828CDA72300CF431C /* ImagePickerModel.swift in Sources */,
+				3AC3E1F428E690BA00BFF455 /* LockScreenWidget.intentdefinition in Sources */,
 				3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */,
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
+				3AC3E1E228E68A9000BFF455 /* WidgetView.swift in Sources */,
 				3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */,
 				3A420D8E28E4669000C8426D /* PhotoViewController+RulerView.swift in Sources */,
 				3A9EABB428E5C41800ED2BF2 /* PhotoViewController+Gesture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3AC3E1E328E690B800BFF455 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AC3E1EE28E690B800BFF455 /* LockScreenWidget.swift in Sources */,
+				3AC3E1F328E690BA00BFF455 /* LockScreenWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3AC3E1F628E690BA00BFF455 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AC3E1E628E690B800BFF455 /* LockScreenWidgetExtension */;
+			targetProxy = 3AC3E1F528E690BA00BFF455 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3A8E3A2828E3E94F00390F8A /* LaunchScreen.storyboard */ = {
@@ -650,6 +777,7 @@
 		3ABA6C2B28C60440005AA8E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -683,6 +811,7 @@
 		3ABA6C2C28C60440005AA8E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -707,6 +836,62 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BackgroundMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3AC3E1F928E690BA00BFF455 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZH5GA3W8UP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LockScreenWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LockScreenWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BackgroundMaker.LockScreenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3AC3E1FA28E690BA00BFF455 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZH5GA3W8UP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LockScreenWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LockScreenWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BackgroundMaker.LockScreenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -739,6 +924,15 @@
 			buildConfigurations = (
 				3ABA6C2B28C60440005AA8E4 /* Debug */,
 				3ABA6C2C28C60440005AA8E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AC3E1F828E690BA00BFF455 /* Build configuration list for PBXNativeTarget "LockScreenWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AC3E1F928E690BA00BFF455 /* Debug */,
+				3AC3E1FA28E690BA00BFF455 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

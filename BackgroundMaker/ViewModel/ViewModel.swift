@@ -66,8 +66,8 @@ struct ViewModel {
         return button
     }
     
-    func makeButtonWithImageWithTarget(image: UIImage, action: Selector, target: UIViewController
-                                       , submenuType: SubmenuType = .none) -> UIButton {
+    func makeButtonWithImageWithTarget(image: UIImage,
+                                       action: Selector, target: UIViewController) -> UIButton {
         let button = UIButton()
         target.view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
