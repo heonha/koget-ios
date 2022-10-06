@@ -41,6 +41,8 @@ class ImageViewModel {
     
     
     
+    
+    
     //MARK: - Methods
 
     /// 이미지를 업데이트 합니다.

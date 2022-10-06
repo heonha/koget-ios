@@ -2,6 +2,36 @@
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
+	<key>CFBundleURLTypes</key>
+	<array>
+		***REMOVED***
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.weizen.BackgroundMaker</string>
+			<key>CFBundleURLSchemes</key>
+			<array/>
+		***REMOVED***
+		***REMOVED***
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.weizen.BackgroundMaker</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>widget-deeplink</string>
+			</array>
+		***REMOVED***
+	</array>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>ViewIconIntent</string>
+	</array>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>ConfigurationIntent</string>
+		<string>ViewIconIntent</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	***REMOVED***
 		<key>UIApplicationSupportsMultipleScenes</key>

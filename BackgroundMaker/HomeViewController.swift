@@ -10,7 +10,6 @@ import SnapKit
 import RxSwift
 import PhotosUI
 import Lottie
-import SwiftUI
 
 /**
  `MainViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
@@ -260,10 +259,9 @@ class HomeViewController: UIViewController {
     
     @objc func presentWidgetVC() {
         
-        let widgetView = WidgetView()
-        let hosting = UIHostingController(rootView: widgetView)
-        hosting.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(hosting, animated: true)
+        let widgetVC = WidgetViewController()
+        widgetVC.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(widgetVC, animated: true)
         
     }
 }

@@ -1,0 +1,26 @@
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+	<key>NSExtension</key>
+	***REMOVED***
+		<key>NSExtensionAttributes</key>
+		***REMOVED***
+			<key>IntentsRestrictedWhileLocked</key>
+			<array/>
+			<key>IntentsRestrictedWhileProtectedDataUnavailable</key>
+			<array/>
+			<key>IntentsSupported</key>
+			<array>
+				<string>INSearchForMessagesIntent</string>
+				<string>INSetMessageAttributeIntent</string>
+				<string>ViewIconIntent</string>
+			</array>
+		***REMOVED***
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.intents-service</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>$(PRODUCT_MODULE_NAME).IntentHandler</string>
+	***REMOVED***
+***REMOVED***
+***REMOVED***
