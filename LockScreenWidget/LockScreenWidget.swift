@@ -10,8 +10,6 @@ import SwiftUI
 import Intents
 //MARK: - Protocol : Provider
 
-
-
 /// 위젯의 업데이트 시기를 WidgetKit에 알려줍니다.
 /// WidgetKit은 업데이트 시기를 Provider에 요청합니다.
 /// > WidgetKit이 요청하는 것
@@ -33,8 +31,10 @@ struct Provider: IntentTimelineProvider {
     
     /// Widget이 업데이트 될 미래 시간을 전달합니다. (미래날짜가 포함된 타임라인 엔트리배열)
     func getTimeline(for configuration: ViewIconIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
-        let selectedApp = configuration.app?.identifier
-        let entry = SimpleEntry(date: Date(), title: selectedApp ?? "swift", image: Image(selectedApp ?? "swift"))
+        let selectedApp = configuration.app?.displayString
+        let deepLink = configuration.app?.identifier
+        let entry = SimpleEntry(date: Date(), title: selectedApp ?? "swift", link: deepLink ?? "no")
+        
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
 
@@ -126,7 +126,7 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date // Widget을 rendering할 Date
     let title: String
-    var image: Image?
+    var link: String?
 }
 
 
@@ -171,9 +171,8 @@ struct LockScreenWidgetEntryView : View {
                     Image(entry.title)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .widgetURL(URL(string: "\(mainURL)\(entry.title)"))
+                        .widgetURL(URL(string: "\(mainURL)\(entry.link!)"))
             }
-            
         default:
             VStack {
                 Text("Not")
@@ -264,7 +263,7 @@ struct TestScreenWidget: Widget {
 /// 위젯 프리뷰 구성
 struct LockScreenWidget_Previews: PreviewProvider {
     static var previews: some View {
-        LockScreenWidgetEntryView(entry: SimpleEntry(date: Date(), title: "instagram", image: Image("instagram")))
+        LockScreenWidgetEntryView(entry: SimpleEntry(date: Date(), title: "instagram", link: nil))
             .previewContext(WidgetPreviewContext(family: .accessoryCircular))
     }
 }

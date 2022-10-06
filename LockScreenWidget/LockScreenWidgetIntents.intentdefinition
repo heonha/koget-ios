@@ -137,26 +137,6 @@
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
 						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${app}’.</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>ernpbr</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>DisambiguationIntroduction</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${app}’?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>FclD98</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Confirmation</string>
-						</dict>
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
@@ -202,7 +182,7 @@
 			<key>INTypeDisplayNameID</key>
 			<string>Kzz0Bj</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>109</integer>
+			<integer>110</integer>
 			<key>INTypeName</key>
 			<string>AppLinking</string>
 			<key>INTypeProperties</key>
@@ -268,6 +248,20 @@
 					<string>app</string>
 					<key>INTypePropertyTag</key>
 					<integer>106</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDisplayName</key>
+					<string>Link</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>FGyq03</string>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>6</integer>
+					<key>INTypePropertyName</key>
+					<string>link</string>
+					<key>INTypePropertyTag</key>
+					<integer>110</integer>
 					<key>INTypePropertyType</key>
 					<string>String</string>
 				</dict>

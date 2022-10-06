@@ -94,6 +94,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print("🚀 Launched from widget")
         
         guard let host = host else { return }
+        
             let url = URL(string: "\(host)://")!
             print("Scheme! -> \(host)")
 
