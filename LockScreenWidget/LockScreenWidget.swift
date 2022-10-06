@@ -24,7 +24,7 @@ struct Provider: IntentTimelineProvider {
     /// Widget의 현재상태를 전달합니다.
     /// 위젯을 추가할 때와 같이 일시적인 상황에 데이터를 전달합니다.
     func getSnapshot(for configuration: ViewIconIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry(date: Date(), title: "Snap")
+        let entry = getContext(context: context)
         completion(entry)
     }
     
@@ -33,7 +33,7 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ViewIconIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         let selectedApp = configuration.app?.displayString
         let deepLink = configuration.app?.identifier
-        let entry = SimpleEntry(date: Date(), title: selectedApp ?? "swift", link: deepLink ?? "no")
+        let entry = SimpleEntry(date: Date(), title: selectedApp ?? "plus.circle", link: deepLink ?? "no")
         
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
@@ -72,21 +72,20 @@ struct Provider: IntentTimelineProvider {
     
     
     /// 내가 만든 것!
-    // func getContext(context: Context) -> SimpleEntry {
-    //
-    //     var entry: SimpleEntry
-    //
-    //     // // 위젯 미리보기에서 어떻게 보일 것인지 설정.
-    //     // if context.isPreview {
-    //     //     entry = SimpleEntry(date: Date(), title: "Goo")
-    //     // } else {
-    //     //     entry = SimpleEntry(date: Date(), title: "")
-    //     // }
-    //
-    //     print(entry.title)
-    //
-    //     return entry
-    // }
+    func getContext(context: Context) -> SimpleEntry {
+    
+        var entry: SimpleEntry
+    
+        // 위젯 미리보기에서 어떻게 보일 것인지 설정.
+        if context.isPreview {
+            entry = SimpleEntry(date: Date(), title: "sample", link: nil)
+        } else {
+            entry = SimpleEntry(date: Date(), title: "")
+        }
+    
+    
+        return entry
+    }
     
     func selectedApp(for configuration: ViewIconIntent) -> String {
         let selected = configuration.app!.app!
@@ -167,15 +166,25 @@ struct LockScreenWidgetEntryView : View {
         
         switch family {
         case .accessoryCircular:
-            VStack {
-                    Image(entry.title)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .widgetURL(URL(string: "\(mainURL)\(entry.link!)"))
+            if entry.title == "sample" {
+                VStack(alignment: .center) {
+                        Text("바로가기 추가")
+                        .multilineTextAlignment(.center)
+                }
+            } else {
+                VStack {
+                        Image(entry.title)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .widgetURL(URL(string: "\(mainURL)\(entry.link!)"))
+                }
             }
+            
         default:
             VStack {
-                Text("Not")
+                Image("swift")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
             }
         }
 
