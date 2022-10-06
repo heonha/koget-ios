@@ -133,7 +133,7 @@ func provideAppOptionsCollection(for intent: ViewIconIntent, searchTerm: String?
 
     let avaliableApps = AppList.shared.app
         let apps: [AppLinking] = avaliableApps.map { app in
-            let app = AppLinking(identifier: app, display: app)
+            let app = AppLinking(identifier: app.deepLink, display: app.name)
             return app
         }
         

@@ -25,11 +25,8 @@ class WidgetViewController: UIViewController {
     //MARK: - Properties
     
     var icons: [Icon] = [
-        Icon(imageName: "mainBG"),
-        Icon(imageName: "Test2"),
-        Icon(imageName: "crop"),
         Icon(imageName: "youtube")
-
+        
     ]
     
     let linkLabel: UILabel = {
