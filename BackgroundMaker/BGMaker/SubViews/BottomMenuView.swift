@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import ChameleonFramework
 
 /**
  `BottomMenuView는 PhotoVC의 하단 편집 메뉴를 구성합니다.`
@@ -28,7 +29,7 @@ class BottomMenuView: UIView {
     lazy var centerStackView = makeStackView()
     lazy var rightStackView = makeStackView()
     lazy var leftStackView = makeStackView()
-
+    
     var viewHeight: CGFloat?
     var rightButtonCount: CGFloat?
     var centerButtonCount: CGFloat?
@@ -36,7 +37,7 @@ class BottomMenuView: UIView {
     var backgroundAlphaValue: CGFloat?
     
     /// 현재 뷰를 초기화합니다.
-    init(height: CGFloat, rightBtnCount: CGFloat = 0, centerBtnCount: CGFloat = 0, leftBtnCount: CGFloat = 0, backgroundAlpha: CGFloat = 0.2) {
+    init(height: CGFloat, rightBtnCount: CGFloat = 0, centerBtnCount: CGFloat = 0, leftBtnCount: CGFloat = 0, backgroundAlpha: CGFloat = 0.2, title: String = "") {
         let screenSize = UIScreen.main.bounds
         
         self.rightButtonCount = rightBtnCount
@@ -44,15 +45,41 @@ class BottomMenuView: UIView {
         self.leftButtonCount = leftBtnCount
         self.viewHeight = height
         self.backgroundAlphaValue = backgroundAlpha
+        
         super.init(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: height))
         
         setupBackgroundView(view: backgroundView)
         setupViewAlphaValue(view: backgroundView, alpha: backgroundAlphaValue!)
         backgroundView.backgroundColor = .systemBackground
         setupContentView(view: contentView)
-        
         stackViewLayout()
         
+        if title != "" {
+            // makeTitleView(view: titleView, title: "테스트")
+            
+            let titleLabel: UILabel = {
+                let label = UILabel()
+                label.translatesAutoresizingMaskIntoConstraints = false
+                label.text = title
+                label.adjustsFontSizeToFitWidth = true
+                label.textAlignment = .left
+                label.textColor = UIColor.systemBlue
+                label.font = .systemFont(ofSize: 15, weight: .bold)
+                
+                return label
+            }()
+            
+            leftStackView.addArrangedSubview(titleLabel)
+            leftStackView.alignment = .top
+            leftStackView.alpha = 0.5
+            
+            leftStackView.snp.remakeConstraints { make in
+                make.bottom.centerY.equalTo(contentView)
+                make.leading.equalToSuperview().inset(10)
+                make.width.equalTo(80)
+
+            }
+        }
         
         
     }
@@ -101,6 +128,29 @@ class BottomMenuView: UIView {
             make.edges.equalToSuperview()
         }
     }
+    
+    
+    
+    ///
+    func makeTitleView(view: UIView, title: String) {
+        self.addSubview(view)
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = title
+        label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
+        label.font = .systemFont(ofSize: 15, weight: .bold)
+        
+        view.backgroundColor = .blue
+        
+        view.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(self)
+            make.bottom.equalTo(centerStackView.snp.top)
+            make.height.equalTo(30)
+        }
+    }
+    
     
     /// 뷰의 배경색이 투명하도록 설정합니다.
     func setupViewAlphaValue(view: UIView, alpha: CGFloat) {

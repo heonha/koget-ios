@@ -15,12 +15,12 @@ extension PhotoViewController {
     
 
     /// `배경화면 편집` 버튼을 누르면 생성되는 Subview를 구성합니다.
-    func makeBGEditView() {
+    func makeBGEditView(view bgView: BottomMenuView) {
         
-        view.addSubview(bgSubview)
-        bgSubview.isHidden = true
+        view.addSubview(bgView)
+        bgView.isHidden = true
         
-        bgSubview.snp.makeConstraints { make in
+        bgView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(trayView.snp.top)
         }
@@ -45,16 +45,17 @@ extension PhotoViewController {
             return button
         }()
         
-
-        
-        bgSubview.centerStackView.addArrangedSubview(bgMenuButton)
-        bgSubview.centerStackView.addArrangedSubview(bgColorButton)
+        bgView.centerStackView.addArrangedSubview(bgMenuButton)
+        bgView.centerStackView.addArrangedSubview(bgColorButton)
 
 
     }
     
     /// `배경화면 블러` 액션
     @objc func bgBlurAction(sender: UIButton) {
+        if self.colorSlider.isHidden == false {
+            self.colorSlider.isHidden = true
+        }
         
         sender.showAnimation {
             ImageViewModel.shared.editingPhotoSubject
@@ -70,10 +71,18 @@ extension PhotoViewController {
     @objc func bgColorAction(sender: UIButton) {
         
         sender.showAnimation {
-            let screenSize = UIScreen.main.bounds
-            let image = UIColor.black.image(CGSize(width: screenSize.width, height: screenSize.height))
-            ImageViewModel.shared.backgroundPhotoSubject.onNext(image)
+
+            if self.colorSlider.isHidden == true {
+                ImageViewModel.shared.backgroundPhotoSubject.onNext(nil)
+                self.colorSlider.isHidden = false
+            } else {
+                self.colorSlider.isHidden = true
+            }
+                
+
         }
+        
+        
     }
 
         

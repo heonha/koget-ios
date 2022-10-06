@@ -52,6 +52,22 @@ struct ViewModel {
         return button
     }
     
+    func makeButtonWithTitleAndTarget(title: String, action: Selector, target: UIViewController,
+                             backgroundColor: UIColor = .clear, isEnabled: Bool = true) -> UIButton {
+        let button = UIButton()
+        target.view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.label, for: .normal)
+        button.backgroundColor = backgroundColor
+        button.isEnabled = isEnabled
+        button.addTarget(target, action: action, for: .touchDown)
+        makeLayerShadow(to: button.layer)
+
+        return button
+    }
+    
+    
     /// 이미지가 있는 UIButton을 만듭니다.
     func makeButtonWithImage(image: UIImage, action: UIAction, target: UIViewController) -> UIButton {
         let button = UIButton()
@@ -131,6 +147,13 @@ struct ViewModel {
             function
         }
         return action
+    }
+    
+    
+    //MARK: - UIView + Utils
+    func cropCornerRadius(view: UIView, radius: CGFloat = 10) {
+        view.layer.cornerRadius = radius
+        view.clipsToBounds = true
     }
     
 }

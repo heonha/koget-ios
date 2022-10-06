@@ -13,6 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        // maybeOpenedFromWidget(urlContexts: connectionOptions.urlContexts, scheme: nil)
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .systemBackground
@@ -57,7 +59,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
     }
+    
+    //MARK: - Depp Link
+    
+    // 앱이 위젯을 통해 열렸는지 확인 하고 URL을 전달합니다.
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+     
+        /*
+         <scheme>://<host>
+         starbucks://home
+         starbucks://scan
+         */
+        var url: URL?
+        var host: String?
+        
+        print("URL Context : \(URLContexts.first!)")
+        
+        for context in URLContexts {
+            print("url: \(context.url.absoluteURL)")
+            url = context.url.absoluteURL
+            print("scheme: \(context.url.scheme)")
+            print("host: \(context.url.host)")
+            host = context.url.host!
+            print("path: \(context.url.path)")
+            print("components: \(context.url.pathComponents)")
+        }
+        
+        maybeOpenedFromWidget(urlContexts: URLContexts, host: host)
+    }
+
+    /// 위젯 scheme을 확인하고 deepLink를 엽니다.
+    private func maybeOpenedFromWidget(urlContexts: Set<UIOpenURLContext>, host: String?) {
+        guard let _: UIOpenURLContext = urlContexts.first(where: { $0.url.scheme == "widget-deeplink"}) else { return }
+        print("🚀 Launched from widget")
+        
+        guard let host = host else { return }
+            let url = URL(string: "\(host)://")!
+            print("Scheme! -> \(host)")
+
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
 
 
 }
+
 
