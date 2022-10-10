@@ -133,6 +133,16 @@ class PhotoViewController: UIViewController {
             forImageIn: .selected)
         button.adjustsImageWhenHighlighted = false
         button.imageView?.animationDuration = 0
+        
+        // let blur = UIAction(title: "배경 흐리게" ,image: UIImage(systemName: "drop")) { (action) in
+        //     self.bgBlurAction(sender: button)
+        // }
+        // 
+        // let color = UIAction(title: "배경 색상 변경" ,image: UIImage(systemName: "paintpalette")) { (action) in
+        //     self.bgColorAction(sender: button)
+        // }
+        // 
+        // let actions = ViewModel.shared.makeMenuButton(button: button, actions: [blur, color])
 
         return button
     }()

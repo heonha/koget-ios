@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 101
         stackView.distribution = .fill
         stackView.alignment = .fill
         return stackView
@@ -230,9 +230,6 @@ class HomeViewController: UIViewController {
             make.height.equalTo(UIScreen.main.bounds.height / 7)
         }
         
-        
-        
-        
         view.addSubview(button)
         button.snp.makeConstraints { make in
             make.leading.trailing.equalTo(stackView)
@@ -240,7 +237,6 @@ class HomeViewController: UIViewController {
             make.bottom.equalTo(stackView).offset(50)
 
         }
-        
     }
     
     private func setBackgroundImg() {

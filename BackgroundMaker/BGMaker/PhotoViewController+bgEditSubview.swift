@@ -64,26 +64,23 @@ extension PhotoViewController {
                     ImageViewModel.shared.backgroundPhotoSubject.onNext(bluredImage)
                 }.dispose()
         }
-        
     }
     
     /// `배경화면 컬러` 액션
     @objc func bgColorAction(sender: UIButton) {
         
         sender.showAnimation {
-
             if self.colorSlider.isHidden == true {
                 ImageViewModel.shared.backgroundPhotoSubject.onNext(nil)
                 self.colorSlider.isHidden = false
             } else {
                 self.colorSlider.isHidden = true
             }
-                
-
         }
-        
+    }
+    
+    @objc func nilAction() {
         
     }
 
-        
 }

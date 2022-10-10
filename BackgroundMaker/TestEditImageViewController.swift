@@ -46,7 +46,6 @@ class TestEditImageViewController: UIViewController {
         guard let imageSize = imageSize else {return}
         let screenSize = view.frame.size
         
-        
         // 스크린 사이즈에 따라서 높이
         // imageWidth : imageHeight = screenWidth : x
         // x = imageHeight * screenWidth / imageWidth

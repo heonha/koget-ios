@@ -43,21 +43,43 @@ class WidgetTestVC: UIViewController {
         return button
     }()
     
-    let checkButton: UIButton = {
+    lazy var checkButton: UIButton = {
+        
+        // let v = MyControl()
+        // v.isContextMenuInteractionEnabled = true
+        // v.showsMenuAsPrimaryAction = true
+        // v.frame = CGRect(x: 100, y: 100, width: 200, height: 100)
+        // v.backgroundColor = .red
+        // self.view.addSubview(v)
+        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Deep", for: .normal)
+        button.setImage(.checkmark, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 8
         button.backgroundColor = .systemGreen
+        // button.addTarget(self, action: #selector(deeplinkAction), for: .touchDown)
+    
+        let actionOne = UIAction(title: "A1") { (action) in
+            print("A1")
+        }
+        
+        let actionTwo = UIAction(title: "A2") { (action) in
+            print("A2")
+        }
+        
+        button.showsMenuAsPrimaryAction = true
+        button.menu = UIMenu(options: .displayInline, children: [])
+        button.addAction(UIAction { [weak button] (action) in
+           button?.menu = button?.menu?.replacingChildren([actionOne, actionTwo])
+        }, for: .menuActionTriggered)
 
-        
-        button.addTarget(self, action: #selector(deeplinkAction), for: .touchDown)
-        
         return button
     }()
+    
     
     let plistCheckLabel: UITextField = {
         let textField = UITextField()
@@ -125,8 +147,6 @@ class WidgetTestVC: UIViewController {
             make.width.equalTo(120)
             make.height.equalTo(30)
         }
-        
-        
     }
     
     @objc func setSharedValueButtonPressed(_ sender: Any) {
@@ -220,5 +240,19 @@ class WidgetTestVC: UIViewController {
     @objc func deeplinkAction() {
         let url = URL(string: "youtube://")!
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+}
+
+
+class MyControl : UIControl {
+    override func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in
+            let act = UIAction(title: "Red") { action in  }
+            let act2 = UIAction(title: "Green") { action in  }
+            let act3 = UIAction(title: "Blue") { action in  }
+            let men = UIMenu(children: [act, act2, act3])
+            return men
+        })
+        return config
     }
 }

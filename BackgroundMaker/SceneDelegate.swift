@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainViewController = HomeViewController()
         let mainNavigationController = UINavigationController(rootViewController: mainViewController)
 
-        window?.rootViewController = mainNavigationController
+        window?.rootViewController = WidgetTestVC()
         window?.makeKeyAndVisible()
         
         // 이 메소드를 사용하여 UIWindow `window`를 선택적으로 구성하고 제공된 UIWindowScene `scene`에 연결합니다.
