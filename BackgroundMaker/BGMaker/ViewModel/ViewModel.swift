@@ -149,11 +149,24 @@ struct ViewModel {
         return action
     }
     
+
+    
     
     //MARK: - UIView + Utils
     func cropCornerRadius(view: UIView, radius: CGFloat = 10) {
         view.layer.cornerRadius = radius
         view.clipsToBounds = true
+    }
+    
+    
+    func makeMenuButton(button: UIButton, actions: [UIAction]) {
+        
+        button.showsMenuAsPrimaryAction = true
+        button.menu = UIMenu(options: .displayInline, children: [])
+        button.addAction(UIAction { [weak button] (action) in
+            button?.menu = button?.menu?.replacingChildren(actions)
+        }, for: .menuActionTriggered)
+        
     }
     
 }

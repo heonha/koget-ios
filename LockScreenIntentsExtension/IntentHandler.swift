@@ -126,27 +126,45 @@ class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessag
 }
 
 
-extension IntentHandler: ViewIconIntentHandling {
 
+//MARK: - ViewIcon Intent Handling
 
-func provideAppOptionsCollection(for intent: ViewIconIntent, searchTerm: String?, with completion: @escaping (INObjectCollection<AppLinking>?, Error?) -> Void) {
+extension IntentHandler: DeepLinkAppIntentHandling {
+    /// 위젯 데이터를 가져오고 배열로 만듭니다.
 
+    func provideAppOptionsCollection(for intent: DeepLinkAppIntent, searchTerm: String?, with completion: @escaping (INObjectCollection<AppDefinition>?, Error?) -> Void) {
+
+    // MARK: 데이터의 흐름
+    // AppInfo : 딥링크 할 앱의 데이터
+    // AppList : AppInfo의 Array
+    // AppDefinition(Type, intentDefinition)
+    // AppInfo -> AppDefinition으로 데이터를 전달한다.
+    // 데이터의 전달은 DeepLinkAppIntentHandling 프로토콜의 provideAppOptionsCollection 메소드를 통해 전달한다.
+    
     let avaliableApps = AppList.shared.app
-        let apps: [AppLinking] = avaliableApps.map { app in
-            let app = AppLinking(identifier: app.deepLink, display: app.name)
-            return app
+    
+        /// AppInfo Data를 AppDefinition에 mapping 하여 만든 배열
+        let apps: [AppDefinition] = avaliableApps.map { apps in
+            
+            /// 위젯에 필수적으로 전달해야할 데이터이다.
+            /// UUID와 위젯편집 시 리스트에 표현될 이름으로 구성된다.
+            let item = AppDefinition(
+                identifier: apps.id.uuidString, // 고유 식별자 지정
+                display: apps.name // 위젯 편집창에서 표현할 이름
+            )
+            
+            // 아래는 위젯에 추가로 전달할 데이터이다.
+            item.imageName = apps.imageName // 위젯에 표시할 이미지이름
+            item.deepLink = apps.deepLink // 딥링크 주소
+            
+            return item
         }
         
-        let collection = INObjectCollection<AppLinking>(items: apps)
+        /// 위 apps 배열을 INObjectCollection의 아이템으로 정의해준다.
+        let collection = INObjectCollection<AppDefinition>(items: apps)
+        
+        /// 위에서 정의한 위젯 INObjectCollection 컬렉션을 completion 으로 전달한다.
         completion(collection, nil)
     }
-
-
-    // func defaultApp(for intent: ViewIconIntent) -> AppLinking? {
-    //     let apps = AppLinking(identifier: "FirstID", display: "FirstDisplay")
-    //     
-    //     return apps
-    // }
-    
     
 }

@@ -62,11 +62,8 @@ extension PhotoViewController: RulerDelegate {
         }()
         
         mainView.addSubview(titleLabel)
-            
-            
 
     }
-    
     
     /// 블러버튼을 눌렀을 때의 동작입니다.
     func imageBlurAction() {
@@ -100,5 +97,4 @@ extension PhotoViewController: RulerDelegate {
             ImageEditModel.shared.makeImageRoundBlur(imageView: self.mainImageView, insetY: 0)
         }
     }
-    
 }

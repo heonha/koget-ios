@@ -8,11 +8,12 @@
 import UIKit
 import SnapKit
 
+/// 위젯 아이콘을 담고 있는 CollectionView Cell
 class WidgetIconCell: UICollectionViewCell {
     
     //MARK: - Properties
     
-    static let reuseID = "WidgetIconCell"
+    static let reuseID = Constants.reuseID_WidgetIconCell
     
     //MARK: - Init
     

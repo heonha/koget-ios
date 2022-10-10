@@ -7,12 +7,12 @@
 		<key>BMUITester.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>7</integer>
 		***REMOVED***
 		<key>BackgroundMaker.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>4</integer>
 		***REMOVED***
 		<key>LockScreenIntent.xcscheme_^#shared#^_</key>
 		***REMOVED***
@@ -27,12 +27,12 @@
 		<key>LockScreenIntentsExtension.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>5</integer>
 		***REMOVED***
 		<key>LockScreenWidgetExtension.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>6</integer>
 		***REMOVED***
 		<key>Rx (Playground) 1.xcscheme</key>
 		***REMOVED***

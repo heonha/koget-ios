@@ -1,13 +1,13 @@
 //
-//  DeepLinkViewController.swift
+//  FailLinkViewController.swift
 //  BackgroundMaker
 //
-//  Created by HeonJin Ha on 2022/09/30.
+//  Created by HeonJin Ha on 2022/10/09.
 //
 
 import UIKit
 
-class DeepLinkViewController: UIViewController {
+class FailLinkViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -26,8 +26,6 @@ class DeepLinkViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .systemTeal
-        
-
     }
     
 }
