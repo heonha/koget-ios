@@ -7,13 +7,6 @@
 
 import Foundation
 
-let APP_GROUP_ID = "group.ZH5GA3W8UP.com.weizen.BackgroundMaker"
-
-
-
-
-
-
 struct Constants {
     
     //MARK: - 공통 변수

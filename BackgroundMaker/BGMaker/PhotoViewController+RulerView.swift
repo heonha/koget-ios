@@ -52,9 +52,9 @@ extension PhotoViewController: RulerDelegate {
         let titleLabel: UILabel = {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = " 상하단 흐리게"
+            label.text = " 상하단 흐림"
             label.adjustsFontSizeToFitWidth = true
-            label.textColor = UIColor.systemBlue
+            label.textColor = UIColor.white
             label.font = .systemFont(ofSize: 15, weight: .bold)
             label.alpha = 0.5
             
@@ -65,11 +65,8 @@ extension PhotoViewController: RulerDelegate {
 
     }
     
-    /// 블러버튼을 눌렀을 때의 동작입니다.
+    /// 상하단 블러버튼을 눌렀을 때의 동작입니다.
     func imageBlurAction() {
-        
-        edgeBlurSliderView.isHidden = !blurButton.isSelected
-        // self.isBlured = !self.isBlured // 토글
 
         if edgeBlurSliderView.isHidden == false {
             edgeBlurSliderView.alpha = 0

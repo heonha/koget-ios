@@ -82,22 +82,25 @@ struct ViewModel {
         return button
     }
     
+    /// 이미지와 타겟이 있는 버튼
     func makeButtonWithImageWithTarget(image: UIImage,
-                                       action: Selector, target: UIViewController) -> UIButton {
+                                       action: Selector?, target: UIViewController) -> UIButton {
         let button = UIButton()
         target.view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
         button.setImage(image.withTintColor(.yellow, renderingMode: .alwaysOriginal), for: .selected)
 
-        button.addTarget(target, action: action, for: .touchDown)
+        if let actionCheck = action {
+            button.addTarget(target, action: action!, for: .touchDown)
+        }
 
-        makeLayerShadow(to: button.layer)
+        makeLayerShadow(to: button.layer) // 그림자 추가
         
         return button
     }
     
-    // 버튼의 그림자를 만듭니다.
+    /// 버튼의 그림자를 만듭니다.
     func makeLayerShadow(to layer: CALayer) {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -159,14 +162,14 @@ struct ViewModel {
     }
     
     
-    func makeMenuButton(button: UIButton, actions: [UIAction]) {
+    func makeMenuButton(button: UIButton, actions: [UIAction], title: String) {
         
         button.showsMenuAsPrimaryAction = true
-        button.menu = UIMenu(options: .displayInline, children: [])
+        button.menu = UIMenu(title: title, options: .displayInline, children: [])
         button.addAction(UIAction { [weak button] (action) in
             button?.menu = button?.menu?.replacingChildren(actions)
+            
         }, for: .menuActionTriggered)
-        
     }
     
 }

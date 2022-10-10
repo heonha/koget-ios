@@ -13,11 +13,11 @@ import ChameleonFramework
 /// Color Pallet 를 담고있는 View 입니다.
 class ColorPickerView: UIView {
     
-    
     var viewWidth: CGFloat!
     var viewHeight: CGFloat!
     var target: UIViewController!
     
+    var backgroundView = UIView()
     var contentView: UIView = UIView()
     var colorSlider = UIView()
     
@@ -26,12 +26,9 @@ class ColorPickerView: UIView {
     
     var firstColor = UIView()
     
-    init(width: CGFloat = 100, height: CGFloat = 30, target: UIViewController) {
-        self.viewWidth = width
-        self.viewHeight = height
+    init(target: UIViewController) {
         self.target = target
-        super.init(frame: CGRect(x: 0, y: 0, width: width, height: height) )
-        makeColorSlider()
+        super.init(frame: .zero)
     }
     
     required init?(coder: NSCoder) {
@@ -39,7 +36,15 @@ class ColorPickerView: UIView {
     }
     
     override func layoutSubviews() {
-        // makeColorSlider()
+        addSubview(backgroundView)
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.backgroundColor = .black
+        backgroundView.alpha = 0.3
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        makeColorSlider()
+
     }
     
     private func makeColorSlider() {
@@ -57,8 +62,6 @@ class ColorPickerView: UIView {
         }()
         
         addSubview(stackView)
-        
-  
         
         var imageColors = UIColor()
         

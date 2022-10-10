@@ -1,5 +1,5 @@
 //
-//  PhotoViewController+bgColorSliderView.swift
+//  PhotoViewController+bgColorPickerView.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/10/03.
@@ -10,18 +10,18 @@ import SnapKit
 
 extension PhotoViewController {
 
-    //MARK: - ColorSlider 셋업
+    //MARK: - ColorPicker 셋업
 
-    func makeBGColorSlider() {
+    
+    func makeBGColorPicker() {
         
-        view.addSubview(colorSlider)
-        colorSlider.translatesAutoresizingMaskIntoConstraints = false
-        colorSlider.isHidden = true
-        colorSlider.snp.makeConstraints { make in
+        view.addSubview(colorPickerView)
+        colorPickerView.translatesAutoresizingMaskIntoConstraints = false
+        colorPickerView.isHidden = true
+        colorPickerView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view)
-            make.bottom.equalTo(bgSubview.snp.top).offset(-10)
-            make.height.equalTo(30)
-
+            make.bottom.equalTo(trayView.snp.top)
+            make.height.equalTo(50)
         }
     }
 
