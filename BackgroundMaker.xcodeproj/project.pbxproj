@@ -15,6 +15,8 @@
 		3A20984228EBDCC90032FD78 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A20984128EBDCC90032FD78 /* WidgetView.swift */; };
 		3A20984428EBE3B50032FD78 /* WidgetIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A20984328EBE3B50032FD78 /* WidgetIconCell.swift */; };
 		3A26150428CB7E2B000D17A3 /* TestEditImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26150328CB7E2B000D17A3 /* TestEditImageViewController.swift */; };
+		3A2F307728F4134D00404721 /* UIButton+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307628F4134D00404721 /* UIButton+UILabel.swift */; };
+		3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
 		3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3A3C118E28EDB1B700C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3A3C119428EDB4B800C9CCED /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A94E19D28EC1B950050EE80 /* Intents.framework */; };
@@ -139,6 +141,8 @@
 		3A20984128EBDCC90032FD78 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		3A20984328EBE3B50032FD78 /* WidgetIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIconCell.swift; sourceTree = "<group>"; };
 		3A26150328CB7E2B000D17A3 /* TestEditImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEditImageViewController.swift; sourceTree = "<group>"; };
+		3A2F307628F4134D00404721 /* UIButton+UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+UILabel.swift"; sourceTree = "<group>"; };
+		3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
 		3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = LockScreenWidgetIntents.intentdefinition; sourceTree = "<group>"; };
 		3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenIntentsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3C119628EDB4B800C9CCED /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
@@ -279,6 +283,7 @@
 				3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */,
 				3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */,
 				3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */,
+				3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */,
 			);
 			path = "Extension+Utils";
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 				3A42851028E9D7CE001C7032 /* ColorPickerView.swift */,
 				3AC8E70228EA95F60086B8D4 /* ColorPalletView.swift */,
 				3A559C7128EB21DB00D5D9E4 /* MenuAnimation.swift */,
+				3A2F307628F4134D00404721 /* UIButton+UILabel.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -804,6 +810,8 @@
 				3A20983D28EBCF0F0032FD78 /* WidgetTestVC.swift in Sources */,
 				3A16865728E1FB49004090DA /* FilterModel.swift in Sources */,
 				3A42851528EA7B8E001C7032 /* PhotoViewController+bgColorSliderView.swift in Sources */,
+				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,
+				3A2F307728F4134D00404721 /* UIButton+UILabel.swift in Sources */,
 				3A17665928C9DAFF006DE579 /* ViewModel.swift in Sources */,
 				3A20984228EBDCC90032FD78 /* WidgetView.swift in Sources */,
 				3AD12D9628CDA4C900CF431C /* HomeViewController.swift in Sources */,
@@ -1139,7 +1147,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1174,7 +1182,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

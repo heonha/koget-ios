@@ -21,10 +21,10 @@ class BottomMenuView: UIView {
     
     /// 뷰의 배경 레이어 입니다. 컨텐츠와 같이 투명해지지 않도록 배경을 분리합니다.
     let backgroundView = UIView()
-
+    
     /// 뷰의 컨텐츠가 들어갈 뷰입니다.
     let contentView = UIView()
-
+    
     /// 기능 버튼이 들어갈 스택뷰입니다.
     lazy var centerStackView = makeStackView()
     lazy var rightStackView = makeStackView()
@@ -75,9 +75,9 @@ class BottomMenuView: UIView {
             
             leftStackView.snp.remakeConstraints { make in
                 make.bottom.centerY.equalTo(contentView)
-                make.leading.equalToSuperview().inset(10)
+                make.leading.equalTo(contentView).inset(10)
                 make.width.equalTo(80)
-
+                
             }
         }
         
@@ -95,18 +95,18 @@ class BottomMenuView: UIView {
         return CGSize(width: screenSize.width, height: viewHeight!)
     }
     
-
     
-
+    
+    
     //MARK: - Layout Subview
     override func layoutSubviews() {
         super.layoutSubviews()
         
-
+        
     }
     
     //MARK: END Layout Subview -
-
+    
     /// 컨텐츠의 배경 뷰를 만듭니다.
     func setupBackgroundView(view: UIView) {
         self.addSubview(view)
@@ -116,17 +116,34 @@ class BottomMenuView: UIView {
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-    }
+        
 
+    }
+    
     /// 컨텐츠를 표현할 뷰를 만듭니다.
     func setupContentView(view: UIView) {
         self.addSubview(view)
         
         view.backgroundColor = .clear
         
-        view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+
+        
+        if UIDevice.current.isiPhoneWithNotch {
+            // 노치 있는 아이폰
+            view.snp.makeConstraints { make in
+                make.top.leading.trailing.equalToSuperview().inset(4)
+                make.bottom.equalToSuperview().inset(16)
+            }
+            
+            
+        } else {
+            // 노치 없는 아이폰
+            
+            view.snp.makeConstraints { make in
+                make.edges.equalToSuperview().inset(8)
+            }
         }
+        
     }
     
     
@@ -156,7 +173,7 @@ class BottomMenuView: UIView {
     func setupViewAlphaValue(view: UIView, alpha: CGFloat) {
         view.alpha = alpha
     }
-
+    
     /// 기능버튼이 들어갈 스택뷰를 구성합니다.
     func makeStackView() -> UIStackView {
         let stackView = UIStackView()
@@ -174,13 +191,14 @@ class BottomMenuView: UIView {
     
     func stackViewLayout() {
         
-        let buttonWidth: CGFloat = 50
-        
+        let buttonWidth: CGFloat = 60
         
         centerStackView.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView)
+            
+            make.top.equalTo(contentView).inset(4)
+            make.bottom.equalTo(contentView).inset(4)
             make.centerY.equalTo(contentView)
-
+            
             make.centerX.equalToSuperview()
             make.width.equalTo( centerButtonCount! * buttonWidth )
         }
@@ -188,7 +206,7 @@ class BottomMenuView: UIView {
         rightStackView.snp.makeConstraints { make in
             make.bottom.equalTo(contentView)
             make.centerY.equalTo(contentView)
-
+            
             make.trailing.equalToSuperview().inset(10)
             make.width.equalTo( rightButtonCount! * buttonWidth )
         }
@@ -196,10 +214,11 @@ class BottomMenuView: UIView {
         leftStackView.snp.makeConstraints { make in
             make.bottom.equalTo(contentView)
             make.centerY.equalTo(contentView)
-
+            
             make.leading.equalToSuperview().inset(10)
             make.width.equalTo( leftButtonCount! * buttonWidth )
-
+            
         }
     }
 }
+

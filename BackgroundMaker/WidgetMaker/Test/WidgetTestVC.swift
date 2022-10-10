@@ -27,18 +27,34 @@ class WidgetTestVC: UIViewController {
         return button
     }()
     
-    let loadButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("LOAD", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.borderWidth = 2
-        button.layer.cornerRadius = 8
-        button.backgroundColor = .systemPink
-
+    let loadButton: MyButton = {
+        // let button = UIButton()
+        // button.translatesAutoresizingMaskIntoConstraints = false
+        // button.setTitle("LOAD", for: .normal)
+        // button.setTitleColor(.white, for: .normal)
+        // button.layer.borderColor = UIColor.white.cgColor
+        // button.layer.borderWidth = 2
+        // button.layer.cornerRadius = 8
+        // button.backgroundColor = .systemPink
+        //
+        //
+        // button.addTarget(self, action: #selector(loadPreferenceValue), for: .touchDown)
+        //
         
-        button.addTarget(self, action: #selector(loadPreferenceValue), for: .touchDown)
+        let action = UIAction { (action) in
+            
+            if UIDevice.current.isiPhoneWithNotch {
+                print("노치 있는 아이폰!!")
+
+            } else {
+                print("노치 없는 아이폰!!")
+
+            }
+            
+            
+        }
+        
+        let button = MyButton(size: CGSize(width: 50, height: 50), image: UIImage(systemName: "drop")!, title: "드롭", action: action )
         
         return button
     }()
@@ -126,8 +142,8 @@ class WidgetTestVC: UIViewController {
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(40)
 
-            make.width.equalTo(120)
-            make.height.equalTo(30)
+            make.width.equalTo(50)
+            make.height.equalTo(50)
         }
         
         view.addSubview(checkButton)

@@ -69,7 +69,7 @@ class PhotoViewController: UIViewController {
     //MARK: - [Properties] Tray View
     /// `Tray View` : 기능버튼들이 들어갈 하단 뷰입니다.
     lazy var trayView: BottomMenuView = {
-        let bottomView = BottomMenuView(height: 70, rightBtnCount: 1, centerBtnCount: 2, leftBtnCount: 1)
+        let bottomView = BottomMenuView(height: 90, rightBtnCount: 1, centerBtnCount: 2, leftBtnCount: 1)
         return bottomView
     }()
     
@@ -78,10 +78,10 @@ class PhotoViewController: UIViewController {
     lazy var edgeBlurSliderView: UIView = UIView()
     
     /// 백그라운드
-    lazy var bgSubview = BottomMenuView(height: 50, centerBtnCount: 2, leftBtnCount: 1, backgroundAlpha: 0.4, title: "뒷배경 선택")
+    lazy var bgSubview = BottomMenuView(height: 50, centerBtnCount: 0, leftBtnCount: 0, backgroundAlpha: 0, title: "")
     
     /// 백그라운드 컬러 슬라이더
-    lazy var colorSlider = ColorPickerView(width: view.frame.width - 10, target: self)
+    lazy var colorPickerView = ColorPickerView(target: self)
     
     
     /// `제스쳐` : Tray View의 중앙 인식을 위한 포인터입니다.
@@ -108,41 +108,46 @@ class PhotoViewController: UIViewController {
     }()
     
     /// `블러` 버튼
-    lazy var blurButton: UIButton = {
+    lazy var blurButton: MyButton = {
+        
+        let action = UIAction { action in
+            
+        }
+        
+        let button = MyButton(size: .zero, image: UIImage(systemName: "photo")!.withTintColor(.white, renderingMode: .alwaysOriginal), title: "사진편집", action: action, backgroundColor: .clear)
+        button.setTitleColor(color: .white)
+        
+        let blur = UIAction(title: "상하단 흐림효과" ,image: UIImage(systemName: "drop")) { (action) in
+            self.hideOtherEditView(selectedView: self.edgeBlurSliderView)
+            self.blurAction()
+        }
+        
+        let actions = ViewModel.shared.makeMenuButton(button: button.button, actions: [blur], title: button.label.text!)
 
-        let blurImage = UIImage(systemName: "drop.circle")!
-        let button = viewModel.makeButtonWithImageWithTarget(image: blurImage, action: #selector(blurAction), target: self)
-        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25), forImageIn: .normal)
-        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25), forImageIn: .selected)
-        button.adjustsImageWhenHighlighted = false
+        
 
         return button
     }()
     
     /// `백그라운드 편집` 버튼
-    lazy var changeBGButton: UIButton = {
+    lazy var changeBGButton: MyButton = {
         
-        let changeBGButtonImage = UIImage(systemName: "square.3.layers.3d.down.left")!
-        let button = ViewModel.shared.makeButtonWithImageWithTarget(
-            image: changeBGButtonImage, action: #selector(changeBGButtonAction), target: self)
-        button.setPreferredSymbolConfiguration(
-            UIImage.SymbolConfiguration(pointSize: 25),
-            forImageIn: .normal)
-        button.setPreferredSymbolConfiguration(
-            UIImage.SymbolConfiguration(pointSize: 25),
-            forImageIn: .selected)
-        button.adjustsImageWhenHighlighted = false
-        button.imageView?.animationDuration = 0
+        let action = UIAction { action in
+            self.hideOtherEditView(selectedView: self.bgSubview)
+        }
         
-        // let blur = UIAction(title: "배경 흐리게" ,image: UIImage(systemName: "drop")) { (action) in
-        //     self.bgBlurAction(sender: button)
-        // }
-        // 
-        // let color = UIAction(title: "배경 색상 변경" ,image: UIImage(systemName: "paintpalette")) { (action) in
-        //     self.bgColorAction(sender: button)
-        // }
-        // 
-        // let actions = ViewModel.shared.makeMenuButton(button: button, actions: [blur, color])
+        let button = MyButton(size: .zero, image: UIImage(systemName: "square.3.layers.3d.down.left")!.withTintColor(.white, renderingMode: .alwaysOriginal), title: "배경 편집", action: action, backgroundColor: .clear)
+        button.setTitleColor(color: .white)
+        
+        let blur = UIAction(title: "흐린 이미지 배경", image: UIImage(systemName: "drop"), state: .on) { (action) in
+            self.bgBlurAction(sender: button.button)
+        }
+        
+        let color = UIAction(title: "단색 배경", image: UIImage(systemName: "paintpalette")) { (action) in
+            self.bgColorAction(sender: button.button)
+        }
+        
+        let actions = ViewModel.shared.makeMenuButton(button: button.button, actions: [blur, color], title: button.label.text!)
 
         return button
     }()
@@ -154,8 +159,6 @@ class PhotoViewController: UIViewController {
     //MARK: 인디케이터
     /// 이미지가 로딩되는 동안 표시할 인디케이터뷰 입니다.
     var loadingIndicatorView = AnimationView()
-
-    
     
     //MARK: END 기타 기능을 위한 프로퍼티 -
     
@@ -203,7 +206,7 @@ class PhotoViewController: UIViewController {
             self.makeTrayView() // 트레이 뷰 띄우기
             self.makeBlurSubview(view: edgeBlurSliderView) // 엣지 블러 슬라이더뷰 셋업
             self.makeBGEditView(view: bgSubview) // 배경화면 편집 서브뷰 셋업
-            self.makeBGColorSlider()
+            self.makeBGColorPicker()
             
         }
         
@@ -467,33 +470,28 @@ extension PhotoViewController {
 extension PhotoViewController {
     
     // 버튼을 누르면 전환됩니다.
-    func changeButton(button: UIButton) {
-        let isSelected = button.isSelected
-        
-        [changeBGButton, blurButton].forEach { buttons in
-            buttons.isSelected = false
-        }
-        
-        button.isSelected = isSelected
-        button.isSelected.toggle()
+    func changeButton(button: MyButton) {
+        // let isSelected = button.isSelected
+        // 
+        // [changeBGButton, blurButton].forEach { buttons in
+        //     buttons.isSelected = false
+        // }
+        // 
+        // button.isSelected = isSelected
+        // button.isSelected.toggle()
     }
     
     
     @objc func changeBGButtonAction(sender: UIButton) {
  
         sender.showAnimation {
-            self.changeButton(button: self.changeBGButton)
-            self.edgeBlurSliderView.isHidden = true
-            
-            self.bgSubview.isHidden = !self.bgSubview.isHidden
-            
             if self.bgSubview.isHidden == false {
                 self.bgSubview.alpha = 0
                 UIView.animate(withDuration: 0.2) {
                     self.bgSubview.alpha = 1
                 }
             } else {
-                self.colorSlider.isHidden = true
+                self.colorPickerView.isHidden = true
                 self.bgSubview.alpha = 1
                 UIView.animate(withDuration: 0.2) {
                     self.bgSubview.alpha = 0
@@ -503,14 +501,23 @@ extension PhotoViewController {
 
     }
     
-    @objc func blurAction(sender: UIButton) {
+    private func hideOtherEditView(selectedView: UIView) {
+        // self.bgSubview.isHidden = true
+        edgeBlurSliderView.isHidden = true
+        bgSubview.isHidden = true
+        colorPickerView.isHidden = true
         
-        sender.showAnimation {
+        
+        selectedView.isHidden = false
+        
+    }
+    
+    @objc func blurAction() {
+        
+        // sender.showAnimation {
             self.changeButton(button: self.blurButton)
             self.imageBlurAction()
-            self.bgSubview.isHidden = true
-            self.edgeBlurSliderView.isHidden = false
-        }
+        // }
 
     }
 }

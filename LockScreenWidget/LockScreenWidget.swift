@@ -146,7 +146,7 @@ struct LockScreenWidget: Widget {
         }
         .configurationDisplayName("딥링크 위젯")
         .description("앱에서 생성한 위젯을 생성하세요.")
-        .supportedFamilies([.accessoryCircular, .accessoryRectangular]) // 위젯이 지원하는 위젯의 종류입니다.
+        .supportedFamilies([.accessoryCircular]) // 위젯이 지원하는 위젯의 종류입니다.
     }
 }
 

@@ -7,4 +7,5 @@
 
 import Foundation
 
+let APP_GROUP_ID = "group.ZH5GA3W8UP.com.weizen.BackgroundMaker"
 
