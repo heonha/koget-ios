@@ -12,6 +12,7 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
+				<string>CustomTextIntent</string>
 				<string>DeepLinkAppIntent</string>
 				<string>INSearchForMessagesIntent</string>
 				<string>INSetMessageAttributeIntent</string>

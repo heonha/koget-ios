@@ -20,7 +20,7 @@ struct Icon {
     }()
 }
 
-class WidgetViewController: UIViewController {
+class AddWidgetViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -212,7 +212,7 @@ class WidgetViewController: UIViewController {
 }
 
 
-extension WidgetViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension AddWidgetViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     //MARK: - DataSources

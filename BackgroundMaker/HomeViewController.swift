@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 101
+        stackView.spacing = 10
         stackView.distribution = .fill
         stackView.alignment = .fill
         return stackView
@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
     private let bgMakerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "배경화면 편집하기"
+        label.text = "월페이퍼 만들기"
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.adjustsFontSizeToFitWidth = true
@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
     
     /// 사진 추가 이미지뷰
     private let bgMakerImageView: UIImageView = {
-        let holderImage = UIImage(systemName: "rectangle.stack.badge.plus")!
+        let holderImage = UIImage(named: "rectangle.stack.badge.plus")!
         let imageView = UIImageView() // 사진 추가하기를 의미하는 이미지
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.frame.size = CGSize(width: 100, height: 100)
@@ -87,7 +87,7 @@ class HomeViewController: UIViewController {
     private let widgetMakerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "이곳을 눌러 나만의 위젯을 만드세요. \n ( iOS16 이상 )"
+        label.text = "잠금화면 위젯 만들기 \n ( iOS16 이상 )"
         label.numberOfLines = 2
         label.textAlignment = .center
         label.font = .preferredFont(forTextStyle: .body)
@@ -115,7 +115,7 @@ class HomeViewController: UIViewController {
         button.addTarget(self, action: #selector(presentWidgetVC), for: .touchDown)
         
         button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.borderColor = UIColor.white.cgColor
         button.layer.cornerRadius = 8
         button.alpha = 0.3
         
@@ -243,7 +243,7 @@ class HomeViewController: UIViewController {
         
         view.addSubview(mainBackGroundImg)
         mainBackGroundImg.translatesAutoresizingMaskIntoConstraints = false
-        mainBackGroundImg.image = UIImage(named: "mainBG")
+        mainBackGroundImg.image = UIColor.black.image()
         mainBackGroundImg.contentMode = .scaleAspectFill
         
         guard let image = mainBackGroundImg.image else {return}
@@ -255,8 +255,7 @@ class HomeViewController: UIViewController {
     
     @objc func presentWidgetVC() {
         
-        let widgetVC = WidgetViewController()
-        widgetVC.navigationItem.hidesBackButton = true
+        let widgetVC = AddWidgetViewController()
         self.navigationController?.pushViewController(widgetVC, animated: true)
         
     }

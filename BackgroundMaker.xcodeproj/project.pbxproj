@@ -56,7 +56,7 @@
 		3A8E3A3928E3EA8300390F8A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A3828E3EA8300390F8A /* RxRelay */; };
 		3A8E3A3B28E3EA8300390F8A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A3A28E3EA8300390F8A /* RxSwift */; };
 		3A9BC0CC28E6AEAD0041DA1B /* RulerSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA81CA728E457B6009EE95B /* RulerSubview.swift */; };
-		3A9BC0D428E6CC720041DA1B /* WidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D328E6CC720041DA1B /* WidgetViewController.swift */; };
+		3A9BC0D428E6CC720041DA1B /* AddWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D328E6CC720041DA1B /* AddWidgetViewController.swift */; };
 		3A9BC0D628E6CD4C0041DA1B /* AppGroupID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D528E6CD4C0041DA1B /* AppGroupID.swift */; };
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A9EABA028E51FFA00ED2BF2 /* SliderUITester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EAB9F28E51FFA00ED2BF2 /* SliderUITester.swift */; };
@@ -83,6 +83,7 @@
 		3AD12D9428CD960E00CF431C /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9328CD960E00CF431C /* ImageViewModel.swift */; };
 		3AD12D9628CDA4C900CF431C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9528CDA4C900CF431C /* HomeViewController.swift */; };
 		3AD12D9828CDA72300CF431C /* ImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */; };
+		3ADDCD2928F458670033AA2C /* TextWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADDCD2728F455870033AA2C /* TextWidget.swift */; };
 		3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */; };
 		3AF0360728ED2AE000CE1EB7 /* AnimationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF0360628ED2AE000CE1EB7 /* AnimationModel.swift */; };
 		3AF9F00528ED570D00F685E6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC3E1E828E690B800BFF455 /* WidgetKit.framework */; };
@@ -90,7 +91,7 @@
 		3AF9F00928ED570D00F685E6 /* LockScreenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9F00828ED570D00F685E6 /* LockScreenWidget.swift */; };
 		3AF9F00B28ED570E00F685E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AF9F00A28ED570E00F685E6 /* Assets.xcassets */; };
 		3AF9F00F28ED570E00F685E6 /* LockScreenWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		3AF9F01428ED843E00F685E6 /* WidgetViewController+WidgetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9F01328ED843E00F685E6 /* WidgetViewController+WidgetKit.swift */; };
+		3AF9F01428ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9F01328ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift */; };
 		885DCEE41665AA2004D247A7 /* Pods_BackgroundMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AA3F0365E8B886421EBD4F /* Pods_BackgroundMaker.framework */; };
 		AEE91D1AA8DD5D36714819D4 /* Pods_BMUITester.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABCF1B326E32DABB43A7CAC /* Pods_BMUITester.framework */; };
 /* End PBXBuildFile section */
@@ -171,7 +172,7 @@
 		3A94E1A828EC1B960050EE80 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		3A9BC0CD28E6C92A0041DA1B /* BackgroundMaker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BackgroundMaker.entitlements; sourceTree = "<group>"; };
 		3A9BC0CE28E6C93A0041DA1B /* LockScreenWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenWidgetExtension.entitlements; sourceTree = "<group>"; };
-		3A9BC0D328E6CC720041DA1B /* WidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewController.swift; sourceTree = "<group>"; };
+		3A9BC0D328E6CC720041DA1B /* AddWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWidgetViewController.swift; sourceTree = "<group>"; };
 		3A9BC0D528E6CD4C0041DA1B /* AppGroupID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupID.swift; sourceTree = "<group>"; };
 		3A9BC0D928E6E1AE0041DA1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A9EAB9F28E51FFA00ED2BF2 /* SliderUITester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderUITester.swift; sourceTree = "<group>"; };
@@ -199,13 +200,14 @@
 		3AD12D9328CD960E00CF431C /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		3AD12D9528CDA4C900CF431C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerModel.swift; sourceTree = "<group>"; };
+		3ADDCD2728F455870033AA2C /* TextWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWidget.swift; sourceTree = "<group>"; };
 		3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		3AF0360628ED2AE000CE1EB7 /* AnimationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModel.swift; sourceTree = "<group>"; };
 		3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF9F00828ED570D00F685E6 /* LockScreenWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidget.swift; sourceTree = "<group>"; };
 		3AF9F00A28ED570E00F685E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AF9F00C28ED570E00F685E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3AF9F01328ED843E00F685E6 /* WidgetViewController+WidgetKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WidgetViewController+WidgetKit.swift"; sourceTree = "<group>"; };
+		3AF9F01328ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddWidgetViewController+WidgetKit.swift"; sourceTree = "<group>"; };
 		4ABCF1B326E32DABB43A7CAC /* Pods_BMUITester.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BMUITester.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F8A7F589A23E8403869CFE /* Pods_LockScreenWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockScreenWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0CC446D4F568D646494433 /* Pods-BackgroundMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundMaker.debug.xcconfig"; path = "Target Support Files/Pods-BackgroundMaker/Pods-BackgroundMaker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -496,8 +498,8 @@
 		3AC3E1E028E68A6D00BFF455 /* WidgetMaker */ = {
 			isa = PBXGroup;
 			children = (
-				3A9BC0D328E6CC720041DA1B /* WidgetViewController.swift */,
-				3AF9F01328ED843E00F685E6 /* WidgetViewController+WidgetKit.swift */,
+				3A9BC0D328E6CC720041DA1B /* AddWidgetViewController.swift */,
+				3AF9F01328ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift */,
 				3A20984328EBE3B50032FD78 /* WidgetIconCell.swift */,
 				3A3E519228F2F9380095007C /* FailLinkViewController.swift */,
 				3A3E519428F2F9D10095007C /* Widget+Utils */,
@@ -518,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				3AF9F00828ED570D00F685E6 /* LockScreenWidget.swift */,
+				3ADDCD2728F455870033AA2C /* TextWidget.swift */,
 				3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */,
 				3AF9F00A28ED570E00F685E6 /* Assets.xcassets */,
 				3AF9F00C28ED570E00F685E6 /* Info.plist */,
@@ -836,11 +839,11 @@
 				3A0F42A428C982D8002F1CAD /* BottomMenuView.swift in Sources */,
 				3A9BC0D628E6CD4C0041DA1B /* AppGroupID.swift in Sources */,
 				3AD12D9828CDA72300CF431C /* ImagePickerModel.swift in Sources */,
-				3A9BC0D428E6CC720041DA1B /* WidgetViewController.swift in Sources */,
+				3A9BC0D428E6CC720041DA1B /* AddWidgetViewController.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */,
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
-				3AF9F01428ED843E00F685E6 /* WidgetViewController+WidgetKit.swift in Sources */,
+				3AF9F01428ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
 				3A20984428EBE3B50032FD78 /* WidgetIconCell.swift in Sources */,
 				3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */,
@@ -857,6 +860,7 @@
 				3AF9F00928ED570D00F685E6 /* LockScreenWidget.swift in Sources */,
 				3A3E519928F2FBE20095007C /* AppInfo.swift in Sources */,
 				3A3C118E28EDB1B700C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
+				3ADDCD2928F458670033AA2C /* TextWidget.swift in Sources */,
 				3A76BEAB28F2EC6C00B9162C /* DeepLinkModel.swift in Sources */,
 				3A3E519628F2F9E50095007C /* Constants.swift in Sources */,
 			);

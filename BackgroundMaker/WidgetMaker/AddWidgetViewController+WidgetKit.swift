@@ -1,5 +1,5 @@
 //
-//  WidgetViewController+WidgetKit.swift
+//  AddWidgetViewController+WidgetKit.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/10/05.
@@ -8,7 +8,7 @@
 import UIKit
 import WidgetKit
 
-extension WidgetViewController {
+extension AddWidgetViewController {
     
     /// 현재 이 앱이 구성한 위젯의 데이터를 확인합니다.
     func widgetGetData() {
