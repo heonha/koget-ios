@@ -168,3 +168,21 @@ extension IntentHandler: DeepLinkAppIntentHandling {
     }
     
 }
+
+// extension IntentHandler: UserCustomIntentHandling {
+//     func provideDataOptionsCollection(for intent: UserCustomIntent, with completion: @escaping (INObjectCollection<CustomDefinition>?, Error?) -> Void) {
+//         //
+//     }
+//     
+//     func provideDataOptionsCollection(for intent: UserCustomIntent) async throws -> INObjectCollection<CustomDefinition> {
+//         //
+//     }
+//     
+//     func handle(intent: UserCustomIntent, completion: @escaping (UserCustomIntentResponse) -> Void) {
+//         //
+//     }
+//     
+//     
+//     
+// }
+

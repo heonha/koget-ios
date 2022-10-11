@@ -122,6 +122,7 @@ struct LockScreenWidgetEntryView : View {
 struct Widgets: WidgetBundle {
     var body: some Widget {
         LockScreenWidget()
+        UserCustomWidget()
     }
 }
 
