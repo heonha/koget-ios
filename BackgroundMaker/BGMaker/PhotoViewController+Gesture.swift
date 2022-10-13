@@ -57,8 +57,10 @@ extension PhotoViewController {
         self.view.addGestureRecognizer(gesture)
     }
     
-    /// 메뉴를 드래그 할수 있는 제스쳐를 만듭니다.
+    /// 이미지를 드래그 할수 있는 제스쳐를 만듭니다.
     @objc func makeDragImageGesture(_ sender: UIPanGestureRecognizer) {
+        
+        
         // 지정된 보기의 좌표계에서 팬 제스처를 해석합니다.
         var translation = sender.translation(in: mainImageView)
         // print("Pan Gesture Translation(CGPoint) : \(translation)")
@@ -69,10 +71,10 @@ extension PhotoViewController {
         switch sender.state {
         case .began:
             /// 처음 클릭하기 시작했을 때
-            imageOriginalCenter = mainImageView.center // TrayView의 센터포인트를 저장합니다.
+            self.imageOriginalCenter = mainImageView.center // TrayView의 센터포인트를 저장합니다.
             
         case .changed:
-            mainImageView.center = CGPoint(x: imageOriginalCenter.x + translation.x, y: imageOriginalCenter.y + translation.y)
+            self.mainImageView.center = CGPoint(x: self.imageOriginalCenter.x + translation.x, y: self.imageOriginalCenter.y + translation.y)
         default:
             break
         }

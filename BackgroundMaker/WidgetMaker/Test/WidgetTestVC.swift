@@ -27,7 +27,7 @@ class WidgetTestVC: UIViewController {
         return button
     }()
     
-    let loadButton: MyButton = {
+    let loadButton: ImageTextButton = {
         // let button = UIButton()
         // button.translatesAutoresizingMaskIntoConstraints = false
         // button.setTitle("LOAD", for: .normal)
@@ -54,7 +54,7 @@ class WidgetTestVC: UIViewController {
             
         }
         
-        let button = MyButton(size: CGSize(width: 50, height: 50), image: UIImage(systemName: "drop")!, title: "드롭", action: action )
+        let button = ImageTextButton(image: UIImage(systemName: "drop")!, title: "드롭", action: action )
         
         return button
     }()
@@ -257,6 +257,7 @@ class WidgetTestVC: UIViewController {
         let url = URL(string: "youtube://")!
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
+    
 }
 
 

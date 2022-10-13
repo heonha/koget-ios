@@ -21,7 +21,7 @@ extension PhotoViewController {
         
         bgView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(trayView.snp.top)
+            make.bottom.equalTo(bottomView.snp.top)
         }
 
     }

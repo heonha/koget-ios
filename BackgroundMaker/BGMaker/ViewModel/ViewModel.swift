@@ -172,4 +172,21 @@ struct ViewModel {
         }, for: .menuActionTriggered)
     }
     
+    
+    //MARK: - Label
+    
+    
+    func makeLabel(text: String, color: UIColor = .white,
+                   fontSize: CGFloat, fontWeight: UIFont.Weight, alignment: NSTextAlignment = .center) -> UILabel {
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = text
+        label.textColor = color
+        label.textAlignment = alignment
+        label.font = .systemFont(ofSize: fontSize, weight: fontWeight)
+        
+        return label
+    }
+
 }

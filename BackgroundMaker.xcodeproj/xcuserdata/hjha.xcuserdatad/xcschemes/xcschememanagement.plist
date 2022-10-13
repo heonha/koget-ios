@@ -12,7 +12,7 @@
 		<key>BackgroundMaker.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>13</integer>
 		***REMOVED***
 		<key>LockScreenIntent.xcscheme_^#shared#^_</key>
 		***REMOVED***
@@ -27,12 +27,12 @@
 		<key>LockScreenIntentsExtension.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>4</integer>
 		***REMOVED***
 		<key>LockScreenWidgetExtension.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>3</integer>
 		***REMOVED***
 		<key>Rx (Playground) 1.xcscheme</key>
 		***REMOVED***
@@ -159,6 +159,24 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
+		***REMOVED***
+	***REMOVED***
+	<key>SuppressBuildableAutocreation</key>
+	***REMOVED***
+		<key>3A3C119228EDB4B800C9CCED</key>
+		***REMOVED***
+			<key>primary</key>
+			<true/>
+		***REMOVED***
+		<key>3ABA6C1228C6043F005AA8E4</key>
+		***REMOVED***
+			<key>primary</key>
+			<true/>
+		***REMOVED***
+		<key>3AF9F00328ED570D00F685E6</key>
+		***REMOVED***
+			<key>primary</key>
+			<true/>
 		***REMOVED***
 	***REMOVED***
 ***REMOVED***

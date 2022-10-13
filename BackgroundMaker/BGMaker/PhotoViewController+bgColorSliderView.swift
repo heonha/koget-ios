@@ -20,7 +20,7 @@ extension PhotoViewController {
         colorPickerView.isHidden = true
         colorPickerView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view)
-            make.bottom.equalTo(trayView.snp.top)
+            make.bottom.equalTo(bottomView.snp.top)
             make.height.equalTo(50)
         }
     }
