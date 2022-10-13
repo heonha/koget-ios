@@ -10,13 +10,9 @@ import SnapKit
 
 
 
-class MyButton: UIView {
+class ImageTextButton: UIView {
     
     //MARK: - Properties
-    
-    
-    var buttonSize: CGSize?
-    
     
     let stackView: UIStackView = {
         let sv = UIStackView()
@@ -60,16 +56,17 @@ class MyButton: UIView {
     
     
     //MARK: - INIT
-    init(size: CGSize, image: UIImage, title: String, action: UIAction?, backgroundColor: UIColor = .systemBlue) {
+    init(image: UIImage, title: String, titleColor: UIColor = .white, action: UIAction?, backgroundColor: UIColor = .systemBlue) {
         
-        self.buttonSize = size
         
-        super.init(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: size))
+        super.init(frame: .zero)
         
         configureUI()
         
         setImage(image: image)
         setTitle(title: title)
+        setTitleColor(color: titleColor)
+        
         if let settedAction = action {
             button.addAction(action!, for: .touchDown)
         }

@@ -31,7 +31,12 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         let selectedApp = configuration.app
         
-        let entry = SimpleEntry(date: Date(), title: selectedApp?.displayString ?? "plus.circle", link: selectedApp?.deepLink ?? "failLink", imageName: selectedApp?.imageName)
+        let entry = SimpleEntry(
+            date: Date(),
+            title: selectedApp?.displayString ?? "plus.circle",
+            link: selectedApp?.deepLink ?? "failLink",
+            imageName: selectedApp?.imageName
+        )
         
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
@@ -125,8 +130,6 @@ struct Widgets: WidgetBundle {
         UserCustomWidget()
     }
 }
-
-
 
 //MARK: - Protocol : Widget
 

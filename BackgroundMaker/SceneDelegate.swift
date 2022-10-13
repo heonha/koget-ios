@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -95,13 +96,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let host = host else { return }
         
-            let url = URL(string: "\(host)://")!
-            print("Scheme! -> \(host)")
-
+        let url = URL(string: "\(host)://")!
+        print("Scheme! -> \(host)")
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
-
-
 }
 
 

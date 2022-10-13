@@ -19,6 +19,8 @@ struct AppList {
         AppInfo(id: .init(), name: "Naver", imageName: "naver", deepLink: "naversearchapp", scheme: nil),
         AppInfo(id: .init(), name: "Youtube Music", imageName: "youtubeMusic", deepLink: "youtubemusic", scheme: nil),
         AppInfo(id: .init(), name: "신한 터치결제", imageName: "shinhanTouch", deepLink: "shpayfan-touchpay", scheme: "touch"),
+        AppInfo(id: .init(), name: "Google OTP", imageName: "googleOTP", deepLink: "googleauthenticator", scheme: ""),
+
     ]
 }
 
