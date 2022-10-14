@@ -243,6 +243,7 @@ class PhotoViewController: UIViewController {
         /// 네비게이션 바 버튼을 구성합니다.
         self.navigationItem.rightBarButtonItems = [shareButton] // 사진추가, 저장, 자르기 버튼
         self.navigationItem.leftBarButtonItems = [backButton] // 사진추가, 저장, 자르기 버튼
+        self.navigationController?.navigationBar.backgroundColor = .clear
         
         /// 뷰 셋업
         setImageViews() // 선택한 사진이 배치 될 이미지뷰를 셋업합니다.
