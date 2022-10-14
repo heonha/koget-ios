@@ -10,31 +10,6 @@ import UIKit
 class FilterModel {
     
     //MARK: - [Todo] Image 가장자리 블러 필터 만들기
-    // func makeImageEdgeBlurFilter(image: CIImage) -> CIImage {
-    //
-    //     print("이미지를 받아옵니다.")
-    //
-    //         // 이미지의 높이
-    //         let imageHeight = image.extent.size.height
-    //
-    //         // 필터 만들기
-    //     print("필터를 만들고 있습니다.")
-    //         let topGradientFilter = makeTopBlurFilter(height: imageHeight, startY: 0.8, endY: 0.6)
-    //         let bottomGradientFilter = makeTopBlurFilter(height: imageHeight, startY: 0.3, endY: 0.6)
-    //
-    //         let mergedFilter = mergeFilters(topFilter: topGradientFilter, bottomFilter: bottomGradientFilter)
-    //
-    //     print("필터를 만들었습니다.")
-    //
-    //         let filteredImage = applyImageEdgeBlurFilter(blurFilter: topGradientFilter, sourceImage: image)
-    //
-    //     print("필터를 적용했습니다.")
-    //
-    //     print("이미지를 반환합니다.")
-    //
-    //         return filteredImage!
-    //
-    // }
     
     func makeImageEdgeBlurFilter(image: CIImage) -> CIImage {
         

@@ -17,6 +17,13 @@ import Lottie
  */
 class HomeViewController: UIViewController {
     
+    private let bgView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = AppColors.mainPurple
+        return view
+    }()
+    
     
     private let menuStackView: UIStackView = {
         let sv = UIStackView()
@@ -28,6 +35,7 @@ class HomeViewController: UIViewController {
         
         return sv
     }()
+    
     
     // MARK: Wallpaper Maker 초기화
     // "여기를 눌러 사진을 추가하세요" 문구 및 투명 버튼을 통해 Photo Library 띄우는 역할
@@ -49,18 +57,29 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = ""
-        // addBlurEffect()
-        view.backgroundColor = AppColors.mainPurple
-
+        
+        view.backgroundColor = AppColors.buttonPutple
+        
+        view.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        
         setMenuStackView()
         
-
-        
- 
-        
-        makeMenuButton(mainView: bgMakerButton, title: "월페이퍼 만들기", image: UIImage(systemName: "rectangle.stack.badge.plus")!, action: #selector(presentPHPickerVC))
-        makeMenuButton(mainView: widgetMakerButton, title: "잠금화면 위젯 만들기", image: UIImage(systemName: "cursorarrow.and.square.on.square.dashed")!, action: #selector(presentWidgetVC))
-
+        makeMenuButton(
+            mainView: bgMakerButton,
+            title: "월페이퍼 만들기",
+            image: UIImage(named: "rectangle.stack.badge.plus")!,
+            action: #selector(presentPHPickerVC)
+        )
+        makeMenuButton(
+            mainView: widgetMakerButton,
+            title: "잠금화면 위젯 만들기",
+            image: UIImage(named: "cursorarrow.and.square.on.square.dashed")!,
+            action: #selector(presentWidgetVC)
+        )
 
     }
     
@@ -135,16 +154,19 @@ class HomeViewController: UIViewController {
             view.backgroundColor = .black
             view.alpha = 0.3
             view.layer.cornerRadius = 8
+            ViewModel.shared.makeLayerShadow(to: view.layer)
             return view
         }()
         
         let imageView: UIImageView = {
             // let holderImage = UIImage(named: "rectangle.stack.badge.plus")!
-            let holderImage = image.withTintColor(.white, renderingMode: .alwaysOriginal)
+            let holderImage = image.withRenderingMode(.alwaysOriginal)
             let imageView = UIImageView() // 사진 추가하기를 의미하는 이미지
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .scaleAspectFit
             imageView.image = holderImage
+            // ViewModel.shared.makeLayerShadow(to: imageView.layer)
+
             return imageView
         }()
         
@@ -154,6 +176,8 @@ class HomeViewController: UIViewController {
             label.text = title
             label.textAlignment = .center
             label.font = .systemFont(ofSize: 18, weight: .bold)
+            ViewModel.shared.makeLayerShadow(to: label.layer)
+
             return label
         }()
         

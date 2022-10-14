@@ -14,15 +14,23 @@ class WidgetViewController: UIViewController {
     
     let lockWidgets = AppList.shared.app
     
+    let gradientBG: UIImageView = {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.image = AppColors.blackDarkGrey.image()
+        iv.contentMode = .scaleAspectFill
+        iv.alpha = 1
+    
+        return iv
+    }()
+    
     let deepLinkTitle: UILabel = ViewModel.shared.makeLabel(
         text: "딥링크 위젯",
         color: .white,
         fontSize: 20,
-        fontWeight: .medium,
+        fontWeight: .bold,
         alignment: .left
     )
-
-    
     
     /// 위젯 추가 버튼을 초기화합니다.
     lazy var addBarButton: UIBarButtonItem = {
@@ -56,6 +64,14 @@ class WidgetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = AppColors.blackDarkGrey
+        
+        view.addSubview(gradientBG)
+        gradientBG.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        
         configureNavigation()
         configureUI()
         configureDeepLinkWidget()
@@ -63,22 +79,25 @@ class WidgetViewController: UIViewController {
     
     //MARK: - Selectors
     @objc func addBarButtonTapped(sender: UIBarButtonItem) {
-        print("Bar")
         let vc = AddWidgetViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true)
     }
     
     //MARK: - Helpers
     
     private func configureNavigation() {
-        navigationItem.title = "Widget VC"
+        navigationItem.title = "Widgets"
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.rightBarButtonItems = [addBarButton]
+        navigationController?.navigationBar.backgroundColor = AppColors.buttonPutple
+        navigationController?.navigationBar.tintColor = .white
+        view.backgroundColor = AppColors.buttonPutple
 
     }
     
     private func configureUI() {
-        view.backgroundColor = .black
+        
+        ViewModel.shared.makeLayerShadow(to: deepLinkTitle.layer)
     }
 
 }
@@ -92,7 +111,7 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         // title
         view.addSubview(deepLinkTitle)
         deepLinkTitle.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
             make.leading.trailing.equalTo(view).inset(8)
             make.height.equalTo(30)
         }
@@ -104,7 +123,7 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(deepLinkTitle.snp.bottom)
+            make.top.equalTo(deepLinkTitle.snp.bottom).inset(-8)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(120)
         }
@@ -128,9 +147,6 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         return cell
     }
-    
-
-    
 }
 
 extension WidgetViewController: UICollectionViewDelegateFlowLayout {

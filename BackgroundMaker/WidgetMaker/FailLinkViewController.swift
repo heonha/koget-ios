@@ -11,6 +11,8 @@ class FailLinkViewController: UIViewController {
     
     //MARK: - Properties
     
+    // [Todo]
+    // DeepLinking Fail시 이곳으로 연결 하도록 하기.
     
     //MARK: - LifeCycle
     
