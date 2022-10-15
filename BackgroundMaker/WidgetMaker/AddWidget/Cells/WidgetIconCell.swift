@@ -75,8 +75,6 @@ class WidgetIconCell: UICollectionViewCell {
         imgView.snp.makeConstraints { make in
             make.width.equalTo(frame.width)
             make.height.equalTo(frame.width)
-            make.top.centerX.equalToSuperview()
-
         }
     }
 
@@ -91,6 +89,13 @@ class WidgetIconCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .center
         addSubview(label)
+        
+        imgView.snp.remakeConstraints { make in
+            make.width.equalTo(frame.width)
+            make.height.equalTo(frame.width)
+            make.top.centerX.equalToSuperview()
+
+        }
         
         label.snp.makeConstraints { make in
             make.top.equalTo(imgView.snp.bottom)

@@ -9,7 +9,7 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>WPhMXz</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>22A5365d</string>
+	<string>22A5373b</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>14A400</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -26,7 +26,7 @@
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>17</integer>
+			<integer>18</integer>
 			<key>INIntentManagedParameterCombinations</key>
 			***REMOVED***
 				<key>app</key>
@@ -37,8 +37,6 @@
 					<string>AppSummary</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>q21uYR</string>
-					<key>INIntentParameterCombinationUpdatesLinked</key>
-					<true/>
 				***REMOVED***
 			***REMOVED***
 			<key>INIntentName</key>
@@ -217,26 +215,6 @@
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
 						***REMOVED***
-						***REMOVED***
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${data}’.</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>mO7Gb6</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>DisambiguationIntroduction</string>
-						***REMOVED***
-						***REMOVED***
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${data}’?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>RdjYMA</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Confirmation</string>
-						***REMOVED***
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
@@ -280,7 +258,7 @@
 			<key>INTypeDisplayNameID</key>
 			<string>Kzz0Bj</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>116</integer>
+			<integer>137</integer>
 			<key>INTypeName</key>
 			<string>AppDefinition</string>
 			<key>INTypeProperties</key>
@@ -310,24 +288,10 @@
 					<string>String</string>
 				***REMOVED***
 				***REMOVED***
-					<key>INTypePropertyDisplayName</key>
-					<string>Image Name</string>
-					<key>INTypePropertyDisplayNameID</key>
-					<string>MdChhv</string>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>3</integer>
-					<key>INTypePropertyName</key>
-					<string>imageName</string>
-					<key>INTypePropertyTag</key>
-					<integer>115</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				***REMOVED***
-				***REMOVED***
 					<key>INTypePropertyDefault</key>
 					<true/>
 					<key>INTypePropertyDisplayPriority</key>
-					<integer>4</integer>
+					<integer>3</integer>
 					<key>INTypePropertyName</key>
 					<string>pronunciationHint</string>
 					<key>INTypePropertyTag</key>
@@ -339,7 +303,7 @@
 					<key>INTypePropertyDefault</key>
 					<true/>
 					<key>INTypePropertyDisplayPriority</key>
-					<integer>5</integer>
+					<integer>4</integer>
 					<key>INTypePropertyName</key>
 					<string>alternativeSpeakableMatches</string>
 					<key>INTypePropertySupportsMultipleValues</key>
@@ -355,11 +319,39 @@
 					<key>INTypePropertyDisplayNameID</key>
 					<string>FGyq03</string>
 					<key>INTypePropertyDisplayPriority</key>
-					<integer>6</integer>
+					<integer>5</integer>
 					<key>INTypePropertyName</key>
 					<string>deepLink</string>
 					<key>INTypePropertyTag</key>
 					<integer>114</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				***REMOVED***
+				***REMOVED***
+					<key>INTypePropertyDisplayName</key>
+					<string>Uuid</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>DCQfKg</string>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>6</integer>
+					<key>INTypePropertyName</key>
+					<string>uuid</string>
+					<key>INTypePropertyTag</key>
+					<integer>123</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				***REMOVED***
+				***REMOVED***
+					<key>INTypePropertyDisplayName</key>
+					<string>Name</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>8IhCCU</string>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>7</integer>
+					<key>INTypePropertyName</key>
+					<string>name</string>
+					<key>INTypePropertyTag</key>
+					<integer>137</integer>
 					<key>INTypePropertyType</key>
 					<string>String</string>
 				***REMOVED***
