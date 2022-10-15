@@ -140,22 +140,24 @@ extension IntentHandler: DeepLinkAppIntentHandling {
     // AppDefinition(Type, intentDefinition)
     // AppInfo -> AppDefinition으로 데이터를 전달한다.
     // 데이터의 전달은 DeepLinkAppIntentHandling 프로토콜의 provideAppOptionsCollection 메소드를 통해 전달한다.
+        
     
-    let avaliableApps = AppList.shared.app
+    let avaliableApps = CoreData.shared.getStoredDataForDeepLink()!
     
         /// AppInfo Data를 AppDefinition에 mapping 하여 만든 배열
-        let apps: [AppDefinition] = avaliableApps.map { apps in
+        let apps: [AppDefinition] = avaliableApps.map { deepLink in
             
             /// 위젯에 필수적으로 전달해야할 데이터이다.
             /// UUID와 위젯편집 시 리스트에 표현될 이름으로 구성된다.
             let item = AppDefinition(
-                identifier: apps.id.uuidString, // 고유 식별자 지정
-                display: apps.name // 위젯 편집창에서 표현할 이름
+                identifier: deepLink.id?.uuidString, // 고유 식별자 지정
+                display: deepLink.name ?? "no Data" // 위젯 편집창에서 표현할 이름
             )
-            
             // 아래는 위젯에 추가로 전달할 데이터이다.
-            item.imageName = apps.imageName // 위젯에 표시할 이미지이름
-            item.deepLink = apps.deepLink // 딥링크 주소
+
+            item.uuid = deepLink.id?.uuidString
+            item.deepLink = deepLink.deepLink // 딥링크 주소
+
             
             return item
         }

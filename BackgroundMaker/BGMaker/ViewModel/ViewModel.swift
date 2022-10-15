@@ -100,12 +100,12 @@ struct ViewModel {
         return button
     }
     
-    /// 버튼의 그림자를 만듭니다.
-    func makeLayerShadow(to layer: CALayer) {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 1, height: 1)
-        layer.shadowRadius = 3
-        layer.shadowOpacity = 4
+    /// layer에 그림자를 만듭니다.
+    func makeLayerShadow(to layer: CALayer, color: UIColor = UIColor.black, radius: CGFloat = 3, offset: CGFloat = 1, opacity: Float = 4) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOffset = CGSize(width: offset, height: offset)
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
     }
     
     // 바버튼의 그림자를 만듭니다.
@@ -172,6 +172,15 @@ struct ViewModel {
         }, for: .menuActionTriggered)
     }
     
+    func makeImageView(image: UIImage? = nil, contentMode: UIView.ContentMode = .scaleAspectFill) -> UIImageView {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = contentMode
+        iv.backgroundColor = .clear
+        iv.image = image
+        return iv
+    }
+    
     
     //MARK: - Label
     
@@ -187,6 +196,47 @@ struct ViewModel {
         label.font = .systemFont(ofSize: fontSize, weight: fontWeight)
         
         return label
+    }
+    
+    /// 위젯 스타일 버튼입니다.
+    /// > 기본셋
+    /// - target: UIViewController, action: Selector,
+    /// - title: String,
+    /// - titleColor: UIColor = .white,
+    /// - fontSize: CGFloat = 18,
+    /// - weight: UIFont.Weight = .bold,
+    /// - backgroundColor: UIColor = AppColors.buttonPurple
+    func makeButtonForWidgetHandler(
+        target: UIViewController, action: Selector,
+        title: String,
+        titleColor: UIColor = .white,
+        fontSize: CGFloat = 18,
+        weight: UIFont.Weight = .bold,
+        backgroundColor: UIColor = AppColors.buttonPurple
+    ) -> UIButton {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let attribute = NSAttributedString(
+            string: title,
+            attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize, weight: weight)]
+        )
+        button.setAttributedTitle(attribute, for: .normal)
+        button.backgroundColor = backgroundColor
+        button.setTitleColor(titleColor, for: .normal)
+        button.addTarget(target, action: action, for: .touchDown)
+        
+        ViewModel.shared.cropCornerRadius(view: button)
+        ViewModel.shared.makeLayerShadow(to: button.layer)
+        
+        return button
+    }
+    
+    func setAttibuteTitleForButton(title: String, button: UIButton, fontSize: CGFloat = 18, weight: UIFont.Weight = .bold) {
+        let attribute = NSAttributedString(
+            string: title,
+            attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize, weight: weight)]
+        )
+        button.setAttributedTitle(attribute, for: .normal)
     }
 
 }

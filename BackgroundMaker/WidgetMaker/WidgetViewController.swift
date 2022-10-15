@@ -7,13 +7,18 @@
 
 import UIKit
 import SnapKit
+import CoreData
 
 class WidgetViewController: UIViewController {
     
+    let coredataContext = CoreData.shared.persistentContainer.viewContext
+
+    
+    //MARK: - CoreData Properties
+    var deepLinkWidgets: [DeepLink] = []
+    
     //MARK: - Properties
-    
-    let lockWidgets = AppList.shared.app
-    
+        
     let gradientBG: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +30,7 @@ class WidgetViewController: UIViewController {
     }()
     
     let deepLinkTitle: UILabel = ViewModel.shared.makeLabel(
-        text: "딥링크 위젯",
+        text: "나의 딥링크 위젯",
         color: .white,
         fontSize: 20,
         fontWeight: .bold,
@@ -64,6 +69,8 @@ class WidgetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isFirstRunning()
+        
         view.backgroundColor = AppColors.blackDarkGrey
         
         view.addSubview(gradientBG)
@@ -72,15 +79,27 @@ class WidgetViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
         
+        
+        loadData()
         configureNavigation()
         configureUI()
         configureDeepLinkWidget()
+        
+        print("DEBUG: widgets \(deepLinkWidgets)")
+
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
     }
     
     //MARK: - Selectors
     @objc func addBarButtonTapped(sender: UIBarButtonItem) {
         let vc = AddWidgetViewController()
-        present(vc, animated: true)
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: - Helpers
@@ -89,9 +108,9 @@ class WidgetViewController: UIViewController {
         navigationItem.title = "Widgets"
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.rightBarButtonItems = [addBarButton]
-        navigationController?.navigationBar.backgroundColor = AppColors.buttonPutple
+        navigationController?.navigationBar.backgroundColor = AppColors.buttonPurple
         navigationController?.navigationBar.tintColor = .white
-        view.backgroundColor = AppColors.buttonPutple
+        view.backgroundColor = AppColors.buttonPurple
 
     }
     
@@ -131,26 +150,38 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lockWidgets.count
+        return deepLinkWidgets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WidgetIconCell.reuseID, for: indexPath) as? WidgetIconCell else {return UICollectionViewCell()}
         
-        let data = lockWidgets[indexPath.item]
+        let data = deepLinkWidgets[indexPath.item]
         
-        let image = UIImage(named: data.imageName) ?? UIImage(named: "questionmark.circle")!
+        let image = UIImage(data: data.image!) ?? UIImage(named: "questionmark.circle")!
         
         cell.makeIcon(image: image)
-        cell.makeLabel(text: data.name, height: 12)
+        cell.makeLabel(text: data.name!, height: 12)
         cell.remakeAlpha(view: cell.imgView, alpha: 0.8)
         
+        print("DEBUG: cell -> \(cell.label)")
+
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = deepLinkWidgets[indexPath.item]
+        
+        let vc = EditWidgetViewController(selectedWidget: item)
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .coverVertical
+        vc.delegate = self
+        self.present(vc, animated: true)
     }
 }
 
 extension WidgetViewController: UICollectionViewDelegateFlowLayout {
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -163,5 +194,69 @@ extension WidgetViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 12
     }
+}
 
+
+extension WidgetViewController {
+    // MARK: - 기본 위젯 DB에 추가
+    
+    func isFirstRunning() {
+        
+        let getDefaults = UserDefaults.standard.object(forKey: "IS_FIRST_RUN") as? Bool
+        
+        if let getDefaults = getDefaults {
+            
+            print("DEBUG: getDefaults : \(getDefaults)")
+
+            IS_FIRST_RUN = getDefaults
+        } else {
+            print(getDefaults)
+
+            setDefaultWidgets {
+                IS_FIRST_RUN = false
+                let defaults = UserDefaults.standard.set(IS_FIRST_RUN, forKey: "IS_FIRST_RUN")
+            }
+
+        }
+    }
+    
+    func setDefaultWidgets(completion: @escaping () -> ()) {
+
+        print("setDefaultWidgets")
+        
+        var icons: [DeepLink] = []
+        
+        var defaultApps = AppList.shared.app
+        
+        for appInfo in defaultApps {
+            let item = DeepLink(context: coredataContext)
+            item.id = UUID()
+            item.name = appInfo.name
+            item.image = UIImage(named: appInfo.imageName)?.pngData()
+            item.deepLink = appInfo.deepLink
+            
+            icons.append(item)
+        }
+        
+        print(icons)
+        
+        do {
+            try coredataContext.save() // 이 부분이 persistent store에 저장하는 코드
+            completion()
+        } catch {
+            print("context 저장중 에러 발생 : \(error)")
+        }
+    }
+}
+
+
+
+extension WidgetViewController: EditWidgetViewControllerDelegate {
+    
+    func editingSucessful(data: DeepLink) {
+        saveData()
+        loadData()
+        self.collectionView.reloadData()
+    }
+    
 }

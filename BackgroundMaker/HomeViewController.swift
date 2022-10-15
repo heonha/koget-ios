@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = ""
         
-        view.backgroundColor = AppColors.buttonPutple
+        view.backgroundColor = AppColors.buttonPurple
         
         view.addSubview(bgView)
         bgView.snp.makeConstraints { make in

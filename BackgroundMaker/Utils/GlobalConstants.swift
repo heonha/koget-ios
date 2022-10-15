@@ -5,7 +5,7 @@
 //  Created by HeonJin Ha on 2022/09/30.
 //
 
-import Foundation
+import UIKit
 
-let APP_GROUP_ID = "group.ZH5GA3W8UP.com.weizen.BackgroundMaker"
-
+let COREDATA_CONTEXT_NAME = "BackgroundMaker"
+var IS_FIRST_RUN = true

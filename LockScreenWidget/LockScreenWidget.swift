@@ -26,16 +26,20 @@ struct Provider: IntentTimelineProvider {
         completion(entry)
     }
     
+
     
     /// Widget이 업데이트 될 미래 시간을 전달합니다. (미래날짜가 포함된 타임라인 엔트리배열)
     func getTimeline(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
-        let selectedApp = configuration.app
+        let selectedApp = configuration.app!
+        // ID가 같으면 그 이미지를 반환한다.
         
+        // 여기에 Simple Entry로 구성된 코드가 보여짐.
         let entry = SimpleEntry(
             date: Date(),
-            title: selectedApp?.displayString ?? "plus.circle",
-            link: selectedApp?.deepLink ?? "failLink",
-            imageName: selectedApp?.imageName
+            title: selectedApp.displayString ?? "plus.circle",
+            link: selectedApp.deepLink ?? "failLink",
+            image: AppList.shared.searchImage(id: selectedApp.uuid!),
+            id: selectedApp.identifier
         )
         
         let timeline = Timeline(entries: [entry], policy: .atEnd)
@@ -81,13 +85,14 @@ struct SimpleEntry: TimelineEntry {
     let date: Date // Widget을 rendering할 Date
     let title: String
     var link: String?
-    var imageName: String?
+    var image: UIImage?
+    var id: String?
 }
 
 //MARK: - Widget View
 struct LockScreenWidgetEntryView : View {
     var entry: Provider.Entry
-    
+        
     @Environment(\.widgetFamily) var family
     
     let mainURL = "widget-deeplink://"
@@ -104,12 +109,17 @@ struct LockScreenWidgetEntryView : View {
                 }
             } else {
                 VStack {
-                    Image(entry.imageName ?? "plus.circle")
+                    Image(uiImage: entry.image!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .widgetURL(URL(string: "\(mainURL)\(entry.link ?? "failLink")"))
                 }
             }
+        case .accessoryRectangular:
+                Text(entry.id!)
+                    .font(Font.caption)
+            
+                
         default:
             VStack {
                 Image("swift")
@@ -150,7 +160,7 @@ struct LockScreenWidget: Widget {
         }
         .configurationDisplayName("딥링크 위젯")
         .description("앱에서 생성한 위젯을 생성하세요.")
-        .supportedFamilies([.accessoryCircular]) // 위젯이 지원하는 위젯의 종류입니다.
+        .supportedFamilies([.accessoryCircular, .accessoryRectangular]) // 위젯이 지원하는 위젯의 종류입니다.
     }
 }
 

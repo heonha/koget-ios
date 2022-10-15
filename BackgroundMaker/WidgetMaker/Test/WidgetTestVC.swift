@@ -174,7 +174,7 @@ class WidgetTestVC: UIViewController {
             // "BackgroundColor" to the shared container.
             // See 3a below...
         let testStr = "Testing"
-            self.setPreferenceValue(testStr, forKey: "TEST", in: APP_GROUP_ID )
+            self.setPreferenceValue(testStr, forKey: "TEST", in: Constants.appGroupID )
             print("TEST : \(testStr) ")
         
     } // end func setSharedValueButtonPressed
@@ -204,7 +204,7 @@ class WidgetTestVC: UIViewController {
     }
     
     @objc func loadPreferenceValue() {
-        if let groupUserDefaults = UserDefaults(suiteName: APP_GROUP_ID) {
+        if let groupUserDefaults = UserDefaults(suiteName: Constants.appGroupID) {
             
             // 3c) Write the value for the given key
             // to our shared container.
@@ -226,11 +226,11 @@ class WidgetTestVC: UIViewController {
         let sharedFileManager = FileManager.default
         
         /* 4b) "In macOS, a URL of the expected form is always returned, even if the app group is invalid, so be sure to test that you can access the underlying directory before attempting to use it." */
-        let sharedContainerFolderURL = sharedFileManager.containerURL(forSecurityApplicationGroupIdentifier: APP_GROUP_ID)
+        let sharedContainerFolderURL = sharedFileManager.containerURL(forSecurityApplicationGroupIdentifier: Constants.appGroupID)
         // 4c) Now we build a standard path ("Library/Preferences/")
         // to the preferences data store file (plist). Note
         // the format of the plist's name.
-        let sharedContainerPrefsPlistURL = (sharedContainerFolderURL?.appendingPathComponent("Library/Preferences/\(APP_GROUP_ID).plist"))!
+        let sharedContainerPrefsPlistURL = (sharedContainerFolderURL?.appendingPathComponent("Library/Preferences/\(Constants.appGroupID).plist"))!
         // 4d) Try to read data from the preferences
         // plist file.
         let sharedContainerPrefsPlistData = NSData(contentsOf: sharedContainerPrefsPlistURL)
