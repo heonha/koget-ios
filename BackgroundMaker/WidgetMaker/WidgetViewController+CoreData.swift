@@ -53,12 +53,11 @@ extension WidgetViewController: AddWidgetViewControllerDelegate {
     
     
     // //해당하는 데이터 삭제하기 (Delete)
-    // func deleteData(data: DeepLink) {
-    //     coredataContext.delete(data)
-    //     saveData()
-    //     loadData()
-    //
-    // }
+    func deleteData(data: DeepLink) {
+        coredataContext.delete(data)
+        saveData()
+        loadData()
+    }
     
 
     

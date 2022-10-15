@@ -82,6 +82,7 @@
 		3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */; };
 		3AE386F328FA83AF0001979A /* EditingWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE386F228FA83AF0001979A /* EditingWidgetViewController.swift */; };
 		3AE386F528FA98AE0001979A /* CustomUIVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE386F428FA98AD0001979A /* CustomUIVisualEffectView.swift */; };
+		3AE386F728FAC49F0001979A /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE386F628FAC49F0001979A /* PhotoPickerViewController.swift */; };
 		3AE9DC0D28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */; };
 		3AE9DC0E28F8F890008A3316 /* BackgroundMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */; };
 		3AE9DC0F28F8F891008A3316 /* BackgroundMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */; };
@@ -196,6 +197,7 @@
 		3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		3AE386F228FA83AF0001979A /* EditingWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingWidgetViewController.swift; sourceTree = "<group>"; };
 		3AE386F428FA98AD0001979A /* CustomUIVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIVisualEffectView.swift; sourceTree = "<group>"; };
+		3AE386F628FAC49F0001979A /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WidgetModel.xcdatamodel; sourceTree = "<group>"; };
 		3AE9DC3D28F936E3008A3316 /* WidgetViewController+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WidgetViewController+CoreData.swift"; sourceTree = "<group>"; };
 		3AE9DC3F28F95929008A3316 /* IconCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewController.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				3AE386F228FA83AF0001979A /* EditingWidgetViewController.swift */,
 				3AF7E59228F8610700B14DFD /* Cells */,
 				3AE386F428FA98AD0001979A /* CustomUIVisualEffectView.swift */,
+				3AE386F628FAC49F0001979A /* PhotoPickerViewController.swift */,
 			);
 			path = AddWidget;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				3A397CA428F80D6D006D5B18 /* CAGradientLayer+Apply.swift in Sources */,
 				3A0F42A428C982D8002F1CAD /* BottomMenuView.swift in Sources */,
 				3A35CD5D28F67D9400386011 /* ConnectingViewController.swift in Sources */,
+				3AE386F728FAC49F0001979A /* PhotoPickerViewController.swift in Sources */,
 				3A51A10428F531E70027AD5A /* WidgetViewController.swift in Sources */,
 				3AE9DC4028F95929008A3316 /* IconCollectionViewController.swift in Sources */,
 				3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */,

@@ -12,7 +12,7 @@ import PhotosUI
 import Lottie
 
 /**
- `MainViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
+ `HomeViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
  >
  */
 class HomeViewController: UIViewController {

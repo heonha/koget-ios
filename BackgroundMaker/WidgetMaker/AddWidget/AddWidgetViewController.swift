@@ -10,9 +10,9 @@ import SnapKit
 import Photos
 
 // CoreData 추가하기
-// [] Data Model 만들기
-// [] CoreData 메소드 만들기
-// [] 커스텀 이미지, 일반 아이콘 이미지 로 설정할 수 있도록 선택지 추가.
+// [v] Data Model 만들기
+// [v] CoreData 메소드 만들기
+// [진행중] 커스텀 이미지, 일반 아이콘 이미지 로 설정할 수 있도록 선택지 추가.
 
 protocol AddWidgetViewControllerDelegate {
     func addDeepLinkWidget(widget: DeepLink)
@@ -26,9 +26,19 @@ class AddWidgetViewController: UIViewController {
     
     //MARK: - Properties
     
-    private let iconImageView: UIImageView = {
+    private let iconPlaceHolderImageView: UIImageView = {
         let iv = ViewModel.shared.makeImageView(
             image: UIImage(named: "plus.circle"), contentMode: .scaleAspectFit
+        )
+        ViewModel.shared.makeLayerShadow(to: iv.layer)
+
+        
+        return iv
+    }()
+    
+    private let iconImageView: UIImageView = {
+        let iv = ViewModel.shared.makeImageView(
+            image: nil, contentMode: .scaleAspectFit
         )
         ViewModel.shared.makeLayerShadow(to: iv.layer)
 
@@ -45,12 +55,13 @@ class AddWidgetViewController: UIViewController {
     }()
     
     private let segment: UISegmentedControl = {
-        let seg = UISegmentedControl(items: ["커스텀 위젯", "위젯 고르기"])
+        let seg = UISegmentedControl(items: ["커스텀 위젯"])
         seg.translatesAutoresizingMaskIntoConstraints = false
         seg.setTitleTextAttributes(
             [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)],
             for: .normal
         )
+        seg.selectedSegmentIndex = 0
         
         return seg
     }()
@@ -77,7 +88,7 @@ class AddWidgetViewController: UIViewController {
     // - 이름
     private var name: String?
     private var nameLabel: UILabel = ViewModel.shared.makeLabel(
-        text: "위젯 이름", color: .white, fontSize: 18, fontWeight: .bold, alignment: .left)
+        text: "위젯 이름", color: .white, fontSize: 20, fontWeight: .bold, alignment: .left)
     private var nameTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +103,7 @@ class AddWidgetViewController: UIViewController {
     
     // - URL
     private var url: String?
-    private var urlLabel: UILabel = ViewModel.shared.makeLabel(text: "딥링크 URL", color: .white, fontSize: 18, fontWeight: .bold, alignment: .left)
+    private var urlLabel: UILabel = ViewModel.shared.makeLabel(text: "딥링크 URL", color: .white, fontSize: 20, fontWeight: .bold, alignment: .left)
     private var urlTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -107,8 +118,14 @@ class AddWidgetViewController: UIViewController {
     //MARK: - UI Properties
     
     // - 추가하기 버튼
-    private lazy var button: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
+    private lazy var addButton: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
         target: self, action: #selector(addButtonTapped), title: "추가하기")
+    
+    // - 취소 버튼
+    private lazy var closeButton: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
+        target: self, action: #selector(closeButtonTapped),
+        title: "돌아가기", backgroundColor: .darkGray)
+
     
     //MARK: - LifeCycle
     
@@ -116,9 +133,17 @@ class AddWidgetViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureViewUI()
+        
+        nameTextField.delegate = self
+        urlTextField.delegate = self
     }
     
     //MARK: - Selectors
+    
+    @objc private func closeButtonTapped(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc private func addButtonTapped(sender: UIButton) {
         
         if let name = nameTextField.text, let deeplink = self.urlTextField.text {
@@ -142,7 +167,7 @@ class AddWidgetViewController: UIViewController {
             }
 
             guard let image = iconImageView.image else {
-                alert = makeAlert(alertTitle: "아이콘 확인", alertMessage: "아이콘을 선택해 주세요.", actions: [action])
+                alert = makeAlert(alertTitle: "아이콘 이미지 확인", alertMessage: " + 를 눌러 이미지를 선택해 주세요.", actions: [action])
                 present(alert, animated: true)
                 return
             }
@@ -185,12 +210,22 @@ class AddWidgetViewController: UIViewController {
         return alert
     }
 
+    private func presentPhotoPicker() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        
+        present(picker, animated: true)
+    }
+    
     
     @objc private func pickerButtonTapped() {
         print("Picker Button Tapped")
-        let alert = UIAlertController(title: "이미지 선택", message: "아이콘으로 사용할 이미지를 가져옵니다.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "아이콘 이미지 선택", message: "아이콘으로 사용할 이미지를 가져옵니다.", preferredStyle: .alert)
         let albumImageAction = UIAlertAction(title: "앨범 이미지", style: .default)  { _ in
             print("앨범 이미지")
+            self.presentPhotoPicker()
         }
         let appImageAction = UIAlertAction(title: "기본 이미지", style: .default) { _ in
             print("기본 이미지")
@@ -200,8 +235,14 @@ class AddWidgetViewController: UIViewController {
             self.present(vc, animated: true)
             
         }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .default)  { _ in
+            alert.dismiss(animated: true)
+        }
         alert.addAction(albumImageAction)
         alert.addAction(appImageAction)
+        alert.addAction(cancelAction)
+
         present(alert, animated: true)
         
     }
@@ -248,25 +289,31 @@ class AddWidgetViewController: UIViewController {
 
         // Layout Values
         let insets: (top: CGFloat, leadingTrailing: CGFloat) = (16, 16)
-        let spacing: CGFloat = -8
-        let labelHeight: CGFloat = 30
-        let textFieldHeight: CGFloat = 40
-        let buttonHeight: CGFloat = 35
+        let spacing: CGFloat = 8
+
         
         
         contentView.backgroundColor = AppColors.blackDarkGrey
         
         let iconImageViewHeight: CGFloat = UIScreen.main.bounds.width / 4
 
+        contentView.addSubview(iconPlaceHolderImageView)
         contentView.addSubview(iconImageView)
         contentView.addSubview(iconImageViewButton)
+        
+        iconPlaceHolderImageView.snp.makeConstraints { make in
+            make.top.equalTo(contentView).inset(insets.top)
+            make.centerX.equalTo(contentView)
+            make.height.equalTo(iconImageViewHeight)
+            make.width.equalTo(iconImageViewHeight)
+        }
+        
         
         iconImageView.snp.makeConstraints { make in
             make.top.equalTo(contentView).inset(insets.top)
             make.centerX.equalTo(contentView)
             make.height.equalTo(iconImageViewHeight)
             make.width.equalTo(iconImageViewHeight)
-
         }
         
         ViewModel.shared.cropCornerRadius(view: iconImageView, radius: iconImageViewHeight / 2)
@@ -277,6 +324,8 @@ class AddWidgetViewController: UIViewController {
         }
         
         
+        let labelHeight: CGFloat = 30
+        let textFieldHeight: CGFloat = 40
         
         
         // 위젯이름 (Label, TextField)
@@ -286,13 +335,13 @@ class AddWidgetViewController: UIViewController {
         ViewModel.shared.makeLayerShadow(to: nameTextField.layer)
 
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconImageView.snp.bottom).inset(spacing)
+            make.top.equalTo(iconImageView.snp.bottom).inset(-spacing)
             make.leading.trailing.equalTo(contentView).inset(insets.leadingTrailing)
             make.height.equalTo(labelHeight)
         }
         
         nameTextField.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).inset(spacing)
+            make.top.equalTo(nameLabel.snp.bottom).inset(-spacing)
             make.leading.trailing.equalTo(nameLabel)
             make.height.equalTo(textFieldHeight)
         }
@@ -305,24 +354,36 @@ class AddWidgetViewController: UIViewController {
 
 
         urlLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameTextField.snp.bottom).inset(spacing)
+            make.top.equalTo(nameTextField.snp.bottom).inset(-spacing)
             make.leading.trailing.equalTo(contentView).inset(insets.leadingTrailing)
             make.height.equalTo(labelHeight)
         }
         
         urlTextField.snp.makeConstraints { make in
-            make.top.equalTo(urlLabel.snp.bottom).inset(spacing)
+            make.top.equalTo(urlLabel.snp.bottom).inset(-spacing)
             make.leading.trailing.equalTo(nameLabel)
             make.height.equalTo(textFieldHeight)
         }
         
         // Button Layout
-        contentView.addSubview(button)
-        button.snp.makeConstraints { make in
-            make.top.equalTo(urlTextField.snp.bottom).inset(-20)
+        let contentAndButtonSpacing: CGFloat = -36
+        let buttonSpacing: CGFloat = 12
+        let buttonHeight: CGFloat = 40
+        
+        contentView.addSubview(addButton)
+        addButton.snp.makeConstraints { make in
+            make.top.equalTo(urlTextField.snp.bottom).inset(contentAndButtonSpacing)
             make.leading.trailing.equalTo(nameLabel)
             make.height.equalTo(buttonHeight)
         }
+        
+        contentView.addSubview(closeButton)
+        closeButton.snp.makeConstraints { make in
+            make.top.equalTo(addButton.snp.bottom).inset(-buttonSpacing)
+            make.leading.trailing.equalTo(nameLabel)
+            make.height.equalTo(buttonHeight)
+        }
+        
     }
 }
 
@@ -330,4 +391,41 @@ extension AddWidgetViewController: IconCollectionViewControllerDelegate {
     func iconSelected(icon: UIImage) {
         self.iconImageView.image = icon
     }
+}
+
+extension AddWidgetViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        
+        if let image = info[.editedImage] as? UIImage {
+            self.iconImageView.image = image
+            dismiss(animated: true)
+        } else {
+            print("에러")
+            dismiss(animated: true)
+        }
+        
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("선택한 이미지 없음")
+
+    }
+}
+
+
+extension AddWidgetViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // textField 편집후 Return키를 눌렀을 때 동작.
+        textField.endEditing(true)
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
+    
 }

@@ -238,5 +238,19 @@ struct ViewModel {
         )
         button.setAttributedTitle(attribute, for: .normal)
     }
+    
+    func makeAlert(alertTitle: String, alertMessage: String, actions: [UIAlertAction]? ) -> UIAlertController {
+        
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        
+        if let actions = actions {
+            for action in actions {
+                alert.addAction(action)
+            }
+        }
+        
+        return alert
+    }
+    
 
 }

@@ -252,6 +252,18 @@ extension WidgetViewController {
 
 
 extension WidgetViewController: EditWidgetViewControllerDelegate {
+    func deleteDeepLink(data: DeepLink) {
+        let dataName = data.name ?? "딥 링크"
+        self.deleteData(data: data)
+        let apply = UIAlertAction(title: "확인", style: .default) { _ in
+            self.collectionView.reloadData()
+            self.dismiss(animated: true)
+        }
+        let alert = ViewModel.shared.makeAlert(alertTitle: "\(dataName) \n위젯이 삭제되었습니다.", alertMessage: "", actions: [apply])
+        self.present(alert, animated: true)
+
+    }
+    
     
     func editingSucessful(data: DeepLink) {
         saveData()
