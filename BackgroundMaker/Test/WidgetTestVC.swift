@@ -15,7 +15,7 @@ class WidgetTestVC: UIViewController {
     let sendButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("SEND", for: .normal)
+        button.setTitle("Test1", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 2
@@ -173,9 +173,33 @@ class WidgetTestVC: UIViewController {
             // 3) Write the user preference for view
             // "BackgroundColor" to the shared container.
             // See 3a below...
-        let testStr = "Testing"
-            self.setPreferenceValue(testStr, forKey: "TEST", in: Constants.appGroupID )
-            print("TEST : \(testStr) ")
+        // let testStr = "Testing"
+        //     self.setPreferenceValue(testStr, forKey: "TEST", in: Constants.appGroupID )
+        //     print("TEST : \(testStr) ")
+        
+        var deepLink = "youtube://"
+        var checkDeepLinking = "://"
+        
+        var deepLinkWithScheme = "youtube://naver"
+
+        if deepLink.contains(checkDeepLinking) {
+            print("포함됨")
+            
+            // Position of the character to remove
+            let arrayS = deepLink.components(separatedBy: "://")
+
+              
+            // Getting the string after removal of character
+              
+            // Getting the removed character
+            print(arrayS)
+            
+            
+        } else {
+            print("미포함")
+        }
+
+
         
     } // end func setSharedValueButtonPressed
     

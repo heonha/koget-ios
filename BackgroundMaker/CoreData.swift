@@ -18,10 +18,9 @@ class CoreData {
     
     lazy var persistentContainer: NSPersistentContainer = {
         /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
+         애플리케이션의 Persistent Container 입니다.
+         이 구현은 애플리케이션 저장소를 로드한 컨테이너를 생성하고 반환합니다.
+         저장소 생성에 실패할 수 있는 합법적인 오류 조건이 있으므로 이 속성은 Optional 입니다.
          */
         let storeURL = URL.storeURL(for: Constants.appGroupID, databaseName: Constants.coreDataEntityName)
         let storeDescription = NSPersistentStoreDescription(url: storeURL)
@@ -29,18 +28,21 @@ class CoreData {
         container.persistentStoreDescriptions = [storeDescription]
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
+                 // 이 구현을 코드로 교체하여 오류를 적절하게 처리하십시오.
+                 // fatalError() 는 응용 프로그램이 충돌 로그를 생성하고 종료하도록 합니다.
+                 // 개발 중에 유용할 수 있지만 배송 애플리케이션에서는 이 기능을 사용해서는 안 됩니다.
+
                 /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
+
+                 여기에 오류가 발생하는 일반적인 이유는 다음과 같습니다.
+                 * 상위 디렉토리가 존재하지 않거나 생성할 수 없거나 쓰기가 허용되지 않습니다.
+                 * 장치가 잠겨 있을 때 권한 또는 데이터 보호로 인해 영구 저장소에 액세스할 수 없습니다.
+                 * 장치의 공간이 부족합니다.
+                 * 스토어를 현재 모델 버전으로 마이그레이션할 수 없습니다.
+                 오류 메시지를 확인하여 실제 문제가 무엇인지 확인하십시오.
                  */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                
+                fatalError("해결되지 않은 오류 Unresolved error : \(error), \(error.userInfo)")
             }
         })
         return container
@@ -58,10 +60,11 @@ class CoreData {
                 
             }
         } catch let error as NSError {
-             // Replace this implementation with code to handle the error appropriately.
-             // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-             let nserror = error as NSError
-             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            // 이 구현을 코드로 교체하여 오류를 적절하게 처리하십시오.
+            // fatalError() 는 응용 프로그램이 충돌 로그를 생성하고 종료하도록 합니다.
+            // 개발 중에 유용할 수 있지만 배송 애플리케이션에서는 이 기능을 사용해서는 안 됩니다.
+            let nserror = error as NSError
+            fatalError("해결되지 않은 오류 Unresolved error : \(nserror), \(nserror.userInfo)")
         }
     }
     
@@ -86,22 +89,23 @@ class CoreData {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                // 이 구현을 코드로 교체하여 오류를 적절하게 처리하십시오.
+                // fatalError() 는 응용 프로그램이 충돌 로그를 생성하고 종료하도록 합니다.
+                // 개발 중에 유용할 수 있지만 배송 애플리케이션에서는 이 기능을 사용해서는 안 됩니다.
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                fatalError("해결되지 않은 오류 : Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
 }
 
 public extension URL {
-    /// Returns a URL for the given app group and database pointing to the sqlite database.
+    /// sqlite 데이터베이스를 가리키는 지정된 앱 그룹 및 데이터베이스의 URL을 반환합니다.
     static func storeURL(for appGroup: String, databaseName: String) -> URL {
         guard let fileContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
-            fatalError("Shared file container could not be created.")
+            fatalError("공유 파일 컨테이너를 생성할 수 없습니다. : Shared file container could not be created.")
         }
-
+        
         return fileContainer.appendingPathComponent("\(databaseName).sqlite")
     }
 }

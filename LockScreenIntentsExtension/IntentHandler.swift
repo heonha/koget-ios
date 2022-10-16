@@ -136,7 +136,7 @@ extension IntentHandler: DeepLinkAppIntentHandling {
 
     // MARK: 데이터의 흐름
     // AppInfo : 딥링크 할 앱의 데이터
-    // AppList : AppInfo의 Array
+    // WidgetModel : AppInfo의 Array
     // AppDefinition(Type, intentDefinition)
     // AppInfo -> AppDefinition으로 데이터를 전달한다.
     // 데이터의 전달은 DeepLinkAppIntentHandling 프로토콜의 provideAppOptionsCollection 메소드를 통해 전달한다.
