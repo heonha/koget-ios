@@ -226,7 +226,7 @@ extension WidgetViewController {
         
         var icons: [DeepLink] = []
         
-        var defaultApps = AppList.shared.app
+        var defaultApps = WidgetModel.shared.app
         
         for appInfo in defaultApps {
             let item = DeepLink(context: coredataContext)

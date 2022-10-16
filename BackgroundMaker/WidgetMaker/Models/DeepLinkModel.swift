@@ -7,21 +7,38 @@
 
 import UIKit
 import CoreData
+import SwiftUI
+
+/// DeepLinking 할 앱의 정보
+struct BuiltInDeepLink {
+    let id: UUID
+    let name: String
+    let imageName: String
+    let deepLink: String
+    let scheme: String?
+}
 
 
-class AppList {
+struct CustomWidgetInfo {
+    let id: UUID
+    let name: String
+    let image: Image?
+    let text: String?
+}
+
+class WidgetModel {
     
-    static let shared = AppList()
+    static let shared = WidgetModel()
     
     // MARK: [Todo] CoreData로 전환이 필요한지 검토해보기
     
-    let app: [AppInfo] = [
-        AppInfo(id: .init(), name: "Youtube", imageName: "youtube", deepLink: "youtube", scheme: nil),
-        AppInfo(id: .init(), name: "Instagram", imageName: "instagram", deepLink: "instagram",scheme: nil),
-        AppInfo(id: .init(), name: "Naver", imageName: "naver", deepLink: "naversearchapp", scheme: nil),
-        AppInfo(id: .init(), name: "Youtube Music", imageName: "youtubeMusic", deepLink: "youtubemusic", scheme: nil),
-        AppInfo(id: .init(), name: "신한 터치결제", imageName: "shinhanTouch", deepLink: "shpayfan-touchpay", scheme: "touch"),
-        AppInfo(id: .init(), name: "Google OTP", imageName: "googleOTP", deepLink: "googleauthenticator", scheme: ""),
+    let app: [BuiltInDeepLink] = [
+        BuiltInDeepLink(id: .init(), name: "Youtube", imageName: "youtube", deepLink: "youtube://", scheme: nil),
+        BuiltInDeepLink(id: .init(), name: "Instagram", imageName: "instagram", deepLink: "instagram://",scheme: nil),
+        BuiltInDeepLink(id: .init(), name: "Naver", imageName: "naver", deepLink: "naversearchapp://", scheme: nil),
+        BuiltInDeepLink(id: .init(), name: "Youtube Music", imageName: "youtubeMusic", deepLink: "youtubemusic://", scheme: nil),
+        BuiltInDeepLink(id: .init(), name: "Google OTP", imageName: "googleOTP", deepLink: "googleauthenticator://", scheme: ""),
+        BuiltInDeepLink(id: .init(), name: "신한 터치결제", imageName: "shinhanTouch", deepLink: "shpayfan-touchpay://touch", scheme: "touch"),
     ]
     
     

@@ -16,6 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // maybeOpenedFromWidget(urlContexts: connectionOptions.urlContexts, scheme: nil)
         
+        
+
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .systemBackground
@@ -75,36 +78,73 @@ extension SceneDelegate {
          starbucks://home
          starbucks://scan
          */
+        
+        // url: widget-deeplink://shpayfan-touchpay://touch
+        // scheme: Optional("widget-deeplink")
+        // host: Optional("shpayfan-touchpay")
+        // path: //touch
+        
+        
+        
+        
+        
+        
         var url: URL?
         var host: String?
         
         print("URL Context : \(URLContexts.first!)")
+        // URL: widget-deeplink://shpayfan-touchpay://touch
+        var deepLinkHeader = "widget-deeplink://"
+
         
         for context in URLContexts {
-            print("url: \(context.url.absoluteURL)")
+            
+            
+            print("url: \(context.url.absoluteURL.absoluteString)")
             url = context.url.absoluteURL
             print("scheme: \(context.url.scheme)")
             print("host: \(context.url.host)")
-            host = context.url.host!
+            let handler = url!.absoluteString.deletingPrefix(deepLinkHeader)
+
+            host = handler
             print("path: \(context.url.path)")
             print("components: \(context.url.pathComponents)")
         }
         
+        
+        
+        
         maybeOpenedFromWidget(urlContexts: URLContexts, host: host)
     }
 
+    func urlHandling(url: String) {
+        var deepLinkHeader = "widget-deeplink://"
+        let handler = url.deletingPrefix("\(deepLinkHeader)")
+    }
+    
+    
     //MARK: Deeplink 처리
     /// 위젯 scheme을 확인하고 deepLink를 엽니다.
     private func maybeOpenedFromWidget(urlContexts: Set<UIOpenURLContext>, host: String?) {
         guard let _: UIOpenURLContext = urlContexts.first(where: { $0.url.scheme == "widget-deeplink"}) else { return }
-        print("🚀 Launched from widget")
+        print("‼️위젯으로 앱을 열었습니다. ")
+        
+        // 뒤에 Host를 통해 딥링크를 실행합니다.
         
         guard let host = host else { return }
         
-        let url = URL(string: "\(host)://")!
+        
+        
+        let url = URL(string: "\(host)")!
         print("Scheme! -> \(host)")
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
 
 
+extension String {
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
+    }
+}

@@ -38,7 +38,7 @@ struct Provider: IntentTimelineProvider {
             date: Date(),
             title: selectedApp.displayString ?? "plus.circle",
             link: selectedApp.deepLink ?? "failLink",
-            image: AppList.shared.searchImage(id: selectedApp.uuid!),
+            image: WidgetModel.shared.searchImage(id: selectedApp.uuid!),
             id: selectedApp.identifier
         )
         
