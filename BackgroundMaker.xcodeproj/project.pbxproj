@@ -92,6 +92,7 @@
 		3AF9F00F28ED570E00F685E6 /* LockScreenWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3AF9F01428ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9F01328ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift */; };
 		885DCEE41665AA2004D247A7 /* Pods_BackgroundMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AA3F0365E8B886421EBD4F /* Pods_BackgroundMaker.framework */; };
+		D90A6CBA7802301EBC85E595 /* Pods_LockScreenWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F8A7F589A23E8403869CFE /* Pods_LockScreenWidgetExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +241,7 @@
 			files = (
 				3AF9F00628ED570D00F685E6 /* SwiftUI.framework in Frameworks */,
 				3AF9F00528ED570D00F685E6 /* WidgetKit.framework in Frameworks */,
+				D90A6CBA7802301EBC85E595 /* Pods_LockScreenWidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +557,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AF9F01028ED570E00F685E6 /* Build configuration list for PBXNativeTarget "LockScreenWidgetExtension" */;
 			buildPhases = (
+				479FEF317BFF4487CB1C961C /* [CP] Check Pods Manifest.lock */,
 				3AF9F00028ED570D00F685E6 /* Sources */,
 				3AF9F00128ED570D00F685E6 /* Frameworks */,
 				3AF9F00228ED570D00F685E6 /* Resources */,
@@ -600,11 +603,11 @@
 			);
 			mainGroup = 3ABA6C0A28C6043F005AA8E4;
 			packageReferences = (
-				3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis" */,
-				3ACD923A28CDC63F00345E6C /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */,
+				3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift.git" */,
+				3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit.git" */,
+				3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis.git" */,
+				3ACD923A28CDC63F00345E6C /* XCRemoteSwiftPackageReference "lottie-ios.git" */,
+				3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView.git" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -664,6 +667,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-BackgroundMaker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		479FEF317BFF4487CB1C961C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LockScreenWidgetExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -911,7 +936,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -966,7 +991,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1050,6 +1075,7 @@
 		};
 		3AF9F01128ED570E00F685E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EE40A9B2882A430986C44CB /* Pods-LockScreenWidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1079,6 +1105,7 @@
 		};
 		3AF9F01228ED570E00F685E6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65F77E2C29C75DB6431FCD4C /* Pods-LockScreenWidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1148,7 +1175,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis" */ = {
+		3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/guoyingtao/Mantis.git";
 			requirement = {
@@ -1156,7 +1183,7 @@
 				minimumVersion = 1.7.0;
 			};
 		};
-		3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */ = {
+		3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/selivandex/RulerView.git";
 			requirement = {
@@ -1164,7 +1191,7 @@
 				minimumVersion = 0.1.3;
 			};
 		};
-		3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -1172,7 +1199,7 @@
 				minimumVersion = 6.5.0;
 			};
 		};
-		3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -1180,7 +1207,7 @@
 				minimumVersion = 5.6.0;
 			};
 		};
-		3ACD923A28CDC63F00345E6C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		3ACD923A28CDC63F00345E6C /* XCRemoteSwiftPackageReference "lottie-ios.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
@@ -1193,32 +1220,32 @@
 /* Begin XCSwiftPackageProductDependency section */
 		3A5E82BB28C7393700C10AAC /* Mantis */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis" */;
+			package = 3A5E82BA28C7393700C10AAC /* XCRemoteSwiftPackageReference "Mantis.git" */;
 			productName = Mantis;
 		};
 		3A8E3A0628E3E7B900390F8A /* RulerView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */;
+			package = 3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView.git" */;
 			productName = RulerView;
 		};
 		3ABA6C3228C60A7F005AA8E4 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift.git" */;
 			productName = RxCocoa;
 		};
 		3ABA6C3428C60A7F005AA8E4 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift.git" */;
 			productName = RxSwift;
 		};
 		3ABA6C3728C6361B005AA8E4 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
 			productName = SnapKit;
 		};
 		3ACD923B28CDC63F00345E6C /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3ACD923A28CDC63F00345E6C /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = 3ACD923A28CDC63F00345E6C /* XCRemoteSwiftPackageReference "lottie-ios.git" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */

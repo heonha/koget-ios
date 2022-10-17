@@ -258,7 +258,17 @@ class PhotoViewController: UIViewController {
         
         setPickedImage() // 앨범에서 선택한 이미지 불러오기
         self.bottomView.parentVC = self
-        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.barButtonReplace(buttons: [shareButton])
+        // Subview 셋업
+        self.makeTrayView() // 트레이 뷰 띄우기
+        self.makeBlurSubview(view: edgeBlurSliderView) // 엣지 블러 슬라이더뷰 셋업
+        self.makeBGEditView(view: bgSubview) // 배경화면 편집 서브뷰 셋업
+        self.makeBGColorPicker()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -272,15 +282,8 @@ class PhotoViewController: UIViewController {
             self.makePinchGesture(selector: #selector(pinchZoomAction)) // 이미지 확대 축소 제스쳐 추가
             self.addPanGesture(selector: #selector(makeDragImageGesture)) // 이미지 드래그 제스쳐 추가.
             self.addDoubleTapRecognizer(selector: #selector(doubleTapZoomAction)) // 더블탭 제스쳐 추가 (더블탭 시 배율 확대, 축소)
-            self.barButtonReplace(buttons: [shareButton])
             self.hideLoadingIndicator() // 이미지가 셋업되면 숨김
             self.resizeImageView() // 이미지 흐림효과를 위한 리사이즈
-            
-            // Subview 셋업
-            self.makeTrayView() // 트레이 뷰 띄우기
-            self.makeBlurSubview(view: edgeBlurSliderView) // 엣지 블러 슬라이더뷰 셋업
-            self.makeBGEditView(view: bgSubview) // 배경화면 편집 서브뷰 셋업
-            self.makeBGColorPicker()
             
         }
         
@@ -437,15 +440,7 @@ class PhotoViewController: UIViewController {
     
  
     
-    /// 병합된 이미지를 뷰에 반영합니다.
-    @objc func getMergeImage() {
-        if let source = self.mainImageView.image, let background = self.bgImageView.image {
-            
-            let mergedImage = self.imageEditModel
-                .mergeImages(image: source, imageRect: mainImageView.frame.integral, backgroundImage: background)
-            self.mainImageView.image = mergedImage
-        }
-    }
+
     
     //MARK: [Todo Refactoring]
     /// 현재 뷰를 캡쳐하고 그 이미지를 공유합니다.

@@ -13,6 +13,7 @@ import ChameleonFramework
 /// Color Pallet 를 담고있는 View 입니다.
 class ColorPickerView: UIView {
     
+    
     var viewWidth: CGFloat!
     var viewHeight: CGFloat!
     var target: UIViewController!
@@ -21,10 +22,39 @@ class ColorPickerView: UIView {
     var contentView: UIView = UIView()
     var colorSlider = UIView()
     
-    var colorImage = UIImage()
+    // 편집중인 이미지를 리사이징 (평균 컬러 추출용)
+    var colorImage: UIImage = {
+        var editingImage = UIImage()
+        var mainImg = ImageViewModel.shared.editingPhoto
+            .subscribe { image in
+                image.map { image in
+                    
+                    guard let image = image else {return}
+                    
+                    let compImg = image.jpegData(compressionQuality: 0.3)
+                    editingImage = UIImage(data: compImg!, scale: 10) ?? UIColor.white.image()
+                }
+            }.dispose()
+        
+        return editingImage
+    }()
 
+
+    /// 컬러 팔레트 스택뷰
+    let stackView: UIStackView = {
+        let sv = UIStackView()
+        
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.axis = .horizontal
+        sv.spacing = 10
+        sv.alignment = .center
+        sv.distribution = .fillEqually
+
+        return sv
+    }()
     
-    var firstColor = UIView()
+    
+    
     
     init(target: UIViewController) {
         self.target = target
@@ -43,43 +73,16 @@ class ColorPickerView: UIView {
         backgroundView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
         makeColorSlider()
 
     }
     
+
+    
     private func makeColorSlider() {
-        
-        let stackView: UIStackView = {
-            let sv = UIStackView()
-            
-            sv.translatesAutoresizingMaskIntoConstraints = false
-            sv.axis = .horizontal
-            sv.spacing = 10
-            sv.alignment = .center
-            sv.distribution = .fillEqually
 
-            return sv
-        }()
-        
-        addSubview(stackView)
-        
-        var imageColors = UIColor()
-        
-
-        var mainImg = ImageViewModel.shared.editingPhoto
-            .subscribe { image in
-                image.map { image in
-                    
-                    guard let image = image else {return}
-                    
-                    imageColors = UIColor(averageColorFrom: image)
-                    let compImg = image.jpegData(compressionQuality: 0.3)
-                    self.colorImage = UIImage(data: compImg!, scale: 10) ?? UIColor.white.image()
-                }
-            }.dispose()
-        
-        let colorArray = NSArray(ofColorsFrom: colorImage, withFlatScheme: false)
-        
+        let colorArray = NSArray(ofColorsFrom: colorImage, withFlatScheme: true)
         let colorBlack = UIColor.black
         let colorOne = UIColor(averageColorFrom: colorImage)!
         let colorTwo = colorArray![1] as! UIColor
@@ -98,21 +101,24 @@ class ColorPickerView: UIView {
         let colorCircles = [circleBlack, circleWhite, circleOne, circleTwo, circleThree, circleFour]
         let circleSize: CGFloat = 30.0
         
-        
         for circle in colorCircles {
-            
+        
             circle.translatesAutoresizingMaskIntoConstraints = false
             circle.layer.cornerRadius = 15
             stackView.addArrangedSubview(circle)
-            
-            /// Color Slider Layout
+        
+            var circleSize: CGFloat = 30
+            /// Color Pallet 크기 지정
             circle.snp.makeConstraints { make in
-                make.height.equalTo(30)
-                make.width.equalTo(30)
+                make.height.equalTo(circleSize)
+                make.width.equalTo(circleSize)
             }
-            
+        
         }
         
+        addSubview(stackView)
+
+        /// 팔레트 색상 갯수에 따라서 StackView의 크기를 조절합니다.
         stackView.snp.makeConstraints { make in
             make.centerY.centerX.equalToSuperview()
             make.width.equalTo((colorCircles.count - 1) * 10 + colorCircles.count * 30)

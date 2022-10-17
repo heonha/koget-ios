@@ -28,8 +28,9 @@ class ImageEditModel {
         /// 이미지의 기본 판을 형성합니다.
         let screenSize = UIScreen.main.bounds
         let size = CGSize(width: screenSize.width, height: screenSize.height)
+        print("DEBUG: 그래픽사이즈: \(size)")
+
         UIGraphicsBeginImageContext(size)
-        
         
         let backAreaSize = screenSize
         backImage.draw(in: backAreaSize)
@@ -41,6 +42,17 @@ class ImageEditModel {
 
         let mergedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+        
+        // 사용법
+        // /// 병합된 이미지를 뷰에 반영합니다.
+        // @objc func getMergeImage() {
+        //     if let source = self.mainImageView.image, let background = self.bgImageView.image {
+        //
+        //         let mergedImage = self.imageEditModel
+        //             .mergeImages(image: source, imageRect: mainImageView.frame.integral, backgroundImage: background)
+        //         self.mainImageView.image = mergedImage
+        //     }
+        // }
 
         return mergedImage
     }
