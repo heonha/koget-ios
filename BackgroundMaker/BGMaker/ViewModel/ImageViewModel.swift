@@ -39,10 +39,6 @@ class ImageViewModel {
         return backgroundPhotoSubject.asObserver()
     }
     
-    
-    
-    
-    
     //MARK: - Methods
 
     /// 이미지를 업데이트 합니다.

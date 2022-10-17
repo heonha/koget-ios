@@ -37,7 +37,7 @@ class BottomMenuView: UIView {
     var backgroundAlphaValue: CGFloat?
     
     /// 현재 뷰를 초기화합니다.
-    init(height: CGFloat, rightBtnCount: CGFloat = 0, centerBtnCount: CGFloat = 0, leftBtnCount: CGFloat = 0, backgroundAlpha: CGFloat = 0.2, title: String = "") {
+    init(height: CGFloat = 0, rightBtnCount: CGFloat = 0, centerBtnCount: CGFloat = 0, leftBtnCount: CGFloat = 0, backgroundAlpha: CGFloat = 0.2, title: String = "") {
         let screenSize = UIScreen.main.bounds
         
         self.rightButtonCount = rightBtnCount
@@ -77,7 +77,6 @@ class BottomMenuView: UIView {
                 make.bottom.centerY.equalTo(contentView)
                 make.leading.equalTo(contentView).inset(10)
                 make.width.equalTo(80)
-                
             }
         }
         

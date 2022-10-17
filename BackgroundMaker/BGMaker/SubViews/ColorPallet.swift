@@ -12,7 +12,7 @@ import ChameleonFramework
 
 
 /// 원형의 Color Pallet 입니다.
-class ColorPalletView: UIView {
+class ColorPallet: UIView {
     
     var color: UIColor!
     

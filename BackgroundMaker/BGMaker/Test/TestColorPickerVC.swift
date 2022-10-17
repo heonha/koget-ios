@@ -87,11 +87,11 @@ class TestColorPickerVC: UIViewController {
             return sv
         }()
         
-        lazy var circleFlatGreen = ColorPalletView(color: UIColor.flatGreenColorDark(), target: self)
-        lazy var circleLime = ColorPalletView(color: UIColor.flatLime(), target: self)
-        lazy var circleRed = ColorPalletView(color: UIColor.flatRedColorDark(), target: self)
-        lazy var circleBlue = ColorPalletView(color: UIColor.flatBlueColorDark(), target: self)
-        lazy var circleSand = ColorPalletView(color: UIColor.flatSand(), target: self)
+        lazy var circleFlatGreen = ColorPallet(color: UIColor.flatGreenColorDark(), target: self)
+        lazy var circleLime = ColorPallet(color: UIColor.flatLime(), target: self)
+        lazy var circleRed = ColorPallet(color: UIColor.flatRedColorDark(), target: self)
+        lazy var circleBlue = ColorPallet(color: UIColor.flatBlueColorDark(), target: self)
+        lazy var circleSand = ColorPallet(color: UIColor.flatSand(), target: self)
         
         
         view.backgroundColor = .systemTeal

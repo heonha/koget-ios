@@ -7,8 +7,7 @@
 
 import UIKit
 import SnapKit
-import ChameleonFramework
-
+import UIImageColors
 
 /// Color Pallet 를 담고있는 View 입니다.
 class ColorPickerView: UIView {
@@ -78,28 +77,46 @@ class ColorPickerView: UIView {
 
     }
     
+    struct Colors {
+        let name: String
+        let color: UIColor
+    }
+    
+    /// 컬러 팔레트를 구성합니다. (이미지에서 추출)
+    func makeColorPallets(image: UIImage) -> [ColorPallet] {
+        
+        let colorArray = NSArray(ofColorsFrom: image, withFlatScheme: true)
+
+        let imageColors = image.getColors()!
+        print(imageColors)
+        
+        let colors: [Colors] = [
+            // 기본컬러
+            Colors(name: "Black", color: UIColor.black),
+            Colors(name: "White", color: UIColor.white),
+            // 이미지로부터 추출한 컬러
+            Colors(name: "fromImageOne", color: imageColors.primary),
+            Colors(name: "fromImgTwo", color: imageColors.secondary),
+            Colors(name: "fromImgThree", color: imageColors.detail),
+            Colors(name: "fromImgFour", color: imageColors.background),
+        ]
+        
+        var pallets: [ColorPallet] = []
+        
+        for color in colors {
+            let item = ColorPallet(color: color.color, target: target)
+            pallets.append(item)
+        }
+
+        return pallets
+    }
 
     
     private func makeColorSlider() {
 
-        let colorArray = NSArray(ofColorsFrom: colorImage, withFlatScheme: true)
-        let colorBlack = UIColor.black
-        let colorOne = UIColor(averageColorFrom: colorImage)!
-        let colorTwo = colorArray![1] as! UIColor
-        let colorThree = colorArray![2] as! UIColor
-        let colorFour = colorArray![3] as! UIColor
-        let colorWhite = UIColor.white
-        
-        
-        lazy var circleBlack = ColorPalletView(color: colorBlack, target: target)
-        lazy var circleWhite = ColorPalletView(color: colorWhite, target: target)
-        lazy var circleOne = ColorPalletView(color: colorOne, target: target)
-        lazy var circleTwo = ColorPalletView(color: colorTwo, target: target)
-        lazy var circleThree = ColorPalletView(color: colorThree, target: target)
-        lazy var circleFour = ColorPalletView(color: colorFour, target: target)
-        
-        let colorCircles = [circleBlack, circleWhite, circleOne, circleTwo, circleThree, circleFour]
+
         let circleSize: CGFloat = 30.0
+        let colorCircles = makeColorPallets(image: colorImage)
         
         for circle in colorCircles {
         
