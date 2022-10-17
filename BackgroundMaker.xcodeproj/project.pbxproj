@@ -31,7 +31,7 @@
 		3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C119628EDB4B800C9CCED /* IntentHandler.swift */; };
 		3A3C119B28EDB4B800C9CCED /* LockScreenIntentsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3A3C119F28EDB5B400C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
-		3A3C11A328EDC14700C9CCED /* DeepLinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* DeepLinkModel.swift */; };
+		3A3C11A328EDC14700C9CCED /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* WidgetModel.swift */; };
 		3A3E519328F2F9380095007C /* FailLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E519228F2F9380095007C /* FailLinkViewController.swift */; };
 		3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
@@ -45,8 +45,8 @@
 		3A559C7228EB21DB00D5D9E4 /* MenuAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C7128EB21DB00D5D9E4 /* MenuAnimation.swift */; };
 		3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */; };
 		3A5E82BC28C7393700C10AAC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = 3A5E82BB28C7393700C10AAC /* Mantis */; };
-		3A76BEAA28F2EC6B00B9162C /* DeepLinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* DeepLinkModel.swift */; };
-		3A76BEAB28F2EC6C00B9162C /* DeepLinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* DeepLinkModel.swift */; };
+		3A76BEAA28F2EC6B00B9162C /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* WidgetModel.swift */; };
+		3A76BEAB28F2EC6C00B9162C /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* WidgetModel.swift */; };
 		3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A82318E28C78F0700F958FE /* UIImage+Utils.swift */; };
 		3A8E3A0428E3E6AA00390F8A /* RulerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */; };
 		3A8E3A0728E3E7B900390F8A /* RulerView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A0628E3E7B900390F8A /* RulerView */; };
@@ -73,6 +73,9 @@
 		3AD12D9628CDA4C900CF431C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9528CDA4C900CF431C /* HomeViewController.swift */; };
 		3AD12D9828CDA72300CF431C /* ImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */; };
 		3ADDCD2928F458670033AA2C /* TextWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADDCD2728F455870033AA2C /* TextWidget.swift */; };
+		3AE09A9928FC1B5B009530F9 /* BuiltInWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE09A9828FC1B5B009530F9 /* BuiltInWidgetViewController.swift */; };
+		3AE09A9B28FC20BD009530F9 /* BuiltInAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE09A9A28FC20BD009530F9 /* BuiltInAppCell.swift */; };
+		3AE09A9D28FC3196009530F9 /* PlaceHolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE09A9C28FC3196009530F9 /* PlaceHolderCell.swift */; };
 		3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */; };
 		3AE386F328FA83AF0001979A /* EditingWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE386F228FA83AF0001979A /* EditingWidgetViewController.swift */; };
 		3AE386F528FA98AE0001979A /* CustomUIVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE386F428FA98AD0001979A /* CustomUIVisualEffectView.swift */; };
@@ -146,7 +149,7 @@
 		3A3C119628EDB4B800C9CCED /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		3A3C119828EDB4B800C9CCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A3C11A028EDB69A00C9CCED /* LockScreenIntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenIntentsExtension.entitlements; sourceTree = "<group>"; };
-		3A3C11A228EDC14700C9CCED /* DeepLinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkModel.swift; sourceTree = "<group>"; };
+		3A3C11A228EDC14700C9CCED /* WidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetModel.swift; sourceTree = "<group>"; };
 		3A3E519228F2F9380095007C /* FailLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailLinkViewController.swift; sourceTree = "<group>"; };
 		3A420D8D28E4669000C8426D /* PhotoViewController+RulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoViewController+RulerView.swift"; sourceTree = "<group>"; };
 		3A42851028E9D7CE001C7032 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
@@ -186,6 +189,9 @@
 		3AD12D9528CDA4C900CF431C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3AD12D9728CDA72300CF431C /* ImagePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerModel.swift; sourceTree = "<group>"; };
 		3ADDCD2728F455870033AA2C /* TextWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWidget.swift; sourceTree = "<group>"; };
+		3AE09A9828FC1B5B009530F9 /* BuiltInWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInWidgetViewController.swift; sourceTree = "<group>"; };
+		3AE09A9A28FC20BD009530F9 /* BuiltInAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInAppCell.swift; sourceTree = "<group>"; };
+		3AE09A9C28FC3196009530F9 /* PlaceHolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderCell.swift; sourceTree = "<group>"; };
 		3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		3AE386F228FA83AF0001979A /* EditingWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingWidgetViewController.swift; sourceTree = "<group>"; };
 		3AE386F428FA98AD0001979A /* CustomUIVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIVisualEffectView.swift; sourceTree = "<group>"; };
@@ -313,7 +319,7 @@
 		3A3E519428F2F9D10095007C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3A3C11A228EDC14700C9CCED /* DeepLinkModel.swift */,
+				3A3C11A228EDC14700C9CCED /* WidgetModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 			children = (
 				3A9BC0D328E6CC720041DA1B /* AddWidgetViewController.swift */,
 				3AF9F01328ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift */,
+				3AE09A9828FC1B5B009530F9 /* BuiltInWidgetViewController.swift */,
 				3AE9DC3F28F95929008A3316 /* IconCollectionViewController.swift */,
 				3AE386F228FA83AF0001979A /* EditingWidgetViewController.swift */,
 				3AF7E59228F8610700B14DFD /* Cells */,
@@ -476,6 +483,8 @@
 			isa = PBXGroup;
 			children = (
 				3A20984328EBE3B50032FD78 /* WidgetIconCell.swift */,
+				3AE09A9A28FC20BD009530F9 /* BuiltInAppCell.swift */,
+				3AE09A9C28FC3196009530F9 /* PlaceHolderCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -691,7 +700,7 @@
 				3A1CD1A128F9891C00AC5D1C /* CoreData.swift in Sources */,
 				3A1CD19828F9710E00AC5D1C /* GlobalConstants.swift in Sources */,
 				3A3C119F28EDB5B400C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
-				3A76BEAA28F2EC6B00B9162C /* DeepLinkModel.swift in Sources */,
+				3A76BEAA28F2EC6B00B9162C /* WidgetModel.swift in Sources */,
 				3A1CD19D28F9819300AC5D1C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,7 +719,7 @@
 				3A2F307728F4134D00404721 /* ImageTextButton.swift in Sources */,
 				3A17665928C9DAFF006DE579 /* ViewModel.swift in Sources */,
 				3AD12D9628CDA4C900CF431C /* HomeViewController.swift in Sources */,
-				3A3C11A328EDC14700C9CCED /* DeepLinkModel.swift in Sources */,
+				3A3C11A328EDC14700C9CCED /* WidgetModel.swift in Sources */,
 				3ABA6C1B28C6043F005AA8E4 /* PhotoViewController.swift in Sources */,
 				3A559C7228EB21DB00D5D9E4 /* MenuAnimation.swift in Sources */,
 				3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */,
@@ -719,6 +728,7 @@
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
 				3AD12D9428CD960E00CF431C /* ImageViewModel.swift in Sources */,
 				3A9BC0CC28E6AEAD0041DA1B /* RulerSubview.swift in Sources */,
+				3AE09A9D28FC3196009530F9 /* PlaceHolderCell.swift in Sources */,
 				3A42851128E9D7CE001C7032 /* ColorPickerView.swift in Sources */,
 				3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */,
 				3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */,
@@ -733,6 +743,7 @@
 				3A35CD5D28F67D9400386011 /* ConnectingViewController.swift in Sources */,
 				3AE386F728FAC49F0001979A /* PhotoPickerViewController.swift in Sources */,
 				3A51A10428F531E70027AD5A /* WidgetViewController.swift in Sources */,
+				3AE09A9B28FC20BD009530F9 /* BuiltInAppCell.swift in Sources */,
 				3AE9DC4028F95929008A3316 /* IconCollectionViewController.swift in Sources */,
 				3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */,
 				3AD12D9828CDA72300CF431C /* ImagePickerModel.swift in Sources */,
@@ -744,6 +755,7 @@
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
 				3A20984428EBE3B50032FD78 /* WidgetIconCell.swift in Sources */,
 				3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */,
+				3AE09A9928FC1B5B009530F9 /* BuiltInWidgetViewController.swift in Sources */,
 				3A420D8E28E4669000C8426D /* PhotoViewController+RulerView.swift in Sources */,
 				3A9EABB428E5C41800ED2BF2 /* PhotoViewController+Gesture.swift in Sources */,
 				3AC8E70328EA95F60086B8D4 /* ColorPalletView.swift in Sources */,
@@ -761,7 +773,7 @@
 				3ADDCD2928F458670033AA2C /* TextWidget.swift in Sources */,
 				3A1CD1A228F9891C00AC5D1C /* CoreData.swift in Sources */,
 				3A1CD19E28F9819400AC5D1C /* Constants.swift in Sources */,
-				3A76BEAB28F2EC6C00B9162C /* DeepLinkModel.swift in Sources */,
+				3A76BEAB28F2EC6C00B9162C /* WidgetModel.swift in Sources */,
 				3AE9DC0E28F8F890008A3316 /* BackgroundMaker.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

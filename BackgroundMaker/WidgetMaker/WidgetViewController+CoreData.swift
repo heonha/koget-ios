@@ -33,8 +33,12 @@ extension WidgetViewController: AddWidgetViewControllerDelegate {
     
     //원하는 entity 타입의 데이터 불러오기(Read)
     func loadData() {
-        // entity명이 Item 일 때
         let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
+        // 정렬방식 설정
+        let sortDescriptor = NSSortDescriptor(key: "addedDate", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        
+        // 데이터 가져오기
         do {
             self.deepLinkWidgets = try coredataContext.fetch(request) // 데이터 가져오기
             
