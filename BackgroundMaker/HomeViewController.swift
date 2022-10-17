@@ -133,7 +133,6 @@ class HomeViewController: UIViewController {
     
     /// 메뉴버튼을 만들고 menuStackView에 추가합니다.
     private func makeMenuButton(mainView: UIView, title: String, image: UIImage, action: Selector) {
-        
 
         // 컨텐츠 사이즈 지정
         let screenSize = UIScreen.main.bounds
@@ -146,7 +145,6 @@ class HomeViewController: UIViewController {
         // rootView
         mainView.translatesAutoresizingMaskIntoConstraints = false
 
-        
         // 배경 뷰
         let bgView: UIView = {
             let view = UIView()
@@ -170,6 +168,7 @@ class HomeViewController: UIViewController {
             return imageView
         }()
         
+        /// 메뉴제목 라벨 초기화
         let label: UILabel = {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -181,6 +180,7 @@ class HomeViewController: UIViewController {
             return label
         }()
         
+        /// 뷰를 감싸는 투명버튼 초기화
         let button: UIButton = {
           let button = UIButton()
             button.translatesAutoresizingMaskIntoConstraints = false
@@ -212,13 +212,13 @@ class HomeViewController: UIViewController {
             make.height.equalTo(imageViewHeight)
         }
         
-        
         label.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).inset(-spacing)
-            make.bottom.equalTo(mainView).inset(padding)
             make.leading.trailing.equalTo(mainView)
-            make.height.equalTo(labelHeight)
+            make.bottom.equalTo(mainView)
         }
+        
+        //PaperBoardUI.framework SpringBoardFoundation.framework
 
         button.snp.makeConstraints { make in
             make.edges.equalTo(mainView)
