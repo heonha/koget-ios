@@ -47,8 +47,10 @@ class HomeViewController: UIViewController {
     //MARK: - Models
     /// 모델을 불러옵니다.
     private let viewModel = ViewModel.shared
-    private let imagePickerModel = ImagePickerModel.shared
     private let imageViewModel = ImageViewModel.shared
+    
+    /// 사진 선택을 했는지 확인하는 Subject
+    var isSelected = BehaviorSubject<Bool?>(value: nil)
     
     let disposeBag = DisposeBag()
 
@@ -88,27 +90,7 @@ class HomeViewController: UIViewController {
     /// 이미지 선택기를 띄웁니다.
     @objc func presentPHPickerVC() {
         
-        imagePickerModel.isSelected
-            .element(at: 1)
-            .take(1)
-            .subscribe { bool in
-                
-                if bool == true {
-                    DispatchQueue.main.async {
-                        self.pushPhotoVC()
-                    }
-                } else {
-                    return
-                }
-        } onError: { error in
-            print(error)
-        } onCompleted: {
-            print("completed")
-        } onDisposed: {
-            print("disposed")
-        }.disposed(by: disposeBag)
-        
-        let picker = imagePickerModel.makePHPickerVC()
+        let picker = makePHPickerVC()
         
         self.present(picker, animated: true)
     }
@@ -140,7 +122,7 @@ class HomeViewController: UIViewController {
         let buttonSize = CGSize(width: screenSize.width / 1.5, height: screenSize.height / 5 - spacing)
         let padding: CGFloat = 12
         let imageViewHeight: CGFloat = (buttonSize.height) * 4 / 5 - padding
-        let labelHeight: CGFloat = buttonSize.height - imageViewHeight - padding
+        // let labelHeight: CGFloat = buttonSize.height - imageViewHeight - padding
         
         // rootView
         mainView.translatesAutoresizingMaskIntoConstraints = false
@@ -231,8 +213,6 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(photoVC, animated: false)
     }
     
-
-    
     // 네비게이션 바의 흐림효과 (사용보류)
     func addBlurEffect() {
         let bounds = self.navigationController?.navigationBar.bounds
@@ -245,3 +225,58 @@ class HomeViewController: UIViewController {
         // Replace custom view with navigation bar in the above code to add effects to the custom view.
     }
 }
+
+
+extension HomeViewController {
+    
+    /// PickerViewController를 구성하고 반환하는 메소드입니다. PHPicker 사진 선택기에 대한 Config, Delegate 를 정의합니다.
+    func makePHPickerVC() -> PHPickerViewController {
+        var config = PHPickerConfiguration()
+        config.filter = .images // 가져올 라이브러리 필터
+        config.selectionLimit = 1 // 선택할 수 있는 최대 갯수
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = self
+        return picker
+    }
+        
+}
+
+
+//MARK: - Photo Picker 관련 응답을 받는 PHPickerController Delegate 구성
+
+extension HomeViewController: PHPickerViewControllerDelegate {
+    
+    /// PHPicker에서 사진 선택했을 때 호출되는 Delegate입니다. PHPicker에서 선택한 아이템을 가져옵니다.
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
+        // canLoadObject : ItemProvider 가 지정된 클래스의 개체를 로드할 수 있는지 여부를 나타내는 Bool 값을 반환합니다.
+        // loadObject : 지정된 클래스의 개체를 항목 공급자에 비동기적으로 로드하여 Progress 개체를 반환합니다.
+        /// 선택된 아이템이 로드 가능한지 확인하고  에러가 없다면 이미지를 sourceImageView로 전달합니다.
+        if let itemProvider = results.first?.itemProvider {
+            if itemProvider.canLoadObject(ofClass: UIImage.self) {
+                itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
+                    guard let self = self else {return}
+                    if let error = error {
+                        print("사진 LoadObject Error : \(error)")
+                        picker.dismiss(animated: true)
+                    } else {
+                        let selectedImage = image as! UIImage
+                        /// 선택된 사진을 업데이트합니다.
+                        DispatchQueue.main.async {
+                            ImageViewModel.shared.editingPhotoSubject.onNext(selectedImage)
+                            self.pushPhotoVC()
+                        }
+                    }
+                }
+            }
+        } else {
+            print("이미지 선택 오류")
+        }
+        
+        picker.dismiss(animated: true)
+        
+    }
+    
+}
+
+

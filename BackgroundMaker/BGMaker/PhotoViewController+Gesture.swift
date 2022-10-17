@@ -62,7 +62,7 @@ extension PhotoViewController {
         
         
         // 지정된 보기의 좌표계에서 팬 제스처를 해석합니다.
-        var translation = sender.translation(in: mainImageView)
+        let translation = sender.translation(in: mainImageView)
         // print("Pan Gesture Translation(CGPoint) : \(translation)")
         
         ///.Began각 제스처 인식의 맨 처음에 한 번 호출됩니다.

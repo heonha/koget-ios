@@ -94,7 +94,7 @@ extension SceneDelegate {
         
         print("URL Context : \(URLContexts.first!)")
         // URL: widget-deeplink://shpayfan-touchpay://touch
-        var deepLinkHeader = "widget-deeplink://"
+        let deepLinkHeader = "widget-deeplink://"
 
         
         for context in URLContexts {
@@ -102,8 +102,8 @@ extension SceneDelegate {
             
             print("url: \(context.url.absoluteURL.absoluteString)")
             url = context.url.absoluteURL
-            print("scheme: \(context.url.scheme)")
-            print("host: \(context.url.host)")
+            print("scheme: \(String(describing: context.url.scheme))")
+            print("host: \(String(describing: context.url.host))")
             let handler = url!.absoluteString.deletingPrefix(deepLinkHeader)
 
             host = handler
@@ -117,11 +117,11 @@ extension SceneDelegate {
         maybeOpenedFromWidget(urlContexts: URLContexts, host: host)
     }
 
-    func urlHandling(url: String) {
-        var deepLinkHeader = "widget-deeplink://"
-        let handler = url.deletingPrefix("\(deepLinkHeader)")
-    }
-    
+    // func urlHandling(url: String) {
+    //     let deepLinkHeader = "widget-deeplink://"
+    //     let handler = url.deletingPrefix("\(deepLinkHeader)")
+    // }
+    // 
     
     //MARK: Deeplink 처리
     /// 위젯 scheme을 확인하고 deepLink를 엽니다.
