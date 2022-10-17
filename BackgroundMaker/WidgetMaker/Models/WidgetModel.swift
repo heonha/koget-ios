@@ -15,7 +15,7 @@ struct BuiltInDeepLink {
     let name: String
     let imageName: String
     let deepLink: String
-    let scheme: String?
+    let section: String?
 }
 
 
@@ -32,13 +32,14 @@ class WidgetModel {
     
     // MARK: [Todo] CoreData로 전환이 필요한지 검토해보기
     
-    let app: [BuiltInDeepLink] = [
-        BuiltInDeepLink(id: .init(), name: "Youtube", imageName: "youtube", deepLink: "youtube://", scheme: nil),
-        BuiltInDeepLink(id: .init(), name: "Instagram", imageName: "instagram", deepLink: "instagram://",scheme: nil),
-        BuiltInDeepLink(id: .init(), name: "Naver", imageName: "naver", deepLink: "naversearchapp://", scheme: nil),
-        BuiltInDeepLink(id: .init(), name: "Youtube Music", imageName: "youtubeMusic", deepLink: "youtubemusic://", scheme: nil),
-        BuiltInDeepLink(id: .init(), name: "Google OTP", imageName: "googleOTP", deepLink: "googleauthenticator://", scheme: ""),
-        BuiltInDeepLink(id: .init(), name: "신한 터치결제", imageName: "shinhanTouch", deepLink: "shpayfan-touchpay://touch", scheme: "touch"),
+    /// 앱에 내장된 DeepLink의 목록입니다.
+    let builtInApps: [BuiltInDeepLink] = [
+        BuiltInDeepLink(id: .init(), name: "Youtube", imageName: "youtube", deepLink: "youtube://", section: nil),
+        BuiltInDeepLink(id: .init(), name: "Instagram", imageName: "instagram", deepLink: "instagram://",section: nil),
+        BuiltInDeepLink(id: .init(), name: "Naver", imageName: "naver", deepLink: "naversearchapp://", section: nil),
+        BuiltInDeepLink(id: .init(), name: "Youtube Music", imageName: "youtubeMusic", deepLink: "youtubemusic://", section: nil),
+        BuiltInDeepLink(id: .init(), name: "Google OTP", imageName: "googleOTP", deepLink: "googleauthenticator://", section: nil),
+        BuiltInDeepLink(id: .init(), name: "신한 터치결제", imageName: "shinhanTouch", deepLink: "shpayfan-touchpay://touch", section: nil),
     ]
     
     

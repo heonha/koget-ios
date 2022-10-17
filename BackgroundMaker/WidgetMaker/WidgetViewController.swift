@@ -57,6 +57,8 @@ class WidgetViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(WidgetIconCell.self, forCellWithReuseIdentifier: WidgetIconCell.reuseID)
+        cv.register(PlaceHolderCell.self, forCellWithReuseIdentifier: "PlaceHolderCell")
+
         cv.showsHorizontalScrollIndicator = false
         cv.backgroundColor = .black
         
@@ -105,13 +107,12 @@ class WidgetViewController: UIViewController {
     //MARK: - Helpers
     
     private func configureNavigation() {
-        navigationItem.title = "Widgets"
+        navigationItem.title = "내 위젯"
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.rightBarButtonItems = [addBarButton]
         navigationController?.navigationBar.backgroundColor = AppColors.buttonPurple
         navigationController?.navigationBar.tintColor = .white
         view.backgroundColor = AppColors.buttonPurple
-
     }
     
     private func configureUI() {
@@ -141,22 +142,37 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         collectionView.dataSource = self
         
         self.view.addSubview(collectionView)
+        ViewModel.shared.cropCornerRadius(view: collectionView, radius: 8)
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(deepLinkTitle.snp.bottom).inset(-8)
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(8)
             make.height.equalTo(120)
         }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if deepLinkWidgets.count == 0 {
+            return 1
+        }
+        
         return deepLinkWidgets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if deepLinkWidgets.count == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaceHolderCell", for: indexPath) as! PlaceHolderCell
+            
+            return cell
+        }
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WidgetIconCell.reuseID, for: indexPath) as? WidgetIconCell else {return UICollectionViewCell()}
         
         let data = deepLinkWidgets[indexPath.item]
+
+        
         
         let image = UIImage(data: data.image!) ?? UIImage(named: "questionmark.circle")!
         
@@ -171,6 +187,13 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if deepLinkWidgets.count == 0 {
+            addBarButtonTapped(sender: addBarButton)
+            return
+        }
+        
+        
         let item = deepLinkWidgets[indexPath.item]
         
         let vc = EditWidgetViewController(selectedWidget: item)
@@ -184,6 +207,10 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension WidgetViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if deepLinkWidgets.count == 0 {
+            return CGSize(width: UIScreen.main.bounds.width, height: 120)
+        }
         
         let width: CGFloat = 70
         let height: CGFloat = width * 1.42
@@ -226,7 +253,7 @@ extension WidgetViewController {
         
         var icons: [DeepLink] = []
         
-        var defaultApps = WidgetModel.shared.app
+        var defaultApps = WidgetModel.shared.builtInApps
         
         for appInfo in defaultApps {
             let item = DeepLink(context: coredataContext)
@@ -234,6 +261,7 @@ extension WidgetViewController {
             item.name = appInfo.name
             item.image = UIImage(named: appInfo.imageName)?.pngData()
             item.deepLink = appInfo.deepLink
+            item.addedDate = Date()
             
             icons.append(item)
         }
@@ -259,9 +287,6 @@ extension WidgetViewController: EditWidgetViewControllerDelegate {
             self.collectionView.reloadData()
             self.dismiss(animated: true)
         }
-        let alert = ViewModel.shared.makeAlert(alertTitle: "\(dataName) \n위젯이 삭제되었습니다.", alertMessage: "", actions: [apply])
-        self.present(alert, animated: true)
-
     }
     
     

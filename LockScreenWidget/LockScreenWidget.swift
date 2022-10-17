@@ -18,10 +18,10 @@ import Intents
 /// - context : Widget이 렌더링되는 방법에 대한 세부정보가 포함된 객체
 struct Provider: IntentTimelineProvider {
     typealias Intent = DeepLinkAppIntent
-    typealias Entry = SimpleEntry
+    typealias Entry = DeepLinkEntry
     
     /// 위젯을 추가할 때와 같이 일시적인 상황에 데이터를 전달합니다.
-    func getSnapshot(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+    func getSnapshot(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (DeepLinkEntry) -> Void) {
         let entry = getContext(context: context)
         completion(entry)
     }
@@ -29,12 +29,12 @@ struct Provider: IntentTimelineProvider {
 
     
     /// Widget이 업데이트 될 미래 시간을 전달합니다. (미래날짜가 포함된 타임라인 엔트리배열)
-    func getTimeline(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
+    func getTimeline(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (Timeline<DeepLinkEntry>) -> Void) {
         let selectedApp = configuration.app!
         // ID가 같으면 그 이미지를 반환한다.
         
         // 여기에 Simple Entry로 구성된 코드가 보여짐.
-        let entry = SimpleEntry(
+        let entry = DeepLinkEntry(
             date: Date(),
             title: selectedApp.displayString ?? "plus.circle",
             link: selectedApp.deepLink ?? "failLink",
@@ -52,36 +52,30 @@ struct Provider: IntentTimelineProvider {
         /// - policy : (TimelineReloadPolicy) 타임라인의 마지막 이후 새 타임라인을 요청하는 정책
     }
     
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), title: "")
+    func placeholder(in context: Context) -> DeepLinkEntry {
+        DeepLinkEntry(date: Date(), title: "")
     }
     
     /// 위젯을 추가할 때 표시할 프리뷰를 구성합니다.
-    func getContext(context: Context) -> SimpleEntry {
+    func getContext(context: Context) -> DeepLinkEntry {
     
-        var entry: SimpleEntry
+        var entry: DeepLinkEntry
     
         // 위젯 미리보기에서 어떻게 보일 것인지 설정.
         if context.isPreview {
-            entry = SimpleEntry(date: Date(), title: "placeHolder", link: nil)
+            entry = DeepLinkEntry(date: Date(), title: "placeHolder", link: nil)
         } else {
-            entry = SimpleEntry(date: Date(), title: "")
+            entry = DeepLinkEntry(date: Date(), title: "")
         }
         return entry
     }
-    
-    /// 현재 선택된 앱이 어떤 앱인지 가져옵니다.
-    // func selectedApp(for configuration: DeepLinkAppIntent) -> String {
-    //     let selected = configuration.app?.identifier ?? "No ID"
-    //     return selected
-    // }
     
 }
 
 //MARK: - Protocol : Entry
 
 /// 위젯을 표시할 시기를 WidgetKit에 알려주는 날짜가 있는 하나 이상의 타임라인 항목을 만듭니다.
-struct SimpleEntry: TimelineEntry {
+struct DeepLinkEntry: TimelineEntry {
     let date: Date // Widget을 rendering할 Date
     let title: String
     var link: String?
@@ -170,7 +164,7 @@ struct LockScreenWidget: Widget {
 /// 위젯 프리뷰 구성
 struct LockScreenWidget_Previews: PreviewProvider {
     static var previews: some View {
-        LockScreenWidgetEntryView(entry: SimpleEntry(date: Date(), title: "instagram", link: nil))
+        LockScreenWidgetEntryView(entry: DeepLinkEntry(date: Date(), title: "instagram", link: nil))
             .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         
     }

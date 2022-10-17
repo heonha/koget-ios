@@ -125,6 +125,9 @@ class AddWidgetViewController: UIViewController {
     private lazy var closeButton: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
         target: self, action: #selector(closeButtonTapped),
         title: "돌아가기", backgroundColor: .darkGray)
+    
+    private lazy var builtInAppButton: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
+        target: self, action: #selector(showBuiltInList), title: "앱 리스트에서 불러오기")
 
     
     //MARK: - LifeCycle
@@ -139,6 +142,12 @@ class AddWidgetViewController: UIViewController {
     }
     
     //MARK: - Selectors
+    @objc private func showBuiltInList(sender: UIButton) {
+        let vc = BuiltInWidgetViewController()
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    
     
     @objc private func closeButtonTapped(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -146,7 +155,7 @@ class AddWidgetViewController: UIViewController {
     
     @objc private func addButtonTapped(sender: UIButton) {
         
-        if let name = nameTextField.text, let deeplink = self.urlTextField.text {
+        if let name = nameTextField.text, var deeplink = self.urlTextField.text {
             
             
             var alert = UIAlertController()
@@ -165,6 +174,8 @@ class AddWidgetViewController: UIViewController {
 
                 return
             }
+            
+
 
             guard let image = iconImageView.image else {
                 alert = makeAlert(alertTitle: "아이콘 이미지 확인", alertMessage: " + 를 눌러 이미지를 선택해 주세요.", actions: [action])
@@ -179,11 +190,16 @@ class AddWidgetViewController: UIViewController {
                 return dataImage!
             }()
             
+            if !deeplink.contains("://") {
+                deeplink += "://"
+            }
+            
             let item = DeepLink(context: coredataContext)
             item.id = UUID()
             item.name = name
             item.image = img
             item.deepLink = deeplink
+            item.addedDate = Date()
             
             delegate?.addDeepLinkWidget(widget: item)
             self.navigationController?.popViewController(animated: true)
@@ -384,6 +400,13 @@ class AddWidgetViewController: UIViewController {
             make.height.equalTo(buttonHeight)
         }
         
+        contentView.addSubview(builtInAppButton)
+        builtInAppButton.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(contentView).inset(insets.leadingTrailing)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(-contentAndButtonSpacing)
+            make.height.equalTo(buttonHeight)
+        }
+        
     }
 }
 
@@ -427,5 +450,22 @@ extension AddWidgetViewController: UITextFieldDelegate {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
     }
+    
+}
+
+
+extension AddWidgetViewController: BuiltInWidgetViewControllerDelegate {
+    func selectedBuiltInApp(data: BuiltInDeepLink) {
+        print("데이터 받음 : \(data)")
+        
+        self.iconImageView.image = UIImage(named: data.imageName)!
+        self.nameTextField.text = data.name
+        self.urlTextField.text = data.deepLink
+        
+        let action = UIAlertAction(title: "확인", style: .default)
+        let alert = ViewModel.shared.makeAlert(alertTitle: "\(data.name)불러오기 완료", alertMessage: "데이터를 성공적으로 불러왔습니다.", actions: [action])
+        
+    }
+    
     
 }
