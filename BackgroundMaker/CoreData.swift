@@ -48,25 +48,25 @@ class CoreData {
         return container
     }()
     
-    func getStoredDataFromCoreData() {
-        let managedContext = persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.coreDataEntityName)
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            //EntityName에 저장된 모든 결과를 반복합니다.
-            // for data in result {
-            //     // 저장된 데이터로 작업 수행
-            //     
-            // }
-        } catch let error as NSError {
-            // 이 구현을 코드로 교체하여 오류를 적절하게 처리하십시오.
-            // fatalError() 는 응용 프로그램이 충돌 로그를 생성하고 종료하도록 합니다.
-            // 개발 중에 유용할 수 있지만 배송 애플리케이션에서는 이 기능을 사용해서는 안 됩니다.
-            let nserror = error as NSError
-            fatalError("해결되지 않은 오류 Unresolved error : \(nserror), \(nserror.userInfo)")
-        }
-    }
+    // func getStoredDataFromCoreData() {
+    //     let managedContext = persistentContainer.viewContext
+    //
+    //     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.coreDataEntityName)
+    //     do {
+    //         try managedContext.fetch(fetchRequest)
+    //         //EntityName에 저장된 모든 결과를 반복합니다.
+    //         // for data in result {
+    //         //     // 저장된 데이터로 작업 수행
+    //         //
+    //         // }
+    //     } catch let error as NSError {
+    //         // 이 구현을 코드로 교체하여 오류를 적절하게 처리하십시오.
+    //         // fatalError() 는 응용 프로그램이 충돌 로그를 생성하고 종료하도록 합니다.
+    //         // 개발 중에 유용할 수 있지만 배송 애플리케이션에서는 이 기능을 사용해서는 안 됩니다.
+    //         let nserror = error as NSError
+    //         fatalError("해결되지 않은 오류 Unresolved error : \(nserror), \(nserror.userInfo)")
+    //     }
+    // }
     
     func getStoredDataForDeepLink() -> [DeepLink]? {
         let coredataContext = persistentContainer.viewContext
@@ -76,6 +76,21 @@ class CoreData {
             let deepLinks = try coredataContext.fetch(request) // 데이터 가져오기
             
             return deepLinks
+            
+        } catch let error {
+            print("데이터 가져오기 에러 발생 : \(error)")
+        }
+        return nil
+    }
+    
+    func getStoredDataForTextWidget() -> [TextWidget]? {
+        let coredataContext = persistentContainer.viewContext
+        
+        let request: NSFetchRequest<TextWidget> = TextWidget.fetchRequest()
+        do {
+            let textWidgets = try coredataContext.fetch(request) // 데이터 가져오기
+            
+            return textWidgets
             
         } catch let error {
             print("데이터 가져오기 에러 발생 : \(error)")

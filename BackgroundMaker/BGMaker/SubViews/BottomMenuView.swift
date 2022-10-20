@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 import RxSwift
-import ChameleonFramework
 
 /**
  `BottomMenuView는 PhotoVC의 하단 편집 메뉴를 구성합니다.`
