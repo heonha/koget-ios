@@ -30,8 +30,8 @@
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>ConfigurationIntent</string>
-		<string>CustomTextIntent</string>
 		<string>DeepLinkAppIntent</string>
+		<string>TextWidgetIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	***REMOVED***

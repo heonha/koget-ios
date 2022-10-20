@@ -169,7 +169,7 @@
 				***REMOVED***
 			***REMOVED***
 			<key>INIntentName</key>
-			<string>CustomText</string>
+			<string>TextWidget</string>
 			<key>INIntentParameterCombinations</key>
 			***REMOVED***
 				<key>data</key>
@@ -198,7 +198,7 @@
 					<key>INIntentParameterName</key>
 					<string>data</string>
 					<key>INIntentParameterObjectType</key>
-					<string>CustomDefinition</string>
+					<string>TextDefinition</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
 					<string>WPhMXz</string>
 					<key>INIntentParameterPromptDialogs</key>
@@ -241,7 +241,7 @@
 				</array>
 			***REMOVED***
 			<key>INIntentTitle</key>
-			<string>Custom Text</string>
+			<string>Text Widget</string>
 			<key>INIntentTitleID</key>
 			<string>wSpCm9</string>
 			<key>INIntentType</key>
@@ -359,13 +359,13 @@
 		***REMOVED***
 		***REMOVED***
 			<key>INTypeDisplayName</key>
-			<string>Custom Definition</string>
+			<string>Text Definition</string>
 			<key>INTypeDisplayNameID</key>
 			<string>nRpM0D</string>
 			<key>INTypeLastPropertyTag</key>
 			<integer>101</integer>
 			<key>INTypeName</key>
-			<string>CustomDefinition</string>
+			<string>TextDefinition</string>
 			<key>INTypeProperties</key>
 			<array>
 				***REMOVED***
@@ -420,25 +420,11 @@
 				***REMOVED***
 				***REMOVED***
 					<key>INTypePropertyDisplayName</key>
-					<string>Image</string>
-					<key>INTypePropertyDisplayNameID</key>
-					<string>V21w1b</string>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>5</integer>
-					<key>INTypePropertyName</key>
-					<string>image</string>
-					<key>INTypePropertyTag</key>
-					<integer>100</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				***REMOVED***
-				***REMOVED***
-					<key>INTypePropertyDisplayName</key>
 					<string>Text</string>
 					<key>INTypePropertyDisplayNameID</key>
 					<string>yKeara</string>
 					<key>INTypePropertyDisplayPriority</key>
-					<integer>6</integer>
+					<integer>5</integer>
 					<key>INTypePropertyName</key>
 					<string>text</string>
 					<key>INTypePropertyTag</key>

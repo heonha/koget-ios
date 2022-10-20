@@ -12,7 +12,6 @@ import UIImageColors
 /// Color Pallet 를 담고있는 View 입니다.
 class ColorPickerView: UIView {
     
-    
     var viewWidth: CGFloat!
     var viewHeight: CGFloat!
     var target: UIViewController!
@@ -24,7 +23,7 @@ class ColorPickerView: UIView {
     // 편집중인 이미지를 리사이징 (평균 컬러 추출용)
     var colorImage: UIImage = {
         var editingImage = UIImage()
-        var mainImg = ImageViewModel.shared.editingPhoto
+        ImageViewModel.shared.editingPhoto
             .subscribe { image in
                 image.map { image in
                     
@@ -38,7 +37,6 @@ class ColorPickerView: UIView {
         return editingImage
     }()
 
-
     /// 컬러 팔레트 스택뷰
     let stackView: UIStackView = {
         let sv = UIStackView()
@@ -51,9 +49,6 @@ class ColorPickerView: UIView {
 
         return sv
     }()
-    
-    
-    
     
     init(target: UIViewController) {
         self.target = target
@@ -72,9 +67,7 @@ class ColorPickerView: UIView {
         backgroundView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
         makeColorSlider()
-
     }
     
     struct Colors {
@@ -85,10 +78,7 @@ class ColorPickerView: UIView {
     /// 컬러 팔레트를 구성합니다. (이미지에서 추출)
     func makeColorPallets(image: UIImage) -> [ColorPallet] {
         
-        let colorArray = NSArray(ofColorsFrom: image, withFlatScheme: true)
-
         let imageColors = image.getColors()!
-        print(imageColors)
         
         let colors: [Colors] = [
             // 기본컬러
@@ -114,7 +104,6 @@ class ColorPickerView: UIView {
     
     private func makeColorSlider() {
 
-
         let circleSize: CGFloat = 30.0
         let colorCircles = makeColorPallets(image: colorImage)
         
@@ -124,13 +113,11 @@ class ColorPickerView: UIView {
             circle.layer.cornerRadius = 15
             stackView.addArrangedSubview(circle)
         
-            var circleSize: CGFloat = 30
             /// Color Pallet 크기 지정
             circle.snp.makeConstraints { make in
                 make.height.equalTo(circleSize)
                 make.width.equalTo(circleSize)
             }
-        
         }
         
         addSubview(stackView)
@@ -141,7 +128,5 @@ class ColorPickerView: UIView {
             make.width.equalTo((colorCircles.count - 1) * 10 + colorCircles.count * 30)
             make.height.equalTo(30)
         }
-        
     }
-    
 }

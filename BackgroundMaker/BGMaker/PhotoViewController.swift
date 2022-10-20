@@ -286,7 +286,6 @@ class PhotoViewController: UIViewController {
     
     /// 선택한 이미지를 가져오고 뷰에 반영합니다.
     func setPickedImage() {
-        
         imageViewModel.editingPhotoSubject
             .subscribe { image in
                 guard let image = image else { return }
@@ -410,7 +409,6 @@ class PhotoViewController: UIViewController {
                     self.bgImageView.image = image
                     self.bgImageView.alpha = 1
                 }
-                
         } onError: { error in
             print("backgroundPhoto Error : \(error.localizedDescription)")
         } onCompleted: {

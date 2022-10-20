@@ -156,7 +156,7 @@ class HomeViewController: UIViewController {
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = title
             label.textAlignment = .center
-            label.font = .systemFont(ofSize: 18, weight: .bold)
+            label.font = .systemFont(ofSize: 20, weight: .bold)
             ViewModel.shared.makeLayerShadow(to: label.layer)
 
             return label

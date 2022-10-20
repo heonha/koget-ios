@@ -141,7 +141,6 @@ extension IntentHandler: DeepLinkAppIntentHandling {
     // AppInfo -> AppDefinition으로 데이터를 전달한다.
     // 데이터의 전달은 DeepLinkAppIntentHandling 프로토콜의 provideAppOptionsCollection 메소드를 통해 전달한다.
         
-    
     let avaliableApps = CoreData.shared.getStoredDataForDeepLink()!
     
         /// AppInfo Data를 AppDefinition에 mapping 하여 만든 배열
@@ -171,20 +170,31 @@ extension IntentHandler: DeepLinkAppIntentHandling {
     
 }
 
-// extension IntentHandler: UserCustomIntentHandling {
-//     func provideDataOptionsCollection(for intent: UserCustomIntent, with completion: @escaping (INObjectCollection<CustomDefinition>?, Error?) -> Void) {
-//         //
-//     }
-//     
-//     func provideDataOptionsCollection(for intent: UserCustomIntent) async throws -> INObjectCollection<CustomDefinition> {
-//         //
-//     }
-//     
-//     func handle(intent: UserCustomIntent, completion: @escaping (UserCustomIntentResponse) -> Void) {
-//         //
-//     }
-//     
-//     
-//     
-// }
+//MARK: - ViewIcon Intent Handling
 
+extension IntentHandler: TextWidgetIntentHandling {
+    func provideDataOptionsCollection(for intent: TextWidgetIntent, with completion: @escaping (INObjectCollection<TextDefinition>?, Error?) -> Void) {
+        
+        let textWidgetData = CoreData.shared.getStoredDataForTextWidget()!
+        
+        /// AppInfo Data를 AppDefinition에 mapping 하여 만든 배열
+        let apps: [TextDefinition] = textWidgetData.map { textData in
+            
+            /// 위젯에 필수적으로 전달해야할 데이터이다.
+            /// UUID와 위젯편집 시 리스트에 표현될 이름으로 구성된다.
+            let item = TextDefinition(
+                identifier: textData.id?.uuidString, // 고유 식별자 지정
+                display: textData.text ?? "no Data" // 위젯 편집창에서 표현할 이름
+            )
+            
+            // 아래는 위젯에 추가로 전달할 데이터이다.
+            item.text = textData.text!
+            
+            return item
+        }
+        
+    }
+    
+ 
+
+}

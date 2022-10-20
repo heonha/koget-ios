@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.backgroundColor = .systemBackground
+        window?.backgroundColor = .clear
         let mainViewController = HomeViewController()
         let mainNavigationController = UINavigationController(rootViewController: mainViewController)
         
@@ -148,3 +148,6 @@ extension String {
         return String(self.dropFirst(prefix.count))
     }
 }
+
+
+
