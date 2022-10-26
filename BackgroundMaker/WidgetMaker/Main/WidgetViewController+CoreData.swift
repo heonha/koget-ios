@@ -55,27 +55,6 @@ extension WidgetViewController: AddWidgetViewControllerDelegate {
         }
     }
     
-    func textWidgetLoadData(){
-        let request: NSFetchRequest<TextWidget> = TextWidget.fetchRequest()
-        // 정렬방식 설정
-        let sortDescriptor = NSSortDescriptor(key: "addedDate", ascending: false)
-        request.sortDescriptors = [sortDescriptor]
-        
-        // 데이터 가져오기
-        do {
-            self.textWidgets = try coredataContext.fetch(request) // 데이터 가져오기
-            
-            DispatchQueue.main.async {
-                self.textWidgetCollectionView.reloadData()
-            }
-            
-            print("DEBUG: fetch result : \(textWidgets)")
-            
-        } catch {
-            print("데이터 가져오기 에러 발생 : \(error)")
-            fatalError("데이터 가져오기 에러 발생")
-        }
-    }
     
     
     // //해당하는 데이터 삭제하기 (Delete)

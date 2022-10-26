@@ -29,14 +29,7 @@ class WidgetViewController: UIViewController {
         return iv
     }()
     
-    
-    let textWidgetTitle: UILabel = ViewModel.shared.makeLabel(
-        text: "텍스트 위젯",
-        color: .white,
-        fontSize: 20,
-        fontWeight: .bold,
-        alignment: .left
-    )
+
     
     /// 위젯 추가 버튼을 초기화합니다.
     lazy var addBarButton: UIBarButtonItem = {
@@ -50,22 +43,13 @@ class WidgetViewController: UIViewController {
         return barBtn
     }()
     
-    /// 위젯 추가 버튼을 초기화합니다.
-    lazy var addTextWidgetButton: UIButton = {
-        let btnImg = UIImage(named: "plus")!
-        let button = ViewModel.shared.makeButtonWithImageWithTarget(
-            image: btnImg, action: #selector(addTextWidgetButtonTapped), target: self)
-        return button
-    }()
-    
     let deepLinkTitle: UILabel = ViewModel.shared.makeLabel(
-        text: "딥링크 위젯",
+        text: "내 위젯",
         color: .white,
         fontSize: 20,
         fontWeight: .bold,
         alignment: .left
     )
-    
     
     let deepLinkCollectionView: UICollectionView = {
         
@@ -121,7 +105,6 @@ class WidgetViewController: UIViewController {
         
         
         loadData()
-        textWidgetLoadData()
         configureNavigation()
         configureUI()
         configureDeepLinkWidget()
@@ -143,17 +126,13 @@ class WidgetViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func addTextWidgetButtonTapped(sender: UIBarButtonItem) {
-        let vc = AddTextWidgetViewController()
-        vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+
     
     
     //MARK: - Helpers
     
     private func configureNavigation() {
-        navigationItem.title = "내 위젯"
+        navigationItem.title = "위젯"
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.rightBarButtonItems = [addBarButton]
         navigationController?.navigationBar.backgroundColor = AppColors.buttonPurple
@@ -349,17 +328,10 @@ extension WidgetViewController {
 
 
 // MARK: Update Widget Data (Delegate : Edit VC -> Self)
-extension WidgetViewController: EditWidgetViewControllerDelegate, AddTextWidgetViewControllerDelegate {
-    func addTextWidget(widget: TextWidget) {
-        saveData()
-        textWidgetLoadData()
-        self.textWidgetCollectionView.reloadData()
-    }
-    
+extension WidgetViewController: EditWidgetViewControllerDelegate {
     func deleteDeepLink(data: DeepLink) {
         self.deleteData(data: data)
     }
-    
     
     func editingSucessful(data: DeepLink) {
         saveData()
