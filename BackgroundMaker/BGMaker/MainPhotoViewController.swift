@@ -15,7 +15,7 @@ import Lottie
  `HomeViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
  >
  */
-class HomeViewController: UIViewController {
+class MainPhotoViewController: UIViewController {
     
     private let bgView: UIView = {
         let view = UIView()
@@ -76,12 +76,7 @@ class HomeViewController: UIViewController {
             image: UIImage(named: "rectangle.stack.badge.plus")!,
             action: #selector(presentPHPickerVC)
         )
-        makeMenuButton(
-            mainView: widgetMakerButton,
-            title: "잠금화면 위젯 만들기",
-            image: UIImage(named: "cursorarrow.and.square.on.square.dashed")!,
-            action: #selector(presentWidgetVC)
-        )
+
 
     }
     
@@ -93,12 +88,6 @@ class HomeViewController: UIViewController {
         let picker = makePHPickerVC()
         
         self.present(picker, animated: true)
-    }
-    
-    /// 위젯 편집기를 띄웁니다.
-    @objc func presentWidgetVC() {
-        let widgetVC = WidgetViewController()
-        self.navigationController?.pushViewController(widgetVC, animated: true)
     }
   
     
@@ -208,9 +197,10 @@ class HomeViewController: UIViewController {
     }
     
     /// Picker로 선택한 사진을 가져오고 PhotoViewController를 Push합니다.
-    func pushPhotoVC() {
+    func presentPhotoVC() {
         let photoVC = PhotoViewController()
-        self.navigationController?.pushViewController(photoVC, animated: false)
+        photoVC.modalPresentationStyle = .fullScreen
+        self.present(photoVC, animated: false)
     }
     
     // 네비게이션 바의 흐림효과 (사용보류)
@@ -227,7 +217,7 @@ class HomeViewController: UIViewController {
 }
 
 
-extension HomeViewController {
+extension MainPhotoViewController {
     
     /// PickerViewController를 구성하고 반환하는 메소드입니다. PHPicker 사진 선택기에 대한 Config, Delegate 를 정의합니다.
     func makePHPickerVC() -> PHPickerViewController {
@@ -244,7 +234,7 @@ extension HomeViewController {
 
 //MARK: - Photo Picker 관련 응답을 받는 PHPickerController Delegate 구성
 
-extension HomeViewController: PHPickerViewControllerDelegate {
+extension MainPhotoViewController: PHPickerViewControllerDelegate {
     
     /// PHPicker에서 사진 선택했을 때 호출되는 Delegate입니다. PHPicker에서 선택한 아이템을 가져옵니다.
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -264,7 +254,7 @@ extension HomeViewController: PHPickerViewControllerDelegate {
                         /// 선택된 사진을 업데이트합니다.
                         DispatchQueue.main.async {
                             ImageViewModel.shared.editingPhotoSubject.onNext(selectedImage)
-                            self.pushPhotoVC()
+                            self.presentPhotoVC()
                         }
                     }
                 }

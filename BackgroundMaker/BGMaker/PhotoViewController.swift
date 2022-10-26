@@ -369,7 +369,7 @@ class PhotoViewController: UIViewController {
         let apply = UIAlertAction(title: "첫 화면 가기", style: .default) { action in
             self.imageViewModel.editingPhotoSubject.onNext(nil)
             self.imageViewModel.backgroundPhotoSubject.onNext(nil)
-            self.navigationController?.popViewController(animated: false)
+            self.dismiss(animated: true)
         }
         
         let cancel = UIAlertAction(title: "취소", style: .default)
