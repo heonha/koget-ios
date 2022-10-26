@@ -95,7 +95,10 @@ class PhotoViewController: UIViewController {
     lazy var blurButton: ImageTextButton = {
         let image = UIImage(systemName: "photo")!.withTintColor(.white, renderingMode: .alwaysOriginal)
         let title = "사진편집"
-        let action = UIAction { _ in }
+        let action = UIAction { _ in
+            self.hideOtherEditView(selectedView: self.edgeBlurSliderView) // 다른 Subview 떠있으면 숨기기
+            self.showUpDownBlurView()
+        }
         let button = ImageTextButton(
             image: image, title: title, action: action, backgroundColor: .clear)
         button.setTitleColor(color: .white)
@@ -106,7 +109,12 @@ class PhotoViewController: UIViewController {
     /// `백그라운드 편집` 버튼
     lazy var changeBGButton: ImageTextButton = {
         
+        /// [POPUP ] 이미지 배경을 단색으로 변경
+        // let colorPalletMenu = UIAction(title: "단색 배경", image: UIImage(systemName: "paintpalette")) { (action) in
+        // }
+        
         let buttonAction = UIAction { _ in
+            self.bgColorAction(sender: self.changeBGButton.button)
             self.hideOtherEditView(selectedView: self.bgSubview)
         }
         
@@ -151,7 +159,6 @@ class PhotoViewController: UIViewController {
         backgroundImageRxSubscribe()
         setupImageViews()
         setupBarButtons()
-        // makeLoadingIndicator()
         addBottomMenuButtons() // 하단 메뉴바 구성
 
         
@@ -164,58 +171,17 @@ class PhotoViewController: UIViewController {
         self.barButtonReplace(buttons: [shareButton])
         // Subview 셋업
         self.makeTrayView() // 트레이 뷰 띄우기
-        self.addImageEditPopupMenu() // 이미지 편집 팝업메뉴 추가
-        self.addBackgroundEditPopupMenu() // 배경 편집 팝업메뉴 추가
-
         self.makeBlurSubview(view: edgeBlurSliderView) // 엣지 블러 슬라이더뷰 셋업
         self.makeBGEditView(view: bgSubview) // 배경화면 편집 서브뷰 셋업
         self.makeBGColorPicker()
         self.makePinchGesture(selector: #selector(pinchZoomAction)) // 이미지 확대 축소 제스쳐 추가
         self.addPanGesture(selector: #selector(makeDragImageGesture)) // 이미지 드래그 제스쳐 추가.
         self.addDoubleTapRecognizer(selector: #selector(doubleTapZoomAction)) // 더블탭 제스쳐 추가 (더블탭 시 배율 확대, 축소)
-        // makeLoadingIndicator()
 
-        
         // 현재 이미지가 셋팅되어있는지에 따라 Place Holder 또는 버튼을 활성화 합니다.
 
     }
     
-    /// `상하단 블러` 팝업 메뉴 구성
-    func addImageEditPopupMenu() {
-        // 팝업 메뉴 구성
-        let blur = UIAction(title: "상하단 흐림효과", image: UIImage(systemName: "drop")) { _ in
-            self.hideOtherEditView(selectedView: self.edgeBlurSliderView) // 다른 Subview 떠있으면 숨기기
-            self.showUpDownBlurView()
-        }
-        
-        /// 위에서 초기화한 액션들 팝업 메뉴에 추가 [Blur]
-        ViewModel.shared.makeMenuButton(
-            button: blurButton.button, actions: [blur], title: blurButton.label.text!)
-    }
-    
-    func addBackgroundEditPopupMenu() {
-        /// [POPUP] 이미지 배경을 흐림으로 변경
-        let blurMenu = UIAction(
-            title: "흐린 이미지 배경",
-            image: UIImage(systemName: "drop"),
-            state: .on
-        ) { _ in
-            self.bgBlurAction(sender: self.changeBGButton.button)
-        }
-        
-        /// [POPUP ] 이미지 배경을 단색으로 변경
-        let colorPalletMenu = UIAction(title: "단색 배경", image: UIImage(systemName: "paintpalette")) { (action) in
-            self.bgColorAction(sender: self.changeBGButton.button)
-        }
-        
-        // button에 팝업 메뉴 추가
-        ViewModel.shared.makeMenuButton(
-            button: changeBGButton.button,
-            actions: [blurMenu, colorPalletMenu],
-            title: changeBGButton.label.text!
-        )
-    }
-
     
     /// 이미지뷰 셋업
     func setupImageViews() {
@@ -347,10 +313,16 @@ class PhotoViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    /// 배경화면 저장 시 숨길 뷰들을 리턴합니다.
+    func getHideViews() -> [UIView] {
+        let hideViews = [self.bottomView, self.edgeBlurSliderView, self.colorPickerView]
+        return hideViews
+    }
+    
     /// 현재 뷰를 캡쳐하고 그 이미지를 앨범에 저장하는 메소드입니다.
     @objc func saveImage() {
         if let image = ImageEditModel.shared.takeScreenViewCapture(
-            withoutView: [bottomView, edgeBlurSliderView], target: self)
+            withoutView: getHideViews(), target: self)
         {
             saveImageToAlbum(image: image)
         }
@@ -358,7 +330,7 @@ class PhotoViewController: UIViewController {
     
     /// 현재 뷰를 캡쳐하고 그 이미지를 공유합니다.
     @objc func shareImageTapped() {
-        if let image = ImageEditModel.shared.takeScreenViewCapture(withoutView: [bottomView, edgeBlurSliderView], target: self) {
+        if let image = ImageEditModel.shared.takeScreenViewCapture(withoutView: getHideViews(), target: self) {
             imageEditModel.shareImageButton(image: image, target: self)
         }
     }

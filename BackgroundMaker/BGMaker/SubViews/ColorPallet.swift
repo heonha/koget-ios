@@ -13,7 +13,7 @@ import SnapKit
 /// 원형의 Color Pallet 입니다.
 class ColorPallet: UIView {
     
-    var color: UIColor!
+    var color: UIImage!
     
     
     lazy var button: UIButton = {
@@ -24,7 +24,7 @@ class ColorPallet: UIView {
     
     
     //MARK: - Init
-    init(color: UIColor, target: UIViewController) {
+    init(color: UIImage, target: UIViewController) {
         
         self.color = color
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -32,7 +32,6 @@ class ColorPallet: UIView {
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.white.cgColor
         self.clipsToBounds = true
-        self.backgroundColor = color
         
         configureUI()
         
@@ -47,7 +46,7 @@ class ColorPallet: UIView {
     private func configureUI() {
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundImage(color.image(), for: .normal)
+        button.setBackgroundImage(color, for: .normal)
         addSubview(button)
 
         button.addTarget(target, action: #selector(colorBtnTapped), for: .touchUpInside)
@@ -57,7 +56,7 @@ class ColorPallet: UIView {
     }
     
     @objc func colorBtnTapped(sender: UIButton) {
-            ImageViewModel.shared.backgroundPhotoSubject.onNext(self.color.image())
+            ImageViewModel.shared.backgroundPhotoSubject.onNext(self.color)
     }
     
     
