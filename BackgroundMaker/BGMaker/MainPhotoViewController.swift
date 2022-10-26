@@ -20,7 +20,7 @@ class MainPhotoViewController: UIViewController {
     private let bgView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = AppColors.mainPurple
+        view.backgroundColor = AppColors.deepDarkGrey
         return view
     }()
     

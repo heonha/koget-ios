@@ -44,7 +44,6 @@
 		3A559C7228EB21DB00D5D9E4 /* MenuAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C7128EB21DB00D5D9E4 /* MenuAnimation.swift */; };
 		3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */; };
 		3A5E82BC28C7393700C10AAC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = 3A5E82BB28C7393700C10AAC /* Mantis */; };
-		3A5FD89728FDA419009968A6 /* AddTextWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5FD89628FDA419009968A6 /* AddTextWidgetViewController.swift */; };
 		3A5FD89928FDB238009968A6 /* TextWidgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5FD89828FDB238009968A6 /* TextWidgetCell.swift */; };
 		3A76BEAA28F2EC6B00B9162C /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* WidgetModel.swift */; };
 		3A76BEAB28F2EC6C00B9162C /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* WidgetModel.swift */; };
@@ -164,7 +163,6 @@
 		3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		3A559C7128EB21DB00D5D9E4 /* MenuAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAnimation.swift; sourceTree = "<group>"; };
 		3A5E82B828C70A8E00C10AAC /* ImageEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModel.swift; sourceTree = "<group>"; };
-		3A5FD89628FDA419009968A6 /* AddTextWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTextWidgetViewController.swift; sourceTree = "<group>"; };
 		3A5FD89828FDB238009968A6 /* TextWidgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWidgetCell.swift; sourceTree = "<group>"; };
 		3A82318E28C78F0700F958FE /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerSlider.swift; sourceTree = "<group>"; };
@@ -348,14 +346,6 @@
 			path = deepLinkWidget;
 			sourceTree = "<group>";
 		};
-		3A5FD89528FDA402009968A6 /* TextWidget */ = {
-			isa = PBXGroup;
-			children = (
-				3A5FD89628FDA419009968A6 /* AddTextWidgetViewController.swift */,
-			);
-			path = TextWidget;
-			sourceTree = "<group>";
-		};
 		3A8E3A2F28E3E99500390F8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,7 +388,6 @@
 			children = (
 				3A51A10328F531E70027AD5A /* WidgetViewController.swift */,
 				3AE9DC3D28F936E3008A3316 /* WidgetViewController+CoreData.swift */,
-				3A5FD89528FDA402009968A6 /* TextWidget */,
 				3A51A10528F531F10027AD5A /* deepLinkWidget */,
 				3A3E519228F2F9380095007C /* FailLinkViewController.swift */,
 				3A35CD5C28F67D9400386011 /* ConnectingViewController.swift */,
@@ -765,7 +754,6 @@
 				3AE09A9D28FC3196009530F9 /* PlaceHolderCell.swift in Sources */,
 				3AD157862908E360001943CA /* MainContainerViewController.swift in Sources */,
 				3A42851128E9D7CE001C7032 /* ColorPickerView.swift in Sources */,
-				3A5FD89728FDA419009968A6 /* AddTextWidgetViewController.swift in Sources */,
 				3A5E82B928C70A8E00C10AAC /* ImageEditModel.swift in Sources */,
 				3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */,
 				3A51A10728F5A1C70027AD5A /* TestViewController.swift in Sources */,

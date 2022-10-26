@@ -110,6 +110,11 @@ class ImageEditModel {
     /// `이미지 끝부분을 블러처리`합니다.Y값은 상하단의 블러 정도를 조절합니다. X값은 좌우 블러값을 설정하며 초기값은 0입니다.
     func makeImageRoundBlur(imageView: UIImageView, insetX: CGFloat = 0, insetY: CGFloat) {
         
+        if insetY == 0 {
+            imageView.layer.mask = nil
+            return
+        }
+
         // 그래디언트 레이어 초기화
         let maskLayer = CAGradientLayer()
 

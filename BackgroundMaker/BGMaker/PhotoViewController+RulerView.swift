@@ -88,7 +88,6 @@ extension PhotoViewController: RulerDelegate {
         // 3~10
         if value > 3.0 {
             let inset: CGFloat = CGFloat(value) * 4.0
-            
             ImageEditModel.shared.makeImageRoundBlur(imageView: self.mainImageView, insetY: inset)
         } else {
             ImageEditModel.shared.makeImageRoundBlur(imageView: self.mainImageView, insetY: 0)

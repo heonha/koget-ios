@@ -70,9 +70,9 @@ class ColorPickerView: UIView {
         makeColorSlider()
     }
     
-    struct Colors {
+    struct PalletCircle {
         let name: String
-        let color: UIColor
+        let circle: UIImage
     }
     
     /// 컬러 팔레트를 구성합니다. (이미지에서 추출)
@@ -80,21 +80,24 @@ class ColorPickerView: UIView {
         
         let imageColors = image.getColors()!
         
-        let colors: [Colors] = [
+        let blurColor = image.blurImage()!
+        
+        let colors: [PalletCircle] = [
             // 기본컬러
-            Colors(name: "Black", color: UIColor.black),
-            Colors(name: "White", color: UIColor.white),
+            PalletCircle(name: "Blur", circle: blurColor),
+            PalletCircle(name: "Black", circle: UIColor.black.image()),
+            PalletCircle(name: "White", circle: UIColor.white.image()),
             // 이미지로부터 추출한 컬러
-            Colors(name: "fromImageOne", color: imageColors.primary),
-            Colors(name: "fromImgTwo", color: imageColors.secondary),
-            Colors(name: "fromImgThree", color: imageColors.detail),
-            Colors(name: "fromImgFour", color: imageColors.background),
+            PalletCircle(name: "fromImageOne", circle: imageColors.primary.image()),
+            PalletCircle(name: "fromImgTwo", circle: imageColors.secondary.image()),
+            PalletCircle(name: "fromImgThree", circle: imageColors.detail.image()),
+            PalletCircle(name: "fromImgFour", circle: imageColors.background.image()),
         ]
         
         var pallets: [ColorPallet] = []
         
         for color in colors {
-            let item = ColorPallet(color: color.color, target: target)
+            let item = ColorPallet(color: color.circle, target: target)
             pallets.append(item)
         }
 

@@ -29,12 +29,10 @@ class MainContainerViewController: UITabBarController {
         let aNC = UINavigationController(rootViewController: aVC)
         let bNC = UINavigationController(rootViewController: bVC)
         
-
-        
-        aNC.navigationBar.barTintColor = .systemBackground
         
         let tabBarList = [aNC, bNC]
         viewControllers = tabBarList
+        
         
     }
     
@@ -47,9 +45,9 @@ class MainContainerViewController: UITabBarController {
     
     // MARK: - Setup TabBar
     private func setupTabBar() {
-        tabBar.backgroundColor = .white
-        tabBar.tintColor = AppColors.buttonPurple
-        tabBar.isTranslucent = false
+        tabBar.backgroundColor = AppColors.normalDarkGrey
+        tabBar.tintColor = AppColors.deepPurple
+        tabBar.isTranslucent = true
     }
     
 }
