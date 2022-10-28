@@ -46,7 +46,7 @@ class WidgetViewController: UIViewController {
     let deepLinkTitle: UILabel = ViewModel.shared.makeLabel(
         text: "내 위젯",
         color: .white,
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: .bold,
         alignment: .left
     )
@@ -78,7 +78,6 @@ class WidgetViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(PlaceHolderCell.self, forCellWithReuseIdentifier: "PlaceHolderCell")
-        cv.register(TextWidgetCell.self, forCellWithReuseIdentifier: TextWidgetCell.reuseID)
         
         cv.showsHorizontalScrollIndicator = false
         cv.backgroundColor = .black
@@ -108,9 +107,6 @@ class WidgetViewController: UIViewController {
         configureNavigation()
         configureUI()
         configureDeepLinkWidget()
-        
-        print("DEBUG: widgets \(deepLinkWidgets)")
-        
         
     }
     
@@ -158,7 +154,7 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         deepLinkTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
             make.leading.trailing.equalTo(view).inset(16)
-            make.height.equalTo(30)
+            make.height.equalTo(50)
         }
         
         
@@ -171,7 +167,7 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         deepLinkCollectionView.snp.makeConstraints { make in
             make.top.equalTo(deepLinkTitle.snp.bottom).inset(-8)
             make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(250)
+            make.height.equalTo(300)
         }
     }
     
@@ -214,11 +210,8 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let image = UIImage(data: data.image!) ?? UIImage(named: "questionmark.circle")!
             
             cell.makeIcon(image: image)
-            cell.makeLabel(text: data.name!, height: 12)
+            cell.makeLabel(text: data.name!, height: 30)
             cell.remakeAlpha(view: cell.imgView, alpha: 0.8)
-            
-            print("DEBUG: cell -> \(cell.label)")
-            
             
             return cell
             
@@ -302,27 +295,27 @@ extension WidgetViewController {
     
     func setDefaultWidgets(completion: @escaping () -> ()) {
         
-        var icons: [DeepLink] = []
-        
-        let defaultApps = WidgetModel.shared.builtInApps
-        
-        for appInfo in defaultApps {
-            let item = DeepLink(context: coredataContext)
-            item.id = UUID()
-            item.name = appInfo.displayAppName ?? "이름없음"
-            item.image = appInfo.image?.pngData()
-            item.deepLink = appInfo.deepLink
-            item.addedDate = Date()
-            
-            icons.append(item)
-        }
-        
-        do {
-            try coredataContext.save() // 이 부분이 persistent store에 저장하는 코드
-            completion()
-        } catch {
-            print("context 저장중 에러 발생 : \(error)")
-        }
+        // var icons: [DeepLink] = []
+        //
+        // let defaultApps = WidgetModel.shared.builtInApps
+        //
+        // for appInfo in defaultApps {
+        //     let item = DeepLink(context: coredataContext)
+        //     item.id = UUID()
+        //     item.name = appInfo.displayAppName ?? "이름없음"
+        //     item.image = appInfo.image?.pngData()
+        //     item.deepLink = appInfo.deepLink
+        //     item.addedDate = Date()
+        //
+        //     icons.append(item)
+        // }
+        //
+        // do {
+        //     try coredataContext.save() // 이 부분이 persistent store에 저장하는 코드
+        //     completion()
+        // } catch {
+        //     print("context 저장중 에러 발생 : \(error)")
+        // }
     }
 }
 

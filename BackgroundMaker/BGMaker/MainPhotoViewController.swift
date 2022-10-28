@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 import RxSwift
 import PhotosUI
-import Lottie
 
 /**
  `HomeViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
@@ -17,32 +16,19 @@ import Lottie
  */
 class MainPhotoViewController: UIViewController {
     
-    private let bgView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = AppColors.deepDarkGrey
-        return view
-    }()
-    
-    
-    private let menuStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.contentMode = .scaleAspectFill
-        sv.distribution = .equalCentering
-        sv.axis = .vertical
-        sv.spacing = 20
-        
-        return sv
-    }()
-    
     
     // MARK: Wallpaper Maker 초기화
     // "여기를 눌러 사진을 추가하세요" 문구 및 투명 버튼을 통해 Photo Library 띄우는 역할
     /// 라벨과 이미지뷰를 추가할 스택뷰
-    private let bgMakerButton = UIView()
-    private let widgetMakerButton = UIView()
-
+    lazy var bgMakerButton: UIView = {
+        var view = UIView()
+        view = makeMenuView(
+            title: "월페이퍼 만들기",
+            image: UIImage(named: "rectangle.stack.badge.plus")!,
+            action: #selector(presentPHPickerVC)
+        )
+        return view
+    }()
 
     //MARK: - Models
     /// 모델을 불러옵니다.
@@ -60,22 +46,14 @@ class MainPhotoViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = ""
         
-        view.backgroundColor = AppColors.buttonPurple
+        view.backgroundColor = AppColors.blackDarkGrey
         
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { make in
+        view.addSubview(bgMakerButton)
+        bgMakerButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.width.lessThanOrEqualTo(view.frame.width / 1.5)
         }
-        
-        setMenuStackView()
-        
-        makeMenuButton(
-            mainView: bgMakerButton,
-            title: "월페이퍼 만들기",
-            image: UIImage(named: "rectangle.stack.badge.plus")!,
-            action: #selector(presentPHPickerVC)
-        )
 
 
     }
@@ -95,23 +73,21 @@ class MainPhotoViewController: UIViewController {
 
     /// 메뉴버튼이 들어갈 스택뷰를 구성합니다.
     func setMenuStackView() {
-        view.addSubview(menuStackView)
-        menuStackView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.width.lessThanOrEqualTo(view.frame.width / 1.5)
-        }
+
     }
     
     /// 메뉴버튼을 만들고 menuStackView에 추가합니다.
-    private func makeMenuButton(mainView: UIView, title: String, image: UIImage, action: Selector) {
+    private func makeMenuView(title: String, image: UIImage, action: Selector) -> UIView {
+        
+        let mainView = UIView()
 
         // 컨텐츠 사이즈 지정
         let screenSize = UIScreen.main.bounds
         let spacing: CGFloat = 6
-        let buttonSize = CGSize(width: screenSize.width / 1.5, height: screenSize.height / 5 - spacing)
         let padding: CGFloat = 12
+
+        let buttonSize = CGSize(width: screenSize.width / 1.5, height: 100)
         let imageViewHeight: CGFloat = (buttonSize.height) * 4 / 5 - padding
-        // let labelHeight: CGFloat = buttonSize.height - imageViewHeight - padding
         
         // rootView
         mainView.translatesAutoresizingMaskIntoConstraints = false
@@ -128,13 +104,11 @@ class MainPhotoViewController: UIViewController {
         }()
         
         let imageView: UIImageView = {
-            // let holderImage = UIImage(named: "rectangle.stack.badge.plus")!
             let holderImage = image.withRenderingMode(.alwaysOriginal)
             let imageView = UIImageView() // 사진 추가하기를 의미하는 이미지
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .scaleAspectFit
             imageView.image = holderImage
-            // ViewModel.shared.makeLayerShadow(to: imageView.layer)
 
             return imageView
         }()
@@ -160,7 +134,7 @@ class MainPhotoViewController: UIViewController {
             return button
         }()
         
-        menuStackView.addArrangedSubview(mainView)
+        view.addSubview(mainView)
         
         mainView.addSubview(bgView)
         mainView.addSubview(imageView)
@@ -178,22 +152,21 @@ class MainPhotoViewController: UIViewController {
         
         // MARK: Layouts
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(mainView).inset(padding)
-            make.leading.trailing.equalTo(mainView)
-            make.height.equalTo(imageViewHeight)
+            make.top.bottom.equalTo(mainView).inset(padding)
+            make.leading.equalTo(mainView).inset(padding)
         }
         
         label.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).inset(-spacing)
-            make.leading.trailing.equalTo(mainView)
-            make.bottom.equalTo(mainView)
+            make.top.bottom.equalTo(mainView).inset(padding)
+            make.leading.equalTo(imageView.snp.trailing).inset(spacing)
+            make.trailing.equalTo(mainView).inset(padding)
         }
-        
-        //PaperBoardUI.framework SpringBoardFoundation.framework
 
         button.snp.makeConstraints { make in
             make.edges.equalTo(mainView)
         }
+        
+        return mainView
     }
     
     /// Picker로 선택한 사진을 가져오고 PhotoViewController를 Push합니다.

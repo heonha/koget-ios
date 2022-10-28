@@ -94,7 +94,6 @@ extension PhotoViewController {
         /// 이미지뷰 레이아웃
         let screenSize = UIScreen.main.bounds
         let imageSize = mainImageView.image?.size
-        // print("DEBUG: ImageSize \(imageSize)")
 
         let imageHeight = (imageSize!.height * screenSize.width) / imageSize!.width
         let resizeHeight = (screenSize.height - imageHeight) / 2
