@@ -79,7 +79,7 @@ class WidgetIconCell: UICollectionViewCell {
         label.text = text
         label.textColor = .white
         label.numberOfLines = 2
-        label.adjustsFontForContentSizeCategory = true
+        // label.adjustsFontForContentSizeCategory = true
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .center
         addSubview(label)
@@ -88,13 +88,13 @@ class WidgetIconCell: UICollectionViewCell {
             make.width.equalTo(frame.width)
             make.height.equalTo(frame.width)
             make.top.centerX.equalToSuperview()
-
         }
         
         label.snp.makeConstraints { make in
-            make.top.equalTo(imgView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(labelHeight)
+            make.top.equalTo(imgView.snp.bottom).inset(4)
+            // make.leading.trailing.bottom.equalTo(self)
+            make.centerX.equalTo(self)
+            make.bottom.equalTo(self)
         }
     }
     

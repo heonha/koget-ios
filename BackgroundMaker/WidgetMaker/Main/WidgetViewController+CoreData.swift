@@ -46,8 +46,6 @@ extension WidgetViewController: AddWidgetViewControllerDelegate {
                 self.deepLinkCollectionView.reloadData()
             }
             
-            print("DEBUG: fetch result : \(deepLinkWidgets)")
-            
         } catch {
             print("데이터 가져오기 에러 발생 : \(error)")
             fatalError("데이터 가져오기 에러 발생")
