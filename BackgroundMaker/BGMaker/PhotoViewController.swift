@@ -8,10 +8,8 @@
 import UIKit
 import SnapKit
 import PhotosUI
-import Mantis
 import RxSwift
 import RxCocoa
-import Lottie
 import RulerView
 
 /**
