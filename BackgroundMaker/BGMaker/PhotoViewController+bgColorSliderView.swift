@@ -17,12 +17,13 @@ extension PhotoViewController {
         
         view.addSubview(colorPickerView)
         colorPickerView.translatesAutoresizingMaskIntoConstraints = false
-        colorPickerView.isHidden = true
+        colorPickerView.alpha = 0
         colorPickerView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view)
             make.bottom.equalTo(bottomView.snp.top)
             make.height.equalTo(50)
         }
     }
+
 
 }

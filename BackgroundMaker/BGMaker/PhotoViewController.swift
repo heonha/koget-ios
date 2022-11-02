@@ -45,97 +45,100 @@ class PhotoViewController: UIViewController {
     var mainImageView = UIImageView()
     /// `배경 이미지` 편집할 이미지 뒤에 나타날 배경  이미지
     let bgImageView = UIImageView()
-
+    
     /// `제스쳐` : mainImageView의 중앙 인식을 위한 포인터입니다.
     /// makeDragImageGesture() 메소드에서 사용
     lazy var imageOriginalCenter = CGPoint() // 트레이뷰의 중앙을 인식하는 포인터입니다.
     
     //MARK: - [Properties] Navigation Bar Button
-    // 상단에 표시될 네비게이션 바 버튼입니다. (뒤로가기, 공유 버튼)
-    
-    /// `공유버튼 초기화` 공유하기를 띄웁니다.
-    lazy var shareButton = UIBarButtonItem()
-    /// `뒤로가기 버튼 초기화` 홈 화면으로 돌아갑니다.
-    lazy var backButton = UIBarButtonItem()
-    
+    // 상단 네비게이션 바 버튼
+    lazy var shareButton = ViewModel.shared.makeBarButtonWithSystemImage(
+        systemName: "square.and.arrow.up",
+        selector: #selector(shareImageTapped),
+        isHidden: false,
+        target: self
+    )
+    lazy var backButton = ViewModel.shared.makeBarButtonWithSystemImage(
+        systemName: "arrow.backward",
+        selector: #selector(backButtonTapped),
+        isHidden: false,
+        target: self
+    )
+ 
     //MARK: - 하단 트레이뷰 SubViews
 
+    // 트레이뷰 배경 구성
+    let trayRootView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.alpha = 0.3
+        
+        return view
+    }()
+    
+    let traySubView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.alpha = 0.0
+        
+        return view
+    }()
+    
     /// `Tray View` : 기능버튼들이 들어갈 하단 뷰입니다.
-    lazy var bottomView = BottomMenuView(
-        height: 90, rightBtnCount: 1, centerBtnCount: 2, leftBtnCount: 1 )
+    lazy var bottomView = BottomMenuView(height: 60, target: self)
     
     //MARK: 하단 서브뷰1
     /// 상하단 흐림 RulerView 초기화
     lazy var edgeBlurSliderView = UIView()
     
-    /// 배경화면 편집 뷰를 초기화합니다.
-    lazy var bgSubview = BottomMenuView(
-        height: 50, centerBtnCount: 0, leftBtnCount: 0, backgroundAlpha: 0, title: "")
-    
     /// [배경화면 편집 뷰] 배경화면 컬러 선택기 초기화
     lazy var colorPickerView = ColorPickerView(target: self)
     
 
-    /// `저장` 버튼 (우측하단 위치, 이미지 저장기능)
+    // 저장 버튼
     lazy var saveButton: UIButton = {
         let action = UIAction { _ in self.saveImage() }
-        let button = viewModel.makeButtonWithTitle(title: "저장", action: action, target: self)
+        let button = viewModel.makeButtonWithTitle(
+            title: "저장", action: action, target: self)
         return button
     }()
     
-    /// `취소` 버튼 (좌측하단 위치, 메인으로 돌아가기)
+    // 취소 버튼
     lazy var cancelButton: UIButton = {
         let action = UIAction { _ in self.backButtonTapped() }
-        let button = viewModel.makeButtonWithTitle(title: "취소", action: action, target: self)
+        let button = viewModel.makeButtonWithTitle(
+            title: "취소", action: action, target: self)
         return button
     }()
     
-    /// `이미지 편집` 버튼 (팝업 띄우기 버튼)
-    lazy var blurButton: ImageTextButton = {
-        let image = UIImage(systemName: "eraser.line.dashed.fill")!.withTintColor(.white, renderingMode: .alwaysOriginal)
+    // /// `이미지 편집` 버튼
+    lazy var edgeBlurButton: ImageWithTextButton = {
+        let image = UIImage(named: "eraser.line.dashed.fill")!
         let title = "라인블러"
-        let action = UIAction { _ in
-            self.hideOtherEditView(selectedView: self.edgeBlurSliderView) // 다른 Subview 떠있으면 숨기기
-            self.showUpDownBlurView()
-        }
-        let button = ImageTextButton(
-            image: image, title: title, action: action, backgroundColor: .clear)
-        button.setTitleColor(color: .white)
-
+    
+        let button = ImageWithTextButton(
+            target: self, image: image, title: title,
+            action: #selector(imageBlurAction), backgroundColor: .clear)
         return button
     }()
     
     /// `백그라운드 편집` 버튼
-    lazy var changeBGButton: ImageTextButton = {
-        
-        let buttonAction = UIAction { _ in
-            self.bgColorAction(sender: self.changeBGButton.button)
-            self.hideOtherEditView(selectedView: self.bgSubview)
-        }
-        
-        let image = UIImage(
-            systemName: "square.3.layers.3d.down.left")!
-            .withTintColor(.white, renderingMode: .alwaysOriginal)
+    lazy var changeBGButton: ImageWithTextButton = {
+        let image = UIImage(named: "square.2.layers.3d.bottom.filled")!
         let title = "배경레이어"
-        
+    
         // 배경편집 버튼 구성
-        let button = ImageTextButton(
-            image: image,
+        let button = ImageWithTextButton(
+            target: self, image: image,
             title: title,
             titleColor: .white,
-            action: buttonAction,
+            action: #selector(bgLayerButtonTapped),
             backgroundColor: .clear
         )
-
-
         return button
     }()
-    
-    //MARK: - 기타 기능을 위한 프로퍼티 (인디케이터)
-    
-
-    
-    //MARK: END 기타 기능을 위한 프로퍼티 -
     
     //MARK: - Life Cycle
     
@@ -144,6 +147,7 @@ class PhotoViewController: UIViewController {
 
         /// 네비게이션 바 버튼을 구성합니다.
         self.navigationItem.rightBarButtonItems = [shareButton] // 사진추가, 저장, 자르기 버튼
+
         self.navigationItem.leftBarButtonItems = [backButton] // 사진추가, 저장, 자르기 버튼
         self.navigationController?.navigationBar.backgroundColor = .clear
         
@@ -151,34 +155,35 @@ class PhotoViewController: UIViewController {
         editingImageRxSubscribe() // 편집할 이미지를 가지고 있을 Observer입니다.
         backgroundImageRxSubscribe()
         setupImageViews()
-        setupBarButtons()
+        
+        // SubView : 하단 메뉴바 구성
         addBottomMenuButtons() // 하단 메뉴바 구성
         configureSubviewsToggle()
-
-        
         setPickedImage() // 앨범에서 선택한 이미지 불러오기
-        self.bottomView.parentVC = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.barButtonReplace(buttons: [shareButton])
+        
         // Subview 셋업
-        self.makeTrayView() // 트레이 뷰 띄우기
-        self.makeBlurSubview(view: edgeBlurSliderView) // 엣지 블러 슬라이더뷰 셋업
-        self.makeBGEditView(view: bgSubview) // 배경화면 편집 서브뷰 셋업
-        self.makeBGColorPicker()
-        self.makePinchGesture(selector: #selector(pinchZoomAction)) // 이미지 확대 축소 제스쳐 추가
-        self.addPanGesture(selector: #selector(makeDragImageGesture)) // 이미지 드래그 제스쳐 추가.
-        self.addDoubleTapRecognizer(selector: #selector(doubleTapZoomAction)) // 더블탭 제스쳐 추가 (더블탭 시 배율 확대, 축소)
-
-        // 현재 이미지가 셋팅되어있는지에 따라 Place Holder 또는 버튼을 활성화 합니다.
+        self.configureSubmenuBackground() // 트레이 배경뷰
+        self.configureTrayView() // 트레이 뷰
+        self.makeBlurSubview(view: edgeBlurSliderView) // 엣지블러 뷰
+        self.makeBGColorPicker() // 배경 컬러 피커뷰
+        
+        // 이미지 관련 제스쳐
+        self.addPinchGesture(selector: #selector(pinchZoomAction)) // Zoom in/out
+        self.addPanGesture(selector: #selector(makeDragImageGesture)) // Move
+        self.addDoubleTapRecognizer(selector: #selector(doubleTapZoomAction)) // ToubleTab
 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        // 모든 Observable dispose처리
         self.disposeBag = .init()
+        
     }
     
     /// 이미지뷰 셋업
@@ -201,30 +206,13 @@ class PhotoViewController: UIViewController {
         }
     }
 
-    /// 상단 네비게이션 바버튼 셋업
-    func setupBarButtons() {
-        shareButton = ViewModel.shared.makeBarButtonWithSystemImage(
-            systemName: "square.and.arrow.up",
-            selector: #selector(shareImageTapped),
-            isHidden: false,
-            target: self
-        )
-        
-        backButton = ViewModel.shared.makeBarButtonWithSystemImage(
-            systemName: "arrow.backward",
-            selector: #selector(backButtonTapped),
-            isHidden: false,
-            target: self
-        )
-    }
-    
     /// 바 버튼의 순서를 재배치합니다..
     func barButtonReplace(buttons: [UIBarButtonItem]) {
         self.navigationItem.rightBarButtonItems = buttons
     }
     
     /// 기능버튼이 들어갈 트레이뷰를 구성합니다.
-    func makeTrayView() {
+    func configureTrayView() {
 
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bottomView)
@@ -232,20 +220,63 @@ class PhotoViewController: UIViewController {
         /// 트레이 뷰 구성
         bottomView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.lastBaseline.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
     /// 하단 메뉴 ( BottomMenuView )에 넣을  버튼을 구성합니다.
     func addBottomMenuButtons() {
         /// 버튼들 `스택뷰`에 추가.
-        bottomView.centerStackView.addArrangedSubview(blurButton)
+        bottomView.centerStackView.addArrangedSubview(edgeBlurButton)
         bottomView.centerStackView.addArrangedSubview(changeBGButton)
         bottomView.rightStackView.addArrangedSubview(saveButton)
         bottomView.leftStackView.addArrangedSubview(cancelButton)
     }
     
+    @objc func bgLayerButtonTapped() {
+        print("배경레이어버튼 누름")
+        
+        let duration: CGFloat = 0.2
+        
+        if colorPickerView.alpha == 0 {
+            UIView.animate(withDuration: duration) {
+                self.edgeBlurSliderView.alpha = 0
+                self.colorPickerView.alpha = 1
+                self.traySubView.alpha = 0.4
+            }
+        } else {
+            UIView.animate(withDuration: duration) {
+                self.colorPickerView.alpha = 0
+                self.traySubView.alpha = 0
+            }
+        }
+    }
+    
+    /// 엣지블러을 눌렀을 때의 동작입니다.
+    @objc func imageBlurAction() {
+        
+        let duration: CGFloat = 0.2
+        
+        if edgeBlurSliderView.alpha == 0 {
+            UIView.animate(withDuration: duration) {
+                self.colorPickerView.alpha = 0
+                self.edgeBlurSliderView.alpha = 1
+                self.traySubView.alpha = 0.4
+            }
+        } else {
+            UIView.animate(withDuration: duration) {
+                self.edgeBlurSliderView.alpha = 0
+                self.traySubView.alpha = 0
+            }
+        }
+    }
+    
+    
+    
     private func configureSubviewsToggle() {
+        
+        edgeBlurSliderView.alpha = 0
+        
         
         // 배경 편집기가 떠있는 상태.
         // 1. 배경 편집기 버튼 클릭시
@@ -431,31 +462,26 @@ class PhotoViewController: UIViewController {
 
 extension PhotoViewController {
     
-    @objc func changeBGButtonAction(sender: UIButton) {
- 
-        sender.showAnimation {
-            if self.bgSubview.isHidden == false {
-                self.bgSubview.alpha = 0
-                UIView.animate(withDuration: 0.2) {
-                    self.bgSubview.alpha = 1
-                }
-            } else {
-                self.colorPickerView.isHidden = true
-                self.bgSubview.alpha = 1
-                UIView.animate(withDuration: 0.2) {
-                    self.bgSubview.alpha = 0
-                }
-            }
-        }
 
-    }
     
     /// 현재 클릭한 뷰 외의 다른 버튼들을 숨깁니다.
     private func hideOtherEditView(selectedView: UIView) {
-        edgeBlurSliderView.isHidden = true
-        bgSubview.isHidden = true
-        colorPickerView.isHidden = true
-        selectedView.isHidden = false
+        //
+        // print("다른 뷰를 숨겨라")
+        // [edgeBlurSliderView, colorPickerView].forEach { view in
+        //     view.isUserInteractionEnabled = false
+        //
+        //     UIView.animate(withDuration: 1) {
+        //         view.alpha = 0
+        //     }
+        // }
+        //
+        // selectedView.isUserInteractionEnabled = true
+        // UIView.animate(withDuration: 1) {
+        //     selectedView.alpha = 1
+        // }
+
+
     }
     
     /// 상하단 블러버튼을 띄웁니다.
