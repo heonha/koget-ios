@@ -47,3 +47,94 @@ extension MainPhotoViewController: PHPickerViewControllerDelegate {
     }
     
 }
+
+
+extension MainPhotoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    
+    func configurePhotoCV() {
+        
+        
+        view.addSubview(wallpaperCV)
+        
+        wallpaperCV.delegate = self
+        wallpaperCV.dataSource = self
+        wallpaperCV.register(WallpaperCell.self, forCellWithReuseIdentifier: WallpaperCell.reuseID)
+        
+        wallpaperCV.snp.makeConstraints { make in
+            make.top.equalTo(bgMakerButton.snp.bottom).inset(-30)
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.reuseID, for: indexPath) as? WallpaperCell else {return UICollectionViewCell() }
+        let item = myWallpaper[indexPath.item]
+        
+        cell.imageView.image = UIImage(data: item.wallpaper!) ?? UIImage(named: "questionmark.circle")!
+        
+        cell.backgroundColor = .white
+        
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return myWallpaper.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = myWallpaper[indexPath.item]
+
+        let vc = InfoWallpaperViewController(selected: item)
+        vc.delegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
+        
+    }
+    
+    // MARK: FlowLayout Delegate
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if myWallpaper.count == 0 {
+            return CGSize(width: UIScreen.main.bounds.width / 2, height: 300)
+        }
+        
+        let data = myWallpaper[indexPath.item].wallpaper
+        
+        let imageSize = ViewModel.shared.getImageRatio(image: data, targetWidthMultiply: 0.5)
+                
+        return imageSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
+    }
+    
+}
+
+extension MainPhotoViewController: InfoWallpaperViewControllerDelegate {
+    func viewIsDissapear() {
+        self.loadMyWallpapers()
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5) {
+                self.wallpaperCV.reloadData()
+            }
+        }
+    }
+}
+
+
+

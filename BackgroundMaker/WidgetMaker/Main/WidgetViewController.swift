@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import CoreData
+import SwiftUI
 
 class WidgetViewController: UIViewController {
     
@@ -70,20 +71,6 @@ class WidgetViewController: UIViewController {
         return cv
     }()
     
-    let textWidgetCollectionView: UICollectionView = {
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal // 스크롤 방향
-        
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(PlaceHolderCell.self, forCellWithReuseIdentifier: "PlaceHolderCell")
-        
-        cv.showsHorizontalScrollIndicator = false
-        cv.backgroundColor = .black
-        
-        return cv
-    }()
     
     
     //MARK: - LifeCycle
@@ -173,11 +160,6 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if collectionView == textWidgetCollectionView {
-            print("textWidgetCollectionView count")
-            return 1
-        }
         
         if collectionView == deepLinkCollectionView {
             if deepLinkWidgets.count == 0 {
@@ -271,54 +253,6 @@ extension WidgetViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-// MARK: Defaults (Only Test)
-extension WidgetViewController {
-    // MARK: - 기본 위젯 DB에 추가
-    
-    func isFirstRunning() {
-        
-        let getDefaults = UserDefaults.standard.object(forKey: "IS_FIRST_RUN") as? Bool
-        
-        if let getDefaults = getDefaults {
-            
-            print("DEBUG: getDefaults : \(getDefaults)")
-            
-            IS_FIRST_RUN = getDefaults
-        } else {
-            setDefaultWidgets {
-                IS_FIRST_RUN = false
-                UserDefaults.standard.set(IS_FIRST_RUN, forKey: "IS_FIRST_RUN")
-            }
-            
-        }
-    }
-    
-    func setDefaultWidgets(completion: @escaping () -> ()) {
-        
-        // var icons: [DeepLink] = []
-        //
-        // let defaultApps = WidgetModel.shared.builtInApps
-        //
-        // for appInfo in defaultApps {
-        //     let item = DeepLink(context: coredataContext)
-        //     item.id = UUID()
-        //     item.name = appInfo.displayAppName ?? "이름없음"
-        //     item.image = appInfo.image?.pngData()
-        //     item.deepLink = appInfo.deepLink
-        //     item.addedDate = Date()
-        //
-        //     icons.append(item)
-        // }
-        //
-        // do {
-        //     try coredataContext.save() // 이 부분이 persistent store에 저장하는 코드
-        //     completion()
-        // } catch {
-        //     print("context 저장중 에러 발생 : \(error)")
-        // }
-    }
-}
-
 
 // MARK: Update Widget Data (Delegate : Edit VC -> Self)
 extension WidgetViewController: EditWidgetViewControllerDelegate {
@@ -332,4 +266,27 @@ extension WidgetViewController: EditWidgetViewControllerDelegate {
         self.deepLinkCollectionView.reloadData()
     }
     
+}
+
+
+
+// MARK: Preview Providers
+
+
+struct WidgetViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        WidgetViewControllerRepresentable().edgesIgnoringSafeArea(.all).previewInterfaceOrientation(.portrait)
+    }
+}
+
+struct WidgetViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        return UINavigationController(rootViewController: WidgetViewController())
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        
+    }
+    
+    typealias UIViewControllerType = UIViewController
 }

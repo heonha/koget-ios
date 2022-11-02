@@ -11,6 +11,7 @@ import PhotosUI
 import RxSwift
 import RxCocoa
 import RulerView
+import SwiftUI
 
 /**
  `PhotoViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
@@ -91,8 +92,8 @@ class PhotoViewController: UIViewController {
     
     /// `이미지 편집` 버튼 (팝업 띄우기 버튼)
     lazy var blurButton: ImageTextButton = {
-        let image = UIImage(systemName: "photo")!.withTintColor(.white, renderingMode: .alwaysOriginal)
-        let title = "사진편집"
+        let image = UIImage(systemName: "eraser.line.dashed.fill")!.withTintColor(.white, renderingMode: .alwaysOriginal)
+        let title = "라인블러"
         let action = UIAction { _ in
             self.hideOtherEditView(selectedView: self.edgeBlurSliderView) // 다른 Subview 떠있으면 숨기기
             self.showUpDownBlurView()
@@ -107,10 +108,6 @@ class PhotoViewController: UIViewController {
     /// `백그라운드 편집` 버튼
     lazy var changeBGButton: ImageTextButton = {
         
-        /// [POPUP ] 이미지 배경을 단색으로 변경
-        // let colorPalletMenu = UIAction(title: "단색 배경", image: UIImage(systemName: "paintpalette")) { (action) in
-        // }
-        
         let buttonAction = UIAction { _ in
             self.bgColorAction(sender: self.changeBGButton.button)
             self.hideOtherEditView(selectedView: self.bgSubview)
@@ -119,7 +116,7 @@ class PhotoViewController: UIViewController {
         let image = UIImage(
             systemName: "square.3.layers.3d.down.left")!
             .withTintColor(.white, renderingMode: .alwaysOriginal)
-        let title = "배경 편집"
+        let title = "배경레이어"
         
         // 배경편집 버튼 구성
         let button = ImageTextButton(
@@ -133,8 +130,6 @@ class PhotoViewController: UIViewController {
 
         return button
     }()
-    
-
     
     //MARK: - 기타 기능을 위한 프로퍼티 (인디케이터)
     
@@ -158,6 +153,7 @@ class PhotoViewController: UIViewController {
         setupImageViews()
         setupBarButtons()
         addBottomMenuButtons() // 하단 메뉴바 구성
+        configureSubviewsToggle()
 
         
         setPickedImage() // 앨범에서 선택한 이미지 불러오기
@@ -180,6 +176,10 @@ class PhotoViewController: UIViewController {
 
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.disposeBag = .init()
+    }
     
     /// 이미지뷰 셋업
     func setupImageViews() {
@@ -245,6 +245,25 @@ class PhotoViewController: UIViewController {
         bottomView.leftStackView.addArrangedSubview(cancelButton)
     }
     
+    private func configureSubviewsToggle() {
+        
+        // 배경 편집기가 떠있는 상태.
+        // 1. 배경 편집기 버튼 클릭시
+        // - 아무 동작 하지 않는다.
+        
+        // 2. 블러 버튼 누를 시
+        // 인  닫는다
+        // 블러  열린다.
+        
+        // 블러 편집기가 떠있는 상태.
+        // 안떠있는 상태.
+        
+        // 블러, 배경레이어 선택기
+        //
+        
+    }
+
+    
     
     //MARK: - ImageView, PHPicker(ImagePicker) 셋업
     
@@ -274,6 +293,14 @@ class PhotoViewController: UIViewController {
     /// 사진을 디바이스에 저장하는 메소드입니다.
     func saveImageToAlbum(image: UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageSaveHandler), nil)
+        let newWallpaper = Wallpaper(context: CoreData.shared.persistentContainer.viewContext)
+        let imgData = image.pngData()
+        newWallpaper.wallpaper = imgData
+        newWallpaper.createdDate = Date()
+        newWallpaper.id = UUID()
+        
+        WallpaperCoreData.shared.wallpapers.append(newWallpaper)
+        WallpaperCoreData.shared.saveData()
     }
     
     //MARK: - App Configure
@@ -289,9 +316,14 @@ class PhotoViewController: UIViewController {
     /// 사진 저장 처리결과를 Alert로 Present합니다.
     @objc func imageSaveHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         
+        
         /// 앨범에 사진 저장이 성공 / 실패 했을 때 알럿을 띄웁니다.
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        let apply = UIAlertAction(title: "확인", style: .default, handler: nil)
+        let apply = UIAlertAction(title: "확인", style: .default) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.dismiss(animated: true)
+            }
+        }
         
         if let error = error {
             /// 사진 접근권한 확인을 위해 앱의 설정 화면으로 가는 딥링크를 만듭니다.
@@ -304,12 +336,18 @@ class PhotoViewController: UIViewController {
             alert.message = "사진 저장이 실패했습니다. 아래 설정버튼을 눌러 사진 접근 권한을 확인해주세요."
             return
         } else {
+            
+
+            
+            alert.addAction(apply)
             alert.title = "저장 성공"
             alert.message = "앨범에서 저장된 사진을 확인하세요."
+
         }
-        alert.addAction(apply)
         present(alert, animated: true)
     }
+    
+
     
     /// 배경화면 저장 시 숨길 뷰들을 리턴합니다.
     func getHideViews() -> [UIView] {
@@ -319,9 +357,9 @@ class PhotoViewController: UIViewController {
     
     /// 현재 뷰를 캡쳐하고 그 이미지를 앨범에 저장하는 메소드입니다.
     @objc func saveImage() {
-        if let image = ImageEditModel.shared.takeScreenViewCapture(
-            withoutView: getHideViews(), target: self)
-        {
+        if let image = ImageEditModel.shared
+            .takeScreenViewCapture(
+            withoutView: getHideViews(), target: self) {
             saveImageToAlbum(image: image)
         }
     }
@@ -425,3 +463,34 @@ extension PhotoViewController {
             self.imageBlurAction()
     }
 }
+
+
+// MARK: Preview Providers
+
+struct PhotoViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        PhotoViewController_Representable().edgesIgnoringSafeArea(.all).previewInterfaceOrientation(.portrait)
+    }
+}
+
+struct PhotoViewController_Representable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        
+        let sampleImage = UIImage(named: "testImage")!
+        ImageViewModel.shared.editingPhotoSubject.onNext(sampleImage)
+
+        let photoView = PhotoViewController()
+
+        // PhotoViewController VC
+        let viewer = UINavigationController(rootViewController: photoView)
+        
+        return viewer
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        
+    }
+    
+    typealias UIViewControllerType = UIViewController
+}
+

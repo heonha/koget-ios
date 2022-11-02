@@ -8,6 +8,7 @@
 import RulerView
 import SnapKit
 import UIKit
+import SwiftUI
 
 extension PhotoViewController: RulerDelegate {
     
@@ -93,4 +94,7 @@ extension PhotoViewController: RulerDelegate {
             ImageEditModel.shared.makeImageRoundBlur(imageView: self.mainImageView, insetY: 0)
         }
     }
+    
 }
+
+
