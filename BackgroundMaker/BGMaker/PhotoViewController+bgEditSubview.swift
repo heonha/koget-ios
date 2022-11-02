@@ -28,10 +28,6 @@ extension PhotoViewController {
     
     /// `배경화면 블러` 액션
     @objc func bgBlurAction(sender: UIButton) {
-        if self.colorPickerView.isHidden == false {
-            self.colorPickerView.isHidden = true
-        }
-        
         sender.showAnimation {
             ImageViewModel.shared.editingPhotoSubject
                 .subscribe { image in
@@ -40,21 +36,25 @@ extension PhotoViewController {
                 }.dispose()
         }
     }
+
     
-    /// `배경화면 컬러` 액션
-    @objc func bgColorAction(sender: UIButton) {
+    func configureSubmenuBackground() {
         
-        sender.showAnimation {
-            if self.colorPickerView.isHidden == true {
-                self.colorPickerView.isHidden = false
-            } else {
-                self.colorPickerView.isHidden = true
-            }
+        view.addSubview(trayRootView)
+        trayRootView.snp.makeConstraints { make in
+            make.bottom.equalTo(view)
+            make.leading.trailing.equalTo(view)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-65)
         }
-    }
-    
-    @objc func nilAction() {
         
+        let subviewHeight: CGFloat = 50
+        view.addSubview(traySubView)
+        traySubView.snp.makeConstraints { make in
+            make.bottom.equalTo(trayRootView.snp.top)
+            make.leading.trailing.equalTo(view)
+            make.height.equalTo(subviewHeight)
+        }
+
     }
 
 }

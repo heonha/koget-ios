@@ -16,8 +16,7 @@ class ColorPickerView: UIView {
     var viewHeight: CGFloat!
     var target: UIViewController!
     
-    var backgroundView = UIView()
-    var contentView: UIView = UIView()
+    var contentView = UIView()
     var colorSlider = UIView()
     
     // 편집중인 이미지를 리사이징 (평균 컬러 추출용)
@@ -60,13 +59,6 @@ class ColorPickerView: UIView {
     }
     
     override func layoutSubviews() {
-        addSubview(backgroundView)
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.backgroundColor = .black
-        backgroundView.alpha = 0.3
-        backgroundView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
         makeColorSlider()
     }
     

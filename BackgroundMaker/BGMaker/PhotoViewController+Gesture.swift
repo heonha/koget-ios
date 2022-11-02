@@ -14,7 +14,7 @@ extension PhotoViewController {
     //MARK: 사진 확대/축소 제스쳐
     
     /// 두손가락으로 핀치하는 제스쳐를 SuperView에 추가합니다.
-    func makePinchGesture(selector: Selector) {
+    func addPinchGesture(selector: Selector) {
         var pinch = UIPinchGestureRecognizer()
         
         pinch = UIPinchGestureRecognizer(target: self, action: selector)

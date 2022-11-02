@@ -10,18 +10,9 @@ import SnapKit
 
 
 
-class ImageTextButton: UIView {
+class ImageWithTextButton: UIView {
     
     //MARK: - Properties
-    
-    let stackView: UIStackView = {
-        let sv = UIStackView()
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.axis = .vertical
-        sv.distribution = .fillProportionally
-        
-        return sv
-    }()
     
     
     let label: UILabel = {
@@ -30,6 +21,8 @@ class ImageTextButton: UIView {
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.textColor = .gray
+        label.alpha = 0.9
+
         
         return label
     }()
@@ -38,39 +31,38 @@ class ImageTextButton: UIView {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
+        iv.alpha = 0.9
         
         return iv
     }()
     
     
     /// 투명한 버튼
-    lazy var button: UIButton = {
+    let button: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
-        button.alpha = 0.3
-        button.setImage(UIColor.gray.image(), for: .selected)
+        button.alpha = 1
         
         return button
     }()
     
+    let buttonHeight: CGFloat!
+    let target: UIViewController!
+    
     
     //MARK: - INIT
-    init(image: UIImage, title: String, titleColor: UIColor = .white, action: UIAction?, backgroundColor: UIColor = .systemBlue) {
+    init(target: UIViewController, height: CGFloat = 50, image: UIImage, title: String,
+         titleColor: UIColor = .white, action: Selector, backgroundColor: UIColor = .systemBlue) {
         
-        
+        self.buttonHeight = height
+        self.target = target
         super.init(frame: .zero)
         
         configureUI()
-        
         setImage(image: image)
         setTitle(title: title)
         setTitleColor(color: titleColor)
-        
-        if let settedAction = action {
-            button.addAction(action!, for: .touchDown)
-        }
-        stackView.backgroundColor = backgroundColor
+        button.addTarget(target, action: action, for: .touchDown)
         
     }
     
@@ -97,7 +89,7 @@ class ImageTextButton: UIView {
     //MARK: Title Set
     private func setTitle(title: String, fontSize: CGFloat = 13) {
         self.label.text = title
-        self.label.numberOfLines = 1
+        self.label.numberOfLines = 2
         self.label.font = .systemFont(ofSize: fontSize)
     }
     
@@ -110,18 +102,26 @@ class ImageTextButton: UIView {
     //MARK: - Layout
     private func configureUI() {
         
-        addSubview(stackView)
-        stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(label)
+        addSubview(imageView)
+        addSubview(label)
         addSubview(button)
         
         // contentView는 rootview의 역할을 합니다.
-        stackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        imageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.width.height.equalTo(buttonHeight * 0.7)
+        }
+        
+        label.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).inset(-4)
+            make.bottom.leading.trailing.equalToSuperview()
+            make.height.equalTo(buttonHeight * 0.3)
+
         }
         
         button.snp.makeConstraints { make in
-            make.edges.equalTo(stackView)
+            make.edges.equalToSuperview()
+
         }
         
     } // #END configureUI

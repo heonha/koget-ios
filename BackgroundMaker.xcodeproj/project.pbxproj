@@ -24,7 +24,7 @@
 		3A2E21FB290F7BBE00E4F46A /* InfoWallpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E21FA290F7BBE00E4F46A /* InfoWallpaperViewController.swift */; };
 		3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2E21FC290FF9F800E4F46A /* downArrow.json */; };
 		3A2E2200290FFA2400E4F46A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3A2E21FF290FFA2400E4F46A /* Lottie */; };
-		3A2F307728F4134D00404721 /* ImageTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307628F4134D00404721 /* ImageTextButton.swift */; };
+		3A2F307728F4134D00404721 /* ImageWithTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307628F4134D00404721 /* ImageWithTextButton.swift */; };
 		3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
 		3A302066290E54F7006676BD /* MainPhotoViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A302065290E54F7006676BD /* MainPhotoViewController+Delegate.swift */; };
 		3A35CD5D28F67D9400386011 /* ConnectingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A35CD5C28F67D9400386011 /* ConnectingViewController.swift */; };
@@ -142,7 +142,7 @@
 		3A26150328CB7E2B000D17A3 /* TestEditImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEditImageViewController.swift; sourceTree = "<group>"; };
 		3A2E21FA290F7BBE00E4F46A /* InfoWallpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWallpaperViewController.swift; sourceTree = "<group>"; };
 		3A2E21FC290FF9F800E4F46A /* downArrow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = downArrow.json; sourceTree = "<group>"; };
-		3A2F307628F4134D00404721 /* ImageTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextButton.swift; sourceTree = "<group>"; };
+		3A2F307628F4134D00404721 /* ImageWithTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithTextButton.swift; sourceTree = "<group>"; };
 		3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
 		3A302065290E54F7006676BD /* MainPhotoViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainPhotoViewController+Delegate.swift"; sourceTree = "<group>"; };
 		3A35CD5C28F67D9400386011 /* ConnectingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectingViewController.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				3A42851028E9D7CE001C7032 /* ColorPickerView.swift */,
 				3AC8E70228EA95F60086B8D4 /* ColorPallet.swift */,
 				3A559C7128EB21DB00D5D9E4 /* MenuAnimation.swift */,
-				3A2F307628F4134D00404721 /* ImageTextButton.swift */,
+				3A2F307628F4134D00404721 /* ImageWithTextButton.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -668,7 +668,7 @@
 				3A16865728E1FB49004090DA /* FilterModel.swift in Sources */,
 				3A42851528EA7B8E001C7032 /* PhotoViewController+bgColorSliderView.swift in Sources */,
 				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,
-				3A2F307728F4134D00404721 /* ImageTextButton.swift in Sources */,
+				3A2F307728F4134D00404721 /* ImageWithTextButton.swift in Sources */,
 				3A17665928C9DAFF006DE579 /* ViewModel.swift in Sources */,
 				3AD12D9628CDA4C900CF431C /* MainPhotoViewController.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* WidgetModel.swift in Sources */,

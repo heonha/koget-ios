@@ -15,19 +15,12 @@ extension PhotoViewController: RulerDelegate {
     /// 블러를 조절할 수 있는 뷰를 그립니다.
     func makeBlurSubview(view mainView: UIView) {
 
-        let contentBGView = UIView()
         let rulerView = RulerView()
         
         view.addSubview(mainView)
         
         mainView.translatesAutoresizingMaskIntoConstraints = false
-        mainView.isHidden = true
         mainView.backgroundColor = .clear
-        
-        mainView.addSubview(contentBGView)
-        contentBGView.translatesAutoresizingMaskIntoConstraints = false
-        contentBGView.backgroundColor = .black
-        contentBGView.alpha = 0.3
         
         mainView.addSubview(rulerView)
         rulerView.backgroundColor = .clear
@@ -40,10 +33,6 @@ extension PhotoViewController: RulerDelegate {
             make.height.equalTo(50)
         }
         
-        contentBGView.snp.makeConstraints { make in
-            make.edges.equalTo(edgeBlurSliderView)
-        
-        }
         
         rulerView.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(edgeBlurSliderView)
@@ -53,7 +42,7 @@ extension PhotoViewController: RulerDelegate {
         let titleLabel: UILabel = {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = " 상하단 흐림"
+            label.text = "엣지 블러"
             label.adjustsFontSizeToFitWidth = true
             label.textColor = UIColor.white
             label.font = .systemFont(ofSize: 15, weight: .bold)
@@ -66,21 +55,7 @@ extension PhotoViewController: RulerDelegate {
 
     }
     
-    /// 상하단 블러버튼을 눌렀을 때의 동작입니다.
-    func imageBlurAction() {
 
-        if edgeBlurSliderView.isHidden == false {
-            edgeBlurSliderView.alpha = 0
-            UIView.animate(withDuration: 0.2) {
-                self.edgeBlurSliderView.alpha = 1
-            }
-        } else {
-            self.edgeBlurSliderView.alpha = 1
-            UIView.animate(withDuration: 0.2) {
-                self.edgeBlurSliderView.alpha = 0
-            }
-        }
-    }
     
     /// Ruler의 값을 관찰하는 Delegate입니다
     func rulerValueChanged(_ ruler: RulerView, value: Float) {
