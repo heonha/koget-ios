@@ -83,20 +83,7 @@ class CoreData {
         return nil
     }
     
-    func getStoredDataForTextWidget() -> [TextWidget]? {
-        let coredataContext = persistentContainer.viewContext
-        
-        let request: NSFetchRequest<TextWidget> = TextWidget.fetchRequest()
-        do {
-            let textWidgets = try coredataContext.fetch(request) // 데이터 가져오기
-            
-            return textWidgets
-            
-        } catch let error {
-            print("데이터 가져오기 에러 발생 : \(error)")
-        }
-        return nil
-    }
+
     
     func saveContext() {
         let context = persistentContainer.viewContext

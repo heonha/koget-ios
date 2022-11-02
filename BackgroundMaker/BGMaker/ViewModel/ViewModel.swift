@@ -75,7 +75,7 @@ struct ViewModel {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
         button.setImage(image.withTintColor(.yellow, renderingMode: .alwaysOriginal), for: .selected)
-        button.addAction(action, for: .touchDown)
+        button.addAction(action, for: .touchUpInside)
 
         makeLayerShadow(to: button.layer)
         
@@ -186,7 +186,7 @@ struct ViewModel {
     
     
     func makeLabel(text: String, color: UIColor = .white,
-                   fontSize: CGFloat, fontWeight: UIFont.Weight, alignment: NSTextAlignment = .center) -> UILabel {
+                   fontSize: CGFloat = 13, fontWeight: UIFont.Weight, alignment: NSTextAlignment = .center) -> UILabel {
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -250,6 +250,28 @@ struct ViewModel {
         }
         
         return alert
+    }
+    
+    
+    func getImageRatio(image: Data?, targetWidthMultiply: CGFloat) -> CGSize {
+        let item = image
+        
+        let image = UIImage(data: item ?? Data()) ?? UIImage(named:"questionmark.circle")
+        
+        let itemSize = image!.size
+        
+        let screenSize = UIScreen.main.bounds
+        let targetWidth = screenSize.width * targetWidthMultiply
+        
+        
+        let itemRatio = targetWidth / image!.size.width
+        let spacing: CGFloat = 16
+        
+        // x = 기기 높이 * 이미지 너비 / 기기 너비
+        
+        let imageSize: CGSize = CGSize(width: itemSize.width * itemRatio - spacing, height: itemSize.height * itemRatio - spacing)
+        
+        return imageSize
     }
     
 

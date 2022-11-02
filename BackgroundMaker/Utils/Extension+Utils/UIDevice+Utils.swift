@@ -16,8 +16,15 @@ extension UIDevice {
             return true
         }
         return false
-    }
+    }// 아이폰 8보다 낮음
     public var isiPhoneWithoutNotch: Bool {
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone && (UIScreen.main.bounds.size.height <= 736 || UIScreen.main.bounds.size.width <= 414) {
+            return true
+        }
+        return false
+    }
+    
+    public var isiPhoneMax: Bool {
         if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone && (UIScreen.main.bounds.size.height <= 736 || UIScreen.main.bounds.size.width <= 414) {
             return true
         }

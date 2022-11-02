@@ -7,7 +7,6 @@
 
 import UIKit
 import RxSwift
-import Lottie
 
 class ImageViewModel {
     
@@ -46,25 +45,7 @@ class ImageViewModel {
         imageView.image = photo
     }
     
-    /**
-     `Lottie Animation을 생성하는 메소드입니다.`
-     >  Properties
-     - `named:` 애니메이션 JSON 의 이름입니다
-     - `targetView:` Animation View를 포함시킬 뷰입니다.
-     - `targetVC` : Animation을 넣을 Vie∫w객체 입니다.
-     - `size` : 애니메이션 개체의 사이즈입니다.
-     - `loopMode`: 애니메이션의 루프를 설정합니다. (기본값 Loop)
-     */
-    func makeLottieAnimation(named animationName: String, targetView: UIView, size: CGSize, loopMode: LottieLoopMode = .loop) -> AnimationView {
-        let animationView = AnimationView(name: animationName)
-        animationView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        animationView.center = targetView.center
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = loopMode
-        targetView.addSubview(animationView)
-        
-        return animationView
-    }
+ 
     
     /**
      `스크린 사이즈에 따라서 높이를 조절합니다.`

@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 import RxSwift
 import PhotosUI
+import CoreData
+import SwiftUI
 
 /**
  `HomeViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
@@ -29,6 +31,22 @@ class MainPhotoViewController: UIViewController {
         return view
     }()
     
+    let wallpaperCV: UICollectionView = {
+        
+        let layout = UICollectionViewFlowLayout() // 레이아웃 종류
+        layout.minimumLineSpacing = 1
+        layout.scrollDirection = .vertical // 스크롤 방향
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .systemBackground
+        
+        return cv
+    }()
+    
+    var myWallpaper: [Wallpaper] = []
+
+    
     //MARK: - Models
     
     /// 사진 선택을 했는지 확인하는 Subject
@@ -41,21 +59,47 @@ class MainPhotoViewController: UIViewController {
         self.navigationItem.title = ""
         
         configureMainView()
+        configureBGMakerButton()
+        configurePhotoCV()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadMyWallpapers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    
+    private func configureMainView() {
+        view.backgroundColor = AppColors.blackDarkGrey
+    }
+
+    
+    // MARK: Configure UI
+    
+    private func configureBGMakerButton() {
         view.addSubview(bgMakerButton)
         bgMakerButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.centerX.equalToSuperview()
             make.width.lessThanOrEqualTo(view.frame.width / 1.5)
         }
-        
     }
     
-    // MARK: Configure UI
-    
-    private func configureMainView() {
-        view.backgroundColor = AppColors.blackDarkGrey
+    func loadMyWallpapers() {
+        WallpaperCoreData.shared.loadData { [weak self] (wallpapers) in
+            self?.myWallpaper = wallpapers
+            DispatchQueue.main.async {
+                self?.wallpaperCV.reloadData()
+            }
+        }
     }
+    
+
     
     /// 메뉴버튼을 만들고 menuStackView에 추가합니다.
     private func makeMenuView(title: String, image: UIImage, action: Selector) -> UIView {
@@ -149,6 +193,7 @@ class MainPhotoViewController: UIViewController {
         return mainView
     }
     
+    
     //MARK: - Selectors
     
     /// 이미지 선택기를 띄웁니다.
@@ -186,6 +231,31 @@ extension MainPhotoViewController {
 }
 
 
+// MARK: Preview Providers
 
 
+struct MainPhotoViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        MainPhotoViewController_Representable().edgesIgnoringSafeArea(.all).previewInterfaceOrientation(.portrait)
+    }
+}
+
+struct MainPhotoViewController_Representable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        
+        // Container VC
+        let viewer = UINavigationController(rootViewController: MainContainerViewController())
+        
+        // PhotoVC
+        // let viewer = UINavigationController(rootViewController: MainPhotoViewController())
+        
+        return viewer
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        
+    }
+    
+    typealias UIViewControllerType = UIViewController
+}
 
