@@ -8,9 +8,6 @@
 import UIKit
 
 extension PhotoViewController {
-    
-    //MARK: - Gesture 셋업
-    
     //MARK: 사진 확대/축소 제스쳐
     
     /// 두손가락으로 핀치하는 제스쳐를 SuperView에 추가합니다.
@@ -88,26 +85,5 @@ extension PhotoViewController {
         gesture.edges = .bottom
         self.view.addGestureRecognizer(gesture)
     }
-    
-    /// 불러온 이미지에 따라서 이미지 뷰의 크기를 조절합니다.
-    func resizeImageView() {
-        /// 이미지뷰 레이아웃
-        let screenSize = UIScreen.main.bounds
-        let imageSize = mainImageView.image?.size
-
-        let imageHeight = (imageSize!.height * screenSize.width) / imageSize!.width
-        let resizeHeight = (screenSize.height - imageHeight) / 2
-        
-        mainImageView.snp.remakeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.width.equalTo(screenSize.width)
-            make.height.equalToSuperview().inset(resizeHeight)
-        }
-    }
-    
-
-    
-    //MARK: Gesture 셋업 END -
-    
     
 }

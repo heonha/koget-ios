@@ -588,6 +588,7 @@ extension EditWidgetViewController: UIImagePickerControllerDelegate, UINavigatio
 
     }
     
+   
     
 }
 

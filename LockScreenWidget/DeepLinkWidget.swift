@@ -16,7 +16,7 @@ import Intents
 /// - Snapshot : Widget의 현재상태를 나타내는 스탭샷
 /// - Timeline : Widget이 변경될 미래 날짜.
 /// - context : Widget이 렌더링되는 방법에 대한 세부정보가 포함된 객체
-struct Provider: IntentTimelineProvider {
+struct DeepLinkProvider: IntentTimelineProvider {
     typealias Intent = DeepLinkAppIntent
     typealias Entry = DeepLinkEntry
     
@@ -26,7 +26,21 @@ struct Provider: IntentTimelineProvider {
         completion(entry)
     }
     
-
+    func searchImage(id: String) -> UIImage {
+        
+        // 딥링크 앱의 배열을 가져온다.
+        let deepLinkApps = CoreData.shared.getStoredDataForDeepLink()!
+        
+        var appImage = UIImage(named: "questionmark.circle")!
+        
+        for apps in deepLinkApps {
+            if id == apps.id!.uuidString {
+                appImage = UIImage(data: apps.image!)!
+                return appImage
+            }
+        }
+        return appImage
+    }
     
     /// Widget이 업데이트 될 미래 시간을 전달합니다. (미래날짜가 포함된 타임라인 엔트리배열)
     func getTimeline(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (Timeline<DeepLinkEntry>) -> Void) {
@@ -36,9 +50,9 @@ struct Provider: IntentTimelineProvider {
         // 여기에 Simple Entry로 구성된 코드가 보여짐.
         let entry = DeepLinkEntry(
             date: Date(),
-            title: selectedApp.displayString ?? "plus.circle",
-            link: selectedApp.deepLink ?? "failLink",
-            image: WidgetModel.shared.searchImage(id: selectedApp.uuid!),
+            title: selectedApp.displayString ?? "기본",
+            link: selectedApp.deepLink ?? "",
+            image: searchImage(id: selectedApp.identifier!),
             id: selectedApp.identifier
         )
         
@@ -84,8 +98,8 @@ struct DeepLinkEntry: TimelineEntry {
 }
 
 //MARK: - Widget View
-struct LockScreenWidgetEntryView : View {
-    var entry: Provider.Entry
+struct DeepLinkWidgetEntryView : View {
+    var entry: DeepLinkProvider.Entry
         
     @Environment(\.widgetFamily) var family
     
@@ -130,15 +144,14 @@ struct LockScreenWidgetEntryView : View {
 /// 다양한 종류의 위젯그룹을 만듭니다.
 struct Widgets: WidgetBundle {
     var body: some Widget {
-        LockScreenWidget()
-        UserCustomWidget()
+        DeepLinkWidget()
     }
 }
 
 //MARK: - Protocol : Widget
 
 /// Widget : Widget의 컨텐츠를 나타내는 configuration 프로토콜
-struct LockScreenWidget: Widget {
+struct DeepLinkWidget: Widget {
     let kind: String = "LockScreenWidget"
     
     /// 위젯의 Contents를 나타냅니다.
@@ -149,12 +162,12 @@ struct LockScreenWidget: Widget {
         /// kind : 위젯의 식별자. 즉, ID입니다.
         /// provider : 위젯을 새로고침할 타임라인을 결정하는 객체
         /// content (entry) : getSnapshot, getTimeline을 전달하고 위젯을 렌더링합니다.
-        IntentConfiguration(kind: kind, intent: DeepLinkAppIntent.self, provider: Provider()) { entry in
-            LockScreenWidgetEntryView(entry: entry) // 위젯이 표현할 SwiftUI View입니다.
+        IntentConfiguration(kind: kind, intent: DeepLinkAppIntent.self, provider: DeepLinkProvider()) { (entry) in
+            DeepLinkWidgetEntryView(entry: entry) // 위젯이 표현할 SwiftUI View입니다.
         }
         .configurationDisplayName("딥링크 위젯")
         .description("앱에서 생성한 위젯을 생성하세요.")
-        .supportedFamilies([.accessoryCircular, .accessoryRectangular]) // 위젯이 지원하는 위젯의 종류입니다.
+        .supportedFamilies([.accessoryCircular]) // 위젯이 지원하는 위젯의 종류입니다.
     }
 }
 
@@ -164,7 +177,7 @@ struct LockScreenWidget: Widget {
 /// 위젯 프리뷰 구성
 struct LockScreenWidget_Previews: PreviewProvider {
     static var previews: some View {
-        LockScreenWidgetEntryView(entry: DeepLinkEntry(date: Date(), title: "instagram", link: nil))
+        DeepLinkWidgetEntryView(entry: DeepLinkEntry(date: Date(), title: "instagram", link: nil))
             .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         
     }

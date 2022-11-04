@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import CoreData
 import SwiftUI
+import WidgetKit
 
 class WidgetViewController: UIViewController {
     
@@ -99,7 +100,6 @@ class WidgetViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     //MARK: - Selectors
@@ -127,6 +127,14 @@ class WidgetViewController: UIViewController {
         
         ViewModel.shared.makeLayerShadow(to: deepLinkTitle.layer)
     }
+    
+ 
+    
+    /// 위젯의 타임라인을 재설정합니다. (리프레쉬와 같은 효과)
+    func widgetRefreshTimeLine() {
+        WidgetCenter.shared.reloadTimelines(ofKind: "DeepLinkWidget")
+    } // END - widgetRefreshTimeLine
+    
     
 }
 

@@ -57,50 +57,37 @@ class WidgetModel {
     /// 앱에 내장된 DeepLink의 목록입니다.
     var builtInApps: [BuiltInDeepLink] = [
         
-
-        // BuiltInDeepLink(appID: "", name: "Youtube", imageName: "youtube", deepLink: "youtube://"),
-        // BuiltInDeepLink(appID: "", name: "Instagram", imageName: "instagram", deepLink: "instagram://"),
-        // BuiltInDeepLink(appID: "", name: "Naver", imageName: "naver", deepLink: "naversearchapp://"),
-        // BuiltInDeepLink(appID: "", name: "Youtube Music", imageName: "youtubeMusic", deepLink: "youtubemusic://"),
-        // BuiltInDeepLink(appID: "", name: "Google OTP", imageName: "googleOTP", deepLink: "googleauthenticator://"),
-        // BuiltInDeepLink(appID: "", name: "신한 터치결제", imageName: "shinhanTouch", deepLink: "shpayfan-touchpay://touch"),
     ]
     
     private init() {
         builtInApps = stringControl()
     }
-    
-    
 
-    
-    
     
     var deepLinkApps: [DeepLink] = []
     
+    //
+    // func searchImage(id: String) -> UIImage {
+    //
+    //
+    //     // 딥링크 앱의 배열을 가져온다.
+    //     let deepLinkApps = CoreData.shared.getStoredDataForDeepLink()!
+    //
+    //     var appImage = UIImage(named: "questionmark.circle")!
+    //
+    //     for apps in deepLinkApps {
+    //         if id == apps.id!.uuidString {
+    //             appImage = UIImage(data: apps.image!)!
+    //             return appImage
+    //         }
+    //     }
+    //     return appImage
+    // }
     
-    func searchImage(id: String) -> UIImage {
-        
-        
-        // 딥링크 앱의 배열을 가져온다.
-        let deepLinkApps = CoreData.shared.getStoredDataForDeepLink()!
-        
-        for apps in deepLinkApps {
-            if id == apps.id!.uuidString {
-                
-                let image = UIImage(data: apps.image!)
-                
-                return image!
-                
-            }
-        }
-        
-        return UIImage(named: "Image")!
-    }
-    
-    func testImage(id: String) -> UIImage? {
-        
-        return UIImage(named: id)
-    }
+    // func testImage(id: String) -> UIImage? {
+    //     
+    //     return UIImage(named: id)
+    // }
     
     func debugIntent(data: String) {
         print("DebugIntent: \(data)")

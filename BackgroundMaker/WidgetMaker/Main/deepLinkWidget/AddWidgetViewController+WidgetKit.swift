@@ -36,11 +36,11 @@ extension AddWidgetViewController {
                 print(" Widget get current Conf. Error: \(error.localizedDescription)")
             }
         }
-    } // END - widgetGetData
+    }
     
     /// 위젯의 타임라인을 재설정합니다. (리프레쉬와 같은 효과)
     func widgetRefreshTimeLine() {
-        WidgetCenter.shared.reloadTimelines(ofKind: "LockScreenWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: "DeepLinkWidget")
     } // END - widgetRefreshTimeLine
     
 
