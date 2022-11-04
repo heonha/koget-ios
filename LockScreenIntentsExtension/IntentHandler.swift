@@ -156,7 +156,6 @@ extension IntentHandler: DeepLinkAppIntentHandling {
 
             item.uuid = deepLink.id?.uuidString
             item.deepLink = deepLink.deepLink // 딥링크 주소
-
             
             return item
         }
