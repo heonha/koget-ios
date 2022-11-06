@@ -15,7 +15,6 @@
 				<string>DeepLinkAppIntent</string>
 				<string>INSearchForMessagesIntent</string>
 				<string>INSetMessageAttributeIntent</string>
-				<string>TextWidgetIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

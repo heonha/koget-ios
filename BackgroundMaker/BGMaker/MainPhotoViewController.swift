@@ -24,7 +24,7 @@ class MainPhotoViewController: UIViewController {
     lazy var bgMakerButton: UIView = {
         var view = UIView()
         view = makeMenuView(
-            title: "월페이퍼 만들기",
+            title: "배경화면 만들기",
             image: UIImage(named: "rectangle.stack.badge.plus")!,
             action: #selector(presentPHPickerVC)
         )
@@ -56,7 +56,7 @@ class MainPhotoViewController: UIViewController {
     //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = ""
+        self.navigationItem.title = "배경화면"
         
         configureMainView()
         configureBGMakerButton()
@@ -76,7 +76,9 @@ class MainPhotoViewController: UIViewController {
     
     private func configureMainView() {
         view.backgroundColor = AppColors.blackDarkGrey
+
     }
+    
 
     
     // MARK: Configure UI
@@ -84,7 +86,7 @@ class MainPhotoViewController: UIViewController {
     private func configureBGMakerButton() {
         view.addSubview(bgMakerButton)
         bgMakerButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
             make.centerX.equalToSuperview()
             make.width.lessThanOrEqualTo(view.frame.width / 1.5)
         }
@@ -244,7 +246,7 @@ struct MainPhotoViewController_Representable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         
         // Container VC
-        let viewer = UINavigationController(rootViewController: MainContainerViewController())
+        let viewer = MainContainerViewController()
         
         // PhotoVC
         // let viewer = UINavigationController(rootViewController: MainPhotoViewController())

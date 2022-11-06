@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import SwipeableTabBarController
 
-class MainContainerViewController: UITabBarController {
+class MainContainerViewController: SwipeableTabBarController {
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupTabBar()
+        swipeAnimatedTransitioning?.animationType = SwipeAnimationType.sideBySide
+
     }
     
     // MARK: Setup Views
@@ -32,7 +35,6 @@ class MainContainerViewController: UITabBarController {
         
         let tabBarList = [aNC, bNC]
         viewControllers = tabBarList
-        
         
     }
     
@@ -61,6 +63,3 @@ extension UIViewController {
         tabBarItem = UITabBarItem(title: title, image: image, tag: 0)
     }
 }
-
-
-

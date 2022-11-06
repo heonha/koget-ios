@@ -130,9 +130,17 @@ class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessag
 //MARK: - ViewIcon Intent Handling
 
 extension IntentHandler: DeepLinkAppIntentHandling {
+
+    
+    // func provideAppOptionsCollection(for intent: DeepLinkAppIntent) async throws -> INObjectCollection<AppDefinition> {
+    //     
+    // }
+    
+
+    
     /// 위젯 데이터를 가져오고 배열로 만듭니다.
 
-    func provideAppOptionsCollection(for intent: DeepLinkAppIntent, searchTerm: String?, with completion: @escaping (INObjectCollection<AppDefinition>?, Error?) -> Void) {
+    func provideAppOptionsCollection(for intent: DeepLinkAppIntent, with completion: @escaping (INObjectCollection<AppDefinition>?, Error?) -> Void) {
 
     // MARK: 데이터의 흐름
     // AppInfo : 딥링크 할 앱의 데이터
@@ -165,6 +173,19 @@ extension IntentHandler: DeepLinkAppIntentHandling {
         
         /// 위에서 정의한 위젯 INObjectCollection 컬렉션을 completion 으로 전달한다.
         completion(collection, nil)
+    }
+    
+    func defaultApp(for intent: DeepLinkAppIntent) -> AppDefinition? {
+        
+        let item = AppDefinition(
+            identifier: nil,
+            display: "no Data"
+        )
+        
+        item.uuid = "12345"
+        item.deepLink = "" // 딥링크 주소
+        
+        return item
     }
     
 }

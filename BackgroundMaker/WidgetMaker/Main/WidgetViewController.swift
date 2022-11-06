@@ -15,6 +15,15 @@ class WidgetViewController: UIViewController {
     
     let coredataContext = CoreData.shared.persistentContainer.viewContext
     
+    lazy var widgetMakeButton: UIView = {
+        var view = UIView()
+        view = makeMenuView(
+            title: "위젯 만들기",
+            image: UIImage(named: "rectangle.stack.badge.plus")!,
+            action: #selector(addBarButtonTapped)
+        )
+        return view
+    }()
     
     //MARK: - CoreData Properties
     var deepLinkWidgets: [DeepLink] = []
@@ -24,7 +33,7 @@ class WidgetViewController: UIViewController {
     let safeNaviBG: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.image = AppColors.buttonPurple.image()
+        iv.backgroundColor = AppColors.buttonPurple
         iv.contentMode = .scaleAspectFill
         iv.alpha = 1
         
@@ -45,13 +54,7 @@ class WidgetViewController: UIViewController {
         return barBtn
     }()
     
-    let deepLinkTitle: UILabel = ViewModel.shared.makeLabel(
-        text: "내 위젯",
-        color: .white,
-        fontSize: 18,
-        fontWeight: .bold,
-        alignment: .left
-    )
+
     
     let deepLinkCollectionView: UICollectionView = {
         
@@ -93,26 +96,159 @@ class WidgetViewController: UIViewController {
         
         loadData()
         configureNavigation()
-        configureUI()
+        configureWidgetMakerButton()
         configureDeepLinkWidget()
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        widgetGetData()
     }
     
     //MARK: - Selectors
     @objc func addBarButtonTapped(sender: UIBarButtonItem) {
         let vc = AddWidgetViewController()
         vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
+    
+    //MARK: Testing
+    func widgetGetData() {
+        WidgetCenter.shared.getCurrentConfigurations { (result) in
+            switch result {
+            case .success(let widgets):
+                for info in widgets {
+                    print("---- Widget Information ----")
+
+                    print("info Kind : \(info.kind)")
+                    print("info Family : \(info.family)")
+                    print("info Config : \(String(describing: info.configuration))")
+                    
+                    // info Config : Optional({
+                    //     app = <INCustomObject: 0x6000016005f0> {
+                    //         pronunciationHint = <null>;
+                    //         displayString = instagram;
+                    //         subtitleString = <null>;
+                    //         identifier = instagram;
+                    //         alternativeSpeakableMatches = <null>;
+                    //     };
+                    // })
+                }
+            case.failure(let error):
+                print(" Widget get current Conf. Error: \(error.localizedDescription)")
+            }
+        }
     }
     
 
     
     
     //MARK: - Helpers
+    
+    private func configureWidgetMakerButton() {
+        view.addSubview(widgetMakeButton)
+        widgetMakeButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
+            make.centerX.equalToSuperview()
+            make.width.lessThanOrEqualTo(view.frame.width / 1.5)
+        }
+    }
+    
+    /// 메뉴버튼을 만들고 menuStackView에 추가합니다.
+    private func makeMenuView(title: String, image: UIImage, action: Selector) -> UIView {
+        
+        let mainView = UIView()
+        
+        // 컨텐츠 사이즈 지정
+        let screenSize = UIScreen.main.bounds
+        let spacing: CGFloat = 6
+        let padding: CGFloat = 12
+        
+        let buttonSize = CGSize(width: screenSize.width / 1.2, height: 65)
+        
+        // rootView
+        mainView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 배경 뷰
+        let bgView: UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.backgroundColor = .black
+            view.alpha = 0.3
+            view.layer.cornerRadius = 8
+            ViewModel.shared.makeLayerShadow(to: view.layer)
+            return view
+        }()
+        
+        let imageView: UIImageView = {
+            let holderImage = image.withRenderingMode(.alwaysOriginal)
+            let imageView = UIImageView() // 사진 추가하기를 의미하는 이미지
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = holderImage
+            
+            return imageView
+        }()
+        
+        /// 메뉴제목 라벨 초기화
+        let label: UILabel = {
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = title
+            label.textAlignment = .center
+            label.font = .systemFont(ofSize: 20, weight: .bold)
+            ViewModel.shared.makeLayerShadow(to: label.layer)
+            
+            return label
+        }()
+        
+        /// 뷰를 감싸는 투명버튼 초기화
+        let button: UIButton = {
+            let button = UIButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: action, for: .touchDown)
+            button.backgroundColor = .clear
+            return button
+        }()
+        
+        view.addSubview(mainView)
+        
+        mainView.addSubview(bgView)
+        mainView.addSubview(imageView)
+        mainView.addSubview(label)
+        mainView.addSubview(button)
+        
+        mainView.snp.makeConstraints { make in
+            make.width.equalTo(buttonSize.width)
+            make.height.equalTo(buttonSize.height)
+        }
+        
+        bgView.snp.makeConstraints { make in
+            make.edges.equalTo(mainView)
+        }
+        
+        // MARK: Layouts
+        imageView.snp.makeConstraints { make in
+            make.top.bottom.equalTo(mainView).inset(padding)
+            make.leading.equalTo(mainView).inset(padding)
+        }
+        
+        label.snp.makeConstraints { make in
+            make.top.bottom.equalTo(mainView).inset(padding)
+            make.leading.equalTo(imageView.snp.trailing).inset(spacing)
+            make.trailing.equalTo(mainView).inset(padding)
+        }
+        
+        button.snp.makeConstraints { make in
+            make.edges.equalTo(mainView)
+        }
+        
+        return mainView
+    }
+    
     
     private func configureNavigation() {
         navigationItem.title = "위젯"
@@ -121,11 +257,6 @@ class WidgetViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = AppColors.buttonPurple
         navigationController?.navigationBar.tintColor = .white
         // view.backgroundColor = AppColors.buttonPurple
-    }
-    
-    private func configureUI() {
-        
-        ViewModel.shared.makeLayerShadow(to: deepLinkTitle.layer)
     }
     
  
@@ -144,14 +275,6 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     private func configureDeepLinkWidget() {
         
-        // title
-        view.addSubview(deepLinkTitle)
-        deepLinkTitle.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
-            make.leading.trailing.equalTo(view).inset(16)
-            make.height.equalTo(50)
-        }
-        
         
         // collection View
         deepLinkCollectionView.delegate = self
@@ -160,9 +283,9 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         self.view.addSubview(deepLinkCollectionView)
         ViewModel.shared.cropCornerRadius(view: deepLinkCollectionView, radius: 8)
         deepLinkCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(deepLinkTitle.snp.bottom).inset(-8)
+            make.top.equalTo(widgetMakeButton.snp.bottom).inset(-16)
             make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(300)
+            make.height.equalTo(250)
         }
     }
     
@@ -238,7 +361,7 @@ extension WidgetViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == deepLinkCollectionView {
             
             if deepLinkWidgets.count == 0 {
-                return CGSize(width: UIScreen.main.bounds.width, height: 120)
+                return CGSize(width: UIScreen.main.bounds.width, height: deepLinkCollectionView.frame.height - 44)
             }
             
             let width: CGFloat = 70

@@ -84,23 +84,7 @@ class InfoWallpaperViewController: UIViewController {
         let date = ViewModel.shared.makeLabel(text: "12월 30일 금요일", fontSize: 25, fontWeight: .medium)
         
         let deviceSize = UIDevice.current.isiPhoneWithNotch
-        
-        // iPhone Max
-        // iPhone
-        
-        
-        let blurEffect = UIBlurEffect(style: .light)
-        
-        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
-        // 2
-        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
-        vibrancyView.translatesAutoresizingMaskIntoConstraints = false
-        // 3
-        vibrancyView.contentView.addSubview(clock)
-        // 4
-        // blurView.contentView.addSubview(vibrancyView)
-        
-        
+
         
         sv.addArrangedSubview(date)
         sv.addArrangedSubview(clock)
@@ -118,8 +102,10 @@ class InfoWallpaperViewController: UIViewController {
         return btn
     }()
     
+    lazy var buttonBlurView = UIView()
+    
     lazy var saveButton: UIButton = {
-        let button = ViewModel.shared.makeButtonWithTitleAndTarget(title: "앨범에 저장", action: #selector(saveImage), target: self, backgroundColor: .black)
+        let button = ViewModel.shared.makeButtonWithTitleAndTarget(title: "앨범에 저장", action: #selector(saveImage), target: self, backgroundColor: .clear)
         button.titleLabel?.font = .systemFont(ofSize: 19, weight: .semibold)
         ViewModel.shared.cropCornerRadius(view: button)
         button.alpha = 0
@@ -164,6 +150,7 @@ class InfoWallpaperViewController: UIViewController {
         configureShowButton()
         configureDownArrow()
         configureSaveButton()
+        setBlurButtonView()
         addPanGesture(selector: #selector(panGestureRecognizerHandler))
     }
     
@@ -229,13 +216,17 @@ class InfoWallpaperViewController: UIViewController {
             make.height.equalTo(50)
         }
         
-        view.addSubview(saveButton)
-        saveButton.snp.makeConstraints { make in
+        view.addSubview(buttonBlurView)
+        buttonBlurView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(guideLabel.snp.top).inset(-16)
             make.height.equalTo(50)
             make.width.equalTo(120)
-
+        }
+        
+        view.addSubview(saveButton)
+        saveButton.snp.makeConstraints { make in
+            make.edges.equalTo(buttonBlurView)
         }
         
         view.addSubview(deleteButton)
@@ -269,6 +260,7 @@ class InfoWallpaperViewController: UIViewController {
         if self.saveButton.alpha == 0 {
             UIView.animateKeyframes(withDuration: 0.1, delay: 0) {
                 self.saveButton.alpha = 1
+                self.buttonBlurView.alpha = 1
                 self.deleteButton.alpha = 1
                 self.guideLabel.alpha = 1
             }
@@ -277,6 +269,7 @@ class InfoWallpaperViewController: UIViewController {
                 if self.saveButton.alpha == 1 {
                     UIView.animate(withDuration: 0.2) {
                         self.saveButton.alpha = 0
+                        self.buttonBlurView.alpha = 0
                         self.deleteButton.alpha = 0
                         self.guideLabel.alpha = 0
 
@@ -288,6 +281,7 @@ class InfoWallpaperViewController: UIViewController {
         } else {
             UIView.animateKeyframes(withDuration: 0.1, delay: 0) {
                 self.saveButton.alpha = 0
+                self.buttonBlurView.alpha = 0
                 self.deleteButton.alpha = 0
                 self.guideLabel.alpha = 0
 
@@ -303,8 +297,6 @@ class InfoWallpaperViewController: UIViewController {
         showButton.snp.makeConstraints { make in
             make.edges.equalTo(wallpaperView)
         }
-        
-
         
     }
     
@@ -346,6 +338,23 @@ class InfoWallpaperViewController: UIViewController {
 
     }
     
+    func setBlurButtonView() {
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.alpha = 0.5
+        buttonBlurView.insertSubview(blurView, at: 0)
+        blurView.snp.makeConstraints { make in
+            make.edges.equalTo(buttonBlurView)
+        }
+        
+        blurView.layer.cornerRadius = 10.0
+        blurView.clipsToBounds = true
+        
+
+    }
+    
+    
+    
 }
 
 
@@ -379,3 +388,5 @@ extension InfoWallpaperViewController {
     }
     
 }
+
+

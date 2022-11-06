@@ -149,7 +149,7 @@ class AddWidgetViewController: UIViewController {
     
     
     @objc private func closeButtonTapped(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true)
     }
     
     @objc private func addButtonTapped(sender: UIButton) {
@@ -199,7 +199,7 @@ class AddWidgetViewController: UIViewController {
             item.addedDate = Date()
             
             delegate?.addDeepLinkWidget(widget: item)
-            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true)
             
         } else {
             print("데이터 없음")

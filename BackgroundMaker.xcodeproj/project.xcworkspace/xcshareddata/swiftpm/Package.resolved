@@ -37,6 +37,15 @@
       }
     },
     {
+      "identity" : "swipeabletabbarcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/marcosgriselli/SwipeableTabBarController.git",
+      "state" : {
+        "revision" : "f90f5142a9cd119f8929cec1bfcf78aa0a2f2e8f",
+        "version" : "3.4.2"
+      }
+    },
+    {
       "identity" : "uiimagecolors",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jathu/UIImageColors.git",

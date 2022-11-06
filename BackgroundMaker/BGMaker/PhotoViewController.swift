@@ -13,6 +13,13 @@ import RxCocoa
 import RulerView
 import SwiftUI
 
+
+enum RulerViewSwitch: String {
+    case none
+    case edgeBlur
+    case backgroundBlur
+}
+
 /**
  `PhotoViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
  >  
@@ -34,17 +41,13 @@ class PhotoViewController: UIViewController {
     
     //MARK: - [Properties] ImageViews
 
-    
-    //MARK: 로딩 인디케이터 애니메이션
-    /// 이미지가 로딩되는 동안 표시할 인디케이터뷰 입니다.
-    // var loadingIndicatorView = AnimationView()
-    
-    
     //MARK: 이미지뷰 관련 (이미지뷰, 배경뷰)
     ///`메인 이미지`  편집할 이미지가 들어갈 이미지 뷰
     var mainImageView = UIImageView()
     /// `배경 이미지` 편집할 이미지 뒤에 나타날 배경  이미지
     let bgImageView = UIImageView()
+    
+    var rulerViewSwitch: RulerViewSwitch = .none
     
     /// `제스쳐` : mainImageView의 중앙 인식을 위한 포인터입니다.
     /// makeDragImageGesture() 메소드에서 사용
@@ -91,7 +94,7 @@ class PhotoViewController: UIViewController {
     
     //MARK: 하단 서브뷰1
     /// 상하단 흐림 RulerView 초기화
-    lazy var edgeBlurSliderView = UIView()
+    lazy var edgeBlurSliderView = CustomRulerView(title: "엣지블러", delegate: self)
     
     /// [배경화면 편집 뷰] 배경화면 컬러 선택기 초기화
     lazy var colorPickerView = ColorPickerView(target: self)
@@ -116,11 +119,11 @@ class PhotoViewController: UIViewController {
     // /// `이미지 편집` 버튼
     lazy var edgeBlurButton: ImageWithTextButton = {
         let image = UIImage(named: "eraser.line.dashed.fill")!
-        let title = "라인블러"
+        let title = "엣지블러"
     
         let button = ImageWithTextButton(
             target: self, image: image, title: title,
-            action: #selector(imageBlurAction), backgroundColor: .clear)
+            action: #selector(edgeBlurTapped), backgroundColor: .clear)
         return button
     }()
     
@@ -168,7 +171,7 @@ class PhotoViewController: UIViewController {
         // Subview 셋업
         self.configureSubmenuBackground() // 트레이 배경뷰
         self.configureTrayView() // 트레이 뷰
-        self.makeBlurSubview(view: edgeBlurSliderView) // 엣지블러 뷰
+        self.switchBlurSubview() // 엣지블러 뷰
         self.makeBGColorPicker() // 배경 컬러 피커뷰
         
         // 이미지 관련 제스쳐
@@ -205,6 +208,22 @@ class PhotoViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    /// 불러온 이미지에 따라서 이미지 뷰의 크기를 조절합니다.
+    func resizeImageView() {
+        /// 이미지뷰 레이아웃
+        let screenSize = UIScreen.main.bounds
+        let imageSize = mainImageView.image?.size
+
+        let imageHeight = (imageSize!.height * screenSize.width) / imageSize!.width
+        let resizeHeight = (screenSize.height - imageHeight) / 2
+        
+        mainImageView.snp.remakeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.width.equalTo(screenSize.width)
+            make.height.equalToSuperview().inset(resizeHeight)
+        }
+    }
 
     /// 바 버튼의 순서를 재배치합니다..
     func barButtonReplace(buttons: [UIBarButtonItem]) {
@@ -222,6 +241,13 @@ class PhotoViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        view.addSubview(edgeBlurSliderView)
+        edgeBlurSliderView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(bottomView.snp.top)
+            make.height.equalTo(50)
+        }
     }
     
     /// 하단 메뉴 ( BottomMenuView )에 넣을  버튼을 구성합니다.
@@ -238,11 +264,17 @@ class PhotoViewController: UIViewController {
         
         let duration: CGFloat = 0.2
         
+        if self.rulerViewSwitch != .backgroundBlur {
+            rulerViewSwitch = .backgroundBlur
+            self.switchBlurSubview()
+        }
+
         if colorPickerView.alpha == 0 {
             UIView.animate(withDuration: duration) {
                 self.edgeBlurSliderView.alpha = 0
                 self.colorPickerView.alpha = 1
                 self.traySubView.alpha = 0.4
+
             }
         } else {
             UIView.animate(withDuration: duration) {
@@ -253,9 +285,14 @@ class PhotoViewController: UIViewController {
     }
     
     /// 엣지블러을 눌렀을 때의 동작입니다.
-    @objc func imageBlurAction() {
+    @objc func edgeBlurTapped() {
         
         let duration: CGFloat = 0.2
+        
+        if rulerViewSwitch != .edgeBlur {
+            rulerViewSwitch = .edgeBlur
+            self.switchBlurSubview()
+        }
         
         if edgeBlurSliderView.alpha == 0 {
             UIView.animate(withDuration: duration) {
@@ -382,7 +419,7 @@ class PhotoViewController: UIViewController {
     
     /// 배경화면 저장 시 숨길 뷰들을 리턴합니다.
     func getHideViews() -> [UIView] {
-        let hideViews = [self.bottomView, self.edgeBlurSliderView, self.colorPickerView]
+        let hideViews = [self.bottomView, self.edgeBlurSliderView, self.colorPickerView, self.trayRootView, self.traySubView]
         return hideViews
     }
     
@@ -441,13 +478,10 @@ class PhotoViewController: UIViewController {
     
     func backgroundImageRxSubscribe() {
         ImageViewModel.shared.backgroundPhoto
+            .distinctUntilChanged()
             .subscribe { image in
                 print("Rx backgroundPhoto : 이미지가 변경되었습니다.")
-                UIView.animate(withDuration: 0.1) {
-                    self.bgImageView.alpha = 0.8
                     self.bgImageView.image = image
-                    self.bgImageView.alpha = 1
-                }
         } onError: { error in
             print("backgroundPhoto Error : \(error.localizedDescription)")
         } onCompleted: {
@@ -462,31 +496,9 @@ class PhotoViewController: UIViewController {
 
 extension PhotoViewController {
     
-
-    
-    /// 현재 클릭한 뷰 외의 다른 버튼들을 숨깁니다.
-    private func hideOtherEditView(selectedView: UIView) {
-        //
-        // print("다른 뷰를 숨겨라")
-        // [edgeBlurSliderView, colorPickerView].forEach { view in
-        //     view.isUserInteractionEnabled = false
-        //
-        //     UIView.animate(withDuration: 1) {
-        //         view.alpha = 0
-        //     }
-        // }
-        //
-        // selectedView.isUserInteractionEnabled = true
-        // UIView.animate(withDuration: 1) {
-        //     selectedView.alpha = 1
-        // }
-
-
-    }
-    
     /// 상하단 블러버튼을 띄웁니다.
     @objc func showUpDownBlurView() {
-            self.imageBlurAction()
+            self.edgeBlurTapped()
     }
 }
 
@@ -508,7 +520,7 @@ struct PhotoViewController_Representable: UIViewControllerRepresentable {
         let photoView = PhotoViewController()
 
         // PhotoViewController VC
-        let viewer = UINavigationController(rootViewController: photoView)
+        let viewer = photoView
         
         return viewer
     }
