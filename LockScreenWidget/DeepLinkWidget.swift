@@ -50,10 +50,10 @@ struct DeepLinkProvider: IntentTimelineProvider {
         // 여기에 Simple Entry로 구성된 코드가 보여짐.
         let entry = DeepLinkEntry(
             date: Date(),
-            title: selectedApp.displayString ?? "기본",
+            title: selectedApp.displayString,
             link: selectedApp.deepLink ?? "",
             image: searchImage(id: selectedApp.identifier!),
-            id: selectedApp.identifier
+            id: selectedApp.uuid
         )
         
         let timeline = Timeline(entries: [entry], policy: .atEnd)
@@ -67,7 +67,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
     }
     
     func placeholder(in context: Context) -> DeepLinkEntry {
-        DeepLinkEntry(date: Date(), title: "")
+        DeepLinkEntry(date: Date(), title: "플레이스 홀더", link: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
     }
     
     /// 위젯을 추가할 때 표시할 프리뷰를 구성합니다.
@@ -77,10 +77,11 @@ struct DeepLinkProvider: IntentTimelineProvider {
     
         // 위젯 미리보기에서 어떻게 보일 것인지 설정.
         if context.isPreview {
-            entry = DeepLinkEntry(date: Date(), title: "placeHolder", link: nil)
+            entry = DeepLinkEntry(date: Date(), title: "placeHolder", link: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
         } else {
-            entry = DeepLinkEntry(date: Date(), title: "")
+            entry = DeepLinkEntry(date: Date(), title: "placeHolder", link: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
         }
+        
         return entry
     }
     
@@ -106,33 +107,28 @@ struct DeepLinkWidgetEntryView : View {
     let mainURL = "widget-deeplink://"
     
     // 위젯 Family에 따라 분기가 가능함(switch)
+    @ViewBuilder
     var body: some View {
         
         switch family {
         case .accessoryCircular:
-            if entry.title == "placeHolder" {
-                VStack(alignment: .center) {
-                        Text("바로가기 추가")
-                        .multilineTextAlignment(.center)
-                }
-            } else {
+            if entry.id != nil {
                 VStack {
                     Image(uiImage: entry.image!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .widgetURL(URL(string: "\(mainURL)\(entry.link ?? "failLink")"))
                 }
+            } else {
+                VStack {
+                    Image(uiImage: UIImage(named: "plus.circle.fill")!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
             }
-        case .accessoryRectangular:
-                Text(entry.id!)
-                    .font(Font.caption)
-            
-                
+
         default:
             VStack {
-                Image("swift")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
             }
         }
     }

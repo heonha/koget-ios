@@ -8,16 +8,20 @@
 import UIKit
 import SnapKit
 import UIImageColors
+import SwiftUI
+import RulerView
 
 /// Color Pallet 를 담고있는 View 입니다.
 class ColorPickerView: UIView {
-    
+
     var viewWidth: CGFloat!
     var viewHeight: CGFloat!
-    var target: UIViewController!
+    var target: PhotoViewController!
     
     var contentView = UIView()
     var colorSlider = UIView()
+    
+
     
     // 편집중인 이미지를 리사이징 (평균 컬러 추출용)
     var colorImage: UIImage = {
@@ -35,7 +39,7 @@ class ColorPickerView: UIView {
         
         return editingImage
     }()
-
+    
     /// 컬러 팔레트 스택뷰
     let stackView: UIStackView = {
         let sv = UIStackView()
@@ -45,11 +49,11 @@ class ColorPickerView: UIView {
         sv.spacing = 10
         sv.alignment = .center
         sv.distribution = .fillEqually
-
+        
         return sv
     }()
     
-    init(target: UIViewController) {
+    init(target: PhotoViewController) {
         self.target = target
         super.init(frame: .zero)
     }
@@ -76,7 +80,6 @@ class ColorPickerView: UIView {
         
         let colors: [PalletCircle] = [
             // 기본컬러
-            PalletCircle(name: "Blur", circle: blurColor),
             PalletCircle(name: "Black", circle: UIColor.black.image()),
             PalletCircle(name: "White", circle: UIColor.white.image()),
             // 이미지로부터 추출한 컬러
@@ -86,28 +89,32 @@ class ColorPickerView: UIView {
             PalletCircle(name: "fromImgFour", circle: imageColors.background.image()),
         ]
         
-        var pallets: [ColorPallet] = []
+        // 블러 써클
+        let blur = PalletCircle(name: "Blur", circle: blurColor)
+        let blurCircle = ColorPallet(color: blur.circle, target: target, type: .showRuler)
+            
+        var pallets: [ColorPallet] = [blurCircle]
         
         for color in colors {
             let item = ColorPallet(color: color.circle, target: target)
             pallets.append(item)
         }
-
+        
         return pallets
     }
-
+    
     
     private func makeColorSlider() {
-
+        
         let circleSize: CGFloat = 30.0
         let colorCircles = makeColorPallets(image: colorImage)
         
         for circle in colorCircles {
-        
+            
             circle.translatesAutoresizingMaskIntoConstraints = false
             circle.layer.cornerRadius = 15
             stackView.addArrangedSubview(circle)
-        
+            
             /// Color Pallet 크기 지정
             circle.snp.makeConstraints { make in
                 make.height.equalTo(circleSize)
@@ -116,12 +123,66 @@ class ColorPickerView: UIView {
         }
         
         addSubview(stackView)
-
+        
         /// 팔레트 색상 갯수에 따라서 StackView의 크기를 조절합니다.
         stackView.snp.makeConstraints { make in
             make.centerY.centerX.equalToSuperview()
             make.width.equalTo((colorCircles.count - 1) * 10 + colorCircles.count * 30)
             make.height.equalTo(30)
         }
+        
     }
+    
+    // 블러뷰를 클릭하면 블러뷰가 실행된다.
+    // 실행 후 현재 블러 정도를 조절기를 나타낸다.
+    // 다른곳을 클릭하거나 뒤로가기를 누르면 다시 배경선택기가 나타난다.
+    
 }
+
+
+
+// 
+// 
+// struct ColorPickerView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         
+//         let sampleImage = UIImage(named: "testImage")!
+//         
+//         let testView = ColorPickerView(target: PhotoViewController())
+// 
+// 
+//         TestPreviewViewController_Representable(sampleImage: sampleImage, testView: testView)
+//             .edgesIgnoringSafeArea(.all)
+//             .previewInterfaceOrientation(.portrait)
+//     }
+// }
+// 
+// struct TestPreviewViewController_Representable: UIViewControllerRepresentable {
+//     
+//     let sampleImage: UIImage!
+//     let testView: UIView!
+//     
+//     init(sampleImage: UIImage!, testView: UIView!) {
+//         self.sampleImage = sampleImage
+//         self.testView = testView
+//     }
+//     
+//     func makeUIViewController(context: Context) -> UIViewController {
+//         
+//         ImageViewModel.shared.editingPhotoSubject.onNext(self.sampleImage)
+//         
+//         let mainVC = TestPreviewViewController(testView: testView, viewHeight: 50, defaultBGColor: .gray)
+// 
+//         let viewer = mainVC
+//         
+//         return viewer
+//     }
+//     
+//     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+//         
+//     }
+//     
+//     typealias UIViewControllerType = UIViewController
+// }
+// 
+// 

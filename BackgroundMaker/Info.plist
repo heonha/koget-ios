@@ -31,7 +31,6 @@
 	<array>
 		<string>ConfigurationIntent</string>
 		<string>DeepLinkAppIntent</string>
-		<string>TextWidgetIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	***REMOVED***

@@ -74,6 +74,7 @@ extension MainPhotoViewController: UICollectionViewDelegate, UICollectionViewDat
         let item = myWallpaper[indexPath.item]
         
         cell.imageView.image = UIImage(data: item.wallpaper!) ?? UIImage(named: "questionmark.circle")!
+
         
         cell.backgroundColor = .white
         

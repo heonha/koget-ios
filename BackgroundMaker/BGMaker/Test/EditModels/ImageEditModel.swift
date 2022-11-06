@@ -16,51 +16,10 @@ class ImageEditModel {
     private init() {
         
     }
-    
-    //MARK: - Image Edit General Methods
-    
-    /// 여러개의 이미지를 병합합니다. (현재는 2개)
-    func mergeImages(image: UIImage, imageRect: CGRect, backgroundImage: UIImage) -> UIImage {
-        
-        let backImage = backgroundImage
-        let frontImage = image
-
-        /// 이미지의 기본 판을 형성합니다.
-        let screenSize = UIScreen.main.bounds
-        let size = CGSize(width: screenSize.width, height: screenSize.height)
-        print("DEBUG: 그래픽사이즈: \(size)")
-
-        UIGraphicsBeginImageContext(size)
-        
-        let backAreaSize = screenSize
-        backImage.draw(in: backAreaSize)
-
-        let sourceAreaSize = imageRect
-        print(imageRect)
-        frontImage.draw(in: sourceAreaSize)
-
-
-        let mergedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        // 사용법
-        // /// 병합된 이미지를 뷰에 반영합니다.
-        // @objc func getMergeImage() {
-        //     if let source = self.mainImageView.image, let background = self.bgImageView.image {
-        //
-        //         let mergedImage = self.imageEditModel
-        //             .mergeImages(image: source, imageRect: mainImageView.frame.integral, backgroundImage: background)
-        //         self.mainImageView.image = mergedImage
-        //     }
-        // }
-
-        return mergedImage
-    }
-    
 
     //MARK: - Image Capture Methods
     
-    /// 해당 하는 뷰만 캡쳐합니다.
+    /// 목적 뷰만 캡쳐
     func takeViewCapture(targetView: UIView) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: targetView.bounds.size)
         let image = renderer.image { ctx in
@@ -69,7 +28,7 @@ class ImageEditModel {
         return image
     }
     
-    ///이미지 공유를 위한 ActivityViewController를 구성하고 띄웁니다.
+    /// 이미지 공유 뷰컨트롤러 띄우기.(ActivityViewController)
     func shareImageButton(image: UIImage, target: UIViewController) {
         
         /// 액티비티 뷰 컨트롤러 설정
@@ -84,7 +43,7 @@ class ImageEditModel {
         
     }
     
-    /// `현재 ViewController를 캡쳐하고 Image를 반환`합니다. (withoutView: 스크린 찍을 동안 숨길 뷰)
+    /// ViewController 캡쳐기능.  필요없는 뷰는 숨길 수 있음.
     func takeScreenViewCapture(withoutView: [UIView]?, target: UIViewController) -> UIImage? {
         withoutView?.forEach({ views in
             views.isHidden = true
@@ -100,14 +59,15 @@ class ImageEditModel {
     
     
     //MARK: - Blur Methods
-
     
-    /// 이미지에 블러 효과를 줍니다.
-    func makeBlurImage(image: UIImage) -> UIImage {
-        return image.blurImage(radius: 40) ?? UIImage()
+    /// UIImage 자체에 블러필터 적용
+    func makeBlurImage(image: UIImage, radius: CGFloat = 40) -> UIImage {
+        return image.blurImage(radius: radius) ?? UIImage()
     }
     
-    /// `이미지 끝부분을 블러처리`합니다.Y값은 상하단의 블러 정도를 조절합니다. X값은 좌우 블러값을 설정하며 초기값은 0입니다.
+    /// 이미지 상하단 엣지 블러처리 기능.
+    /// - Y값은 상하단의 블러 정도를 조절합니다.
+    /// - X값은 좌우 블러값을 설정하며 초기값은 0입니다.
     func makeImageRoundBlur(imageView: UIImageView, insetX: CGFloat = 0, insetY: CGFloat) {
         
         if insetY == 0 {
@@ -115,7 +75,6 @@ class ImageEditModel {
             return
         }
 
-        // 그래디언트 레이어 초기화
         let maskLayer = CAGradientLayer()
 
         maskLayer.frame = imageView.bounds
@@ -128,7 +87,8 @@ class ImageEditModel {
         
     }
     
-    // 자연스러운 그레이 스케일 적용
+    
+    /// 자연스러운 그레이 스케일 적용 (mono 필터)
     func convertImageToBW(image: UIImage) -> UIImage {
     
         let filter = CIFilter(name: "CIPhotoEffectMono")
@@ -142,9 +102,9 @@ class ImageEditModel {
     
         let ciOutput = filter?.outputImage
         let ciContext = CIContext()
-        let cgImage = ciContext.createCGImage(ciOutput!, from: (ciOutput?.extent)!)
+        let cgImage = ciContext.createCGImage(ciOutput!, from: (ciOutput?.extent)!)!
     
-        return UIImage(cgImage: cgImage!)
+        return UIImage(cgImage: cgImage)
     }
   
     

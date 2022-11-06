@@ -14,7 +14,7 @@ class PlaceHolderCell: UICollectionViewCell {
     let label = ViewModel.shared.makeLabel(text: "아직 추가한 위젯이 없어요. \n 첫 딥링크 위젯을 추가해보세요.", fontSize: 18, fontWeight: .semibold)
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: .zero)
         configureUI()
     }
     
@@ -31,7 +31,8 @@ class PlaceHolderCell: UICollectionViewCell {
         
         //MARK: AutoLayout 구성 (Snapkit 사용)
         label.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.centerX.centerY.equalToSuperview()
         }
     }
 }

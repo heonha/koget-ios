@@ -49,6 +49,7 @@
 		3A76BEAA28F2EC6B00B9162C /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* WidgetModel.swift */; };
 		3A76BEAB28F2EC6C00B9162C /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* WidgetModel.swift */; };
 		3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A82318E28C78F0700F958FE /* UIImage+Utils.swift */; };
+		3A8C4E95291644E1001DCB0A /* SwipeableTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8C4E94291644E1001DCB0A /* SwipeableTabBarController */; };
 		3A8E3A0428E3E6AA00390F8A /* RulerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */; };
 		3A8E3A0728E3E7B900390F8A /* RulerView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A0628E3E7B900390F8A /* RulerView */; };
 		3A9BC0D428E6CC720041DA1B /* AddWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D328E6CC720041DA1B /* AddWidgetViewController.swift */; };
@@ -228,6 +229,7 @@
 				3A8E3A0728E3E7B900390F8A /* RulerView in Frameworks */,
 				3ABA6C3328C60A7F005AA8E4 /* RxCocoa in Frameworks */,
 				3A2E2200290FFA2400E4F46A /* Lottie in Frameworks */,
+				3A8C4E95291644E1001DCB0A /* SwipeableTabBarController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +547,7 @@
 				3A8E3A0628E3E7B900390F8A /* RulerView */,
 				3A9D3DC728FD36A60085676B /* UIImageColors */,
 				3A2E21FF290FFA2400E4F46A /* Lottie */,
+				3A8C4E94291644E1001DCB0A /* SwipeableTabBarController */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */;
@@ -604,6 +607,7 @@
 				3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */,
 				3A9D3DC628FD36A60085676B /* XCRemoteSwiftPackageReference "UIImageColors" */,
 				3A2E21FE290FFA2400E4F46A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				3A8C4E93291644E1001DCB0A /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -1116,6 +1120,14 @@
 				minimumVersion = 3.5.0;
 			};
 		};
+		3A8C4E93291644E1001DCB0A /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marcosgriselli/SwipeableTabBarController.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.4.0;
+			};
+		};
 		3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/selivandex/RulerView.git";
@@ -1155,6 +1167,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3A2E21FE290FFA2400E4F46A /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		3A8C4E94291644E1001DCB0A /* SwipeableTabBarController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8C4E93291644E1001DCB0A /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */;
+			productName = SwipeableTabBarController;
 		};
 		3A8E3A0628E3E7B900390F8A /* RulerView */ = {
 			isa = XCSwiftPackageProductDependency;
