@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  ViewModelForCocoa.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/09/08.
@@ -8,10 +8,10 @@
 import UIKit
 import SnapKit
 
-struct ViewModel {
+struct ViewModelForCocoa {
     
     //MARK: - Singleton
-    static let shared = ViewModel()
+    static let shared = ViewModelForCocoa()
 
     //MARK: - Init
     private init() {
@@ -225,8 +225,8 @@ struct ViewModel {
         button.setTitleColor(titleColor, for: .normal)
         button.addTarget(target, action: action, for: .touchDown)
         
-        ViewModel.shared.cropCornerRadius(view: button)
-        ViewModel.shared.makeLayerShadow(to: button.layer)
+        ViewModelForCocoa.shared.cropCornerRadius(view: button)
+        ViewModelForCocoa.shared.makeLayerShadow(to: button.layer)
         
         return button
     }

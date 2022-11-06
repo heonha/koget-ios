@@ -22,7 +22,7 @@ class MainContainerViewController: SwipeableTabBarController {
     // MARK: Setup Views
     private func setupViews() {
         
-        let aVC = MainPhotoViewController()
+        let aVC = MainWallpaperViewController()
         let bVC = WidgetViewController()
         
         // 하단 탭아이콘 구성.

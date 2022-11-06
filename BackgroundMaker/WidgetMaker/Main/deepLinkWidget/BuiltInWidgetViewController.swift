@@ -18,7 +18,7 @@ class BuiltInWidgetViewController: UIViewController {
     
     var delegate: BuiltInWidgetViewControllerDelegate?
     
-    private let viewTitle: UILabel = ViewModel.shared.makeLabel(
+    private let viewTitle: UILabel = ViewModelForCocoa.shared.makeLabel(
         text: "앱 리스트에서 불러오기",
         color: .white,
         fontSize: 20,
@@ -57,7 +57,7 @@ class BuiltInWidgetViewController: UIViewController {
     
     private func configureTableView() {
         view.addSubview(viewTitle)
-        ViewModel.shared.makeLayerShadow(to: viewTitle.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: viewTitle.layer)
         viewTitle.backgroundColor = AppColors.buttonPurple
 
         view.addSubview(tableView)

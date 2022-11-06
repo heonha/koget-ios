@@ -1,5 +1,5 @@
 //
-//  WallpaperCell.swift
+//  UserWallpaperCell.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/10/30.
@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class WallpaperCell: UICollectionViewCell {
+class UserWallpaperCell: UICollectionViewCell {
     
-    static let reuseID = "WallpaperCell"
+    static let reuseID = "UserWallpaperCell"
     
     var imageView = UIImageView()
     
@@ -23,7 +23,7 @@ class WallpaperCell: UICollectionViewCell {
         contentView.clipsToBounds = true
         imageView.contentMode = .scaleToFill
         imageView.backgroundColor = .clear
-        ViewModel.shared.cropCornerRadius(view: imageView, radius: 5)
+        ViewModelForCocoa.shared.cropCornerRadius(view: imageView, radius: 5)
         
         addSubview(imageView)
 

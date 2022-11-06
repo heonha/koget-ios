@@ -15,11 +15,11 @@ enum ColorPalletType {
 }
 
 /// 원형의 Color Pallet 입니다.
-class ColorPallet: UIView {
+class BackgroundColorPallet: UIView {
     
     var color: UIImage!
     var type: ColorPalletType!
-    var target: PhotoViewController!
+    var target: MakeWallpaperViewController!
     
     lazy var button: UIButton = {
         let button = UIButton()
@@ -29,7 +29,7 @@ class ColorPallet: UIView {
     
     
     //MARK: - Init
-    init(color: UIImage, target: PhotoViewController, type: ColorPalletType = .normal) {
+    init(color: UIImage, target: MakeWallpaperViewController, type: ColorPalletType = .normal) {
         
         self.color = color
         self.type = type
@@ -71,21 +71,21 @@ class ColorPallet: UIView {
     }
     
     @objc func colorBtnTapped(_ sender: UIButton) {
-            ImageViewModel.shared.backgroundPhotoSubject.onNext(self.color)
+        EditViewModel.shared.backgroundPhotoSubject.onNext(self.color)
     }
     
     @objc func blurBtnTapped(_ sender: UIButton) {
         
         let image: UIImage = {
             var mainImg: UIImage?
-            ImageViewModel.shared.editingPhotoSubject.subscribe { image in
+            EditViewModel.shared.editingPhotoSubject.subscribe { image in
                 mainImg = image
             }.dispose()
             
             return mainImg ?? UIImage(named: "questionmark.circle")!
         }()
         
-        ImageViewModel.shared.backgroundPhotoSubject.onNext(image)
+        EditViewModel.shared.backgroundPhotoSubject.onNext(image)
         target.switchBlurSubview()
         
         let duration: CGFloat = 0.2

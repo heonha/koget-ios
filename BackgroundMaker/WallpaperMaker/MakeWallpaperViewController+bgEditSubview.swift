@@ -1,5 +1,5 @@
 //
-//  PhotoViewController+bgEditSubview.swift
+//  MakeWallpaperViewController+bgEditSubview.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/09/29.
@@ -11,10 +11,10 @@ import RxSwift
 import RulerView
 
 
-extension PhotoViewController {
+extension MakeWallpaperViewController {
 
     /// `배경화면 편집` 버튼을 누르면 생성되는 Subview를 구성합니다.
-    func makeBGEditView(view bgView: BottomMenuView) {
+    func makeBGEditView(view bgView: MainEditMenuView) {
         
         view.addSubview(bgView)
         bgView.isHidden = true
@@ -29,10 +29,10 @@ extension PhotoViewController {
     /// `배경화면 블러` 액션
     @objc func bgBlurAction(sender: UIButton) {
         sender.showAnimation {
-            ImageViewModel.shared.editingPhotoSubject
+            EditViewModel.shared.editingPhotoSubject
                 .subscribe { image in
                     let bluredImage = image?.blurImage(radius: 40)
-                    ImageViewModel.shared.backgroundPhotoSubject.onNext(bluredImage)
+                    EditViewModel.shared.backgroundPhotoSubject.onNext(bluredImage)
                 }.dispose()
         }
     }

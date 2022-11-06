@@ -21,7 +21,7 @@ class TestEditImageViewController: UIViewController {
         setImageViews()
         let action = UIAction { _ in
             self.makeImageRoundBlur(imageView: self.editImageView)
-            let blurImage = ImageEditModel.shared.takeViewCapture(targetView: self.editImageView)
+            let blurImage = EditImageModel.shared.takeViewCapture(targetView: self.editImageView)
         }
         makeButtonWithTitle(button: button, title: "액션", action: action, target: self)
     }
@@ -68,7 +68,7 @@ class TestEditImageViewController: UIViewController {
     
     func setBlur() {
         self.makeImageRoundBlur(imageView: self.editImageView)
-        let blurImage = ImageEditModel.shared.takeViewCapture(targetView: self.editImageView)
+        let blurImage = EditImageModel.shared.takeViewCapture(targetView: self.editImageView)
     }
     
     

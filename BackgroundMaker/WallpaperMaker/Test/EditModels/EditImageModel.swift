@@ -1,5 +1,5 @@
 //
-//  ImageEditModel.swift
+//  EditImageModel.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/09/06.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ImageEditModel {
+class EditImageModel {
     
     //MARK: - Singleton
-    static let shared = ImageEditModel()
+    static let shared = EditImageModel()
     
     //MARK: - Init
     private init() {

@@ -179,7 +179,7 @@ class WidgetViewController: UIViewController {
             view.backgroundColor = .black
             view.alpha = 0.3
             view.layer.cornerRadius = 8
-            ViewModel.shared.makeLayerShadow(to: view.layer)
+            ViewModelForCocoa.shared.makeLayerShadow(to: view.layer)
             return view
         }()
         
@@ -200,7 +200,7 @@ class WidgetViewController: UIViewController {
             label.text = title
             label.textAlignment = .center
             label.font = .systemFont(ofSize: 20, weight: .bold)
-            ViewModel.shared.makeLayerShadow(to: label.layer)
+            ViewModelForCocoa.shared.makeLayerShadow(to: label.layer)
             
             return label
         }()
@@ -281,7 +281,7 @@ extension WidgetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         deepLinkCollectionView.dataSource = self
         
         self.view.addSubview(deepLinkCollectionView)
-        ViewModel.shared.cropCornerRadius(view: deepLinkCollectionView, radius: 8)
+        ViewModelForCocoa.shared.cropCornerRadius(view: deepLinkCollectionView, radius: 8)
         deepLinkCollectionView.snp.makeConstraints { make in
             make.top.equalTo(widgetMakeButton.snp.bottom).inset(-16)
             make.leading.trailing.equalToSuperview().inset(16)

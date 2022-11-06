@@ -12,7 +12,7 @@ class ConnectingViewController: UIViewController {
     
     //MARK: - Properties
     
-    let label = ViewModel.shared.makeLabel(text: "앱에 딥링크 연결 중...", color: .white, fontSize: 20, fontWeight: .bold)
+    let label = ViewModelForCocoa.shared.makeLabel(text: "앱에 딥링크 연결 중...", color: .white, fontSize: 20, fontWeight: .bold)
     
     //MARK: - LifeCycle
     

@@ -14,8 +14,8 @@ class BuiltInAppCell: UITableViewCell {
     static let reuseID = "BuiltInAppCell"
     static let cellHeight: CGFloat = 50
     
-    var iconImageView: UIImageView = ViewModel.shared.makeImageView(image: nil)
-    var appNameLabel: UILabel = ViewModel.shared.makeLabel(text: "no Name", fontSize: 18, fontWeight: .semibold, alignment: .left)
+    var iconImageView: UIImageView = ViewModelForCocoa.shared.makeImageView(image: nil)
+    var appNameLabel: UILabel = ViewModelForCocoa.shared.makeLabel(text: "no Name", fontSize: 18, fontWeight: .semibold, alignment: .left)
 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -1,5 +1,5 @@
 //
-//  InfoWallpaperViewController.swift
+//  DetailWallpaperViewController.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/10/31.
@@ -10,17 +10,17 @@ import SnapKit
 import CoreData
 import Lottie
 
-protocol InfoWallpaperViewControllerDelegate {
-    func viewIsDissapear()
+protocol DetailWallpaperViewControllerDelegate {
+    func detailViewWillDisappear()
 }
 
-class InfoWallpaperViewController: UIViewController {
+class DetailWallpaperViewController: UIViewController {
     
     let coredataContext = CoreData.shared.persistentContainer.viewContext
     
     private var selectedWallpaper: Wallpaper
     
-    var delegate: InfoWallpaperViewControllerDelegate?
+    var delegate: DetailWallpaperViewControllerDelegate?
     
     var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
     
@@ -44,7 +44,7 @@ class InfoWallpaperViewController: UIViewController {
     
     
     
-    private let viewTitle: UILabel = ViewModel.shared.makeLabel(
+    private let viewTitle: UILabel = ViewModelForCocoa.shared.makeLabel(
         text: "미리보기",
         color: .white,
         fontSize: 20,
@@ -53,17 +53,17 @@ class InfoWallpaperViewController: UIViewController {
     )
     
     private let wallpaperView: UIImageView = {
-        let iv = ViewModel.shared.makeImageView(
+        let iv = ViewModelForCocoa.shared.makeImageView(
             image: UIImage(named: "plus.circle"), contentMode: .scaleAspectFit
         )
-        ViewModel.shared.cropCornerRadius(view: iv)
+        ViewModelForCocoa.shared.cropCornerRadius(view: iv)
         iv.clipsToBounds = true
         
         return iv
     }()
     
     private let placeHolderView: UILabel = {
-        let iv = ViewModel.shared.makeLabel(
+        let iv = ViewModelForCocoa.shared.makeLabel(
             text: "이미지를 가져오는 중...", fontSize: 18, fontWeight: .bold)
         return iv
     }()
@@ -80,8 +80,8 @@ class InfoWallpaperViewController: UIViewController {
         
         self.view.addSubview(sv)
 
-        let clock = ViewModel.shared.makeLabel(text: "12:30", fontSize: 105, fontWeight: .bold)
-        let date = ViewModel.shared.makeLabel(text: "12월 30일 금요일", fontSize: 25, fontWeight: .medium)
+        let clock = ViewModelForCocoa.shared.makeLabel(text: "12:30", fontSize: 105, fontWeight: .bold)
+        let date = ViewModelForCocoa.shared.makeLabel(text: "12월 30일 금요일", fontSize: 25, fontWeight: .medium)
         
         let deviceSize = UIDevice.current.isiPhoneWithNotch
 
@@ -105,17 +105,17 @@ class InfoWallpaperViewController: UIViewController {
     lazy var buttonBlurView = UIView()
     
     lazy var saveButton: UIButton = {
-        let button = ViewModel.shared.makeButtonWithTitleAndTarget(title: "앨범에 저장", action: #selector(saveImage), target: self, backgroundColor: .clear)
+        let button = ViewModelForCocoa.shared.makeButtonWithTitleAndTarget(title: "앨범에 저장", action: #selector(saveImage), target: self, backgroundColor: .clear)
         button.titleLabel?.font = .systemFont(ofSize: 19, weight: .semibold)
-        ViewModel.shared.cropCornerRadius(view: button)
+        ViewModelForCocoa.shared.cropCornerRadius(view: button)
         button.alpha = 0
         
         return button
     }()
     
     lazy var guideLabel: UILabel = {
-        let label = ViewModel.shared.makeLabel(text: "아래로 내려서 닫기", fontSize: 19, fontWeight: .semibold)
-        ViewModel.shared.makeLayerShadow(to: label.layer)
+        let label = ViewModelForCocoa.shared.makeLabel(text: "아래로 내려서 닫기", fontSize: 19, fontWeight: .semibold)
+        ViewModelForCocoa.shared.makeLayerShadow(to: label.layer)
         label.alpha = 0
         
         return label
@@ -135,7 +135,7 @@ class InfoWallpaperViewController: UIViewController {
         button.addAction(action, for: .touchUpInside)
         button.titleLabel?.font = .systemFont(ofSize: 19, weight: .semibold)
         button.alpha = 0
-        ViewModel.shared.makeLayerShadow(to: button.layer, radius: 1)
+        ViewModelForCocoa.shared.makeLayerShadow(to: button.layer, radius: 1)
 
         
         return button
@@ -161,17 +161,12 @@ class InfoWallpaperViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.viewIsDissapear()
+        delegate?.detailViewWillDisappear()
     }
     
     /// 사진을 디바이스에 저장하는 메소드입니다.
     private func saveImageToAlbum(image: UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageSaveHandler), nil)
-        let newWallpaper = Wallpaper(context: CoreData.shared.persistentContainer.viewContext)
-        let imgData = image.pngData()
-        newWallpaper.wallpaper = imgData
-        newWallpaper.createdDate = Date()
-        newWallpaper.id = UUID()
     }
     
     /// 사진 저장 처리결과를 Alert로 Present합니다.
@@ -358,7 +353,7 @@ class InfoWallpaperViewController: UIViewController {
 }
 
 
-extension InfoWallpaperViewController {
+extension DetailWallpaperViewController {
     
     private func addPanGesture(selector: Selector) {
         let gesture = UIPanGestureRecognizer(target: self, action: selector)

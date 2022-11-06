@@ -35,20 +35,20 @@ class AddWidgetViewController: UIViewController {
 
     
     private let iconPlaceHolderImageView: UIImageView = {
-        let iv = ViewModel.shared.makeImageView(
+        let iv = ViewModelForCocoa.shared.makeImageView(
             image: UIImage(named: "plus.circle"), contentMode: .scaleAspectFit
         )
-        ViewModel.shared.makeLayerShadow(to: iv.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: iv.layer)
 
         
         return iv
     }()
     
     private let iconImageView: UIImageView = {
-        let iv = ViewModel.shared.makeImageView(
+        let iv = ViewModelForCocoa.shared.makeImageView(
             image: nil, contentMode: .scaleAspectFit
         )
-        ViewModel.shared.makeLayerShadow(to: iv.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: iv.layer)
 
         
         return iv
@@ -74,7 +74,7 @@ class AddWidgetViewController: UIViewController {
         return seg
     }()
     
-    private let sampleIconTitle: UILabel = ViewModel.shared.makeLabel(
+    private let sampleIconTitle: UILabel = ViewModelForCocoa.shared.makeLabel(
         text: "위젯 추가하기",
         color: .white,
         fontSize: 20,
@@ -86,15 +86,15 @@ class AddWidgetViewController: UIViewController {
     //MARK: - AddView
     
     private var name: String?
-    private var nameLabel: UILabel = ViewModel.shared.makeLabel(
+    private var nameLabel: UILabel = ViewModelForCocoa.shared.makeLabel(
         text: "위젯 이름", color: .white, fontSize: 20, fontWeight: .bold, alignment: .left)
     private var nameTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.placeholder = "위젯 이름"
         tf.backgroundColor = .darkGray
-        ViewModel.shared.cropCornerRadius(view: tf, radius: 5)
-        ViewModel.shared.makeLayerShadow(to: tf.layer)
+        ViewModelForCocoa.shared.cropCornerRadius(view: tf, radius: 5)
+        ViewModelForCocoa.shared.makeLayerShadow(to: tf.layer)
         
         return tf
     }()
@@ -102,14 +102,14 @@ class AddWidgetViewController: UIViewController {
     
     // - URL
     private var deepLinkURL: String?
-    private var deepLinkLabel: UILabel = ViewModel.shared.makeLabel(text: "딥링크 URL", color: .white, fontSize: 20, fontWeight: .bold, alignment: .left)
+    private var deepLinkLabel: UILabel = ViewModelForCocoa.shared.makeLabel(text: "딥링크 URL", color: .white, fontSize: 20, fontWeight: .bold, alignment: .left)
     private var deepLinkTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.placeholder = "예시: youtube://"
         tf.backgroundColor = .darkGray
-        ViewModel.shared.cropCornerRadius(view: tf, radius: 5)
-        ViewModel.shared.makeLayerShadow(to: tf.layer)
+        ViewModelForCocoa.shared.cropCornerRadius(view: tf, radius: 5)
+        ViewModelForCocoa.shared.makeLayerShadow(to: tf.layer)
         
         return tf
     }()
@@ -117,15 +117,15 @@ class AddWidgetViewController: UIViewController {
     //MARK: - UI Properties
     
     // - 추가하기 버튼
-    private lazy var addButton: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
+    private lazy var addButton: UIButton = ViewModelForCocoa.shared.makeButtonForWidgetHandler(
         target: self, action: #selector(addButtonTapped), title: "추가하기")
     
     // - 취소 버튼
-    private lazy var closeButton: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
+    private lazy var closeButton: UIButton = ViewModelForCocoa.shared.makeButtonForWidgetHandler(
         target: self, action: #selector(closeButtonTapped),
         title: "돌아가기", backgroundColor: .darkGray)
     
-    private lazy var builtInAppButton: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
+    private lazy var builtInAppButton: UIButton = ViewModelForCocoa.shared.makeButtonForWidgetHandler(
         target: self, action: #selector(showBuiltInList), title: "앱 리스트에서 불러오기")
 
     
@@ -161,21 +161,21 @@ class AddWidgetViewController: UIViewController {
             let action = UIAlertAction(title: "확인", style: .default)
             
             if name == "" {
-                alert = ViewModel.shared.makeAlert(alertTitle: "입력 확인", alertMessage: "이름을 확인해 주세요.", actions: [action])
+                alert = ViewModelForCocoa.shared.makeAlert(alertTitle: "입력 확인", alertMessage: "이름을 확인해 주세요.", actions: [action])
                 present(alert, animated: true)
 
                 return
             }
             
             if deeplink == "" {
-                alert = ViewModel.shared.makeAlert(alertTitle: "입력 확인", alertMessage: "딥링크 주소를 확인해 주세요.", actions: [action])
+                alert = ViewModelForCocoa.shared.makeAlert(alertTitle: "입력 확인", alertMessage: "딥링크 주소를 확인해 주세요.", actions: [action])
                 present(alert, animated: true)
 
                 return
             }
 
             guard let image = iconImageView.image else {
-                alert = ViewModel.shared.makeAlert(alertTitle: "아이콘 이미지 확인", alertMessage: " + 를 눌러 이미지를 선택해 주세요.", actions: [action])
+                alert = ViewModelForCocoa.shared.makeAlert(alertTitle: "아이콘 이미지 확인", alertMessage: " + 를 눌러 이미지를 선택해 주세요.", actions: [action])
                 present(alert, animated: true)
                 return
             }
@@ -251,7 +251,7 @@ class AddWidgetViewController: UIViewController {
         view.backgroundColor = AppColors.buttonPurple
         
         view.addSubview(sampleIconTitle)
-        ViewModel.shared.makeLayerShadow(to: sampleIconTitle.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: sampleIconTitle.layer)
         
         // Title
         sampleIconTitle.snp.makeConstraints { make in
@@ -314,7 +314,7 @@ class AddWidgetViewController: UIViewController {
             make.width.equalTo(iconImageViewHeight)
         }
         
-        ViewModel.shared.cropCornerRadius(view: iconImageView, radius: iconImageViewHeight / 2)
+        ViewModelForCocoa.shared.cropCornerRadius(view: iconImageView, radius: iconImageViewHeight / 2)
 
         
         iconImageViewButton.snp.makeConstraints { make in
@@ -329,8 +329,8 @@ class AddWidgetViewController: UIViewController {
         // 위젯이름 (Label, TextField)
         contentView.addSubview(nameLabel)
         contentView.addSubview(nameTextField)
-        ViewModel.shared.makeLayerShadow(to: nameLabel.layer)
-        ViewModel.shared.makeLayerShadow(to: nameTextField.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: nameLabel.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: nameTextField.layer)
 
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(iconImageView.snp.bottom).inset(-spacing)
@@ -347,8 +347,8 @@ class AddWidgetViewController: UIViewController {
         // URL (Label, TextField)
         contentView.addSubview(deepLinkLabel)
         contentView.addSubview(deepLinkTextField)
-        ViewModel.shared.makeLayerShadow(to: deepLinkLabel.layer)
-        ViewModel.shared.makeLayerShadow(to: deepLinkTextField.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: deepLinkLabel.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: deepLinkTextField.layer)
 
 
         deepLinkLabel.snp.makeConstraints { make in

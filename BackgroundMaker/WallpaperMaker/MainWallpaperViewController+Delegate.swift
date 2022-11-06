@@ -13,7 +13,7 @@ import PhotosUI
 
 //MARK: - Photo Picker 관련 응답을 받는 PHPickerController Delegate 구성
 
-extension MainPhotoViewController: PHPickerViewControllerDelegate {
+extension MainWallpaperViewController: PHPickerViewControllerDelegate {
     
     /// PHPicker에서 사진 선택했을 때 호출되는 Delegate입니다. PHPicker에서 선택한 아이템을 가져옵니다.
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -32,7 +32,7 @@ extension MainPhotoViewController: PHPickerViewControllerDelegate {
                         let selectedImage = image as! UIImage
                         /// 선택된 사진을 업데이트합니다.
                         DispatchQueue.main.async {
-                            ImageViewModel.shared.editingPhotoSubject.onNext(selectedImage)
+                            EditViewModel.shared.editingPhotoSubject.onNext(selectedImage)
                             self.presentPhotoVC()
                         }
                     }
@@ -49,7 +49,7 @@ extension MainPhotoViewController: PHPickerViewControllerDelegate {
 }
 
 
-extension MainPhotoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MainWallpaperViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     func configurePhotoCV() {
@@ -59,7 +59,7 @@ extension MainPhotoViewController: UICollectionViewDelegate, UICollectionViewDat
         
         wallpaperCV.delegate = self
         wallpaperCV.dataSource = self
-        wallpaperCV.register(WallpaperCell.self, forCellWithReuseIdentifier: WallpaperCell.reuseID)
+        wallpaperCV.register(UserWallpaperCell.self, forCellWithReuseIdentifier: UserWallpaperCell.reuseID)
         
         wallpaperCV.snp.makeConstraints { make in
             make.top.equalTo(bgMakerButton.snp.bottom).inset(-30)
@@ -70,7 +70,7 @@ extension MainPhotoViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.reuseID, for: indexPath) as? WallpaperCell else {return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserWallpaperCell.reuseID, for: indexPath) as? UserWallpaperCell else {return UICollectionViewCell() }
         let item = myWallpaper[indexPath.item]
         
         cell.imageView.image = UIImage(data: item.wallpaper!) ?? UIImage(named: "questionmark.circle")!
@@ -90,7 +90,7 @@ extension MainPhotoViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = myWallpaper[indexPath.item]
 
-        let vc = InfoWallpaperViewController(selected: item)
+        let vc = DetailWallpaperViewController(selected: item)
         vc.delegate = self
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true)
@@ -107,7 +107,7 @@ extension MainPhotoViewController: UICollectionViewDelegate, UICollectionViewDat
         
         let data = myWallpaper[indexPath.item].wallpaper
         
-        let imageSize = ViewModel.shared.getImageRatio(image: data, targetWidthMultiply: 0.5)
+        let imageSize = ViewModelForCocoa.shared.getImageRatio(image: data, targetWidthMultiply: 0.5)
                 
         return imageSize
     }
@@ -126,8 +126,8 @@ extension MainPhotoViewController: UICollectionViewDelegate, UICollectionViewDat
     
 }
 
-extension MainPhotoViewController: InfoWallpaperViewControllerDelegate {
-    func viewIsDissapear() {
+extension MainWallpaperViewController: DetailWallpaperViewControllerDelegate {
+    func detailViewWillDisappear() {
         self.loadMyWallpapers()
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.5) {
