@@ -11,7 +11,7 @@ import SnapKit
 
 class PlaceHolderCell: UICollectionViewCell {
     
-    let label = ViewModel.shared.makeLabel(text: "아직 추가한 위젯이 없어요. \n 첫 딥링크 위젯을 추가해보세요.", fontSize: 18, fontWeight: .semibold)
+    let label = ViewModelForCocoa.shared.makeLabel(text: "아직 추가한 위젯이 없어요. \n 첫 딥링크 위젯을 추가해보세요.", fontSize: 18, fontWeight: .semibold)
     
     override init(frame: CGRect) {
         super.init(frame: .zero)

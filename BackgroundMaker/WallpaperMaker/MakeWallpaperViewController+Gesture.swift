@@ -1,5 +1,5 @@
 //
-//  PhotoViewController+Gesture.swift
+//  MakeWallpaperViewController+Gesture.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/09/29.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension PhotoViewController {
+extension MakeWallpaperViewController {
     //MARK: 사진 확대/축소 제스쳐
     
     /// 두손가락으로 핀치하는 제스쳐를 SuperView에 추가합니다.

@@ -53,7 +53,7 @@ class EditWidgetViewController: UIViewController {
     //MARK: - Properties
     
     private let imageEditEnableImageView: UIImageView = {
-        let iv = ViewModel.shared.makeImageView(
+        let iv = ViewModelForCocoa.shared.makeImageView(
             image: UIImage(named: "plus.circle.fill.purple"), contentMode: .scaleAspectFit
         )
         iv.backgroundColor = .white
@@ -61,10 +61,10 @@ class EditWidgetViewController: UIViewController {
     }()
     
     private let iconImageView: UIImageView = {
-        let iv = ViewModel.shared.makeImageView(
+        let iv = ViewModelForCocoa.shared.makeImageView(
             image: UIImage(named: "plus.circle"), contentMode: .scaleAspectFit
         )
-        ViewModel.shared.makeLayerShadow(to: iv.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: iv.layer)
         return iv
     }()
     
@@ -77,7 +77,7 @@ class EditWidgetViewController: UIViewController {
         return btn
     }()
     
-    private let viewTitle: UILabel = ViewModel.shared.makeLabel(
+    private let viewTitle: UILabel = ViewModelForCocoa.shared.makeLabel(
         text: "딥 링크 위젯",
         color: .white,
         fontSize: 20,
@@ -97,15 +97,15 @@ class EditWidgetViewController: UIViewController {
     // [Todo]
     // - 이름
     private var name: String?
-    private var nameLabel: UILabel = ViewModel.shared.makeLabel(
+    private var nameLabel: UILabel = ViewModelForCocoa.shared.makeLabel(
         text: "위젯 이름", color: .white, fontSize: 18, fontWeight: .bold, alignment: .left)
     private var nameTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.placeholder = "위젯 이름"
         tf.backgroundColor = .darkGray
-        ViewModel.shared.cropCornerRadius(view: tf, radius: 5)
-        ViewModel.shared.makeLayerShadow(to: tf.layer)
+        ViewModelForCocoa.shared.cropCornerRadius(view: tf, radius: 5)
+        ViewModelForCocoa.shared.makeLayerShadow(to: tf.layer)
         
         return tf
     }()
@@ -113,14 +113,14 @@ class EditWidgetViewController: UIViewController {
     
     // - URL
     private var url: String?
-    private var urlLabel: UILabel = ViewModel.shared.makeLabel(text: "딥링크 URL", color: .white, fontSize: 18, fontWeight: .bold, alignment: .left)
+    private var urlLabel: UILabel = ViewModelForCocoa.shared.makeLabel(text: "딥링크 URL", color: .white, fontSize: 18, fontWeight: .bold, alignment: .left)
     private var urlTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.placeholder = "예시: youtube://"
         tf.backgroundColor = .darkGray
-        ViewModel.shared.cropCornerRadius(view: tf, radius: 5)
-        ViewModel.shared.makeLayerShadow(to: tf.layer)
+        ViewModelForCocoa.shared.cropCornerRadius(view: tf, radius: 5)
+        ViewModelForCocoa.shared.makeLayerShadow(to: tf.layer)
         
         return tf
     }()
@@ -128,17 +128,17 @@ class EditWidgetViewController: UIViewController {
     //MARK: - UI Properties
     
     // - 추가하기 버튼
-    private lazy var editHandlerButton: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
+    private lazy var editHandlerButton: UIButton = ViewModelForCocoa.shared.makeButtonForWidgetHandler(
         target: self, action: #selector(editHandlerButtonTapped),
         title: "편집하기")
    
     // - 취소 버튼
-    private lazy var closeButton: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
+    private lazy var closeButton: UIButton = ViewModelForCocoa.shared.makeButtonForWidgetHandler(
         target: self, action: #selector(closeButtonTapped),
         title: "돌아가기", backgroundColor: .darkGray)
 
     // - 삭제 버튼
-    private lazy var deleteButton: UIButton = ViewModel.shared.makeButtonForWidgetHandler(
+    private lazy var deleteButton: UIButton = ViewModelForCocoa.shared.makeButtonForWidgetHandler(
         target: self, action: #selector(deleteButtonTapped),
         title: "삭제", backgroundColor: .red)
 
@@ -218,7 +218,7 @@ class EditWidgetViewController: UIViewController {
         
         let cancel = UIAlertAction(title: "취소", style: .default)
         let appName = selectedWidget.name ?? "딥 링크"
-        let alert = ViewModel.shared.makeAlert(alertTitle: "\(appName) 위젯 삭제", alertMessage: " 위젯을 정말 삭제하시겠습니까? \n(앱은 삭제되지 않습니다.)", actions: [delete, cancel])
+        let alert = ViewModelForCocoa.shared.makeAlert(alertTitle: "\(appName) 위젯 삭제", alertMessage: " 위젯을 정말 삭제하시겠습니까? \n(앱은 삭제되지 않습니다.)", actions: [delete, cancel])
         present(alert, animated: true)
 
     }
@@ -236,7 +236,7 @@ class EditWidgetViewController: UIViewController {
         // 버튼을 재구성합니다. (색상, 이름변경)
         if textFieldMode == .viewMode {
             self.textFieldMode = .editing
-            ViewModel.shared.setAttibuteTitleForButton(title: "수정완료", button: editHandlerButton)
+            ViewModelForCocoa.shared.setAttibuteTitleForButton(title: "수정완료", button: editHandlerButton)
             editHandlerButton.backgroundColor = .systemPink
             self.enableEditingButtonTapped(animationDuration: textFieldEnableAnimationDuration)
             return
@@ -248,21 +248,21 @@ class EditWidgetViewController: UIViewController {
             let action = UIAlertAction(title: "확인", style: .default)
             
             if name == "" {
-                alert = ViewModel.shared.makeAlert(alertTitle: "입력 확인", alertMessage: "이름을 확인해 주세요.", actions: [action])
+                alert = ViewModelForCocoa.shared.makeAlert(alertTitle: "입력 확인", alertMessage: "이름을 확인해 주세요.", actions: [action])
                 present(alert, animated: true)
                 
                 return
             }
             
             if deeplink == "" {
-                alert = ViewModel.shared.makeAlert(alertTitle: "입력 확인", alertMessage: "딥링크 주소를 확인해 주세요.", actions: [action])
+                alert = ViewModelForCocoa.shared.makeAlert(alertTitle: "입력 확인", alertMessage: "딥링크 주소를 확인해 주세요.", actions: [action])
                 present(alert, animated: true)
                 
                 return
             }
             
             guard let image = iconImageView.image else {
-                alert = ViewModel.shared.makeAlert(alertTitle: "아이콘 확인", alertMessage: "아이콘을 선택해 주세요.", actions: [action])
+                alert = ViewModelForCocoa.shared.makeAlert(alertTitle: "아이콘 확인", alertMessage: "아이콘을 선택해 주세요.", actions: [action])
                 present(alert, animated: true)
                 return
             }
@@ -283,7 +283,7 @@ class EditWidgetViewController: UIViewController {
             
             textFieldMode = .viewMode
             editHandlerButton.backgroundColor = AppColors.buttonPurple
-            ViewModel.shared.setAttibuteTitleForButton(
+            ViewModelForCocoa.shared.setAttibuteTitleForButton(
                 title: "편집하기", button: editHandlerButton)
             disableEditingMode(animatedDuration: textFieldEnableAnimationDuration)
             viewWillAppear(false)
@@ -292,7 +292,7 @@ class EditWidgetViewController: UIViewController {
             let action = UIAlertAction(title: "확인", style: .default) { _ in
                 self.dismiss(animated: true)
             }
-            let alert = ViewModel.shared.makeAlert(alertTitle: "편집 오류", alertMessage: "알 수 없는 오류가 발생했습니다. \n 사유: 데이터없음", actions: [action])
+            let alert = ViewModelForCocoa.shared.makeAlert(alertTitle: "편집 오류", alertMessage: "알 수 없는 오류가 발생했습니다. \n 사유: 데이터없음", actions: [action])
             present(alert, animated: true)
         }
         
@@ -383,8 +383,8 @@ class EditWidgetViewController: UIViewController {
         urlTextField.delegate = self
         
         let contentViewSize = CGSize(width: 350, height: 430)
-        ViewModel.shared.cropCornerRadius(view: contentView, radius: 12)
-        ViewModel.shared.makeLayerShadow(to: contentView.layer)
+        ViewModelForCocoa.shared.cropCornerRadius(view: contentView, radius: 12)
+        ViewModelForCocoa.shared.makeLayerShadow(to: contentView.layer)
 
         view.addSubview(contentView)
         contentView.snp.makeConstraints { make in
@@ -394,7 +394,7 @@ class EditWidgetViewController: UIViewController {
         }
         
         contentView.addSubview(viewTitle)
-        ViewModel.shared.makeLayerShadow(to: viewTitle.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: viewTitle.layer)
         viewTitle.backgroundColor = AppColors.buttonPurple
         // Title
         let viewTitleHeight: CGFloat = 40
@@ -413,7 +413,7 @@ class EditWidgetViewController: UIViewController {
         
         
         contentView.backgroundColor = AppColors.blackDarkGrey
-        ViewModel.shared.makeLayerShadow(to: contentView.layer, offset: 3, opacity: 5)
+        ViewModelForCocoa.shared.makeLayerShadow(to: contentView.layer, offset: 3, opacity: 5)
 
         let iconImageViewHeight: CGFloat = contentViewSize.height * 0.22
         
@@ -427,7 +427,7 @@ class EditWidgetViewController: UIViewController {
             make.height.equalTo(iconImageViewHeight)
             make.width.equalTo(iconImageViewHeight)
         }
-        ViewModel.shared.cropCornerRadius(view: iconImageView, radius: iconImageViewHeight / 2)
+        ViewModelForCocoa.shared.cropCornerRadius(view: iconImageView, radius: iconImageViewHeight / 2)
 
         
         let imageEditEnableImageViewHeight: CGFloat = iconImageViewHeight / 4
@@ -435,7 +435,7 @@ class EditWidgetViewController: UIViewController {
             make.bottom.trailing.equalTo(iconImageView).inset(-8)
             make.width.height.equalTo(imageEditEnableImageViewHeight)
         }
-        ViewModel.shared.cropCornerRadius(view: imageEditEnableImageView, radius: imageEditEnableImageViewHeight / 2)
+        ViewModelForCocoa.shared.cropCornerRadius(view: imageEditEnableImageView, radius: imageEditEnableImageViewHeight / 2)
 
         
         
@@ -452,8 +452,8 @@ class EditWidgetViewController: UIViewController {
         // 위젯이름 (Label, TextField)
         contentView.addSubview(nameLabel)
         contentView.addSubview(nameTextField)
-        ViewModel.shared.makeLayerShadow(to: nameLabel.layer)
-        ViewModel.shared.makeLayerShadow(to: nameTextField.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: nameLabel.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: nameTextField.layer)
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(iconImageView.snp.bottom).inset(spacing)
@@ -470,8 +470,8 @@ class EditWidgetViewController: UIViewController {
         // URL (Label, TextField)
         contentView.addSubview(urlLabel)
         contentView.addSubview(urlTextField)
-        ViewModel.shared.makeLayerShadow(to: urlLabel.layer)
-        ViewModel.shared.makeLayerShadow(to: urlTextField.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: urlLabel.layer)
+        ViewModelForCocoa.shared.makeLayerShadow(to: urlTextField.layer)
         
         
         urlLabel.snp.makeConstraints { make in

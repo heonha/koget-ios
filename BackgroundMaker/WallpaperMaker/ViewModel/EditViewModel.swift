@@ -1,5 +1,5 @@
 //
-//  ImageViewModel.swift
+//  EditViewModel.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/09/11.
@@ -8,10 +8,10 @@
 import UIKit
 import RxSwift
 
-class ImageViewModel {
+class EditViewModel {
     
     //MARK: - Singleton
-    static let shared = ImageViewModel()
+    static let shared = EditViewModel()
 
     //MARK: - Init
     private init() {

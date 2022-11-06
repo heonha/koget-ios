@@ -10,7 +10,7 @@ import SnapKit
 
 
 
-class ImageWithTextButton: UIView {
+class MenuButton: UIView {
     
     //MARK: - Properties
     

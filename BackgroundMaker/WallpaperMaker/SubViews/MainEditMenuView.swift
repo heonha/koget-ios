@@ -13,7 +13,7 @@ import RxSwift
  `BottomMenuView는 PhotoVC의 하단 편집 메뉴를 구성합니다.`
  >  Properties
  */
-class BottomMenuView: UIView {
+class MainEditMenuView: UIView {
     
     /// 이 뷰를 호출한 뷰컨트롤러입니다.
     var parentVC: UIViewController!

@@ -1,5 +1,5 @@
 //
-//  ColorPickerView.swift
+//  BackgroundPickerView.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/10/02.
@@ -12,11 +12,11 @@ import SwiftUI
 import RulerView
 
 /// Color Pallet 를 담고있는 View 입니다.
-class ColorPickerView: UIView {
+class BackgroundPickerView: UIView {
 
     var viewWidth: CGFloat!
     var viewHeight: CGFloat!
-    var target: PhotoViewController!
+    var target: MakeWallpaperViewController!
     
     var contentView = UIView()
     var colorSlider = UIView()
@@ -26,7 +26,7 @@ class ColorPickerView: UIView {
     // 편집중인 이미지를 리사이징 (평균 컬러 추출용)
     var colorImage: UIImage = {
         var editingImage = UIImage()
-        ImageViewModel.shared.editingPhoto
+        EditViewModel.shared.editingPhoto
             .subscribe { image in
                 image.map { image in
                     
@@ -53,7 +53,7 @@ class ColorPickerView: UIView {
         return sv
     }()
     
-    init(target: PhotoViewController) {
+    init(target: MakeWallpaperViewController) {
         self.target = target
         super.init(frame: .zero)
     }
@@ -72,7 +72,7 @@ class ColorPickerView: UIView {
     }
     
     /// 컬러 팔레트를 구성합니다. (이미지에서 추출)
-    func makeColorPallets(image: UIImage) -> [ColorPallet] {
+    func makeColorPallets(image: UIImage) -> [BackgroundColorPallet] {
         
         let imageColors = image.getColors()!
         
@@ -91,12 +91,12 @@ class ColorPickerView: UIView {
         
         // 블러 써클
         let blur = PalletCircle(name: "Blur", circle: blurColor)
-        let blurCircle = ColorPallet(color: blur.circle, target: target, type: .showRuler)
+        let blurCircle = BackgroundColorPallet(color: blur.circle, target: target, type: .showRuler)
             
-        var pallets: [ColorPallet] = [blurCircle]
+        var pallets: [BackgroundColorPallet] = [blurCircle]
         
         for color in colors {
-            let item = ColorPallet(color: color.circle, target: target)
+            let item = BackgroundColorPallet(color: color.circle, target: target)
             pallets.append(item)
         }
         
@@ -148,7 +148,7 @@ class ColorPickerView: UIView {
 //         
 //         let sampleImage = UIImage(named: "testImage")!
 //         
-//         let testView = ColorPickerView(target: PhotoViewController())
+//         let testView = BackgroundPickerView(target: MakeWallpaperViewController())
 // 
 // 
 //         TestPreviewViewController_Representable(sampleImage: sampleImage, testView: testView)

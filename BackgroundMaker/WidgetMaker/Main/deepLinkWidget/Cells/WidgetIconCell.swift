@@ -43,7 +43,7 @@ class WidgetIconCell: UICollectionViewCell {
         
         imgView.alpha = 1
         
-        ViewModel.shared.cropCornerRadius(view: imgView, radius: self.frame.width / 2)
+        ViewModelForCocoa.shared.cropCornerRadius(view: imgView, radius: self.frame.width / 2)
         
         addSubview(imgView)
         
@@ -62,7 +62,7 @@ class WidgetIconCell: UICollectionViewCell {
         
         imgView.alpha = 1
         
-        ViewModel.shared.cropCornerRadius(view: imgView, radius: self.frame.width / 2)
+        ViewModelForCocoa.shared.cropCornerRadius(view: imgView, radius: self.frame.width / 2)
         
         addSubview(imgView)
         

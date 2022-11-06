@@ -24,7 +24,7 @@ enum RulerViewSwitch: String {
  `PhotoViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
  >  
  */
-class PhotoViewController: UIViewController {
+class MakeWallpaperViewController: UIViewController {
     
     //MARK: - [Properties] RxSwift
     var disposeBag = DisposeBag()
@@ -33,9 +33,9 @@ class PhotoViewController: UIViewController {
     
     //MARK: - Singleton Architectures
     ///Singleton 객체들
-    var imageEditModel = ImageEditModel.shared
-    var imageViewModel = ImageViewModel.shared
-    var viewModel = ViewModel.shared
+    var imageEditModel = EditImageModel.shared
+    var imageViewModel = EditViewModel.shared
+    var viewModel = ViewModelForCocoa.shared
     
     //MARK: End Singleton Architectures -
     
@@ -55,13 +55,13 @@ class PhotoViewController: UIViewController {
     
     //MARK: - [Properties] Navigation Bar Button
     // 상단 네비게이션 바 버튼
-    lazy var shareButton = ViewModel.shared.makeBarButtonWithSystemImage(
+    lazy var shareButton = ViewModelForCocoa.shared.makeBarButtonWithSystemImage(
         systemName: "square.and.arrow.up",
         selector: #selector(shareImageTapped),
         isHidden: false,
         target: self
     )
-    lazy var backButton = ViewModel.shared.makeBarButtonWithSystemImage(
+    lazy var backButton = ViewModelForCocoa.shared.makeBarButtonWithSystemImage(
         systemName: "arrow.backward",
         selector: #selector(backButtonTapped),
         isHidden: false,
@@ -90,14 +90,14 @@ class PhotoViewController: UIViewController {
     }()
     
     /// `Tray View` : 기능버튼들이 들어갈 하단 뷰입니다.
-    lazy var bottomView = BottomMenuView(height: 60, target: self)
+    lazy var bottomView = MainEditMenuView(height: 60, target: self)
     
     //MARK: 하단 서브뷰1
     /// 상하단 흐림 RulerView 초기화
     lazy var edgeBlurSliderView = CustomRulerView(title: "엣지블러", delegate: self)
     
     /// [배경화면 편집 뷰] 배경화면 컬러 선택기 초기화
-    lazy var colorPickerView = ColorPickerView(target: self)
+    lazy var colorPickerView = BackgroundPickerView(target: self)
     
 
     // 저장 버튼
@@ -117,23 +117,23 @@ class PhotoViewController: UIViewController {
     }()
     
     // /// `이미지 편집` 버튼
-    lazy var edgeBlurButton: ImageWithTextButton = {
+    lazy var edgeBlurButton: MenuButton = {
         let image = UIImage(named: "eraser.line.dashed.fill")!
         let title = "엣지블러"
     
-        let button = ImageWithTextButton(
+        let button = MenuButton(
             target: self, image: image, title: title,
             action: #selector(edgeBlurTapped), backgroundColor: .clear)
         return button
     }()
     
     /// `백그라운드 편집` 버튼
-    lazy var changeBGButton: ImageWithTextButton = {
+    lazy var changeBGButton: MenuButton = {
         let image = UIImage(named: "square.2.layers.3d.bottom.filled")!
         let title = "배경레이어"
     
         // 배경편집 버튼 구성
-        let button = ImageWithTextButton(
+        let button = MenuButton(
             target: self, image: image,
             title: title,
             titleColor: .white,
@@ -250,7 +250,7 @@ class PhotoViewController: UIViewController {
         }
     }
     
-    /// 하단 메뉴 ( BottomMenuView )에 넣을  버튼을 구성합니다.
+    /// 하단 메뉴 ( MainEditMenuView )에 넣을  버튼을 구성합니다.
     func addBottomMenuButtons() {
         /// 버튼들 `스택뷰`에 추가.
         bottomView.centerStackView.addArrangedSubview(edgeBlurButton)
@@ -347,7 +347,7 @@ class PhotoViewController: UIViewController {
                     self.mainImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 선택한 이미지의 크기를 초기화합니다.
                     self.imageViewModel.backgroundPhotoSubject.onNext(bluredImage)// 선택한 이미지를 블러처리하여 백그라운드에 띄웁니다.
                     self.bgImageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1) // 백그라운드 이미지의 크기를 초기화합니다. (결과물 비네팅방지를 위해 1.1배로 설정)
-                    ImageViewModel.shared.sourcePhotoSubject.onNext(image)
+                    EditViewModel.shared.sourcePhotoSubject.onNext(image)
                 }
             } onError: { error in
                 print("getPickedImage 이미지 가져오기 에러 :\(error.localizedDescription) ")
@@ -425,7 +425,7 @@ class PhotoViewController: UIViewController {
     
     /// 현재 뷰를 캡쳐하고 그 이미지를 앨범에 저장하는 메소드입니다.
     @objc func saveImage() {
-        if let image = ImageEditModel.shared
+        if let image = EditImageModel.shared
             .takeScreenViewCapture(
             withoutView: getHideViews(), target: self) {
             saveImageToAlbum(image: image)
@@ -434,7 +434,7 @@ class PhotoViewController: UIViewController {
     
     /// 현재 뷰를 캡쳐하고 그 이미지를 공유합니다.
     @objc func shareImageTapped() {
-        if let image = ImageEditModel.shared.takeScreenViewCapture(withoutView: getHideViews(), target: self) {
+        if let image = EditImageModel.shared.takeScreenViewCapture(withoutView: getHideViews(), target: self) {
             imageEditModel.shareImageButton(image: image, target: self)
         }
     }
@@ -459,7 +459,7 @@ class PhotoViewController: UIViewController {
 //MARK: - RxSwift View
     /// 편집할 소스 이미지를 담는 비동기 구독입니다.
     func editingImageRxSubscribe() {
-        ImageViewModel.shared.editingPhoto.subscribe { image in
+        EditViewModel.shared.editingPhoto.subscribe { image in
             print("Rx editingPhoto : 이미지를 가져옵니다.")
             DispatchQueue.main.async {
                 self.mainImageView.image = image
@@ -477,7 +477,7 @@ class PhotoViewController: UIViewController {
     }
     
     func backgroundImageRxSubscribe() {
-        ImageViewModel.shared.backgroundPhoto
+        EditViewModel.shared.backgroundPhoto
             .distinctUntilChanged()
             .subscribe { image in
                 print("Rx backgroundPhoto : 이미지가 변경되었습니다.")
@@ -494,7 +494,7 @@ class PhotoViewController: UIViewController {
     
 }
 
-extension PhotoViewController {
+extension MakeWallpaperViewController {
     
     /// 상하단 블러버튼을 띄웁니다.
     @objc func showUpDownBlurView() {
@@ -515,11 +515,11 @@ struct PhotoViewController_Representable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         
         let sampleImage = UIImage(named: "testImage")!
-        ImageViewModel.shared.editingPhotoSubject.onNext(sampleImage)
+        EditViewModel.shared.editingPhotoSubject.onNext(sampleImage)
 
-        let photoView = PhotoViewController()
+        let photoView = MakeWallpaperViewController()
 
-        // PhotoViewController VC
+        // MakeWallpaperViewController VC
         let viewer = photoView
         
         return viewer

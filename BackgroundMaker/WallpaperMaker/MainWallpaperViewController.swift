@@ -16,7 +16,7 @@ import SwiftUI
  `HomeViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
  >
  */
-class MainPhotoViewController: UIViewController {
+class MainWallpaperViewController: UIViewController {
     
     // MARK: Wallpaper Maker 초기화
     // "여기를 눌러 사진을 추가하세요" 문구 및 투명 버튼을 통해 Photo Library 띄우는 역할
@@ -125,7 +125,7 @@ class MainPhotoViewController: UIViewController {
             view.backgroundColor = .black
             view.alpha = 0.3
             view.layer.cornerRadius = 8
-            ViewModel.shared.makeLayerShadow(to: view.layer)
+            ViewModelForCocoa.shared.makeLayerShadow(to: view.layer)
             return view
         }()
         
@@ -146,7 +146,7 @@ class MainPhotoViewController: UIViewController {
             label.text = title
             label.textAlignment = .center
             label.font = .systemFont(ofSize: 20, weight: .bold)
-            ViewModel.shared.makeLayerShadow(to: label.layer)
+            ViewModelForCocoa.shared.makeLayerShadow(to: label.layer)
             
             return label
         }()
@@ -210,7 +210,7 @@ class MainPhotoViewController: UIViewController {
     
     /// Picker로 선택한 사진을 가져오고 PhotoViewController를 Push합니다.
     func presentPhotoVC() {
-        let photoVC = PhotoViewController()
+        let photoVC = MakeWallpaperViewController()
         photoVC.modalPresentationStyle = .fullScreen
         self.present(photoVC, animated: false)
     }
@@ -218,7 +218,7 @@ class MainPhotoViewController: UIViewController {
 }
 
 
-extension MainPhotoViewController {
+extension MainWallpaperViewController {
     
     /// PickerViewController를 구성하고 반환하는 메소드입니다. PHPicker 사진 선택기에 대한 Config, Delegate 를 정의합니다.
     func makePHPickerVC() -> PHPickerViewController {
@@ -249,7 +249,7 @@ struct MainPhotoViewController_Representable: UIViewControllerRepresentable {
         let viewer = MainContainerViewController()
         
         // PhotoVC
-        // let viewer = UINavigationController(rootViewController: MainPhotoViewController())
+        // let viewer = UINavigationController(rootViewController: MainWallpaperViewController())
         
         return viewer
     }
