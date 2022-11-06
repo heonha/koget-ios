@@ -279,8 +279,7 @@
 				3AD12D9328CD960E00CF431C /* EditViewModel.swift */,
 				3A16865628E1FB49004090DA /* FilterModel.swift */,
 			);
-			name = EditModels;
-			path = Test/EditModels;
+			path = EditModels;
 			sourceTree = "<group>";
 		};
 		3A3C119528EDB4B800C9CCED /* LockScreenIntentsExtension */ = {
@@ -301,14 +300,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3A42851628EA7BD0001C7032 /* Test */ = {
+		3A42851628EA7BD0001C7032 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
 				3A20983C28EBCF0E0032FD78 /* WidgetTestVC.swift */,
 				3AAB432D2913978A009E3302 /* TestPreviewViewController.swift */,
 				3A19BCBA2914E891008B4D73 /* TestWidgetImageViewController.swift */,
 			);
-			path = Test;
+			path = Testing;
 			sourceTree = "<group>";
 		};
 		3A51A10528F531F10027AD5A /* deepLinkWidget */ = {
@@ -342,17 +341,9 @@
 			children = (
 				3AD12D9528CDA4C900CF431C /* MainWallpaperViewController.swift */,
 				3A302065290E54F7006676BD /* MainWallpaperViewController+Delegate.swift */,
-				3A2E21FA290F7BBE00E4F46A /* DetailWallpaperViewController.swift */,
-				3AE2551A290EA29D0045098E /* UserWallpaperCell.swift */,
-				3ABA6C1A28C6043F005AA8E4 /* MakeWallpaperViewController.swift */,
-				3A9EABB328E5C41800ED2BF2 /* MakeWallpaperViewController+Gesture.swift */,
-				3A420D8D28E4669000C8426D /* MakeWallpaperViewController+RulerView.swift */,
-				3A9EABB128E57FF700ED2BF2 /* MakeWallpaperViewController+bgEditSubview.swift */,
-				3AAB432C2913977C009E3302 /* CustomViews */,
-				3A0F42A228C982D0002F1CAD /* SubViews */,
-				3A17665A28C9DC7B006DE579 /* EditModels */,
-				3AF29FFC28E0ACB900CA6E15 /* ViewModel */,
-				3A42851628EA7BD0001C7032 /* Test */,
+				3AAA569B2917FCDC000A904B /* Detail */,
+				3AAA569A2917FCC5000A904B /* Make */,
+				3A42851628EA7BD0001C7032 /* Testing */,
 			);
 			path = WallpaperMaker;
 			sourceTree = "<group>";
@@ -375,6 +366,30 @@
 				3A35CD5C28F67D9400386011 /* ConnectingViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		3AAA569A2917FCC5000A904B /* Make */ = {
+			isa = PBXGroup;
+			children = (
+				3A0F42A228C982D0002F1CAD /* SubViews */,
+				3AAB432C2913977C009E3302 /* CustomViews */,
+				3A17665A28C9DC7B006DE579 /* EditModels */,
+				3AF29FFC28E0ACB900CA6E15 /* ViewModel */,
+				3ABA6C1A28C6043F005AA8E4 /* MakeWallpaperViewController.swift */,
+				3A9EABB328E5C41800ED2BF2 /* MakeWallpaperViewController+Gesture.swift */,
+				3A420D8D28E4669000C8426D /* MakeWallpaperViewController+RulerView.swift */,
+				3A9EABB128E57FF700ED2BF2 /* MakeWallpaperViewController+bgEditSubview.swift */,
+			);
+			path = Make;
+			sourceTree = "<group>";
+		};
+		3AAA569B2917FCDC000A904B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				3A2E21FA290F7BBE00E4F46A /* DetailWallpaperViewController.swift */,
+				3AE2551A290EA29D0045098E /* UserWallpaperCell.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		3AAB432C2913977C009E3302 /* CustomViews */ = {
