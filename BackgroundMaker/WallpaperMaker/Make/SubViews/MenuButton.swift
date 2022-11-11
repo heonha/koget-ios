@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SwiftUI
 
 
 
@@ -106,25 +107,36 @@ class MenuButton: UIView {
         addSubview(label)
         addSubview(button)
         
+        let imageHeight = 30
+        let labelHeight = 20
+        
         // contentView는 rootview의 역할을 합니다.
         imageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.width.height.equalTo(buttonHeight * 0.7)
+            make.top.leading.trailing.equalTo(self)
+            make.height.equalTo(imageHeight)
         }
         
         label.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).inset(-4)
-            make.bottom.leading.trailing.equalToSuperview()
-            make.height.equalTo(buttonHeight * 0.3)
-
+            make.bottom.leading.trailing.equalTo(self)
+            make.height.equalTo(labelHeight)
         }
         
         button.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(self)
 
         }
         
     } // #END configureUI
     
     
+}
+
+
+struct MenuButton_Previews: PreviewProvider {
+    static var previews: some View {
+        MakeWallpaperViewController_Representable()
+            .edgesIgnoringSafeArea(.all)
+            .previewInterfaceOrientation(.portrait)
+    }
 }

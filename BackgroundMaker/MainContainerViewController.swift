@@ -13,14 +13,28 @@ class MainContainerViewController: SwipeableTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
-        setupTabBar()
-        swipeAnimatedTransitioning?.animationType = SwipeAnimationType.sideBySide
+        configureTabBarUI()
+        configureSwipeableTabBar()
+        configureTabbarContrents()
 
     }
     
-    // MARK: Setup Views
-    private func setupViews() {
+    // MARK: UI 구성
+    private func configureTabBarUI() {
+        tabBar.backgroundColor = AppColors.normalDarkGrey
+        tabBar.tintColor = AppColors.deepPurple
+        tabBar.isTranslucent = true
+    }
+    
+    
+    // MARK: Swipe Library 구성
+    private func configureSwipeableTabBar() {
+        swipeAnimatedTransitioning?.animationType = SwipeAnimationType.sideBySide
+        swipeAnimatedTransitioning?.animationDuration = 0.25
+    }
+    
+    // MARK: Contents 구성
+    private func configureTabbarContrents() {
         
         let aVC = MainWallpaperViewController()
         let bVC = WidgetViewController()
@@ -45,12 +59,7 @@ class MainContainerViewController: SwipeableTabBarController {
         navigationBar.isTranslucent = false
     }
     
-    // MARK: - Setup TabBar
-    private func setupTabBar() {
-        tabBar.backgroundColor = AppColors.normalDarkGrey
-        tabBar.tintColor = AppColors.deepPurple
-        tabBar.isTranslucent = true
-    }
+
     
 }
 

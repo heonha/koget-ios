@@ -88,7 +88,7 @@ class MainWallpaperViewController: UIViewController {
         bgMakerButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
             make.centerX.equalToSuperview()
-            make.width.lessThanOrEqualTo(view.frame.width / 1.5)
+            make.width.lessThanOrEqualTo(view.frame.width - 50)
         }
     }
     
@@ -236,13 +236,13 @@ extension MainWallpaperViewController {
 // MARK: Preview Providers
 
 
-struct MainPhotoViewController_Previews: PreviewProvider {
+struct MainWallpaperViewController_Previews: PreviewProvider {
     static var previews: some View {
-        MainPhotoViewController_Representable().edgesIgnoringSafeArea(.all).previewInterfaceOrientation(.portrait)
+        MainWallpaperViewController_Representable().edgesIgnoringSafeArea(.all).previewInterfaceOrientation(.portrait)
     }
 }
 
-struct MainPhotoViewController_Representable: UIViewControllerRepresentable {
+struct MainWallpaperViewController_Representable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         
         // Container VC

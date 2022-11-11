@@ -44,7 +44,6 @@ class WallpaperCoreData {
         // 데이터 가져오기
         do {
             let wallpapers = try coredataContext.fetch(request) // 데이터 가져오기
-            print(wallpapers)
             completion(wallpapers)
         } catch {
             print("데이터 가져오기 에러 발생 : \(error)")

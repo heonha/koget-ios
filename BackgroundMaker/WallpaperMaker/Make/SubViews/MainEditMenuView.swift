@@ -139,18 +139,15 @@ class MainEditMenuView: UIView {
         }
         
         rightStackView.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView)
-            make.centerY.equalTo(contentView)
-            
-            make.trailing.equalToSuperview().inset(10)
-            make.width.equalTo( rightButtonCount * buttonWidth )
+            make.bottom.top.equalTo(contentView)
+            make.trailing.equalTo(contentView).inset(10)
+            make.width.equalTo( leftButtonCount * buttonWidth )
+
         }
         
         leftStackView.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView)
-            make.centerY.equalTo(contentView)
-            
-            make.leading.equalToSuperview().inset(10)
+            make.bottom.top.equalTo(contentView)
+            make.leading.equalTo(contentView).inset(10)
             make.width.equalTo( leftButtonCount * buttonWidth )
             
         }
