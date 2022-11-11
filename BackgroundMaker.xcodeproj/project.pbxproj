@@ -376,9 +376,9 @@
 				3A17665A28C9DC7B006DE579 /* EditModels */,
 				3AF29FFC28E0ACB900CA6E15 /* ViewModel */,
 				3ABA6C1A28C6043F005AA8E4 /* MakeWallpaperViewController.swift */,
+				3A9EABB128E57FF700ED2BF2 /* MakeWallpaperViewController+bgEditSubview.swift */,
 				3A9EABB328E5C41800ED2BF2 /* MakeWallpaperViewController+Gesture.swift */,
 				3A420D8D28E4669000C8426D /* MakeWallpaperViewController+RulerView.swift */,
-				3A9EABB128E57FF700ED2BF2 /* MakeWallpaperViewController+bgEditSubview.swift */,
 			);
 			path = Make;
 			sourceTree = "<group>";

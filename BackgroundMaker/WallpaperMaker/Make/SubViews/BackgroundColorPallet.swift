@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 
 enum ColorPalletType {
@@ -19,7 +20,7 @@ class BackgroundColorPallet: UIView {
     
     var color: UIImage!
     var type: ColorPalletType!
-    var target: MakeWallpaperViewController!
+    let target: MakeWallpaperViewController!
     
     lazy var button: UIButton = {
         let button = UIButton()
@@ -60,25 +61,34 @@ class BackgroundColorPallet: UIView {
             make.edges.equalTo(self)
         }
         
-        if self.type == .normal {
-            button.addTarget(target, action: #selector(colorBtnTapped), for: .touchDown)
+        switch self.type {
+        case .normal:
+            let action = UIAction { _ in self.colorBtnTapped() }
+            self.button.addAction(action, for: .touchDown)
+        case .showRuler:
+            let action = UIAction { _ in self.blurBtnTapped() }
+            self.button.addAction(action, for: .touchDown)
+        default :
+            break
         }
-        
-        if self.type == .showRuler {
-            button.addTarget(target, action: #selector(blurBtnTapped), for: .touchDown)
-        }
-        
+
     }
     
-    @objc func colorBtnTapped(_ sender: UIButton) {
+    private func colorBtnTapped() {
+        
+        if target.edgeRulerView.alpha == 1 {
+                self.target.edgeRulerView.alpha = 0
+                self.target.traySubView.alpha = 0
+        }
+        
         EditViewModel.shared.backgroundPhotoSubject.onNext(self.color)
     }
     
-    @objc func blurBtnTapped(_ sender: UIButton) {
+    private func blurBtnTapped() {
         
         let image: UIImage = {
             var mainImg: UIImage?
-            EditViewModel.shared.editingPhotoSubject.subscribe { image in
+            EditViewModel.shared.sourcePhoto.subscribe { image in
                 mainImg = image
             }.dispose()
             
@@ -86,21 +96,27 @@ class BackgroundColorPallet: UIView {
         }()
         
         EditViewModel.shared.backgroundPhotoSubject.onNext(image)
-        target.switchBlurSubview()
         
-        let duration: CGFloat = 0.2
-        
-        if target.edgeBlurSliderView.alpha == 0 {
+        toggleViews(targetView: target.bgRulerView, bgView: target.traySubViewInView, hideViews: [])
+    }
+    
+    func toggleViews(targetView: UIView, bgView: UIView, hideViews: [UIView], duration: CGFloat = 0.2) {
+
+        if targetView.alpha == 0 { // 타겟뷰가 안보이면
             UIView.animate(withDuration: duration) {
-                self.target.colorPickerView.alpha = 0
-                self.target.edgeBlurSliderView.alpha = 1
-                self.target.traySubView.alpha = 0.4
+                // 타겟 뷰 및 타겟 배경 뷰 보이게
+                targetView.alpha = 1
+                bgView.alpha = 0.4
+                
+                // 상관 없는 뷰는 숨기기
+                hideViews.forEach { hideView in
+                    hideView.alpha = 0
+                }
             }
         } else {
-            UIView.animate(withDuration: duration) {
-                self.target.edgeBlurSliderView.alpha = 0
-                self.target.traySubView.alpha = 0
-            }
+            targetView.alpha = 0
+            bgView.alpha = 0
         }
+        
     }
 }

@@ -15,7 +15,18 @@ class CustomRulerView: UIView {
     let view = UIView()
     let rulerView = RulerView()
     let mainView = UIView()
-    let title: String!
+    var title: String!
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = UIColor.white
+        label.font = .systemFont(ofSize: 15, weight: .bold)
+        label.alpha = 0.5
+        
+        return label
+    }()
+    
     
     var delegate: RulerDelegate!
     
@@ -23,7 +34,7 @@ class CustomRulerView: UIView {
         self.title = title
         self.delegate = delegate
         super.init(frame: .zero)
-        
+        self.titleLabel.text = self.title
         configureUI()
         makeBlurSubview()
         
@@ -38,6 +49,10 @@ class CustomRulerView: UIView {
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    func reloadTitleLabel() {
+        self.titleLabel.text = self.title
     }
     
     
@@ -62,17 +77,7 @@ class CustomRulerView: UIView {
             make.edges.equalTo(mainView).inset(4)
         }
 
-        let titleLabel: UILabel = {
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = self.title
-            label.adjustsFontSizeToFitWidth = true
-            label.textColor = UIColor.white
-            label.font = .systemFont(ofSize: 15, weight: .bold)
-            label.alpha = 0.5
-            
-            return label
-        }()
+
         
         mainView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in

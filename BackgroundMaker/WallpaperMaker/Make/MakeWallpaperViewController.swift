@@ -47,7 +47,8 @@ class MakeWallpaperViewController: UIViewController {
     /// `배경 이미지` 편집할 이미지 뒤에 나타날 배경  이미지
     let bgImageView = UIImageView()
     
-    var rulerViewSwitch: RulerViewSwitch = .none
+    var bgBlurValue: Float = 7.0
+    var edgeBlurValue: Float = 7.0
     
     /// `제스쳐` : mainImageView의 중앙 인식을 위한 포인터입니다.
     /// makeDragImageGesture() 메소드에서 사용
@@ -89,12 +90,24 @@ class MakeWallpaperViewController: UIViewController {
         return view
     }()
     
+    let traySubViewInView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.alpha = 0.0
+        
+        return view
+    }()
+    
     /// `Tray View` : 기능버튼들이 들어갈 하단 뷰입니다.
     lazy var bottomView = MainEditMenuView(height: 60, target: self)
     
     //MARK: 하단 서브뷰1
     /// 상하단 흐림 RulerView 초기화
-    lazy var edgeBlurSliderView = CustomRulerView(title: "엣지블러", delegate: self)
+    lazy var edgeRulerView = CustomRulerView(title: "엣지블러", delegate: self)
+    lazy var bgRulerView = CustomRulerView(title: "배경블러", delegate: self)
+
+    
     
     /// [배경화면 편집 뷰] 배경화면 컬러 선택기 초기화
     lazy var colorPickerView = BackgroundPickerView(target: self)
@@ -171,8 +184,8 @@ class MakeWallpaperViewController: UIViewController {
         // Subview 셋업
         self.configureSubmenuBackground() // 트레이 배경뷰
         self.configureTrayView() // 트레이 뷰
-        self.switchBlurSubview() // 엣지블러 뷰
         self.makeBGColorPicker() // 배경 컬러 피커뷰
+        self.configureRulerViews()
         
         // 이미지 관련 제스쳐
         self.addPinchGesture(selector: #selector(pinchZoomAction)) // Zoom in/out
@@ -241,13 +254,7 @@ class MakeWallpaperViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-        
-        view.addSubview(edgeBlurSliderView)
-        edgeBlurSliderView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(bottomView.snp.top)
-            make.height.equalTo(50)
-        }
+
     }
     
     /// 하단 메뉴 ( MainEditMenuView )에 넣을  버튼을 구성합니다.
@@ -262,72 +269,46 @@ class MakeWallpaperViewController: UIViewController {
     @objc func bgLayerButtonTapped() {
         print("배경레이어버튼 누름")
         
-        let duration: CGFloat = 0.2
         
-        if self.rulerViewSwitch != .backgroundBlur {
-            rulerViewSwitch = .backgroundBlur
-            self.switchBlurSubview()
-        }
-
-        if colorPickerView.alpha == 0 {
-            UIView.animate(withDuration: duration) {
-                self.edgeBlurSliderView.alpha = 0
-                self.colorPickerView.alpha = 1
-                self.traySubView.alpha = 0.4
-
-            }
-        } else {
-            UIView.animate(withDuration: duration) {
-                self.colorPickerView.alpha = 0
-                self.traySubView.alpha = 0
-            }
-        }
+        toggleViews(targetView: colorPickerView, bgView: traySubView, hideViews: [bgRulerView, traySubViewInView, edgeRulerView])
+        
     }
     
-    /// 엣지블러을 눌렀을 때의 동작입니다.
+    /// 엣지블러를 눌렀을 때의 동작입니다.
     @objc func edgeBlurTapped() {
         
         let duration: CGFloat = 0.2
         
-        if rulerViewSwitch != .edgeBlur {
-            rulerViewSwitch = .edgeBlur
-            self.switchBlurSubview()
-        }
+        toggleViews(targetView: edgeRulerView, bgView: traySubView, hideViews: [colorPickerView, traySubViewInView, bgRulerView])
         
-        if edgeBlurSliderView.alpha == 0 {
+    }
+    
+    func toggleViews(targetView: UIView, bgView: UIView, hideViews: [UIView], duration: CGFloat = 0.2) {
+
+        if targetView.alpha == 0 { // 타겟뷰가 안보이면
             UIView.animate(withDuration: duration) {
-                self.colorPickerView.alpha = 0
-                self.edgeBlurSliderView.alpha = 1
-                self.traySubView.alpha = 0.4
+                // 타겟 뷰 및 타겟 배경 뷰 보이게
+                targetView.alpha = 1
+                bgView.alpha = 0.4
+                
+                // 상관 없는 뷰는 숨기기
+                hideViews.forEach { hideView in
+                    hideView.alpha = 0
+                }
             }
         } else {
-            UIView.animate(withDuration: duration) {
-                self.edgeBlurSliderView.alpha = 0
-                self.traySubView.alpha = 0
-            }
+            targetView.alpha = 0
+            bgView.alpha = 0
         }
+        
     }
     
     
     
     private func configureSubviewsToggle() {
         
-        edgeBlurSliderView.alpha = 0
-        
-        
-        // 배경 편집기가 떠있는 상태.
-        // 1. 배경 편집기 버튼 클릭시
-        // - 아무 동작 하지 않는다.
-        
-        // 2. 블러 버튼 누를 시
-        // 인  닫는다
-        // 블러  열린다.
-        
-        // 블러 편집기가 떠있는 상태.
-        // 안떠있는 상태.
-        
-        // 블러, 배경레이어 선택기
-        //
+        edgeRulerView.alpha = 0
+        bgRulerView.alpha = 0
         
     }
 
@@ -419,7 +400,7 @@ class MakeWallpaperViewController: UIViewController {
     
     /// 배경화면 저장 시 숨길 뷰들을 리턴합니다.
     func getHideViews() -> [UIView] {
-        let hideViews = [self.bottomView, self.edgeBlurSliderView, self.colorPickerView, self.trayRootView, self.traySubView]
+        let hideViews = [self.bottomView, self.edgeRulerView, self.colorPickerView, self.trayRootView, self.traySubView]
         return hideViews
     }
     
@@ -478,6 +459,7 @@ class MakeWallpaperViewController: UIViewController {
     
     func backgroundImageRxSubscribe() {
         EditViewModel.shared.backgroundPhoto
+            .debounce(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
             .distinctUntilChanged()
             .subscribe { image in
                 print("Rx backgroundPhoto : 이미지가 변경되었습니다.")
@@ -505,13 +487,13 @@ extension MakeWallpaperViewController {
 
 // MARK: Preview Providers
 
-struct PhotoViewController_Previews: PreviewProvider {
+struct MakeWallpaperViewController_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoViewController_Representable().edgesIgnoringSafeArea(.all).previewInterfaceOrientation(.portrait)
+        MakeWallpaperViewController_Representable().edgesIgnoringSafeArea(.all).previewInterfaceOrientation(.portrait)
     }
 }
 
-struct PhotoViewController_Representable: UIViewControllerRepresentable {
+struct MakeWallpaperViewController_Representable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         
         let sampleImage = UIImage(named: "testImage")!

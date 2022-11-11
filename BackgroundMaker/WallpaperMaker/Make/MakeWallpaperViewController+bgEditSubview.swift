@@ -54,6 +54,13 @@ extension MakeWallpaperViewController {
             make.leading.trailing.equalTo(view)
             make.height.equalTo(subviewHeight)
         }
+        
+        view.addSubview(traySubViewInView)
+        traySubViewInView.snp.makeConstraints { make in
+            make.bottom.equalTo(traySubView.snp.top)
+            make.leading.trailing.equalTo(view)
+            make.height.equalTo(subviewHeight)
+        }
 
     }
     

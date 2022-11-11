@@ -16,7 +16,7 @@ class BackgroundPickerView: UIView {
 
     var viewWidth: CGFloat!
     var viewHeight: CGFloat!
-    var target: MakeWallpaperViewController!
+    let target: MakeWallpaperViewController!
     
     var contentView = UIView()
     var colorSlider = UIView()
@@ -91,12 +91,12 @@ class BackgroundPickerView: UIView {
         
         // 블러 써클
         let blur = PalletCircle(name: "Blur", circle: blurColor)
-        let blurCircle = BackgroundColorPallet(color: blur.circle, target: target, type: .showRuler)
+        let blurCircle = BackgroundColorPallet(color: blur.circle, target: self.target, type: .showRuler)
             
         var pallets: [BackgroundColorPallet] = [blurCircle]
         
         for color in colors {
-            let item = BackgroundColorPallet(color: color.circle, target: target)
+            let item = BackgroundColorPallet(color: color.circle, target: self.target)
             pallets.append(item)
         }
         
