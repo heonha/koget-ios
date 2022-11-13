@@ -31,37 +31,33 @@ class MakeWallpaperViewController: UIViewController {
     var nilDisposeBag = DisposeBag()
     //MARK: End RxSwift Init -
     
-    //MARK: - Singleton Architectures
+    //MARK: - 싱글톤 패턴 초기화
     ///Singleton 객체들
-    var imageEditModel = EditImageModel.shared
-    var imageViewModel = EditViewModel.shared
-    var viewModel = ViewModelForCocoa.shared
+    // var imageEditModel = EditImageModel.shared
+    // var imageViewModel = EditViewModel.shared
+    // var viewModel = ViewModelForCocoa.shared
     
     //MARK: End Singleton Architectures -
     
-    //MARK: - [Properties] ImageViews
+    //MARK: - 이미지 뷰 관련 초기화
+    var mainImageView = UIImageView() // 메인 이미지
+    let bgImageView = UIImageView() // 배경 이미지
+    var sourceImage = UIImage() // 원본 이미지 아카이빙
 
-    //MARK: 이미지뷰 관련 (이미지뷰, 배경뷰)
-    ///`메인 이미지`  편집할 이미지가 들어갈 이미지 뷰
-    var mainImageView = UIImageView()
-    /// `배경 이미지` 편집할 이미지 뒤에 나타날 배경  이미지
-    let bgImageView = UIImageView()
+    // 이미지 제스쳐 포인터
+    lazy var imageOriginalCenter = CGPoint() // 이미지 드래그 중앙인식 포인터
     
-    var bgBlurValue: Float = 7.0
-    var edgeBlurValue: Float = 7.0
-    
-    /// `제스쳐` : mainImageView의 중앙 인식을 위한 포인터입니다.
-    /// makeDragImageGesture() 메소드에서 사용
-    lazy var imageOriginalCenter = CGPoint() // 트레이뷰의 중앙을 인식하는 포인터입니다.
-    
-    //MARK: - [Properties] Navigation Bar Button
-    // 상단 네비게이션 바 버튼
+    //MARK: - 네비게이션 바 버튼 초기화
+
+    // 공유 버튼
     lazy var shareButton = ViewModelForCocoa.shared.makeBarButtonWithSystemImage(
         systemName: "square.and.arrow.up",
         selector: #selector(shareImageTapped),
         isHidden: false,
         target: self
     )
+    
+    // 뒤로가기 버튼
     lazy var backButton = ViewModelForCocoa.shared.makeBarButtonWithSystemImage(
         systemName: "arrow.backward",
         selector: #selector(backButtonTapped),
@@ -106,6 +102,8 @@ class MakeWallpaperViewController: UIViewController {
     /// 상하단 흐림 RulerView 초기화
     lazy var edgeRulerView = CustomRulerView(title: "엣지블러", delegate: self)
     lazy var bgRulerView = CustomRulerView(title: "배경블러", delegate: self)
+    
+    var bgRulerViewValue: Float = 3
 
     
     
@@ -116,7 +114,7 @@ class MakeWallpaperViewController: UIViewController {
     // 저장 버튼
     lazy var saveButton: UIButton = {
         let action = UIAction { _ in self.saveImage() }
-        let button = viewModel.makeButtonWithTitle(
+        let button = ViewModelForCocoa.shared.makeButtonWithTitle(
             title: "저장", action: action, target: self)
         return button
     }()
@@ -124,7 +122,7 @@ class MakeWallpaperViewController: UIViewController {
     // 취소 버튼
     lazy var cancelButton: UIButton = {
         let action = UIAction { _ in self.backButtonTapped() }
-        let button = viewModel.makeButtonWithTitle(
+        let button = ViewModelForCocoa.shared.makeButtonWithTitle(
             title: "취소", action: action, target: self)
         return button
     }()
@@ -168,14 +166,13 @@ class MakeWallpaperViewController: UIViewController {
         self.navigationController?.navigationBar.backgroundColor = .clear
         
         // RxSwift
-        editingImageRxSubscribe() // 편집할 이미지를 가지고 있을 Observer입니다.
-        backgroundImageRxSubscribe()
+        mainImageRxSubscribe() // 편집할 이미지를 가지고 있을 Observer입니다.
         setupImageViews()
         
         // SubView : 하단 메뉴바 구성
         addBottomMenuButtons() // 하단 메뉴바 구성
-        configureSubviewsToggle()
         setPickedImage() // 앨범에서 선택한 이미지 불러오기
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -185,7 +182,8 @@ class MakeWallpaperViewController: UIViewController {
         self.configureSubmenuBackground() // 트레이 배경뷰
         self.configureTrayView() // 트레이 뷰
         self.makeBGColorPicker() // 배경 컬러 피커뷰
-        self.configureRulerViews()
+        self.configureRulerViews() // 룰러 뷰
+        
         
         // 이미지 관련 제스쳐
         self.addPinchGesture(selector: #selector(pinchZoomAction)) // Zoom in/out
@@ -194,11 +192,17 @@ class MakeWallpaperViewController: UIViewController {
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.backgroundImageRxSubscribe()
+
+    }
+
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // 모든 Observable dispose처리
-        self.disposeBag = .init()
+        self.disposeBag = .init() // 구독 중인 모든 Observable disposeBag 비우기
         
     }
     
@@ -266,18 +270,15 @@ class MakeWallpaperViewController: UIViewController {
         bottomView.leftStackView.addArrangedSubview(cancelButton)
     }
     
+    //MARK: 레이어 버튼 액션
     @objc func bgLayerButtonTapped() {
-        print("배경레이어버튼 누름")
-        
         
         toggleViews(targetView: colorPickerView, bgView: traySubView, hideViews: [bgRulerView, traySubViewInView, edgeRulerView])
         
     }
     
-    /// 엣지블러를 눌렀을 때의 동작입니다.
+    //MARK: 엣지 블러 버튼 액션
     @objc func edgeBlurTapped() {
-        
-        let duration: CGFloat = 0.2
         
         toggleViews(targetView: edgeRulerView, bgView: traySubView, hideViews: [colorPickerView, traySubViewInView, bgRulerView])
         
@@ -299,18 +300,15 @@ class MakeWallpaperViewController: UIViewController {
         } else {
             targetView.alpha = 0
             bgView.alpha = 0
+            
+            hideViews.forEach { hideView in
+                hideView.alpha = 0
+            }
         }
         
     }
     
-    
-    
-    private func configureSubviewsToggle() {
-        
-        edgeRulerView.alpha = 0
-        bgRulerView.alpha = 0
-        
-    }
+
 
     
     
@@ -318,17 +316,15 @@ class MakeWallpaperViewController: UIViewController {
     
     /// 선택한 이미지를 가져오고 뷰에 반영합니다.
     func setPickedImage() {
-        imageViewModel.editingPhotoSubject
-            .subscribe { image in
+        RxImageViewModel.shared.mainImageSubject
+            .subscribe { [weak self] image in
                 guard let image = image else { return }
                 
-                let bluredImage = image.blurImage(radius: 40)
-                
                 DispatchQueue.main.async {
-                    self.mainImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 선택한 이미지의 크기를 초기화합니다.
-                    self.imageViewModel.backgroundPhotoSubject.onNext(bluredImage)// 선택한 이미지를 블러처리하여 백그라운드에 띄웁니다.
-                    self.bgImageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1) // 백그라운드 이미지의 크기를 초기화합니다. (결과물 비네팅방지를 위해 1.1배로 설정)
-                    EditViewModel.shared.sourcePhotoSubject.onNext(image)
+                    self?.mainImageView.transform = CGAffineTransform(scaleX: 1, y: 1) // 선택한 이미지의 크기를 초기화합니다.
+                    self?.bgImageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1) // 백그라운드 이미지의 크기를 초기화합니다. (결과물 비네팅방지를 위해 1.1배로 설정)
+                    RxImageViewModel.shared.sourcePhotoSubject.onNext(image)
+                    self?.sourceImage = image
                 }
             } onError: { error in
                 print("getPickedImage 이미지 가져오기 에러 :\(error.localizedDescription) ")
@@ -364,7 +360,6 @@ class MakeWallpaperViewController: UIViewController {
     
     /// 사진 저장 처리결과를 Alert로 Present합니다.
     @objc func imageSaveHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        
         
         /// 앨범에 사진 저장이 성공 / 실패 했을 때 알럿을 띄웁니다.
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
@@ -416,72 +411,76 @@ class MakeWallpaperViewController: UIViewController {
     /// 현재 뷰를 캡쳐하고 그 이미지를 공유합니다.
     @objc func shareImageTapped() {
         if let image = EditImageModel.shared.takeScreenViewCapture(withoutView: getHideViews(), target: self) {
-            imageEditModel.shareImageButton(image: image, target: self)
+            EditImageModel.shared.shareImageButton(image: image, target: self)
         }
     }
         
     /// 닫기 버튼을 탭했을때의 동작입니다. 사용자에게 편집을 중단 할 것인지 묻는 알림창을 띄웁니다.
     @objc func backButtonTapped() {
         let alert = UIAlertController(title: "이미지의 편집을 중단하고 첫화면으로 이동합니다.", message: "만약 저장하지 않으셨다면 우선 저장해주세요.", preferredStyle: .alert)
-        let apply = UIAlertAction(title: "첫 화면 가기", style: .default) { action in
-            self.imageViewModel.editingPhotoSubject.onNext(nil)
-            self.imageViewModel.backgroundPhotoSubject.onNext(nil)
+        let apply = UIAlertAction(title: "첫 화면 가기", style: .default) { _ in
+            RxImageViewModel.shared.mainImageSubject.onNext(nil)
+            RxImageViewModel.shared.backgroundImageSubject.onNext(nil)
             self.dismiss(animated: true)
         }
         
         let cancel = UIAlertAction(title: "취소", style: .default)
         alert.addAction(apply)
         alert.addAction(cancel)
-        
         present(alert, animated: true)
         
     }
 
-//MARK: - RxSwift View
-    /// 편집할 소스 이미지를 담는 비동기 구독입니다.
-    func editingImageRxSubscribe() {
-        EditViewModel.shared.editingPhoto.subscribe { image in
-            print("Rx editingPhoto : 이미지를 가져옵니다.")
+//MARK: - 구독 메소드 Subscribers
+
+    // 메인 이미지 구독
+    func mainImageRxSubscribe() {
+        
+        RxImageViewModel.shared.mainImageObservable.subscribe { (image) in
+            print("mainImageObservable : 이미지를 가져옵니다.")
+
             DispatchQueue.main.async {
                 self.mainImageView.image = image
+                
                 if image != nil {
                     self.resizeImageView()
                 }
+                
+                self.sourceImage = image!
+                let bgImage = EditImageModel.shared.makeBlurImage(image: image!, radius: 15)
+                RxImageViewModel.shared.backgroundImageSubject.onNext(bgImage)
+
             }
         } onError: { error in
-            print("EditingImage Error : \(error.localizedDescription)")
+            print("mainImage Error : \(error.localizedDescription)")
         } onCompleted: {
-            print("EditingImage Completed")
+            print("mainImage Completed")
         } onDisposed: {
-            print("EditingImage Disposed")
-        }.disposed(by: disposeBag)
+            print("mainImage Disposed")
+        }.dispose()
     }
     
+    // 배경 이미지 구독
     func backgroundImageRxSubscribe() {
-        EditViewModel.shared.backgroundPhoto
-            .debounce(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
+        
+        
+        RxImageViewModel.shared.backgroundImageSubject
+            .skip(until: RxImageViewModel.shared.backgroundImageTrigger)
+            .debounce(.milliseconds(150), scheduler: MainScheduler.asyncInstance)
             .distinctUntilChanged()
             .subscribe { image in
-                print("Rx backgroundPhoto : 이미지가 변경되었습니다.")
+                print("backgroundImage Observable : 이미지가 변경되었습니다.")
                     self.bgImageView.image = image
         } onError: { error in
-            print("backgroundPhoto Error : \(error.localizedDescription)")
+            print("backgroundImage Subject Error : \(error.localizedDescription)")
         } onCompleted: {
-            print("backgroundPhoto Completed")
+            print("backgroundImage Subject Completed")
         } onDisposed: {
-            print("backgroundPhoto Disposed")
+            print("backgroundImage Subject Disposed")
         }.disposed(by: disposeBag)
         
     }
     
-}
-
-extension MakeWallpaperViewController {
-    
-    /// 상하단 블러버튼을 띄웁니다.
-    @objc func showUpDownBlurView() {
-            self.edgeBlurTapped()
-    }
 }
 
 
@@ -497,7 +496,7 @@ struct MakeWallpaperViewController_Representable: UIViewControllerRepresentable 
     func makeUIViewController(context: Context) -> UIViewController {
         
         let sampleImage = UIImage(named: "testImage")!
-        EditViewModel.shared.editingPhotoSubject.onNext(sampleImage)
+        RxImageViewModel.shared.mainImageSubject.onNext(sampleImage)
 
         let photoView = MakeWallpaperViewController()
 

@@ -25,17 +25,6 @@ extension MakeWallpaperViewController {
         }
 
     }
-    
-    /// `배경화면 블러` 액션
-    @objc func bgBlurAction(sender: UIButton) {
-        sender.showAnimation {
-            EditViewModel.shared.editingPhotoSubject
-                .subscribe { image in
-                    let bluredImage = image?.blurImage(radius: 40)
-                    EditViewModel.shared.backgroundPhotoSubject.onNext(bluredImage)
-                }.dispose()
-        }
-    }
 
     
     func configureSubmenuBackground() {

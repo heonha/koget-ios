@@ -13,7 +13,11 @@ import SwiftUI
 class CustomRulerView: UIView {
     
     let view = UIView()
-    let rulerView = RulerView()
+    let rulerView: RulerView = {
+        let rv = RulerView()
+        return rv
+    }()
+    
     let mainView = UIView()
     var title: String!
     let titleLabel: UILabel = {
@@ -27,7 +31,6 @@ class CustomRulerView: UIView {
         return label
     }()
     
-    
     var delegate: RulerDelegate!
     
     init(title: String, delegate: RulerDelegate) {
@@ -37,6 +40,8 @@ class CustomRulerView: UIView {
         self.titleLabel.text = self.title
         configureUI()
         makeBlurSubview()
+        self.alpha = 0
+
         
     }
     
@@ -59,7 +64,6 @@ class CustomRulerView: UIView {
     /// 블러를 조절할 수 있는 뷰를 그립니다.
     func makeBlurSubview() {
         
-        
         view.addSubview(mainView)
         mainView.translatesAutoresizingMaskIntoConstraints = false
         mainView.backgroundColor = .clear
@@ -76,8 +80,6 @@ class CustomRulerView: UIView {
         rulerView.snp.makeConstraints { make in
             make.edges.equalTo(mainView).inset(4)
         }
-
-
         
         mainView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in

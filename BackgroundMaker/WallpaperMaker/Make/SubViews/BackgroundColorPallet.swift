@@ -76,29 +76,29 @@ class BackgroundColorPallet: UIView {
     
     private func colorBtnTapped() {
         
-        if target.edgeRulerView.alpha == 1 {
-                self.target.edgeRulerView.alpha = 0
-                self.target.traySubView.alpha = 0
+        if target.bgRulerView.alpha == 1 {
+                self.target.bgRulerView.alpha = 0
+                self.target.traySubViewInView.alpha = 0
         }
         
-        EditViewModel.shared.backgroundPhotoSubject.onNext(self.color)
+        target.bgImageView.image = self.color
     }
     
     private func blurBtnTapped() {
         
-        let image: UIImage = {
-            var mainImg: UIImage?
-            EditViewModel.shared.sourcePhoto.subscribe { image in
-                mainImg = image
+        RxImageViewModel.shared.backgroundImageTrigger.onNext("Go Bg Image")
+        
+        print("blur Button Tapped")
+        RxImageViewModel.shared.backgroundImageSubject
+            .subscribe { image in
+                self.target.bgImageView.image = image
             }.dispose()
-            
-            return mainImg ?? UIImage(named: "questionmark.circle")!
-        }()
-        
-        EditViewModel.shared.backgroundPhotoSubject.onNext(image)
-        
+        // rulerView의 현재 값을 바로 호출하도록
+
         toggleViews(targetView: target.bgRulerView, bgView: target.traySubViewInView, hideViews: [])
+        
     }
+
     
     func toggleViews(targetView: UIView, bgView: UIView, hideViews: [UIView], duration: CGFloat = 0.2) {
 
