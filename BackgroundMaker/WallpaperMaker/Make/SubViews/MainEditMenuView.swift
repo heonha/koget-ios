@@ -16,7 +16,7 @@ import RxSwift
 class MainEditMenuView: UIView {
     
     /// 이 뷰를 호출한 뷰컨트롤러입니다.
-    var parentVC: UIViewController!
+    weak var parentVC: MakeWallpaperViewController!
         
     /// 뷰의 컨텐츠가 들어갈 뷰입니다.
     let contentView = UIView()
@@ -30,7 +30,7 @@ class MainEditMenuView: UIView {
     var centerButtonCount: CGFloat = 2
     var leftButtonCount: CGFloat = 1
     /// 현재 뷰를 초기화합니다.
-    init(height: CGFloat = 0, target: UIViewController) {
+    init(height: CGFloat = 0, target: MakeWallpaperViewController) {
         
         self.parentVC = target
         let screenSize = UIScreen.main.bounds

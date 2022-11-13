@@ -20,7 +20,7 @@ class BackgroundColorPallet: UIView {
     
     var color: UIImage!
     var type: ColorPalletType!
-    let target: MakeWallpaperViewController!
+    weak var target: MakeWallpaperViewController!
     
     lazy var button: UIButton = {
         let button = UIButton()

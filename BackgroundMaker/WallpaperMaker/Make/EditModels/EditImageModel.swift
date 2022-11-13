@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditImageModel {
+struct EditImageModel {
     
     //MARK: - Singleton
     static let shared = EditImageModel()

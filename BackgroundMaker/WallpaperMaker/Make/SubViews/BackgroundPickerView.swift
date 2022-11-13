@@ -16,7 +16,7 @@ class BackgroundPickerView: UIView {
 
     var viewWidth: CGFloat!
     var viewHeight: CGFloat!
-    let target: MakeWallpaperViewController!
+    weak var target: MakeWallpaperViewController!
     
     var contentView = UIView()
     var colorSlider = UIView()
