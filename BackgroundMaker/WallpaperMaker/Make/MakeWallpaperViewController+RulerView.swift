@@ -16,7 +16,7 @@ extension MakeWallpaperViewController: RulerDelegate {
     func configureRulerViews() {
         
         
-        edgeRulerView.delegate = self
+        edgeRulerView.rulerView.delegate = self
         view.addSubview(edgeRulerView)
         edgeRulerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
@@ -25,7 +25,7 @@ extension MakeWallpaperViewController: RulerDelegate {
         }
         
         view.addSubview(bgRulerView)
-        bgRulerView.delegate = self
+        bgRulerView.rulerView.delegate = self
         bgRulerView.snp.remakeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(traySubView.snp.top)
