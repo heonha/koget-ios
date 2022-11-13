@@ -100,8 +100,16 @@ class MakeWallpaperViewController: UIViewController {
     
     //MARK: 하단 서브뷰1
     /// 상하단 흐림 RulerView 초기화
-    lazy var edgeRulerView = CustomRulerView(title: "엣지블러", delegate: self)
-    lazy var bgRulerView = CustomRulerView(title: "배경블러", delegate: self)
+    lazy var edgeRulerView: CustomRulerView = {
+        let rv = CustomRulerView(title: "엣지블러")
+        return rv
+    }()
+    
+    lazy var bgRulerView: CustomRulerView = {
+        let rv = CustomRulerView(title: "배경블러")
+        return rv
+    }()
+    
     
     var bgRulerViewValue: Float = 3
 
@@ -113,7 +121,7 @@ class MakeWallpaperViewController: UIViewController {
 
     // 저장 버튼
     lazy var saveButton: UIButton = {
-        let action = UIAction { _ in self.saveImage() }
+        let action = UIAction { [weak self] _ in self?.saveImage() }
         let button = ViewModelForCocoa.shared.makeButtonWithTitle(
             title: "저장", action: action, target: self)
         return button
@@ -121,7 +129,7 @@ class MakeWallpaperViewController: UIViewController {
     
     // 취소 버튼
     lazy var cancelButton: UIButton = {
-        let action = UIAction { _ in self.backButtonTapped() }
+        let action = UIAction {  [weak self] _ in self?.backButtonTapped() }
         let button = ViewModelForCocoa.shared.makeButtonWithTitle(
             title: "취소", action: action, target: self)
         return button

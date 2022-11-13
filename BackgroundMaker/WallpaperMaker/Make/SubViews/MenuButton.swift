@@ -48,11 +48,11 @@ class MenuButton: UIView {
     }()
     
     let buttonHeight: CGFloat!
-    let target: UIViewController!
+    weak var target: MakeWallpaperViewController!
     
     
     //MARK: - INIT
-    init(target: UIViewController, height: CGFloat = 50, image: UIImage, title: String,
+    init(target: MakeWallpaperViewController, height: CGFloat = 50, image: UIImage, title: String,
          titleColor: UIColor = .white, action: Selector, backgroundColor: UIColor = .systemBlue) {
         
         self.buttonHeight = height

@@ -12,7 +12,7 @@
 		<key>BackgroundMaker.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>7</integer>
 		***REMOVED***
 		<key>LockScreenIntent.xcscheme_^#shared#^_</key>
 		***REMOVED***
@@ -39,14 +39,14 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>2</integer>
 		***REMOVED***
 		<key>Rx (Playground) 2.xcscheme</key>
 		***REMOVED***
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>3</integer>
 		***REMOVED***
 		<key>Rx (Playground) 3.xcscheme</key>
 		***REMOVED***
@@ -95,21 +95,21 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>1</integer>
 		***REMOVED***
 		<key>SnapKitPlayground (Playground) 1.xcscheme</key>
 		***REMOVED***
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>5</integer>
 		***REMOVED***
 		<key>SnapKitPlayground (Playground) 2.xcscheme</key>
 		***REMOVED***
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>6</integer>
 		***REMOVED***
 		<key>SnapKitPlayground (Playground) 3.xcscheme</key>
 		***REMOVED***
@@ -158,7 +158,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>4</integer>
 		***REMOVED***
 	***REMOVED***
 	<key>SuppressBuildableAutocreation</key>

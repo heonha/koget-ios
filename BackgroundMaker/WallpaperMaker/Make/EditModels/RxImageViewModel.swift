@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class RxImageViewModel {
+struct RxImageViewModel {
     
     //MARK: - Singleton
     static let shared = RxImageViewModel()

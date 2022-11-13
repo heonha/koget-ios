@@ -31,11 +31,10 @@ class CustomRulerView: UIView {
         return label
     }()
     
-    var delegate: RulerDelegate!
+    weak var delegate: RulerDelegate!
     
-    init(title: String, delegate: RulerDelegate) {
+    init(title: String) {
         self.title = title
-        self.delegate = delegate
         super.init(frame: .zero)
         self.titleLabel.text = self.title
         configureUI()
