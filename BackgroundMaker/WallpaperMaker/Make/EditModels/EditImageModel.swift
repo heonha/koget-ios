@@ -60,7 +60,7 @@ class EditImageModel {
     
     //MARK: - Blur Methods
     
-    /// UIImage 자체에 블러필터 적용
+    // UIImage 자체에 블러필터 적용
     func makeBlurImage(image: UIImage, radius: CGFloat = 40) -> UIImage {
         return image.blurImage(radius: radius) ?? UIImage()
     }
@@ -87,25 +87,27 @@ class EditImageModel {
         
     }
     
-    
-    /// 자연스러운 그레이 스케일 적용 (mono 필터)
-    func convertImageToBW(image: UIImage) -> UIImage {
-    
-        let filter = CIFilter(name: "CIPhotoEffectMono")
-    
-        // convert UIImage to CIImage and set as input
-    
-        let ciInput = CIImage(image: image)
-        filter?.setValue(ciInput, forKey: "inputImage")
-    
-        // get output CIImage, render as CGImage first to retain proper UIImage scale
-    
-        let ciOutput = filter?.outputImage
-        let ciContext = CIContext()
-        let cgImage = ciContext.createCGImage(ciOutput!, from: (ciOutput?.extent)!)!
-    
-        return UIImage(cgImage: cgImage)
+    // 이미지 블러 처리
+    func makeImageBlur(imageView: UIImageView, insetX: CGFloat = 0, insetY: CGFloat) {
+        
+        if insetY == 0 {
+            imageView.layer.mask = nil
+            return
+        }
+
+        let maskLayer = CALayer()
+
+        maskLayer.frame = imageView.bounds
+        maskLayer.shadowRadius = 10
+        maskLayer.shadowPath = CGPath(roundedRect: imageView.bounds.insetBy(dx: insetX, dy: insetY), cornerWidth: 0, cornerHeight: 0, transform: nil)
+        maskLayer.shadowOpacity = 1;
+        maskLayer.shadowOffset = CGSize.zero;
+        maskLayer.shadowColor = UIColor.white.cgColor
+        imageView.layer.mask = maskLayer
+        
     }
-  
+    
+    
+
     
 }

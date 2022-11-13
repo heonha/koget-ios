@@ -8,10 +8,10 @@
 import UIKit
 import RxSwift
 
-class EditViewModel {
+class RxImageViewModel {
     
     //MARK: - Singleton
-    static let shared = EditViewModel()
+    static let shared = RxImageViewModel()
 
     //MARK: - Init
     private init() {
@@ -23,20 +23,22 @@ class EditViewModel {
     /// 소스포토 Observable (임시로 저장)
     var sourcePhotoSubject = BehaviorSubject<UIImage?>(value: nil)
     var sourcePhoto: Observable<UIImage?> {
-        return editingPhotoSubject.asObserver()
+        return mainImageSubject.asObserver()
     }
     
     /// 편집중인 Observable
-    var editingPhotoSubject = BehaviorSubject<UIImage?>(value: nil)
-    var editingPhoto: Observable<UIImage?> {
-        return editingPhotoSubject.asObserver()
+    var mainImageSubject = BehaviorSubject<UIImage?>(value: nil)
+    var mainImageObservable: Observable<UIImage?> {
+        return mainImageSubject.asObserver()
     }
     
     /// 배경사진 Observable
-    var backgroundPhotoSubject = BehaviorSubject<UIImage?>(value: nil)
-    var backgroundPhoto: Observable<UIImage?> {
-        return backgroundPhotoSubject.asObserver()
+    var backgroundImageSubject = BehaviorSubject<UIImage?>(value: nil)
+    var backgroundImageObservable: Observable<UIImage?> {
+        return backgroundImageSubject.asObserver()
     }
+    
+    var backgroundImageTrigger = PublishSubject<String>()
     
     //MARK: - Methods
 
@@ -44,9 +46,7 @@ class EditViewModel {
     func updateImage(photo: UIImage?, imageView: UIImageView) {
         imageView.image = photo
     }
-    
- 
-    
+        
     /**
      `스크린 사이즈에 따라서 높이를 조절합니다.`
      >

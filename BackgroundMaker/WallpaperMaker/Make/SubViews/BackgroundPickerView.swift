@@ -26,7 +26,7 @@ class BackgroundPickerView: UIView {
     // 편집중인 이미지를 리사이징 (평균 컬러 추출용)
     var colorImage: UIImage = {
         var editingImage = UIImage()
-        EditViewModel.shared.editingPhoto
+        RxImageViewModel.shared.mainImageObservable
             .subscribe { image in
                 image.map { image in
                     
@@ -133,10 +133,8 @@ class BackgroundPickerView: UIView {
         
     }
     
-    // 블러뷰를 클릭하면 블러뷰가 실행된다.
-    // 실행 후 현재 블러 정도를 조절기를 나타낸다.
-    // 다른곳을 클릭하거나 뒤로가기를 누르면 다시 배경선택기가 나타난다.
-    
+
+
 }
 
 

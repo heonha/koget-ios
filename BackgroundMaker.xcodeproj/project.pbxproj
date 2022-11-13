@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */; };
 		3A0F42A428C982D8002F1CAD /* MainEditMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F42A328C982D8002F1CAD /* MainEditMenuView.swift */; };
-		3A16865728E1FB49004090DA /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16865628E1FB49004090DA /* FilterModel.swift */; };
 		3A17665928C9DAFF006DE579 /* ViewModelForCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17665828C9DAFF006DE579 /* ViewModelForCocoa.swift */; };
 		3A19BCBB2914E891008B4D73 /* TestWidgetImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19BCBA2914E891008B4D73 /* TestWidgetImageViewController.swift */; };
 		3A1CD19728F9710200AC5D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */; };
@@ -73,7 +72,7 @@
 		3ABA6C3828C6361B005AA8E4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3728C6361B005AA8E4 /* SnapKit */; };
 		3AC8E70328EA95F60086B8D4 /* BackgroundColorPallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8E70228EA95F60086B8D4 /* BackgroundColorPallet.swift */; };
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
-		3AD12D9428CD960E00CF431C /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9328CD960E00CF431C /* EditViewModel.swift */; };
+		3AD12D9428CD960E00CF431C /* RxImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9328CD960E00CF431C /* RxImageViewModel.swift */; };
 		3AD12D9628CDA4C900CF431C /* MainWallpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9528CDA4C900CF431C /* MainWallpaperViewController.swift */; };
 		3AD157862908E360001943CA /* MainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD157852908E360001943CA /* MainContainerViewController.swift */; };
 		3AE09A9928FC1B5B009530F9 /* BuiltInWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE09A9828FC1B5B009530F9 /* BuiltInWidgetViewController.swift */; };
@@ -134,7 +133,6 @@
 		3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		3A0F42A128C8DC19002F1CAD /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3A0F42A328C982D8002F1CAD /* MainEditMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEditMenuView.swift; sourceTree = "<group>"; };
-		3A16865628E1FB49004090DA /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		3A17665828C9DAFF006DE579 /* ViewModelForCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelForCocoa.swift; sourceTree = "<group>"; };
 		3A19BCBA2914E891008B4D73 /* TestWidgetImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWidgetImageViewController.swift; sourceTree = "<group>"; };
 		3A1CD19928F971A800AC5D1C /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
@@ -188,7 +186,7 @@
 		3AC3E1EA28E690B800BFF455 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		3AC8E70228EA95F60086B8D4 /* BackgroundColorPallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorPallet.swift; sourceTree = "<group>"; };
 		3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingIndicatorGray.json; sourceTree = "<group>"; };
-		3AD12D9328CD960E00CF431C /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		3AD12D9328CD960E00CF431C /* RxImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxImageViewModel.swift; sourceTree = "<group>"; };
 		3AD12D9528CDA4C900CF431C /* MainWallpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWallpaperViewController.swift; sourceTree = "<group>"; };
 		3AD157852908E360001943CA /* MainContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewController.swift; sourceTree = "<group>"; };
 		3AE09A9828FC1B5B009530F9 /* BuiltInWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInWidgetViewController.swift; sourceTree = "<group>"; };
@@ -276,8 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				3A5E82B828C70A8E00C10AAC /* EditImageModel.swift */,
-				3AD12D9328CD960E00CF431C /* EditViewModel.swift */,
-				3A16865628E1FB49004090DA /* FilterModel.swift */,
+				3AD12D9328CD960E00CF431C /* RxImageViewModel.swift */,
 			);
 			path = EditModels;
 			sourceTree = "<group>";
@@ -691,7 +688,6 @@
 				3AAB432E2913978A009E3302 /* TestPreviewViewController.swift in Sources */,
 				3A20983D28EBCF0F0032FD78 /* WidgetTestVC.swift in Sources */,
 				3AE9DC0D28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld in Sources */,
-				3A16865728E1FB49004090DA /* FilterModel.swift in Sources */,
 				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,
 				3A2F307728F4134D00404721 /* MenuButton.swift in Sources */,
 				3A17665928C9DAFF006DE579 /* ViewModelForCocoa.swift in Sources */,
@@ -701,7 +697,7 @@
 				3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */,
 				3A26150428CB7E2B000D17A3 /* TestEditImageViewController.swift in Sources */,
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
-				3AD12D9428CD960E00CF431C /* EditViewModel.swift in Sources */,
+				3AD12D9428CD960E00CF431C /* RxImageViewModel.swift in Sources */,
 				3AE09A9D28FC3196009530F9 /* PlaceHolderCell.swift in Sources */,
 				3AD157862908E360001943CA /* MainContainerViewController.swift in Sources */,
 				3A42851128E9D7CE001C7032 /* BackgroundPickerView.swift in Sources */,

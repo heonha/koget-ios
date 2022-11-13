@@ -32,7 +32,7 @@ extension MainWallpaperViewController: PHPickerViewControllerDelegate {
                         let selectedImage = image as! UIImage
                         /// 선택된 사진을 업데이트합니다.
                         DispatchQueue.main.async {
-                            EditViewModel.shared.editingPhotoSubject.onNext(selectedImage)
+                            RxImageViewModel.shared.mainImageSubject.onNext(selectedImage)
                             self.presentPhotoVC()
                         }
                     }
