@@ -31,7 +31,6 @@ class CustomRulerView: UIView {
         return label
     }()
     
-    weak var delegate: RulerDelegate!
     
     init(title: String) {
         self.title = title
@@ -70,7 +69,6 @@ class CustomRulerView: UIView {
         mainView.addSubview(rulerView)
         rulerView.backgroundColor = .clear
         rulerView.translatesAutoresizingMaskIntoConstraints = false
-        rulerView.delegate = delegate
 
         mainView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
