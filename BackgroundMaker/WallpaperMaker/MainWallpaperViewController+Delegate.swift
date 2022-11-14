@@ -24,15 +24,10 @@ extension MainWallpaperViewController: UIImagePickerControllerDelegate {
             return
         }
         
-        
     }
-    
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    
 }
 
 
@@ -60,8 +55,9 @@ extension MainWallpaperViewController: UICollectionViewDelegate, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserWallpaperCell.reuseID, for: indexPath) as? UserWallpaperCell else {return UICollectionViewCell() }
         let item = myWallpaper[indexPath.item]
         
-        cell.imageView.image = UIImage(data: item.wallpaper!) ?? UIImage(named: "questionmark.circle")!
-
+        guard let wallpaper = item.wallpaper else { return UICollectionViewCell()}
+        
+        cell.imageView.image = UIImage(data: wallpaper) ?? UIImage(named: "questionmark.circle")!
         
         cell.backgroundColor = .white
         
@@ -78,6 +74,7 @@ extension MainWallpaperViewController: UICollectionViewDelegate, UICollectionVie
         let item = myWallpaper[indexPath.item]
 
         let vc = DetailWallpaperViewController(selected: item)
+        vc.delegate = self
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true)
         
@@ -113,5 +110,11 @@ extension MainWallpaperViewController: UICollectionViewDelegate, UICollectionVie
 }
 
 
+extension MainWallpaperViewController: DetailWallpaperViewControllerDelegate {
+    func userDeletedWallpaper() {
+        loadMyWallpapers()
+    }
+    
+}
 
 
