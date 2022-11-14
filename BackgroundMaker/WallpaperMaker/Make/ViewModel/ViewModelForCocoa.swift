@@ -47,7 +47,7 @@ struct ViewModelForCocoa {
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = backgroundColor
         button.isEnabled = isEnabled
-        makeLayerShadow(to: button.layer)
+        self.makeLayerShadow(to: button.layer)
 
         return button
     }
@@ -62,7 +62,7 @@ struct ViewModelForCocoa {
         button.backgroundColor = backgroundColor
         button.isEnabled = isEnabled
         button.addTarget(target, action: action, for: .touchDown)
-        makeLayerShadow(to: button.layer)
+        self.makeLayerShadow(to: button.layer)
 
         return button
     }
@@ -77,7 +77,7 @@ struct ViewModelForCocoa {
         button.setImage(image.withTintColor(.yellow, renderingMode: .alwaysOriginal), for: .selected)
         button.addAction(action, for: .touchUpInside)
 
-        makeLayerShadow(to: button.layer)
+        self.makeLayerShadow(to: button.layer)
         
         return button
     }
@@ -95,7 +95,7 @@ struct ViewModelForCocoa {
             button.addTarget(target, action: action!, for: .touchDown)
         }
 
-        makeLayerShadow(to: button.layer) // 그림자 추가
+        self.makeLayerShadow(to: button.layer) // 그림자 추가
         
         return button
     }
@@ -132,9 +132,7 @@ struct ViewModelForCocoa {
         let resizeHeight = (screenSize.height - imageHeight) / 2
         print(imageHeight)
  
-        // imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        // targetView.addSubview(imageView)
         
         imageView.snp.remakeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -144,15 +142,6 @@ struct ViewModelForCocoa {
         
     }
     
-    
-    func barButtonAction(function: Void) -> UIAction {
-        let action = UIAction { action in
-            function
-        }
-        return action
-    }
-    
-
     
     
     //MARK: - UIView + Utils
@@ -225,8 +214,8 @@ struct ViewModelForCocoa {
         button.setTitleColor(titleColor, for: .normal)
         button.addTarget(target, action: action, for: .touchDown)
         
-        ViewModelForCocoa.shared.cropCornerRadius(view: button)
-        ViewModelForCocoa.shared.makeLayerShadow(to: button.layer)
+        self.cropCornerRadius(view: button)
+        self.makeLayerShadow(to: button.layer)
         
         return button
     }

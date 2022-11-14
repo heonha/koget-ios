@@ -57,7 +57,9 @@ class WallpaperCoreData {
         saveData()
         loadData { [weak self] (wallpapers) in
             self?.wallpapers = wallpapers
-        }    }
+        }
+        
+    }
     
 }
 

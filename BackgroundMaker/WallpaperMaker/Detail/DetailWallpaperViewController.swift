@@ -10,11 +10,15 @@ import SnapKit
 import CoreData
 import Lottie
 
+protocol DetailWallpaperViewControllerDelegate {
+    func userDeletedWallpaper()
+}
+
 class DetailWallpaperViewController: UIViewController {
     
-    let coredataContext = CoreData.shared.persistentContainer.viewContext
-    
     private weak var selectedWallpaper: Wallpaper!
+    
+    var delegate: DetailWallpaperViewControllerDelegate?
     
     var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
     
@@ -154,11 +158,7 @@ class DetailWallpaperViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
-    
-    /// 사진을 디바이스에 저장하는 메소드입니다.
-    private func saveImageToAlbum(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageSaveHandler), nil)
-    }
+
     
     /// 사진 저장 처리결과를 Alert로 Present합니다.
     @objc func imageSaveHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
@@ -231,11 +231,7 @@ class DetailWallpaperViewController: UIViewController {
     
     
     @objc private func saveImage() {
-        if saveButton.alpha == 1 {
-            saveImageToAlbum(image: self.wallpaperView.image!)
-        } else {
-            return
-        }
+        UIImageWriteToSavedPhotosAlbum(self.wallpaperView.image!, self, #selector(imageSaveHandler), nil)
     }
     
     
@@ -304,6 +300,7 @@ class DetailWallpaperViewController: UIViewController {
 
     @objc func deleteButtonPressed() {
         WallpaperCoreData.shared.deleteData(data: self.selectedWallpaper)
+        delegate?.userDeletedWallpaper()
         self.dismiss(animated: true)
     }
     
@@ -312,7 +309,6 @@ class DetailWallpaperViewController: UIViewController {
         downArrowAnimation.snp.makeConstraints { make in
             make.height.equalTo(60)
             make.width.equalTo(60)
-
             make.centerX.equalToSuperview()
             make.bottom.equalTo(view).inset(8)
         }
@@ -338,9 +334,6 @@ class DetailWallpaperViewController: UIViewController {
         
 
     }
-    
-    
-
     
     private func addPanGesture(selector: Selector) {
         let gesture = UIPanGestureRecognizer(target: self, action: selector)

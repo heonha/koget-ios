@@ -28,15 +28,6 @@ class MakeWallpaperViewController: UIViewController {
     
     //MARK: - [Properties] RxSwift
     var disposeBag = DisposeBag()
-    //MARK: End RxSwift Init -
-    
-    //MARK: - 싱글톤 패턴 초기화
-    ///Singleton 객체들
-    // var editImageModel = EditImageModel.shared
-    // var rxImageViewModel = RxImageViewModel.shared
-    // var viewModelForCocoa = ViewModelForCocoa.shared
-    
-    //MARK: End Singleton Architectures -
     
     //MARK: - 이미지 뷰 관련 초기화
     var mainImageView = UIImageView() // 메인 이미지
@@ -121,10 +112,19 @@ class MakeWallpaperViewController: UIViewController {
     /// [배경화면 편집 뷰] 배경화면 컬러 선택기 초기화
     lazy var colorPickerView = BackgroundPickerView(target: self)
     
+    
+    lazy var hideViews = [self.bottomView,
+                     self.edgeRulerView,
+                     self.colorPickerView,
+                     self.trayRootView,
+                     self.traySubView,
+                     self.bgRulerView,
+                     self.traySubViewInView,
+    ]
 
     // 저장 버튼
     lazy var saveButton: UIButton = {
-        let action = UIAction { [weak self] _ in self?.saveImage() }
+        let action = UIAction {  _ in self.saveImage() }
         let button = ViewModelForCocoa.shared.makeButtonWithTitle(
             title: "저장", action: action, target: self)
         return button
@@ -132,7 +132,7 @@ class MakeWallpaperViewController: UIViewController {
     
     // 취소 버튼
     lazy var cancelButton: UIButton = {
-        let action = UIAction {  [weak self] _ in self?.backButtonTapped() }
+        let action = UIAction { _ in self.backButtonTapped() }
         let button = ViewModelForCocoa.shared.makeButtonWithTitle(
             title: "취소", action: action, target: self)
         return button
@@ -328,7 +328,7 @@ class MakeWallpaperViewController: UIViewController {
     /// 선택한 이미지를 가져오고 뷰에 반영합니다.
     func setPickedImage() {
         RxImageViewModel.shared.mainImageSubject
-            .subscribe { [weak self] image in
+            .subscribe { [weak self] (image) in
                 guard let image = image else { return }
                 
                 DispatchQueue.main.async {
@@ -403,25 +403,20 @@ class MakeWallpaperViewController: UIViewController {
     }
     
 
-    
-    /// 배경화면 저장 시 숨길 뷰들을 리턴합니다.
-    func getHideViews() -> [UIView] {
-        let hideViews = [self.bottomView, self.edgeRulerView, self.colorPickerView, self.trayRootView, self.traySubView]
-        return hideViews
-    }
-    
     /// 현재 뷰를 캡쳐하고 그 이미지를 앨범에 저장하는 메소드입니다.
     @objc func saveImage() {
+ 
         if let image = EditImageModel.shared
-            .takeScreenViewCapture(
-            withoutView: getHideViews(), target: self) {
+            .takeScreenViewCapture(withoutView: self.hideViews, target: self) {
+            
             saveImageToAlbum(image: image)
+            
         }
     }
     
     /// 현재 뷰를 캡쳐하고 그 이미지를 공유합니다.
     @objc func shareImageTapped() {
-        if let image = EditImageModel.shared.takeScreenViewCapture(withoutView: getHideViews(), target: self) {
+        if let image = EditImageModel.shared.takeScreenViewCapture(withoutView: self.hideViews, target: self) {
             EditImageModel.shared.shareImageButton(image: image, target: self)
         }
     }
