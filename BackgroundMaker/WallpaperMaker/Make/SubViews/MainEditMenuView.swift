@@ -35,7 +35,6 @@ class MainEditMenuView: UIView {
         self.parentVC = target
         let screenSize = UIScreen.main.bounds
         
-        
         super.init(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: height))
 
         setupContentView(view: contentView)
@@ -47,14 +46,6 @@ class MainEditMenuView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
-    //MARK: - Layout Subview
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        
-    }
-    
     //MARK: END Layout Subview -
     
     /// 컨텐츠의 배경 뷰를 만듭니다.

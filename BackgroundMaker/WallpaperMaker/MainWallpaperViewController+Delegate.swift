@@ -24,7 +24,6 @@ extension MainWallpaperViewController: PHPickerViewControllerDelegate {
         if let itemProvider = results.first?.itemProvider {
             if itemProvider.canLoadObject(ofClass: UIImage.self) {
                 itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
-                    guard let self = self else {return}
                     if let error = error {
                         print("사진 LoadObject Error : \(error)")
                         picker.dismiss(animated: true)
@@ -33,10 +32,12 @@ extension MainWallpaperViewController: PHPickerViewControllerDelegate {
                         /// 선택된 사진을 업데이트합니다.
                         DispatchQueue.main.async {
                             RxImageViewModel.shared.mainImageSubject.onNext(selectedImage)
-                            self.presentPhotoVC()
+                            self?.presentPhotoVC()
                         }
                     }
                 }
+                
+                
             }
         } else {
             print("이미지 선택 오류")
@@ -91,7 +92,6 @@ extension MainWallpaperViewController: UICollectionViewDelegate, UICollectionVie
         let item = myWallpaper[indexPath.item]
 
         let vc = DetailWallpaperViewController(selected: item)
-        vc.delegate = self
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true)
         
@@ -126,16 +126,6 @@ extension MainWallpaperViewController: UICollectionViewDelegate, UICollectionVie
     
 }
 
-extension MainWallpaperViewController: DetailWallpaperViewControllerDelegate {
-    func detailViewWillDisappear() {
-        self.loadMyWallpapers()
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.5) {
-                self.wallpaperCV.reloadData()
-            }
-        }
-    }
-}
 
 
 
