@@ -10,12 +10,13 @@ import SnapKit
 import RxSwift
 import CoreData
 import SwiftUI
+import Lottie
 
 /**
  `HomeViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
  >
  */
-class MainWallpaperViewController: UIViewController, UINavigationControllerDelegate {
+class MainWallpaperViewController: UIViewController {
     
     // MARK: Wallpaper Maker 초기화
     // "여기를 눌러 사진을 추가하세요" 문구 및 투명 버튼을 통해 Photo Library 띄우는 역할
@@ -51,6 +52,24 @@ class MainWallpaperViewController: UIViewController, UINavigationControllerDeleg
     /// 사진 선택을 했는지 확인하는 Subject
     var isSelected = BehaviorSubject<Bool?>(value: nil)
     let disposeBag = DisposeBag()
+    let loadingIndicator: LottieAnimationView = {
+        let lottie = LottieAnimationView(name: "LoadingIndicatorGray")
+        lottie.translatesAutoresizingMaskIntoConstraints = false
+        lottie.contentMode = .scaleAspectFit
+        lottie.loopMode = .loop
+        lottie.animationSpeed = 1
+        lottie.alpha = 0
+        return lottie
+    }()
+    let loadingIndecatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.alpha = 1
+        
+        return view
+    }()
+    
     
     //MARK: - LifeCycles
     override func viewDidLoad() {
@@ -60,22 +79,29 @@ class MainWallpaperViewController: UIViewController, UINavigationControllerDeleg
         configureMainView()
         configureBGMakerButton()
         configurePhotoCV()
+        configureLoadingIndicator()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadMyWallpapers()
+        hideLoadingIndicator()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
     }
     
     
     private func configureMainView() {
         view.backgroundColor = AppColors.blackDarkGrey
 
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
 
@@ -98,6 +124,38 @@ class MainWallpaperViewController: UIViewController, UINavigationControllerDeleg
                 self?.wallpaperCV.reloadData()
             }
         }
+    }
+    
+    private func configureLoadingIndicator() {
+        let bounds: CGFloat = 150
+        
+        view.addSubview(loadingIndecatorView)
+        ViewModelForCocoa.shared.addBlurToView(targetView: loadingIndecatorView)
+        loadingIndecatorView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        view.addSubview(loadingIndicator)
+        loadingIndicator.snp.makeConstraints { make in
+            make.centerX.centerY.equalTo(view)
+            make.height.width.equalTo(bounds)
+        }
+        
+    }
+    
+    
+    func hideLoadingIndicator() {
+        loadingIndicator.alpha = 0
+        loadingIndecatorView.alpha = 0
+        self.tabBarController?.tabBar.isHidden = false
+        loadingIndicator.stop()
+    }
+    
+    func showLoadingIndicator() {
+        loadingIndicator.alpha = 1
+        loadingIndecatorView.alpha = 0.8
+        self.tabBarController?.tabBar.isHidden = true
+        loadingIndicator.play()
     }
     
 
@@ -222,6 +280,7 @@ class MainWallpaperViewController: UIViewController, UINavigationControllerDeleg
         let photoVC = MakeWallpaperViewController()
         photoVC.modalPresentationStyle = .fullScreen
         self.present(photoVC, animated: false)
+        self.showLoadingIndicator()
     }
     
 
@@ -233,9 +292,6 @@ extension MainWallpaperViewController {
     
     /// PickerViewController를 구성하고 반환하는 메소드입니다. PHPicker 사진 선택기에 대한 Config, Delegate 를 정의합니다.
     func makePHPickerVC() -> UIImagePickerController {
-        // var config = PHPickerConfiguration()
-        // config.filter = .images // 가져올 라이브러리 필터
-        // config.selectionLimit = 1 // 선택할 수 있는 최대 갯수
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
         picker.allowsEditing = false

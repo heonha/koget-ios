@@ -30,7 +30,8 @@ class MainContainerViewController: SwipeableTabBarController {
     // MARK: Swipe Library 구성
     private func configureSwipeableTabBar() {
         swipeAnimatedTransitioning?.animationType = SwipeAnimationType.sideBySide
-        swipeAnimatedTransitioning?.animationDuration = 0.25
+        swipeAnimatedTransitioning?.animationDuration = 0.15
+        tapAnimatedTransitioning = nil
     }
     
     // MARK: Contents 구성

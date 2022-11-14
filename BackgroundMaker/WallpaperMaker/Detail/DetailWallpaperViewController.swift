@@ -146,7 +146,7 @@ class DetailWallpaperViewController: UIViewController {
         configureShowButton()
         configureDownArrow()
         configureSaveButton()
-        setBlurButtonView()
+        setBlurButtonView(targetView: buttonBlurView)
         addPanGesture(selector: #selector(panGestureRecognizerHandler))
     }
     
@@ -320,18 +320,17 @@ class DetailWallpaperViewController: UIViewController {
 
     }
     
-    func setBlurButtonView() {
+    func setBlurButtonView(targetView: UIView) {
         let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         blurView.translatesAutoresizingMaskIntoConstraints = false
         blurView.alpha = 0.5
-        buttonBlurView.insertSubview(blurView, at: 0)
+        targetView.insertSubview(blurView, at: 0)
         blurView.snp.makeConstraints { make in
-            make.edges.equalTo(buttonBlurView)
+            make.edges.equalTo(targetView)
         }
         
         blurView.layer.cornerRadius = 10.0
         blurView.clipsToBounds = true
-        
 
     }
     
