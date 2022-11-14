@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 import RxSwift
-import PhotosUI
 import CoreData
 import SwiftUI
 
@@ -16,7 +15,7 @@ import SwiftUI
  `HomeViewController는 편집할 이미지를 가져온 후 편집할 수 있는 RootVC입니다.`
  >
  */
-class MainWallpaperViewController: UIViewController {
+class MainWallpaperViewController: UIViewController, UINavigationControllerDelegate {
     
     // MARK: Wallpaper Maker 초기화
     // "여기를 눌러 사진을 추가하세요" 문구 및 투명 버튼을 통해 Photo Library 띄우는 역할
@@ -233,11 +232,13 @@ class MainWallpaperViewController: UIViewController {
 extension MainWallpaperViewController {
     
     /// PickerViewController를 구성하고 반환하는 메소드입니다. PHPicker 사진 선택기에 대한 Config, Delegate 를 정의합니다.
-    func makePHPickerVC() -> PHPickerViewController {
-        var config = PHPickerConfiguration()
-        config.filter = .images // 가져올 라이브러리 필터
-        config.selectionLimit = 1 // 선택할 수 있는 최대 갯수
-        let picker = PHPickerViewController(configuration: config)
+    func makePHPickerVC() -> UIImagePickerController {
+        // var config = PHPickerConfiguration()
+        // config.filter = .images // 가져올 라이브러리 필터
+        // config.selectionLimit = 1 // 선택할 수 있는 최대 갯수
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = false
         return picker
     }
     
