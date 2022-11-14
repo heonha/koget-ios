@@ -263,5 +263,19 @@ struct ViewModelForCocoa {
         return imageSize
     }
     
+    func addBlurToView(targetView: UIView) {
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.alpha = 0.5
+        targetView.insertSubview(blurView, at: 0)
+        blurView.snp.makeConstraints { make in
+            make.edges.equalTo(targetView)
+        }
+        
+        blurView.layer.cornerRadius = 10.0
+        blurView.clipsToBounds = true
+
+    }
+    
 
 }

@@ -12,14 +12,14 @@ import RxSwift
 
 //MARK: - Photo Picker 관련 응답을 받는 PHPickerController Delegate 구성
 
-extension MainWallpaperViewController: UIImagePickerControllerDelegate {
+extension MainWallpaperViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             RxImageViewModel.shared.mainImageSubject.onNext(image)
             picker.dismiss(animated: true, completion: nil)
-            presentPhotoVC()
+            self.presentPhotoVC()
         } else {
             return
         }
@@ -27,6 +27,7 @@ extension MainWallpaperViewController: UIImagePickerControllerDelegate {
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+        self.hideLoadingIndicator() 
     }
 }
 
