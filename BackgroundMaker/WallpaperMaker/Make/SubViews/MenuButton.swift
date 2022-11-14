@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import SwiftUI
+// import SwiftUI
 
 
 
@@ -133,10 +133,10 @@ class MenuButton: UIView {
 }
 
 
-struct MenuButton_Previews: PreviewProvider {
-    static var previews: some View {
-        MakeWallpaperViewController_Representable()
-            .edgesIgnoringSafeArea(.all)
-            .previewInterfaceOrientation(.portrait)
-    }
-}
+// struct MenuButton_Previews: PreviewProvider {
+//     static var previews: some View {
+//         MakeWallpaperViewController_Representable()
+//             .edgesIgnoringSafeArea(.all)
+//             .previewInterfaceOrientation(.portrait)
+//     }
+// }

@@ -62,20 +62,6 @@ extension MakeWallpaperViewController: RulerDelegate {
                 RxImageViewModel.shared.backgroundImageSubject.onNext(bluredImg)
                 
                 self.bgRulerViewValue = value
-                
-            // }
-            // else {
-            //
-            //     var sourceImage = UIImage()
-            //     RxImageViewModel.shared.sourcePhoto
-            //         .subscribe { image in
-            //         sourceImage = image ?? UIImage(named: "questionmark.circle")!
-            //     }.dispose()
-            //
-            //     let image = EditImageModel.shared.makeBlurImage(image: sourceImage, radius: 0)
-            //     RxImageViewModel.shared.backgroundImageSubject.onNext(image)
-            //
-            // }
         }
     }
 }

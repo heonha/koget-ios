@@ -10,17 +10,11 @@ import SnapKit
 import CoreData
 import Lottie
 
-protocol DetailWallpaperViewControllerDelegate {
-    func detailViewWillDisappear()
-}
-
 class DetailWallpaperViewController: UIViewController {
     
     let coredataContext = CoreData.shared.persistentContainer.viewContext
     
-    private var selectedWallpaper: Wallpaper
-    
-    var delegate: DetailWallpaperViewControllerDelegate?
+    private weak var selectedWallpaper: Wallpaper!
     
     var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
     
@@ -41,8 +35,6 @@ class DetailWallpaperViewController: UIViewController {
     
     
     //MARK: - Properties
-    
-    
     
     private let viewTitle: UILabel = ViewModelForCocoa.shared.makeLabel(
         text: "미리보기",
@@ -122,8 +114,8 @@ class DetailWallpaperViewController: UIViewController {
     }()
     
     lazy var deleteButton: UIButton = {
-        let action = UIAction { _ in
-            self.deleteButtonPressed()
+        let action = UIAction { [weak self] _ in
+            self?.deleteButtonPressed()
         }
         
         let redColor = UIColor(red: 0.914, green: 0.243, blue: 0.208, alpha: 1.000)
@@ -161,7 +153,6 @@ class DetailWallpaperViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.detailViewWillDisappear()
     }
     
     /// 사진을 디바이스에 저장하는 메소드입니다.
@@ -349,11 +340,7 @@ class DetailWallpaperViewController: UIViewController {
     }
     
     
-    
-}
 
-
-extension DetailWallpaperViewController {
     
     private func addPanGesture(selector: Selector) {
         let gesture = UIPanGestureRecognizer(target: self, action: selector)

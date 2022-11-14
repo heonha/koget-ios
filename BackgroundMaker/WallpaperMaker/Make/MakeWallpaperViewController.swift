@@ -11,7 +11,7 @@ import PhotosUI
 import RxSwift
 import RxCocoa
 import RulerView
-import SwiftUI
+// import SwiftUI
 
 
 enum RulerViewSwitch: String {
@@ -28,14 +28,13 @@ class MakeWallpaperViewController: UIViewController {
     
     //MARK: - [Properties] RxSwift
     var disposeBag = DisposeBag()
-    var nilDisposeBag = DisposeBag()
     //MARK: End RxSwift Init -
     
     //MARK: - 싱글톤 패턴 초기화
     ///Singleton 객체들
-    // var imageEditModel = EditImageModel.shared
-    // var imageViewModel = EditViewModel.shared
-    // var viewModel = ViewModelForCocoa.shared
+    // var editImageModel = EditImageModel.shared
+    // var rxImageViewModel = RxImageViewModel.shared
+    // var viewModelForCocoa = ViewModelForCocoa.shared
     
     //MARK: End Singleton Architectures -
     
@@ -96,7 +95,11 @@ class MakeWallpaperViewController: UIViewController {
     }()
     
     /// `Tray View` : 기능버튼들이 들어갈 하단 뷰입니다.
-    lazy var bottomView = MainEditMenuView(height: 60, target: self)
+    lazy var bottomView: MainEditMenuView = {
+        let mv = MainEditMenuView(height: 60, target: self)
+        mv.parentVC = self
+        return mv
+    }()
     
     //MARK: 하단 서브뷰1
     /// 상하단 흐림 RulerView 초기화
@@ -426,10 +429,10 @@ class MakeWallpaperViewController: UIViewController {
     /// 닫기 버튼을 탭했을때의 동작입니다. 사용자에게 편집을 중단 할 것인지 묻는 알림창을 띄웁니다.
     @objc func backButtonTapped() {
         let alert = UIAlertController(title: "이미지의 편집을 중단하고 첫화면으로 이동합니다.", message: "만약 저장하지 않으셨다면 우선 저장해주세요.", preferredStyle: .alert)
-        let apply = UIAlertAction(title: "첫 화면 가기", style: .default) { _ in
+        let apply = UIAlertAction(title: "첫 화면 가기", style: .default) { [weak self] _ in
             RxImageViewModel.shared.mainImageSubject.onNext(nil)
             RxImageViewModel.shared.backgroundImageSubject.onNext(nil)
-            self.dismiss(animated: true)
+            self?.dismiss(animated: true)
         }
         
         let cancel = UIAlertAction(title: "취소", style: .default)
@@ -444,17 +447,17 @@ class MakeWallpaperViewController: UIViewController {
     // 메인 이미지 구독
     func mainImageRxSubscribe() {
         
-        RxImageViewModel.shared.mainImageObservable.subscribe { (image) in
+        RxImageViewModel.shared.mainImageObservable.subscribe { [weak self] (image) in
             print("mainImageObservable : 이미지를 가져옵니다.")
 
             DispatchQueue.main.async {
-                self.mainImageView.image = image
+                self?.mainImageView.image = image
                 
                 if image != nil {
-                    self.resizeImageView()
+                    self?.resizeImageView()
                 }
                 
-                self.sourceImage = image!
+                self?.sourceImage = image!
                 let bgImage = EditImageModel.shared.makeBlurImage(image: image!, radius: 15)
                 RxImageViewModel.shared.backgroundImageSubject.onNext(bgImage)
 
@@ -476,9 +479,9 @@ class MakeWallpaperViewController: UIViewController {
             .skip(until: RxImageViewModel.shared.backgroundImageTrigger)
             .debounce(.milliseconds(150), scheduler: MainScheduler.asyncInstance)
             .distinctUntilChanged()
-            .subscribe { image in
+            .subscribe { [weak self] (image) in
                 print("backgroundImage Observable : 이미지가 변경되었습니다.")
-                    self.bgImageView.image = image
+                    self?.bgImageView.image = image
         } onError: { error in
             print("backgroundImage Subject Error : \(error.localizedDescription)")
         } onCompleted: {
@@ -491,33 +494,33 @@ class MakeWallpaperViewController: UIViewController {
     
 }
 
-
-// MARK: Preview Providers
-
-struct MakeWallpaperViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        MakeWallpaperViewController_Representable().edgesIgnoringSafeArea(.all).previewInterfaceOrientation(.portrait)
-    }
-}
-
-struct MakeWallpaperViewController_Representable: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
-        
-        let sampleImage = UIImage(named: "testImage")!
-        RxImageViewModel.shared.mainImageSubject.onNext(sampleImage)
-
-        let photoView = MakeWallpaperViewController()
-
-        // MakeWallpaperViewController VC
-        let viewer = photoView
-        
-        return viewer
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        
-    }
-    
-    typealias UIViewControllerType = UIViewController
-}
+//
+// // MARK: Preview Providers
+//
+// struct MakeWallpaperViewController_Previews: PreviewProvider {
+//     static var previews: some View {
+//         MakeWallpaperViewController_Representable().edgesIgnoringSafeArea(.all).previewInterfaceOrientation(.portrait)
+//     }
+// }
+//
+// struct MakeWallpaperViewController_Representable: UIViewControllerRepresentable {
+//     func makeUIViewController(context: Context) -> UIViewController {
+//
+//         let sampleImage = UIImage(named: "testImage")!
+//         RxImageViewModel.shared.mainImageSubject.onNext(sampleImage)
+//
+//         let photoView = MakeWallpaperViewController()
+//
+//         // MakeWallpaperViewController VC
+//         let viewer = photoView
+//
+//         return viewer
+//     }
+//
+//     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+//
+//     }
+//
+//     typealias UIViewControllerType = UIViewController
+// }
 

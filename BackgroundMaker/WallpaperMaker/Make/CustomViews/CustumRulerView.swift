@@ -13,10 +13,7 @@ import SwiftUI
 class CustomRulerView: UIView {
     
     let view = UIView()
-    let rulerView: RulerView = {
-        let rv = RulerView()
-        return rv
-    }()
+    let rulerView: RulerView = RulerView()
     
     let mainView = UIView()
     var title: String!

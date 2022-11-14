@@ -198,13 +198,23 @@ class MainWallpaperViewController: UIViewController {
     
     //MARK: - Selectors
     
-    /// 이미지 선택기를 띄웁니다.
+    ///이미지 선택기를 띄웁니다.
     @objc func presentPHPickerVC() {
         let picker = makePHPickerVC()
+        picker.delegate = self
         self.present(picker, animated: true)
-        
+    
     }
     
+    // For UnitTest
+    // @objc func presentPHPickerVC() {
+    //     let image = UIImage(named: "testImage")!
+    //     RxImageViewModel.shared.mainImageSubject.onNext(image)
+    //     let photoVC = MakeWallpaperViewController()
+    //     photoVC.modalPresentationStyle = .fullScreen
+    //     self.present(photoVC, animated: false)
+    // }
+    //
     
     //MARK: - Methods
     
@@ -214,6 +224,8 @@ class MainWallpaperViewController: UIViewController {
         photoVC.modalPresentationStyle = .fullScreen
         self.present(photoVC, animated: false)
     }
+    
+
     
 }
 
@@ -226,7 +238,6 @@ extension MainWallpaperViewController {
         config.filter = .images // 가져올 라이브러리 필터
         config.selectionLimit = 1 // 선택할 수 있는 최대 갯수
         let picker = PHPickerViewController(configuration: config)
-        picker.delegate = self
         return picker
     }
     
