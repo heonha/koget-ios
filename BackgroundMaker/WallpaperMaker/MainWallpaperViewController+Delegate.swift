@@ -62,7 +62,18 @@ extension MainWallpaperViewController: UICollectionViewDelegate, UICollectionVie
         
         cell.backgroundColor = .white
         
+        
+        
         return cell
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        wallpaperCV.allowsMultipleSelection = editing
+        wallpaperCV.indexPathsForVisibleItems.forEach { (indexPath) in
+            let cell = wallpaperCV.cellForItem(at: indexPath) as! UserWallpaperCell
+            cell.isEditing = editing
+        }
     }
     
     
@@ -72,17 +83,47 @@ extension MainWallpaperViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = myWallpaper[indexPath.item]
 
-        let vc = DetailWallpaperViewController(selected: item)
-        vc.delegate = self
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true)
+        
+        if !self.isEditing {
+            let item = myWallpaper[indexPath.item]
+
+            let vc = DetailWallpaperViewController(selected: item)
+            vc.delegate = self
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true)
+            
+        } else {
+            
+            let cell = collectionView.cellForItem(at: indexPath) as! UserWallpaperCell
+            cell.checkButton.isSelected = true
+            print("\(collectionView.indexPathsForSelectedItems)")
+
+            self.selectedIndexs = collectionView.indexPathsForSelectedItems ?? []
+            
+        }
+
         
     }
     
-    // MARK: FlowLayout Delegate
     
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        if let selectedItems = collectionView.indexPathsForSelectedItems {
+            if selectedItems.contains(indexPath) {
+                collectionView.deselectItem(at: indexPath, animated: true)
+                let cell = collectionView.cellForItem(at: indexPath) as! UserWallpaperCell
+                cell.checkButton.isSelected = false
+                
+                self.selectedIndexs = collectionView.indexPathsForSelectedItems ?? []
+
+                return false
+            }
+        }
+        return true
+    }
+    
+    
+    // MARK: - FlowLayout Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if myWallpaper.count == 0 {
@@ -107,6 +148,10 @@ extension MainWallpaperViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
     }
+    
+
+    
+    
     
 }
 

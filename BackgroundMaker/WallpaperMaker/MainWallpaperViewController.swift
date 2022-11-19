@@ -41,11 +41,12 @@ class MainWallpaperViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .systemBackground
         
+        
         return cv
     }()
     
     var myWallpaper: [Wallpaper] = []
-
+    var selectedIndexs: [IndexPath] = []
     
     //MARK: - Models
     
@@ -70,11 +71,17 @@ class MainWallpaperViewController: UIViewController {
         return view
     }()
     
+    private lazy var editButton: UIBarButtonItem = {
+        let barBtn = ViewModelForCocoa.shared.makeBarButtonWithSystemImage(systemName: "list.bullet.circle", selector: #selector(editButtonTapped), target: self)
+        return barBtn
+    }()
+    
     
     //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "배경화면"
+        self.navigationItem.rightBarButtonItem = editButton
         
         configureMainView()
         configureBGMakerButton()
@@ -102,6 +109,40 @@ class MainWallpaperViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    @objc private func editButtonTapped(_ sender: UIBarButtonItem) {
+        if self.isEditing == false {
+            self.isEditing = true
+            sender.image = UIImage(systemName: "trash.circle.fill")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+
+            
+        } else {
+            self.isEditing = false
+            sender.image = UIImage(systemName: "list.bullet.circle")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+            if self.selectedIndexs != [] {
+                print("이 것이 지워집니다 -> \(selectedIndexs)")
+                for index in selectedIndexs {
+                    self.myWallpaper.remove(at: index.item)
+                }
+                deselectAllItems(target: wallpaperCV, animated: true)
+                
+                self.wallpaperCV.reloadData()
+
+            }
+            self.selectedIndexs = []
+
+
+
+            }
+            
+
+        
+    }
+    
+    func deselectAllItems(target: UICollectionView, animated: Bool) {
+        guard let selectedItems = target.indexPathsForSelectedItems else { return }
+        for indexPath in selectedItems { target.deselectItem(at: indexPath, animated: animated) }
     }
     
 
