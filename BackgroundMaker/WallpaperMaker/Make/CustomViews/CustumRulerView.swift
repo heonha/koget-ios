@@ -10,7 +10,7 @@ import RulerView
 import SnapKit
 import SwiftUI
 
-class CustomRulerView: UIView {
+final class CustomRulerView: UIView {
     
     let view = UIView()
     let rulerView: RulerView = RulerView()

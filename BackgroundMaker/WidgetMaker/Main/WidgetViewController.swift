@@ -7,13 +7,16 @@
 
 import UIKit
 import SnapKit
-import CoreData
-import SwiftUI
 import WidgetKit
+import SwiftUI
+
+import RxSwift
+import RxCocoa
+
+import CoreData
+
 
 class WidgetViewController: UIViewController {
-    
-    let coredataContext = CoreData.shared.persistentContainer.viewContext
     
     lazy var widgetMakeButton: UIView = {
         var view = UIView()
@@ -25,8 +28,18 @@ class WidgetViewController: UIViewController {
         return view
     }()
     
+    var disposeBag = DisposeBag()
+    
     //MARK: - CoreData Properties
-    var deepLinkWidgets: [DeepLink] = []
+    
+    var deepLinkWidgets = [DeepLink]()
+    
+    lazy var deepLinkWidgetObserver = WidgetCoreData.shared.widgets
+        .subscribe { (widgets) in
+        self.deepLinkWidgets = widgets
+    }
+
+
     
     //MARK: - Properties
     
@@ -81,7 +94,7 @@ class WidgetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        deepLinkWidgetObserver.disposed(by: disposeBag)
         // isFirstRunning()
         
         view.backgroundColor = AppColors.blackDarkGrey
@@ -94,17 +107,17 @@ class WidgetViewController: UIViewController {
         }
         
         
-        loadData()
+        WidgetCoreData.shared.loadData()
         configureNavigation()
         configureWidgetMakerButton()
         configureDeepLinkWidget()
-        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        widgetGetData()
+        print("View Will Appear")
+        deepLinkCollectionView.reloadData()
     }
     
     //MARK: - Selectors
@@ -115,34 +128,7 @@ class WidgetViewController: UIViewController {
         present(vc, animated: true)
     }
     
-    //MARK: Testing
-    func widgetGetData() {
-        WidgetCenter.shared.getCurrentConfigurations { (result) in
-            switch result {
-            case .success(let widgets):
-                for info in widgets {
-                    print("---- Widget Information ----")
-
-                    print("info Kind : \(info.kind)")
-                    print("info Family : \(info.family)")
-                    print("info Config : \(String(describing: info.configuration))")
-                    
-                    // info Config : Optional({
-                    //     app = <INCustomObject: 0x6000016005f0> {
-                    //         pronunciationHint = <null>;
-                    //         displayString = instagram;
-                    //         subtitleString = <null>;
-                    //         identifier = instagram;
-                    //         alternativeSpeakableMatches = <null>;
-                    //     };
-                    // })
-                }
-            case.failure(let error):
-                print(" Widget get current Conf. Error: \(error.localizedDescription)")
-            }
-        }
-    }
-    
+   
 
     
     
@@ -388,15 +374,26 @@ extension WidgetViewController: UICollectionViewDelegateFlowLayout {
 // MARK: Update Widget Data (Delegate : Edit VC -> Self)
 extension WidgetViewController: EditWidgetViewControllerDelegate {
     func deleteDeepLink(data: DeepLink) {
-        self.deleteData(data: data)
+        WidgetCoreData.shared.deleteData(data: data)
+        deepLinkCollectionView.reloadData()
     }
     
     func editingSucessful(data: DeepLink) {
-        saveData()
-        loadData()
+        WidgetCoreData.shared.saveData()
+        WidgetCoreData.shared.loadData()
         self.deepLinkCollectionView.reloadData()
     }
     
+}
+
+extension WidgetViewController: AddWidgetViewControllerDelegate {
+    
+        /// AddWidgetVC로 받은 Delegate 프로토콜 메소드입니다.
+    func addDeepLinkWidget(widget: DeepLink) {
+        self.deepLinkWidgets.append(widget)
+        WidgetCoreData.shared.saveData()
+        WidgetCoreData.shared.loadData()
+    }
 }
 
 

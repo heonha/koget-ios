@@ -16,8 +16,6 @@ protocol EditWidgetViewControllerDelegate {
 
 class EditWidgetViewController: UIViewController {
     
-    let coredataContext = CoreData.shared.persistentContainer.viewContext
-    
     private var selectedWidget: DeepLink
     
     var delegate: EditWidgetViewControllerDelegate?
@@ -212,8 +210,8 @@ class EditWidgetViewController: UIViewController {
     @objc private func deleteButtonTapped(sender: UIButton) {
         
         let delete = UIAlertAction(title: "삭제하기", style: .default) { _ in
-            self.dismiss(animated: true)
             self.delegate?.deleteDeepLink(data: self.selectedWidget)
+            self.dismiss(animated: true)
         }
         
         let cancel = UIAlertAction(title: "취소", style: .default)
