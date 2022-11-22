@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Photos
+import SwiftUI
 
 // CoreData 추가하기
 // [v] Data Model 만들기
@@ -20,8 +21,6 @@ protocol AddWidgetViewControllerDelegate {
 
 class AddWidgetViewController: UIViewController {
     
-    private let coredataContext = CoreData.shared.persistentContainer.viewContext
-
     var delegate: AddWidgetViewControllerDelegate?
     
     //MARK: - View Properties
@@ -36,7 +35,7 @@ class AddWidgetViewController: UIViewController {
     
     private let iconPlaceHolderImageView: UIImageView = {
         let iv = ViewModelForCocoa.shared.makeImageView(
-            image: UIImage(named: "plus.circle"), contentMode: .scaleAspectFit
+            image: UIImage(systemName: "photo.circle.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.darkGray), contentMode: .scaleAspectFit
         )
         ViewModelForCocoa.shared.makeLayerShadow(to: iv.layer)
 
@@ -126,7 +125,7 @@ class AddWidgetViewController: UIViewController {
         title: "돌아가기", backgroundColor: .darkGray)
     
     private lazy var builtInAppButton: UIButton = ViewModelForCocoa.shared.makeButtonForWidgetHandler(
-        target: self, action: #selector(showBuiltInList), title: "앱 리스트에서 불러오기")
+        target: self, action: #selector(showBuiltInList), title: "앱 선택하기")
 
     
     //MARK: - LifeCycle
@@ -191,15 +190,17 @@ class AddWidgetViewController: UIViewController {
                 deeplink += "://"
             }
             
-            let item = DeepLink(context: coredataContext)
+            let item = DeepLink(context: WidgetCoreData.shared.coredataContext)
             item.id = UUID()
             item.name = name
             item.image = img
             item.deepLink = deeplink
             item.addedDate = Date()
             
-            delegate?.addDeepLinkWidget(widget: item)
+            WidgetCoreData.shared.addDeepLinkWidget(widget: item)
+            WidgetCoreData.shared.saveData()
             self.dismiss(animated: true)
+
             
         } else {
             print("데이터 없음")
@@ -260,23 +261,17 @@ class AddWidgetViewController: UIViewController {
             make.height.equalTo(30)
         }
         
-        // Segment
-        let segmentHeight: CGFloat = 40
-        view.addSubview(segment)
-        segment.snp.makeConstraints { make in
-            make.top.equalTo(sampleIconTitle.snp.bottom).inset(-8)
-            make.leading.trailing.equalTo(view).inset(20)
-            make.height.equalTo(segmentHeight)
-        }
+
         
         // View
         view.addSubview(contentView)
         contentView.snp.makeConstraints { make in
-            make.top.equalTo(segment.snp.bottom).inset(-8)
+            make.top.equalTo(sampleIconTitle.snp.bottom).inset(-8)
             make.leading.trailing.equalTo(view)
             make.bottom.equalTo(view)
         }
         
+
     }
 
 
@@ -284,6 +279,8 @@ class AddWidgetViewController: UIViewController {
     //MARK: - Methods
     
     private func configureViewUI() {
+        
+        
 
         // Layout Values
         let insets: (top: CGFloat, leadingTrailing: CGFloat) = (16, 16)
@@ -294,13 +291,22 @@ class AddWidgetViewController: UIViewController {
         contentView.backgroundColor = AppColors.deepDarkGrey
         
         let iconImageViewHeight: CGFloat = UIScreen.main.bounds.width / 4
-
+        
+        contentView.addSubview(builtInAppButton)
         contentView.addSubview(iconPlaceHolderImageView)
         contentView.addSubview(iconImageView)
         contentView.addSubview(iconImageViewButton)
         
+        let segmentHeight: CGFloat = 40
+        builtInAppButton.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.top).inset(16)
+            make.leading.trailing.equalTo(view).inset(20)
+            make.height.equalTo(segmentHeight)
+        }
+        
+        
         iconPlaceHolderImageView.snp.makeConstraints { make in
-            make.top.equalTo(contentView).inset(insets.top)
+            make.top.equalTo(builtInAppButton.snp.bottom).inset(-insets.top)
             make.centerX.equalTo(contentView)
             make.height.equalTo(iconImageViewHeight)
             make.width.equalTo(iconImageViewHeight)
@@ -308,7 +314,7 @@ class AddWidgetViewController: UIViewController {
         
         
         iconImageView.snp.makeConstraints { make in
-            make.top.equalTo(contentView).inset(insets.top)
+            make.top.equalTo(builtInAppButton.snp.bottom).inset(-insets.top)
             make.centerX.equalTo(contentView)
             make.height.equalTo(iconImageViewHeight)
             make.width.equalTo(iconImageViewHeight)
@@ -333,7 +339,7 @@ class AddWidgetViewController: UIViewController {
         ViewModelForCocoa.shared.makeLayerShadow(to: nameTextField.layer)
 
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconImageView.snp.bottom).inset(-spacing)
+            make.top.equalTo(iconImageView.snp.bottom).inset(spacing)
             make.leading.trailing.equalTo(contentView).inset(insets.leadingTrailing)
             make.height.equalTo(labelHeight)
         }
@@ -382,12 +388,7 @@ class AddWidgetViewController: UIViewController {
             make.height.equalTo(buttonHeight)
         }
         
-        contentView.addSubview(builtInAppButton)
-        builtInAppButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(contentView).inset(insets.leadingTrailing)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(-contentAndButtonSpacing)
-            make.height.equalTo(buttonHeight)
-        }
+
         
     }
 }
@@ -447,3 +448,30 @@ extension AddWidgetViewController: BuiltInWidgetViewControllerDelegate {
     
     
 }
+// MARK: Preview Providers
+
+struct AddWidgetViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        AddWidgetViewController_Representable().edgesIgnoringSafeArea(.all).previewInterfaceOrientation(.portrait)
+    }
+}
+
+struct AddWidgetViewController_Representable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        
+        // Container VC
+        let viewer = UINavigationController(rootViewController: AddWidgetViewController())
+        
+        // PhotoVC
+        // let viewer = UINavigationController(rootViewController: MainPhotoViewController())
+        
+        return viewer
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        
+    }
+    
+    typealias UIViewControllerType = UIViewController
+}
+

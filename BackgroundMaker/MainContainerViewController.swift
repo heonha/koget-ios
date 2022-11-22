@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import SwipeableTabBarController
 
 class MainContainerViewController: SwipeableTabBarController {

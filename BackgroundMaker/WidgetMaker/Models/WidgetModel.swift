@@ -48,7 +48,7 @@ struct CustomWidgetInfo {
     let text: String?
 }
 
-class WidgetModel {
+struct WidgetModel {
     
     static let shared = WidgetModel()
     
