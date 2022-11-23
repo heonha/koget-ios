@@ -38,7 +38,6 @@ class AddWidgetViewController: UIViewController {
             image: UIImage(systemName: "photo.circle.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.darkGray), contentMode: .scaleAspectFit
         )
         ViewModelForCocoa.shared.makeLayerShadow(to: iv.layer)
-
         
         return iv
     }()
@@ -48,7 +47,6 @@ class AddWidgetViewController: UIViewController {
             image: nil, contentMode: .scaleAspectFit
         )
         ViewModelForCocoa.shared.makeLayerShadow(to: iv.layer)
-
         
         return iv
     }()
@@ -204,7 +202,6 @@ class AddWidgetViewController: UIViewController {
             
         } else {
             print("데이터 없음")
-            fatalError("데이터없음")
         }
         
  

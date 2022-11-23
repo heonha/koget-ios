@@ -122,10 +122,11 @@ class WidgetViewController: UIViewController {
     
     //MARK: - Selectors
     @objc func addBarButtonTapped(sender: UIBarButtonItem) {
-        let vc = AddWidgetViewController()
-        vc.delegate = self
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        // let vc = AddWidgetViewController()
+        // vc.delegate = self
+        let vc = UIHostingController(rootView: AddWidgetView())
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
    
