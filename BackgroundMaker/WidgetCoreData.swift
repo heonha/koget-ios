@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class WidgetCoreData {
+final class WidgetCoreData: ObservableObject {
     
     static let shared = WidgetCoreData()
     
