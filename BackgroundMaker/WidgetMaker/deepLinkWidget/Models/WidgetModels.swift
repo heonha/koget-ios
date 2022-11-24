@@ -12,7 +12,6 @@ import RxSwift
 
 final class WidgetModels: ObservableObject {
     
-    
     @Published var widgets: [DeepLink] = WidgetCoreData.shared.widgets.value
     @Published var widgetName: String = ""
     @Published var widgetURL: String = ""
@@ -23,5 +22,7 @@ final class WidgetModels: ObservableObject {
         self.widgetURL = selectedWidget.deepLink + "://"
         self.widgetImage = selectedWidget.image!
     }
+    
+
     
 }

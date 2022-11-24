@@ -31,7 +31,7 @@ struct BuiltInDeepLink {
     }
     
     mutating func getName() {
-        let langStr = Locale.current.languageCode
+        let langStr = Locale.current.language.languageCode?.identifier
         if langStr == "ko" {
             displayAppName = "\(appNameGlobal)"
             } else {
@@ -68,30 +68,6 @@ final class WidgetModel: ObservableObject {
 
     }
 
-
-    
-    //
-    // func searchImage(id: String) -> UIImage {
-    //
-    //
-    //     // 딥링크 앱의 배열을 가져온다.
-    //     let deepLinkApps = CoreData.shared.getStoredDataForDeepLink()!
-    //
-    //     var appImage = UIImage(named: "questionmark.circle")!
-    //
-    //     for apps in deepLinkApps {
-    //         if id == apps.id!.uuidString {
-    //             appImage = UIImage(data: apps.image!)!
-    //             return appImage
-    //         }
-    //     }
-    //     return appImage
-    // }
-    
-    // func testImage(id: String) -> UIImage? {
-    //     
-    //     return UIImage(named: id)
-    // }
     
     func debugIntent(data: String) {
         print("DebugIntent: \(data)")

@@ -7,17 +7,19 @@
 
 import SwiftUI
 import CoreData
+import RxSwift
 
 struct MainWidgetView: View {
     
-    // @State var deepLinkWidgets: [DeepLink] = WidgetModels().widgets
-    @State var deepLinkWidgets: [DeepLink] = WidgetModels().widgets
+    @State var deepLinkWidgets: [DeepLink] = []
+    var disposeBag = DisposeBag()
 
-    
     var body: some View {
         ZStack {
             NavigationView {
                 ZStack {
+                    Color(uiColor: AppColors.blackDarkGrey)
+                        .ignoresSafeArea()
                     VStack {
                         CreateWidgetButton()
                             .padding(.horizontal)
@@ -29,9 +31,18 @@ struct MainWidgetView: View {
                 .navigationTitle("위젯")
                 .navigationBarTitleDisplayMode(.inline)
             }
+            .tint(.white)
+        }.onAppear {
+            print("On Appear")
+            subscribeWidgetData()
         }
     }
-}
+    
+    func subscribeWidgetData() {
+        WidgetCoreData.shared.widgets.subscribe { (widgets) in
+            deepLinkWidgets = widgets
+        }.disposed(by: disposeBag)
+    }}
 
 struct MainWidgetView_Previews: PreviewProvider {
     static var previews: some View {
@@ -45,25 +56,30 @@ struct MainWidgetView_Previews: PreviewProvider {
 struct CreateWidgetButton: View {
     
     let deviceSize = UIScreen.main.bounds.size
+    @State var isPresent: Bool = false
 
     var body: some View {
-        Button {
-            
+        NavigationLink {
+            AddWidgetView()
         } label: {
-            HStack {
-                Image(systemName: "rectangle.stack.badge.plus")
-                    .renderingMode(.template)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-                    .tint(.gray)
-                Spacer()
-                Text("위젯 만들기")
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                    .font(.system(size: 20))
-                Spacer()
-            }.padding()
+                HStack {
+                    Image(systemName: "rectangle.stack.badge.plus")
+                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                        .tint(.gray)
+                    Spacer()
+
+                    Text("위젯 만들기")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .font(.system(size: 20))
+                    Spacer()
+            }
+            .padding()
+            .background(Color(uiColor: AppColors.normalDarkGrey))
+            .shadow(radius: 3)
         }
         .frame(width: deviceSize.width - 50, height: 70)
         .background(Color(uiColor: AppColors.deepDarkGrey))
@@ -107,6 +123,8 @@ struct WidgetScrollView: View {
             .frame(width: deviceSize.width - 32, height: 100)
             .background(Color(uiColor: AppColors.normalDarkGrey))
             .cornerRadius(10)
+            .shadow(radius: 3)
+
         }.padding(.horizontal)
     }
 }
