@@ -17,6 +17,8 @@ final class WidgetCoreData: ObservableObject {
     
     var widgets = BehaviorRelay<[DeepLink]>.init(value: [DeepLink]())
     
+    var disposeBag = DisposeBag()
+    
     private init() {
         loadData()
     }

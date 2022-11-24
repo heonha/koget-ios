@@ -134,7 +134,7 @@ struct EditWidgetView: View {
                     Button {
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
-                        Text("돌아가기")
+                        Text("닫기")
                             .foregroundColor(.white)
                             .fontWeight(.bold)
                             .font(.system(size: 17))
