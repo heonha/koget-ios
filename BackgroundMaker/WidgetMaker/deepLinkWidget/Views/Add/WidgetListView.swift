@@ -20,16 +20,6 @@ struct WidgetListView: View {
         ZStack {
             Color.init(uiColor: AppColors.normalDarkGrey)
             VStack {
-                // TextField(" 여기에 앱 이름을 입력하세요", text: $searchText)
-                //     .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
-                //     .background(Color.init(uiColor: AppColors.normalDarkGrey))
-                //     .cornerRadius(10)
-                //     .padding(.horizontal, 24)
-                //     .padding(.top, 12)
-                //     .onTapGesture {
-                //         hideKeyboard()
-                //     }
-                
                 NavigationView {
                     List(searchText.isEmpty ? builtInWidgets.data : builtInWidgets.searchResults, id: \.id) { widget in
                         Button {

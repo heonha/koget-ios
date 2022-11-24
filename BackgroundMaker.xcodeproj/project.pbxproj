@@ -230,10 +230,8 @@
 		3A08BCFB292FA7E700E09B3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3A0ADDB8292CC9DE006E8EA5 /* AddWidgetView.swift */,
-				3A0ADDBA292CEAF0006E8EA5 /* WidgetListView.swift */,
-				3ABFEFC0292F136B00455730 /* EditWidgetView.swift */,
-				3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */,
+				3A08BCFF292FBF0B00E09B3E /* Add */,
+				3A08BD00292FBF1B00E09B3E /* Edit */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +253,24 @@
 				3ABFEFC6292F481F00455730 /* TestCoreData.swift */,
 			);
 			path = Testing;
+			sourceTree = "<group>";
+		};
+		3A08BCFF292FBF0B00E09B3E /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				3A0ADDB8292CC9DE006E8EA5 /* AddWidgetView.swift */,
+				3A0ADDBA292CEAF0006E8EA5 /* WidgetListView.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		3A08BD00292FBF1B00E09B3E /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				3ABFEFC0292F136B00455730 /* EditWidgetView.swift */,
+				3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */,
+			);
+			path = Edit;
 			sourceTree = "<group>";
 		};
 		3A0F429E28C89742002F1CAD /* Extension+Utils */ = {

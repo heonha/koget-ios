@@ -11,7 +11,7 @@ import CoreData
 struct AddWidgetView: View {
     
     
-    @ObservedObject var viewModel = WidgetModels()
+    @StateObject var viewModel = WidgetModels()
     
     @State var iconImage: UIImage = UIImage(named: "plus.circle")!
     @State var alertMessage: LocalizedStringKey = "오류 발생"
@@ -116,6 +116,8 @@ struct AddWidgetView: View {
                 Spacer()
             }
         }
+     
+
     }
     
     func addWidget() {
@@ -128,7 +130,6 @@ struct AddWidgetView: View {
         item.addedDate = Date()
         
         WidgetCoreData.shared.addDeepLinkWidget(widget: item)
-        
     }
     
 }

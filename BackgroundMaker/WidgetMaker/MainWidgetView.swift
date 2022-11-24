@@ -63,7 +63,7 @@ struct CreateWidgetButton: View {
             AddWidgetView()
         } label: {
                 HStack {
-                    Image(systemName: "rectangle.stack.badge.plus")
+                    Image(systemName: "cursorarrow.and.square.on.square.dashed")
                         .renderingMode(.template)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
