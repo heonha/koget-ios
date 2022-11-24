@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A08BD03292FCA0900E09B3E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A08BD02292FCA0900E09B3E /* SettingView.swift */; };
 		3A0ADDB9292CC9DE006E8EA5 /* AddWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDB8292CC9DE006E8EA5 /* AddWidgetView.swift */; };
 		3A0ADDBB292CEAF0006E8EA5 /* WidgetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDBA292CEAF0006E8EA5 /* WidgetListView.swift */; };
 		3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */; };
@@ -121,6 +122,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3A08BD02292FCA0900E09B3E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		3A0ADDB8292CC9DE006E8EA5 /* AddWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWidgetView.swift; sourceTree = "<group>"; };
 		3A0ADDBA292CEAF0006E8EA5 /* WidgetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListView.swift; sourceTree = "<group>"; };
 		3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
@@ -271,6 +273,14 @@
 				3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */,
 			);
 			path = Edit;
+			sourceTree = "<group>";
+		};
+		3A08BD01292FC9E700E09B3E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3A08BD02292FCA0900E09B3E /* SettingView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		3A0F429E28C89742002F1CAD /* Extension+Utils */ = {
@@ -434,6 +444,7 @@
 				3AE386F828FBD5B70001979A /* CoreData */,
 				3A9EABB728E5DCB300ED2BF2 /* WallpaperMaker */,
 				3AC3E1E028E68A6D00BFF455 /* WidgetMaker */,
+				3A08BD01292FC9E700E09B3E /* Settings */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
 			path = BackgroundMaker;
@@ -712,6 +723,7 @@
 				3AC8E70328EA95F60086B8D4 /* BackgroundColorPallet.swift in Sources */,
 				3ABD50FF292945EB00F878AE /* WidgetCoreData.swift in Sources */,
 				3A2E21FB290F7BBE00E4F46A /* DetailWallpaperViewController.swift in Sources */,
+				3A08BD03292FCA0900E09B3E /* SettingView.swift in Sources */,
 				3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */,
 				3AE2551B290EA29D0045098E /* UserWallpaperCell.swift in Sources */,
 				3A0ADDB9292CC9DE006E8EA5 /* AddWidgetView.swift in Sources */,

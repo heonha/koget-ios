@@ -21,11 +21,22 @@ struct MainWidgetView: View {
                     Color(uiColor: AppColors.blackDarkGrey)
                         .ignoresSafeArea()
                     VStack {
-                        CreateWidgetButton()
-                            .padding(.horizontal)
-                            .padding(.bottom)
-                        WidgetScrollView(title: "딥 링크 위젯", deepLinkWidgets: $deepLinkWidgets)
-                        Spacer()
+                        ZStack {
+                            VStack {
+                            CreateWidgetButton()
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                                ZStack {
+                                    Color.black
+                                    VStack {
+                                        WidgetScrollView(title: "딥 링크 위젯", deepLinkWidgets: $deepLinkWidgets)
+                                            .padding(.top, 16)
+                                        Spacer()
+                                    }
+                                }
+                            }
+                        }
+       
                     }
                 }
                 .navigationTitle("위젯")
@@ -35,13 +46,20 @@ struct MainWidgetView: View {
         }.onAppear {
             print("On Appear")
             subscribeWidgetData()
+        }.onDisappear {
+            WidgetCoreData.shared.disposeBag = .init()
         }
     }
     
     func subscribeWidgetData() {
-        WidgetCoreData.shared.widgets.subscribe { (widgets) in
+        print("새로운 구독 시작")
+        WidgetCoreData.shared.widgets
+            .subscribe { (widgets) in
+                print("onNext")
             deepLinkWidgets = widgets
-        }.disposed(by: disposeBag)
+        } onDisposed: {
+            print("disposed")
+        }.disposed(by: WidgetCoreData.shared.disposeBag)
     }}
 
 struct MainWidgetView_Previews: PreviewProvider {
