@@ -39,17 +39,18 @@ class MainContainerViewController: SwipeableTabBarController {
     private func configureTabbarContrents() {
         
         let aVC = MainWallpaperViewController()
-        let bVC = WidgetViewController()
+        // let bVC = WidgetViewController()
+        let bVC = UIHostingController(rootView: MainWidgetView())
         
         // 하단 탭아이콘 구성.
         aVC.setTabBarImage(imageName: "rectangle.stack.badge.plus", title: "배경화면")
         bVC.setTabBarImage(imageName: "cursorarrow.and.square.on.square.dashed", title: "위젯")
         
         let aNC = UINavigationController(rootViewController: aVC)
-        let bNC = UINavigationController(rootViewController: bVC)
+        // let bNC = UINavigationController(rootViewController: bVC)
         
         
-        let tabBarList = [aNC, bNC]
+        let tabBarList = [aNC, bVC]
         viewControllers = tabBarList
         
     }

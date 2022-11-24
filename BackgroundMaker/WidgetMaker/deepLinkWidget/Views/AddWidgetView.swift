@@ -6,19 +6,23 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct AddWidgetView: View {
     
+    
+    @ObservedObject var viewModel = WidgetModels()
+    
     @State var iconImage: UIImage = UIImage(named: "plus.circle")!
+    @State var alertMessage: LocalizedStringKey = "오류 발생"
+    
+    //Present Views
     @State var isPresent: Bool = false
     @State var isAlertPresent: Bool = false
     @State var isAddAlertPresent: Bool = false
-    @State var alertMessage: LocalizedStringKey = "오류 발생"
     @State var isApplistPresent: Bool = false
     @State var isPhotoViewPresent: Bool = false
-
     @State var isShowingPicker: Bool = false
-    @ObservedObject var viewModel = WidgetModels()
     
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
@@ -33,7 +37,6 @@ struct AddWidgetView: View {
                     .background(Color(uiColor: AppColors.buttonPurple))
                 
                 // 앱 선택 이미지
-                
                 Menu {
                     Button(action: {
                         isApplistPresent = true
@@ -140,20 +143,21 @@ struct TextFieldView: View {
     
     let title: String
     let placeHolder: String
+    let deviceSize = UIScreen.main.bounds
+    let padding: CGFloat = 32
     
     @Binding var text: String
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(title)
                 .fontWeight(.bold)
                 .font(.system(size: 20))
                 .lineLimit(1)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 40)
                 .padding(.horizontal, 16)
-            
             TextField(placeHolder, text: $text)
-                .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
+                .frame(height: 40)
                 .background(Color.init(uiColor: .darkGray))
                 .cornerRadius(10)
                 .padding(.horizontal, 16)
