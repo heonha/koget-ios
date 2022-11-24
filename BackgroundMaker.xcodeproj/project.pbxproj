@@ -53,7 +53,6 @@
 		3A8C4E95291644E1001DCB0A /* SwipeableTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8C4E94291644E1001DCB0A /* SwipeableTabBarController */; };
 		3A8E3A0428E3E6AA00390F8A /* RulerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */; };
 		3A8E3A0728E3E7B900390F8A /* RulerView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A0628E3E7B900390F8A /* RulerView */; };
-		3A9BC0D428E6CC720041DA1B /* AddWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D328E6CC720041DA1B /* AddWidgetViewController.swift */; };
 		3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */; };
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C04FF292DB03C00442017 /* PhotoPicker.swift */; };
@@ -75,6 +74,7 @@
 		3ABA6C3528C60A7F005AA8E4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3428C60A7F005AA8E4 /* RxSwift */; };
 		3ABA6C3828C6361B005AA8E4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3728C6361B005AA8E4 /* SnapKit */; };
 		3ABD50FF292945EB00F878AE /* WidgetCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */; };
+		3ABFEFBD292E70A900455730 /* FilterWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFBC292E70A900455730 /* FilterWidgetModel.swift */; };
 		3AC8E70328EA95F60086B8D4 /* BackgroundColorPallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8E70228EA95F60086B8D4 /* BackgroundColorPallet.swift */; };
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
 		3AD12D9428CD960E00CF431C /* RxImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D9328CD960E00CF431C /* RxImageViewModel.swift */; };
@@ -92,13 +92,11 @@
 		3AE9DC0D28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */; };
 		3AE9DC0E28F8F890008A3316 /* BackgroundMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */; };
 		3AE9DC0F28F8F891008A3316 /* BackgroundMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */; };
-		3AE9DC4028F95929008A3316 /* IconCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC3F28F95929008A3316 /* IconCollectionViewController.swift */; };
 		3AF9F00528ED570D00F685E6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC3E1E828E690B800BFF455 /* WidgetKit.framework */; };
 		3AF9F00628ED570D00F685E6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC3E1EA28E690B800BFF455 /* SwiftUI.framework */; };
 		3AF9F00928ED570D00F685E6 /* DeepLinkWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */; };
 		3AF9F00B28ED570E00F685E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AF9F00A28ED570E00F685E6 /* Assets.xcassets */; };
 		3AF9F00F28ED570E00F685E6 /* LockScreenWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		3AF9F01428ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9F01328ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,7 +169,6 @@
 		3A94E1A828EC1B960050EE80 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		3A9BC0CD28E6C92A0041DA1B /* BackgroundMaker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BackgroundMaker.entitlements; sourceTree = "<group>"; };
 		3A9BC0CE28E6C93A0041DA1B /* LockScreenWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenWidgetExtension.entitlements; sourceTree = "<group>"; };
-		3A9BC0D328E6CC720041DA1B /* AddWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWidgetViewController.swift; sourceTree = "<group>"; };
 		3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		3A9BC0D928E6E1AE0041DA1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A9C04FF292DB03C00442017 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
@@ -191,6 +188,7 @@
 		3ABA6C2528C60440005AA8E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3ABA6C2728C60440005AA8E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCoreData.swift; sourceTree = "<group>"; };
+		3ABFEFBC292E70A900455730 /* FilterWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWidgetModel.swift; sourceTree = "<group>"; };
 		3AC3E1E828E690B800BFF455 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		3AC3E1EA28E690B800BFF455 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		3AC8E70228EA95F60086B8D4 /* BackgroundColorPallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorPallet.swift; sourceTree = "<group>"; };
@@ -208,12 +206,10 @@
 		3AE386F428FA98AD0001979A /* CustomUIVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIVisualEffectView.swift; sourceTree = "<group>"; };
 		3AE386F628FAC49F0001979A /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WidgetModel.xcdatamodel; sourceTree = "<group>"; };
-		3AE9DC3F28F95929008A3316 /* IconCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewController.swift; sourceTree = "<group>"; };
 		3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkWidget.swift; sourceTree = "<group>"; };
 		3AF9F00A28ED570E00F685E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AF9F00C28ED570E00F685E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3AF9F01328ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddWidgetViewController+WidgetKit.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +254,7 @@
 				3A0ADDBA292CEAF0006E8EA5 /* WidgetListView.swift */,
 				3A9C04FF292DB03C00442017 /* PhotoPicker.swift */,
 				3A9C0504292DDB6D00442017 /* WidgetModels.swift */,
+				3ABFEFBC292E70A900455730 /* FilterWidgetModel.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -330,10 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				3A0ADDBC292CEF80006E8EA5 /* SwiftUI */,
-				3A9BC0D328E6CC720041DA1B /* AddWidgetViewController.swift */,
-				3AF9F01328ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift */,
 				3AE09A9828FC1B5B009530F9 /* BuiltInWidgetViewController.swift */,
-				3AE9DC3F28F95929008A3316 /* IconCollectionViewController.swift */,
 				3AE386F228FA83AF0001979A /* EditingWidgetViewController.swift */,
 				3AF7E59228F8610700B14DFD /* Cells */,
 				3AE386F428FA98AD0001979A /* CustomUIVisualEffectView.swift */,
@@ -726,6 +720,7 @@
 				3A51A10728F5A1C70027AD5A /* TestViewController.swift in Sources */,
 				3A8E3A0428E3E6AA00390F8A /* RulerSlider.swift in Sources */,
 				3A3E519328F2F9380095007C /* FailLinkViewController.swift in Sources */,
+				3ABFEFBD292E70A900455730 /* FilterWidgetModel.swift in Sources */,
 				3A9EABB228E57FF700ED2BF2 /* MakeWallpaperViewController+bgEditSubview.swift in Sources */,
 				3AA33F0228CE339C004127ED /* RoundShadowView.swift in Sources */,
 				3A19BCBB2914E891008B4D73 /* TestWidgetImageViewController.swift in Sources */,
@@ -736,18 +731,15 @@
 				3AE386F728FAC49F0001979A /* PhotoPickerViewController.swift in Sources */,
 				3A51A10428F531E70027AD5A /* WidgetViewController.swift in Sources */,
 				3AE09A9B28FC20BD009530F9 /* BuiltInAppCell.swift in Sources */,
-				3AE9DC4028F95929008A3316 /* IconCollectionViewController.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetListView.swift in Sources */,
 				3A302066290E54F7006676BD /* MainWallpaperViewController+Delegate.swift in Sources */,
 				3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */,
-				3A9BC0D428E6CC720041DA1B /* AddWidgetViewController.swift in Sources */,
 				3AAB43302913B482009E3302 /* CustumRulerView.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A9C0505292DDB6D00442017 /* WidgetModels.swift in Sources */,
 				3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */,
 				3AA54F0228FE35CA008EF311 /* APIs.swift in Sources */,
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
-				3AF9F01428ED843E00F685E6 /* AddWidgetViewController+WidgetKit.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
 				3A20984428EBE3B50032FD78 /* WidgetIconCell.swift in Sources */,
 				3AE2551D290EA2CF0045098E /* WallpaperCoreData.swift in Sources */,
