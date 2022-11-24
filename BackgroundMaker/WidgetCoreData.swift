@@ -60,6 +60,28 @@ class WidgetCoreData {
             fatalError("데이터 가져오기 에러 발생")
         }
     }
+    
+    //원하는 entity 타입의 데이터 불러오기(Read)
+    func searchData(searchText: String, sortKey: String = "addedDate", ascending: Bool = false) {
+        
+        let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
+        
+        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+        
+        // 정렬방식 설정
+        let sortDescriptor = NSSortDescriptor(key: sortKey, ascending: ascending)
+        request.predicate = predicate
+        request.sortDescriptors = [sortDescriptor]
+        
+        // 데이터 가져오기
+        do {
+            let deepLink = try coredataContext.fetch(request) // 데이터 가져오기
+            self.widgets.accept(deepLink)
+        } catch {
+            print("데이터 가져오기 에러 발생 : \(error)")
+            fatalError("데이터 가져오기 에러 발생")
+        }
+    }
 
 
     

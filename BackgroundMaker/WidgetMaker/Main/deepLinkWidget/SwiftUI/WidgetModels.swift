@@ -14,13 +14,11 @@ final class WidgetModels: ObservableObject {
     @Published var widgetName: String = ""
     @Published var widgetURL: String = ""
     @Published var widgetImage: UIImage?
-    
+        
     func getWidgetData(selectedWidget: BuiltInDeepLink) {
         self.widgetName = selectedWidget.appNameGlobal
         self.widgetURL = selectedWidget.deepLink + "://"
         self.widgetImage = selectedWidget.image!
     }
-    
-    
     
 }
