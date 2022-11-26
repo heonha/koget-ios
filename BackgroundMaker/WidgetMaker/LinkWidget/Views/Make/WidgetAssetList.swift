@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-struct WidgetListView: View {
+struct WidgetAssetList: View {
     
     var builtInWidgets = FilterWidgetModel()
     
-    @State var viewModel: WidgetModels?
+    @State var viewModel: LinkWidgetModel?
+    
+    
     @State private var searchText: String = ""
     @State var searching: Bool = false
     
@@ -58,19 +60,13 @@ struct WidgetListView: View {
     }
     
 }
-// 
-// struct WidgetListForDeepLink_Previews: PreviewProvider {
-//     
-//     
-//     static var previews: some View {
-//         WidgetListView(builtInWidgets: [
-//             BuiltInDeepLink(type: .builtIn, appID: "id", appNameGlobal: "Tmap", appName_ko: "T map", appName_en: "TmapEN", deepLink: "tmap://", image: UIImage(named: "tmap")!),
-//             BuiltInDeepLink(type: .builtIn, appID: "id", appNameGlobal: "Tmap", appName_ko: "T map", appName_en: "TmapEN", deepLink: "tmap://", image: UIImage(named: "tmap")!),
-//             BuiltInDeepLink(type: .builtIn, appID: "id", appNameGlobal: "Tmap", appName_ko: "T map", appName_en: "TmapEN", deepLink: "tmap://", image: UIImage(named: "tmap")!)])
-//     }
-//     
-// }
 
+struct WidgetListForDeepLink_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        WidgetAssetList()
+    }
+}
 
 #if canImport(UIKit)
 extension View {

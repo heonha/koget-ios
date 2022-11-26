@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-final class WidgetModels: ObservableObject {
+final class LinkWidgetModel: ObservableObject {
     
     @Published var widgetName: String = ""
     @Published var widgetURL: String = ""
     @Published var widgetImage: UIImage?
         
-    func getWidgetData(selectedWidget: BuiltInDeepLink) {
+    func getWidgetData(selectedWidget: LinkWidget) {
         self.widgetName = selectedWidget.appNameGlobal
         self.widgetURL = selectedWidget.deepLink + "://"
         self.widgetImage = selectedWidget.image!

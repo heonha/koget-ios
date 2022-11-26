@@ -9,8 +9,8 @@ import Foundation
 
 final class FilterWidgetModel: ObservableObject {
     
-    @Published var data: [BuiltInDeepLink] = []
-    @Published var searchResults: [BuiltInDeepLink] = []
+    @Published var data: [LinkWidget] = []
+    @Published var searchResults: [LinkWidget] = []
     
     init() {
         data = WidgetModel.shared.getWidgetData()

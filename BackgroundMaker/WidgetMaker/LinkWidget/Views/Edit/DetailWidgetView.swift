@@ -1,5 +1,5 @@
 //
-//  EditWidgetView.swift
+//  DetailWidgetView.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/11/24.
@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-struct EditWidgetView: View {
+struct DetailWidgetView: View {
     
-    let selectedWidget: DeepLink
-    let deviceSize = UIScreen.main.bounds
+    var selectedWidget: DeepLink
     
-    @StateObject var viewModel = WidgetModels()
+    @StateObject var viewModel = LinkWidgetModel()
     
     @State var alertMessage: LocalizedStringKey = "오류 발생"
     
@@ -28,6 +27,8 @@ struct EditWidgetView: View {
     init(widget: DeepLink) {
         selectedWidget = widget
     }
+    
+    
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
@@ -59,8 +60,8 @@ struct EditWidgetView: View {
                 }
                 Spacer()
                 
-                EditTextFieldView(title: "위젯 이름", placeHolder: "위젯 이름", isEditingMode: $isEditingMode, text: $viewModel.widgetName)
-                EditTextFieldView(title: "URL", placeHolder: "예시: youtube://", isEditingMode: $isEditingMode, text: $viewModel.widgetURL)
+                EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", isEditingMode: $isEditingMode, text: $viewModel.widgetName)
+                EditTextField(title: "URL", placeHolder: "예시: youtube://", isEditingMode: $isEditingMode, text: $viewModel.widgetURL)
                 Spacer()
                 
                 VStack(alignment: .leading) {
@@ -163,59 +164,26 @@ struct EditWidgetView: View {
     
     func editWidget() {
         
-        let item = self.selectedWidget
-        item.name = viewModel.widgetName
-        item.image = viewModel.widgetImage?.pngData()
-        item.deepLink = viewModel.widgetURL
+        self.selectedWidget.name = viewModel.widgetName
+        if self.selectedWidget.image != viewModel.widgetImage?.pngData() {
+            self.selectedWidget.image = viewModel.widgetImage?.pngData()
+        }
+        self.selectedWidget.deepLink = viewModel.widgetURL
         
         WidgetCoreData.shared.saveData()
-        
+        WidgetCoreData.shared.loadData()
+
     }
 }
 
-// struct EditWidgetView_Previews: PreviewProvider {
-//     
-//     
-//     static var previews: some View {
-//         EditWidgetView(widget: TestCoreData().deepLinkWidgets.first!)
-//     }
-// }
-
-
-struct EditTextFieldView: View {
+struct EditWidgetView_Previews: PreviewProvider {
     
-    let title: String
-    let placeHolder: String
-    let deviceSize = UIScreen.main.bounds
-    @Binding var isEditingMode: Bool
-    @Binding var text: String
-    let padding: CGFloat = 32
     
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .fontWeight(.bold)
-                .font(.system(size: 18))
-                .lineLimit(1)
-                .frame(height: 40)
-                .padding(.horizontal, 16)
-                .padding(.bottom, -12)
-            if isEditingMode {
-                TextField(placeHolder, text: $text)
-                    .frame(height: 35)
-                    .background(Color.init(uiColor: .darkGray))
-                    .cornerRadius(8)
-                    .padding(.horizontal, 16)
-                    .disabled(!isEditingMode)
-            } else {
-                TextField(placeHolder, text: $text)
-                    .frame(height: 35)
-                    .background(Color.init(uiColor: AppColors.blackDarkGrey))
-                    .cornerRadius(8)
-                    .padding(.horizontal, 16)
-                    .disabled(!isEditingMode)
-            }
-            
+    static var previews: some View {
+        NavigationView {
+            DetailWidgetView(widget: DeepLink.example)
         }
     }
+        
 }
+
