@@ -8,10 +8,10 @@
 import SwiftUI
 import CoreData
 
-struct AddWidgetView: View {
+struct MakeWidgetView: View {
     
     
-    @StateObject var viewModel = WidgetModels()
+    @StateObject var viewModel = LinkWidgetModel()
     
     @State var iconImage: UIImage = UIImage(named: "plus.circle")!
     @State var alertMessage: LocalizedStringKey = "오류 발생"
@@ -58,7 +58,7 @@ struct AddWidgetView: View {
                         .padding()
                     
                 }.sheet(isPresented: $isApplistPresent) {
-                    WidgetListView(viewModel: viewModel)
+                    WidgetAssetList(viewModel: viewModel)
                 }
                 .sheet(isPresented: $isPhotoViewPresent) {
                     PhotoPicker(widgetModel: viewModel)
@@ -136,7 +136,7 @@ struct AddWidgetView: View {
 
 struct AddWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        AddWidgetView()
+        MakeWidgetView()
     }
 }
 
@@ -144,7 +144,6 @@ struct TextFieldView: View {
     
     let title: String
     let placeHolder: String
-    let deviceSize = UIScreen.main.bounds
     let padding: CGFloat = 32
     
     @Binding var text: String

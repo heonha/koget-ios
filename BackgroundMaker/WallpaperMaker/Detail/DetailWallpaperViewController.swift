@@ -79,8 +79,6 @@ class DetailWallpaperViewController: UIViewController {
         let clock = ViewModelForCocoa.shared.makeLabel(text: "12:30", fontSize: 105, fontWeight: .bold)
         let date = ViewModelForCocoa.shared.makeLabel(text: "12월 30일 금요일", fontSize: 25, fontWeight: .medium)
         
-        let deviceSize = UIDevice.current.isiPhoneWithNotch
-
         
         sv.addArrangedSubview(date)
         sv.addArrangedSubview(clock)
