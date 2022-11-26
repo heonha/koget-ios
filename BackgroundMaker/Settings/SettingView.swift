@@ -8,58 +8,27 @@
 import SwiftUI
 
 struct SettingView: View {
+    
+    
     var body: some View {
         NavigationView {
             ZStack {
                 Color(uiColor: AppColors.deepDarkGrey)
                     .ignoresSafeArea()
                 List {
-                    Button {
+                    ButtonForSetting(title: "공지사항", symbolName: "mic.fill") {
                         
-                    } label: {
-                        HStack {
-                            Text("공지사항")
-                            Spacer()
-                            Image(systemName: "mic.fill")
-                                .renderingMode(.template)
-                        }
-    
-                    }.tint(.white)
-                    
-
-                    Button {
-                        
-                    } label: {
-                        HStack {
-                            Text("개발자에게 문의하기")
-                            Spacer()
-                            Image(systemName: "paperplane.fill")
-                                .renderingMode(.template)
-                        }
-    
-                    }.tint(.white)
-                    Button {
-                        
-                    } label: {
-                        HStack {
-                            Text("커피 한 잔 후원")
-                            Spacer()
-                            Image(systemName: "cup.and.saucer.fill")
-                                .renderingMode(.template)
-                        }
                     }
-                    Button {
+                    ButtonForSetting(title: "개발자에게 문의하기", symbolName: "paperplane.fill") {
                         
-                    } label: {
-                        HStack {
-                            Text("오픈소스 라이선스")
-                            Spacer()
-                            Image(systemName: "chart.bar.doc.horizontal")
-                                .renderingMode(.template)
-                        }
-    
-                    }.tint(.white)
-
+                    }
+                    ButtonForSetting(title: "커피 한 잔 후원", symbolName: "cup.and.saucer.fill") {
+                        
+                    }
+                    
+                    ButtonForSetting(title: "오픈소스 라이선스", symbolName: "chart.bar.doc.horizontal") {
+                        
+                    }
                 }
                 .padding(.top, 4)
                 .navigationTitle("설정")
@@ -74,5 +43,26 @@ struct SettingView: View {
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         SettingView()
+    }
+}
+
+struct ButtonForSetting: View {
+    
+    var title: LocalizedStringKey
+    var symbolName: String
+    let action: () -> Void
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            HStack {
+                Text(title)
+                Spacer()
+                Image(systemName: symbolName)
+                    .renderingMode(.template)
+            }
+            
+        }.tint(.white)
     }
 }
