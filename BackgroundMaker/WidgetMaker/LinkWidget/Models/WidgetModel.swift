@@ -52,7 +52,6 @@ final class WidgetModel: ObservableObject {
         
     /// 앱에 내장된 DeepLink의 목록입니다.
     var builtInApps: [LinkWidget] = []
-    var deepLinkApps: [DeepLink] = []
 
     private init() {
         builtInApps = getWidgetData()
