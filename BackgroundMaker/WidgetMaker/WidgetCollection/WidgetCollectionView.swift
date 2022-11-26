@@ -18,7 +18,7 @@ struct WidgetCollectionView: View {
             backgroundColor
                 .cornerRadius(10)
             VStack {
-                WidgetListScrollView(title: "딥 링크 위젯", deepLinkWidgets: $deepLinkWidgets)
+                WidgetListScrollView(title: "링크 위젯", deepLinkWidgets: $deepLinkWidgets)
                     .padding(4)
             }
         }

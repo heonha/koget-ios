@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingView: View {
     
+    @State var isAlertPresent: Bool = false
     
     var body: some View {
         NavigationView {
@@ -17,21 +18,23 @@ struct SettingView: View {
                     .ignoresSafeArea()
                 List {
                     ButtonForSetting(title: "공지사항", symbolName: "mic.fill") {
-                        
+                        isAlertPresent.toggle()
                     }
                     ButtonForSetting(title: "개발자에게 문의하기", symbolName: "paperplane.fill") {
-                        
+                        isAlertPresent.toggle()
                     }
                     ButtonForSetting(title: "커피 한 잔 후원", symbolName: "cup.and.saucer.fill") {
-                        
+                        isAlertPresent.toggle()
                     }
-                    
                     ButtonForSetting(title: "오픈소스 라이선스", symbolName: "chart.bar.doc.horizontal") {
-                        
+                        isAlertPresent.toggle()
                     }
                 }
+                .alert("미구현", isPresented: $isAlertPresent, actions: {
+                    
+                })
                 .padding(.top, 4)
-                .navigationTitle("설정")
+                .navigationTitle("설정(미구현)")
                 .navigationBarTitleDisplayMode(.large)
 
             }

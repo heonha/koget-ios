@@ -89,7 +89,7 @@ struct MakeWidgetView: View {
                         .foregroundColor(.white)
                         .fontWeight(.bold)
                         .font(.system(size: 18))
-                        .frame(maxWidth: .infinity, maxHeight: 40)
+                        .frame(width: Constants.deviceSize.width - 32, height: 40)
 
                 }
                 .background(Color.init(uiColor: AppColors.buttonPurple))
@@ -106,7 +106,7 @@ struct MakeWidgetView: View {
                         .foregroundColor(.white)
                         .fontWeight(.bold)
                         .font(.system(size: 18))
-                        .frame(maxWidth: .infinity, maxHeight: 40, alignment: .center)
+                        .frame(width: Constants.deviceSize.width - 32, height: 40)
                 }
                 .background(Color.init(uiColor: .darkGray))
                 .cornerRadius(10)

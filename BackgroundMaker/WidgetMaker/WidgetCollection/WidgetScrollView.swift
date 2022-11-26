@@ -14,8 +14,8 @@ struct WidgetListScrollView: View {
     var title: String
     
     @State var isPresent = false
-    
     @Binding var deepLinkWidgets: [DeepLink]
+    
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     var body: some View {
         
@@ -58,7 +58,7 @@ struct DeepLinkWidgetScrollView_Previews: PreviewProvider {
     static var previews: some View {
         
         NavigationView {
-            WidgetListScrollView(title: "Testing", deepLinkWidgets: .constant(StorageProvider.preview.linkWidgets))
+            WidgetListScrollView(title: "링크 위젯", deepLinkWidgets: .constant(StorageProvider.preview.linkWidgets))
             Spacer()
         }
     }
