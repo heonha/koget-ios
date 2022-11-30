@@ -6,29 +6,36 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct WidgetIconView: View {
     
-    let image: UIImage
-    let name: String
+    @ObservedObject var selectedObject: DeepLink
     
     var body: some View {
         VStack {
-            Image(uiImage: image)
+            Image(uiImage: UIImage(data:selectedObject.image!) ?? UIImage(named: "qustionmark.circle")!)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .clipShape(Circle())
                 .frame(width: 50, height: 50)
-            Text(name)
+            Text(selectedObject.name!)
                 .lineLimit(2)
                 .font(.system(size: 13))
         }.frame(width: 70, height: 80)
+            .onAppear {
+                print("Cell이 로딩됨")
+                print("\(selectedObject.name!)")
+            }
+            .onDisappear {
+                print("cell이 사라짐")
+            }
     }
 }
 
 
 struct DeepLinkWidgetIconView_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetIconView(image: UIImage.init(named: "TestWidgetImage")!, name: "테스트")
+        WidgetIconView(selectedObject: DeepLink.example)
     }
 }

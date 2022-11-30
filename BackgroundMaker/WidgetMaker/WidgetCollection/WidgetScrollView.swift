@@ -14,41 +14,59 @@ struct WidgetListScrollView: View {
     var title: String
     
     @State var isPresent = false
-    @Binding var deepLinkWidgets: [DeepLink]
+    @State var deepLinkWidgets: [DeepLink] = []
     
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     var body: some View {
         
-        Text(title)
-            .fontWeight(.bold)
-            .font(.system(size: 20))
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top)
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(deepLinkWidgets, id: \.id) { widget in
-                    Button {
-                        self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
-                            DetailWidgetView(widget: widget)
-                        })
-                    } label: {
-                        WidgetIconView(
-                            image: UIImage(data: widget.image!) ?? UIImage(named: "qustionmark.circle")!,
-                            name: widget.name!)
-                        .tint(.white)
+        VStack {
+            Text(title)
+                .fontWeight(.bold)
+                .font(.system(size: 20))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(deepLinkWidgets, id: \.id) { widget in
+                        Button {
+                            self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                                DetailWidgetView(selectedWidget: widget)
+                            })
+                        } label: {
+                            WidgetIconView(selectedObject: widget)
+                            .tint(.white)
+                        }
                     }
                 }
             }
+            .frame(width: Constants.deviceSize.width - 32, height: 100)
+            .background(Color(uiColor: AppColors.normalDarkGrey))
+            .cornerRadius(10)
+            .shadow(radius: 3)
+            Spacer()
+        }.onAppear {
+            print("On Appear")
+            subscribeWidgetData() // 위젯 데이터 가져오기
+        }.onDisappear {
+            WidgetCoreData.shared.disposeBag = .init()
         }
-        .frame(width: Constants.deviceSize.width - 32, height: 100)
-        .background(Color(uiColor: AppColors.normalDarkGrey))
-        .cornerRadius(10)
-        .shadow(radius: 3)
-        
-        Spacer()
-        
     }
-
+    
+    
+    func subscribeWidgetData() {
+        print("새로운 구독 시작")
+        WidgetCoreData.shared.widgets
+            .subscribe { (widgets) in
+                deepLinkWidgets = widgets
+                print("--->onNext----")
+                for widget in deepLinkWidgets {
+                    print(widget.name!)
+                }
+            } onDisposed: {
+                print("disposed")
+            }.disposed(by: WidgetCoreData.shared.disposeBag)
+    }
 }
 
 
@@ -58,7 +76,7 @@ struct DeepLinkWidgetScrollView_Previews: PreviewProvider {
     static var previews: some View {
         
         NavigationView {
-            WidgetListScrollView(title: "링크 위젯", deepLinkWidgets: .constant(StorageProvider.preview.linkWidgets))
+            WidgetListScrollView(title: "링크 위젯")
             Spacer()
         }
     }

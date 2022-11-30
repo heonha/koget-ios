@@ -29,11 +29,8 @@ struct EditingToggleButton: View {
                     isAlertPresent.toggle()
                     return
                 }
-                editWidget()
-                
-            } else {
-                
             }
+            editWidget()
             isEditingMode.toggle()
             
         } label: {
@@ -66,8 +63,6 @@ struct EditingToggleButton: View {
         self.selectedWidget.deepLink = viewModel.widgetURL
         
         WidgetCoreData.shared.saveData()
-        WidgetCoreData.shared.loadData()
-
     }
     
  
