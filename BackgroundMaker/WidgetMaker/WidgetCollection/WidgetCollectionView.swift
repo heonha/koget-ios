@@ -6,10 +6,9 @@
 //
 
 import SwiftUI
+import RxSwift
 
 struct WidgetCollectionView: View {
-    
-    @Binding var deepLinkWidgets: [DeepLink]
     
     let backgroundColor: Color = .black
     
@@ -18,18 +17,21 @@ struct WidgetCollectionView: View {
             backgroundColor
                 .cornerRadius(10)
             VStack {
-                WidgetListScrollView(title: "링크 위젯", deepLinkWidgets: $deepLinkWidgets)
+                // 제목
+                WidgetListScrollView(title: "링크 위젯")
                     .padding(4)
             }
         }
+        
     }
 }
-
-
-struct WidgetListGridView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            WidgetCollectionView(deepLinkWidgets: .constant(StorageProvider.preview.linkWidgets))
+    
+    
+    struct WidgetListGridView_Previews: PreviewProvider {
+        static var previews: some View {
+            NavigationView {
+                WidgetCollectionView()
+            }
+            .environmentObject(StorageProvider.preview.self)
         }
     }
-}

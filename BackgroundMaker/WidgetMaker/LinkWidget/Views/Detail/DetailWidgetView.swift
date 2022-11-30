@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailWidgetView: View {
     
-    var selectedWidget: DeepLink
+    @State var selectedWidget: DeepLink
     
     @StateObject var viewModel = LinkWidgetModel()
     
@@ -22,9 +22,9 @@ struct DetailWidgetView: View {
     @State var isEditingMode: Bool = false
 
     
-    init(widget: DeepLink) {
-        selectedWidget = widget
-    }
+    // init(widget: DeepLink) {
+    //     // selectedWidget = widget
+    // }
     
     
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
@@ -43,28 +43,10 @@ struct DetailWidgetView: View {
                 
                 Spacer()
                 // 앱 선택 이미지
-                Menu {
-                    // 앱 선택 이미지
-                    if isEditingMode {
-                        Button(action: {
-                            isPhotoViewPresent.toggle()
-                        }) {
-                            Label("사진 바꾸기", systemImage: "photo")
-                        }
-                    }
-                    
-                } label: {
-                    Image(uiImage: viewModel.widgetImage ?? UIImage(named: "plus.circle")!)
-                        .resizable()
-                        .scaledToFit()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 90, height: 90)
-                        .clipShape(Circle())
-                }
-                .sheet(isPresented: $isPhotoViewPresent) {
-                    PhotoPicker(widgetModel: viewModel)
-                }
-                .disabled(!isEditingMode)
+                PhotoEditMenu(isEditingMode: $isEditingMode,
+                          isPhotoViewPresent: $isPhotoViewPresent,
+                          viewModel: viewModel)
+
 
                 Spacer()
                 
@@ -100,14 +82,13 @@ struct DetailWidgetView: View {
                 
             }
         }.onAppear {
-            viewModel.widgetImage = UIImage(data: selectedWidget.image ?? UIColor.white.image().pngData()!)
             viewModel.widgetName = selectedWidget.name!
             viewModel.widgetURL = selectedWidget.deepLink!
+            viewModel.widgetImage = UIImage(data: selectedWidget.image ?? UIColor.white.image().pngData()!)
         }
         .frame(width: 300, height: 450)
         .background(Color.init(uiColor: .clear))
         .cornerRadius(10)
-        
     }
     
   
@@ -115,13 +96,14 @@ struct DetailWidgetView: View {
 }
 
 struct EditWidgetView_Previews: PreviewProvider {
-    
-    
+
+
     static var previews: some View {
         NavigationView {
-            DetailWidgetView(widget: DeepLink.example)
+            DetailWidgetView(selectedWidget: DeepLink.example)
         }
     }
-        
+
 }
+
 
