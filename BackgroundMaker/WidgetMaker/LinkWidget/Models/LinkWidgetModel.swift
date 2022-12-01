@@ -15,7 +15,7 @@ final class LinkWidgetModel: ObservableObject {
         
     func getWidgetData(selectedWidget: LinkWidget) {
         self.widgetName = selectedWidget.appNameGlobal
-        self.widgetURL = selectedWidget.deepLink + "://"
+        self.widgetURL = selectedWidget.url
         self.widgetImage = selectedWidget.image!
     }
     

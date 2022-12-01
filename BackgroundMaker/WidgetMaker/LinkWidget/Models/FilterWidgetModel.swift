@@ -13,7 +13,7 @@ final class FilterWidgetModel: ObservableObject {
     @Published var searchResults: [LinkWidget] = []
     
     init() {
-        data = WidgetModel.shared.getWidgetData()
+        data = DefaultWidgetManager.shared.getWidgetData()
     }
 
     

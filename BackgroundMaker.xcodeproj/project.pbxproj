@@ -41,7 +41,7 @@
 		3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C119628EDB4B800C9CCED /* IntentHandler.swift */; };
 		3A3C119B28EDB4B800C9CCED /* LockScreenIntentsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3A3C119F28EDB5B400C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
-		3A3C11A328EDC14700C9CCED /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* WidgetModel.swift */; };
+		3A3C11A328EDC14700C9CCED /* DefaultWidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* DefaultWidgetManager.swift */; };
 		3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A420D8E28E4669000C8426D /* MakeWallpaperViewController+RulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A420D8D28E4669000C8426D /* MakeWallpaperViewController+RulerView.swift */; };
@@ -158,7 +158,7 @@
 		3A3C119628EDB4B800C9CCED /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		3A3C119828EDB4B800C9CCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A3C11A028EDB69A00C9CCED /* LockScreenIntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenIntentsExtension.entitlements; sourceTree = "<group>"; };
-		3A3C11A228EDC14700C9CCED /* WidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetModel.swift; sourceTree = "<group>"; };
+		3A3C11A228EDC14700C9CCED /* DefaultWidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWidgetManager.swift; sourceTree = "<group>"; };
 		3A420D8D28E4669000C8426D /* MakeWallpaperViewController+RulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MakeWallpaperViewController+RulerView.swift"; sourceTree = "<group>"; };
 		3A42851028E9D7CE001C7032 /* BackgroundPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPickerView.swift; sourceTree = "<group>"; };
 		3A51A10628F5A1C70027AD5A /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 		3A08BCFC292FA7F900E09B3E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3A3C11A228EDC14700C9CCED /* WidgetModel.swift */,
+				3A3C11A228EDC14700C9CCED /* DefaultWidgetManager.swift */,
 				3A9C0504292DDB6D00442017 /* LinkWidgetModel.swift */,
 				3ABFEFBC292E70A900455730 /* FilterWidgetModel.swift */,
 				3A9C04FF292DB03C00442017 /* PhotoPicker.swift */,
@@ -730,7 +730,7 @@
 				3ABFEFC7292F481F00455730 /* TestDeepLink.swift in Sources */,
 				3A17665928C9DAFF006DE579 /* ViewModelForCocoa.swift in Sources */,
 				3AD12D9628CDA4C900CF431C /* MainWallpaperViewController.swift in Sources */,
-				3A3C11A328EDC14700C9CCED /* WidgetModel.swift in Sources */,
+				3A3C11A328EDC14700C9CCED /* DefaultWidgetManager.swift in Sources */,
 				3ABA6C1B28C6043F005AA8E4 /* MakeWallpaperViewController.swift in Sources */,
 				3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */,
 				3A26150428CB7E2B000D17A3 /* TestEditImageViewController.swift in Sources */,
