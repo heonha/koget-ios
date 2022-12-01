@@ -26,7 +26,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
         completion(entry)
     }
     
-    func getWidgetImage(id: String) -> UIImage {
+    func getWidgetImage(id: String?) -> UIImage {
         
         // 딥링크 앱의 배열을 가져온다.
         let deepLinkApps = CoreData.shared.getStoredDataForDeepLink()!
@@ -34,7 +34,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
         var appImage = UIImage(named: "questionmark.circle")!
         
         for apps in deepLinkApps {
-            if id == apps.id!.uuidString {
+            if id == apps.id?.uuidString {
                 appImage = UIImage(data: apps.image!)!
                 return appImage
             }
@@ -52,7 +52,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
             date: Date(),
             name: selectedApp.displayString,
             url: selectedApp.url ?? "",
-            image: getWidgetImage(id: selectedApp.identifier!),
+            image: getWidgetImage(id: selectedApp.identifier),
             id: selectedApp.identifier
         )
         

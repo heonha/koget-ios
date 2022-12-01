@@ -173,17 +173,6 @@ extension IntentHandler: DeepLinkAppIntentHandling {
         /// 위에서 정의한 위젯 INObjectCollection 컬렉션을 completion 으로 전달한다.
         completion(collection, nil)
     }
-    
-    func defaultApp(for intent: DeepLinkAppIntent) -> AppDefinition? {
-        
-        let item = AppDefinition(
-            identifier: nil,
-            display: "no Data"
-        )
-        
-        item.url = "" // 딥링크 주소
-        
-        return item
-    }
+
     
 }
