@@ -26,7 +26,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
         completion(entry)
     }
     
-    func searchImage(id: String) -> UIImage {
+    func getWidgetImage(id: String) -> UIImage {
         
         // 딥링크 앱의 배열을 가져온다.
         let deepLinkApps = CoreData.shared.getStoredDataForDeepLink()!
@@ -50,10 +50,10 @@ struct DeepLinkProvider: IntentTimelineProvider {
         // 여기에 Simple Entry로 구성된 코드가 보여짐.
         let entry = DeepLinkEntry(
             date: Date(),
-            title: selectedApp.displayString,
-            link: selectedApp.deepLink ?? "",
-            image: searchImage(id: selectedApp.identifier!),
-            id: selectedApp.uuid
+            name: selectedApp.displayString,
+            url: selectedApp.url ?? "",
+            image: getWidgetImage(id: selectedApp.identifier!),
+            id: selectedApp.identifier
         )
         
         let timeline = Timeline(entries: [entry], policy: .atEnd)
@@ -67,7 +67,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
     }
     
     func placeholder(in context: Context) -> DeepLinkEntry {
-        DeepLinkEntry(date: Date(), title: "플레이스 홀더", link: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
+        DeepLinkEntry(date: Date(), name: "플레이스 홀더", url: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
     }
     
     /// 위젯을 추가할 때 표시할 프리뷰를 구성합니다.
@@ -77,9 +77,9 @@ struct DeepLinkProvider: IntentTimelineProvider {
     
         // 위젯 미리보기에서 어떻게 보일 것인지 설정.
         if context.isPreview {
-            entry = DeepLinkEntry(date: Date(), title: "placeHolder", link: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
+            entry = DeepLinkEntry(date: Date(), name: "placeHolder", url: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
         } else {
-            entry = DeepLinkEntry(date: Date(), title: "placeHolder", link: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
+            entry = DeepLinkEntry(date: Date(), name: "placeHolder", url: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
         }
         
         return entry
@@ -92,8 +92,8 @@ struct DeepLinkProvider: IntentTimelineProvider {
 /// 위젯을 표시할 시기를 WidgetKit에 알려주는 날짜가 있는 하나 이상의 타임라인 항목을 만듭니다.
 struct DeepLinkEntry: TimelineEntry {
     let date: Date // Widget을 rendering할 Date
-    let title: String
-    var link: String?
+    let name: String
+    var url: String?
     var image: UIImage?
     var id: String?
 }
@@ -117,7 +117,7 @@ struct DeepLinkWidgetEntryView : View {
                     Image(uiImage: entry.image!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .widgetURL(URL(string: "\(mainURL)\(entry.link ?? "failLink")"))
+                            .widgetURL(URL(string: "\(mainURL)\(entry.url ?? "failLink")"))
                 }
             } else {
                 VStack {
@@ -173,7 +173,7 @@ struct DeepLinkWidget: Widget {
 /// 위젯 프리뷰 구성
 struct LockScreenWidget_Previews: PreviewProvider {
     static var previews: some View {
-        DeepLinkWidgetEntryView(entry: DeepLinkEntry(date: Date(), title: "instagram", link: nil))
+        DeepLinkWidgetEntryView(entry: DeepLinkEntry(date: Date(), name: "instagram", url: nil))
             .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         
     }

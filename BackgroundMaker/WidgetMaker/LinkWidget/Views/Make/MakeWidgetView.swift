@@ -49,7 +49,7 @@ struct MakeWidgetView: View {
                         Label("사진 바꾸기", systemImage: "photo")
                     }
                 } label: {
-                    Image(uiImage: viewModel.widgetImage ?? UIImage(named: "plus.circle")!)
+                    Image(uiImage: viewModel.image ?? UIImage(named: "plus.circle")!)
                         .resizable()
                         .scaledToFit()
                         .aspectRatio(contentMode: .fit)
@@ -63,20 +63,20 @@ struct MakeWidgetView: View {
                 .sheet(isPresented: $isPhotoViewPresent) {
                     PhotoPicker(widgetModel: viewModel)
                 }
-                TextFieldView(title: "위젯 이름", placeHolder: "위젯 이름", text: $viewModel.widgetName)
+                TextFieldView(title: "위젯 이름", placeHolder: "위젯 이름", text: $viewModel.name)
                     .padding(.bottom, 16)
-                TextFieldView(title: "URL", placeHolder: "예시: youtube://", text: $viewModel.widgetURL)
+                TextFieldView(title: "URL", placeHolder: "예시: youtube://", text: $viewModel.url)
                     .padding(.bottom, 16)
                 
                 // 위젯생성 버튼
                 Button {
-                    if viewModel.widgetName == "" || viewModel.widgetURL == "" {
+                    if viewModel.name == "" || viewModel.url == "" {
                         alertMessage = "빈칸을 채워주세요."
                         isAlertPresent.toggle()
                         return
                     }
                     
-                    if viewModel.widgetImage == nil {
+                    if viewModel.image == nil {
                         alertMessage = "사진을 추가해주세요."
                         isAlertPresent.toggle()
                         return
@@ -124,9 +124,9 @@ struct MakeWidgetView: View {
         
         let item = DeepLink(context: WidgetCoreData.shared.coredataContext)
         item.id = UUID()
-        item.name = viewModel.widgetName
-        item.image = viewModel.widgetImage?.pngData()
-        item.deepLink = viewModel.widgetURL
+        item.name = viewModel.name
+        item.image = viewModel.image?.pngData()
+        item.url = viewModel.url
         item.addedDate = Date()
         
         WidgetCoreData.shared.addDeepLinkWidget(widget: item)

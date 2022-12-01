@@ -18,13 +18,13 @@ struct EditingToggleButton: View {
     var body: some View {
         Button {
             if isEditingMode {
-                if viewModel.widgetName == "" || viewModel.widgetURL == "" {
+                if viewModel.name == "" || viewModel.url == "" {
                     alertMessage = "빈칸을 채워주세요."
                     isAlertPresent.toggle()
                     return
                 }
                 
-                if viewModel.widgetImage == nil {
+                if viewModel.image == nil {
                     alertMessage = "사진을 추가해주세요."
                     isAlertPresent.toggle()
                     return
@@ -56,11 +56,11 @@ struct EditingToggleButton: View {
     
     func editWidget() {
         
-        self.selectedWidget.name = viewModel.widgetName
-        if self.selectedWidget.image != viewModel.widgetImage?.pngData() {
-            self.selectedWidget.image = viewModel.widgetImage?.pngData()
+        self.selectedWidget.name = viewModel.name
+        if self.selectedWidget.image != viewModel.image?.pngData() {
+            self.selectedWidget.image = viewModel.image?.pngData()
         }
-        self.selectedWidget.deepLink = viewModel.widgetURL
+        self.selectedWidget.url = viewModel.url
         
         WidgetCoreData.shared.saveData()
     }

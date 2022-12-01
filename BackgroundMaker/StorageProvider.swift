@@ -36,7 +36,7 @@ class StorageProvider: ObservableObject {
                     ]
                     
         for widget in widgets {
-            storageProvider.saveData(name: widget.name, image: widget.image, deepLink: widget.deepLink)
+            storageProvider.saveData(name: widget.name, image: widget.image, url: widget.deepLink)
         }
         
         // 위 데이터를 Core Data 저장소에 저장합니다.
@@ -83,7 +83,7 @@ class StorageProvider: ObservableObject {
 // saveData
 extension StorageProvider {
     
-    func saveData(name: String, image: Data, deepLink: String) {
+    func saveData(name: String, image: Data, url: String) {
         
         // 새 Entity 인스턴스는 관리 개체 컨텍스트에 연결됩니다.
         let widget = DeepLink(context: persistentContainer.viewContext)
@@ -92,7 +92,7 @@ extension StorageProvider {
         widget.id = UUID()
         widget.name = name
         widget.image = image
-        widget.deepLink = deepLink
+        widget.url = url
         widget.addedDate = Date()
         
         do {

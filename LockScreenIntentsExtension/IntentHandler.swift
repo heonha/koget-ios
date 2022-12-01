@@ -162,8 +162,7 @@ extension IntentHandler: DeepLinkAppIntentHandling {
             )
             // 아래는 위젯에 추가로 전달할 데이터이다.
 
-            item.uuid = deepLink.id?.uuidString
-            item.deepLink = deepLink.deepLink // 딥링크 주소
+            item.url = deepLink.url // 딥링크 주소
             
             return item
         }
@@ -182,8 +181,7 @@ extension IntentHandler: DeepLinkAppIntentHandling {
             display: "no Data"
         )
         
-        item.uuid = "12345"
-        item.deepLink = "" // 딥링크 주소
+        item.url = "" // 딥링크 주소
         
         return item
     }
