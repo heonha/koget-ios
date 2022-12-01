@@ -14,7 +14,8 @@ struct WidgetIconView: View {
     
     var body: some View {
         VStack {
-            Image(uiImage: UIImage(data:selectedObject.image!) ?? UIImage(named: "qustionmark.circle")!)
+            Image(uiImage: UIImage(data:selectedObject.image!)
+                  ?? UIImage(named: "qustionmark.circle")!)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .clipShape(Circle())

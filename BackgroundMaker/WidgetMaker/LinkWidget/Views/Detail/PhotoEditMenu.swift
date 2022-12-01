@@ -25,7 +25,7 @@ struct PhotoEditMenu: View {
             }
             
         } label: {
-            Image(uiImage: viewModel.widgetImage ?? UIImage(named: "plus.circle")!)
+            Image(uiImage: viewModel.image ?? UIImage(named: "plus.circle")!)
                 .resizable()
                 .scaledToFit()
                 .aspectRatio(contentMode: .fit)

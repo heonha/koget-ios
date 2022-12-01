@@ -35,7 +35,7 @@ struct DetailWidgetView: View {
                 .ignoresSafeArea()
             VStack {
                 HStack(alignment: .center) {
-                    Text(viewModel.widgetName)
+                    Text(viewModel.name)
                         .frame(maxWidth: .infinity, maxHeight: 40, alignment: .center)
                         .font(.system(size: 20))
                         .fontWeight(.bold)
@@ -50,8 +50,8 @@ struct DetailWidgetView: View {
 
                 Spacer()
                 
-                EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", isEditingMode: $isEditingMode, text: $viewModel.widgetName)
-                EditTextField(title: "URL", placeHolder: "예시: youtube://", isEditingMode: $isEditingMode, text: $viewModel.widgetURL)
+                EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", isEditingMode: $isEditingMode, text: $viewModel.name)
+                EditTextField(title: "URL", placeHolder: "예시: youtube://", isEditingMode: $isEditingMode, text: $viewModel.url)
                 Spacer()
                 
                 VStack(alignment: .center) {
@@ -82,9 +82,9 @@ struct DetailWidgetView: View {
                 
             }
         }.onAppear {
-            viewModel.widgetName = selectedWidget.name!
-            viewModel.widgetURL = selectedWidget.deepLink!
-            viewModel.widgetImage = UIImage(data: selectedWidget.image ?? UIColor.white.image().pngData()!)
+            viewModel.name = selectedWidget.name!
+            viewModel.url = selectedWidget.url!
+            viewModel.image = UIImage(data: selectedWidget.image ?? UIColor.white.image().pngData()!)
         }
         .frame(width: 300, height: 450)
         .background(Color.init(uiColor: .clear))
