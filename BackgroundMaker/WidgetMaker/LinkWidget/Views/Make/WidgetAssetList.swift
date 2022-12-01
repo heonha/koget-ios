@@ -47,16 +47,19 @@ struct WidgetAssetList: View {
                 }
                 .searchable(text: $searchText, placement: .toolbar)
                 .onChange(of: searchText) { searchText in
-                    builtInWidgets.searchResults = builtInWidgets.data.filter({ widget in
-                        widget.appNameGlobal.lowercased().contains(searchText.lowercased()) ||
-                        widget.appName_en.lowercased().contains(searchText.lowercased()) ||
-                        widget.appName_ko.lowercased().contains(searchText.lowercased())
-                    })
+                    fetchSearchData(searchText: searchText)
                 }
                 
             }
         }
         
+    }
+    
+    func fetchSearchData(searchText: String) {
+        builtInWidgets.searchResults = builtInWidgets.data.filter({ widget in
+            widget.appNameGlobal.lowercased().contains(searchText.lowercased()) ||
+            widget.appName.lowercased().contains(searchText.lowercased())
+        })
     }
     
 }
