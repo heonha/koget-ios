@@ -13,6 +13,9 @@
 		3A0566D12931E964007B0A7A /* WidgetButtonToMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */; };
 		3A0566D32931E9A0007B0A7A /* WidgetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D22931E9A0007B0A7A /* WidgetCollectionView.swift */; };
 		3A0566D52931E9F2007B0A7A /* WidgetScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D42931E9F2007B0A7A /* WidgetScrollView.swift */; };
+		3A0842002938A67D009BED73 /* NoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0841FF2938A67D009BED73 /* NoticeList.swift */; };
+		3A0842022938AA94009BED73 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0842012938AA94009BED73 /* NoticeCell.swift */; };
+		3A0842042938ABDD009BED73 /* NoticeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0842032938ABDD009BED73 /* NoticeContentView.swift */; };
 		3A08BD03292FCA0900E09B3E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A08BD02292FCA0900E09B3E /* SettingView.swift */; };
 		3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */; };
 		3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */; };
@@ -137,6 +140,9 @@
 		3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetButtonToMake.swift; sourceTree = "<group>"; };
 		3A0566D22931E9A0007B0A7A /* WidgetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCollectionView.swift; sourceTree = "<group>"; };
 		3A0566D42931E9F2007B0A7A /* WidgetScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScrollView.swift; sourceTree = "<group>"; };
+		3A0841FF2938A67D009BED73 /* NoticeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeList.swift; sourceTree = "<group>"; };
+		3A0842012938AA94009BED73 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
+		3A0842032938ABDD009BED73 /* NoticeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeContentView.swift; sourceTree = "<group>"; };
 		3A08BD02292FCA0900E09B3E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetView.swift; sourceTree = "<group>"; };
 		3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetList.swift; sourceTree = "<group>"; };
@@ -265,6 +271,16 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		3A0841FE2938A671009BED73 /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				3A0841FF2938A67D009BED73 /* NoticeList.swift */,
+				3A0842012938AA94009BED73 /* NoticeCell.swift */,
+				3A0842032938ABDD009BED73 /* NoticeContentView.swift */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
 		3A08BCFB292FA7E700E09B3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				3A08BD02292FCA0900E09B3E /* SettingView.swift */,
+				3A0841FE2938A671009BED73 /* Notice */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -729,7 +746,9 @@
 				3A0566D12931E964007B0A7A /* WidgetButtonToMake.swift in Sources */,
 				3ABFEFC7292F481F00455730 /* TestDeepLink.swift in Sources */,
 				3A17665928C9DAFF006DE579 /* ViewModelForCocoa.swift in Sources */,
+				3A0842042938ABDD009BED73 /* NoticeContentView.swift in Sources */,
 				3AD12D9628CDA4C900CF431C /* MainWallpaperViewController.swift in Sources */,
+				3A0842022938AA94009BED73 /* NoticeCell.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* DefaultWidgetManager.swift in Sources */,
 				3ABA6C1B28C6043F005AA8E4 /* MakeWallpaperViewController.swift in Sources */,
 				3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */,
@@ -754,6 +773,7 @@
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,
 				3A0F42A428C982D8002F1CAD /* MainEditMenuView.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
+				3A0842002938A67D009BED73 /* NoticeList.swift in Sources */,
 				3A302066290E54F7006676BD /* MainWallpaperViewController+Delegate.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
@@ -1005,7 +1025,7 @@
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BackgroundMaker/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "스위터";
+				INFOPLIST_KEY_CFBundleDisplayName = "쿼커";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 저장하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
@@ -1040,7 +1060,7 @@
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BackgroundMaker/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "스위터";
+				INFOPLIST_KEY_CFBundleDisplayName = "쿼커";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 저장하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";

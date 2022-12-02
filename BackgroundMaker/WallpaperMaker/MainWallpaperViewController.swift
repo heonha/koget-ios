@@ -304,15 +304,6 @@ class MainWallpaperViewController: UIViewController {
     
     }
     
-    // For UnitTest
-    // @objc func presentPHPickerVC() {
-    //     let image = UIImage(named: "testImage")!
-    //     RxImageViewModel.shared.mainImageSubject.onNext(image)
-    //     let photoVC = MakeWallpaperViewController()
-    //     photoVC.modalPresentationStyle = .fullScreen
-    //     self.present(photoVC, animated: false)
-    // }
-    //
     
     //MARK: - Methods
     
