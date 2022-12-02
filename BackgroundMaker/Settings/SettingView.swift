@@ -17,29 +17,47 @@ struct SettingView: View {
                 Color(uiColor: AppColors.deepDarkGrey)
                     .ignoresSafeArea()
                 List {
-                    ButtonForSetting(title: "공지사항", symbolName: "mic.fill") {
-                        isAlertPresent.toggle()
+                    
+                    NavigationLink {
+                        NoticeList()
+                    } label: {
+                        SettingButtonLabel(title: "공지사항", symbolName: "mic.fill")
                     }
-                    ButtonForSetting(title: "개발자에게 문의하기", symbolName: "paperplane.fill") {
-                        isAlertPresent.toggle()
+                    
+                    NavigationLink {
+
+                    } label: {
+                        SettingButtonLabel(title: "기능추가 요청하기", symbolName: "paperplane.fill")
                     }
-                    ButtonForSetting(title: "커피 한 잔 후원", symbolName: "cup.and.saucer.fill") {
-                        isAlertPresent.toggle()
+                    .disabled(true)
+                    
+                    NavigationLink {
+
+                    } label: {
+                        SettingButtonLabel(title: "커피 한 잔 후원", symbolName: "cup.and.saucer.fill")
                     }
-                    ButtonForSetting(title: "오픈소스 라이선스", symbolName: "chart.bar.doc.horizontal") {
-                        isAlertPresent.toggle()
+                    .disabled(true)
+                    
+                    NavigationLink {
+
+                    } label: {
+                        SettingButtonLabel(title: "오픈소스 라이선스", symbolName: "chart.bar.doc.horizontal")
                     }
+                    .disabled(true)
+                    
                 }
                 .alert("미구현", isPresented: $isAlertPresent, actions: {
                     
                 })
                 .padding(.top, 4)
-                .navigationTitle("설정(미구현)")
+                .navigationTitle("설정")
                 .navigationBarTitleDisplayMode(.large)
 
             }
 
         }
+        .tint(Color.init(uiColor: AppColors.deepPurple))
+
     }
 }
 
@@ -49,23 +67,17 @@ struct SettingView_Previews: PreviewProvider {
     }
 }
 
-struct ButtonForSetting: View {
+struct SettingButtonLabel: View {
     
     var title: LocalizedStringKey
     var symbolName: String
-    let action: () -> Void
     
     var body: some View {
-        Button {
-            action()
-        } label: {
             HStack {
                 Text(title)
                 Spacer()
                 Image(systemName: symbolName)
                     .renderingMode(.template)
-            }
-            
-        }.tint(.white)
+            }.tint(.white)
     }
 }
