@@ -46,7 +46,6 @@ struct WidgetListScrollView: View {
             .shadow(radius: 3)
             Spacer()
         }.onAppear {
-            print("On Appear")
             subscribeWidgetData() // 위젯 데이터 가져오기
         }.onDisappear {
             WidgetCoreData.shared.disposeBag = .init()
@@ -55,11 +54,9 @@ struct WidgetListScrollView: View {
     
     
     func subscribeWidgetData() {
-        print("새로운 구독 시작")
         WidgetCoreData.shared.widgets
             .subscribe { (widgets) in
                 deepLinkWidgets = widgets
-                print("--->onNext----")
                 for widget in deepLinkWidgets {
                     print(widget.name!)
                 }

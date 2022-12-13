@@ -24,13 +24,6 @@ struct WidgetIconView: View {
                 .lineLimit(2)
                 .font(.system(size: 13))
         }.frame(width: 70, height: 80)
-            .onAppear {
-                print("Cell이 로딩됨")
-                print("\(selectedObject.name!)")
-            }
-            .onDisappear {
-                print("cell이 사라짐")
-            }
     }
 }
 
