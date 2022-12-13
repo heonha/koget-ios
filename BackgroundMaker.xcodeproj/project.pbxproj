@@ -58,6 +58,7 @@
 		3A8C4E95291644E1001DCB0A /* SwipeableTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8C4E94291644E1001DCB0A /* SwipeableTabBarController */; };
 		3A8E3A0428E3E6AA00390F8A /* RulerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */; };
 		3A8E3A0728E3E7B900390F8A /* RulerView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A0628E3E7B900390F8A /* RulerView */; };
+		3A8F8E832939AF5C0065DC80 /* MainSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */; };
 		3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */; };
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C04FF292DB03C00442017 /* PhotoPicker.swift */; };
@@ -174,6 +175,7 @@
 		3A8339D62932165B00DC9527 /* EditingToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingToggleButton.swift; sourceTree = "<group>"; };
 		3A8339D82932167500DC9527 /* DetailWidgetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetButton.swift; sourceTree = "<group>"; };
 		3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerSlider.swift; sourceTree = "<group>"; };
+		3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSegmentView.swift; sourceTree = "<group>"; };
 		3A94E19D28EC1B950050EE80 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		3A94E1A828EC1B960050EE80 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		3A9BC0CD28E6C92A0041DA1B /* BackgroundMaker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BackgroundMaker.entitlements; sourceTree = "<group>"; };
@@ -496,7 +498,8 @@
 				3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */,
 				3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */,
 				3AD157852908E360001943CA /* MainContainerViewController.swift */,
-				3AE386F828FBD5B70001979A /* CoreData */,
+				3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */,
+				3AE0F982294878CF008C9F5F /* CoreData */,
 				3A9EABB728E5DCB300ED2BF2 /* WallpaperMaker */,
 				3AC3E1E028E68A6D00BFF455 /* WidgetMaker */,
 				3A08BD01292FC9E700E09B3E /* Settings */,
@@ -530,7 +533,7 @@
 			path = WidgetMaker;
 			sourceTree = "<group>";
 		};
-		3AE386F828FBD5B70001979A /* CoreData */ = {
+		3AE0F982294878CF008C9F5F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				3A1CD19928F971A800AC5D1C /* CoreData.swift */,
@@ -540,7 +543,7 @@
 				3ABFEFC6292F481F00455730 /* TestDeepLink.swift */,
 				3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */,
 			);
-			name = CoreData;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		3AF29FFC28E0ACB900CA6E15 /* ViewModel */ = {
@@ -787,6 +790,7 @@
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* WidgetCollectionView.swift in Sources */,
 				3AE2551D290EA2CF0045098E /* WallpaperCoreData.swift in Sources */,
+				3A8F8E832939AF5C0065DC80 /* MainSegmentView.swift in Sources */,
 				3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */,
 				3A420D8E28E4669000C8426D /* MakeWallpaperViewController+RulerView.swift in Sources */,
 				3A9EABB428E5C41800ED2BF2 /* MakeWallpaperViewController+Gesture.swift in Sources */,
@@ -1025,7 +1029,7 @@
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BackgroundMaker/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "쿼커";
+				INFOPLIST_KEY_CFBundleDisplayName = "퀵젯";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 저장하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
@@ -1060,7 +1064,7 @@
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BackgroundMaker/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "쿼커";
+				INFOPLIST_KEY_CFBundleDisplayName = "퀵젯";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 저장하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
@@ -1278,8 +1282,7 @@
 				3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */,
 			);
 			currentVersion = 3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */;
-			name = BackgroundMaker.xcdatamodeld;
-			path = WidgetMaker/Models/BackgroundMaker.xcdatamodeld;
+			path = BackgroundMaker.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
