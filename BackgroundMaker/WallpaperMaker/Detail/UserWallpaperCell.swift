@@ -17,8 +17,8 @@ class UserWallpaperCell: UICollectionViewCell {
     var checkButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setImage(UIImage(named: "circle")!.addShadow(color: .darkGray), for: .normal)
-        btn.setImage(UIImage(named: "checkmark.circle.fill.white")!.addShadow(color: .black), for: .selected)
+        btn.setImage(UIImage(named: "circle")?.addShadow(color: .darkGray), for: .normal)
+        btn.setImage(UIImage(named: "checkmark.circle.fill.white")?.addShadow(color: .black), for: .selected)
         btn.isHidden = true
         return btn
     }()
