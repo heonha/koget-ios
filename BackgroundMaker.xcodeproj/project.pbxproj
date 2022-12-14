@@ -92,9 +92,9 @@
 		3AE0D3C128CE0D8800297F8F /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0D3C028CE0D8800297F8F /* ButtonViewCell.swift */; };
 		3AE2551B290EA29D0045098E /* UserWallpaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2551A290EA29D0045098E /* UserWallpaperCell.swift */; };
 		3AE2551D290EA2CF0045098E /* WallpaperCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2551C290EA2CF0045098E /* WallpaperCoreData.swift */; };
-		3AE9DC0D28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */; };
-		3AE9DC0E28F8F890008A3316 /* BackgroundMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */; };
-		3AE9DC0F28F8F891008A3316 /* BackgroundMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */; };
+		3AE9DC0D28F8F87B008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
+		3AE9DC0E28F8F890008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
+		3AE9DC0F28F8F891008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
 		3AF9F00528ED570D00F685E6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC3E1E828E690B800BFF455 /* WidgetKit.framework */; };
 		3AF9F00628ED570D00F685E6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC3E1EA28E690B800BFF455 /* SwiftUI.framework */; };
 		3AF9F00928ED570D00F685E6 /* DeepLinkWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */; };
@@ -541,7 +541,7 @@
 				3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */,
 				3AE2551C290EA2CF0045098E /* WallpaperCoreData.swift */,
 				3ABFEFC6292F481F00455730 /* TestDeepLink.swift */,
-				3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */,
+				3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -729,7 +729,7 @@
 			files = (
 				3A1CD19728F9710200AC5D1C /* AppDelegate.swift in Sources */,
 				3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */,
-				3AE9DC0F28F8F891008A3316 /* BackgroundMaker.xcdatamodeld in Sources */,
+				3AE9DC0F28F8F891008A3316 /* QuickGet.xcdatamodeld in Sources */,
 				3A1CD1A128F9891C00AC5D1C /* CoreData.swift in Sources */,
 				3A1CD19828F9710E00AC5D1C /* GlobalConstants.swift in Sources */,
 				3A3C119F28EDB5B400C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
@@ -743,7 +743,7 @@
 			files = (
 				3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */,
 				3AAB432E2913978A009E3302 /* TestPreviewViewController.swift in Sources */,
-				3AE9DC0D28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld in Sources */,
+				3AE9DC0D28F8F87B008A3316 /* QuickGet.xcdatamodeld in Sources */,
 				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,
 				3A2F307728F4134D00404721 /* MenuButton.swift in Sources */,
 				3A0566D12931E964007B0A7A /* WidgetButtonToMake.swift in Sources */,
@@ -814,7 +814,7 @@
 				3A3C118E28EDB1B700C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A1CD1A228F9891C00AC5D1C /* CoreData.swift in Sources */,
 				3A1CD19E28F9819400AC5D1C /* Constants.swift in Sources */,
-				3AE9DC0E28F8F890008A3316 /* BackgroundMaker.xcdatamodeld in Sources */,
+				3AE9DC0E28F8F890008A3316 /* QuickGet.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,7 +864,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BackgroundMaker.LockScreenIntentsExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heon.quickget.LockScreenIntentsExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -891,7 +891,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BackgroundMaker.LockScreenIntentsExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heon.quickget.LockScreenIntentsExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -951,7 +951,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1006,7 +1006,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
@@ -1044,7 +1044,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BackgroundMaker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heon.quickget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1079,7 +1079,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BackgroundMaker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heon.quickget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1107,7 +1107,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BackgroundMaker.LockScreenWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heon.quickget.LockScreenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1136,7 +1136,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weizen.BackgroundMaker.LockScreenWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heon.quickget.LockScreenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1276,13 +1276,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		3AE9DC0B28F8F87B008A3316 /* BackgroundMaker.xcdatamodeld */ = {
+		3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */,
 			);
 			currentVersion = 3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */;
-			path = BackgroundMaker.xcdatamodeld;
+			path = QuickGet.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
