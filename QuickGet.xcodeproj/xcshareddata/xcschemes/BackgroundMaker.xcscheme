@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3ABA6C1228C6043F005AA8E4"
-               BuildableName = "BackgroundMaker.app"
-               BlueprintName = "BackgroundMaker"
-               ReferencedContainer = "container:BackgroundMaker.xcodeproj">
+               BuildableName = "QuickGet.app"
+               BlueprintName = "QuickGet"
+               ReferencedContainer = "container:QuickGet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3ABA6C1228C6043F005AA8E4"
-            BuildableName = "BackgroundMaker.app"
-            BlueprintName = "BackgroundMaker"
-            ReferencedContainer = "container:BackgroundMaker.xcodeproj">
+            BuildableName = "QuickGet.app"
+            BlueprintName = "QuickGet"
+            ReferencedContainer = "container:QuickGet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3ABA6C1228C6043F005AA8E4"
-            BuildableName = "BackgroundMaker.app"
-            BlueprintName = "BackgroundMaker"
-            ReferencedContainer = "container:BackgroundMaker.xcodeproj">
+            BuildableName = "QuickGet.app"
+            BlueprintName = "QuickGet"
+            ReferencedContainer = "container:QuickGet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

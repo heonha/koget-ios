@@ -33,7 +33,6 @@
 		3A26150428CB7E2B000D17A3 /* TestEditImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26150328CB7E2B000D17A3 /* TestEditImageViewController.swift */; };
 		3A2E21FB290F7BBE00E4F46A /* DetailWallpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E21FA290F7BBE00E4F46A /* DetailWallpaperViewController.swift */; };
 		3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2E21FC290FF9F800E4F46A /* downArrow.json */; };
-		3A2E2200290FFA2400E4F46A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3A2E21FF290FFA2400E4F46A /* Lottie */; };
 		3A2F307728F4134D00404721 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307628F4134D00404721 /* MenuButton.swift */; };
 		3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
 		3A302066290E54F7006676BD /* MainWallpaperViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A302065290E54F7006676BD /* MainWallpaperViewController+Delegate.swift */; };
@@ -52,18 +51,22 @@
 		3A51A10728F5A1C70027AD5A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A51A10628F5A1C70027AD5A /* TestViewController.swift */; };
 		3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
 		3A5E82B928C70A8E00C10AAC /* EditImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E82B828C70A8E00C10AAC /* EditImageModel.swift */; };
+		3A668E7C2949904900BD7A4C /* UIImageColors in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E7B2949904900BD7A4C /* UIImageColors */; };
+		3A668E7F2949905900BD7A4C /* SwipeableTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E7E2949905900BD7A4C /* SwipeableTabBarController */; };
+		3A668E822949908500BD7A4C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E812949908500BD7A4C /* SnapKit */; };
+		3A668E852949909300BD7A4C /* RulerView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E842949909300BD7A4C /* RulerView */; };
+		3A668E88294990A100BD7A4C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E87294990A100BD7A4C /* Lottie */; };
+		3A668E8B294990B600BD7A4C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E8A294990B600BD7A4C /* RxCocoa */; };
+		3A668E8D294990B600BD7A4C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E8C294990B600BD7A4C /* RxSwift */; };
 		3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A82318E28C78F0700F958FE /* UIImage+Utils.swift */; };
 		3A8339D72932165B00DC9527 /* EditingToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D62932165B00DC9527 /* EditingToggleButton.swift */; };
 		3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D82932167500DC9527 /* DetailWidgetButton.swift */; };
-		3A8C4E95291644E1001DCB0A /* SwipeableTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8C4E94291644E1001DCB0A /* SwipeableTabBarController */; };
 		3A8E3A0428E3E6AA00390F8A /* RulerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */; };
-		3A8E3A0728E3E7B900390F8A /* RulerView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8E3A0628E3E7B900390F8A /* RulerView */; };
 		3A8F8E832939AF5C0065DC80 /* MainSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */; };
 		3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */; };
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C04FF292DB03C00442017 /* PhotoPicker.swift */; };
 		3A9C0505292DDB6D00442017 /* LinkWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C0504292DDB6D00442017 /* LinkWidgetModel.swift */; };
-		3A9D3DC828FD36A60085676B /* UIImageColors in Frameworks */ = {isa = PBXBuildFile; productRef = 3A9D3DC728FD36A60085676B /* UIImageColors */; };
 		3A9EABB228E57FF700ED2BF2 /* MakeWallpaperViewController+bgEditSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB128E57FF700ED2BF2 /* MakeWallpaperViewController+bgEditSubview.swift */; };
 		3A9EABB428E5C41800ED2BF2 /* MakeWallpaperViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB328E5C41800ED2BF2 /* MakeWallpaperViewController+Gesture.swift */; };
 		3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */; };
@@ -75,9 +78,6 @@
 		3ABA6C1B28C6043F005AA8E4 /* MakeWallpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1A28C6043F005AA8E4 /* MakeWallpaperViewController.swift */; };
 		3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */; };
-		3ABA6C3328C60A7F005AA8E4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3228C60A7F005AA8E4 /* RxCocoa */; };
-		3ABA6C3528C60A7F005AA8E4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3428C60A7F005AA8E4 /* RxSwift */; };
-		3ABA6C3828C6361B005AA8E4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3ABA6C3728C6361B005AA8E4 /* SnapKit */; };
 		3ABD50FF292945EB00F878AE /* WidgetCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */; };
 		3ABFEFBD292E70A900455730 /* FilterWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFBC292E70A900455730 /* FilterWidgetModel.swift */; };
 		3ABFEFC1292F136B00455730 /* DetailWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC0292F136B00455730 /* DetailWidgetView.swift */; };
@@ -190,7 +190,7 @@
 		3AA33F0128CE339C004127ED /* RoundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowView.swift; sourceTree = "<group>"; };
 		3AAB432D2913978A009E3302 /* TestPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPreviewViewController.swift; sourceTree = "<group>"; };
 		3AAB432F2913B482009E3302 /* CustumRulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumRulerView.swift; sourceTree = "<group>"; };
-		3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABA6C1328C6043F005AA8E4 /* QuickGet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickGet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3ABA6C1A28C6043F005AA8E4 /* MakeWallpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWallpaperViewController.swift; sourceTree = "<group>"; };
@@ -233,13 +233,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A9D3DC828FD36A60085676B /* UIImageColors in Frameworks */,
-				3ABA6C3828C6361B005AA8E4 /* SnapKit in Frameworks */,
-				3ABA6C3528C60A7F005AA8E4 /* RxSwift in Frameworks */,
-				3A8E3A0728E3E7B900390F8A /* RulerView in Frameworks */,
-				3ABA6C3328C60A7F005AA8E4 /* RxCocoa in Frameworks */,
-				3A2E2200290FFA2400E4F46A /* Lottie in Frameworks */,
-				3A8C4E95291644E1001DCB0A /* SwipeableTabBarController in Frameworks */,
+				3A668E8B294990B600BD7A4C /* RxCocoa in Frameworks */,
+				3A668E88294990A100BD7A4C /* Lottie in Frameworks */,
+				3A668E822949908500BD7A4C /* SnapKit in Frameworks */,
+				3A668E7C2949904900BD7A4C /* UIImageColors in Frameworks */,
+				3A668E852949909300BD7A4C /* RulerView in Frameworks */,
+				3A668E7F2949905900BD7A4C /* SwipeableTabBarController in Frameworks */,
+				3A668E8D294990B600BD7A4C /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,7 +484,7 @@
 		3ABA6C1428C6043F005AA8E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */,
+				3ABA6C1328C6043F005AA8E4 /* QuickGet.app */,
 				3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */,
 				3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */,
 			);
@@ -595,9 +595,9 @@
 			productReference = 3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		3ABA6C1228C6043F005AA8E4 /* BackgroundMaker */ = {
+		3ABA6C1228C6043F005AA8E4 /* QuickGet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3ABA6C2A28C60440005AA8E4 /* Build configuration list for PBXNativeTarget "BackgroundMaker" */;
+			buildConfigurationList = 3ABA6C2A28C60440005AA8E4 /* Build configuration list for PBXNativeTarget "QuickGet" */;
 			buildPhases = (
 				3ABA6C0F28C6043F005AA8E4 /* Sources */,
 				3ABA6C1028C6043F005AA8E4 /* Frameworks */,
@@ -610,18 +610,18 @@
 				3AF9F00E28ED570E00F685E6 /* PBXTargetDependency */,
 				3A3C119A28EDB4B800C9CCED /* PBXTargetDependency */,
 			);
-			name = BackgroundMaker;
+			name = QuickGet;
 			packageProductDependencies = (
-				3ABA6C3228C60A7F005AA8E4 /* RxCocoa */,
-				3ABA6C3428C60A7F005AA8E4 /* RxSwift */,
-				3ABA6C3728C6361B005AA8E4 /* SnapKit */,
-				3A8E3A0628E3E7B900390F8A /* RulerView */,
-				3A9D3DC728FD36A60085676B /* UIImageColors */,
-				3A2E21FF290FFA2400E4F46A /* Lottie */,
-				3A8C4E94291644E1001DCB0A /* SwipeableTabBarController */,
+				3A668E7B2949904900BD7A4C /* UIImageColors */,
+				3A668E7E2949905900BD7A4C /* SwipeableTabBarController */,
+				3A668E812949908500BD7A4C /* SnapKit */,
+				3A668E842949909300BD7A4C /* RulerView */,
+				3A668E87294990A100BD7A4C /* Lottie */,
+				3A668E8A294990B600BD7A4C /* RxCocoa */,
+				3A668E8C294990B600BD7A4C /* RxSwift */,
 			);
 			productName = BackgroundMaker;
-			productReference = 3ABA6C1328C6043F005AA8E4 /* BackgroundMaker.app */;
+			productReference = 3ABA6C1328C6043F005AA8E4 /* QuickGet.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3AF9F00328ED570D00F685E6 /* LockScreenWidgetExtension */ = {
@@ -662,7 +662,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "BackgroundMaker" */;
+			buildConfigurationList = 3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "QuickGet" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -673,18 +673,18 @@
 			);
 			mainGroup = 3ABA6C0A28C6043F005AA8E4;
 			packageReferences = (
-				3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */,
-				3A9D3DC628FD36A60085676B /* XCRemoteSwiftPackageReference "UIImageColors" */,
-				3A2E21FE290FFA2400E4F46A /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				3A8C4E93291644E1001DCB0A /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */,
+				3A668E7A2949904900BD7A4C /* XCRemoteSwiftPackageReference "UIImageColors" */,
+				3A668E7D2949905900BD7A4C /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */,
+				3A668E802949908500BD7A4C /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3A668E832949909300BD7A4C /* XCRemoteSwiftPackageReference "RulerView" */,
+				3A668E86294990A100BD7A4C /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				3A668E89294990B600BD7A4C /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3ABA6C1228C6043F005AA8E4 /* BackgroundMaker */,
+				3ABA6C1228C6043F005AA8E4 /* QuickGet */,
 				3AF9F00328ED570D00F685E6 /* LockScreenWidgetExtension */,
 				3A3C119228EDB4B800C9CCED /* LockScreenIntentsExtension */,
 			);
@@ -1157,7 +1157,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "BackgroundMaker" */ = {
+		3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "QuickGet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3ABA6C2828C60440005AA8E4 /* Debug */,
@@ -1166,7 +1166,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3ABA6C2A28C60440005AA8E4 /* Build configuration list for PBXNativeTarget "BackgroundMaker" */ = {
+		3ABA6C2A28C60440005AA8E4 /* Build configuration list for PBXNativeTarget "QuickGet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3ABA6C2B28C60440005AA8E4 /* Debug */,
@@ -1187,31 +1187,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3A2E21FE290FFA2400E4F46A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 3.5.0;
-			};
-		};
-		3A8C4E93291644E1001DCB0A /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marcosgriselli/SwipeableTabBarController.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 3.4.0;
-			};
-		};
-		3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/selivandex/RulerView.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
-		3A9D3DC628FD36A60085676B /* XCRemoteSwiftPackageReference "UIImageColors" */ = {
+		3A668E7A2949904900BD7A4C /* XCRemoteSwiftPackageReference "UIImageColors" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jathu/UIImageColors.git";
 			requirement = {
@@ -1219,15 +1195,15 @@
 				minimumVersion = 2.2.0;
 			};
 		};
-		3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		3A668E7D2949905900BD7A4C /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			repositoryURL = "https://github.com/marcosgriselli/SwipeableTabBarController.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 6.5.0;
+				minimumVersion = 3.4.0;
 			};
 		};
-		3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		3A668E802949908500BD7A4C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -1235,43 +1211,67 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		3A668E832949909300BD7A4C /* XCRemoteSwiftPackageReference "RulerView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/selivandex/RulerView.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
+		3A668E86294990A100BD7A4C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		3A668E89294990B600BD7A4C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3A2E21FF290FFA2400E4F46A /* Lottie */ = {
+		3A668E7B2949904900BD7A4C /* UIImageColors */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3A2E21FE290FFA2400E4F46A /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-		3A8C4E94291644E1001DCB0A /* SwipeableTabBarController */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A8C4E93291644E1001DCB0A /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */;
-			productName = SwipeableTabBarController;
-		};
-		3A8E3A0628E3E7B900390F8A /* RulerView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A8E3A0528E3E7B900390F8A /* XCRemoteSwiftPackageReference "RulerView" */;
-			productName = RulerView;
-		};
-		3A9D3DC728FD36A60085676B /* UIImageColors */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A9D3DC628FD36A60085676B /* XCRemoteSwiftPackageReference "UIImageColors" */;
+			package = 3A668E7A2949904900BD7A4C /* XCRemoteSwiftPackageReference "UIImageColors" */;
 			productName = UIImageColors;
 		};
-		3ABA6C3228C60A7F005AA8E4 /* RxCocoa */ = {
+		3A668E7E2949905900BD7A4C /* SwipeableTabBarController */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 3A668E7D2949905900BD7A4C /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */;
+			productName = SwipeableTabBarController;
+		};
+		3A668E812949908500BD7A4C /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A668E802949908500BD7A4C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3A668E842949909300BD7A4C /* RulerView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A668E832949909300BD7A4C /* XCRemoteSwiftPackageReference "RulerView" */;
+			productName = RulerView;
+		};
+		3A668E87294990A100BD7A4C /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A668E86294990A100BD7A4C /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		3A668E8A294990B600BD7A4C /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A668E89294990B600BD7A4C /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		3ABA6C3428C60A7F005AA8E4 /* RxSwift */ = {
+		3A668E8C294990B600BD7A4C /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3ABA6C3128C60A7F005AA8E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 3A668E89294990B600BD7A4C /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
-		};
-		3ABA6C3728C6361B005AA8E4 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3ABA6C3628C6361B005AA8E4 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
