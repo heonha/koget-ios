@@ -9,32 +9,26 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>WPhMXz</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>22A400</string>
+	<string>22C65</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>14B47b</string>
+	<string>14C18</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>14.1</string>
+	<string>14.2</string>
 	<key>INIntents</key>
 	<array>
 		***REMOVED***
 			<key>INIntentCategory</key>
-			<string>generic</string>
+			<string>start</string>
 			<key>INIntentDescriptionID</key>
 			<string>iUQug8</string>
 			<key>INIntentEligibleForWidgets</key>
+			<true/>
+			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
 			<integer>18</integer>
 			<key>INIntentName</key>
 			<string>DeepLinkApp</string>
-			<key>INIntentParameterCombinations</key>
-			***REMOVED***
-				<key></key>
-				***REMOVED***
-					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
-					<false/>
-				***REMOVED***
-			***REMOVED***
 			<key>INIntentParameters</key>
 			<array>
 				***REMOVED***
@@ -102,7 +96,7 @@
 			<key>INIntentUserConfirmationRequired</key>
 			<true/>
 			<key>INIntentVerb</key>
-			<string>Run</string>
+			<string>Start</string>
 		***REMOVED***
 	</array>
 	<key>INTypes</key>
