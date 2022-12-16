@@ -49,7 +49,7 @@ struct WidgetGridView: View {
                     .frame(width: width, height: width)
                 }
             }
-            .background(Color(uiColor: AppColors.normalDarkGrey))
+            .background(AppColors.normalDarkGrey)
             .cornerRadius(10)
             .shadow(radius: 3)
             Spacer()

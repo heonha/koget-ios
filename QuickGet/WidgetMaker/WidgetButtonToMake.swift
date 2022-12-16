@@ -34,11 +34,11 @@ struct WidgetButtonToMake: View {
                         Spacer()
                     }
                     .padding()
-                    .background(Color(uiColor: AppColors.normalDarkGrey))
+                    .background(AppColors.normalDarkGrey)
                     .shadow(radius: 3)
                 }
                 .frame(width: Constants.deviceSize.width - 50, height: 70)
-                .background(Color(uiColor: AppColors.deepDarkGrey))
+                .background(AppColors.deepDarkGrey)
                 .cornerRadius(10)
                 .padding(.top)
                 .padding(.horizontal)

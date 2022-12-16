@@ -9,11 +9,14 @@ import SwiftUI
 
 struct EditingToggleButton: View {
     
+    
+    var selectedWidget: DeepLink
+    var size: CGSize = .init(width: 200, height: 40)
+
     @State var alertMessage: LocalizedStringKey = "알수 없는 오류 발생"
     @State var isAlertPresent: Bool = false
     @Binding var isEditingMode: Bool
     @ObservedObject var viewModel: LinkWidgetModel
-    var selectedWidget: DeepLink
     
     var body: some View {
         Button {
@@ -39,15 +42,15 @@ struct EditingToggleButton: View {
                     .foregroundColor(.white)
                     .fontWeight(.bold)
                     .font(.system(size: 17))
-                    .frame(width: 200, height: 30)
+                    .frame(width: size.width, height: size.height)
                     .background(Color.init(uiColor: .systemPink))
             } else {
                 Text("위젯 편집")
                     .foregroundColor(.white)
                     .fontWeight(.bold)
                     .font(.system(size: 17))
-                    .frame(width: 200, height: 30)
-                    .background(Color("ChocoColor"))
+                    .frame(width: 200, height: 40)
+                    .background(Color("choco"))
             }
         }
         .cornerRadius(8)
@@ -72,9 +75,9 @@ struct EditingToggleButton: View {
 struct EditToggleButton_Previews: PreviewProvider {
     static var previews: some View {
         EditingToggleButton(
+            selectedWidget: DeepLink.example,
             isEditingMode: .constant(false),
-            viewModel: .init(),
-            selectedWidget: DeepLink.example
+            viewModel: .init()
         )
     }
 }

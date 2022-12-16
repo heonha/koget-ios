@@ -15,15 +15,28 @@ struct MainWidgetView: View {
         ZStack {
             NavigationView {
                 ZStack {
-                    Color(uiColor: AppColors.blackDarkGrey)
+                    AppColors.blackDarkGrey
                         .ignoresSafeArea()
                     VStack {
                         WidgetButtonToMake()
                         WidgetCollectionView()
                     }
+                    
+                    FloatingButton()
                 }
                 .navigationTitle("위젯")
                 .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            MakeWidgetView()
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+                
             }
             .tint(.white)
         }

@@ -20,7 +20,7 @@ struct WidgetAssetList: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
-            Color.init(uiColor: AppColors.normalDarkGrey)
+            AppColors.normalDarkGrey
             VStack {
                 NavigationView {
                     List(searchText.isEmpty ? builtInWidgets.data : builtInWidgets.searchResults, id: \.id) { widget in

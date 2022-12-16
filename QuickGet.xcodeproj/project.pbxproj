@@ -61,6 +61,10 @@
 		3ACCB34C294C33C300A85E0F /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
 		3ACCB34D294C33C300A85E0F /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */; };
 		3ACCB34E294C33C300A85E0F /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
+		3ACCB350294C37BF00A85E0F /* SettingButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB34F294C37BF00A85E0F /* SettingButtonLabel.swift */; };
+		3ACCB353294C38B100A85E0F /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB352294C38B100A85E0F /* ContactView.swift */; };
+		3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB354294C3D3500A85E0F /* TextFieldView.swift */; };
+		3ACCB357294C54A500A85E0F /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB356294C54A500A85E0F /* FloatingButton.swift */; };
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
 		3AE2551D290EA2CF0045098E /* WallpaperCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2551C290EA2CF0045098E /* WallpaperCoreData.swift */; };
 		3AE9DC0D28F8F87B008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
@@ -156,6 +160,10 @@
 		3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurBackgroundView.swift; sourceTree = "<group>"; };
 		3AC3E1E828E690B800BFF455 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		3AC3E1EA28E690B800BFF455 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		3ACCB34F294C37BF00A85E0F /* SettingButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButtonLabel.swift; sourceTree = "<group>"; };
+		3ACCB352294C38B100A85E0F /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		3ACCB354294C3D3500A85E0F /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		3ACCB356294C54A500A85E0F /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingIndicatorGray.json; sourceTree = "<group>"; };
 		3AE2551C290EA2CF0045098E /* WallpaperCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperCoreData.swift; sourceTree = "<group>"; };
 		3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WidgetModel.xcdatamodel; sourceTree = "<group>"; };
@@ -267,7 +275,9 @@
 			isa = PBXGroup;
 			children = (
 				3A08BD02292FCA0900E09B3E /* SettingView.swift */,
+				3ACCB34F294C37BF00A85E0F /* SettingButtonLabel.swift */,
 				3A0841FE2938A671009BED73 /* Notice */,
+				3ACCB351294C389200A85E0F /* Contact */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -374,11 +384,20 @@
 			children = (
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
 				3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */,
+				3ACCB356294C54A500A85E0F /* FloatingButton.swift */,
 				3A00CA642931EDB6004FBF80 /* WidgetCollection */,
 				3A51A10528F531F10027AD5A /* LinkWidget */,
 				3A00CA672931F109004FBF80 /* Utils */,
 			);
 			path = WidgetMaker;
+			sourceTree = "<group>";
+		};
+		3ACCB351294C389200A85E0F /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				3ACCB352294C38B100A85E0F /* ContactView.swift */,
+			);
+			path = Contact;
 			sourceTree = "<group>";
 		};
 		3AE0F982294878CF008C9F5F /* CoreData */ = {
@@ -401,6 +420,7 @@
 				3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */,
 				3A0F429E28C89742002F1CAD /* Extensions */,
 				3AB4A3EB28CF01390062EC18 /* Animation */,
+				3ACCB354294C3D3500A85E0F /* TextFieldView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -581,7 +601,9 @@
 				3ABFEFC7292F481F00455730 /* TestDeepLink.swift in Sources */,
 				3A0842042938ABDD009BED73 /* NoticeContentView.swift in Sources */,
 				3A0842022938AA94009BED73 /* NoticeCell.swift in Sources */,
+				3ACCB357294C54A500A85E0F /* FloatingButton.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* DefaultWidgetManager.swift in Sources */,
+				3ACCB350294C37BF00A85E0F /* SettingButtonLabel.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
 				3A0566CE2931E87D007B0A7A /* WidgetIconViewForDeepLink.swift in Sources */,
@@ -602,6 +624,8 @@
 				3A0566D52931E9F2007B0A7A /* WidgetGridView.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* WidgetCollectionView.swift in Sources */,
+				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
+				3ACCB353294C38B100A85E0F /* ContactView.swift in Sources */,
 				3AE2551D290EA2CF0045098E /* WallpaperCoreData.swift in Sources */,
 				3A8F8E832939AF5C0065DC80 /* MainSegmentView.swift in Sources */,
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,

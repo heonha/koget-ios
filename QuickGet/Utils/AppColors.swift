@@ -5,13 +5,18 @@
 //  Created by HeonJin Ha on 2022/10/03.
 //
 
-import UIKit
+import SwiftUI
 
 struct AppColors {
     
-    static let normalDarkGrey = UIColor(red: 0.07, green: 0.07, blue: 0.07, alpha: 1.00)
-    static let deepDarkGrey = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1.00)
-    static let blackDarkGrey = UIColor(red: 0.098, green: 0.098, blue: 0.098, alpha: 1.000)
+    static let deepDarkGrey = Color("deepDarkGray")
+    static let blackDarkGrey = Color("blackDarkGray")
+    static let normalDarkGrey = Color("normalDarkGrey")
+
+    static let destroy = Color("destroy")
+    static let choco = Color("choco")
+    static let darkGray = Color("darkGray")
+
     
     
 }
