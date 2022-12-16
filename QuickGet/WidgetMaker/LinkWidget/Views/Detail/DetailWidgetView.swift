@@ -9,6 +9,9 @@ import SwiftUI
 
 struct DetailWidgetView: View {
     
+    
+    var size: CGSize = .init(width: 300, height: 410)
+    
     @State var selectedWidget: DeepLink
     
     @StateObject var viewModel = LinkWidgetModel()
@@ -26,7 +29,7 @@ struct DetailWidgetView: View {
     var body: some View {
         ZStack {
             
-            Color.init(uiColor: AppColors.blackDarkGrey)
+            AppColors.blackDarkGrey
 
             VStack {
                 ZStack {
@@ -35,17 +38,33 @@ struct DetailWidgetView: View {
                             .frame(maxWidth: .infinity, maxHeight: 40, alignment: .center)
                             .font(.system(size: 20))
                             .fontWeight(.bold)
-                    }.background(Color("ChocoColor"))
+                    }.background(Color("choco"))
                     HStack {
-                        Spacer()
                         Button {
                             isDeleteAlertPresent.toggle()
                         } label: {
                             Image(systemName: "trash")
                                 .foregroundColor(.white)
                         }
+                        .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
+                            Button("삭제", role: .destructive) {
+                                WidgetCoreData.shared.deleteData(data: selectedWidget)
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                            Button("취소", role: .cancel) {}
+                        }, message: { Text("정말 삭제 하시겠습니까?") })
+                        
+                        
+                        Spacer()
+                        
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image(systemName: "xmark")
+                                .foregroundColor(.white)
+                        }
                     }
-                    .padding(.trailing, 8)
+                    .padding(.horizontal, 8)
                 }
                 
                 Spacer()
@@ -61,18 +80,11 @@ struct DetailWidgetView: View {
                 EditTextField(title: "URL", placeHolder: "예시: youtube://", isEditingMode: $isEditingMode, text: $viewModel.url)
                 Spacer()
                 
-                VStack(alignment: .center) {
+                
+                
+                VStack(alignment: .center, spacing: 12) {
                     // 편집 버튼
-                    EditingToggleButton(isEditingMode: $isEditingMode, viewModel: viewModel, selectedWidget: selectedWidget)
-                    
-                    // 삭제 버튼
-                    .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
-                        Button("삭제", role: .destructive) {
-                            WidgetCoreData.shared.deleteData(data: selectedWidget)
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                        Button("취소", role: .cancel) {}
-                    }, message: { Text("정말 삭제 하시겠습니까?") })
+                    EditingToggleButton(selectedWidget: selectedWidget, isEditingMode: $isEditingMode, viewModel: viewModel)
                     
                     // 닫기 버튼
                     DetailWidgetButton(text: "닫기", buttonColor: .init(uiColor: .darkGray)) {
@@ -90,7 +102,7 @@ struct DetailWidgetView: View {
             viewModel.url = selectedWidget.url!
             viewModel.image = UIImage(data: selectedWidget.image ?? UIColor.white.image().pngData()!)
         }
-        .frame(width: 300, height: 450)
+        .frame(width: size.width, height: size.height)
         .background(Color.init(uiColor: .clear))
         .cornerRadius(10)
     }

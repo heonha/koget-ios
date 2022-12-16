@@ -13,6 +13,8 @@ struct MakeWidgetView: View {
     
     @StateObject var viewModel = LinkWidgetModel()
     
+    
+    
     @State var iconImage: UIImage = UIImage(named: "plus.circle")!
     @State var alertMessage: LocalizedStringKey = "오류 발생"
     
@@ -25,18 +27,22 @@ struct MakeWidgetView: View {
     @State var isShowingPicker: Bool = false
     
     @Environment(\.presentationMode) var presentationMode
+    
+    
     var body: some View {
+        
         ZStack {
-            Color.init(uiColor: AppColors.deepDarkGrey)
+            AppColors.normalDarkGrey
                 .ignoresSafeArea()
             VStack {
-                Text("위젯 추가하기")
+                Text("위젯 만들기")
                     .frame(maxWidth: .infinity, maxHeight: 40, alignment: .center)
                     .font(.system(size: 20))
                     .fontWeight(.semibold)
-                    .background(Color("ChocoColor"))
+                    .background(Color("choco"))
                 
-                // 앱 선택 이미지
+                
+                // 이미지 선택 메뉴
                 Menu {
                     Button(action: {
                         isApplistPresent = true
@@ -63,12 +69,19 @@ struct MakeWidgetView: View {
                 .sheet(isPresented: $isPhotoViewPresent) {
                     PhotoPicker(widgetModel: viewModel)
                 }
-                TextFieldView(title: "위젯 이름", placeHolder: "위젯 이름", text: $viewModel.name)
-                    .padding(.bottom, 16)
-                TextFieldView(title: "URL", placeHolder: "예시: youtube://", text: $viewModel.url)
-                    .padding(.bottom, 16)
+
                 
+                TextFieldView(title: "위젯 이름", placeHolder: "위젯 이름", text: $viewModel.name)
+                    .padding([.bottom, .horizontal], 16)
+                
+                
+                TextFieldView(title: "URL", placeHolder: "예시: youtube://", text: $viewModel.url)
+                    .padding([.bottom, .horizontal], 16)
+                
+
                 // 위젯생성 버튼
+
+                
                 Button {
                     if viewModel.name == "" || viewModel.url == "" {
                         alertMessage = "빈칸을 채워주세요."
@@ -85,14 +98,9 @@ struct MakeWidgetView: View {
                     addWidget()
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Text("위젯 생성")
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .font(.system(size: 18))
-                        .frame(width: Constants.deviceSize.width - 32, height: 40)
-
+                    ButtonLabel(title: "만들기", type: .apply)
+                        .background(Color("choco"))
                 }
-                .background(Color("ChocoColor"))
                 .cornerRadius(10)
                 .padding(.horizontal,16)
                 .padding(.bottom, 8)
@@ -102,22 +110,16 @@ struct MakeWidgetView: View {
                 Button {
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Text("돌아가기")
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .font(.system(size: 18))
-                        .frame(width: Constants.deviceSize.width - 32, height: 40)
+                    ButtonLabel(title: "돌아가기")
                 }
-                .background(Color.init(uiColor: .darkGray))
-                .cornerRadius(10)
                 .padding(.horizontal,16)
                 
                 
                 Spacer()
             }
         }
-     
-
+        
+        
     }
     
     func addWidget() {
@@ -140,27 +142,33 @@ struct AddWidgetView_Previews: PreviewProvider {
     }
 }
 
-struct TextFieldView: View {
+
+enum ButtonColor: String {
+    case apply = "choco"
+    case destroy = "destroy"
+    case normal = "darkGray"
+}
+
+
+struct ButtonLabel: View {
     
-    let title: String
-    let placeHolder: String
-    let padding: CGFloat = 32
-    
-    @Binding var text: String
+    var title: String
+    var buttonSize: CGFloat = Constants.deviceSize.width - 32
+    var type: ButtonColor = .normal
     
     var body: some View {
-        VStack(alignment: .leading) {
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .frame(width: buttonSize, height: 40)
+                .foregroundColor(Color(type.rawValue))
+                .clipped()
             Text(title)
+                .foregroundColor(.white)
                 .fontWeight(.bold)
-                .font(.system(size: 20))
-                .lineLimit(1)
-                .frame(height: 40)
-                .padding(.horizontal, 16)
-            TextField(placeHolder, text: $text)
-                .frame(height: 40)
-                .background(Color.init(uiColor: .darkGray))
-                .cornerRadius(10)
-                .padding(.horizontal, 16)
+                .font(.system(size: 18))
+            .frame(width: buttonSize, height: 40)
         }
+        
+        
     }
 }

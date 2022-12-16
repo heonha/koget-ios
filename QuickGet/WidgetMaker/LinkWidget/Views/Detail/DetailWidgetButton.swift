@@ -12,6 +12,7 @@ struct DetailWidgetButton: View {
     var text: AttributedString
     var buttonColor: Color
     var action: () -> Void
+    var size: CGSize = .init(width: 200, height: 40)
     
     var body: some View {
         Button {
@@ -21,7 +22,7 @@ struct DetailWidgetButton: View {
                 .foregroundColor(.white)
                 .fontWeight(.bold)
                 .font(.system(size: 17))
-                .frame(width: 200, height: 30)
+                .frame(width: size.width, height: size.height)
         }
         .background(buttonColor)
         .cornerRadius(8)

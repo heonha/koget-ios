@@ -34,7 +34,7 @@ struct EditTextField: View {
             } else {
                 TextField(placeHolder, text: $text)
                     .frame(height: 35)
-                    .background(Color.init(uiColor: AppColors.blackDarkGrey))
+                    .background( AppColors.blackDarkGrey)
                     .cornerRadius(8)
                     .padding(.horizontal, 16)
                     .disabled(!isEditingMode)
