@@ -15,11 +15,10 @@ struct WidgetCollectionView: View {
     var body: some View {
         ZStack {
             backgroundColor
-                .cornerRadius(10)
+                .ignoresSafeArea(edges: .bottom)
             VStack {
                 // 제목
-                WidgetListScrollView(title: "링크 위젯")
-                    .padding(4)
+                WidgetGridView(title: "링크 위젯")
             }
         }
         
@@ -32,6 +31,6 @@ struct WidgetCollectionView: View {
             NavigationView {
                 WidgetCollectionView()
             }
-            .environmentObject(StorageProvider.preview.self)
+            .environmentObject(StorageProvider.preview)
         }
     }

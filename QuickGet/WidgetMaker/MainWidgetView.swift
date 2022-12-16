@@ -12,7 +12,6 @@ import RxSwift
 // 메인 뷰
 struct MainWidgetView: View {
     
-    
     var body: some View {
         ZStack {
             NavigationView {
@@ -23,9 +22,7 @@ struct MainWidgetView: View {
                         WidgetButtonToMake()
                         WidgetCollectionView()
                     }
-                    .padding(.horizontal)
                 }
-                
                 .navigationTitle("위젯")
                 .navigationBarTitleDisplayMode(.inline)
             }
@@ -41,7 +38,7 @@ struct MainWidgetView_Previews: PreviewProvider {
         NavigationView {
             MainWidgetView()
         }
-        .environmentObject(StorageProvider.preview)
+        
     }
 }
 

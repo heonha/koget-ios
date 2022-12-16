@@ -18,36 +18,43 @@ struct DetailWidgetView: View {
     @State var isPhotoViewPresent: Bool = false
     @State var isShowingPicker: Bool = false
     @State var isDeleteAlertPresent: Bool = false
-    
     @State var isEditingMode: Bool = false
-
-    
-    // init(widget: DeepLink) {
-    //     // selectedWidget = widget
-    // }
     
     
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
-            Color(uiColor: AppColors.blackDarkGrey)
-                .ignoresSafeArea()
+            
+            Color.init(uiColor: AppColors.blackDarkGrey)
+
             VStack {
-                HStack(alignment: .center) {
-                    Text(viewModel.name)
-                        .frame(maxWidth: .infinity, maxHeight: 40, alignment: .center)
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                }.background(Color(uiColor: AppColors.buttonPurple))
+                ZStack {
+                    HStack(alignment: .center) {
+                        Text(viewModel.name)
+                            .frame(maxWidth: .infinity, maxHeight: 40, alignment: .center)
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                    }.background(Color("ChocoColor"))
+                    HStack {
+                        Spacer()
+                        Button {
+                            isDeleteAlertPresent.toggle()
+                        } label: {
+                            Image(systemName: "trash")
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .padding(.trailing, 8)
+                }
                 
                 Spacer()
                 // 앱 선택 이미지
                 PhotoEditMenu(isEditingMode: $isEditingMode,
-                          isPhotoViewPresent: $isPhotoViewPresent,
-                          viewModel: viewModel)
-
-
+                              isPhotoViewPresent: $isPhotoViewPresent,
+                              viewModel: viewModel)
+                
+                
                 Spacer()
                 
                 EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", isEditingMode: $isEditingMode, text: $viewModel.name)
@@ -59,9 +66,6 @@ struct DetailWidgetView: View {
                     EditingToggleButton(isEditingMode: $isEditingMode, viewModel: viewModel, selectedWidget: selectedWidget)
                     
                     // 삭제 버튼
-                    DetailWidgetButton(text: "삭제", buttonColor: Color("DeleteColor")) {
-                        isDeleteAlertPresent.toggle()
-                    }
                     .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
                         Button("삭제", role: .destructive) {
                             WidgetCoreData.shared.deleteData(data: selectedWidget)
@@ -91,19 +95,19 @@ struct DetailWidgetView: View {
         .cornerRadius(10)
     }
     
-  
-
+    
+    
 }
 
 struct EditWidgetView_Previews: PreviewProvider {
-
-
+    
+    
     static var previews: some View {
         NavigationView {
             DetailWidgetView(selectedWidget: DeepLink.example)
         }
     }
-
+    
 }
 
 

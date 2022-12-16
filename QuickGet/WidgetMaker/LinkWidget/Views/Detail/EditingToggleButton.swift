@@ -47,7 +47,7 @@ struct EditingToggleButton: View {
                     .fontWeight(.bold)
                     .font(.system(size: 17))
                     .frame(width: 200, height: 30)
-                    .background(Color.init(uiColor: AppColors.buttonPurple))
+                    .background(Color("ChocoColor"))
             }
         }
         .cornerRadius(8)
