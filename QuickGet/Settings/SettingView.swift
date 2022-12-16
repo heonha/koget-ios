@@ -56,7 +56,7 @@ struct SettingView: View {
             }
 
         }
-        .tint(Color.init(uiColor: AppColors.deepPurple))
+        .tint(Color("ChocoColor"))
 
     }
 }

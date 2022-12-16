@@ -7,7 +7,6 @@
 
 import SwiftUI
 import CoreData
-import RxSwift
 
 // 메인 뷰
 struct MainWidgetView: View {

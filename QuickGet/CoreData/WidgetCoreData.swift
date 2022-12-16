@@ -6,18 +6,15 @@
 //
 
 
-import CoreData
 import UIKit
-import RxSwift
-import RxCocoa
+import SwiftUI
+import CoreData
 
 final class WidgetCoreData: ObservableObject {
     
     static let shared = WidgetCoreData()
     
-    var widgets = BehaviorRelay<[DeepLink]>.init(value: [DeepLink]())
-    
-    var disposeBag = DisposeBag()
+    @Published var linkWidgets = [DeepLink]()
     
     private init() {
         loadData()
@@ -27,9 +24,6 @@ final class WidgetCoreData: ObservableObject {
     
     /// AddWidgetVC로 받은 Delegate 프로토콜 메소드입니다.
     func addDeepLinkWidget(widget newWidget: DeepLink) {
-        var currentWidgets = widgets.value
-        currentWidgets.append(newWidget)
-        widgets.accept(currentWidgets)
         saveData()
         loadData()
     }
@@ -55,8 +49,7 @@ final class WidgetCoreData: ObservableObject {
         
         // 데이터 가져오기
         do {
-            let deepLink = try coredataContext.fetch(request) // 데이터 가져오기
-            self.widgets.accept(deepLink)
+            linkWidgets = try coredataContext.fetch(request) // 데이터 가져오기
         } catch {
             print("데이터 가져오기 에러 발생 : \(error)")
             fatalError("데이터 가져오기 에러 발생")
@@ -77,8 +70,7 @@ final class WidgetCoreData: ObservableObject {
         
         // 데이터 가져오기
         do {
-            let deepLink = try coredataContext.fetch(request) // 데이터 가져오기
-            self.widgets.accept(deepLink)
+            linkWidgets = try coredataContext.fetch(request) // 데이터 가져오기
         } catch {
             print("데이터 가져오기 에러 발생 : \(error)")
             fatalError("데이터 가져오기 에러 발생")
