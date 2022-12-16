@@ -34,7 +34,7 @@ struct MakeWidgetView: View {
                     .frame(maxWidth: .infinity, maxHeight: 40, alignment: .center)
                     .font(.system(size: 20))
                     .fontWeight(.semibold)
-                    .background(Color(uiColor: AppColors.buttonPurple))
+                    .background(Color("ChocoColor"))
                 
                 // 앱 선택 이미지
                 Menu {
@@ -92,7 +92,7 @@ struct MakeWidgetView: View {
                         .frame(width: Constants.deviceSize.width - 32, height: 40)
 
                 }
-                .background(Color.init(uiColor: AppColors.buttonPurple))
+                .background(Color("ChocoColor"))
                 .cornerRadius(10)
                 .padding(.horizontal,16)
                 .padding(.bottom, 8)

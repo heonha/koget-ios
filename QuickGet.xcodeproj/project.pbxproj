@@ -20,7 +20,6 @@
 		3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */; };
 		3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */; };
 		3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0C03412935131600868B70 /* PhotoEditMenu.swift */; };
-		3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */; };
 		3A1CD19728F9710200AC5D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */; };
 		3A1CD19828F9710E00AC5D1C /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */; };
 		3A1CD19A28F971A800AC5D1C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CD19928F971A800AC5D1C /* CoreData.swift */; };
@@ -30,7 +29,6 @@
 		3A1CD1A228F9891C00AC5D1C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CD19928F971A800AC5D1C /* CoreData.swift */; };
 		3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2E21FC290FF9F800E4F46A /* downArrow.json */; };
 		3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
-		3A397CA428F80D6D006D5B18 /* CAGradientLayer+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A397CA328F80D6D006D5B18 /* CAGradientLayer+Apply.swift */; };
 		3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3A3C118E28EDB1B700C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3A3C119428EDB4B800C9CCED /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A94E19D28EC1B950050EE80 /* Intents.framework */; };
@@ -40,26 +38,16 @@
 		3A3C11A328EDC14700C9CCED /* DefaultWidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* DefaultWidgetManager.swift */; };
 		3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
-		3A51A10728F5A1C70027AD5A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A51A10628F5A1C70027AD5A /* TestViewController.swift */; };
 		3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
-		3A668E7C2949904900BD7A4C /* UIImageColors in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E7B2949904900BD7A4C /* UIImageColors */; };
-		3A668E7F2949905900BD7A4C /* SwipeableTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E7E2949905900BD7A4C /* SwipeableTabBarController */; };
-		3A668E822949908500BD7A4C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E812949908500BD7A4C /* SnapKit */; };
-		3A668E852949909300BD7A4C /* RulerView in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E842949909300BD7A4C /* RulerView */; };
 		3A668E88294990A100BD7A4C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E87294990A100BD7A4C /* Lottie */; };
-		3A668E8B294990B600BD7A4C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E8A294990B600BD7A4C /* RxCocoa */; };
-		3A668E8D294990B600BD7A4C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E8C294990B600BD7A4C /* RxSwift */; };
-		3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A82318E28C78F0700F958FE /* UIImage+Utils.swift */; };
 		3A8339D72932165B00DC9527 /* EditingToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D62932165B00DC9527 /* EditingToggleButton.swift */; };
 		3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D82932167500DC9527 /* DetailWidgetButton.swift */; };
-		3A8E3A0428E3E6AA00390F8A /* RulerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */; };
 		3A8F8E832939AF5C0065DC80 /* MainSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */; };
 		3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */; };
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C04FF292DB03C00442017 /* PhotoPicker.swift */; };
 		3A9C0505292DDB6D00442017 /* LinkWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C0504292DDB6D00442017 /* LinkWidgetModel.swift */; };
 		3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */; };
-		3AA33F0228CE339C004127ED /* RoundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA33F0128CE339C004127ED /* RoundShadowView.swift */; };
 		3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */; };
 		3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */; };
 		3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
@@ -70,6 +58,9 @@
 		3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC4292F214200455730 /* MainWidgetView.swift */; };
 		3ABFEFC7292F481F00455730 /* TestDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC6292F481F00455730 /* TestDeepLink.swift */; };
 		3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */; };
+		3ACCB34C294C33C300A85E0F /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
+		3ACCB34D294C33C300A85E0F /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */; };
+		3ACCB34E294C33C300A85E0F /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
 		3AE2551D290EA2CF0045098E /* WallpaperCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2551C290EA2CF0045098E /* WallpaperCoreData.swift */; };
 		3AE9DC0D28F8F87B008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
@@ -128,24 +119,19 @@
 		3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetView.swift; sourceTree = "<group>"; };
 		3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetList.swift; sourceTree = "<group>"; };
 		3A0C03412935131600868B70 /* PhotoEditMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditMenu.swift; sourceTree = "<group>"; };
-		3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		3A0F42A128C8DC19002F1CAD /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3A1CD19928F971A800AC5D1C /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		3A2E21FC290FF9F800E4F46A /* downArrow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = downArrow.json; sourceTree = "<group>"; };
 		3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
-		3A397CA328F80D6D006D5B18 /* CAGradientLayer+Apply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Apply.swift"; sourceTree = "<group>"; };
 		3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = LockScreenWidgetIntents.intentdefinition; sourceTree = "<group>"; };
 		3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenIntentsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3C119628EDB4B800C9CCED /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		3A3C119828EDB4B800C9CCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A3C11A028EDB69A00C9CCED /* LockScreenIntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenIntentsExtension.entitlements; sourceTree = "<group>"; };
 		3A3C11A228EDC14700C9CCED /* DefaultWidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWidgetManager.swift; sourceTree = "<group>"; };
-		3A51A10628F5A1C70027AD5A /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
-		3A82318E28C78F0700F958FE /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		3A8339D62932165B00DC9527 /* EditingToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingToggleButton.swift; sourceTree = "<group>"; };
 		3A8339D82932167500DC9527 /* DetailWidgetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetButton.swift; sourceTree = "<group>"; };
-		3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerSlider.swift; sourceTree = "<group>"; };
 		3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSegmentView.swift; sourceTree = "<group>"; };
 		3A94E19D28EC1B950050EE80 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		3A94E1A828EC1B960050EE80 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
@@ -156,7 +142,6 @@
 		3A9C04FF292DB03C00442017 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		3A9C0504292DDB6D00442017 /* LinkWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetModel.swift; sourceTree = "<group>"; };
 		3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
-		3AA33F0128CE339C004127ED /* RoundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowView.swift; sourceTree = "<group>"; };
 		3ABA6C1328C6043F005AA8E4 /* QuickGet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickGet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,13 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A668E8B294990B600BD7A4C /* RxCocoa in Frameworks */,
 				3A668E88294990A100BD7A4C /* Lottie in Frameworks */,
-				3A668E822949908500BD7A4C /* SnapKit in Frameworks */,
-				3A668E7C2949904900BD7A4C /* UIImageColors in Frameworks */,
-				3A668E852949909300BD7A4C /* RulerView in Frameworks */,
-				3A668E7F2949905900BD7A4C /* SwipeableTabBarController in Frameworks */,
-				3A668E8D294990B600BD7A4C /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,20 +272,13 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		3A0F429E28C89742002F1CAD /* Extension+Utils */ = {
+		3A0F429E28C89742002F1CAD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3A82318E28C78F0700F958FE /* UIImage+Utils.swift */,
-				3A0F429F28C8D3AD002F1CAD /* UIView+Utils.swift */,
-				3AA33F0128CE339C004127ED /* RoundShadowView.swift */,
-				3A8E3A0328E3E6AA00390F8A /* RulerSlider.swift */,
 				3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */,
-				3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */,
 				3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */,
-				3A51A10628F5A1C70027AD5A /* TestViewController.swift */,
-				3A397CA328F80D6D006D5B18 /* CAGradientLayer+Apply.swift */,
 			);
-			path = "Extension+Utils";
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3A3C119528EDB4B800C9CCED /* LockScreenIntentsExtension */ = {
@@ -425,9 +397,10 @@
 		3AF7E59128F85FD200B14DFD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3A0F429E28C89742002F1CAD /* Extension+Utils */,
-				3AB4A3EB28CF01390062EC18 /* Animation */,
 				3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */,
+				3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */,
+				3A0F429E28C89742002F1CAD /* Extensions */,
+				3AB4A3EB28CF01390062EC18 /* Animation */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -480,13 +453,7 @@
 			);
 			name = QuickGet;
 			packageProductDependencies = (
-				3A668E7B2949904900BD7A4C /* UIImageColors */,
-				3A668E7E2949905900BD7A4C /* SwipeableTabBarController */,
-				3A668E812949908500BD7A4C /* SnapKit */,
-				3A668E842949909300BD7A4C /* RulerView */,
 				3A668E87294990A100BD7A4C /* Lottie */,
-				3A668E8A294990B600BD7A4C /* RxCocoa */,
-				3A668E8C294990B600BD7A4C /* RxSwift */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* QuickGet.app */;
@@ -541,12 +508,7 @@
 			);
 			mainGroup = 3ABA6C0A28C6043F005AA8E4;
 			packageReferences = (
-				3A668E7A2949904900BD7A4C /* XCRemoteSwiftPackageReference "UIImageColors" */,
-				3A668E7D2949905900BD7A4C /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */,
-				3A668E802949908500BD7A4C /* XCRemoteSwiftPackageReference "SnapKit" */,
-				3A668E832949909300BD7A4C /* XCRemoteSwiftPackageReference "RulerView" */,
 				3A668E86294990A100BD7A4C /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				3A668E89294990B600BD7A4C /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -595,11 +557,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ACCB34D294C33C300A85E0F /* UIColor+Utils.swift in Sources */,
 				3A1CD19728F9710200AC5D1C /* AppDelegate.swift in Sources */,
 				3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */,
 				3AE9DC0F28F8F891008A3316 /* QuickGet.xcdatamodeld in Sources */,
 				3A1CD1A128F9891C00AC5D1C /* CoreData.swift in Sources */,
+				3ACCB34E294C33C300A85E0F /* UIDevice+Utils.swift in Sources */,
 				3A1CD19828F9710E00AC5D1C /* GlobalConstants.swift in Sources */,
+				3ACCB34C294C33C300A85E0F /* AppColors.swift in Sources */,
 				3A3C119F28EDB5B400C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A1CD19D28F9819300AC5D1C /* Constants.swift in Sources */,
 			);
@@ -617,19 +582,14 @@
 				3A0842042938ABDD009BED73 /* NoticeContentView.swift in Sources */,
 				3A0842022938AA94009BED73 /* NoticeCell.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* DefaultWidgetManager.swift in Sources */,
-				3A0F42A028C8D3AD002F1CAD /* UIView+Utils.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
 				3A0566CE2931E87D007B0A7A /* WidgetIconViewForDeepLink.swift in Sources */,
 				3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */,
 				3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */,
-				3A51A10728F5A1C70027AD5A /* TestViewController.swift in Sources */,
-				3A8E3A0428E3E6AA00390F8A /* RulerSlider.swift in Sources */,
 				3ABFEFC1292F136B00455730 /* DetailWidgetView.swift in Sources */,
 				3ABFEFBD292E70A900455730 /* FilterWidgetModel.swift in Sources */,
-				3AA33F0228CE339C004127ED /* RoundShadowView.swift in Sources */,
 				3A1CD19A28F971A800AC5D1C /* CoreData.swift in Sources */,
-				3A397CA428F80D6D006D5B18 /* CAGradientLayer+Apply.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3A0842002938A67D009BED73 /* NoticeList.swift in Sources */,
@@ -638,7 +598,6 @@
 				3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A9C0505292DDB6D00442017 /* LinkWidgetModel.swift in Sources */,
-				3A82318F28C78F0700F958FE /* UIImage+Utils.swift in Sources */,
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
 				3A0566D52931E9F2007B0A7A /* WidgetGridView.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
@@ -1035,38 +994,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3A668E7A2949904900BD7A4C /* XCRemoteSwiftPackageReference "UIImageColors" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jathu/UIImageColors.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 2.2.0;
-			};
-		};
-		3A668E7D2949905900BD7A4C /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marcosgriselli/SwipeableTabBarController.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 3.4.0;
-			};
-		};
-		3A668E802949908500BD7A4C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 5.6.0;
-			};
-		};
-		3A668E832949909300BD7A4C /* XCRemoteSwiftPackageReference "RulerView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/selivandex/RulerView.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
 		3A668E86294990A100BD7A4C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -1075,51 +1002,13 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		3A668E89294990B600BD7A4C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 6.5.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3A668E7B2949904900BD7A4C /* UIImageColors */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A668E7A2949904900BD7A4C /* XCRemoteSwiftPackageReference "UIImageColors" */;
-			productName = UIImageColors;
-		};
-		3A668E7E2949905900BD7A4C /* SwipeableTabBarController */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A668E7D2949905900BD7A4C /* XCRemoteSwiftPackageReference "SwipeableTabBarController" */;
-			productName = SwipeableTabBarController;
-		};
-		3A668E812949908500BD7A4C /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A668E802949908500BD7A4C /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		3A668E842949909300BD7A4C /* RulerView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A668E832949909300BD7A4C /* XCRemoteSwiftPackageReference "RulerView" */;
-			productName = RulerView;
-		};
 		3A668E87294990A100BD7A4C /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3A668E86294990A100BD7A4C /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		3A668E8A294990B600BD7A4C /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A668E89294990B600BD7A4C /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		3A668E8C294990B600BD7A4C /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A668E89294990B600BD7A4C /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

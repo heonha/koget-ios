@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 // 딥링크 위젯 리스트 뷰
 struct WidgetGridView: View {
     
@@ -17,7 +16,7 @@ struct WidgetGridView: View {
     var width = Constants.deviceSize.width / 4
     
     @State var isPresent = false
-    @State var deepLinkWidgets: [DeepLink] = []
+    @ObservedObject var widgetCoreData: WidgetCoreData
     
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     var body: some View {
@@ -29,8 +28,14 @@ struct WidgetGridView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top)
             
+            
+            // 그리드뷰
             LazyVGrid(columns: gridItem, alignment: .leading, spacing: 16 ) {
-                ForEach(deepLinkWidgets, id: \.id) { widget in
+                
+                
+                ForEach(widgetCoreData.linkWidgets, id: \.id) { widget in
+                    
+                    // 버튼
                     Button {
                         self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
                             DetailWidgetView(selectedWidget: widget)
@@ -48,38 +53,23 @@ struct WidgetGridView: View {
             .cornerRadius(10)
             .shadow(radius: 3)
             Spacer()
-        }.onAppear {
-            subscribeWidgetData() // 위젯 데이터 가져오기
-        }.onDisappear {
-            WidgetCoreData.shared.disposeBag = .init()
         }
     }
     
     
-    func subscribeWidgetData() {
-        WidgetCoreData.shared.widgets
-            .subscribe { (widgets) in
-                deepLinkWidgets = widgets
-                for widget in deepLinkWidgets {
-                    print(widget.name!)
-                }
-            } onDisposed: {
-                print("disposed")
-            }.disposed(by: WidgetCoreData.shared.disposeBag)
-    }
+    
 }
 
-
-struct WidgetGridView_Previews: PreviewProvider {
-    
-    
-    static var previews: some View {
-        
-        NavigationView {
-            WidgetGridView(title: "링크 위젯", deepLinkWidgets: StorageProvider.preview.linkWidgets)
-            Spacer()
-        }
-        .environmentObject(StorageProvider.preview)
-
-    }
-}
+// 
+// struct WidgetGridView_Previews: PreviewProvider {
+//     
+//     
+//     static var previews: some View {
+//         
+//         NavigationView {
+//             WidgetGridView(title: "링크 위젯", widgetCoreData: StorageProvider.preview)
+//             Spacer()
+//         }
+// 
+//     }
+// }

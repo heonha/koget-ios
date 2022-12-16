@@ -10,7 +10,7 @@ import CoreData
 
 struct WidgetIconView: View {
     
-    @ObservedObject var selectedObject: DeepLink
+    var selectedObject: DeepLink
     
     var body: some View {
         VStack {

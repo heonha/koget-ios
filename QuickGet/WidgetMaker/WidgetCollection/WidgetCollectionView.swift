@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import RxSwift
 
 struct WidgetCollectionView: View {
     
@@ -18,7 +17,7 @@ struct WidgetCollectionView: View {
                 .ignoresSafeArea(edges: .bottom)
             VStack {
                 // 제목
-                WidgetGridView(title: "링크 위젯")
+                WidgetGridView(title: "링크 위젯", widgetCoreData: WidgetCoreData.shared)
             }
         }
         

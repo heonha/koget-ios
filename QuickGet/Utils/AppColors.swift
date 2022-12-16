@@ -14,8 +14,4 @@ struct AppColors {
     static let blackDarkGrey = UIColor(red: 0.098, green: 0.098, blue: 0.098, alpha: 1.000)
     
     
-    
-    static let mainPurple = UIColor(red: 0.475, green: 0.286, blue: 1.000, alpha: 1.000)
-    static let buttonPurple = UIColor(red: 0.333, green: 0.204, blue: 0.698, alpha: 1.000)
-    static let deepPurple = UIColor(red: 0.500, green: 0.400, blue: 1.000, alpha: 1.000)
 }
