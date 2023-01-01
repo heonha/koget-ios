@@ -23,22 +23,22 @@ struct DetailWidgetView: View {
     @State var isDeleteAlertPresent: Bool = false
     @State var isEditingMode: Bool = false
     
-    
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack {
-            
-            AppColors.blackDarkGrey
-
+            AppColors.backgroundColor
             VStack {
                 ZStack {
+                    
+                    // 제목
                     HStack(alignment: .center) {
                         Text(viewModel.name)
-                            .frame(maxWidth: .infinity, maxHeight: 40, alignment: .center)
-                            .font(.system(size: 20))
-                            .fontWeight(.bold)
-                    }.background(Color("choco"))
+                            .frame(maxWidth: .infinity, maxHeight: 45, alignment: .center)
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.init(uiColor: .white))
+                    }.background(Color.init(uiColor: .darkGray))
+                    
                     HStack {
                         Button {
                             isDeleteAlertPresent.toggle()
@@ -49,7 +49,7 @@ struct DetailWidgetView: View {
                         .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
                             Button("삭제", role: .destructive) {
                                 WidgetCoreData.shared.deleteData(data: selectedWidget)
-                                self.presentationMode.wrappedValue.dismiss()
+                                self.dismiss()
                             }
                             Button("취소", role: .cancel) {}
                         }, message: { Text("정말 삭제 하시겠습니까?") })
@@ -58,7 +58,7 @@ struct DetailWidgetView: View {
                         Spacer()
                         
                         Button {
-                            presentationMode.wrappedValue.dismiss()
+                            self.dismiss()
                         } label: {
                             Image(systemName: "xmark")
                                 .foregroundColor(.white)
@@ -67,11 +67,13 @@ struct DetailWidgetView: View {
                     .padding(.horizontal, 8)
                 }
                 
-                Spacer()
+                
                 // 앱 선택 이미지
+                Spacer()
                 PhotoEditMenu(isEditingMode: $isEditingMode,
                               isPhotoViewPresent: $isPhotoViewPresent,
                               viewModel: viewModel)
+                .shadow(radius: 1, x: 0.2, y: 0.3)
                 
                 
                 Spacer()
@@ -87,8 +89,8 @@ struct DetailWidgetView: View {
                     EditingToggleButton(selectedWidget: selectedWidget, isEditingMode: $isEditingMode, viewModel: viewModel)
                     
                     // 닫기 버튼
-                    DetailWidgetButton(text: "닫기", buttonColor: .init(uiColor: .darkGray)) {
-                        self.presentationMode.wrappedValue.dismiss()
+                    DetailWidgetButton(text: "닫기", buttonColor: .init(uiColor: .systemFill)) {
+                        self.dismiss()
                     }
                     
                     
@@ -105,6 +107,7 @@ struct DetailWidgetView: View {
         .frame(width: size.width, height: size.height)
         .background(Color.init(uiColor: .clear))
         .cornerRadius(10)
+        .shadow(radius: 1)
     }
     
     

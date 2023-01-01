@@ -67,6 +67,8 @@
 		3ACCB357294C54A500A85E0F /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB356294C54A500A85E0F /* FloatingButton.swift */; };
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
 		3AE2551D290EA2CF0045098E /* WallpaperCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2551C290EA2CF0045098E /* WallpaperCoreData.swift */; };
+		3AE6AB4329617F7B000F2C1D /* ImageMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */; };
+		3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4429618319000F2C1D /* ButtonWithText.swift */; };
 		3AE9DC0D28F8F87B008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
 		3AE9DC0E28F8F890008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
 		3AE9DC0F28F8F891008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
@@ -166,6 +168,8 @@
 		3ACCB356294C54A500A85E0F /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingIndicatorGray.json; sourceTree = "<group>"; };
 		3AE2551C290EA2CF0045098E /* WallpaperCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperCoreData.swift; sourceTree = "<group>"; };
+		3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMenuButton.swift; sourceTree = "<group>"; };
+		3AE6AB4429618319000F2C1D /* ButtonWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithText.swift; sourceTree = "<group>"; };
 		3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WidgetModel.xcdatamodel; sourceTree = "<group>"; };
 		3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkWidget.swift; sourceTree = "<group>"; };
@@ -255,6 +259,8 @@
 			children = (
 				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
 				3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */,
+				3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */,
+				3AE6AB4429618319000F2C1D /* ButtonWithText.swift */,
 			);
 			path = Make;
 			sourceTree = "<group>";
@@ -616,8 +622,10 @@
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3A0842002938A67D009BED73 /* NoticeList.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
+				3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
 				3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */,
+				3AE6AB4329617F7B000F2C1D /* ImageMenuButton.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A9C0505292DDB6D00442017 /* LinkWidgetModel.swift in Sources */,
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
@@ -866,9 +874,9 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -901,9 +909,9 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

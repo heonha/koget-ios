@@ -10,6 +10,7 @@ import SwiftUI
 struct FloatingButton: View {
     
     var size: CGFloat = 50
+    var color: Color = AppColors.deepDarkGrey
     
     var body: some View {
         
@@ -24,7 +25,7 @@ struct FloatingButton: View {
                     ZStack {
                         Circle()
                             .frame(width: size, height: size)
-                            .foregroundColor(AppColors.choco)
+                            .foregroundColor(color)
                         Image(systemName: "ellipsis")
                             .font(.system(size: 24, weight: .semibold))
                             .foregroundColor(.white)

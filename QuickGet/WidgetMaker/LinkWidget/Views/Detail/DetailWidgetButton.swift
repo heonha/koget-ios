@@ -10,18 +10,18 @@ import SwiftUI
 struct DetailWidgetButton: View {
     
     var text: AttributedString
+    var titleColor: Color = AppColors.label
     var buttonColor: Color
+    var size: CGSize = .init(width: 200, height: 35)
     var action: () -> Void
-    var size: CGSize = .init(width: 200, height: 40)
     
     var body: some View {
         Button {
             action()
         } label: {
             Text(text)
-                .foregroundColor(.white)
-                .fontWeight(.bold)
-                .font(.system(size: 17))
+                .foregroundColor(titleColor)
+                .font(.system(size: 17, weight: .bold))
                 .frame(width: size.width, height: size.height)
         }
         .background(buttonColor)

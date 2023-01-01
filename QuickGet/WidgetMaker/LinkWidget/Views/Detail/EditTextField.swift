@@ -28,13 +28,13 @@ struct EditTextField: View {
             if isEditingMode {
                 TextField(placeHolder, text: $text)
                     .frame(height: 35)
-                    .background(Color.init(uiColor: .darkGray))
+                    .background(AppColors.secondaryBackgroundColor)
                     .cornerRadius(8)
                     .padding(.horizontal, 16)
             } else {
                 TextField(placeHolder, text: $text)
                     .frame(height: 35)
-                    .background( AppColors.blackDarkGrey)
+                    .background(AppColors.backgroundColor)
                     .cornerRadius(8)
                     .padding(.horizontal, 16)
                     .disabled(!isEditingMode)

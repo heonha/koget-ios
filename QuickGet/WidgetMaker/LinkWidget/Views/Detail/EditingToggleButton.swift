@@ -11,7 +11,7 @@ struct EditingToggleButton: View {
     
     
     var selectedWidget: DeepLink
-    var size: CGSize = .init(width: 200, height: 40)
+    var size: CGSize = .init(width: 200, height: 35)
 
     @State var alertMessage: LocalizedStringKey = "알수 없는 오류 발생"
     @State var isAlertPresent: Bool = false
@@ -43,14 +43,14 @@ struct EditingToggleButton: View {
                     .fontWeight(.bold)
                     .font(.system(size: 17))
                     .frame(width: size.width, height: size.height)
-                    .background(Color.init(uiColor: .systemPink))
+                    .background(Color.init(uiColor: .systemBlue))
             } else {
                 Text("위젯 편집")
                     .foregroundColor(.white)
                     .fontWeight(.bold)
                     .font(.system(size: 17))
-                    .frame(width: 200, height: 40)
-                    .background(Color("choco"))
+                    .frame(width: size.width, height: size.height)
+                    .background(Color.init(uiColor: .darkGray))
             }
         }
         .cornerRadius(8)

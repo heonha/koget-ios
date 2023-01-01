@@ -9,7 +9,8 @@ import SwiftUI
 
 struct WidgetCollectionView: View {
     
-    let backgroundColor: Color = .black
+    let title: String = "나의 위젯"
+    let backgroundColor: Color = AppColors.backgroundColor
     
     var body: some View {
         ZStack {
@@ -17,7 +18,8 @@ struct WidgetCollectionView: View {
                 .ignoresSafeArea(edges: .bottom)
             VStack {
                 // 제목
-                WidgetGridView(title: "링크 위젯", widgetCoreData: WidgetCoreData.shared)
+                WidgetGridView(title: title, widgetCoreData: WidgetCoreData.shared)
+                    .padding(.horizontal)
             }
         }
         

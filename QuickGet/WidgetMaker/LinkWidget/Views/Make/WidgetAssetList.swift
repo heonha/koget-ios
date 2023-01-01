@@ -11,9 +11,10 @@ struct WidgetAssetList: View {
     
     var builtInWidgets = FilterWidgetModel()
     
+    var textColor: Color = AppColors.label
+    var imageSize: CGSize = .init(width: 40, height: 40)
+    
     @State var viewModel: LinkWidgetModel?
-    
-    
     @State private var searchText: String = ""
     @State var searching: Bool = false
     
@@ -28,17 +29,17 @@ struct WidgetAssetList: View {
                             viewModel?.getWidgetData(selectedWidget: widget)
                             self.presentationMode.wrappedValue.dismiss()
                         } label: {
-                            HStack {
+                            LazyHStack {
                                 Image(uiImage: widget.image ?? UIImage(named: "questionmark.circle")!)
                                     .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 30)
-                                    .cornerRadius(15)
-                                    .padding(.trailing, 5)
-                                    .padding(.vertical, 4)
+                                    .scaledToFill()
+                                    .frame(width: imageSize.width, height: imageSize.height)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 0.5, x: 0.5, y: 0.5)
+                                    .padding([.trailing, .vertical], 4)
                                 Text(widget.appNameGlobal)
                                     .fontWeight(.semibold)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(textColor)
                             }
                         }
                     }

@@ -11,20 +11,22 @@ import CoreData
 // 메인 뷰
 struct MainWidgetView: View {
     
+    var title: String = "위젯"
+    var tintColor: Color = .black
+    
     var body: some View {
         ZStack {
             NavigationView {
                 ZStack {
-                    AppColors.blackDarkGrey
+                    AppColors.secondaryBackgroundColor
                         .ignoresSafeArea()
                     VStack {
                         WidgetButtonToMake()
                         WidgetCollectionView()
                     }
-                    
                     FloatingButton()
                 }
-                .navigationTitle("위젯")
+                .navigationTitle(title)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -38,7 +40,7 @@ struct MainWidgetView: View {
                 }
                 
             }
-            .tint(.white)
+            .tint(tintColor)
         }
     }
 }
@@ -50,6 +52,7 @@ struct MainWidgetView_Previews: PreviewProvider {
         NavigationView {
             MainWidgetView()
         }
+        .environmentObject(StorageProvider())
         
     }
 }
