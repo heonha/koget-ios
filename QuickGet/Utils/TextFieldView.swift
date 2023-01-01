@@ -25,10 +25,11 @@ struct TextFieldView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .fontWeight(.bold)
-                .font(.system(size: 20))
+                .font(.system(size: 20, weight: .bold))
                 .lineLimit(1)
                 .frame(height: 40)
+                .padding(.leading, 8)
+
             ZStack(alignment: .top) {
                 RoundedRectangle(cornerRadius: 5)
                     .frame(height: type == .title ? 40 : 300)
