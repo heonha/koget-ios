@@ -10,7 +10,7 @@ import SwiftUI
 struct FloatingButton: View {
     
     var size: CGFloat = 50
-    var color: Color = AppColors.deepDarkGrey
+    var color: Color = AppColors.buttonMainColor
     
     var body: some View {
         
@@ -20,13 +20,13 @@ struct FloatingButton: View {
                 Spacer()
                 
                 NavigationLink {
-                    SettingView()
+                    MakeWidgetView()
                 } label: {
                     ZStack {
                         Circle()
                             .frame(width: size, height: size)
                             .foregroundColor(color)
-                        Image(systemName: "ellipsis")
+                        Image(systemName: "plus")
                             .font(.system(size: 24, weight: .semibold))
                             .foregroundColor(.white)
 

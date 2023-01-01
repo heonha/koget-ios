@@ -31,10 +31,9 @@ struct MainWidgetView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink {
-                            MakeWidgetView()
+                            SettingView()
                         } label: {
-                            Image(systemName: "plus")
-                                .foregroundColor(.white)
+                            Image(systemName: "gearshape")
                         }
                     }
                 }

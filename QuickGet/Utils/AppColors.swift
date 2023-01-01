@@ -15,6 +15,11 @@ struct AppColors {
     static let secondaryBackgroundColor = Color.init(uiColor: .secondarySystemBackground)
     static let tertiarySystemBackground = Color.init(uiColor: .tertiarySystemBackground)
     static let label = Color.init(uiColor: .label)
+    static let buttonMainColor = Color.init(uiColor: .secondaryLabel)
+    static let buttonApplyColor = Color.init(uiColor: .systemBlue)
+    static let buttonSecondaryMainColor = Color.init(uiColor: .secondarySystemFill)
+
+
     
     static let destroy = Color("destroy")
     static let choco = Color("choco")

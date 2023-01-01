@@ -21,13 +21,16 @@ struct SettingView: View {
                     NavigationLink {
                         NoticeList()
                     } label: {
-                        SettingButtonLabel(title: "공지사항 (미구현)", symbolName: "mic.fill")
+                        SettingButtonLabel(title: "공지사항",
+                                           symbolName: "exclamationmark.bubble")
                     }
                     
                     NavigationLink {
                         ContactView()
                     } label: {
-                        SettingButtonLabel(title: "개발자에 문의하기 (미구현)", symbolName: "paperplane.fill")
+                        SettingButtonLabel(
+                            title: "개발자에 문의하기",
+                            symbolName: "mail")
                     }
                 }
             
