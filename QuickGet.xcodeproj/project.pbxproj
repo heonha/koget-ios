@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA652931EFBE004FBF80 /* EditTextField.swift */; };
 		3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA682931F3F1004FBF80 /* StorageProvider.swift */; };
-		3A0566CE2931E87D007B0A7A /* WidgetIconViewForDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566CD2931E87D007B0A7A /* WidgetIconViewForDeepLink.swift */; };
+		3A0566CE2931E87D007B0A7A /* WidgetIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */; };
 		3A0566D12931E964007B0A7A /* WidgetButtonToMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */; };
 		3A0566D32931E9A0007B0A7A /* WidgetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D22931E9A0007B0A7A /* WidgetCollectionView.swift */; };
 		3A0566D52931E9F2007B0A7A /* WidgetGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D42931E9F2007B0A7A /* WidgetGridView.swift */; };
@@ -114,7 +114,7 @@
 /* Begin PBXFileReference section */
 		3A00CA652931EFBE004FBF80 /* EditTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextField.swift; sourceTree = "<group>"; };
 		3A00CA682931F3F1004FBF80 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
-		3A0566CD2931E87D007B0A7A /* WidgetIconViewForDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIconViewForDeepLink.swift; sourceTree = "<group>"; };
+		3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIconCell.swift; sourceTree = "<group>"; };
 		3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetButtonToMake.swift; sourceTree = "<group>"; };
 		3A0566D22931E9A0007B0A7A /* WidgetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCollectionView.swift; sourceTree = "<group>"; };
 		3A0566D42931E9F2007B0A7A /* WidgetGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridView.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 			children = (
 				3A0566D22931E9A0007B0A7A /* WidgetCollectionView.swift */,
 				3A0566D42931E9F2007B0A7A /* WidgetGridView.swift */,
-				3A0566CD2931E87D007B0A7A /* WidgetIconViewForDeepLink.swift */,
+				3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */,
 			);
 			path = WidgetCollection;
 			sourceTree = "<group>";
@@ -612,7 +612,7 @@
 				3ACCB350294C37BF00A85E0F /* SettingButtonLabel.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
-				3A0566CE2931E87D007B0A7A /* WidgetIconViewForDeepLink.swift in Sources */,
+				3A0566CE2931E87D007B0A7A /* WidgetIconCell.swift in Sources */,
 				3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */,
 				3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */,
 				3ABFEFC1292F136B00455730 /* DetailWidgetView.swift in Sources */,
