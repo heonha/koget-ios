@@ -32,7 +32,7 @@ struct TextFieldView: View {
             ZStack(alignment: .top) {
                 RoundedRectangle(cornerRadius: 5)
                     .frame(height: type == .title ? 40 : 300)
-                    .foregroundColor(AppColors.blackDarkGrey)
+                    .foregroundColor(AppColors.secondaryBackgroundColor)
                 TextField(placeHolder, text: $text)
                     .background(Color.clear)
                     .padding(8)

@@ -11,14 +11,13 @@ import SwiftUI
 struct WidgetGridView: View {
     
     var title: String = ""
-    
+    var backgroundColor = AppColors.secondaryBackgroundColor
     var gridItem = [GridItem(), GridItem(), GridItem(), GridItem()]
     var width = Constants.deviceSize.width / 4
     
     @State var isPresent = false
     @ObservedObject var widgetCoreData: WidgetCoreData
     
-    @Environment(\.viewController) var viewControllerHolder: UIViewController?
     var body: some View {
         
         VStack {
@@ -35,21 +34,11 @@ struct WidgetGridView: View {
                 
                 ForEach(widgetCoreData.linkWidgets, id: \.id) { widget in
                     
-                    // 버튼
-                    Button {
-                        self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
-                            DetailWidgetView(selectedWidget: widget)
-                        })
-                    } label: {
-                        WidgetIconView(selectedObject: widget)
-                            .tint(.white)
-                            .frame(width: width, height: width)
-                            .clipped()
-                    }
+                    WidgetIconCell(widget: widget)
                     .frame(width: width, height: width)
                 }
             }
-            .background(AppColors.normalDarkGrey)
+            .background(backgroundColor)
             .cornerRadius(10)
             .shadow(radius: 3)
             Spacer()
@@ -67,7 +56,7 @@ struct WidgetGridView: View {
 //     static var previews: some View {
 //         
 //         NavigationView {
-//             WidgetGridView(title: "링크 위젯", widgetCoreData: StorageProvider.preview)
+//             WidgetGridView(title: "링크 위젯", widgetCoreData: StorageProvider.preview.persistentContainer)
 //             Spacer()
 //         }
 // 

@@ -10,6 +10,9 @@ import SwiftUI
 // 위젯 만들기 버튼
 struct WidgetButtonToMake: View {
     
+    var size: CGSize = .init(width: Constants.deviceSize.width - 50, height: 70)
+    var backgroundColor: Color = Color.init(uiColor: .secondarySystemFill)
+    
     @State private var isPresent: Bool = false
     
     var body: some View {
@@ -18,31 +21,26 @@ struct WidgetButtonToMake: View {
                 NavigationLink {
                     MakeWidgetView()
                 } label: {
+                    
+                    // 버튼 Contents
                     HStack {
                         Image(systemName: "cursorarrow.and.square.on.square.dashed")
-                            .renderingMode(.template)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
-                            .tint(.gray)
+                            .font(.system(size: 40))
+                            .foregroundColor(.init(uiColor: .label))
                         Spacer()
                         
                         Text("위젯 만들기")
-                            .foregroundColor(.white)
+                            .foregroundColor(.init(uiColor: .label))
                             .fontWeight(.bold)
                             .font(.system(size: 20))
                         Spacer()
                     }
                     .padding()
-                    .background(AppColors.normalDarkGrey)
-                    .shadow(radius: 3)
+                    .background(backgroundColor)
                 }
-                .frame(width: Constants.deviceSize.width - 50, height: 70)
-                .background(AppColors.deepDarkGrey)
+                .frame(width: size.width , height: size.height)
                 .cornerRadius(10)
-                .padding(.top)
-                .padding(.horizontal)
-                .padding(.bottom)
+                .padding(.all)
             }
         }
         

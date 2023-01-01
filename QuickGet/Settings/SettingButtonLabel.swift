@@ -11,14 +11,16 @@ struct SettingButtonLabel: View {
     
     var title: LocalizedStringKey
     var symbolName: String
+    var color: Color = AppColors.label
     
     var body: some View {
             HStack {
                 Text(title)
+                    .foregroundColor(color)
                 Spacer()
                 Image(systemName: symbolName)
-                    .foregroundColor(.white)
-            }.tint(.white)
+                    .foregroundColor(color)
+            }
     }
 }
 

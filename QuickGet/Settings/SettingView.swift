@@ -10,66 +10,68 @@ import SwiftUI
 struct SettingView: View {
     
     @State var isAlertPresent: Bool = false
+    @State var isOn: Bool = false
     
     var body: some View {
-            ZStack {
-                AppColors.deepDarkGrey
-                    .ignoresSafeArea()
-                List {
-                    
-                    Section("설정") {
-                        NavigationLink {
-                            NoticeList()
-                        } label: {
-                            SettingButtonLabel(title: "공지사항", symbolName: "mic.fill")
-                        }
-                        
-                        NavigationLink {
-                            ContactView()
-                        } label: {
-                            SettingButtonLabel(title: "개발자에 문의하기", symbolName: "paperplane.fill")
-                        }
-                        
-                        NavigationLink {
-                            
-                        } label: {
-                            SettingButtonLabel(title: "커피 한 잔 후원", symbolName: "cup.and.saucer.fill")
-                        }
-                        .disabled(true)
-                        
-                        // NavigationLink {
-                        //
-                        // } label: {
-                        //     SettingButtonLabel(title: "오픈소스 라이선스", symbolName: "chart.bar.doc.horizontal")
-                        // }
-                        // .disabled(true)
-                        
+        ZStack {
+            AppColors.secondaryBackgroundColor
+                .ignoresSafeArea()
+            List {
+                Section("일반") {
+                    NavigationLink {
+                        NoticeList()
+                    } label: {
+                        SettingButtonLabel(title: "공지사항 (미구현)", symbolName: "mic.fill")
                     }
                     
-                    
-                    Section("앱 정보") {
-                        HStack {
-                            Text("코코아젯 버전")
-                            Spacer()
-                            Text("1.0.0")
-                                .foregroundColor(.gray)
-                                .bold()
-                        }
+                    NavigationLink {
+                        ContactView()
+                    } label: {
+                        SettingButtonLabel(title: "개발자에 문의하기 (미구현)", symbolName: "paperplane.fill")
                     }
-                    
                 }
-                .tint(.white)
-                .alert("미구현", isPresented: $isAlertPresent, actions: {
+            
+                Section("기타") {
                     
-                })
-                .padding(.top, 4)
-                .navigationTitle("코코아 젯")
-                .navigationBarTitleDisplayMode(.large)
-            }
-            .foregroundColor(.white)
+                    Button {
+                        
+                    } label: {
+                        SettingButtonLabel(title: "커피 한 잔 후원 (미구현)", symbolName: "cup.and.saucer.fill")
+                    }
+                    
+                    HStack {
+                        Text("코코아젯 버전")
+                            .foregroundColor(.gray)
+                        Spacer()
+                        Text("1.0.0")
+                            .foregroundColor(.gray)
+                            .bold()
+                    }
+                    .foregroundColor(.gray)
 
+                    
+
+                    
+                Button {
+                    
+                } label: {
+                    SettingButtonLabel(title: "앱 초기화 (미구현)", symbolName: "exclamationmark.triangle.fill", color: AppColors.destroy)
+                }
+                    
+            }
+            
+        }
+        .alert("미구현", isPresented: $isAlertPresent, actions: {
+            
+        })
+        .padding(.top, 4)
+        .navigationTitle("앱 설정")
+        .navigationBarTitleDisplayMode(.large)
     }
-    
+    .tint(AppColors.label)
+
+}
+
 }
 
 struct SettingView_Previews: PreviewProvider {

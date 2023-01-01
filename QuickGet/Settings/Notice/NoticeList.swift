@@ -9,6 +9,9 @@ import SwiftUI
 
 struct NoticeList: View {
     
+    
+    var titleColor: Color = AppColors.label
+    
     @State var isPresent: Bool = false
     
     var body: some View {
@@ -19,9 +22,9 @@ struct NoticeList: View {
             } label: {
                 HStack {
                     Text("새로운 딥 링크 앱이 추가되었습니다.")
-                        .foregroundColor(.white)
                         .font(.system(size: 16))
                         .lineLimit(1)
+                        .foregroundColor(titleColor)
                     Spacer()
                     Text("22-12-01")
                         .foregroundColor(.gray)
@@ -39,9 +42,9 @@ struct NoticeList: View {
             } label: {
                 HStack {
                     Text("앱이 출시되었습니다.")
-                        .foregroundColor(.white)
                         .font(.system(size: 16))
                         .lineLimit(1)
+                        .foregroundColor(titleColor)
                     Spacer()
                     Text("22-11-30")
                         .foregroundColor(.gray)
