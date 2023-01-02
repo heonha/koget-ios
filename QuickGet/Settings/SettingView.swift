@@ -21,12 +21,14 @@ struct SettingView: View {
                     NavigationLink {
                         NoticeList()
                     } label: {
-                        SettingButtonLabel(title: "공지사항",
-                                           symbolName: "exclamationmark.bubble")
+                        SettingButtonLabel(
+                            title: "공지사항",
+                            symbolName: "exclamationmark.bubble"
+                        )
                     }
                     
                     NavigationLink {
-                        ContactView()
+                        
                     } label: {
                         SettingButtonLabel(
                             title: "개발자에 문의하기",
@@ -51,9 +53,6 @@ struct SettingView: View {
                             .bold()
                     }
                     .foregroundColor(.gray)
-
-                    
-
                     
                 Button {
                     

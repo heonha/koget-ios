@@ -19,7 +19,7 @@ struct WidgetCollectionView: View {
             VStack {
                 // 제목
                 WidgetGridView(title: title, widgetCoreData: WidgetCoreData.shared)
-                    .padding(.horizontal)
+                    .padding()
             }
         }
         

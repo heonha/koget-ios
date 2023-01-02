@@ -13,7 +13,7 @@ struct WidgetGridView: View {
     var title: String = ""
     var backgroundColor = AppColors.secondaryBackgroundColor
     var gridItem = [GridItem(), GridItem(), GridItem(), GridItem()]
-    var width = Constants.deviceSize.width / 4
+    var width = Constants.deviceSize.width / 4.2
     
     @State var isPresent = false
     @ObservedObject var widgetCoreData: WidgetCoreData
@@ -29,18 +29,20 @@ struct WidgetGridView: View {
             
             
             // 그리드뷰
-            LazyVGrid(columns: gridItem, alignment: .leading, spacing: 16 ) {
-                
+            LazyVGrid(columns: gridItem, alignment: .center, spacing: 8 ) {
                 
                 ForEach(widgetCoreData.linkWidgets, id: \.id) { widget in
                     
                     WidgetIconCell(widget: widget)
                     .frame(width: width, height: width)
+                    
                 }
+                .padding(.top, 16)
             }
+            
             .background(backgroundColor)
-            .cornerRadius(10)
-            .shadow(radius: 3)
+            .cornerRadius(8)
+            .shadow(radius: 1)
             Spacer()
         }
     }
