@@ -12,7 +12,7 @@ struct EditingToggleButton: View {
     
     var selectedWidget: DeepLink
     var size: CGSize = .init(width: 200, height: 35)
-
+    
     @State var alertMessage: LocalizedStringKey = "알수 없는 오류 발생"
     @State var isAlertPresent: Bool = false
     @Binding var isEditingMode: Bool
@@ -69,7 +69,7 @@ struct EditingToggleButton: View {
         WidgetCoreData.shared.saveData()
     }
     
- 
+    
 }
 
 

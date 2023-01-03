@@ -21,7 +21,6 @@
 		3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */; };
 		3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0C03412935131600868B70 /* PhotoEditMenu.swift */; };
 		3A1CD19728F9710200AC5D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */; };
-		3A1CD19828F9710E00AC5D1C /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */; };
 		3A1CD19A28F971A800AC5D1C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CD19928F971A800AC5D1C /* CoreData.swift */; };
 		3A1CD19D28F9819300AC5D1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A1CD19E28F9819400AC5D1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
@@ -43,7 +42,6 @@
 		3A8339D72932165B00DC9527 /* EditingToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D62932165B00DC9527 /* EditingToggleButton.swift */; };
 		3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D82932167500DC9527 /* DetailWidgetButton.swift */; };
 		3A8F8E832939AF5C0065DC80 /* MainSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */; };
-		3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */; };
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C04FF292DB03C00442017 /* PhotoPicker.swift */; };
 		3A9C0505292DDB6D00442017 /* LinkWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C0504292DDB6D00442017 /* LinkWidgetModel.swift */; };
@@ -65,7 +63,6 @@
 		3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB354294C3D3500A85E0F /* TextFieldView.swift */; };
 		3ACCB357294C54A500A85E0F /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB356294C54A500A85E0F /* FloatingButton.swift */; };
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
-		3AE2551D290EA2CF0045098E /* WallpaperCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2551C290EA2CF0045098E /* WallpaperCoreData.swift */; };
 		3AE6AB4329617F7B000F2C1D /* ImageMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */; };
 		3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4429618319000F2C1D /* ButtonWithText.swift */; };
 		3AE9DC0D28F8F87B008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
@@ -142,7 +139,6 @@
 		3A94E1A828EC1B960050EE80 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		3A9BC0CD28E6C92A0041DA1B /* QuickGet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickGet.entitlements; sourceTree = "<group>"; };
 		3A9BC0CE28E6C93A0041DA1B /* LockScreenWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenWidgetExtension.entitlements; sourceTree = "<group>"; };
-		3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		3A9BC0D928E6E1AE0041DA1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A9C04FF292DB03C00442017 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		3A9C0504292DDB6D00442017 /* LinkWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetModel.swift; sourceTree = "<group>"; };
@@ -165,7 +161,6 @@
 		3ACCB354294C3D3500A85E0F /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		3ACCB356294C54A500A85E0F /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingIndicatorGray.json; sourceTree = "<group>"; };
-		3AE2551C290EA2CF0045098E /* WallpaperCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperCoreData.swift; sourceTree = "<group>"; };
 		3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMenuButton.swift; sourceTree = "<group>"; };
 		3AE6AB4429618319000F2C1D /* ButtonWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithText.swift; sourceTree = "<group>"; };
 		3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WidgetModel.xcdatamodel; sourceTree = "<group>"; };
@@ -304,6 +299,15 @@
 			path = LockScreenIntentsExtension;
 			sourceTree = "<group>";
 		};
+		3A3CDA6629640806009A8756 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				3ABFEFC6292F481F00455730 /* TestDeepLink.swift */,
+				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
 		3A51A10528F531F10027AD5A /* LinkWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +366,7 @@
 				3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */,
 				3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */,
 				3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */,
+				3A3CDA6629640806009A8756 /* Testing */,
 				3AE0F982294878CF008C9F5F /* CoreData */,
 				3AC3E1E028E68A6D00BFF455 /* WidgetMaker */,
 				3A08BD01292FC9E700E09B3E /* Settings */,
@@ -374,7 +379,6 @@
 		3ABA6C2D28C60465005AA8E4 /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				3A9BC0D928E6E1AE0041DA1B /* Constants.swift */,
 				3ABA6C2228C60440005AA8E4 /* Assets.xcassets */,
 				3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */,
 				3ABA6C2728C60440005AA8E4 /* Info.plist */,
@@ -399,10 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				3A1CD19928F971A800AC5D1C /* CoreData.swift */,
-				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
 				3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */,
-				3AE2551C290EA2CF0045098E /* WallpaperCoreData.swift */,
-				3ABFEFC6292F481F00455730 /* TestDeepLink.swift */,
 				3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -411,7 +412,7 @@
 		3AF7E59128F85FD200B14DFD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3A9BC0D528E6CD4C0041DA1B /* GlobalConstants.swift */,
+				3A9BC0D928E6E1AE0041DA1B /* Constants.swift */,
 				3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */,
 				3A0F429E28C89742002F1CAD /* Extensions */,
 				3AB4A3EB28CF01390062EC18 /* Animation */,
@@ -578,7 +579,6 @@
 				3AE9DC0F28F8F891008A3316 /* QuickGet.xcdatamodeld in Sources */,
 				3A1CD1A128F9891C00AC5D1C /* CoreData.swift in Sources */,
 				3ACCB34E294C33C300A85E0F /* UIDevice+Utils.swift in Sources */,
-				3A1CD19828F9710E00AC5D1C /* GlobalConstants.swift in Sources */,
 				3ACCB34C294C33C300A85E0F /* AppColors.swift in Sources */,
 				3A3C119F28EDB5B400C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A1CD19D28F9819300AC5D1C /* Constants.swift in Sources */,
@@ -613,7 +613,6 @@
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
 				3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
-				3A9BC0D628E6CD4C0041DA1B /* GlobalConstants.swift in Sources */,
 				3AE6AB4329617F7B000F2C1D /* ImageMenuButton.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A9C0505292DDB6D00442017 /* LinkWidgetModel.swift in Sources */,
@@ -622,7 +621,6 @@
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* WidgetCollectionView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
-				3AE2551D290EA2CF0045098E /* WallpaperCoreData.swift in Sources */,
 				3A8F8E832939AF5C0065DC80 /* MainSegmentView.swift in Sources */,
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,
 				3ABD50FF292945EB00F878AE /* WidgetCoreData.swift in Sources */,
@@ -858,7 +856,6 @@
 				INFOPLIST_FILE = QuickGet/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코코아젯";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 저장하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -893,7 +890,6 @@
 				INFOPLIST_FILE = QuickGet/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코코아젯";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 저장하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

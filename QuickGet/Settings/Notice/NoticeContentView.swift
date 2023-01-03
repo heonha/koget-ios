@@ -19,7 +19,7 @@ struct NoticeContentView: View {
                 .padding()
             TextField("", text: .constant(" 앱이 출시되었습니다."))
                 .font(.system(size: 16))
-                .frame(width: Constants.deviceSize.width - 32, height: Constants.deviceSize.height-80)
+                .frame(width: DEVICE_SIZE.width - 32, height: DEVICE_SIZE.height - 80)
                 .cornerRadius(10)
                 .padding()
             Spacer()

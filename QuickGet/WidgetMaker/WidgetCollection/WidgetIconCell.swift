@@ -18,7 +18,6 @@ struct WidgetIconCell: View {
     var body: some View {
         
         // 버튼
-        
         VStack {
             Button {
                 self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
