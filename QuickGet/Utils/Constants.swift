@@ -8,14 +8,13 @@
 import Foundation
 import UIKit
 
+let DEVICE_SIZE = UIScreen.main.bounds.size
+
 struct Constants {
     
     //MARK: - 공통 변수
-    static let deviceSize = UIScreen.main.bounds.size
-    
     //MARK: - Widget Constants
 
-    static let reuseID_WidgetIconCell = "WidgetIconCell"
     static let coreDataEntityName = "QuickGet"
     static let appGroupID = "group.ZH5GA3W8UP.com.heon.quickget"
 

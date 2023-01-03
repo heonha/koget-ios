@@ -29,18 +29,12 @@ struct FloatingButton: View {
                         Image(systemName: "plus")
                             .font(.system(size: 24, weight: .semibold))
                             .foregroundColor(.white)
-
                     }
                 }
-
-                
-                
             }
         }
         .padding()
         .tint(.white)
-
-        
     }
 }
 

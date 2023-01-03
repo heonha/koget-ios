@@ -12,7 +12,7 @@ struct ButtonWithText: View {
     var title: String
     var titleColor: Color = AppColors.label
     let font: Font = .system(size: 18, weight: .semibold)
-    let buttonSize: CGSize = .init(width: Constants.deviceSize.width - 32, height: 40)
+    let buttonSize: CGSize = .init(width: DEVICE_SIZE.width - 32, height: 40)
     var color: Color = .init(uiColor: .systemFill)
     
     var body: some View {

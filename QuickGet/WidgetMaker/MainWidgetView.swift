@@ -15,32 +15,30 @@ struct MainWidgetView: View {
     var tintColor: Color = .black
     
     var body: some View {
-        ZStack {
-            NavigationView {
-                ZStack {
-                    AppColors.secondaryBackgroundColor
-                        .ignoresSafeArea()
-                    VStack {
-                        WidgetButtonToMake()
-                        WidgetCollectionView()
-                    }
-                    FloatingButton()
+        NavigationView {
+            ZStack {
+                AppColors.secondaryBackgroundColor
+                    .ignoresSafeArea()
+                VStack {
+                    WidgetButtonToMake()
+                    WidgetCollectionView()
                 }
-                .navigationTitle(title)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            SettingView()
-                        } label: {
-                            Image(systemName: "gearshape")
-                        }
-                    }
-                }
-                
+                FloatingButton()
             }
-            .tint(tintColor)
+            .navigationTitle(title)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        SettingView()
+                    } label: {
+                        Image(systemName: "gearshape")
+                    }
+                }
+            }
+            
         }
+        .tint(tintColor)
     }
 }
 

@@ -5,7 +5,6 @@
 //  Created by HeonJin Ha on 2022/10/14.
 //
 
-import Foundation
 import CoreData
 
 class CoreData {

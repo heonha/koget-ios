@@ -10,38 +10,36 @@ import SwiftUI
 // 위젯 만들기 버튼
 struct WidgetButtonToMake: View {
     
-    var size: CGSize = .init(width: Constants.deviceSize.width - 50, height: 70)
+    var size: CGSize = .init(width: DEVICE_SIZE.width - 50, height: 70)
     var backgroundColor: Color = Color.init(uiColor: .secondarySystemFill)
     
     @State private var isPresent: Bool = false
     
     var body: some View {
-        ZStack {
-            VStack {
-                NavigationLink {
-                    MakeWidgetView()
-                } label: {
+        VStack {
+            NavigationLink {
+                MakeWidgetView()
+            } label: {
+                
+                // 버튼 Contents
+                HStack {
+                    Image(systemName: "cursorarrow.and.square.on.square.dashed")
+                        .font(.system(size: 40))
+                        .foregroundColor(.init(uiColor: .label))
+                    Spacer()
                     
-                    // 버튼 Contents
-                    HStack {
-                        Image(systemName: "cursorarrow.and.square.on.square.dashed")
-                            .font(.system(size: 40))
-                            .foregroundColor(.init(uiColor: .label))
-                        Spacer()
-                        
-                        Text("위젯 만들기")
-                            .foregroundColor(.init(uiColor: .label))
-                            .fontWeight(.bold)
-                            .font(.system(size: 20))
-                        Spacer()
-                    }
-                    .padding()
-                    .background(backgroundColor)
+                    Text("위젯 만들기")
+                        .foregroundColor(.init(uiColor: .label))
+                        .fontWeight(.bold)
+                        .font(.system(size: 20))
+                    Spacer()
                 }
-                .frame(width: size.width , height: size.height)
-                .cornerRadius(10)
-                .padding(.all)
+                .padding()
+                .background(backgroundColor)
             }
+            .frame(width: size.width , height: size.height)
+            .cornerRadius(10)
+            .padding()
         }
         
     }

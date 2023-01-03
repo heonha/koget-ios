@@ -13,7 +13,7 @@ struct WidgetGridView: View {
     var title: String = ""
     var backgroundColor = AppColors.secondaryBackgroundColor
     var gridItem = [GridItem(), GridItem(), GridItem(), GridItem()]
-    var width = Constants.deviceSize.width / 4.2
+    var width = DEVICE_SIZE.width / 4.2
     
     @State var isPresent = false
     @ObservedObject var widgetCoreData: WidgetCoreData
@@ -26,7 +26,6 @@ struct WidgetGridView: View {
                 .font(.system(size: 20))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top)
-            
             
             // 그리드뷰
             LazyVGrid(columns: gridItem, alignment: .center, spacing: 8 ) {

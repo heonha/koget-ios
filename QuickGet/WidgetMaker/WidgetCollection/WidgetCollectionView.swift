@@ -9,9 +9,9 @@ import SwiftUI
 
 struct WidgetCollectionView: View {
     
-    let title: String = "나의 위젯"
+    let title: String = "나의 잠금화면 위젯"
     let backgroundColor: Color = AppColors.backgroundColor
-    
+
     var body: some View {
         ZStack {
             backgroundColor
@@ -22,16 +22,15 @@ struct WidgetCollectionView: View {
                     .padding()
             }
         }
-        
     }
 }
-    
-    
-    struct WidgetListGridView_Previews: PreviewProvider {
-        static var previews: some View {
-            NavigationView {
-                WidgetCollectionView()
-            }
-            .environmentObject(StorageProvider.preview)
+
+
+struct WidgetListGridView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            WidgetCollectionView()
         }
+        .environmentObject(StorageProvider.preview)
     }
+}
