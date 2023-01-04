@@ -39,6 +39,7 @@
 		3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
 		3A668E88294990A100BD7A4C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3A668E87294990A100BD7A4C /* Lottie */; };
+		3A7CD3822965562C008FAB75 /* LinkWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7CD3812965562C008FAB75 /* LinkWidget.swift */; };
 		3A8339D72932165B00DC9527 /* EditingToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D62932165B00DC9527 /* EditingToggleButton.swift */; };
 		3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D82932167500DC9527 /* DetailWidgetButton.swift */; };
 		3A8F8E832939AF5C0065DC80 /* MainSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */; };
@@ -132,6 +133,7 @@
 		3A3C11A028EDB69A00C9CCED /* LockScreenIntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenIntentsExtension.entitlements; sourceTree = "<group>"; };
 		3A3C11A228EDC14700C9CCED /* DefaultWidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWidgetManager.swift; sourceTree = "<group>"; };
 		3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		3A7CD3812965562C008FAB75 /* LinkWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidget.swift; sourceTree = "<group>"; };
 		3A8339D62932165B00DC9527 /* EditingToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingToggleButton.swift; sourceTree = "<group>"; };
 		3A8339D82932167500DC9527 /* DetailWidgetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetButton.swift; sourceTree = "<group>"; };
 		3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSegmentView.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */,
+				3A7CD3812965562C008FAB75 /* LinkWidget.swift */,
 				3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */,
 				3AF9F00A28ED570E00F685E6 /* Assets.xcassets */,
 				3AF9F00C28ED570E00F685E6 /* Info.plist */,
@@ -640,6 +643,7 @@
 				3A1CD1A228F9891C00AC5D1C /* CoreData.swift in Sources */,
 				3A1CD19E28F9819400AC5D1C /* Constants.swift in Sources */,
 				3AE9DC0E28F8F890008A3316 /* QuickGet.xcdatamodeld in Sources */,
+				3A7CD3822965562C008FAB75 /* LinkWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

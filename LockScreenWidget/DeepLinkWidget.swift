@@ -44,21 +44,40 @@ struct DeepLinkProvider: IntentTimelineProvider {
     
     /// Widget이 업데이트 될 미래 시간을 전달합니다. (미래날짜가 포함된 타임라인 엔트리배열)
     func getTimeline(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (Timeline<DeepLinkEntry>) -> Void) {
-        let selectedApp = configuration.app!
+        let selectedApp = configuration.app
         // ID가 같으면 그 이미지를 반환한다.
         
-        // 여기에 Simple Entry로 구성된 코드가 보여짐.
-        let entry = DeepLinkEntry(
-            date: Date(),
-            name: selectedApp.displayString,
-            url: selectedApp.url ?? "",
-            image: getWidgetImage(id: selectedApp.identifier),
-            id: selectedApp.identifier
-        )
         
-        let timeline = Timeline(entries: [entry], policy: .atEnd)
-        completion(timeline)
-
+        if let app = selectedApp {
+            
+            // 여기에 Simple Entry로 구성된 코드가 보여짐.
+            let entry = DeepLinkEntry(
+                date: Date(),
+                name: app.displayString,
+                url: app.url!,
+                image: getWidgetImage(id: app.identifier),
+                id: app.identifier
+            )
+            
+            let timeline = Timeline(entries: [entry], policy: .atEnd)
+            
+            completion(timeline)
+        } else {
+            let defaultImage = UIImage(named: "trash")!
+            let entry = DeepLinkEntry(
+                date: Date(),
+                name: "선택되지 않음",
+                url: "",
+                image: defaultImage,
+                id: nil
+            )
+            
+            let timeline = Timeline(entries: [entry], policy: .atEnd)
+            completion(timeline)
+            
+        }
+        
+        
         
         /// 타임라인을 만들어서 Completion으로 넘깁니다.
         /// > Parameters
@@ -67,20 +86,13 @@ struct DeepLinkProvider: IntentTimelineProvider {
     }
     
     func placeholder(in context: Context) -> DeepLinkEntry {
-        DeepLinkEntry(date: Date(), name: "플레이스 홀더", url: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
+        DeepLinkEntry(date: Date(), name: "플레이스 홀더", url: nil, image: UIImage(named: "test.icon.1")!, id: "")
     }
     
     /// 위젯을 추가할 때 표시할 프리뷰를 구성합니다.
     func getContext(context: Context) -> DeepLinkEntry {
-    
-        var entry: DeepLinkEntry
-    
-        // 위젯 미리보기에서 어떻게 보일 것인지 설정.
-        if context.isPreview {
-            entry = DeepLinkEntry(date: Date(), name: "placeHolder", url: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
-        } else {
-            entry = DeepLinkEntry(date: Date(), name: "placeHolder", url: nil, image: UIImage(named: "plus.circle.fill")!, id: "")
-        }
+        
+        let entry: DeepLinkEntry = DeepLinkEntry(date: Date(), name: "", url: nil, image: UIImage(named: "trash")!, id: nil)
         
         return entry
     }
@@ -101,36 +113,52 @@ struct DeepLinkEntry: TimelineEntry {
 //MARK: - Widget View
 struct DeepLinkWidgetEntryView : View {
     var entry: DeepLinkProvider.Entry
-        
+    
     @Environment(\.widgetFamily) var family
     
     let mainURL = "widget-deeplink://"
+    let selectWidgetURL = "widget-select://"
     
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
     var body: some View {
         
-        switch family {
-        case .accessoryCircular:
-            if entry.id != nil {
-                VStack {
-                    Image(uiImage: entry.image!)
+        
+        ZStack {
+            Color.black.opacity(0.12)
+            
+            switch family {
+            case .accessoryCircular:
+                
+                // entry에 id가 Set되어 있는경우
+                if entry.id != nil {
+                    VStack {
+                        Image(uiImage: entry.image
+                              ?? UIImage(systemName: "questionmark.circle")!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .widgetURL(URL(string: "\(mainURL)\(entry.url ?? "failLink")"))
+                            .widgetURL(URL(string: "\(mainURL)\(entry.url!)"))
+                    }
+                    .opacity(0.8)
+                } else {
+                    ZStack {
+                        VStack {
+                            Text("위젯")
+                            Text("선택")
+                        }
+                        .bold()
+                        .widgetURL(URL(string: selectWidgetURL))
+                    }
                 }
-            } else {
+            default:
                 VStack {
-                    Image(uiImage: UIImage(named: "plus.circle.fill")!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                    Text("Error")
                 }
-            }
-
-        default:
-            VStack {
+                .widgetURL(URL(string: selectWidgetURL))
             }
         }
+        
+        
     }
 }
 
@@ -158,12 +186,15 @@ struct DeepLinkWidget: Widget {
         /// kind : 위젯의 식별자. 즉, ID입니다.
         /// provider : 위젯을 새로고침할 타임라인을 결정하는 객체
         /// content (entry) : getSnapshot, getTimeline을 전달하고 위젯을 렌더링합니다.
-        IntentConfiguration(kind: kind, intent: DeepLinkAppIntent.self, provider: DeepLinkProvider()) { (entry) in
-            DeepLinkWidgetEntryView(entry: entry) // 위젯이 표현할 SwiftUI View입니다.
-        }
-        .configurationDisplayName("딥링크 위젯")
-        .description("앱에서 생성한 위젯을 생성하세요.")
-        .supportedFamilies([.accessoryCircular]) // 위젯이 지원하는 위젯의 종류입니다.
+        IntentConfiguration(
+            kind: kind,
+            intent: DeepLinkAppIntent.self,
+            provider: DeepLinkProvider()) { (entry) in
+                DeepLinkWidgetEntryView(entry: entry) // 위젯이 표현할 SwiftUI View입니다.
+            }
+            .configurationDisplayName("딥링크 위젯")
+            .description("앱에서 생성한 위젯을 생성하세요.")
+            .supportedFamilies([.accessoryCircular]) // 위젯이 지원하는 위젯의 종류입니다.
     }
 }
 
