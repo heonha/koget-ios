@@ -127,7 +127,6 @@ extension SceneDelegate {
         
         let url = URL(string: "\(host)")!
         print("Scheme! -> \(host)")
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
 
