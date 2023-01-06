@@ -14,7 +14,7 @@ struct DetailWidgetView: View {
     
     @State var selectedWidget: DeepLink
     
-    @StateObject var viewModel = LinkWidgetModel()
+    @StateObject var viewModel = MakeWidgetViewModel()
     
     //Present Views
     @State var isPresent: Bool = false

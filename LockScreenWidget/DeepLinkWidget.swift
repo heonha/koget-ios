@@ -116,8 +116,8 @@ struct DeepLinkWidgetEntryView : View {
     
     @Environment(\.widgetFamily) var family
     
-    let mainURL = "widget-deeplink://"
-    let selectWidgetURL = "widget-select://"
+    let mainURL = "link://"
+    let selectWidgetURL = "open://"
     
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
