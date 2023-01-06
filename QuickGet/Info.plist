@@ -10,7 +10,9 @@
 			<key>CFBundleURLName</key>
 			<string>com.weizen.BackgroundMaker</string>
 			<key>CFBundleURLSchemes</key>
-			<array/>
+			<array>
+				<string>open</string>
+			</array>
 		***REMOVED***
 		***REMOVED***
 			<key>CFBundleTypeRole</key>
@@ -19,13 +21,43 @@
 			<string>com.weizen.BackgroundMaker</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>widget-deeplink</string>
+				<string>link</string>
 			</array>
 		***REMOVED***
 	</array>
 	<key>INIntentsSupported</key>
 	<array>
 		<string>DeepLinkAppIntent</string>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>youtubemusic</string>
+		<string>youtube</string>
+		<string>tphone</string>
+		<string>tmap</string>
+		<string>starbucks</string>
+		<string>shpayfan-touchpaytouch</string>
+		<string>shpayfan-touchpay</string>
+		<string>payco</string>
+		<string>naversearchapp</string>
+		<string>naverpayapp</string>
+		<string>navermap</string>
+		<string>kakaotalk</string>
+		<string>kakaopay</string>
+		<string>kakaonavi</string>
+		<string>kakaomap</string>
+		<string>kakaobank</string>
+		<string>instagram</string>
+		<string>googlephoto</string>
+		<string>googlemaps</string>
+		<string>googlegmail</string>
+		<string>googlechrome</string>
+		<string>googleauthenticator</string>
+		<string>google</string>
+		<string>strava</string>
+		<string>coupang</string>
+		<string>spotify</string>
+		<string>cashwalkapp</string>
 	</array>
 	<key>NSUserActivityTypes</key>
 	<array>

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageMenuButton: View {
     
-    @ObservedObject var viewModel: LinkWidgetModel
+    @ObservedObject var viewModel: MakeWidgetViewModel
     @State var isApplistPresent: Bool = false
     @State var isPhotoViewPresent: Bool = false
     
@@ -19,12 +19,12 @@ struct ImageMenuButton: View {
                 Button(action: {
                     isApplistPresent = true
                 }) {
-                    Label("앱 불러오기", systemImage: "plus.circle.fill")
+                    Label("앱 가져오기", systemImage: "plus.circle.fill")
                 }
                 Button(action: {
                     isPhotoViewPresent = true
                 }) {
-                    Label("사진 바꾸기", systemImage: "photo")
+                    Label("사진 변경", systemImage: "photo")
                 }
             } label: {
                 
@@ -54,6 +54,6 @@ struct ImageMenuButton: View {
 
 struct ImageButton_Previews: PreviewProvider {
     static var previews: some View {
-        ImageMenuButton(viewModel: LinkWidgetModel())
+        ImageMenuButton(viewModel: MakeWidgetViewModel())
     }
 }

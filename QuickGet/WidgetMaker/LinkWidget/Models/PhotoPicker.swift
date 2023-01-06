@@ -11,7 +11,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
     
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
 
-    weak var widgetModel: LinkWidgetModel?
+    weak var widgetModel: MakeWidgetViewModel?
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<PhotoPicker>) -> UIImagePickerController {
         let picker = UIImagePickerController()

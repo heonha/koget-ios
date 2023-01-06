@@ -11,7 +11,7 @@ struct PhotoEditMenu: View {
     
     @Binding var isEditingMode: Bool
     @Binding var isPhotoViewPresent: Bool
-    @StateObject var viewModel: LinkWidgetModel
+    @StateObject var viewModel: MakeWidgetViewModel
     
     var body: some View {
         Menu {
@@ -42,6 +42,6 @@ struct PhotoEditMenu: View {
 
 struct PhotoEditMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoEditMenu(isEditingMode: .constant(false), isPhotoViewPresent: .constant(false), viewModel: LinkWidgetModel())
+        PhotoEditMenu(isEditingMode: .constant(false), isPhotoViewPresent: .constant(false), viewModel: MakeWidgetViewModel())
     }
 }

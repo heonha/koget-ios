@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 let DEVICE_SIZE = UIScreen.main.bounds.size
+let SCHEME_LINK = "link://"
+let SCHEME_OPEN = "open://"
 
 struct Constants {
     
@@ -17,7 +19,7 @@ struct Constants {
 
     static let coreDataEntityName = "QuickGet"
     static let appGroupID = "group.ZH5GA3W8UP.com.heon.quickget"
-
+    
 }
 
 

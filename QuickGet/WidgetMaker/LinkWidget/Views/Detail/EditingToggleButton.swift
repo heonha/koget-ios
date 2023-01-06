@@ -16,7 +16,7 @@ struct EditingToggleButton: View {
     @State var alertMessage: LocalizedStringKey = "알수 없는 오류 발생"
     @State var isAlertPresent: Bool = false
     @Binding var isEditingMode: Bool
-    @ObservedObject var viewModel: LinkWidgetModel
+    @ObservedObject var viewModel: MakeWidgetViewModel
     
     var body: some View {
         ZStack {
