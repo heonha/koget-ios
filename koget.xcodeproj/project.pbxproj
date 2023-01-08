@@ -341,7 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				3A9BC0CE28E6C93A0041DA1B /* LockScreenWidgetExtension.entitlements */,
-				3ABA6C1528C6043F005AA8E4 /* QuickGet */,
+				3ABA6C1528C6043F005AA8E4 /* koget */,
 				3AF9F00728ED570D00F685E6 /* LockScreenWidget */,
 				3A3C119528EDB4B800C9CCED /* LockScreenIntentsExtension */,
 				3ABA6C1428C6043F005AA8E4 /* Products */,
@@ -359,7 +359,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3ABA6C1528C6043F005AA8E4 /* QuickGet */ = {
+		3ABA6C1528C6043F005AA8E4 /* koget */ = {
 			isa = PBXGroup;
 			children = (
 				3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */,
@@ -373,7 +373,7 @@
 				3AF7E59128F85FD200B14DFD /* Utils */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
-			path = QuickGet;
+			path = koget;
 			sourceTree = "<group>";
 		};
 		3ABA6C2D28C60465005AA8E4 /* Files */ = {
@@ -848,12 +848,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = QuickGet/koget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = koget/koget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = QuickGet/Info.plist;
+				INFOPLIST_FILE = koget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코젯";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
@@ -882,12 +882,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = QuickGet/koget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = koget/koget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = QuickGet/Info.plist;
+				INFOPLIST_FILE = koget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코젯";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
