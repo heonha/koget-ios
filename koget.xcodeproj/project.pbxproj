@@ -139,13 +139,13 @@
 		3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSegmentView.swift; sourceTree = "<group>"; };
 		3A94E19D28EC1B950050EE80 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		3A94E1A828EC1B960050EE80 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
-		3A9BC0CD28E6C92A0041DA1B /* QuickGet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickGet.entitlements; sourceTree = "<group>"; };
+		3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = koget.entitlements; sourceTree = "<group>"; };
 		3A9BC0CE28E6C93A0041DA1B /* LockScreenWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenWidgetExtension.entitlements; sourceTree = "<group>"; };
 		3A9BC0D928E6E1AE0041DA1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A9C04FF292DB03C00442017 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetViewModel.swift; sourceTree = "<group>"; };
 		3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
-		3ABA6C1328C6043F005AA8E4 /* QuickGet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickGet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABA6C1328C6043F005AA8E4 /* koget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = koget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3ABA6C2228C60440005AA8E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 		3ABA6C1428C6043F005AA8E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3ABA6C1328C6043F005AA8E4 /* QuickGet.app */,
+				3ABA6C1328C6043F005AA8E4 /* koget.app */,
 				3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */,
 				3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */,
 			);
@@ -364,7 +364,7 @@
 		3ABA6C1528C6043F005AA8E4 /* QuickGet */ = {
 			isa = PBXGroup;
 			children = (
-				3A9BC0CD28E6C92A0041DA1B /* QuickGet.entitlements */,
+				3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */,
 				3ABA6C1628C6043F005AA8E4 /* AppDelegate.swift */,
 				3ABA6C1828C6043F005AA8E4 /* SceneDelegate.swift */,
 				3A8F8E822939AF5C0065DC80 /* MainSegmentView.swift */,
@@ -455,9 +455,9 @@
 			productReference = 3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		3ABA6C1228C6043F005AA8E4 /* QuickGet */ = {
+		3ABA6C1228C6043F005AA8E4 /* koget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3ABA6C2A28C60440005AA8E4 /* Build configuration list for PBXNativeTarget "QuickGet" */;
+			buildConfigurationList = 3ABA6C2A28C60440005AA8E4 /* Build configuration list for PBXNativeTarget "koget" */;
 			buildPhases = (
 				3ABA6C0F28C6043F005AA8E4 /* Sources */,
 				3ABA6C1028C6043F005AA8E4 /* Frameworks */,
@@ -470,12 +470,12 @@
 				3AF9F00E28ED570E00F685E6 /* PBXTargetDependency */,
 				3A3C119A28EDB4B800C9CCED /* PBXTargetDependency */,
 			);
-			name = QuickGet;
+			name = koget;
 			packageProductDependencies = (
 				3A668E87294990A100BD7A4C /* Lottie */,
 			);
 			productName = BackgroundMaker;
-			productReference = 3ABA6C1328C6043F005AA8E4 /* QuickGet.app */;
+			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3AF9F00328ED570D00F685E6 /* LockScreenWidgetExtension */ = {
@@ -516,7 +516,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "QuickGet" */;
+			buildConfigurationList = 3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "koget" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -533,7 +533,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3ABA6C1228C6043F005AA8E4 /* QuickGet */,
+				3ABA6C1228C6043F005AA8E4 /* koget */,
 				3AF9F00328ED570D00F685E6 /* LockScreenWidgetExtension */,
 				3A3C119228EDB4B800C9CCED /* LockScreenIntentsExtension */,
 			);
@@ -852,7 +852,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = QuickGet/QuickGet.entitlements;
+				CODE_SIGN_ENTITLEMENTS = QuickGet/koget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
@@ -886,7 +886,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = QuickGet/QuickGet.entitlements;
+				CODE_SIGN_ENTITLEMENTS = QuickGet/koget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
@@ -984,7 +984,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "QuickGet" */ = {
+		3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "koget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3ABA6C2828C60440005AA8E4 /* Debug */,
@@ -993,7 +993,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3ABA6C2A28C60440005AA8E4 /* Build configuration list for PBXNativeTarget "QuickGet" */ = {
+		3ABA6C2A28C60440005AA8E4 /* Build configuration list for PBXNativeTarget "koget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3ABA6C2B28C60440005AA8E4 /* Debug */,
