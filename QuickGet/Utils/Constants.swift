@@ -18,7 +18,7 @@ struct Constants {
     //MARK: - Widget Constants
 
     static let coreDataEntityName = "QuickGet"
-    static let appGroupID = "group.ZH5GA3W8UP.com.heon.quickget"
+    static let appGroupID = "group.ZH5GA3W8UP.com.heon.koget"
     
 }
 
