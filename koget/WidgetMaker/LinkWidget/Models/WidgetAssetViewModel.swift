@@ -13,7 +13,7 @@ final class WidgetAssetViewModel: ObservableObject {
     @Published var searchResults: [LinkWidget] = []
     
     init() {
-        data = LinkWidgetManager.shared.getWidgetData()
+        data = LinkWidgetModel.shared.getWidgetData()
     }
     
     func canOpenApp(_ canOpen: Bool) -> Double {

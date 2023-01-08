@@ -21,6 +21,7 @@ struct FloatingButton: View {
                 
                 NavigationLink {
                     MakeWidgetView()
+                    
                 } label: {
                     ZStack {
                         Circle()

@@ -48,7 +48,7 @@ struct EditTextField_Previews: PreviewProvider {
     static var previews: some View {
                 
         EditTextField(title: "제목",
-                      placeHolder: "placeHolder",
+                      placeHolder: "placeholder",
                       isEditingMode: .constant(false),
                       text: .constant("")
         )

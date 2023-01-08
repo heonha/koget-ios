@@ -10,19 +10,20 @@ import SwiftUI
 struct ImageMenuButton: View {
     
     @ObservedObject var viewModel: MakeWidgetViewModel
-    @State var isApplistPresent: Bool = false
-    @State var isPhotoViewPresent: Bool = false
+    @Binding var appPicker: WidgetAssetList?
+    @State var isAppPickerPresent: Bool = false
+    @State var isPhotoPickerPresent: Bool = false
     
     var body: some View {
         ZStack {
             Menu {
                 Button(action: {
-                    isApplistPresent = true
+                    isAppPickerPresent.toggle()
                 }) {
                     Label("앱 가져오기", systemImage: "plus.circle.fill")
                 }
                 Button(action: {
-                    isPhotoViewPresent = true
+                    isPhotoPickerPresent.toggle()
                 }) {
                     Label("사진 변경", systemImage: "photo")
                 }
@@ -42,10 +43,10 @@ struct ImageMenuButton: View {
                         .clipShape(Circle())
                 }
                 
-            }.sheet(isPresented: $isApplistPresent) {
-                WidgetAssetList(viewModel: viewModel)
+            }.sheet(isPresented: $isAppPickerPresent) {
+                appPicker
             }
-            .sheet(isPresented: $isPhotoViewPresent) {
+            .sheet(isPresented: $isPhotoPickerPresent) {
                 PhotoPicker(widgetModel: viewModel)
             }
         }
@@ -54,6 +55,7 @@ struct ImageMenuButton: View {
 
 struct ImageButton_Previews: PreviewProvider {
     static var previews: some View {
-        ImageMenuButton(viewModel: MakeWidgetViewModel())
+        let viewModel = MakeWidgetViewModel()
+        ImageMenuButton(viewModel: viewModel, appPicker: .constant(WidgetAssetList(viewModel: viewModel)))
     }
 }
