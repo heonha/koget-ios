@@ -28,21 +28,41 @@ struct WidgetGridView: View {
                 .padding(.top)
             
             // 그리드뷰
-            LazyVGrid(columns: gridItem, alignment: .center, spacing: 8 ) {
+            
+            if !widgetCoreData.linkWidgets.isEmpty {
                 
-                ForEach(widgetCoreData.linkWidgets, id: \.id) { widget in
+                LazyVGrid(columns: gridItem, alignment: .center, spacing: 8 ) {
                     
-                    WidgetIconCell(widget: widget)
-                    .frame(width: width, height: width)
-                    
+                    ForEach(widgetCoreData.linkWidgets, id: \.id) { widget in
+                        
+                        WidgetIconCell(widget: widget)
+                            .frame(width: width, height: width)
+                        
+                    }
+                    .padding(.top, 16)
                 }
-                .padding(.top, 16)
+                
+                .background(backgroundColor)
+                .cornerRadius(8)
+                .shadow(radius: 1)
+                Spacer()
+                
+            } else {
+                VStack {
+                    Text("🤔")
+                        .font(.system(size: 50))
+                        .padding(.bottom, 8)
+                    Text("아직 생성한 위젯이 없어요,")
+                    Text("잠금화면 위젯을 생성해보세요!")
+                }
+                .foregroundColor(.gray)
+                .frame(width: DEVICE_SIZE.width - 32, height: 300)
+                .background(backgroundColor)
+                .cornerRadius(8)
+                .shadow(radius: 1)
+                Spacer()
             }
             
-            .background(backgroundColor)
-            .cornerRadius(8)
-            .shadow(radius: 1)
-            Spacer()
         }
     }
     

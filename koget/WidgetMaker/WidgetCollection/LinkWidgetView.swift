@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WidgetCollectionView: View {
+struct LinkWidgetView: View {
     
     let title: String = "나의 잠금화면 위젯"
     let backgroundColor: Color = AppColors.backgroundColor
@@ -17,7 +17,7 @@ struct WidgetCollectionView: View {
             backgroundColor
                 .ignoresSafeArea(edges: .bottom)
             VStack {
-                // 제목
+                // Grid
                 WidgetGridView(title: title, widgetCoreData: WidgetCoreData.shared)
                     .padding()
             }
@@ -29,7 +29,7 @@ struct WidgetCollectionView: View {
 struct WidgetListGridView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            WidgetCollectionView()
+            LinkWidgetView()
         }
         .environmentObject(StorageProvider.preview)
     }
