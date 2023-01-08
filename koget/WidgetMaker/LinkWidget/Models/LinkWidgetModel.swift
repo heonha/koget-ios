@@ -9,9 +9,9 @@ import UIKit
 import CoreData
 import SwiftUI
 
-final class LinkWidgetManager: ObservableObject {
+final class LinkWidgetModel: ObservableObject {
     
-    static let shared = LinkWidgetManager()
+    static let shared = LinkWidgetModel()
     
     /// 앱에 내장된 DeepLink의 목록입니다.
     var builtInApps: [LinkWidget] = []

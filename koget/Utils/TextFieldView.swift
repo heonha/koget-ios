@@ -14,7 +14,7 @@ enum TextFieldType {
 
 struct TextFieldView: View {
     
-    let placeHolder: String
+    let placeholder: String
     let padding: CGFloat = 32
     
     var type: TextFieldType = .title
@@ -23,17 +23,20 @@ struct TextFieldView: View {
     
     var body: some View {
 
-            ZStack(alignment: .top) {
-                RoundedRectangle(cornerRadius: 5)
-                    .frame(height: type == .title ? 40 : 300)
-                    .foregroundColor(AppColors.secondaryBackgroundColor)
-                TextField(placeHolder, text: $text)
-                    .background(Color.clear)
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
-                    .textCase(.none)
-                    .padding(8)
-            }
+        ZStack(alignment: .center) {
+            
+            RoundedRectangle(cornerRadius: 5)
+                .frame(height: 40)
+                .foregroundColor(AppColors.secondaryBackgroundColor)
+            
+            TextField(placeholder, text: $text)
+                .background(Color.clear)
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+                .textCase(.none)
+                .padding(.horizontal,8)
+            
+        }
             
 
     }
@@ -43,8 +46,8 @@ struct TextFieldView: View {
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TextFieldView(placeHolder: "제목을 입력하세요.", text: .constant(""))
-            TextFieldView(placeHolder: "내용을 입력하세요.", type: .body, text: .constant(""))
+            TextFieldView(placeholder: "제목을 입력하세요.", text: .constant(""))
+            TextFieldView(placeholder: "내용을 입력하세요.", type: .body, text: .constant(""))
         }
     }
 }

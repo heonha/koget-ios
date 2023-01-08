@@ -25,6 +25,8 @@ struct ButtonWithText: View {
                 .foregroundColor(titleColor)
                 .font(font)
         }
+        .cornerRadius(5)
+        .padding(.top, 8)
     }
 }
 struct ButtonWithText_Previews: PreviewProvider {
