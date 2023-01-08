@@ -20,8 +20,11 @@ struct MainWidgetView: View {
                 AppColors.secondaryBackgroundColor
                     .ignoresSafeArea()
                 VStack {
+                    // 위젯 만들기 버튼
                     WidgetButtonToMake()
-                    WidgetCollectionView()
+                    
+                    // 링크위젯
+                    LinkWidgetView()
                 }
                 FloatingButton()
             }

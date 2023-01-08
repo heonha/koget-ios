@@ -24,23 +24,27 @@ struct WidgetIconCell: View {
                     DetailWidgetView(selectedWidget: widget)
                 })
             } label: {
-                VStack {
-                    Image(uiImage: .init(data:(widget.image!))!)
-                        .resizable()
-                        .aspectRatio(1, contentMode: .fit)
-                        .clipShape(Circle())
-                        .frame(width: 55, height: 55)
-                        .shadow(color: .gray, radius: 0.5, x: 0.2, y: 0.3)
-                    Text(widget.name ?? "위젯이름")
-                        .lineLimit(2)
-                        .font(.system(size: 12, weight: .semibold))
-                        .foregroundColor(titleColor)
-                    Spacer()
+                
+                if let widgetImage = widget.image {
+                    VStack {
+                        Image(uiImage: .init(data:(widgetImage))!)
+                            .resizable()
+                            .aspectRatio(1, contentMode: .fit)
+                            .clipShape(Circle())
+                            .frame(width: 55, height: 55)
+                            .shadow(color: .gray, radius: 0.5, x: 0.2, y: 0.3)
+                        Text(widget.name ?? "위젯이름")
+                            .lineLimit(2)
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundColor(titleColor)
+                        Spacer()
+                    }
+                    .frame(width: 90, height: 100)
+                    .padding(.top, 16)
+                    .tint(.white)
+                    .clipped()
                 }
-                .frame(width: 90, height: 100)
-                .padding(.top, 16)
-                .tint(.white)
-                .clipped()
+                
             }
         }
     }

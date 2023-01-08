@@ -11,7 +11,7 @@
 		3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA682931F3F1004FBF80 /* StorageProvider.swift */; };
 		3A0566CE2931E87D007B0A7A /* WidgetIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */; };
 		3A0566D12931E964007B0A7A /* WidgetButtonToMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */; };
-		3A0566D32931E9A0007B0A7A /* WidgetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D22931E9A0007B0A7A /* WidgetCollectionView.swift */; };
+		3A0566D32931E9A0007B0A7A /* LinkWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */; };
 		3A0566D52931E9F2007B0A7A /* WidgetGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D42931E9F2007B0A7A /* WidgetGridView.swift */; };
 		3A0842002938A67D009BED73 /* NoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0841FF2938A67D009BED73 /* NoticeList.swift */; };
 		3A0842022938AA94009BED73 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0842012938AA94009BED73 /* NoticeCell.swift */; };
@@ -112,7 +112,7 @@
 		3A00CA682931F3F1004FBF80 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIconCell.swift; sourceTree = "<group>"; };
 		3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetButtonToMake.swift; sourceTree = "<group>"; };
-		3A0566D22931E9A0007B0A7A /* WidgetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCollectionView.swift; sourceTree = "<group>"; };
+		3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetView.swift; sourceTree = "<group>"; };
 		3A0566D42931E9F2007B0A7A /* WidgetGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridView.swift; sourceTree = "<group>"; };
 		3A0841FF2938A67D009BED73 /* NoticeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeList.swift; sourceTree = "<group>"; };
 		3A0842012938AA94009BED73 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		3A00CA642931EDB6004FBF80 /* WidgetCollection */ = {
 			isa = PBXGroup;
 			children = (
-				3A0566D22931E9A0007B0A7A /* WidgetCollectionView.swift */,
+				3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */,
 				3A0566D42931E9F2007B0A7A /* WidgetGridView.swift */,
 				3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */,
 			);
@@ -212,7 +212,6 @@
 		3A00CA672931F109004FBF80 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -266,6 +265,7 @@
 				3A0C03412935131600868B70 /* PhotoEditMenu.swift */,
 				3A8339D62932165B00DC9527 /* EditingToggleButton.swift */,
 				3A8339D82932167500DC9527 /* DetailWidgetButton.swift */,
+				3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -618,7 +618,7 @@
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
 				3A0566D52931E9F2007B0A7A /* WidgetGridView.swift in Sources */,
 				3ABA6C1928C6043F005AA8E4 /* SceneDelegate.swift in Sources */,
-				3A0566D32931E9A0007B0A7A /* WidgetCollectionView.swift in Sources */,
+				3A0566D32931E9A0007B0A7A /* LinkWidgetView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
 				3A8F8E832939AF5C0065DC80 /* MainSegmentView.swift in Sources */,
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,
