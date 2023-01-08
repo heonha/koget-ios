@@ -29,11 +29,6 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		***REMOVED***
-		<key>QuickGet.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>orderHint</key>
-			<integer>0</integer>
-		***REMOVED***
 		<key>Rx (Playground) 1.xcscheme</key>
 		***REMOVED***
 			<key>isShown</key>
@@ -159,6 +154,11 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
+		***REMOVED***
+		<key>koget.xcscheme_^#shared#^_</key>
+		***REMOVED***
+			<key>orderHint</key>
+			<integer>0</integer>
 		***REMOVED***
 	***REMOVED***
 	<key>SuppressBuildableAutocreation</key>
