@@ -65,9 +65,9 @@
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
 		3AE6AB4329617F7B000F2C1D /* ImageMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */; };
 		3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4429618319000F2C1D /* ButtonWithText.swift */; };
-		3AE9DC0D28F8F87B008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
-		3AE9DC0E28F8F890008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
-		3AE9DC0F28F8F891008A3316 /* QuickGet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */; };
+		3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */; };
+		3AE9DC0E28F8F890008A3316 /* WidgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */; };
+		3AE9DC0F28F8F891008A3316 /* WidgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */; };
 		3AF9F00528ED570D00F685E6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC3E1E828E690B800BFF455 /* WidgetKit.framework */; };
 		3AF9F00628ED570D00F685E6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC3E1EA28E690B800BFF455 /* SwiftUI.framework */; };
 		3AF9F00928ED570D00F685E6 /* DeepLinkWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */; };
@@ -404,7 +404,7 @@
 			children = (
 				3A1CD19928F971A800AC5D1C /* CoreData.swift */,
 				3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */,
-				3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */,
+				3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -575,7 +575,7 @@
 				3ACCB34D294C33C300A85E0F /* UIColor+Utils.swift in Sources */,
 				3A1CD19728F9710200AC5D1C /* AppDelegate.swift in Sources */,
 				3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */,
-				3AE9DC0F28F8F891008A3316 /* QuickGet.xcdatamodeld in Sources */,
+				3AE9DC0F28F8F891008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				3A1CD1A128F9891C00AC5D1C /* CoreData.swift in Sources */,
 				3ACCB34E294C33C300A85E0F /* UIDevice+Utils.swift in Sources */,
 				3ACCB34C294C33C300A85E0F /* AppColors.swift in Sources */,
@@ -589,7 +589,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */,
-				3AE9DC0D28F8F87B008A3316 /* QuickGet.xcdatamodeld in Sources */,
+				3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,
 				3A0566D12931E964007B0A7A /* WidgetButtonToMake.swift in Sources */,
 				3ABFEFC7292F481F00455730 /* TestDeepLink.swift in Sources */,
@@ -638,7 +638,7 @@
 				3A3C118E28EDB1B700C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A1CD1A228F9891C00AC5D1C /* CoreData.swift in Sources */,
 				3A1CD19E28F9819400AC5D1C /* Constants.swift in Sources */,
-				3AE9DC0E28F8F890008A3316 /* QuickGet.xcdatamodeld in Sources */,
+				3AE9DC0E28F8F890008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				3A7CD3822965562C008FAB75 /* LinkWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1010,13 +1010,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3AE9DC0B28F8F87B008A3316 /* QuickGet.xcdatamodeld */ = {
+		3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */,
 			);
 			currentVersion = 3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */;
-			path = QuickGet.xcdatamodeld;
+			path = WidgetModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
