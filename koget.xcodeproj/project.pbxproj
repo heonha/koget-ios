@@ -12,6 +12,9 @@
 		3A01E775296AADDD0019CD2D /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E774296AADDD0019CD2D /* CustomTextfield.swift */; };
 		3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E776296AADEF0019CD2D /* URLTestButton.swift */; };
 		3A01E779296AB04F0019CD2D /* MakeWidgetTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */; };
+		3A01E782296AD1CC0019CD2D /* MakeWidgetOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E781296AD1CC0019CD2D /* MakeWidgetOnboarding.swift */; };
+		3A01E785296AD3470019CD2D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E784296AD3470019CD2D /* ContactView.swift */; };
+		3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */; };
 		3A0566CE2931E87D007B0A7A /* WidgetIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */; };
 		3A0566D12931E964007B0A7A /* WidgetButtonToMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */; };
 		3A0566D32931E9A0007B0A7A /* LinkWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */; };
@@ -116,6 +119,9 @@
 		3A01E774296AADDD0019CD2D /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 		3A01E776296AADEF0019CD2D /* URLTestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLTestButton.swift; sourceTree = "<group>"; };
 		3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetTextFieldView.swift; sourceTree = "<group>"; };
+		3A01E781296AD1CC0019CD2D /* MakeWidgetOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetOnboarding.swift; sourceTree = "<group>"; };
+		3A01E784296AD3470019CD2D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIconCell.swift; sourceTree = "<group>"; };
 		3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetButtonToMake.swift; sourceTree = "<group>"; };
 		3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetView.swift; sourceTree = "<group>"; };
@@ -222,6 +228,23 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		3A01E77E296AD1850019CD2D /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				3A01E781296AD1CC0019CD2D /* MakeWidgetOnboarding.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		3A01E783296AD33C0019CD2D /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				3A01E784296AD3470019CD2D /* ContactView.swift */,
+				3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
 		3A0841FE2938A671009BED73 /* Notice */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +258,7 @@
 		3A08BCFB292FA7E700E09B3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A01E77E296AD1850019CD2D /* OnBoarding */,
 				3A08BCFF292FBF0B00E09B3E /* Make */,
 				3A08BD00292FBF1B00E09B3E /* Detail */,
 			);
@@ -282,6 +306,7 @@
 		3A08BD01292FC9E700E09B3E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3A01E783296AD33C0019CD2D /* Contact */,
 				3A08BD02292FCA0900E09B3E /* SettingView.swift */,
 				3ACCB34F294C37BF00A85E0F /* SettingButtonLabel.swift */,
 				3A0841FE2938A671009BED73 /* Notice */,
@@ -606,6 +631,7 @@
 				3A0842022938AA94009BED73 /* NoticeCell.swift in Sources */,
 				3ACCB357294C54A500A85E0F /* FloatingButton.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* LinkWidgetModel.swift in Sources */,
+				3A01E782296AD1CC0019CD2D /* MakeWidgetOnboarding.swift in Sources */,
 				3ACCB350294C37BF00A85E0F /* SettingButtonLabel.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				3ABA6C1728C6043F005AA8E4 /* AppDelegate.swift in Sources */,
@@ -619,6 +645,7 @@
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3A0842002938A67D009BED73 /* NoticeList.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
+				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
 				3AE6AB4329617F7B000F2C1D /* ImageMenuButton.swift in Sources */,
@@ -634,6 +661,7 @@
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,
 				3A01E775296AADDD0019CD2D /* CustomTextfield.swift in Sources */,
 				3ABD50FF292945EB00F878AE /* WidgetCoreData.swift in Sources */,
+				3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */,
 				3A08BD03292FCA0900E09B3E /* SettingView.swift in Sources */,
 				3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */,
 				3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */,

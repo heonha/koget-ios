@@ -28,7 +28,7 @@ struct SettingView: View {
                 }
                 
                 NavigationLink {
-                    
+                    ContactView()
                 } label: {
                     SettingButtonLabel(
                         title: "문의하기",
@@ -36,7 +36,7 @@ struct SettingView: View {
                 }
                 
                 HStack {
-                    Text("코코아젯 버전")
+                    Text("코젯 버전")
                         .foregroundColor(AppColors.label)
                     Spacer()
                     Text("1.0.0")
