@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>65307112654-gfot1nbqgc01tohqg0rdsf30hdeh71i9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.65307112654-gfot1nbqgc01tohqg0rdsf30hdeh71i9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBDDZ60HF9gaiFUA1DIrCZJBpcFpWmRwKM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>65307112654</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.heon.koget</string>
+	<key>PROJECT_ID</key>
+	<string>koget-253ee</string>
+	<key>STORAGE_BUCKET</key>
+	<string>koget-253ee.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:65307112654:ios:92bc602636f2a609c30c9f</string>
+</dict>
+</plist>
