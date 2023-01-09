@@ -14,8 +14,6 @@ let SCHEME_OPEN = "open://"
 
 struct Constants {
     
-    //MARK: - 공통 변수
-    //MARK: - Widget Constants
 
     static let coreDataEntityName = "WidgetModel"
     static let appGroupID = "group.ZH5GA3W8UP.com.heon.koget"
