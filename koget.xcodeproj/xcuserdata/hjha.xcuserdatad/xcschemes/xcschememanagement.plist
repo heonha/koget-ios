@@ -22,12 +22,33 @@
 		<key>LockScreenIntentsExtension.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		***REMOVED***
 		<key>LockScreenWidgetExtension.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
+			<integer>4</integer>
+		***REMOVED***
+		<key>Promises (Playground) 1.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		***REMOVED***
+		<key>Promises (Playground) 2.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
 			<integer>3</integer>
+		***REMOVED***
+		<key>Promises (Playground).xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		***REMOVED***
 		<key>Rx (Playground) 1.xcscheme</key>
 		***REMOVED***
