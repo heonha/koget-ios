@@ -13,6 +13,7 @@ struct MainWidgetView: View {
     
     var title: String = "위젯"
     var tintColor: Color = .black
+    @State var isPresentHelper = true
     
     var body: some View {
         NavigationView {
@@ -26,7 +27,9 @@ struct MainWidgetView: View {
                     // 링크위젯
                     LinkWidgetView()
                 }
+                
                 FloatingButton()
+                
             }
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
@@ -52,7 +55,6 @@ struct MainWidgetView_Previews: PreviewProvider {
         NavigationView {
             MainWidgetView()
         }
-        .environmentObject(StorageProvider())
         
     }
 }

@@ -34,6 +34,7 @@
 		3A1CD1A228F9891C00AC5D1C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CD19928F971A800AC5D1C /* CoreData.swift */; };
 		3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2E21FC290FF9F800E4F46A /* downArrow.json */; };
 		3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
+		3A32629C2970441300169CF1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A32629B2970441300169CF1 /* HelpView.swift */; };
 		3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3A3C118E28EDB1B700C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3A3C119428EDB4B800C9CCED /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A94E19D28EC1B950050EE80 /* Intents.framework */; };
@@ -72,6 +73,8 @@
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
 		3AE4B13C296D848800DB219B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3AE4B13B296D848800DB219B /* FirebaseAnalytics */; };
 		3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE4B13D296D8A2D00DB219B /* KogetApp.swift */; };
+		3AE4B141296DA02800DB219B /* UploadLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE4B140296DA02800DB219B /* UploadLinkView.swift */; };
+		3AE4B143296DA2F400DB219B /* UploadLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE4B142296DA2F400DB219B /* UploadLinkViewModel.swift */; };
 		3AE6AB4329617F7B000F2C1D /* ImageMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */; };
 		3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4429618319000F2C1D /* ButtonWithText.swift */; };
 		3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */; };
@@ -141,6 +144,7 @@
 		3A1CD19928F971A800AC5D1C /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		3A2E21FC290FF9F800E4F46A /* downArrow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = downArrow.json; sourceTree = "<group>"; };
 		3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
+		3A32629B2970441300169CF1 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = LockScreenWidgetIntents.intentdefinition; sourceTree = "<group>"; };
 		3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenIntentsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3C119628EDB4B800C9CCED /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 		3ACCB356294C54A500A85E0F /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingIndicatorGray.json; sourceTree = "<group>"; };
 		3AE4B13D296D8A2D00DB219B /* KogetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogetApp.swift; sourceTree = "<group>"; };
+		3AE4B140296DA02800DB219B /* UploadLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadLinkView.swift; sourceTree = "<group>"; };
+		3AE4B142296DA2F400DB219B /* UploadLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadLinkViewModel.swift; sourceTree = "<group>"; };
 		3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMenuButton.swift; sourceTree = "<group>"; };
 		3AE6AB4429618319000F2C1D /* ButtonWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithText.swift; sourceTree = "<group>"; };
 		3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WidgetModel.xcdatamodel; sourceTree = "<group>"; };
@@ -403,8 +409,8 @@
 		3ABA6C1528C6043F005AA8E4 /* koget */ = {
 			isa = PBXGroup;
 			children = (
+				3AE4B13F296D9FFA00DB219B /* Administrator */,
 				3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */,
-				3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */,
 				3AE4B13D296D8A2D00DB219B /* KogetApp.swift */,
 				3A3CDA6629640806009A8756 /* Testing */,
 				3AE0F982294878CF008C9F5F /* CoreData */,
@@ -419,6 +425,7 @@
 		3ABA6C2D28C60465005AA8E4 /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */,
 				3ABA6C2228C60440005AA8E4 /* Assets.xcassets */,
 				3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */,
 				3ABA6C2728C60440005AA8E4 /* Info.plist */,
@@ -435,6 +442,7 @@
 				3A00CA642931EDB6004FBF80 /* WidgetCollection */,
 				3A51A10528F531F10027AD5A /* LinkWidget */,
 				3A00CA672931F109004FBF80 /* Utils */,
+				3A32629B2970441300169CF1 /* HelpView.swift */,
 			);
 			path = WidgetMaker;
 			sourceTree = "<group>";
@@ -447,6 +455,15 @@
 				3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		3AE4B13F296D9FFA00DB219B /* Administrator */ = {
+			isa = PBXGroup;
+			children = (
+				3AE4B140296DA02800DB219B /* UploadLinkView.swift */,
+				3AE4B142296DA2F400DB219B /* UploadLinkViewModel.swift */,
+			);
+			path = Administrator;
 			sourceTree = "<group>";
 		};
 		3AF7E59128F85FD200B14DFD /* Utils */ = {
@@ -651,10 +668,12 @@
 				3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */,
 				3ABFEFC1292F136B00455730 /* DetailWidgetView.swift in Sources */,
 				3ABFEFBD292E70A900455730 /* WidgetAssetViewModel.swift in Sources */,
+				3AE4B143296DA2F400DB219B /* UploadLinkViewModel.swift in Sources */,
 				3A1CD19A28F971A800AC5D1C /* CoreData.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
+				3AE4B141296DA02800DB219B /* UploadLinkView.swift in Sources */,
 				3A0842002938A67D009BED73 /* NoticeList.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
@@ -677,6 +696,7 @@
 				3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */,
 				3A8339D72932165B00DC9527 /* EditingToggleButton.swift in Sources */,
 				3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */,
+				3A32629C2970441300169CF1 /* HelpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
