@@ -37,10 +37,12 @@ struct ImageMenuButton: View {
                         .clipShape(Circle())
                         .padding()
                 } else {
-                    Image(systemName: "plus.circle")
-                        .font(.system(size: 100))
-                        .foregroundColor(.init(uiColor: .secondaryLabel))
+                    ZStack {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 100))
+                            .foregroundColor(.init(uiColor: .secondaryLabel))
                         .clipShape(Circle())
+                    }
                 }
                 
             }.sheet(isPresented: $isAppPickerPresent) {
