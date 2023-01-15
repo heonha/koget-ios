@@ -23,7 +23,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             NSAttributedString.Key.foregroundColor: UIColor.label
         ], for: .normal)
         
-        
         return true
     }
 }

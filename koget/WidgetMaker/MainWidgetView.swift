@@ -7,11 +7,11 @@
 
 import SwiftUI
 import CoreData
+import FloatingButton
 
 // 메인 뷰
 struct MainWidgetView: View {
     
-    var title: String = "위젯"
     var tintColor: Color = .black
     @State var isPresentHelper = true
     
@@ -27,13 +27,16 @@ struct MainWidgetView: View {
                     // 링크위젯
                     LinkWidgetView()
                 }
-                
-                FloatingButton()
-                
+                NewFloatingButton()
             }
-            .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("KogetLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
                         SettingView()
@@ -58,10 +61,3 @@ struct MainWidgetView_Previews: PreviewProvider {
         
     }
 }
-
-
-
-
-
-
-

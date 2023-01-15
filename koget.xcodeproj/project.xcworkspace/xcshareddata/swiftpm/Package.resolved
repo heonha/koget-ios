@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "floatingbutton",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/FloatingButton.git",
+      "state" : {
+        "revision" : "90057c9b5d3b5cbcbac506d215e3c5ea47a07308",
+        "version" : "1.0.1"
+      }
+    },
+    {
       "identity" : "googleappmeasurement",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
