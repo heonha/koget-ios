@@ -10,14 +10,11 @@ import FloatingButton
 
 struct FloatingMenu: View {
     
-    @State var isOpen: Bool = false
+    @Binding var isOpen: Bool
+    var buttons: [FloatingMenuButton]
+    let mainButton = FloatingMainButton()
     
     var body: some View {
-        let mainButton = FloatingMainButton()
-        let buttons = [
-            FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .setting),
-            FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add, symbolColor: Color(hex: "C21010"))
-        ]
         
         FloatingButton(mainButtonView: mainButton, buttons: buttons, isOpen: $isOpen)
             .straight()
@@ -26,14 +23,17 @@ struct FloatingMenu: View {
             .alignment(.right)
             .initialOpacity(0)
             .delays(delayDelta: 0.05)
+            .padding(16)
         
     }
 }
 
 struct FloatingMenu_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingMenu()
-    }
+        FloatingMenu(isOpen: .constant(false), buttons: [
+            FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .setting),
+            FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add, symbolColor: Color(hex: "C21010"))
+        ])    }
 }
 
 

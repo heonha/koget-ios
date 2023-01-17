@@ -11,14 +11,15 @@ struct LinkWidgetView: View {
     
     let title: String = "나의 잠금화면 위젯"
     let backgroundColor: Color = AppColors.backgroundColor
-
+    @State var coreData = WidgetCoreData.shared
+    
     var body: some View {
         ZStack {
             backgroundColor
                 .ignoresSafeArea(edges: .bottom)
             VStack {
                 // Grid
-                WidgetGridView(title: title, widgetCoreData: WidgetCoreData.shared)
+                WidgetGridView(title: title, widgetCoreData: coreData)
                     .padding()
             }
         }
@@ -31,6 +32,6 @@ struct WidgetListGridView_Previews: PreviewProvider {
         NavigationView {
             LinkWidgetView()
         }
-        .environmentObject(StorageProvider.preview)
+        .environmentObject(StorageProvider(inMemory: true))
     }
 }
