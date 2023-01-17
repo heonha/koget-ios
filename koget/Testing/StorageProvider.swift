@@ -53,11 +53,11 @@ class StorageProvider: ObservableObject {
     init(inMemory: Bool = true) {
         
         // CoreData 모델 파일에 접근
-        persistentContainer = NSPersistentContainer(name: "QuickGet")
+        persistentContainer = NSPersistentContainer(name: Constants.coreDataEntityName)
         
         // 메모리에서 실행 중인 경우 나중에 사용할 정보를 저장하지 않음.
         if inMemory {
-            persistentContainer.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+            persistentContainer.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
         
         // 영구 저장소 로드 시도(기본 데이터 저장소)

@@ -25,26 +25,27 @@ struct WidgetIconCell: View {
                 })
             } label: {
                 
-                if let widgetImage = widget.image {
-                    VStack {
-                        Image(uiImage: .init(data:(widgetImage))!)
-                            .resizable()
-                            .aspectRatio(1, contentMode: .fit)
-                            .clipShape(Circle())
-                            .frame(width: 55, height: 55)
-                            .shadow(color: .gray, radius: 0.5, x: 0.2, y: 0.3)
-                        Text(widget.name ?? "위젯이름")
-                            .lineLimit(2)
-                            .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(titleColor)
-                        Spacer()
+                if let data = widget.image {
+                    if let widgetImage = UIImage(data: data) {
+                        VStack {
+                            Image(uiImage: widgetImage)
+                                .resizable()
+                                .aspectRatio(1, contentMode: .fit)
+                                .clipShape(Circle())
+                                .frame(width: 55, height: 55)
+                                .shadow(color: .gray, radius: 0.1, x: 0.2, y: 0.3)
+                            Text(widget.name ?? "알수없는 이름")
+                                .lineLimit(2)
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundColor(titleColor)
+                            Spacer()
+                        }
+                        .frame(width: 90, height: 100)
+                        .padding(.top, 16)
+                        .tint(.white)
+                        .clipped()
                     }
-                    .frame(width: 90, height: 100)
-                    .padding(.top, 16)
-                    .tint(.white)
-                    .clipped()
                 }
-                
             }
         }
     }
@@ -62,6 +63,7 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
             // 컨텐츠
             WidgetIconCell(widget: DeepLink.example)
         }
+        .environmentObject(StorageProvider())
     }
 }
 

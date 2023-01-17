@@ -17,16 +17,6 @@ struct SettingView: View {
             AppColors.secondaryBackgroundColor
                 .ignoresSafeArea()
             List {
-                
-                NavigationLink {
-                    NoticeList()
-                } label: {
-                    SettingButtonLabel(
-                        title: "공지사항",
-                        symbolName: "exclamationmark.bubble"
-                    )
-                }
-                
                 NavigationLink {
                     ContactView()
                 } label: {

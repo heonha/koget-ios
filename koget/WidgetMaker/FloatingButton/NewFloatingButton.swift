@@ -11,6 +11,7 @@ struct NewFloatingButton: View {
     
     var size: CGFloat = 50
     var color: Color = AppColors.buttonMainColor
+    @State var isOpen: Bool = false
     
     var body: some View {
         
@@ -18,8 +19,11 @@ struct NewFloatingButton: View {
             Spacer().layoutPriority(10)
             VStack {
                 Spacer().layoutPriority(10)
-                FloatingMenu()
-                    .padding(16)
+                FloatingMenu(isOpen: $isOpen,
+                             buttons: [
+                                FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .setting),
+                                FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add, symbolColor: Color(hex: "C21010"))
+                             ])
             }
         }
         .padding()
