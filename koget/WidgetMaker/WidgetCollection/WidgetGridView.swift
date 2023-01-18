@@ -16,8 +16,8 @@ struct WidgetGridView: View {
     var width = DEVICE_SIZE.width / 4.2
     
     @State var isPresent = false
-    @ObservedObject var widgetCoreData: WidgetCoreData
-    
+    @ObservedObject var coredata = WidgetCoreData.shared
+
     var body: some View {
         
         VStack {
@@ -29,15 +29,13 @@ struct WidgetGridView: View {
             
             // 그리드뷰
             
-            if !widgetCoreData.linkWidgets.isEmpty {
+            if !coredata.linkWidgets.isEmpty {
                 
                 LazyVGrid(columns: gridItem, alignment: .center, spacing: 8 ) {
                     
-                    ForEach(widgetCoreData.linkWidgets, id: \.id) { widget in
-                        
+                    ForEach(coredata.linkWidgets, id: \.id) { widget in
                         WidgetIconCell(widget: widget)
                             .frame(width: width, height: width)
-                        
                     }
                     .padding(.top, 16)
                 }

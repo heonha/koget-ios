@@ -9,28 +9,71 @@
 import SwiftUI
 import CoreData
 
-final class WidgetCoreData: ObservableObject {
+class WidgetCoreData: ObservableObject {
     
     static let shared = WidgetCoreData()
     
     @Published var linkWidgets = [DeepLink]()
+    var container = NSPersistentContainer(name: Constants.coreDataContainerName)
     
     private init() {
+
+        let storeURL = URL.storeURL(for: Constants.appGroupID, databaseName: Constants.coreDataContainerName)
+        let storeDescription = NSPersistentStoreDescription(url: storeURL)
+        container.persistentStoreDescriptions = [storeDescription]
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                
+                fatalError("해결되지 않은 오류 Unresolved error : \(error), \(error.userInfo)")
+            }
+        })
+        
         loadData()
     }
     
-    let coredataContext = CoreData.shared.persistentContainer.viewContext
+    func addLinkWidget(name: String, image: UIImage?, url: String) {
+        let widget = DeepLink(context: container.viewContext)
+        widget.id = UUID()
+        widget.name = name
+        widget.image = image?.pngData()
+        widget.url = url
+        widget.addedDate = Date()
+        
+        saveData()
+    }
     
-    /// AddWidgetVC로 받은 Delegate 프로토콜 메소드입니다.
-    func addDeepLinkWidget(widget newWidget: DeepLink) {
+    
+    func editLinkWidget(name: String, image: UIImage?, url: String, widget: DeepLink) {
+        
+        widget.name = name
+        if widget.image != image?.pngData() {
+            widget.image = image?.pngData()
+        }
+        widget.url = url
+        
         saveData()
         loadData()
+    }
+    
+    func getStoredDataForDeepLink() -> [DeepLink]? {
+        
+        let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
+        do {
+            let deepLinks = try container.viewContext.fetch(request) // 데이터 가져오기
+            
+            return deepLinks
+            
+        } catch let error {
+            print("데이터 가져오기 에러 발생 : \(error)")
+        }
+        return nil
     }
     
     
     func saveData() {
         do {
-            try coredataContext.save()
+            try container.viewContext.save()
+            print("저장완료")
         } catch {
             print("context 저장중 에러 발생 : \(error)")
             fatalError("context 저장중 에러 발생")
@@ -48,7 +91,10 @@ final class WidgetCoreData: ObservableObject {
         
         // 데이터 가져오기
         do {
-            linkWidgets = try coredataContext.fetch(request) // 데이터 가져오기
+            linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
+            self.objectWillChange.send()
+            print("로드완료")
+
         } catch {
             print("데이터 가져오기 에러 발생 : \(error)")
             fatalError("데이터 가져오기 에러 발생")
@@ -69,7 +115,7 @@ final class WidgetCoreData: ObservableObject {
         
         // 데이터 가져오기
         do {
-            linkWidgets = try coredataContext.fetch(request) // 데이터 가져오기
+            linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
         } catch {
             print("데이터 가져오기 에러 발생 : \(error)")
             fatalError("데이터 가져오기 에러 발생")
@@ -79,10 +125,21 @@ final class WidgetCoreData: ObservableObject {
 
     
     func deleteData(data: DeepLink) {
-        coredataContext.delete(data)
+        container.viewContext.delete(data)
         saveData()
         loadData()
     }
     
 }
 
+
+public extension URL {
+    /// sqlite 데이터베이스를 가리키는 지정된 앱 그룹 및 데이터베이스의 URL을 반환합니다.
+    static func storeURL(for appGroup: String, databaseName: String) -> URL {
+        guard let fileContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
+            fatalError("공유 파일 컨테이너를 생성할 수 없습니다. : Shared file container could not be created.")
+        }
+        
+        return fileContainer.appendingPathComponent("\(databaseName).sqlite")
+    }
+}

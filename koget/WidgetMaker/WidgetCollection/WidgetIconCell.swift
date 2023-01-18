@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct WidgetIconCell: View {
     
@@ -14,7 +13,8 @@ struct WidgetIconCell: View {
     let titleColor: Color = AppColors.label
     
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
-    
+    @ObservedObject var coredata = WidgetCoreData.shared
+
     var body: some View {
         
         // 버튼

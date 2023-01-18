@@ -12,6 +12,7 @@ import FloatingButton
 // 메인 뷰
 struct MainWidgetView: View {
     
+    
     var tintColor: Color = .black
     @State var isPresentHelper = true
     
