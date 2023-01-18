@@ -42,32 +42,23 @@ struct EditingToggleButton: View {
                     alertMessage = "빈칸을 채워주세요."
                     isAlertPresent.toggle()
                     return
-                }
-                
-                if viewModel.image == nil {
+                } else if viewModel.image == nil {
                     alertMessage = "사진을 추가해주세요."
                     isAlertPresent.toggle()
                     return
+                } else {
+                    viewModel.editWidgetData(widget: selectedWidget)
                 }
             }
-            editWidget()
             isEditingMode.toggle()
+
         }
         .cornerRadius(8)
         .alert(alertMessage, isPresented: $isAlertPresent) { }
         
     }
     
-    func editWidget() {
-        
-        self.selectedWidget.name = viewModel.name
-        if self.selectedWidget.image != viewModel.image?.pngData() {
-            self.selectedWidget.image = viewModel.image?.pngData()
-        }
-        self.selectedWidget.url = viewModel.url
-        
-        WidgetCoreData.shared.saveData()
-    }
+
     
     
 }

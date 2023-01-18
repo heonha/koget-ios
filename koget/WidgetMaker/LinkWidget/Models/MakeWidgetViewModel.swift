@@ -27,6 +27,15 @@ final class MakeWidgetViewModel: ObservableObject {
         self.image = selectedWidget.image!
     }
     
+
+    
+    func addWidget() {
+        WidgetCoreData.shared.addLinkWidget(name: name, image: image, url: url)
+    }
+    
+    func editWidgetData(widget: DeepLink) {
+        WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, widget: widget)
+    }
     
     func checkURLSyntex() -> Bool {
         
@@ -55,15 +64,6 @@ final class MakeWidgetViewModel: ObservableObject {
             completion(.urlError)
         }
         else {
-            let item = DeepLink(context: WidgetCoreData.shared.coredataContext)
-            item.id = UUID()
-            item.name = name
-            item.image = image?.pngData()
-            item.url = url
-            item.addedDate = Date()
-            
-            WidgetCoreData.shared.addDeepLinkWidget(widget: item)
-
             completion(nil)
         }
     }

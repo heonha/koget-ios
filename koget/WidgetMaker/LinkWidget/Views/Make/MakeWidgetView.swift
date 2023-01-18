@@ -54,6 +54,7 @@ struct MakeWidgetView: View {
                             self.alertMessage = error.rawValue
                             self.isAlertPresent.toggle()
                         } else {
+                            viewModel.addWidget()
                             self.dismiss()
                         }
                     }

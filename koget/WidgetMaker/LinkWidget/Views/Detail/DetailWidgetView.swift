@@ -14,7 +14,7 @@ struct DetailWidgetView: View {
     
     @State var selectedWidget: DeepLink
     
-    @StateObject var viewModel = MakeWidgetViewModel()
+    @ObservedObject var viewModel = MakeWidgetViewModel()
     
     //Present Views
     @State var isPresent: Bool = false
@@ -49,6 +49,7 @@ struct DetailWidgetView: View {
                         .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
                             Button("삭제", role: .destructive) {
                                 WidgetCoreData.shared.deleteData(data: selectedWidget)
+                                
                                 self.dismiss()
                             }
                             Button("취소", role: .cancel) {}

@@ -32,12 +32,16 @@ struct KogetApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    private let widgetCoreData = WidgetCoreData.shared
+    
     var body: some Scene {
         WindowGroup {
             MainWidgetView()
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }
+                .environmentObject(widgetCoreData)
+                .environment(\.managedObjectContext, widgetCoreData.container.viewContext)
         }
     }
     
