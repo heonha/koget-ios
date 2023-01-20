@@ -40,10 +40,6 @@ struct MainWidgetView: View {
                         .scaledToFit()
                         .frame(width: 50, height: 50)
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    HowToUseMenu()
-                }
-                
             }
             .onTapGesture {
                 isOpen = false

@@ -22,7 +22,7 @@ final class MakeWidgetViewModel: ObservableObject {
     var targetURL: URL?
     
     func getWidgetData(selectedWidget: LinkWidget) {
-        self.name = selectedWidget.appName
+        self.name = selectedWidget.name
         self.url = selectedWidget.url
         self.image = selectedWidget.image!
     }
@@ -111,9 +111,11 @@ struct LinkWidget {
     // DB 데이터
     let id = UUID()
     let type: LinkType = .inApp
-    var appName: String
-    var appNameEn: String
-    var url: String
+    let name: String
+    let nameKr: String
+    let nameEn: String
+    let url: String
+    let imageName: String
     
     // 후가공 데이터
     var displayName: String
@@ -121,3 +123,13 @@ struct LinkWidget {
     var canOpen: Bool
     
 }
+//
+// struct FBLinkModel: Codable, Identifiable {
+//     @DocumentID var id: String?
+//     let name: String
+//     let nameKr: String
+//     let nameEn: String
+//     let url: String
+//     let imageURL: String
+//
+// }

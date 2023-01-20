@@ -26,8 +26,9 @@ final class WidgetAssetViewModel: ObservableObject {
     
     func fetchSearchData(searchText: String) {
         searchResults = data.filter({ widget in
-            widget.appNameEn.lowercased().contains(searchText.lowercased()) ||
-            widget.appName.lowercased().contains(searchText.lowercased())
+            widget.name.lowercased().contains(searchText.lowercased()) ||
+            widget.nameKr.lowercased().contains(searchText.lowercased()) ||
+            widget.nameEn.lowercased().contains(searchText.lowercased())
         })
     }
 

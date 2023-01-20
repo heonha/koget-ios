@@ -16,6 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         //MARK: Firebase Configuration
         FirebaseApp.configure()
         
+        
         UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "chevron.left")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left")
         UINavigationBar.appearance().tintColor = .black
@@ -35,8 +36,11 @@ struct KogetApp: App {
     private let widgetCoreData = WidgetCoreData.shared
     
     var body: some Scene {
+        
+        
         WindowGroup {
-            MainWidgetView()
+            
+            ContentView()
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }
