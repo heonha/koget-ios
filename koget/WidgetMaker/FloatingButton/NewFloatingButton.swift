@@ -21,7 +21,6 @@ struct NewFloatingButton: View {
                 Spacer().layoutPriority(10)
                 FloatingMenu(isOpen: $isOpen,
                              buttons: [
-                                FloatingMenuButton(systemName: "questionmark.circle", text: "도움말", link: .help, type: .sheet),
                                 FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .setting, type: .navigationLink),
                                 FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add,  type: .navigationLink),
                              ])

@@ -21,8 +21,9 @@ final class LinkWidgetModel: ObservableObject {
     }
     
     func getWidgetData() -> [LinkWidget] {
+
         
-        let appData = "&사진,Photos,photos-redirect://,photos&YouTube Music,Youtube Music,youtubemusic://,youtubeMusic&YouTube,Youtube,youtube://,youtube&T전화,T전화,tphone://,tphone&TMAP,TMAP,tmap://,tmap&스타벅스,Starbucks,starbucks://,starbucks&신한터치페이,Shinhan TouchPay,shpayfan-touchpay://touch://,shinhanTouchPay&신한플레이,shinhan play,shpayfan-touchpay://,shinhanPlay&PAYCO,PAYCO,payco://,payco&네이버,NAVER,naversearchapp://,naver&네이버페이,Naver Pay,naverpayapp://,naverPay&네이버지도,Naver Map,navermap://,naverMap&카카오톡,Kakao Talk,kakaotalk://,kakaoTalk&카카오페이,Kakao Pay,kakaopay://,kakaoPay&카카오네비,Kakao Navi,kakaonavi://,kakaoNavi&카카오맵,Kakao Map,kakaomap://,kakaoMap&카카오뱅크,Kakao Bank,kakaobank://,kakaoBank&Instagram,Instagram,instagram://,instagram&Google 포토,Google Photo,googlephoto://,googlePhoto&Google Maps,Google Maps,googlemaps://,googleMaps&Gmail,Gmail,googlegmail://,gmail&Chrome,Chrome,googlechrome://,googleChrome&Authenticator,Authenticator,googleauthenticator://,googleOTP&Google,Google,google://,google&Strava,Strava,strava://,strava&쿠팡,Coupang,coupang://,coupang&Spotify,Spotify,spotify://,spotify"
+        let appData = "&Authenticator,구글OTP,Authenticator,googleauthenticator://,authenticator&캐시워크,캐시워크,Cash Walk,cashwalkapp://,cashwalk&Google Maps,구글맵스,Google Maps,googlemaps://,googlemaps&Instagram,인스타그램,Instagram,instagram://,instagram&카카오맵,카카오맵,Kakao Map,kakaomap://,kakaomap&카카오네비,카카오네비,Kakao Navi,kakaonavi://,kakaonavi&카카오페이,카카오페이,Kakao Pay,kakaopay://,kakaopay&카카오톡,카카오톡,Kakao Talk,kakaotalk://,kakaotalk&Messenger,페이스북메신저,Messenger,fb-messenger-public://,messenger&모바일신분증,모바일신분증,Mobile ID,MobileID://,mobileid&네이버,네이버,NAVER,naversearchapp://,naver&네이버지도,네이버맵,Naver Map,navermap://,navermap&네이버페이,네이버페이,Naver Pay,naverpayapp://,naverpay&PASS by KT,패스,PASS by KT,ktAuth://://,passapp&PASS by SKT,패스,PASS by SKT,tauthlink://://,passapp&PASS by U+,패스,PASS by U+,uplusauth://://,passapp&PAYCO,페이코,PAYCO,payco://,payco&신한플레이,신한플레이,shinhan play,shpayfan-touchpay://,shinhanplay&신한터치페이,신한터치페이,Shinhan TouchPay,shpayfan-touchpay://touch://,shinhanplay&스타벅스,스타벅스,Starbucks,starbucks://,starbucks&Strava,스트라바,Strava,strava://,strava&TMAP,티맵,TMAP,tmap://,tmap&YouTube,유튜브,Youtube,youtube://,youtube"
         
         
         // 구분자 처리
@@ -37,22 +38,17 @@ final class LinkWidgetModel: ObservableObject {
                 
             } else {
                 
-                let appName = app[0]
-                let appNameEn = app[1]
-                let url = app[2]
-                let imageName = app[3]
+                let name = app[0]
+                let nameKr = app[1]
+                let nameEn = app[2]
+                let url = app[3]
+                let imageName = app[4]
+                
                 let canOpen = canOpenURL(url: url)
                 let image = getImage(imageName: imageName)
-                let name = getLocalName(appName: appName, appNameEn: appNameEn)
                 
-                let myApp = LinkWidget(
-                    appName: appName,
-                    appNameEn: appNameEn,
-                    url: url,
-                    displayName: name,
-                    image: image,
-                    canOpen: canOpen
-                )
+                let myApp = LinkWidget(name: name, nameKr: nameKr, nameEn: nameEn, url: url, imageName: imageName, displayName: name, image: image, canOpen: canOpen)
+                
                 
                 apps.append(myApp)
             }
