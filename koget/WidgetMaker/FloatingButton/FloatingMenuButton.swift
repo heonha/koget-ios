@@ -24,7 +24,21 @@ struct FloatingMenuButton: View {
     var text: String
     var link: NavigationLinkType
     var type: FloatingMenuType
+    
+    
     var symbolColor = LinearGradient(colors: [.red, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+    var size = CGSize(width: 140, height: 50)
+    
+    // content
+    var textInfo: (color: Color, fontSize: CGFloat, weight: Font.Weight)
+        = (color: .black, fontSize: 18, weight: .medium)
+    
+    // view
+    var borderColor = Color(hex: "F4F4F4")
+    var backgroundColor = Color.white
+    var shadow: (color: Color, radius: CGFloat, x: CGFloat, y: CGFloat)
+        = (color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
+    
     @State var isPresent = false
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     var body: some View {
@@ -37,27 +51,25 @@ struct FloatingMenuButton: View {
                 } label: {
                     HStack {
                         Image(systemName: systemName)
+                            .font(.system(size: textInfo.fontSize))
                             .foregroundStyle(symbolColor)
                         
                         Spacer()
                         Text(text)
                             .lineLimit(1)
-                            .foregroundStyle(Color.black)
-                            .fontWeight(.medium)
+                            .font(.system(size: textInfo.fontSize, weight: textInfo.weight))
+                            .foregroundStyle(textInfo.color)
                         Spacer()
                     }
                     .padding(8)
-                    .frame(width: 120, height: 40)
+                    .frame(width: size.width, height: size.height)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color(hex: "F4F4F4"), lineWidth: 1)
-                        
+                            .stroke(borderColor, lineWidth: 1)
                     )
-                    .background(Color.white)
+                    .background(backgroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .shadow(color: .black.opacity(0.2), radius: 2, x: 1, y: 1)
-
-                    
+                    .shadow(color: shadow.color, radius: shadow.radius, x: shadow.x, y: shadow.y)
                     
                 }
 
@@ -70,26 +82,25 @@ struct FloatingMenuButton: View {
                 } label: {
                     HStack {
                         Image(systemName: systemName)
+                            .font(.system(size: textInfo.fontSize))
                             .foregroundStyle(symbolColor)
                         
                         Spacer()
                         Text(text)
                             .lineLimit(1)
-                            .foregroundColor(.black)
-                            .fontWeight(.medium)
+                            .font(.system(size: textInfo.fontSize, weight: textInfo.weight))
                         Spacer()
                     }
                     .padding(8)
-                    .frame(width: 120, height: 40)
+                    .frame(width: size.width, height: size.height)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color(hex: "F4F4F4"), lineWidth: 1)
-                        
+                            .stroke(borderColor, lineWidth: 1)
                     )
-                    .background(Color.white)
+                    .background(backgroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .shadow(color: .black.opacity(0.2), radius: 2, x: 1, y: 1)
-                    
+                    .shadow(color: shadow.color, radius: shadow.radius, x: shadow.x, y: shadow.y)
+
                 }
                 
             }
