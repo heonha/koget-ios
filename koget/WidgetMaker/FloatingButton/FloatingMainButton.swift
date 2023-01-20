@@ -15,15 +15,16 @@ struct FloatingMainButton: View {
     
     var body: some View {
         ZStack {
-            Color.gray
+            LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .clipShape(Circle())
             Image(systemName: "line.3.horizontal")
                 .font(.system(size: imageSize, weight: .medium))
                 .scaleEffect(x: 1, y: 1.2, anchor: .center)
                 .foregroundColor(Color.init(uiColor: .white))
-                .shadow(color: .black, radius: 0.3, x: 0.25, y: 0.25)
+                .padding()
             
         }
+        .shadow(color: .black.opacity(0.3), radius: 4, x: 2, y: 2)
         .frame(width: buttonSize, height: buttonSize)
         
     }

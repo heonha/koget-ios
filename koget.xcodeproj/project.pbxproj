@@ -12,7 +12,6 @@
 		3A01E775296AADDD0019CD2D /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E774296AADDD0019CD2D /* CustomTextfield.swift */; };
 		3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E776296AADEF0019CD2D /* URLTestButton.swift */; };
 		3A01E779296AB04F0019CD2D /* MakeWidgetTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */; };
-		3A01E782296AD1CC0019CD2D /* MakeWidgetOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E781296AD1CC0019CD2D /* MakeWidgetOnboarding.swift */; };
 		3A01E785296AD3470019CD2D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E784296AD3470019CD2D /* ContactView.swift */; };
 		3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */; };
 		3A0566CE2931E87D007B0A7A /* WidgetIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */; };
@@ -31,8 +30,11 @@
 		3A1A1FE7296BC9FF00819214 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */; };
 		3A1CD19D28F9819300AC5D1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A1CD19E28F9819400AC5D1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
+		3A1F89052978F54B00E1B4C4 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F89042978F54B00E1B4C4 /* HelpView.swift */; };
+		3A1F89082978F9DC00E1B4C4 /* HowToUseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F89072978F9DC00E1B4C4 /* HowToUseMenu.swift */; };
 		3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2E21FC290FF9F800E4F46A /* downArrow.json */; };
 		3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
+		3A31D24829779B750067EB05 /* Instructions in Frameworks */ = {isa = PBXBuildFile; productRef = 3A31D24729779B750067EB05 /* Instructions */; };
 		3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3A3C118E28EDB1B700C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3A3C119428EDB4B800C9CCED /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A94E19D28EC1B950050EE80 /* Intents.framework */; };
@@ -130,7 +132,6 @@
 		3A01E774296AADDD0019CD2D /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 		3A01E776296AADEF0019CD2D /* URLTestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLTestButton.swift; sourceTree = "<group>"; };
 		3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetTextFieldView.swift; sourceTree = "<group>"; };
-		3A01E781296AD1CC0019CD2D /* MakeWidgetOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetOnboarding.swift; sourceTree = "<group>"; };
 		3A01E784296AD3470019CD2D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIconCell.swift; sourceTree = "<group>"; };
@@ -148,6 +149,8 @@
 		3A17026129727151001FB0E5 /* FloatingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenu.swift; sourceTree = "<group>"; };
 		3A17026329728AD2001FB0E5 /* FloatingButtonTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonTestView.swift; sourceTree = "<group>"; };
 		3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A1F89042978F54B00E1B4C4 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		3A1F89072978F9DC00E1B4C4 /* HowToUseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseMenu.swift; sourceTree = "<group>"; };
 		3A2E21FC290FF9F800E4F46A /* downArrow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = downArrow.json; sourceTree = "<group>"; };
 		3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
 		3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = LockScreenWidgetIntents.intentdefinition; sourceTree = "<group>"; };
@@ -217,6 +220,7 @@
 				3AC92E08297247D8000E94F9 /* FloatingButton in Frameworks */,
 				3AC152D1296D8170009CAA1B /* FirebaseFirestore in Frameworks */,
 				3AC152D5296D8170009CAA1B /* FirebaseStorage in Frameworks */,
+				3A31D24829779B750067EB05 /* Instructions in Frameworks */,
 				3AE4B13C296D848800DB219B /* FirebaseAnalytics in Frameworks */,
 				3AC152D3296D8170009CAA1B /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -244,14 +248,6 @@
 			path = WidgetCollection;
 			sourceTree = "<group>";
 		};
-		3A01E77E296AD1850019CD2D /* OnBoarding */ = {
-			isa = PBXGroup;
-			children = (
-				3A01E781296AD1CC0019CD2D /* MakeWidgetOnboarding.swift */,
-			);
-			path = OnBoarding;
-			sourceTree = "<group>";
-		};
 		3A01E783296AD33C0019CD2D /* Contact */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +270,6 @@
 		3A08BCFB292FA7E700E09B3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3A01E77E296AD1850019CD2D /* OnBoarding */,
 				3A08BCFF292FBF0B00E09B3E /* Make */,
 				3A08BD00292FBF1B00E09B3E /* Detail */,
 			);
@@ -338,6 +333,15 @@
 				3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3A1F89062978F94D00E1B4C4 /* HowToUse */ = {
+			isa = PBXGroup;
+			children = (
+				3A1F89072978F9DC00E1B4C4 /* HowToUseMenu.swift */,
+				3A1F89042978F54B00E1B4C4 /* HelpView.swift */,
+			);
+			path = HowToUse;
 			sourceTree = "<group>";
 		};
 		3A3C119528EDB4B800C9CCED /* LockScreenIntentsExtension */ = {
@@ -461,6 +465,7 @@
 		3AC3E1E028E68A6D00BFF455 /* WidgetMaker */ = {
 			isa = PBXGroup;
 			children = (
+				3A1F89062978F94D00E1B4C4 /* HowToUse */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
 				3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */,
 				3A00CA642931EDB6004FBF80 /* WidgetCollection */,
@@ -555,6 +560,7 @@
 				3AC152D4296D8170009CAA1B /* FirebaseStorage */,
 				3AE4B13B296D848800DB219B /* FirebaseAnalytics */,
 				3AC92E07297247D8000E94F9 /* FloatingButton */,
+				3A31D24729779B750067EB05 /* Instructions */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -611,6 +617,7 @@
 			packageReferences = (
 				3AC152CD296D8170009CAA1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3AC92E06297247D8000E94F9 /* XCRemoteSwiftPackageReference "FloatingButton" */,
+				3A31D24629779B750067EB05 /* XCRemoteSwiftPackageReference "Instructions" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -686,7 +693,6 @@
 				3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */,
 				3ACCB357294C54A500A85E0F /* NewFloatingButton.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* LinkWidgetModel.swift in Sources */,
-				3A01E782296AD1CC0019CD2D /* MakeWidgetOnboarding.swift in Sources */,
 				3ACCB350294C37BF00A85E0F /* SettingButtonLabel.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				3A0566CE2931E87D007B0A7A /* WidgetIconCell.swift in Sources */,
@@ -715,10 +721,12 @@
 				3A0566D52931E9F2007B0A7A /* WidgetGridView.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* LinkWidgetView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
+				3A1F89082978F9DC00E1B4C4 /* HowToUseMenu.swift in Sources */,
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,
 				3A01E775296AADDD0019CD2D /* CustomTextfield.swift in Sources */,
 				3ABD50FF292945EB00F878AE /* WidgetCoreData.swift in Sources */,
 				3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */,
+				3A1F89052978F54B00E1B4C4 /* HelpView.swift in Sources */,
 				3A08BD03292FCA0900E09B3E /* SettingView.swift in Sources */,
 				3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */,
 				3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */,
@@ -1120,6 +1128,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3A31D24629779B750067EB05 /* XCRemoteSwiftPackageReference "Instructions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ephread/Instructions.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 		3AC152CD296D8170009CAA1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1139,6 +1155,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3A31D24729779B750067EB05 /* Instructions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A31D24629779B750067EB05 /* XCRemoteSwiftPackageReference "Instructions" */;
+			productName = Instructions;
+		};
 		3AC152CE296D8170009CAA1B /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3AC152CD296D8170009CAA1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

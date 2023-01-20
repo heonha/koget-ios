@@ -10,6 +10,11 @@ import FloatingButton
 
 struct FloatingMenu: View {
     
+    enum ButtonFocus {
+        case mainButton
+        case subButton
+    }
+    
     @Binding var isOpen: Bool
     var buttons: [FloatingMenuButton]
     let mainButton = FloatingMainButton()
@@ -24,6 +29,7 @@ struct FloatingMenu: View {
             .initialOpacity(0)
             .delays(delayDelta: 0.05)
             .padding(16)
+            
         
     }
 }
@@ -31,8 +37,8 @@ struct FloatingMenu: View {
 struct FloatingMenu_Previews: PreviewProvider {
     static var previews: some View {
         FloatingMenu(isOpen: .constant(false), buttons: [
-            FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .setting),
-            FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add, symbolColor: Color(hex: "C21010"))
+            FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .setting, type: .navigationLink),
+            FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add, type: .sheet)
         ])    }
 }
 

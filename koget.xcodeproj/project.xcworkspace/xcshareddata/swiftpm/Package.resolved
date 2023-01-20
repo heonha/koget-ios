@@ -82,6 +82,15 @@
       }
     },
     {
+      "identity" : "instructions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ephread/Instructions.git",
+      "state" : {
+        "revision" : "c23d3e1ce6d5c877913f530c0b2bda07e2b017c3",
+        "version" : "2.2.0"
+      }
+    },
+    {
       "identity" : "leveldb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/leveldb.git",
