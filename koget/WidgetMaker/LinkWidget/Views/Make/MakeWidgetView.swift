@@ -16,8 +16,12 @@ struct MakeWidgetView: View {
     @State var assetList: WidgetAssetList?
     
     @State var iconImage: UIImage = UIImage(named: "plus.circle")!
-    @State var alertTitle: String = "오류"
-    @State var alertMessage: String = ""
+    @State var alertTitle = (error: "입력확인", success: "생성 완료")
+    @State var alertErrorMessage: String = ""
+    var alertSuccessMessage = "잠금화면에 위젯을 추가하세요."
+
+    @State var isErrorAlert: Bool = true
+    
     
     //Present Views
     @State var isAlertPresent: Bool = false
@@ -51,20 +55,32 @@ struct MakeWidgetView: View {
                 Button {
                     viewModel.checkTheTextFields { error in
                         if let error = error {
-                            self.alertMessage = error.rawValue
+                            self.alertErrorMessage = error.rawValue
                             self.isAlertPresent.toggle()
                         } else {
                             viewModel.addWidget()
-                            self.dismiss()
+                            self.isErrorAlert = false
+                            self.isAlertPresent.toggle()
                         }
                     }
                 } label: {
                     ButtonWithText(title: "완료", titleColor: .white, color: .secondary)
                 }
-                .alert(alertTitle, isPresented: $isAlertPresent)
-                {} message: {
-                    Text(alertMessage)
+                .alert(isErrorAlert ? alertTitle.error : alertTitle.success, isPresented: $isAlertPresent)
+                {
+                    if isErrorAlert == false {
+                        Button("확인") {
+                            self.dismiss()
+                        }
+                    }
+                } message: {
+                    if isErrorAlert == true {
+                        Text(alertErrorMessage)
+                    } else {
+                        Text(alertSuccessMessage)
+                    }
                 }
+
 
                 // 돌아가기 버튼
                 Button {

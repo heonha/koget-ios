@@ -40,7 +40,7 @@ struct ImageMenuButton: View {
                     ZStack {
                         Image(systemName: "plus.circle")
                             .font(.system(size: 100))
-                            .foregroundColor(.init(uiColor: .secondaryLabel))
+                            .foregroundStyle(LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
                         .clipShape(Circle())
                     }
                 }

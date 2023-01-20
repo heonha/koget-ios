@@ -18,6 +18,8 @@ struct FloatingDestinationView: View {
             MakeWidgetView()
         case .setting:
             SettingView()
+        case .help:
+            HowToUseMenu()
         }
     }
 }
@@ -28,3 +30,6 @@ struct FloatingDestinationView_Previews: PreviewProvider {
         FloatingDestinationView(type: .setting)
     }
 }
+
+
+

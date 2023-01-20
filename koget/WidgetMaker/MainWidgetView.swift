@@ -15,7 +15,8 @@ struct MainWidgetView: View {
     
     var tintColor: Color = .black
     @State var isPresentHelper = true
-    
+    @State var isOpen = false
+    @Environment(\.viewController) var viewControllerHolder: UIViewController?
     var body: some View {
         NavigationView {
             ZStack {
@@ -28,7 +29,8 @@ struct MainWidgetView: View {
                     // 링크위젯
                     LinkWidgetView()
                 }
-                NewFloatingButton()
+                NewFloatingButton(isOpen: $isOpen)
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -39,16 +41,22 @@ struct MainWidgetView: View {
                         .frame(width: 50, height: 50)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        SettingView()
-                    } label: {
-                        Image(systemName: "gearshape")
-                    }
+                    HowToUseMenu()
                 }
+                
             }
-            
+            .onTapGesture {
+                isOpen = false
+            }
+            .onDisappear {
+                print("Disappear")
+                isOpen = false
+            }
         }
         .tint(tintColor)
+        
+        
+        
     }
 }
 

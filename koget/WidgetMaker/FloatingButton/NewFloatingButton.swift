@@ -11,7 +11,7 @@ struct NewFloatingButton: View {
     
     var size: CGFloat = 50
     var color: Color = AppColors.buttonMainColor
-    @State var isOpen: Bool = false
+    @Binding var isOpen: Bool
     
     var body: some View {
         
@@ -21,9 +21,11 @@ struct NewFloatingButton: View {
                 Spacer().layoutPriority(10)
                 FloatingMenu(isOpen: $isOpen,
                              buttons: [
-                                FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .setting),
-                                FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add, symbolColor: Color(hex: "C21010"))
+                                FloatingMenuButton(systemName: "questionmark.circle", text: "도움말", link: .help, type: .sheet),
+                                FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .setting, type: .navigationLink),
+                                FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add,  type: .navigationLink),
                              ])
+                .opacity(0.95)
             }
         }
         .padding()
@@ -33,6 +35,6 @@ struct NewFloatingButton: View {
 
 struct FloatingButton_Previews: PreviewProvider {
     static var previews: some View {
-        NewFloatingButton()
+        NewFloatingButton(isOpen: .constant(false))
     }
 }
