@@ -20,6 +20,10 @@ struct FloatingDestinationView: View {
             SettingView()
         case .help:
             HowToUseMenu()
+        case .contact:
+            ContactView()
+        case .edit:
+            ManageWidgetView()
         }
     }
 }

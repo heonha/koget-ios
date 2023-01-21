@@ -21,9 +21,10 @@ struct NewFloatingButton: View {
                 Spacer().layoutPriority(10)
                 FloatingMenu(isOpen: $isOpen,
                              buttons: [
-                                FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .setting, type: .navigationLink),
-                                FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add,  type: .navigationLink),
-                             ])
+                                FloatingMenuButton(systemName: "plus.circle.fill", text: "위젯 만들기", link: .add,  type: .navigationLink),
+                                FloatingMenuButton(systemName: "line.3.horizontal.circle", text: "위젯 편집", link: .edit,  type: .navigationLink),
+                                FloatingMenuButton(systemName: "mail", text: "문의하기", link: .contact,  type: .navigationLink),
+                             ].reversed())
                 .opacity(0.95)
             }
         }

@@ -50,7 +50,9 @@ struct EditingToggleButton: View {
                     viewModel.editWidgetData(widget: selectedWidget)
                 }
             }
-            isEditingMode.toggle()
+            withAnimation {
+                isEditingMode.toggle()
+            }
 
         }
         .cornerRadius(8)

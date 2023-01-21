@@ -50,44 +50,50 @@ struct MakeWidgetView: View {
                 
                 // 텍스트필드 그룹
                 MakeWidgetTextFieldView(viewModel: viewModel)
+                    .padding(.bottom, 16)
                 
-                // 위젯생성 버튼
-                Button {
-                    viewModel.checkTheTextFields { error in
-                        if let error = error {
-                            self.alertErrorMessage = error.rawValue
-                            self.isAlertPresent.toggle()
+                
+                Group {
+                    // 위젯생성 버튼
+                    Button {
+                        viewModel.checkTheTextFields { error in
+                            if let error = error {
+                                self.alertErrorMessage = error.rawValue
+                                self.isAlertPresent.toggle()
+                            } else {
+                                viewModel.addWidget()
+                                self.isErrorAlert = false
+                                self.isAlertPresent.toggle()
+                            }
+                        }
+                    } label: {
+                        ButtonWithText(title: "완료", titleColor: .white, color: .secondary)
+                    }
+                    .alert(isErrorAlert ? alertTitle.error : alertTitle.success, isPresented: $isAlertPresent)
+                    {
+                        if isErrorAlert == false {
+                            Button("확인") {
+                                self.dismiss()
+                            }
+                        }
+                    } message: {
+                        if isErrorAlert == true {
+                            Text(alertErrorMessage)
                         } else {
-                            viewModel.addWidget()
-                            self.isErrorAlert = false
-                            self.isAlertPresent.toggle()
+                            Text(alertSuccessMessage)
                         }
                     }
-                } label: {
-                    ButtonWithText(title: "완료", titleColor: .white, color: .secondary)
-                }
-                .alert(isErrorAlert ? alertTitle.error : alertTitle.success, isPresented: $isAlertPresent)
-                {
-                    if isErrorAlert == false {
-                        Button("확인") {
-                            self.dismiss()
-                        }
+                    
+                    
+                    // 돌아가기 버튼
+                    Button {
+                        self.dismiss()
+                    } label: {
+                        ButtonWithText(title: "돌아가기")
                     }
-                } message: {
-                    if isErrorAlert == true {
-                        Text(alertErrorMessage)
-                    } else {
-                        Text(alertSuccessMessage)
-                    }
+                    
                 }
-
-
-                // 돌아가기 버튼
-                Button {
-                    self.dismiss()
-                } label: {
-                    ButtonWithText(title: "돌아가기")
-                }
+                .padding(.horizontal, 16)
                 Spacer()
             }
         }

@@ -32,7 +32,6 @@ class StorageProvider: ObservableObject {
             TestDeepLink(name: "Strava", image: UIImage(named: "strava")!.pngData()!, deepLink: "strava://"),
             TestDeepLink(name: "Tmap", image: UIImage(named: "tmap")!.pngData()!, deepLink: "tmap://"),
             TestDeepLink(name: "youtube", image: UIImage(named: "youtube")!.pngData()!, deepLink: "https://www.youtube.com"),
-            TestDeepLink(name: "네이버 지도", image: UIImage(named: "naverMap")!.pngData()!, deepLink: "navermap://"),
                     ]
                     
         for widget in widgets {

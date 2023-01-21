@@ -48,6 +48,7 @@
 		3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
+		3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */; };
 		3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809B2974420100E62389 /* FloatingMenuButton.swift */; };
 		3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809E2974426900E62389 /* FloatingMainButton.swift */; };
 		3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D80A02974429500E62389 /* FloatingDestinationView.swift */; };
@@ -165,6 +166,7 @@
 		3A3C11A028EDB69A00C9CCED /* LockScreenIntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenIntentsExtension.entitlements; sourceTree = "<group>"; };
 		3A3C11A228EDC14700C9CCED /* LinkWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetModel.swift; sourceTree = "<group>"; };
 		3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWidgetView.swift; sourceTree = "<group>"; };
 		3A6D809B2974420100E62389 /* FloatingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuButton.swift; sourceTree = "<group>"; };
 		3A6D809E2974426900E62389 /* FloatingMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMainButton.swift; sourceTree = "<group>"; };
 		3A6D80A02974429500E62389 /* FloatingDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingDestinationView.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 		3A08BCFB292FA7E700E09B3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A69AD29297BAD7400A49ED7 /* Manage */,
 				3A08BCFF292FBF0B00E09B3E /* Make */,
 				3A08BD00292FBF1B00E09B3E /* Detail */,
 			);
@@ -376,6 +379,14 @@
 				3A08BCFC292FA7F900E09B3E /* Models */,
 			);
 			path = LinkWidget;
+			sourceTree = "<group>";
+		};
+		3A69AD29297BAD7400A49ED7 /* Manage */ = {
+			isa = PBXGroup;
+			children = (
+				3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */,
+			);
+			path = Manage;
 			sourceTree = "<group>";
 		};
 		3A6D809A297441A600E62389 /* FloatingButton */ = {
@@ -712,6 +723,7 @@
 				3ABFEFBD292E70A900455730 /* WidgetAssetViewModel.swift in Sources */,
 				3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */,
 				3AE4B143296DA2F400DB219B /* UploadLinkViewModel.swift in Sources */,
+				3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,

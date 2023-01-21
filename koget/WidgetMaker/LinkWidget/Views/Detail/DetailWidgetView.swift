@@ -40,11 +40,14 @@ struct DetailWidgetView: View {
                     }.background(Color.init(uiColor: .darkGray))
                     
                     HStack {
+                        // 상단 바 아이템
                         Button {
                             isDeleteAlertPresent.toggle()
                         } label: {
                             Image(systemName: "trash")
+                                .font(.system(size: 18, weight: .semibold))
                                 .foregroundColor(.white)
+                                .fontWeight(.semibold)
                         }
                         .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
                             Button("삭제", role: .destructive) {
@@ -62,6 +65,7 @@ struct DetailWidgetView: View {
                             self.dismiss()
                         } label: {
                             Image(systemName: "xmark")
+                                .font(.system(size: 18, weight: .semibold))
                                 .foregroundColor(.white)
                         }
                     }

@@ -11,6 +11,9 @@ enum NavigationLinkType {
     case add
     case setting
     case help
+    case contact
+    case edit
+
 }
 
 enum FloatingMenuType {
