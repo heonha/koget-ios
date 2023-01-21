@@ -16,9 +16,10 @@ struct WidgetGridView: View {
     var width = DEVICE_SIZE.width / 4.2
     
     @State var isPresent = false
-    @ObservedObject var coredata = WidgetCoreData.shared
-
+    @StateObject var coredata = WidgetCoreData.shared
+    
     var body: some View {
+        
         
         VStack {
             Text(title)
@@ -29,35 +30,39 @@ struct WidgetGridView: View {
             
             // 그리드뷰
             
-            if !coredata.linkWidgets.isEmpty {
-                
+            if !$coredata.linkWidgets.wrappedValue.isEmpty {
                 LazyVGrid(columns: gridItem, alignment: .center, spacing: 8 ) {
                     
-                    ForEach(coredata.linkWidgets, id: \.id) { widget in
+                    ForEach($coredata.linkWidgets.wrappedValue, id: \.id) { widget in
                         WidgetIconCell(widget: widget)
                             .frame(width: width, height: width)
                     }
                     .padding(.top, 16)
                 }
-                
                 .background(backgroundColor)
                 .cornerRadius(8)
                 .shadow(radius: 1)
                 Spacer()
                 
             } else {
-                VStack {
-                    Text("🤔")
-                        .font(.system(size: 50))
-                        .padding(.bottom, 8)
-                    Text("아직 생성한 위젯이 없어요,")
-                    Text("잠금화면 위젯을 생성해보세요!")
+                
+                NavigationLink {
+                    MakeWidgetView()
+                } label: {
+                    VStack {
+                        Text("🤔")
+                            .font(.system(size: 50))
+                            .padding(.bottom, 8)
+                        Text("아직 생성한 위젯이 없어요,")
+                        Text("잠금화면 위젯을 생성해보세요!")
+                    }
+                    .foregroundColor(.gray)
+                    .frame(width: DEVICE_SIZE.width - 32, height: 300)
+                    .background(backgroundColor)
+                    .cornerRadius(8)
+                    .shadow(radius: 1)
                 }
-                .foregroundColor(.gray)
-                .frame(width: DEVICE_SIZE.width - 32, height: 300)
-                .background(backgroundColor)
-                .cornerRadius(8)
-                .shadow(radius: 1)
+                
                 Spacer()
             }
             

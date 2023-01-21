@@ -40,6 +40,7 @@ class WidgetCoreData: ObservableObject {
         widget.addedDate = Date()
         
         saveData()
+        loadData()
     }
     
     

@@ -17,40 +17,35 @@ struct EditTextField: View {
     @Binding var text: String
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 4) {
+            // 타이틀
             Text(title)
-                .fontWeight(.bold)
-                .font(.system(size: 18))
+                .font(.system(size: 18, weight: .bold))
                 .lineLimit(1)
-                .frame(height: 40)
-                .padding(.horizontal, 16)
-                .padding(.bottom, -12)
             if isEditingMode {
+                // 편집 모드
                 TextField(placeHolder, text: $text)
                     .frame(height: 35)
                     .background(AppColors.secondaryBackgroundColor)
-                    .cornerRadius(8)
-                    .padding(.horizontal, 16)
             } else {
+                // 뷰어 모드
                 TextField(placeHolder, text: $text)
                     .frame(height: 35)
                     .background(AppColors.backgroundColor)
-                    .cornerRadius(8)
-                    .padding(.horizontal, 16)
                     .disabled(!isEditingMode)
             }
             
         }
+        .cornerRadius(8)
+        .padding(.horizontal, 16)
+
     }
 }
 
 struct EditTextField_Previews: PreviewProvider {
     static var previews: some View {
                 
-        EditTextField(title: "제목",
-                      placeHolder: "placeholder",
-                      isEditingMode: .constant(false),
-                      text: .constant("")
-        )
+        DetailWidgetView(selectedWidget: DeepLink.example)
+        
     }
 }
