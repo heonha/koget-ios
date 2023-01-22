@@ -15,7 +15,7 @@ struct ContentView: View {
         
         if isTesting {
             // 테스트 뷰
-            UploadLinkView()
+            // UploadLinkView()
         } else {
             
             // 일반 뷰

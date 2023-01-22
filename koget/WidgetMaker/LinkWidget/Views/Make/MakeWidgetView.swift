@@ -6,6 +6,13 @@
 //
 
 import SwiftUI
+import WidgetKit
+
+
+enum WidgetType {
+    case none
+    case image
+}
 
 struct MakeWidgetView: View {
     
@@ -21,7 +28,8 @@ struct MakeWidgetView: View {
     var alertSuccessMessage = "잠금화면에 위젯을 추가하세요."
 
     @State var isErrorAlert: Bool = true
-    
+    @State var widgetType: WidgetType = .image
+    @State var isClear: Bool = false
     
     //Present Views
     @State var isAlertPresent: Bool = false
@@ -38,15 +46,31 @@ struct MakeWidgetView: View {
                 .ignoresSafeArea()
             Rectangle()
                 .foregroundColor(AppColors.backgroundColor)
-
             
             //MARK: - Contents
             VStack(spacing: 16) {
                 // 이미지 선택 메뉴
                 
-                ImageMenuButton(viewModel: viewModel, appPicker: $assetList)
+                Button {
+                    isAppPickerPresent.toggle()
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(lineWidth: 1)
+                            .foregroundStyle(Constants.kogetGradient)
+                        Text("앱 리스트에서 가져오기")
+                            .font(.system(size: 18, weight: .semibold))
+                            .foregroundColor(.black)
+                    }
+                }
+                .frame(width: DEVICE_SIZE.width - 32, height: 40)
+                .padding(.vertical)
+                .sheet(isPresented: $isAppPickerPresent) {
+                    assetList
+                }
+                
+                ImageMenuButton(viewModel: viewModel, appPicker: $assetList, widgetType: $widgetType)
                         .shadow(radius: 0.7, x: 0.1, y: 0.1)
-                        .padding()
                 
                 // 텍스트필드 그룹
                 MakeWidgetTextFieldView(viewModel: viewModel)
@@ -106,20 +130,6 @@ struct MakeWidgetView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(AppColors.label)
                 }
-            }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    isAppPickerPresent.toggle()
-                } label: {
-                    Text("앱 가져오기")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundColor(Color("Navy"))
-                }
-                .sheet(isPresented: $isAppPickerPresent) {
-                    assetList
-                }
-                
             }
         }
         .ignoresSafeArea(.all, edges: .bottom)

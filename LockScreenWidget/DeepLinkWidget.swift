@@ -47,7 +47,6 @@ struct DeepLinkProvider: IntentTimelineProvider {
         let selectedApp = configuration.app
         // ID가 같으면 그 이미지를 반환한다.
         
-        
         if let app = selectedApp {
             
             // 여기에 Simple Entry로 구성된 코드가 보여짐.
@@ -62,6 +61,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
             let timeline = Timeline(entries: [entry], policy: .atEnd)
             
             completion(timeline)
+            
         } else {
             let defaultImage = UIImage(named: "trash")!
             let entry = DeepLinkEntry(
@@ -123,23 +123,24 @@ struct DeepLinkWidgetEntryView : View {
     @ViewBuilder
     var body: some View {
         
-        
         ZStack {
-            Color.black.opacity(0.12)
             
             switch family {
             case .accessoryCircular:
                 
                 // entry에 id가 Set되어 있는경우
                 if entry.id != nil {
-                    VStack {
+                    VStack(alignment: .center) {
                         Image(uiImage: entry.image
                               ?? UIImage(systemName: "questionmark.circle")!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .widgetURL(URL(string: "\(mainURL)\(entry.url!)"))
+                            .grayscale(0.99)
+                            .contrast(-3)
+                            .clipShape(Circle())
                     }
-                    .opacity(0.8)
+                    .opacity(0.7)
                 } else {
                     ZStack {
                         VStack {
@@ -160,6 +161,8 @@ struct DeepLinkWidgetEntryView : View {
         
         
     }
+    
+    
 }
 
 //MARK: - MAIN
@@ -204,8 +207,17 @@ struct DeepLinkWidget: Widget {
 /// 위젯 프리뷰 구성
 struct LockScreenWidget_Previews: PreviewProvider {
     static var previews: some View {
-        DeepLinkWidgetEntryView(entry: DeepLinkEntry(date: Date(), name: "instagram", url: nil))
-            .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+        
+        let entrys = [DeepLinkEntry(date: Date(), name: "카카오톡", url: "kakaotalk://", image: UIImage(named: "tmap")!, id: UUID().uuidString),
+                      DeepLinkEntry(date: Date(), name: "카카오톡", url: "kakaotalk://", image: UIImage(named: "instagram")!, id: UUID().uuidString)
+                      
+        ]
+        
+        ForEach(entrys, id: \.id) { entry in
+            DeepLinkWidgetEntryView(entry: entry)
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+
+        }
         
     }
 }
