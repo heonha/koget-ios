@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import WidgetKit
-
 
 enum WidgetType {
     case none
@@ -23,16 +21,13 @@ struct MakeWidgetView: View {
     @State var assetList: WidgetAssetList?
     
     @State var iconImage: UIImage = UIImage(named: "plus.circle")!
-    @State var alertTitle = (error: "입력확인", success: "생성 완료")
-    @State var alertErrorMessage: String = ""
-    var alertSuccessMessage = "잠금화면에 위젯을 추가하세요."
+    @State var isSuccess = false
+    @State var isError: Bool = false
+    @State var errorMessage: String = ""
 
-    @State var isErrorAlert: Bool = true
     @State var widgetType: WidgetType = .image
-    @State var isClear: Bool = false
     
     //Present Views
-    @State var isAlertPresent: Bool = false
     @State var isAppPickerPresent: Bool = false
     
     @Environment(\.dismiss) var dismiss
@@ -82,31 +77,30 @@ struct MakeWidgetView: View {
                     Button {
                         viewModel.checkTheTextFields { error in
                             if let error = error {
-                                self.alertErrorMessage = error.rawValue
-                                self.isAlertPresent.toggle()
+                                // 실패
+                                self.errorMessage = error.rawValue
+                                self.isError.toggle()
                             } else {
+                                // 성공
                                 viewModel.addWidget()
-                                self.isErrorAlert = false
-                                self.isAlertPresent.toggle()
+                                self.isSuccess.toggle()
                             }
                         }
                     } label: {
                         ButtonWithText(title: "완료", titleColor: .white, color: .secondary)
                     }
-                    .alert(isErrorAlert ? alertTitle.error : alertTitle.success, isPresented: $isAlertPresent)
-                    {
-                        if isErrorAlert == false {
-                            Button("확인") {
-                                self.dismiss()
-                            }
-                        }
-                    } message: {
-                        if isErrorAlert == true {
-                            Text(alertErrorMessage)
-                        } else {
-                            Text(alertSuccessMessage)
-                        }
+                    .toast(isPresented: $isSuccess, dismissAfter: 2.0) {
+                        self.dismiss()
+                    } content: {
+                        SuccessAlert()
                     }
+                    .toast(isPresented: $isError, dismissAfter: 1.5) {
+                        
+                    } content: {
+                        ErrorAlert(errorMessage: $errorMessage)
+                    }
+
+
                     
                     
                     // 돌아가기 버튼

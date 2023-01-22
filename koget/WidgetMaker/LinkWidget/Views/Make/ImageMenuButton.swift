@@ -41,7 +41,7 @@ struct ImageMenuButton: View {
                             .padding()
                     } else {
                         ZStack {
-                            Image(systemName: "plus.circle")
+                            Image(systemName: "photo.circle")
                                 .font(.system(size: 100))
                                 .foregroundStyle(LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
                                 .clipShape(Circle())

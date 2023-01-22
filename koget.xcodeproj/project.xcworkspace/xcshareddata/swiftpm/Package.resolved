@@ -82,21 +82,21 @@
       }
     },
     {
-      "identity" : "instructions",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ephread/Instructions.git",
-      "state" : {
-        "revision" : "c23d3e1ce6d5c877913f530c0b2bda07e2b017c3",
-        "version" : "2.2.0"
-      }
-    },
-    {
       "identity" : "leveldb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/leveldb.git",
       "state" : {
         "revision" : "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
         "version" : "1.22.2"
+      }
+    },
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios.git",
+      "state" : {
+        "revision" : "f262407bfd6bb574ccfdb8a11367cac72804a58a",
+        "version" : "4.1.1"
       }
     },
     {
@@ -124,6 +124,15 @@
       "state" : {
         "revision" : "ab3a58b7209a17d781c0d1dbb3e1ff3da306bae8",
         "version" : "1.20.3"
+      }
+    },
+    {
+      "identity" : "toastui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/quanshousio/ToastUI.git",
+      "state" : {
+        "revision" : "1828801ea49e2ab900ca5e6bb18245312fda66a2",
+        "version" : "3.0.1"
       }
     }
   ],
