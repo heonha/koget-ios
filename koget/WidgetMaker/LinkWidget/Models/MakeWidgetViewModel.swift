@@ -10,7 +10,7 @@ import SwiftUI
 enum MakeWidgetErrorType: String {
     case emptyField = "빈칸을 채워주세요."
     case emptyImage = "사진을 추가해주세요."
-    case urlError = "문자열 :// 이 반드시 들어가야합니다. \n(앱이름:// 또는 https://주소)"
+    case urlError = "URL에 문자열 :// 이 반드시 들어가야 합니다."
 }
 
 final class MakeWidgetViewModel: ObservableObject {

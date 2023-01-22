@@ -37,7 +37,6 @@
 		3A1F890E297ABD8E00E1B4C4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3A1F890D297ABD8E00E1B4C4 /* FirebaseAuth */; };
 		3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2E21FC290FF9F800E4F46A /* downArrow.json */; };
 		3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
-		3A31D24829779B750067EB05 /* Instructions in Frameworks */ = {isa = PBXBuildFile; productRef = 3A31D24729779B750067EB05 /* Instructions */; };
 		3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3A3C118E28EDB1B700C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3A3C119428EDB4B800C9CCED /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A94E19D28EC1B950050EE80 /* Intents.framework */; };
@@ -48,6 +47,8 @@
 		3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
+		3A6449B1297D8ACD002A710C /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449B0297D8ACD002A710C /* ErrorAlert.swift */; };
+		3A6449B3297D8C81002A710C /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B2297D8C81002A710C /* error.json */; };
 		3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */; };
 		3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809B2974420100E62389 /* FloatingMenuButton.swift */; };
 		3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809E2974426900E62389 /* FloatingMainButton.swift */; };
@@ -55,6 +56,7 @@
 		3A7CD3822965562C008FAB75 /* LinkWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7CD3812965562C008FAB75 /* LinkWidget.swift */; };
 		3A8339D72932165B00DC9527 /* EditingToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D62932165B00DC9527 /* EditingToggleButton.swift */; };
 		3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D82932167500DC9527 /* DetailWidgetButton.swift */; };
+		3A97F460297D81B9002B4BDB /* ToastUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3A97F45F297D81B9002B4BDB /* ToastUI */; };
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C04FF292DB03C00442017 /* PhotoPicker.swift */; };
 		3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */; };
@@ -84,6 +86,10 @@
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
 		3AD4691B297D19190090B2D3 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD4691A297D19190090B2D3 /* ContactViewModel.swift */; };
 		3AD4691D297D1FAE0090B2D3 /* GuestAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD4691C297D1FAE0090B2D3 /* GuestAuthModel.swift */; };
+		3AD46923297D39D40090B2D3 /* SuccessAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD46922297D39D40090B2D3 /* SuccessAlert.swift */; };
+		3AD46926297D3DCF0090B2D3 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3AD46925297D3DCF0090B2D3 /* Lottie */; };
+		3AD4692A297D3EC40090B2D3 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD46929297D3EC40090B2D3 /* LottieView.swift */; };
+		3AD4692C297D3F610090B2D3 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4692B297D3F610090B2D3 /* success.json */; };
 		3AE4B13C296D848800DB219B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3AE4B13B296D848800DB219B /* FirebaseAnalytics */; };
 		3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE4B13D296D8A2D00DB219B /* KogetApp.swift */; };
 		3AE4B141296DA02800DB219B /* UploadLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE4B140296DA02800DB219B /* UploadLinkView.swift */; };
@@ -168,6 +174,8 @@
 		3A3C11A028EDB69A00C9CCED /* LockScreenIntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenIntentsExtension.entitlements; sourceTree = "<group>"; };
 		3A3C11A228EDC14700C9CCED /* LinkWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetModel.swift; sourceTree = "<group>"; };
 		3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		3A6449B0297D8ACD002A710C /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		3A6449B2297D8C81002A710C /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWidgetView.swift; sourceTree = "<group>"; };
 		3A6D809B2974420100E62389 /* FloatingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuButton.swift; sourceTree = "<group>"; };
 		3A6D809E2974426900E62389 /* FloatingMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMainButton.swift; sourceTree = "<group>"; };
@@ -202,6 +210,9 @@
 		3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingIndicatorGray.json; sourceTree = "<group>"; };
 		3AD4691A297D19190090B2D3 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		3AD4691C297D1FAE0090B2D3 /* GuestAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestAuthModel.swift; sourceTree = "<group>"; };
+		3AD46922297D39D40090B2D3 /* SuccessAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessAlert.swift; sourceTree = "<group>"; };
+		3AD46929297D3EC40090B2D3 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		3AD4692B297D3F610090B2D3 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		3AE4B13D296D8A2D00DB219B /* KogetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogetApp.swift; sourceTree = "<group>"; };
 		3AE4B140296DA02800DB219B /* UploadLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadLinkView.swift; sourceTree = "<group>"; };
 		3AE4B142296DA2F400DB219B /* UploadLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadLinkViewModel.swift; sourceTree = "<group>"; };
@@ -231,9 +242,10 @@
 				3AC92E08297247D8000E94F9 /* FloatingButton in Frameworks */,
 				3AC152D1296D8170009CAA1B /* FirebaseFirestore in Frameworks */,
 				3AC152D5296D8170009CAA1B /* FirebaseStorage in Frameworks */,
-				3A31D24829779B750067EB05 /* Instructions in Frameworks */,
+				3AD46926297D3DCF0090B2D3 /* Lottie in Frameworks */,
 				3AE4B13C296D848800DB219B /* FirebaseAnalytics in Frameworks */,
 				3AC152D3296D8170009CAA1B /* FirebaseFirestoreSwift in Frameworks */,
+				3A97F460297D81B9002B4BDB /* ToastUI in Frameworks */,
 				3A1F890E297ABD8E00E1B4C4 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +296,7 @@
 		3A08BCFB292FA7E700E09B3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3AD46921297D39C60090B2D3 /* ToastAlert */,
 				3A69AD29297BAD7400A49ED7 /* Manage */,
 				3A08BCFF292FBF0B00E09B3E /* Make */,
 				3A08BD00292FBF1B00E09B3E /* Detail */,
@@ -385,6 +398,16 @@
 				3A08BCFC292FA7F900E09B3E /* Models */,
 			);
 			path = LinkWidget;
+			sourceTree = "<group>";
+		};
+		3A6449B4297D90B6002A710C /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				3AD46929297D3EC40090B2D3 /* LottieView.swift */,
+				3AD4692B297D3F610090B2D3 /* success.json */,
+				3A6449B2297D8C81002A710C /* error.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		3A69AD29297BAD7400A49ED7 /* Manage */ = {
@@ -499,6 +522,16 @@
 			path = WidgetMaker;
 			sourceTree = "<group>";
 		};
+		3AD46921297D39C60090B2D3 /* ToastAlert */ = {
+			isa = PBXGroup;
+			children = (
+				3A6449B4297D90B6002A710C /* Lottie */,
+				3AD46922297D39D40090B2D3 /* SuccessAlert.swift */,
+				3A6449B0297D8ACD002A710C /* ErrorAlert.swift */,
+			);
+			path = ToastAlert;
+			sourceTree = "<group>";
+		};
 		3AE0F982294878CF008C9F5F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,8 +618,9 @@
 				3AC152D4296D8170009CAA1B /* FirebaseStorage */,
 				3AE4B13B296D848800DB219B /* FirebaseAnalytics */,
 				3AC92E07297247D8000E94F9 /* FloatingButton */,
-				3A31D24729779B750067EB05 /* Instructions */,
 				3A1F890D297ABD8E00E1B4C4 /* FirebaseAuth */,
+				3AD46925297D3DCF0090B2D3 /* Lottie */,
+				3A97F45F297D81B9002B4BDB /* ToastUI */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -643,7 +677,8 @@
 			packageReferences = (
 				3AC152CD296D8170009CAA1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3AC92E06297247D8000E94F9 /* XCRemoteSwiftPackageReference "FloatingButton" */,
-				3A31D24629779B750067EB05 /* XCRemoteSwiftPackageReference "Instructions" */,
+				3AD46924297D3DCF0090B2D3 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				3A97F45E297D81B9002B4BDB /* XCRemoteSwiftPackageReference "ToastUI" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -670,10 +705,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */,
+				3A6449B3297D8C81002A710C /* error.json in Resources */,
 				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
 				3A1A1FE7296BC9FF00819214 /* GoogleService-Info.plist in Resources */,
 				3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */,
 				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
+				3AD4692C297D3F610090B2D3 /* success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +746,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */,
+				3AD46923297D39D40090B2D3 /* SuccessAlert.swift in Sources */,
 				3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				3A17026429728AD2001FB0E5 /* FloatingButtonTestView.swift in Sources */,
 				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,
@@ -736,9 +774,11 @@
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthModel.swift in Sources */,
 				3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */,
+				3AD4692A297D3EC40090B2D3 /* LottieView.swift in Sources */,
 				3AE4B141296DA02800DB219B /* UploadLinkView.swift in Sources */,
 				3A0842002938A67D009BED73 /* NoticeList.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
+				3A6449B1297D8ACD002A710C /* ErrorAlert.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
@@ -994,7 +1034,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = koget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코젯";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1033,7 +1073,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = koget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코젯";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1159,12 +1199,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3A31D24629779B750067EB05 /* XCRemoteSwiftPackageReference "Instructions" */ = {
+		3A97F45E297D81B9002B4BDB /* XCRemoteSwiftPackageReference "ToastUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ephread/Instructions.git";
+			repositoryURL = "https://github.com/quanshousio/ToastUI.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 2.2.0;
+				minimumVersion = 3.0.0;
 			};
 		};
 		3AC152CD296D8170009CAA1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1183,6 +1223,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		3AD46924297D3DCF0090B2D3 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1191,10 +1239,10 @@
 			package = 3AC152CD296D8170009CAA1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		3A31D24729779B750067EB05 /* Instructions */ = {
+		3A97F45F297D81B9002B4BDB /* ToastUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3A31D24629779B750067EB05 /* XCRemoteSwiftPackageReference "Instructions" */;
-			productName = Instructions;
+			package = 3A97F45E297D81B9002B4BDB /* XCRemoteSwiftPackageReference "ToastUI" */;
+			productName = ToastUI;
 		};
 		3AC152CE296D8170009CAA1B /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1220,6 +1268,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3AC92E06297247D8000E94F9 /* XCRemoteSwiftPackageReference "FloatingButton" */;
 			productName = FloatingButton;
+		};
+		3AD46925297D3DCF0090B2D3 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AD46924297D3DCF0090B2D3 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		3AE4B13B296D848800DB219B /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
