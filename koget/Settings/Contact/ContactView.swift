@@ -30,8 +30,6 @@ struct ContactView: View {
             ZStack {
                 VStack(alignment: .leading) {
                     
-                    
-                    
                     HStack {
                         
                         Text("문의 유형")
@@ -71,6 +69,7 @@ struct ContactView: View {
                             }
                         }
                         .frame(width: DEVICE_SIZE.width / 1.5, height: 35)
+                        
                         Spacer()
                         
                     }
@@ -108,9 +107,6 @@ struct ContactView: View {
                     } message: {
                         Text("문의를 보낼까요?")
                     }
-
-
-
                     
                     Spacer()
 
@@ -147,28 +143,3 @@ struct ContactView_Previews: PreviewProvider {
     }
 }
 
-
-
-final class ContactViewModel: ObservableObject {
-    
-    @Published var contactType: ContectType = .none
-    @Published var title: String = ""
-    @Published var body: String = ""
-    var version: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-    
-    func checkTheField() {
-        
-        if contactType == .none {
-            // 알럿 표시 -> 유형을 선택하세요.
-        }
-        else if title == "" || body == "" {
-            // 알럿 표시 -> 빈칸을 채워주세요.
-        }
-        else {
-            // -> 내용 이메일로 보내기
-        }
-        
-        
-    }
-    
-}

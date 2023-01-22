@@ -20,15 +20,21 @@ struct ManageWidgetView: View {
                     
                     ForEach(viewModel.linkWidgets) { widget in
                         LazyHStack {
-                            if let image = widget.image, let name = widget.name {
-                                Image(uiImage: UIImage(data: image)
-                                      ?? UIImage(systemName: "questionmark.circle")!)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50, height: 50)
-                                .clipShape(Circle())
-                                Text(name)
+                            
+                            Button {
+                                
+                            } label: {
+                                if let image = widget.image, let name = widget.name {
+                                    Image(uiImage: UIImage(data: image)
+                                          ?? UIImage(systemName: "questionmark.circle")!)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(Circle())
+                                    Text(name)
+                                }
                             }
+                            
                         }
                     }
                     .onDelete { indexSet in

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
 let DEVICE_SIZE = UIScreen.main.bounds.size
 let SCHEME_LINK = "link://"
@@ -17,6 +17,8 @@ struct Constants {
 
     static let coreDataContainerName = "WidgetModel"
     static let appGroupID = "group.ZH5GA3W8UP.com.heon.koget"
+    static let kogetGradient = LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
+    
     
 }
 

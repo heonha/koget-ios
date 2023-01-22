@@ -13,35 +13,39 @@ struct ImageMenuButton: View {
     @Binding var appPicker: WidgetAssetList?
     @State var isAppPickerPresent: Bool = false
     @State var isPhotoPickerPresent: Bool = false
-    
+    @Binding var widgetType: WidgetType
+
     var body: some View {
         ZStack {
             Menu {
-                Button(action: {
-                    isAppPickerPresent.toggle()
-                }) {
-                    Label("앱 가져오기", systemImage: "plus.circle.fill")
-                }
                 Button(action: {
                     isPhotoPickerPresent.toggle()
                 }) {
                     Label("사진 변경", systemImage: "photo")
                 }
+                
             } label: {
                 
-                if let image = viewModel.image {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                        .clipShape(Circle())
-                        .padding()
-                } else {
+                switch widgetType {
+                case .none:
                     ZStack {
-                        Image(systemName: "plus.circle")
-                            .font(.system(size: 100))
-                            .foregroundStyle(LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
-                        .clipShape(Circle())
+                        Text("위젯 타입을 선택하세요.")
+                    }
+                case .image:
+                    if let image = viewModel.image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 100, height: 100)
+                            .clipShape(Circle())
+                            .padding()
+                    } else {
+                        ZStack {
+                            Image(systemName: "plus.circle")
+                                .font(.system(size: 100))
+                                .foregroundStyle(LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                .clipShape(Circle())
+                        }
                     }
                 }
                 
@@ -58,6 +62,6 @@ struct ImageMenuButton: View {
 struct ImageButton_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = MakeWidgetViewModel()
-        ImageMenuButton(viewModel: viewModel, appPicker: .constant(WidgetAssetList(viewModel: viewModel)))
+        ImageMenuButton(viewModel: viewModel, appPicker: .constant(WidgetAssetList(viewModel: viewModel)), widgetType: .constant(.image))
     }
 }
