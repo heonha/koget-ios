@@ -24,8 +24,10 @@ struct MainWidgetView: View {
                     .ignoresSafeArea()
                 VStack {
                     // 위젯 만들기 버튼
-                    WidgetButtonToMake()
-                    
+                    // WidgetButtonToMake()
+                    Rectangle()
+                        .frame(width: DEVICE_SIZE.width, height: 14)
+                        .foregroundStyle(Color.init(uiColor: .secondarySystemBackground))
                     // 링크위젯
                     LinkWidgetView()
                 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WidgetAssetList: View {
     
-    var widgetAssets = WidgetAssetViewModel()
+    @StateObject var widgetAssets = WidgetAssetViewModel()
     
     var textColor: Color = AppColors.label
     var imageSize: CGSize = .init(width: 40, height: 40)
@@ -27,10 +27,23 @@ struct WidgetAssetList: View {
                 NavigationView {
                     
                     VStack(alignment: .leading) {
-                        Text("현재 설치된 앱만 활성화됩니다.")
-                            .font(.system(size: 14, weight: .semibold))
-                            .foregroundColor(.init(uiColor: .secondaryLabel))
+                        TextFieldView(systemName: "magnifyingglass", placeholder: "앱 검색하기", text: $searchText)
+                            .padding(.horizontal)
+
+                        HStack {
+                            Spacer()
+                            Text("설치된 앱만 보기")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.init(uiColor: .secondaryLabel))
                             .padding(.leading)
+                            Toggle(isOn: $widgetAssets.isOnlyInstalledApp) {
+                            }
+                            .toggleStyle(.switch)
+                            .frame(width: 50, height: 30)
+                            .padding(.trailing, 24)
+                            .tint(.blue)
+
+                        }
                         
                         Rectangle()
                             .frame(width: DEVICE_SIZE.width, height: 12)
@@ -71,9 +84,11 @@ struct WidgetAssetList: View {
                     .navigationTitle("앱 리스트")
                     .navigationBarTitleDisplayMode(.inline)
                 }
-                .searchable(text: $searchText, placement: .toolbar)
                 .onChange(of: searchText) { searchText in
                     widgetAssets.fetchSearchData(searchText: searchText)
+                }
+                .onChange(of: widgetAssets.isOnlyInstalledApp) { isOnlyInstallApp in
+                    widgetAssets.fetchData(isOnlyInstall: isOnlyInstallApp)
                 }
                 
             }

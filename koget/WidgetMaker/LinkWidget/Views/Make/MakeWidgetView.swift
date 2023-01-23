@@ -92,7 +92,7 @@ struct MakeWidgetView: View {
                     .toast(isPresented: $isSuccess, dismissAfter: 2.0) {
                         self.dismiss()
                     } content: {
-                        SuccessAlert()
+                        SuccessAlert(title: "위젯 생성 완료!", subtitle: "코젯앱을 잠금화면에 추가해 사용하세요.")
                     }
                     .toast(isPresented: $isError, dismissAfter: 1.5) {
                         
