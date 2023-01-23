@@ -19,6 +19,8 @@ struct ContactView: View {
     
     @State var titleText: String = ""
     @State var bodyText: String = ""
+    @State var isSuccess: Bool = false
+    @State var isFailure: Bool = false
     
     @State var isPresentSendAlert = false
     @StateObject var viewModel = ContactViewModel()
@@ -92,8 +94,13 @@ struct ContactView: View {
                     .padding([.top, .bottom], 8)
                     .alert("내용 확인", isPresented: $isPresentSendAlert) {
                         Button {
-                            viewModel.checkTheField()
-                            self.dismiss()
+                            viewModel.checkTheField { result in
+                                if result {
+                                    isSuccess.toggle()
+                                } else {
+                                    isFailure.toggle()
+                                }
+                            }
                         } label: {
                             Text("보내기")
                                 .bold()
@@ -129,6 +136,16 @@ struct ContactView: View {
                     .foregroundColor(.gray)
 
                 }
+            }
+            .toast(isPresented: $isSuccess, dismissAfter: 1.5, onDismiss: {
+                dismiss()
+            }) {
+                SuccessAlert(jsonName: .mail, title: "문의 보내기 성공", subtitle: "피드백을 보내주셔서 감사합니다.")
+            }
+            .toast(isPresented: $isFailure, dismissAfter: 1.5, onDismiss: {
+
+            }) {
+                ErrorAlert(errorMessage: .constant("빈칸을 확인해주세요."))
             }
         }
         

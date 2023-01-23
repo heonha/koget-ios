@@ -18,17 +18,21 @@ final class ContactViewModel: ObservableObject {
     @Published var body: String = ""
     var version: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     
-    func checkTheField() {
+    func checkTheField(completion: @escaping (Bool) -> Void) {
         
         if contactType == .none {
             // 알럿 표시 -> 유형을 선택하세요.
+            completion(false)
         }
         else if title == "" || body == "" {
             // 알럿 표시 -> 빈칸을 채워주세요.
+            completion(false)
         }
         else {
             // -> 내용 이메일로 보내기
             sendQuestion(type: contactType, title: title, body: body)
+            completion(true)
+
         }
     }
     

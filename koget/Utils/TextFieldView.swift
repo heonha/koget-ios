@@ -14,6 +14,7 @@ enum TextFieldType {
 
 struct TextFieldView: View {
     
+    var systemName: String? = nil
     let placeholder: String
     let padding: CGFloat = 32
     
@@ -25,16 +26,39 @@ struct TextFieldView: View {
 
         ZStack(alignment: .center) {
             
-            RoundedRectangle(cornerRadius: 5)
+            RoundedRectangle(cornerRadius: 8)
                 .frame(height: 40)
                 .foregroundColor(AppColors.secondaryBackgroundColor)
-            
-            TextField(placeholder, text: $text)
-                .background(Color.clear)
-                .autocorrectionDisabled()
-                .textInputAutocapitalization(.never)
-                .textCase(.none)
-                .padding(.horizontal,8)
+            ZStack(alignment: .leading) {
+                HStack {
+
+                if let systemName = systemName {
+                        
+                    Image(systemName: systemName)
+                        .font(.system(size: 15))
+                        .padding(.horizontal, 8)
+                        .foregroundColor(.gray)
+                    TextField(placeholder, text: $text)
+                        .background(Color.clear)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                        .textCase(.none)
+                        .padding(.leading, -12)
+
+                } else {
+                    TextField(placeholder, text: $text)
+                        .background(Color.clear)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                        .textCase(.none)
+                        .padding(.horizontal,8)
+                }
+                    Spacer()
+
+                }
+
+            }
+
             
         }
             
@@ -46,7 +70,7 @@ struct TextFieldView: View {
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TextFieldView(placeholder: "제목을 입력하세요.", text: .constant(""))
+            TextFieldView(systemName: "magnifyingglass", placeholder: "앱 검색하기", text: .constant(""))
             TextFieldView(placeholder: "내용을 입력하세요.", type: .body, text: .constant(""))
         }
     }

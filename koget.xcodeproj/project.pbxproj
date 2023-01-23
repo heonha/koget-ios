@@ -49,6 +49,9 @@
 		3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
 		3A6449B1297D8ACD002A710C /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449B0297D8ACD002A710C /* ErrorAlert.swift */; };
 		3A6449B3297D8C81002A710C /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B2297D8C81002A710C /* error.json */; };
+		3A6449B6297E3895002A710C /* sendSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B5297E3895002A710C /* sendSuccess.json */; };
+		3A6449B8297E39E5002A710C /* TrashAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449B7297E39E5002A710C /* TrashAlert.swift */; };
+		3A6449BA297E3A2C002A710C /* trash.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B9297E3A2C002A710C /* trash.json */; };
 		3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */; };
 		3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809B2974420100E62389 /* FloatingMenuButton.swift */; };
 		3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809E2974426900E62389 /* FloatingMainButton.swift */; };
@@ -176,6 +179,9 @@
 		3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		3A6449B0297D8ACD002A710C /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		3A6449B2297D8C81002A710C /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
+		3A6449B5297E3895002A710C /* sendSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sendSuccess.json; sourceTree = "<group>"; };
+		3A6449B7297E39E5002A710C /* TrashAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashAlert.swift; sourceTree = "<group>"; };
+		3A6449B9297E3A2C002A710C /* trash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trash.json; sourceTree = "<group>"; };
 		3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWidgetView.swift; sourceTree = "<group>"; };
 		3A6D809B2974420100E62389 /* FloatingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuButton.swift; sourceTree = "<group>"; };
 		3A6D809E2974426900E62389 /* FloatingMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMainButton.swift; sourceTree = "<group>"; };
@@ -403,8 +409,10 @@
 		3A6449B4297D90B6002A710C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				3A6449B5297E3895002A710C /* sendSuccess.json */,
 				3AD46929297D3EC40090B2D3 /* LottieView.swift */,
 				3AD4692B297D3F610090B2D3 /* success.json */,
+				3A6449B9297E3A2C002A710C /* trash.json */,
 				3A6449B2297D8C81002A710C /* error.json */,
 			);
 			path = Lottie;
@@ -528,6 +536,7 @@
 				3A6449B4297D90B6002A710C /* Lottie */,
 				3AD46922297D39D40090B2D3 /* SuccessAlert.swift */,
 				3A6449B0297D8ACD002A710C /* ErrorAlert.swift */,
+				3A6449B7297E39E5002A710C /* TrashAlert.swift */,
 			);
 			path = ToastAlert;
 			sourceTree = "<group>";
@@ -707,7 +716,9 @@
 				3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */,
 				3A6449B3297D8C81002A710C /* error.json in Resources */,
 				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
+				3A6449B6297E3895002A710C /* sendSuccess.json in Resources */,
 				3A1A1FE7296BC9FF00819214 /* GoogleService-Info.plist in Resources */,
+				3A6449BA297E3A2C002A710C /* trash.json in Resources */,
 				3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */,
 				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
 				3AD4692C297D3F610090B2D3 /* success.json in Resources */,
@@ -774,6 +785,7 @@
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthModel.swift in Sources */,
 				3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */,
+				3A6449B8297E39E5002A710C /* TrashAlert.swift in Sources */,
 				3AD4692A297D3EC40090B2D3 /* LottieView.swift in Sources */,
 				3AE4B141296DA02800DB219B /* UploadLinkView.swift in Sources */,
 				3A0842002938A67D009BED73 /* NoticeList.swift in Sources */,

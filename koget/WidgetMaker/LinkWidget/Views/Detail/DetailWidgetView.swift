@@ -22,6 +22,7 @@ struct DetailWidgetView: View {
     @State var isShowingPicker: Bool = false
     @State var isDeleteAlertPresent: Bool = false
     @State var isEditingMode: Bool = false
+    @State var isDelete: Bool = false
     
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     @Environment(\.dismiss) var dismiss
@@ -46,18 +47,21 @@ struct DetailWidgetView: View {
                         } label: {
                             Image(systemName: "trash")
                                 .font(.system(size: 18, weight: .semibold))
-                                .foregroundColor(.white)
-                                .fontWeight(.semibold)
+                                .foregroundColor(.red)
+                                .fontWeight(.bold)
                         }
                         .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
                             Button("삭제", role: .destructive) {
                                 WidgetCoreData.shared.deleteData(data: selectedWidget)
-                                
-                                self.dismiss()
+                                isDelete.toggle()
                             }
                             Button("취소", role: .cancel) {}
                         }, message: { Text("정말 삭제 하시겠습니까?") })
-                        
+                        .toast(isPresented: $isDelete, dismissAfter: 1.5, onDismiss: {
+                            dismiss()
+                        }) {
+                            TrashAlert(opacity: 1, title: "위젯 삭제 완료!", subtitle: "")
+                        }
                         
                         Spacer()
                         
