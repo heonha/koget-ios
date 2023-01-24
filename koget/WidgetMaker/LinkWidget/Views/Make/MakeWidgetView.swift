@@ -24,13 +24,13 @@ struct MakeWidgetView: View {
     @State var isSuccess = false
     @State var isError: Bool = false
     @State var errorMessage: String = ""
-
     @State var widgetType: WidgetType = .image
     
     //Present Views
     @State var isAppPickerPresent: Bool = false
     
     @Environment(\.dismiss) var dismiss
+    
     
     var body: some View {
         
@@ -83,26 +83,20 @@ struct MakeWidgetView: View {
                             } else {
                                 // 성공
                                 viewModel.addWidget()
-                                self.isSuccess.toggle()
+                                self.dismiss()
+                                MainWidgetViewModel.shared.makeSuccessful = true
                             }
                         }
                     } label: {
                         ButtonWithText(title: "완료", titleColor: .white, color: .secondary)
                     }
-                    .toast(isPresented: $isSuccess, dismissAfter: 2.0) {
-                        self.dismiss()
-                    } content: {
-                        SuccessAlert(title: "위젯 생성 완료!", subtitle: "코젯앱을 잠금화면에 추가해 사용하세요.")
-                    }
+                    
                     .toast(isPresented: $isError, dismissAfter: 1.5) {
                         
                     } content: {
-                        ErrorAlert(errorMessage: $errorMessage)
+                        ToastAlert(jsonName: .error, title: errorMessage, subtitle: nil)
                     }
 
-
-                    
-                    
                     // 돌아가기 버튼
                     Button {
                         self.dismiss()
@@ -126,7 +120,10 @@ struct MakeWidgetView: View {
                 }
             }
         }
-        .ignoresSafeArea(.all, edges: .bottom)
+        .onTapGesture {
+            hideKeyboard()
+        }
+        .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
             assetList = WidgetAssetList(viewModel: viewModel)
         }

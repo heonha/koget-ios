@@ -16,6 +16,8 @@ struct MainWidgetView: View {
     var tintColor: Color = .black
     @State var isPresentHelper = true
     @State var isOpen = false
+    @StateObject var viewModel = MainWidgetViewModel.shared
+    
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     var body: some View {
         NavigationView {
@@ -50,8 +52,17 @@ struct MainWidgetView: View {
                 print("Disappear")
                 isOpen = false
             }
+
         }
-        .tint(tintColor)
+        .tint(.black)
+        .toast(isPresented: $viewModel.makeSuccessful, dismissAfter: 2.3) {
+        } content: {
+            ToastAlert(jsonName: .normal, title: "위젯 생성 완료!", subtitle: "코젯앱을 잠금화면에 추가해 사용하세요.")
+        }
+        .toast(isPresented: $viewModel.deleteSuccessful, dismissAfter: 2.0, onDismiss: {
+        }) {
+            ToastAlert(jsonName: .trash, title: "위젯 삭제 완료!", subtitle: nil)
+        }
         
         
         

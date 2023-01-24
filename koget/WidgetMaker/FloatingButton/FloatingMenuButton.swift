@@ -109,6 +109,7 @@ struct FloatingMenuButton: View {
             }
             
         }
+
     }
 }
 struct FloatingMenuButton_Previews: PreviewProvider {

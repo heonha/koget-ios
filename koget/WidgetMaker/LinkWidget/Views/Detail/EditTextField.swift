@@ -36,6 +36,9 @@ struct EditTextField: View {
             }
             
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
         .cornerRadius(8)
         .padding(.horizontal, 16)
 

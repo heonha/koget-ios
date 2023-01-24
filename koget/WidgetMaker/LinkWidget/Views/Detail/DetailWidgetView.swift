@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ToastUI
 
 struct DetailWidgetView: View {
     
@@ -49,19 +50,17 @@ struct DetailWidgetView: View {
                                 .font(.system(size: 18, weight: .semibold))
                                 .foregroundColor(.red)
                                 .fontWeight(.bold)
+                            
                         }
                         .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
                             Button("삭제", role: .destructive) {
                                 WidgetCoreData.shared.deleteData(data: selectedWidget)
-                                isDelete.toggle()
+                                self.dismiss()
+                                MainWidgetViewModel.shared.deleteSuccessful = true
                             }
                             Button("취소", role: .cancel) {}
                         }, message: { Text("정말 삭제 하시겠습니까?") })
-                        .toast(isPresented: $isDelete, dismissAfter: 1.5, onDismiss: {
-                            dismiss()
-                        }) {
-                            TrashAlert(opacity: 1, title: "위젯 삭제 완료!", subtitle: "")
-                        }
+                        
                         
                         Spacer()
                         
