@@ -19,7 +19,7 @@ struct FloatingDestinationView: View {
         case .setting:
             SettingView()
         case .help:
-            HowToUseMenu()
+            HowToUseMenus()
         case .contact:
             ContactView()
         case .edit:

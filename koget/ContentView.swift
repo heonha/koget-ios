@@ -9,18 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var isTesting = false
-
+    @StateObject var viewModel = MainWidgetViewModel.shared
+    
     var body: some View {
         
-        if isTesting {
-            // 테스트 뷰
-            // UploadLinkView()
-        } else {
-            
             // 일반 뷰
-            MainWidgetView()
-        }
+            MainWidgetView(viewModel: viewModel)
+            .fullScreenCover(isPresented: $viewModel.isFirstRun) {
+                OnboardingPageView()
+            }
         
     }
 }

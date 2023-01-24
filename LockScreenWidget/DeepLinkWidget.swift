@@ -151,11 +151,10 @@ struct DeepLinkWidgetEntryView : View {
             case .accessoryCircular:
                 // entry에 id가 Set되어 있는경우
                 if entry.id != nil {
-                    
                     if entry.id == "Ssn2&}g3f`M-Fe.k" {
                         ZStack {
                             VStack {
-                                Text("잠금화면")
+                                Text("바로가기")
                                 Text("위젯추가")
                             }
                             .bold()
@@ -212,7 +211,7 @@ struct Widgets: WidgetBundle {
 /// Widget : Widget의 컨텐츠를 나타내는 configuration 프로토콜
 struct DeepLinkWidget: Widget {
     let kind: String = "LockScreenWidget"
-    let title: String = "잠금화면 위젯"
+    let title: String = "바로가기 위젯"
     let subtitle: String = "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요."
     
     

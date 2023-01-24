@@ -12,6 +12,9 @@ class MainWidgetViewModel: ObservableObject {
     
     @Published var makeSuccessful: Bool = false
     @Published var deleteSuccessful: Bool = false
+    
+    @AppStorage("FirstRun") var isFirstRun = true
+
         
     static let shared = MainWidgetViewModel()
     
