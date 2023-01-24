@@ -16,7 +16,7 @@ struct MainWidgetView: View {
     var tintColor: Color = .black
     @State var isPresentHelper = true
     @State var isOpen = false
-    @StateObject var viewModel = MainWidgetViewModel.shared
+    @StateObject var viewModel: MainWidgetViewModel
     
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     var body: some View {
@@ -26,7 +26,6 @@ struct MainWidgetView: View {
                     .ignoresSafeArea()
                 VStack {
                     // 위젯 만들기 버튼
-                    // WidgetButtonToMake()
                     Rectangle()
                         .frame(width: DEVICE_SIZE.width, height: 14)
                         .foregroundStyle(Color.init(uiColor: .secondarySystemBackground))
@@ -63,9 +62,6 @@ struct MainWidgetView: View {
         }) {
             ToastAlert(jsonName: .trash, title: "위젯 삭제 완료!", subtitle: nil)
         }
-        
-        
-        
     }
 }
 
@@ -74,7 +70,7 @@ struct MainWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         
         NavigationView {
-            MainWidgetView()
+            MainWidgetView(viewModel: MainWidgetViewModel.shared)
         }
         
     }

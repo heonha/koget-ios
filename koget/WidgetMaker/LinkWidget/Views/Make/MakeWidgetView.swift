@@ -88,7 +88,7 @@ struct MakeWidgetView: View {
                             }
                         }
                     } label: {
-                        ButtonWithText(title: "완료", titleColor: .white, color: .secondary)
+                        ButtonWithText(title: "완료", titleColor: .white, color: Color.secondary)
                     }
                     
                     .toast(isPresented: $isError, dismissAfter: 1.5) {
