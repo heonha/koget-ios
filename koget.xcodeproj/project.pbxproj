@@ -47,11 +47,12 @@
 		3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
-		3A6449B1297D8ACD002A710C /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449B0297D8ACD002A710C /* ErrorAlert.swift */; };
+		3A6449B1297D8ACD002A710C /* ToastAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449B0297D8ACD002A710C /* ToastAlert.swift */; };
 		3A6449B3297D8C81002A710C /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B2297D8C81002A710C /* error.json */; };
 		3A6449B6297E3895002A710C /* sendSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B5297E3895002A710C /* sendSuccess.json */; };
 		3A6449B8297E39E5002A710C /* TrashAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449B7297E39E5002A710C /* TrashAlert.swift */; };
 		3A6449BA297E3A2C002A710C /* trash.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B9297E3A2C002A710C /* trash.json */; };
+		3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */; };
 		3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */; };
 		3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809B2974420100E62389 /* FloatingMenuButton.swift */; };
 		3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809E2974426900E62389 /* FloatingMainButton.swift */; };
@@ -177,11 +178,12 @@
 		3A3C11A028EDB69A00C9CCED /* LockScreenIntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenIntentsExtension.entitlements; sourceTree = "<group>"; };
 		3A3C11A228EDC14700C9CCED /* LinkWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetModel.swift; sourceTree = "<group>"; };
 		3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
-		3A6449B0297D8ACD002A710C /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		3A6449B0297D8ACD002A710C /* ToastAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastAlert.swift; sourceTree = "<group>"; };
 		3A6449B2297D8C81002A710C /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		3A6449B5297E3895002A710C /* sendSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sendSuccess.json; sourceTree = "<group>"; };
 		3A6449B7297E39E5002A710C /* TrashAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashAlert.swift; sourceTree = "<group>"; };
 		3A6449B9297E3A2C002A710C /* trash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trash.json; sourceTree = "<group>"; };
+		3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetViewModel.swift; sourceTree = "<group>"; };
 		3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWidgetView.swift; sourceTree = "<group>"; };
 		3A6D809B2974420100E62389 /* FloatingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuButton.swift; sourceTree = "<group>"; };
 		3A6D809E2974426900E62389 /* FloatingMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMainButton.swift; sourceTree = "<group>"; };
@@ -326,11 +328,7 @@
 			children = (
 				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
 				3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */,
-				3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */,
-				3AE6AB4429618319000F2C1D /* ButtonWithText.swift */,
-				3A01E774296AADDD0019CD2D /* CustomTextfield.swift */,
-				3A01E776296AADEF0019CD2D /* URLTestButton.swift */,
-				3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */,
+				3A6449BB297E428C002A710C /* Subviews */,
 			);
 			path = Make;
 			sourceTree = "<group>";
@@ -416,6 +414,18 @@
 				3A6449B2297D8C81002A710C /* error.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		3A6449BB297E428C002A710C /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */,
+				3AE6AB4429618319000F2C1D /* ButtonWithText.swift */,
+				3A01E774296AADDD0019CD2D /* CustomTextfield.swift */,
+				3A01E776296AADEF0019CD2D /* URLTestButton.swift */,
+				3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		3A69AD29297BAD7400A49ED7 /* Manage */ = {
@@ -522,6 +532,7 @@
 			children = (
 				3A1F89062978F94D00E1B4C4 /* HowToUse */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
+				3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */,
 				3A0566D02931E964007B0A7A /* WidgetButtonToMake.swift */,
 				3A00CA642931EDB6004FBF80 /* WidgetCollection */,
 				3A51A10528F531F10027AD5A /* LinkWidget */,
@@ -535,7 +546,7 @@
 			children = (
 				3A6449B4297D90B6002A710C /* Lottie */,
 				3AD46922297D39D40090B2D3 /* SuccessAlert.swift */,
-				3A6449B0297D8ACD002A710C /* ErrorAlert.swift */,
+				3A6449B0297D8ACD002A710C /* ToastAlert.swift */,
 				3A6449B7297E39E5002A710C /* TrashAlert.swift */,
 			);
 			path = ToastAlert;
@@ -790,13 +801,14 @@
 				3AE4B141296DA02800DB219B /* UploadLinkView.swift in Sources */,
 				3A0842002938A67D009BED73 /* NoticeList.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
-				3A6449B1297D8ACD002A710C /* ErrorAlert.swift in Sources */,
+				3A6449B1297D8ACD002A710C /* ToastAlert.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
 				3AE6AB4329617F7B000F2C1D /* ImageMenuButton.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3AA8BC522976EBB900E4927D /* DetailViewModel.swift in Sources */,
+				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,
 				3A1F890C297ABD2400E1B4C4 /* AdminAuthModel.swift in Sources */,
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,

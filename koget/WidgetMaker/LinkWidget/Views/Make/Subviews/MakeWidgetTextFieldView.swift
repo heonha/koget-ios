@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum FocusFields {
+    case name, url
+}
+
 struct MakeWidgetTextFieldView: View {
     
     @ObservedObject var viewModel: MakeWidgetViewModel
@@ -19,10 +23,10 @@ struct MakeWidgetTextFieldView: View {
     
     var body: some View {
         VStack {
-            CustomTextfield(title: nameTitle, placeholder: namePlaceholder, text: $viewModel.name)
+            CustomTextfield(title: nameTitle, placeholder: namePlaceholder, text: $viewModel.name, equals: .name)
             
             ZStack {
-                CustomTextfield(title: urlTitle, placeholder: urlPlaceholder, text: $viewModel.url)
+                CustomTextfield(title: urlTitle, placeholder: urlPlaceholder, text: $viewModel.url, equals: .url)
                 if viewModel.url != "" {
                     URLTestButton(viewModel: viewModel)
                         .padding(.trailing)

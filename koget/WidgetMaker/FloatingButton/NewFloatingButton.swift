@@ -22,7 +22,6 @@ struct NewFloatingButton: View {
                 FloatingMenu(isOpen: $isOpen,
                              buttons: [
                                 FloatingMenuButton(systemName: "plus.circle.fill", text: "위젯 만들기", link: .add,  type: .navigationLink),
-                                FloatingMenuButton(systemName: "line.3.horizontal.circle", text: "위젯 편집", link: .edit,  type: .navigationLink),
                                 FloatingMenuButton(systemName: "mail", text: "문의하기", link: .contact,  type: .navigationLink),
                              ].reversed())
                 .opacity(0.95)

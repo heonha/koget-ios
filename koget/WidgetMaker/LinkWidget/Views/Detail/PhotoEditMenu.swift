@@ -31,6 +31,7 @@ struct PhotoEditMenu: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 90, height: 90)
                 .clipShape(Circle())
+            
         }
         .sheet(isPresented: $isPhotoViewPresent) {
             PhotoPicker(widgetModel: viewModel)

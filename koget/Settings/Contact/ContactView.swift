@@ -10,7 +10,8 @@ import SwiftUI
 enum ContectType: String {
     case app = "앱 관련 문제"
     case addApp = "앱 추가요청"
-    case etc = "기타 유형"
+    case feedback = "피드백 보내기"
+    case etc = "기타 문의사항"
     case none = "선택하세요"
 }
 
@@ -51,6 +52,11 @@ struct ContactView: View {
                                 Text(ContectType.addApp.rawValue)
                             }
                             Button {
+                                viewModel.contactType = .feedback
+                            } label: {
+                                Text(ContectType.feedback.rawValue)
+                            }
+                            Button {
                                 viewModel.contactType = .etc
                             } label: {
                                 Text(ContectType.etc.rawValue)
@@ -71,7 +77,6 @@ struct ContactView: View {
                             }
                         }
                         .frame(width: DEVICE_SIZE.width / 1.5, height: 35)
-                        
                         Spacer()
                         
                     }
@@ -137,20 +142,22 @@ struct ContactView: View {
 
                 }
             }
+            .toolbarBackground(.visible, for: .navigationBar)
             .toast(isPresented: $isSuccess, dismissAfter: 1.5, onDismiss: {
                 dismiss()
             }) {
-                SuccessAlert(jsonName: .mail, title: "문의 보내기 성공", subtitle: "피드백을 보내주셔서 감사합니다.")
+                ToastAlert(jsonName: .send, title: "문의 보내기 성공", subtitle: "피드백을 보내주셔서 감사합니다.")
             }
             .toast(isPresented: $isFailure, dismissAfter: 1.5, onDismiss: {
 
             }) {
-                ErrorAlert(errorMessage: .constant("빈칸을 확인해주세요."))
+                ToastAlert(jsonName: .error, title: "빈칸을 확인해주세요.", subtitle: nil)
             }
         }
         
     }
 }
+
 
 struct ContactView_Previews: PreviewProvider {
     static var previews: some View {

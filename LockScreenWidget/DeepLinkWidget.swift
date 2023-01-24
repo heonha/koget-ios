@@ -22,7 +22,8 @@ struct DeepLinkProvider: IntentTimelineProvider {
     
     /// 위젯을 추가할 때와 같이 일시적인 상황에 데이터를 전달합니다.
     func getSnapshot(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (DeepLinkEntry) -> Void) {
-        let entry = getContext(context: context)
+        let entry = DeepLinkEntry(date: Date(), name: "", url: nil, image: nil, id: "Ssn2&}g3f`M-Fe.k")
+
         completion(entry)
     }
     
@@ -49,12 +50,33 @@ struct DeepLinkProvider: IntentTimelineProvider {
         
         if let app = selectedApp {
             
+            let image = {
+                let deepLinkApps = WidgetCoreData.shared.getStoredDataForDeepLink()!
+                
+                var appImage = UIImage(named: "questionmark.circle")!
+                
+                deepLinkApps.contains { appAsset in
+                    if let appID = app.identifier {
+                        if appAsset.id?.uuidString == appID {
+                            appImage = UIImage(data: appAsset.image!)!
+                            return true
+                        } else {
+                            return false
+                        }
+                    } else {
+                        return false
+                    }
+                }
+                
+                return appImage
+            }()
+            
             // 여기에 Simple Entry로 구성된 코드가 보여짐.
             let entry = DeepLinkEntry(
                 date: Date(),
                 name: app.displayString,
                 url: app.url!,
-                image: getWidgetImage(id: app.identifier),
+                image: image,
                 id: app.identifier
             )
             
@@ -63,7 +85,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
             completion(timeline)
             
         } else {
-            let defaultImage = UIImage(named: "trash")!
+            let defaultImage = UIImage(named: "questionmark.circle")!
             let entry = DeepLinkEntry(
                 date: Date(),
                 name: "선택되지 않음",
@@ -92,7 +114,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
     /// 위젯을 추가할 때 표시할 프리뷰를 구성합니다.
     func getContext(context: Context) -> DeepLinkEntry {
         
-        let entry: DeepLinkEntry = DeepLinkEntry(date: Date(), name: "", url: nil, image: UIImage(named: "trash")!, id: nil)
+        let entry: DeepLinkEntry = DeepLinkEntry(date: Date(), name: "", url: nil, image: nil, id: nil)
         
         return entry
     }
@@ -127,25 +149,35 @@ struct DeepLinkWidgetEntryView : View {
             
             switch family {
             case .accessoryCircular:
-                
                 // entry에 id가 Set되어 있는경우
                 if entry.id != nil {
-                    VStack(alignment: .center) {
-                        Image(uiImage: entry.image
-                              ?? UIImage(systemName: "questionmark.circle")!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .widgetURL(URL(string: "\(mainURL)\(entry.url!)"))
-                            .grayscale(0.99)
-                            .contrast(-3)
-                            .clipShape(Circle())
+                    
+                    if entry.id == "Ssn2&}g3f`M-Fe.k" {
+                        ZStack {
+                            VStack {
+                                Text("잠금화면")
+                                Text("위젯추가")
+                            }
+                            .bold()
+                            .widgetURL(URL(string: selectWidgetURL))
+                        }
+                    } else {
+                        VStack(alignment: .center) {
+                            Image(uiImage: entry.image
+                                  ?? UIImage(systemName: "questionmark.circle")!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)"))
+                                .clipShape(Circle())
+                        }
+                        .opacity(0.7)
                     }
-                    .opacity(0.7)
+                    
                 } else {
                     ZStack {
                         VStack {
-                            Text("위젯")
-                            Text("선택")
+                            Text("눌러서")
+                            Text("위젯선택")
                         }
                         .bold()
                         .widgetURL(URL(string: selectWidgetURL))
@@ -180,6 +212,9 @@ struct Widgets: WidgetBundle {
 /// Widget : Widget의 컨텐츠를 나타내는 configuration 프로토콜
 struct DeepLinkWidget: Widget {
     let kind: String = "LockScreenWidget"
+    let title: String = "잠금화면 위젯"
+    let subtitle: String = "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요."
+    
     
     /// 위젯의 Contents를 나타냅니다.
     var body: some WidgetConfiguration {
@@ -195,8 +230,8 @@ struct DeepLinkWidget: Widget {
             provider: DeepLinkProvider()) { (entry) in
                 DeepLinkWidgetEntryView(entry: entry) // 위젯이 표현할 SwiftUI View입니다.
             }
-            .configurationDisplayName("딥링크 위젯")
-            .description("앱에서 생성한 위젯을 생성하세요.")
+            .configurationDisplayName(title)
+            .description(subtitle)
             .supportedFamilies([.accessoryCircular]) // 위젯이 지원하는 위젯의 종류입니다.
     }
 }
@@ -220,4 +255,13 @@ struct LockScreenWidget_Previews: PreviewProvider {
         }
         
     }
+}
+
+struct VisualEffect: UIViewRepresentable {
+    @State var style : UIBlurEffect.Style // 1
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        return UIVisualEffectView(effect: UIBlurEffect(style: style)) // 2
+    }
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+    } // 3
 }
