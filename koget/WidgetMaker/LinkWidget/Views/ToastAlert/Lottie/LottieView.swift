@@ -23,16 +23,15 @@ struct LottieView: UIViewRepresentable {
     
     func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView()
-        let animationView = LottieAnimationView(name: name)
+        let config = LottieConfiguration(renderingEngine: .mainThread)
+        let animationView = LottieAnimationView(name: name, configuration: config)
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = loopMode
-        animationView.play()
         animationView.backgroundBehavior = .pauseAndRestore
         animationView.animationSpeed = speed
+        animationView.play()
 
-  //컨테이너의 너비와 높이를 자동으로 지정할 수 있도록합니다. 로티는 컨테이너 위에 작성됩니다.
-  
-  
+
         animationView.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(animationView)
