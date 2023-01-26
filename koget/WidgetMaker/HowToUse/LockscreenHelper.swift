@@ -13,23 +13,30 @@ struct LockscreenHelper: View {
     @State var player = AVPlayer()
  
     var body: some View {
+        
+        GeometryReader { (geometry) in
+            
+        
         ZStack {
             Color.white
             
-            VStack(alignment: .leading ,spacing: 8) {
+            VStack(alignment: .center ,spacing: 8) {
+                
+                Text("잠금화면에 위젯 등록")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.vertical, 12)
+                
                 ZStack {
                     Color.black
                     VideoPlayer(player: player)
-                        .frame(height: 400)
+                        .frame(height: geometry.size.height / 2.5)
                         .cornerRadius(12)
 
                 }
-                .frame(height: 450)
+                .frame(height: geometry.size.height / 2.2)
                 .cornerRadius(12)
 
-                Text("만든 위젯을 잠금화면에 등록하는 방법")
-                    .font(.system(size: 18, weight: .bold))
-                    .padding(.vertical, 8)
                 ZStack {
                     Color.init(uiColor: .secondarySystemFill)
                         .cornerRadius(12)
@@ -61,7 +68,7 @@ struct LockscreenHelper: View {
                         .tabViewStyle(.page(indexDisplayMode: .automatic))
                     }
                 }
-                .frame(height: 150)
+                .frame(height: geometry.size.height / 4.5)
 
 
 
@@ -80,6 +87,7 @@ struct LockscreenHelper: View {
                     player.play()
                 })
             }
+        }
 
     }
 }

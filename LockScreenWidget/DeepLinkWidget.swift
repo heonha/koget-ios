@@ -140,6 +140,8 @@ struct DeepLinkWidgetEntryView : View {
     
     let mainURL = "link://"
     let selectWidgetURL = "open://"
+    @State var placeholderOpacity: CGFloat = 1
+
     
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
@@ -147,41 +149,52 @@ struct DeepLinkWidgetEntryView : View {
         
         ZStack {
             
+            VStack {
+                Text("바로가기")
+                Text("위젯추가")
+            }
+            .opacity(placeholderOpacity)
+            
             switch family {
             case .accessoryCircular:
-                // entry에 id가 Set되어 있는경우
-                if entry.id != nil {
-                    if entry.id == "Ssn2&}g3f`M-Fe.k" {
-                        ZStack {
-                            VStack {
-                                Text("바로가기")
-                                Text("위젯추가")
+                ZStack {
+                    // entry에 id가 Set되어 있는경우
+                    if entry.id != nil {
+                        if entry.id == "Ssn2&}g3f`M-Fe.k" {
+                            ZStack {
+                                VStack {
+                                    Text("바로가기")
+                                    Text("위젯추가")
+                                }
+                                .bold()
                             }
-                            .bold()
-                            .widgetURL(URL(string: selectWidgetURL))
-                        }
-                    } else {
-                        VStack(alignment: .center) {
-                            Image(uiImage: entry.image
-                                  ?? UIImage(systemName: "questionmark.circle")!)
+                            
+                        } else {
+                            VStack(alignment: .center) {
+                                Image(uiImage: entry.image
+                                      ?? UIImage(systemName: "questionmark.circle")!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .widgetURL(URL(string: "\(mainURL)\(entry.url!)"))
                                 .clipShape(Circle())
+                            }
+                            .opacity(0.7)
                         }
-                        .opacity(0.7)
-                    }
-                    
-                } else {
-                    ZStack {
-                        VStack {
-                            Text("눌러서")
-                            Text("위젯선택")
+                        
+                    } else {
+                        ZStack {
+                            VStack {
+                                Text("눌러서")
+                                Text("위젯선택")
+                            }
+                            .bold()
                         }
-                        .bold()
-                        .widgetURL(URL(string: selectWidgetURL))
                     }
                 }
+                .onAppear {
+                    self.placeholderOpacity = 0
+                }
+                
             default:
                 VStack {
                     Text("Error")
@@ -254,13 +267,4 @@ struct LockScreenWidget_Previews: PreviewProvider {
         }
         
     }
-}
-
-struct VisualEffect: UIViewRepresentable {
-    @State var style : UIBlurEffect.Style // 1
-    func makeUIView(context: Context) -> UIVisualEffectView {
-        return UIVisualEffectView(effect: UIBlurEffect(style: style)) // 2
-    }
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-    } // 3
 }
