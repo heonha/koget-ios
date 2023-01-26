@@ -15,9 +15,6 @@ struct ContentView: View {
         
             // 일반 뷰
             MainWidgetView(viewModel: viewModel)
-            .fullScreenCover(isPresented: $viewModel.isFirstRun) {
-                OnboardingPageView()
-            }
         
     }
 }

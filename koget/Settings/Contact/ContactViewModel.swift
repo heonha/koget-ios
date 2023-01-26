@@ -51,6 +51,7 @@ final class ContactViewModel: ObservableObject {
                 "type": type,
                 "title": title,
                 "body": body,
+                "version": version,
                 "date": date
             ]
             

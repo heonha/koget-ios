@@ -62,6 +62,7 @@ struct MainWidgetView: View {
         }) {
             ToastAlert(jsonName: .trash, title: "위젯 삭제 완료!", subtitle: nil)
         }
+        .welcomeSheet(isPresented: $viewModel.isFirstRun, isSlideToDismissDisabled: true, pages: HelperSheetViewModel.shared.pages)
     }
 }
 
