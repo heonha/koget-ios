@@ -8,7 +8,6 @@
 import SwiftUI
 
 enum WidgetType {
-    case none
     case image
 }
 

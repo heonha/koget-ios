@@ -14,7 +14,7 @@ struct TestDeepLink {
     let name: String
     let image: Data
     let deepLink: String
-    let addedDate = Date()
+    let updatedDate = Date()
 }
 
 

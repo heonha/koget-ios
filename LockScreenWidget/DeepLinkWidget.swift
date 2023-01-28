@@ -30,7 +30,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
     func getWidgetImage(id: String?) -> UIImage {
         
         // 딥링크 앱의 배열을 가져온다.
-        let deepLinkApps = WidgetCoreData.shared.getStoredDataForDeepLink()!
+        let deepLinkApps = WidgetCoreData.shared.linkWidgets
         
         var appImage = UIImage(named: "questionmark.circle")!
         
@@ -49,13 +49,9 @@ struct DeepLinkProvider: IntentTimelineProvider {
         // ID가 같으면 그 이미지를 반환한다.
         
         if let app = selectedApp {
-            
             let image = {
-                let deepLinkApps = WidgetCoreData.shared.getStoredDataForDeepLink()!
-                
                 var appImage = UIImage(named: "questionmark.circle")!
-                
-                deepLinkApps.contains { appAsset in
+                WidgetCoreData.shared.linkWidgets.contains { appAsset in
                     if let appID = app.identifier {
                         if appAsset.id?.uuidString == appID {
                             appImage = UIImage(data: appAsset.image!)!
@@ -67,7 +63,6 @@ struct DeepLinkProvider: IntentTimelineProvider {
                         return false
                     }
                 }
-                
                 return appImage
             }()
             
@@ -94,7 +89,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
                 id: nil
             )
             
-            let timeline = Timeline(entries: [entry], policy: .atEnd)
+            let timeline = Timeline(entries: [entry], policy: .never)
             completion(timeline)
             
         }
@@ -141,14 +136,13 @@ struct DeepLinkWidgetEntryView : View {
     let mainURL = "link://"
     let selectWidgetURL = "open://"
     @State var placeholderOpacity: CGFloat = 1
+    @StateObject var viewModel = WidgetCoreData.shared
 
-    
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
     var body: some View {
         
         ZStack {
-            
             VStack {
                 Text("바로가기")
                 Text("위젯추가")
@@ -170,15 +164,20 @@ struct DeepLinkWidgetEntryView : View {
                             }
                             
                         } else {
+                            // 코어 데이터의 데이터
+                            // entry의 데이터
+                            // 코어데이터 바뀜 -> 코어데이터 업데이트 -> Entry 업데이트
+                            
                             VStack(alignment: .center) {
                                 Image(uiImage: entry.image
                                       ?? UIImage(systemName: "questionmark.circle")!)
                                 .resizable()
-                                .aspectRatio(contentMode: .fit)
+                                .scaledToFit()
                                 .widgetURL(URL(string: "\(mainURL)\(entry.url!)"))
                                 .clipShape(Circle())
                             }
                             .opacity(0.7)
+                            
                         }
                         
                     } else {

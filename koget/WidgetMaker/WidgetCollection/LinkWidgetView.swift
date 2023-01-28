@@ -19,7 +19,6 @@ struct LinkWidgetView: View {
             VStack {
                 // Grid
                 WidgetGridView(title: title)
-                    .padding()
             }
         }
     }

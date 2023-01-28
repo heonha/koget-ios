@@ -20,21 +20,15 @@ struct EditingToggleButton: View {
     
     var body: some View {
         ZStack {
-            if isEditingMode {
-                Text("편집 완료")
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                    .font(.system(size: 17))
-                    .frame(width: size.width, height: size.height)
-                    .background(Color.init(uiColor: .systemBlue))
-            } else {
-                Text("위젯 편집")
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                    .font(.system(size: 17))
-                    .frame(width: size.width, height: size.height)
-                    .background(Color.init(uiColor: .darkGray))
-            }
+            Text(isEditingMode ? "편집 완료" : "위젯 편집")
+                .foregroundColor(.white)
+                .fontWeight(.bold)
+                .font(.system(size: 17))
+                .frame(width: size.width, height: size.height)
+                .background(isEditingMode
+                            ? Color.init(uiColor: .systemBlue)
+                            : Color.init(uiColor: .darkGray)
+                )
         }
         .onTapGesture {
             if isEditingMode {

@@ -14,6 +14,7 @@ class WidgetCoreData: ObservableObject {
     static let shared = WidgetCoreData()
     
     @Published var linkWidgets = [DeepLink]()
+    @Published var lastUpdatedDate = Date()
     var container = NSPersistentContainer(name: Constants.coreDataContainerName)
     
     private init() {
@@ -37,7 +38,7 @@ class WidgetCoreData: ObservableObject {
         widget.name = name
         widget.image = image?.pngData()
         widget.url = url
-        widget.addedDate = Date()
+        widget.updatedDate = Date()
         
         saveData()
         loadData()
@@ -51,6 +52,7 @@ class WidgetCoreData: ObservableObject {
             widget.image = image?.pngData()
         }
         widget.url = url
+        widget.updatedDate = Date()
         
         saveData()
         loadData()
@@ -83,7 +85,7 @@ class WidgetCoreData: ObservableObject {
     
     
     //원하는 entity 타입의 데이터 불러오기(Read)
-    func loadData(sortKey: String = "addedDate", ascending: Bool = false) {
+    func loadData(sortKey: String = "updatedDate", ascending: Bool = false) {
         
         let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
         // 정렬방식 설정
@@ -103,7 +105,7 @@ class WidgetCoreData: ObservableObject {
     }
     
     //원하는 entity 타입의 데이터 불러오기(Read)
-    func searchData(searchText: String, sortKey: String = "addedDate", ascending: Bool = false) {
+    func searchData(searchText: String, sortKey: String = "updatedDate", ascending: Bool = false) {
         
         let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
         
