@@ -2,6 +2,8 @@
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		***REMOVED***
