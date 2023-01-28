@@ -92,7 +92,7 @@ extension StorageProvider {
         widget.name = name
         widget.image = image
         widget.url = url
-        widget.addedDate = Date()
+        widget.updatedDate = Date()
         
         do {
             

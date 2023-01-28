@@ -27,15 +27,11 @@ struct ImageMenuButton: View {
             } label: {
                 
                 switch widgetType {
-                case .none:
-                    ZStack {
-                        Text("위젯 타입을 선택하세요.")
-                    }
                 case .image:
                     if let image = viewModel.image {
                         Image(uiImage: image)
                             .resizable()
-                            .scaledToFill()
+                            .scaledToFit()
                             .frame(width: 100, height: 100)
                             .clipShape(Circle())
                             .padding()
@@ -47,6 +43,7 @@ struct ImageMenuButton: View {
                                 .clipShape(Circle())
                         }
                     }
+
                 }
                 
             }.sheet(isPresented: $isAppPickerPresent) {

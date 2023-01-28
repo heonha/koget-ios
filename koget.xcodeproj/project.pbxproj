@@ -24,6 +24,8 @@
 		3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */; };
 		3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */; };
 		3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0C03412935131600868B70 /* PhotoEditMenu.swift */; };
+		3A1591712984FA40001924C3 /* DeepLinkWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */; };
+		3A1591722984FCF0001924C3 /* DeepLinkWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */; };
 		3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17026129727151001FB0E5 /* FloatingMenu.swift */; };
 		3A17026429728AD2001FB0E5 /* FloatingButtonTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17026329728AD2001FB0E5 /* FloatingButtonTestView.swift */; };
 		3A1A1FE7296BC9FF00819214 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */; };
@@ -166,6 +168,7 @@
 		3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetList.swift; sourceTree = "<group>"; };
 		3A0C03412935131600868B70 /* PhotoEditMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditMenu.swift; sourceTree = "<group>"; };
 		3A0F42A128C8DC19002F1CAD /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkWidgetViewModel.swift; sourceTree = "<group>"; };
 		3A17026129727151001FB0E5 /* FloatingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenu.swift; sourceTree = "<group>"; };
 		3A17026329728AD2001FB0E5 /* FloatingButtonTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonTestView.swift; sourceTree = "<group>"; };
 		3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -545,10 +548,10 @@
 		3AC3E1E028E68A6D00BFF455 /* WidgetMaker */ = {
 			isa = PBXGroup;
 			children = (
-				3A1F89062978F94D00E1B4C4 /* HowToUse */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
 				3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */,
 				3A00CA642931EDB6004FBF80 /* WidgetCollection */,
+				3A1F89062978F94D00E1B4C4 /* HowToUse */,
 				3A51A10528F531F10027AD5A /* LinkWidget */,
 				3A6D809A297441A600E62389 /* FloatingButton */,
 			);
@@ -601,6 +604,7 @@
 			isa = PBXGroup;
 			children = (
 				3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */,
+				3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */,
 				3A7CD3812965562C008FAB75 /* LinkWidget.swift */,
 				3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */,
 				3AF9F00A28ED570E00F685E6 /* Assets.xcassets */,
@@ -813,6 +817,7 @@
 				3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
+				3A1591712984FA40001924C3 /* DeepLinkWidgetViewModel.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthModel.swift in Sources */,
 				3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */,
@@ -856,6 +861,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF9F00928ED570D00F685E6 /* DeepLinkWidget.swift in Sources */,
+				3A1591722984FCF0001924C3 /* DeepLinkWidgetViewModel.swift in Sources */,
 				3A3C118E28EDB1B700C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3AA8BC4E2976DE1A00E4927D /* WidgetCoreData.swift in Sources */,
 				3A1CD19E28F9819400AC5D1C /* Constants.swift in Sources */,
@@ -1071,6 +1077,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = koget/koget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1079,7 +1086,7 @@
 				INFOPLIST_FILE = koget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코젯";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "이미지 추가를 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
@@ -1100,7 +1107,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1110,6 +1117,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = koget/koget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1118,7 +1126,7 @@
 				INFOPLIST_FILE = koget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코젯";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 편집하기 위해 라이브러리 접근권한을 요청합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "이미지 추가를 위해 라이브러리 접근권한을 요청합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
@@ -1139,7 +1147,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

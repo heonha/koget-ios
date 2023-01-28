@@ -25,7 +25,6 @@ struct MainWidgetView: View {
                 AppColors.secondaryBackgroundColor
                     .ignoresSafeArea()
                 VStack {
-                    // 위젯 만들기 버튼
                     Rectangle()
                         .frame(width: DEVICE_SIZE.width, height: 14)
                         .foregroundStyle(Color.init(uiColor: .secondarySystemBackground))
@@ -54,11 +53,11 @@ struct MainWidgetView: View {
 
         }
         .tint(.black)
-        .toast(isPresented: $viewModel.makeSuccessful, dismissAfter: 2.3) {
+        .toast(isPresented: $viewModel.makeSuccessful, dismissAfter: 1.5) {
         } content: {
             ToastAlert(jsonName: .normal, title: "위젯 생성 완료!", subtitle: "코젯앱을 잠금화면에 추가해 사용하세요.")
         }
-        .toast(isPresented: $viewModel.deleteSuccessful, dismissAfter: 2.0, onDismiss: {
+        .toast(isPresented: $viewModel.deleteSuccessful, dismissAfter: 1.0, onDismiss: {
         }) {
             ToastAlert(jsonName: .trash, title: "위젯 삭제 완료!", subtitle: nil)
         }

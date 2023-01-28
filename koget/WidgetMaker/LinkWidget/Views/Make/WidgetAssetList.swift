@@ -78,8 +78,8 @@ struct WidgetAssetList: View {
                             }
                         }
                     }
-                    .disabled(!widget.canOpen)
-                    .opacity(widgetAssets.canOpenApp(widget.canOpen))
+                    // .disabled(!widget.canOpen)
+                    // .opacity(widgetAssets.canOpenApp(widget.canOpen))
                     .listStyle(.plain)
                     
                 }
