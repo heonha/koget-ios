@@ -61,13 +61,18 @@ struct WidgetAssetList: View {
                         self.dismiss()
                     } label: {
                         LazyHStack {
-                            Image(uiImage: widget.image ?? UIImage(named: "questionmark.circle")!)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: imageSize.width, height: imageSize.height)
-                                .clipShape(Circle())
-                                .shadow(color: .black, radius: 0.25, x: 0.5, y: 0.5)
-                                .padding([.trailing, .vertical], 4)
+                            ZStack {
+                                Color.white
+                                Image(uiImage: widget.image ?? UIImage(named: "questionmark.circle")!)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: imageSize.width, height: imageSize.height)
+                            }
+                            .clipShape(Circle())
+                            .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
+                            .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
+
+                            .padding([.trailing, .vertical], 4)
                             Text(widget.displayName)
                                 .fontWeight(.semibold)
                                 .foregroundColor(textColor)
@@ -78,8 +83,8 @@ struct WidgetAssetList: View {
                             }
                         }
                     }
-                    // .disabled(!widget.canOpen)
-                    // .opacity(widgetAssets.canOpenApp(widget.canOpen))
+                    .disabled(!widget.canOpen)
+                    .opacity(widgetAssets.canOpenApp(widget.canOpen))
                     .listStyle(.plain)
                     
                 }

@@ -37,7 +37,7 @@ struct FloatingMenu: View {
 struct FloatingMenu_Previews: PreviewProvider {
     static var previews: some View {
         FloatingMenu(isOpen: .constant(false), buttons: [
-            FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .setting, type: .navigationLink),
+            FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .aboutApp, type: .navigationLink),
             FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add, type: .sheet)
         ])    }
 }

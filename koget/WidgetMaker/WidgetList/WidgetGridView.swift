@@ -13,7 +13,7 @@ struct WidgetGridView: View {
     var title: String = ""
     var backgroundColor = AppColors.secondaryBackgroundColor
     var gridItem = [GridItem(), GridItem(), GridItem(), GridItem()]
-    var width = DEVICE_SIZE.width / 4.2
+    var width = DEVICE_SIZE.width / 4.3
     
     let offColor = Color.init(red: 225/255, green: 225/255, blue: 235/255)
     
@@ -36,29 +36,28 @@ struct WidgetGridView: View {
                         Spacer()
                     }
                 }
-                // 그리드뷰
+                //MARK: - Grid View
                 
                 ZStack {
+                    
+                    //MARK: 위젯이 있을 때.
                     if !$coredata.linkWidgets.wrappedValue.isEmpty {
-                        LazyVGrid(columns: gridItem, alignment: .center, spacing: 8 ) {
+                        LazyVGrid(columns: gridItem, alignment: .center, spacing: 4) {
                             
+                            //MARK: 위젯 Cell
                             ForEach($coredata.linkWidgets.wrappedValue, id: \.id) { widget in
-                                WidgetIconCell(widget: widget)
-                                    .frame(width: width, height: width)
-                                    .padding(.top, 8)
-                                    .padding([.bottom, .horizontal], 4)
+                                WidgetIconCell(widget: widget, cellWidth: width)
                             }
                         }
                         .background(RoundedRectangle(cornerRadius: 25)
                             .fill(offColor)
                             .shadow(color: Color.black.opacity(0.2), radius: 2, x: 3, y: 3)
                         )
-                        .padding(.horizontal, 16)
-                        
-                        Spacer()
+                        .frame(width: DEVICE_SIZE.width - 32)
                         
                     } else {
-                        
+                        //MARK: 만든 위젯이 0개일 때.
+
                         Spacer()
                         
                         ZStack {

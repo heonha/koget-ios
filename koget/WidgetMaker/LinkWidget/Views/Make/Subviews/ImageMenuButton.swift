@@ -29,12 +29,17 @@ struct ImageMenuButton: View {
                 switch widgetType {
                 case .image:
                     if let image = viewModel.image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 100)
-                            .clipShape(Circle())
-                            .padding()
+                        ZStack {
+                            Color.white
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFit()
+
+                        }
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                        .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
+                        .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
                     } else {
                         ZStack {
                             Image(systemName: "photo.circle")

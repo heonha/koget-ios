@@ -9,7 +9,7 @@ import SwiftUI
 import WelcomeSheet
 
 
-struct HowToUseMenus: View, AppStoreReviewable {
+struct SettingMenu: View, AppStoreReviewable {
     
     @ObservedObject var viewModel = HelperSheetViewModel.shared
     
@@ -20,11 +20,11 @@ struct HowToUseMenus: View, AppStoreReviewable {
                 List {
                     Section("도움말") {
                         
-                        AppMenuButton(title: "앱 소개 다시보기", imageType: .symbol, imageName: "book") {
+                        SettingMenuButton(title: "앱 소개 다시보기", imageType: .symbol, imageName: "book") {
                             viewModel.showWelcomeSheet.toggle()
                         }
                         
-                        AppMenuButton(title: "만든 위젯을 잠금화면에 등록하는 방법", imageType: .symbol, imageName: "apps.iphone.badge.plus") {
+                        SettingMenuButton(title: "만든 위젯을 잠금화면에 등록하는 방법", imageType: .symbol, imageName: "apps.iphone.badge.plus") {
                             viewModel.showUseLockscreen.toggle()
                         }
                         
@@ -33,11 +33,11 @@ struct HowToUseMenus: View, AppStoreReviewable {
                     Section("앱에 관하여") {
                         
                         
-                        AppMenuButton(title: "앱 평가하기", imageType: .symbol, imageName: "star.fill", imageColor: .yellow) {
+                        SettingMenuButton(title: "앱 평가하기", imageType: .symbol, imageName: "star.fill", imageColor: .yellow) {
                             requestReview()
                         }
                         
-                        AppMenuButton(title: "코젯 버전", subtitle: APP_VERSION, imageType: .asset, imageName: "Koget") {
+                        SettingMenuButton(title: "코젯 버전", subtitle: APP_VERSION, imageType: .asset, imageName: "Koget") {
                         }
                         .disabled(true)
                     }
@@ -59,14 +59,14 @@ struct HowToUseMenus: View, AppStoreReviewable {
 
 struct HowToUseMenus_Previews: PreviewProvider {
     static var previews: some View {
-        HowToUseMenus()
+        SettingMenu()
     }
 }
 
 
 
 
-struct AppMenuButton: View {
+struct SettingMenuButton: View {
     
     enum ImageType {
         case symbol
