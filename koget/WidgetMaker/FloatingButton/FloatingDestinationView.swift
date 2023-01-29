@@ -16,10 +16,9 @@ struct FloatingDestinationView: View {
         switch type {
         case .add:
             MakeWidgetView()
-        case .setting:
-            SettingView()
-        case .help:
-            HowToUseMenus()
+
+        case .aboutApp:
+            SettingMenu()
         case .contact:
             ContactView()
         case .edit:
@@ -31,7 +30,7 @@ struct FloatingDestinationView: View {
 
 struct FloatingDestinationView_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingDestinationView(type: .setting)
+        FloatingDestinationView(type: .aboutApp)
     }
 }
 

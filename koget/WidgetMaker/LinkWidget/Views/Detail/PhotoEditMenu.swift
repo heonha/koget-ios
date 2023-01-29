@@ -14,12 +14,18 @@ struct PhotoEditMenu: View {
     @StateObject var viewModel: MakeWidgetViewModel
     
     var body: some View {
-        Image(uiImage: viewModel.image ?? UIImage(named: "plus.circle")!)
-            .resizable()
-            .scaledToFit()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 90, height: 90)
-            .clipShape(Circle())
+        ZStack {
+            Color.white
+            Image(uiImage: viewModel.image ?? UIImage(named: "plus.circle")!)
+                .resizable()
+                .scaledToFit()
+        }
+        .frame(width: 90, height: 90)
+        .clipShape(Circle())
+        .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
+        .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
+
+
     }
 }
 

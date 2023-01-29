@@ -9,8 +9,7 @@ import SwiftUI
 
 enum NavigationLinkType {
     case add
-    case setting
-    case help
+    case aboutApp
     case contact
     case edit
 
@@ -114,6 +113,6 @@ struct FloatingMenuButton: View {
 }
 struct FloatingMenuButton_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingMenuButton(systemName: "person.fill", text: "텍스트", link: .setting, type: .navigationLink)
+        FloatingMenuButton(systemName: "person.fill", text: "텍스트", link: .aboutApp, type: .navigationLink)
     }
 }

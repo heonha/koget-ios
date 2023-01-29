@@ -51,7 +51,8 @@ struct DeepLinkProvider: IntentTimelineProvider {
         if let app = selectedApp {
             let image = {
                 var appImage = UIImage(named: "questionmark.circle")!
-                WidgetCoreData.shared.linkWidgets.contains { appAsset in
+                var assets = WidgetCoreData.shared.getStoredDataForDeepLink()!
+                assets.contains { appAsset in
                     if let appID = app.identifier {
                         if appAsset.id?.uuidString == appID {
                             appImage = UIImage(data: appAsset.image!)!
@@ -136,7 +137,7 @@ struct DeepLinkWidgetEntryView : View {
     let mainURL = "link://"
     let selectWidgetURL = "open://"
     @State var placeholderOpacity: CGFloat = 1
-    @StateObject var viewModel = WidgetCoreData.shared
+    @ObservedObject var viewModel = WidgetCoreData.shared
 
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder

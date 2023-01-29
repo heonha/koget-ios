@@ -15,9 +15,25 @@ enum MakeWidgetErrorType: String {
 
 final class MakeWidgetViewModel: ObservableObject {
     
-    @Published var name: String = ""
+    let nameStringLimit: Int = 14
+    
+    @Published var name: String = "" {
+        didSet {
+            if name.count > nameStringLimit {
+                name = String(name.prefix(nameStringLimit))
+                nameMaxCountError = true
+            } else {
+                nameMaxCountError = false
+            }
+        }
+    }
+    
     @Published var url: String = ""
     @Published var image: UIImage?
+    @Published var nameMaxCountError = false
+    lazy var nameMaxCountErrorMessage: String = "이름의 최대글자수는 \(nameStringLimit)자 입니다."
+
+    
     
     var targetURL: URL?
     

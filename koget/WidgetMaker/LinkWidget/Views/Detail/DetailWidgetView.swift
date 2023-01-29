@@ -39,7 +39,9 @@ struct DetailWidgetView: View {
                             .frame(maxWidth: .infinity, maxHeight: 45, alignment: .center)
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.init(uiColor: .white))
-                    }.background(Color.init(uiColor: .darkGray))
+                            .padding(.horizontal, 35)
+                    }
+                    .background(Color.init(uiColor: .darkGray))
                     
                     HStack {
                         // 상단 바 아이템
@@ -76,7 +78,7 @@ struct DetailWidgetView: View {
                 }
                 
                 
-                // 앱 선택 이미지
+                // 위젯 이미지
                 Spacer()
                 PhotoEditMenu(isEditingMode: $isEditingMode,
                               isPhotoViewPresent: $isPhotoViewPresent,
@@ -86,8 +88,9 @@ struct DetailWidgetView: View {
                 
                 Spacer()
                 
-                EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", isEditingMode: $isEditingMode, text: $viewModel.name)
-                EditTextField(title: "URL", placeHolder: "예시: youtube://", isEditingMode: $isEditingMode, text: $viewModel.url)
+                // 위젯 정보
+                EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.name)
+                EditTextField(title: "URL", placeHolder: "예시: youtube://", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.url)
                 Spacer()
                 
                 

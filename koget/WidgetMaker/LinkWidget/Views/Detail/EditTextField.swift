@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ToastUI
 
 struct EditTextField: View {
     
@@ -13,15 +14,28 @@ struct EditTextField: View {
     let placeHolder: String
     let padding: CGFloat = 32
     
+    @StateObject var viewModel: MakeWidgetViewModel
     @Binding var isEditingMode: Bool
     @Binding var text: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             // 타이틀
-            Text(title)
-                .font(.system(size: 18, weight: .bold))
+            HStack {
+                Text(title)
+                    .font(.system(size: 18, weight: .bold))
                 .lineLimit(1)
+                Spacer()
+                if title != "URL" && viewModel.nameMaxCountError == true {
+                        withAnimation {
+                            Text(viewModel.nameMaxCountErrorMessage)
+                                .foregroundColor(.red)
+                        }
+                } else {
+                    
+                }
+               
+            }
             if isEditingMode {
                 // 편집 모드
                 TextField(placeHolder, text: $text)
@@ -41,6 +55,7 @@ struct EditTextField: View {
         }
         .cornerRadius(8)
         .padding(.horizontal, 16)
+        
 
     }
 }

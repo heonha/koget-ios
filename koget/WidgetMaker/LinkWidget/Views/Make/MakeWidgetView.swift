@@ -107,18 +107,19 @@ struct MakeWidgetView: View {
                 .padding(.horizontal, 16)
                 Spacer()
             }
+            .navigationTitle("위젯 만들기")
         }
         //MARK: - Toolbar
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                ZStack {
-                    Text("위젯 만들기")
-                        .font(.system(size: 20))
-                        .fontWeight(.semibold)
-                        .foregroundColor(AppColors.label)
-                }
-            }
-        }
+        // .toolbar {
+        //     ToolbarItem(placement: .principal) {
+        //         ZStack {
+        //             Text("위젯 만들기")
+        //                 .font(.system(size: 20))
+        //                 .fontWeight(.semibold)
+        //                 .foregroundColor(AppColors.label)
+        //         }
+        //     }
+        // }
         .onTapGesture {
             hideKeyboard()
         }
