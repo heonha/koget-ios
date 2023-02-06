@@ -42,6 +42,23 @@ struct MainWidgetView: View {
                         .scaledToFit()
                         .frame(width: 50, height: 50)
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                            viewModel.isEditingMode.toggle()
+                    } label: {
+                        if viewModel.isEditingMode {
+                            // 편집중
+                            Text("완료")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.blue)
+                        } else {
+                            // 일반 모드
+
+                            Text("편집")
+                                .fontWeight(.semibold)
+                        }
+                    }
+                }
             }
             .onTapGesture {
                 isOpen = false

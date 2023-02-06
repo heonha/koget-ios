@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3ABA6C1228C6043F005AA8E4"
-               BuildableName = "koget.app"
-               BlueprintName = "koget"
+               BlueprintIdentifier = "3A49E90D2988C06700B6E2D1"
+               BuildableName = "koget-Debug.app"
+               BlueprintName = "koget-Debug"
                ReferencedContainer = "container:koget.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,15 +44,15 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3ABA6C1228C6043F005AA8E4"
-            BuildableName = "koget.app"
-            BlueprintName = "koget"
+            BlueprintIdentifier = "3A49E90D2988C06700B6E2D1"
+            BuildableName = "koget-Debug.app"
+            BlueprintName = "koget-Debug"
             ReferencedContainer = "container:koget.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3ABA6C1228C6043F005AA8E4"
-            BuildableName = "koget.app"
-            BlueprintName = "koget"
+            BlueprintIdentifier = "3A49E90D2988C06700B6E2D1"
+            BuildableName = "koget-Debug.app"
+            BlueprintName = "koget-Debug"
             ReferencedContainer = "container:koget.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -72,7 +72,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
