@@ -19,6 +19,7 @@ struct WidgetGridView: View {
     
     @State var isPresent = false
     @StateObject var coredata = WidgetCoreData.shared
+    @StateObject var viewModel = MainWidgetViewModel.shared
     
     var body: some View {
         
@@ -32,9 +33,14 @@ struct WidgetGridView: View {
                     HStack {
                         Text(title)
                             .font(.system(size: 20, weight: .bold))
-                            .padding([.horizontal, .top])
+                            .foregroundColor(.black)
+                            .opacity(0.9)
+            
                         Spacer()
+                        
                     }
+                    .padding([.horizontal, .top])
+
                 }
                 //MARK: - Grid View
                 
@@ -47,6 +53,8 @@ struct WidgetGridView: View {
                             //MARK: 위젯 Cell
                             ForEach($coredata.linkWidgets.wrappedValue, id: \.id) { widget in
                                 WidgetIconCell(widget: widget, cellWidth: width)
+                                    .padding()
+
                             }
                         }
                         .background(RoundedRectangle(cornerRadius: 25)
@@ -106,16 +114,16 @@ struct WidgetGridView: View {
     
 }
 
-// 
+//
 // struct WidgetGridView_Previews: PreviewProvider {
-//     
-//     
+//
+//
 //     static var previews: some View {
-//         
+//
 //         NavigationView {
 //             WidgetGridView(title: "링크 위젯", widgetCoreData: StorageProvider.preview.persistentContainer)
 //             Spacer()
 //         }
-// 
+//
 //     }
 // }

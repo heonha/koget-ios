@@ -10,11 +10,18 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var viewModel = MainWidgetViewModel.shared
+    @State var isDebugMode = false
     
     var body: some View {
         
+        
+        if isDebugMode {
+            AdminContactView()
+        } else {
             // 일반 뷰
             MainWidgetView(viewModel: viewModel)
+        }
+            
         
     }
 }
