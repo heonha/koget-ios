@@ -295,8 +295,12 @@
 				3A1F8909297AB25700E1B4C4 /* ContentView.swift */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
 				3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */,
+				3A00CA642931EDB6004FBF80 /* Grid */,
+				3A08BCFF292FBF0B00E09B3E /* Make */,
+				3A08BD00292FBF1B00E09B3E /* Detail */,
+				3A69AD29297BAD7400A49ED7 /* Manage */,
+				3A1F89062978F94D00E1B4C4 /* HowToUse */,
 				3A08BD01292FC9E700E09B3E /* Settings */,
-				3A51A10528F531F10027AD5A /* LinkWidget */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -350,10 +354,9 @@
 		3A08BD01292FC9E700E09B3E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				3A01E783296AD33C0019CD2D /* Contact */,
-				3A1F89062978F94D00E1B4C4 /* HowToUse */,
 				3ADA2E96297FD779004AADEE /* SettingMenu.swift */,
 				3A1591732985194C001924C3 /* AppStoreReviewable.swift */,
+				3A01E783296AD33C0019CD2D /* Contact */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -394,17 +397,6 @@
 				3A17026329728AD2001FB0E5 /* FloatingButtonTestView.swift */,
 			);
 			path = Test;
-			sourceTree = "<group>";
-		};
-		3A51A10528F531F10027AD5A /* LinkWidget */ = {
-			isa = PBXGroup;
-			children = (
-				3A00CA642931EDB6004FBF80 /* Grid */,
-				3A08BCFF292FBF0B00E09B3E /* Make */,
-				3A69AD29297BAD7400A49ED7 /* Manage */,
-				3A08BD00292FBF1B00E09B3E /* Detail */,
-			);
-			path = LinkWidget;
 			sourceTree = "<group>";
 		};
 		3A6449B4297D90B6002A710C /* Lottie */ = {
