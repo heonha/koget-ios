@@ -1,14 +1,15 @@
 //
-//  WidgetListForDeepLink.swift
-//  BackgroundMaker
+//  TestAssetsView.swift
+//  koget
 //
-//  Created by HeonJin Ha on 2022/11/22.
+//  Created by Heonjin Ha on 2023/02/10.
 //
+
 
 import SwiftUI
 
-struct WidgetAssetList: View {
-    
+struct TestAssetsView: View {
+
     @StateObject var widgetAssets = WidgetAssetViewModel()
     
     var textColor: Color = AppColors.label
@@ -83,7 +84,7 @@ struct WidgetAssetList: View {
                             }
                         }
                     }
-                    .disabled(Switcher.shared.isTestMode ? false : !widget.canOpen)
+                    .disabled(!widget.canOpen)
                     .opacity(widgetAssets.canOpenApp(widget.canOpen))
                     .listStyle(.plain)
                     
@@ -106,17 +107,9 @@ struct WidgetAssetList: View {
     
 }
 
-struct WidgetListForDeepLink_Previews: PreviewProvider {
-    
+struct TestAssetsView_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetAssetList(viewModel: MakeWidgetViewModel())
+        TestAssetsView(viewModel: MakeWidgetViewModel())
     }
 }
 
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif
