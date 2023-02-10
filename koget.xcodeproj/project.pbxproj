@@ -10,6 +10,10 @@
 		39D02E0B298F47C900D812F3 /* AdminContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02E0A298F47C900D812F3 /* AdminContactView.swift */; };
 		39D02E0D298F484E00D812F3 /* AdminContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02E0C298F484E00D812F3 /* AdminContactViewModel.swift */; };
 		39F5AC4F29968890001F9D1E /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39F5AC4E29968890001F9D1E /* QGrid */; };
+		39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5029968906001F9D1E /* EmptyGrid.swift */; };
+		39F5AC532996895C001F9D1E /* TestAssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC522996895C001F9D1E /* TestAssetsView.swift */; };
+		39F5AC5529968A3B001F9D1E /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5429968A3B001F9D1E /* Switcher.swift */; };
+		39F5AC5929968DDE001F9D1E /* WidgetGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5829968DDE001F9D1E /* WidgetGrid.swift */; };
 		3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA652931EFBE004FBF80 /* EditTextField.swift */; };
 		3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA682931F3F1004FBF80 /* StorageProvider.swift */; };
 		3A01E775296AADDD0019CD2D /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E774296AADDD0019CD2D /* CustomTextfield.swift */; };
@@ -151,6 +155,10 @@
 /* Begin PBXFileReference section */
 		39D02E0A298F47C900D812F3 /* AdminContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminContactView.swift; sourceTree = "<group>"; };
 		39D02E0C298F484E00D812F3 /* AdminContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminContactViewModel.swift; sourceTree = "<group>"; };
+		39F5AC5029968906001F9D1E /* EmptyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGrid.swift; sourceTree = "<group>"; };
+		39F5AC522996895C001F9D1E /* TestAssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAssetsView.swift; sourceTree = "<group>"; };
+		39F5AC5429968A3B001F9D1E /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
+		39F5AC5829968DDE001F9D1E /* WidgetGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGrid.swift; sourceTree = "<group>"; };
 		3A00CA652931EFBE004FBF80 /* EditTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextField.swift; sourceTree = "<group>"; };
 		3A00CA682931F3F1004FBF80 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		3A01E774296AADDD0019CD2D /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -312,7 +320,9 @@
 			children = (
 				3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */,
 				3A0566D42931E9F2007B0A7A /* WidgetGridView.swift */,
+				39F5AC5829968DDE001F9D1E /* WidgetGrid.swift */,
 				3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */,
+				39F5AC5029968906001F9D1E /* EmptyGrid.swift */,
 			);
 			path = Grid;
 			sourceTree = "<group>";
@@ -397,6 +407,8 @@
 				3ABFEFC6292F481F00455730 /* TestDeepLink.swift */,
 				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
 				3A17026329728AD2001FB0E5 /* FloatingButtonTestView.swift */,
+				39F5AC522996895C001F9D1E /* TestAssetsView.swift */,
+				39F5AC5429968A3B001F9D1E /* Switcher.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -778,7 +790,9 @@
 				3ADA2E97297FD779004AADEE /* SettingMenu.swift in Sources */,
 				39D02E0D298F484E00D812F3 /* AdminContactViewModel.swift in Sources */,
 				3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */,
+				39F5AC5929968DDE001F9D1E /* WidgetGrid.swift in Sources */,
 				3AE4B143296DA2F400DB219B /* UploadLinkViewModel.swift in Sources */,
+				39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */,
 				3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
@@ -790,6 +804,7 @@
 				3A6449B8297E39E5002A710C /* TrashAlert.swift in Sources */,
 				3AD4692A297D3EC40090B2D3 /* LottieView.swift in Sources */,
 				3AE4B141296DA02800DB219B /* UploadLinkView.swift in Sources */,
+				39F5AC5529968A3B001F9D1E /* Switcher.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
 				3A6449B1297D8ACD002A710C /* ToastAlert.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
@@ -807,6 +822,7 @@
 				3A0566D52931E9F2007B0A7A /* WidgetGridView.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* LinkWidgetView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
+				39F5AC532996895C001F9D1E /* TestAssetsView.swift in Sources */,
 				3A1F89082978F9DC00E1B4C4 /* LockscreenHelper.swift in Sources */,
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,
 				3A01E775296AADDD0019CD2D /* CustomTextfield.swift in Sources */,
