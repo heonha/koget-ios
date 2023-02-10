@@ -118,15 +118,6 @@
       }
     },
     {
-      "identity" : "qgrid",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Q-Mobile/QGrid.git",
-      "state" : {
-        "revision" : "804e59f8cb9f66b226685e9369fb82029742b83a",
-        "version" : "0.1.4"
-      }
-    },
-    {
       "identity" : "swift-protobuf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
