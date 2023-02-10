@@ -20,6 +20,11 @@ struct Constants {
     static let coreDataContainerName = "WidgetModel"
     static let appGroupID = "group.ZH5GA3W8UP.com.heon.koget"
     static let kogetGradient = LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
+    
+    //MARK: - 알수없는 데이터 Placeholder
+    static let unknownName = "알수없음"
+    static let unknownImage = Image(systemName: "questionmark.circle")
+    static let unknownUIImage = UIImage(systemName: "questionmark.circle")!
 
     
 }
