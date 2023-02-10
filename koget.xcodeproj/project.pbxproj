@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		39D02E0B298F47C900D812F3 /* AdminContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02E0A298F47C900D812F3 /* AdminContactView.swift */; };
 		39D02E0D298F484E00D812F3 /* AdminContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02E0C298F484E00D812F3 /* AdminContactViewModel.swift */; };
+		39F5AC4F29968890001F9D1E /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39F5AC4E29968890001F9D1E /* QGrid */; };
 		3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA652931EFBE004FBF80 /* EditTextField.swift */; };
 		3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA682931F3F1004FBF80 /* StorageProvider.swift */; };
 		3A01E775296AADDD0019CD2D /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E774296AADDD0019CD2D /* CustomTextfield.swift */; };
@@ -254,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39F5AC4F29968890001F9D1E /* QGrid in Frameworks */,
 				3AC152CF296D8170009CAA1B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				3A8C1E762980DB39004FAF89 /* WelcomeSheet in Frameworks */,
 				3AC92E08297247D8000E94F9 /* FloatingButton in Frameworks */,
@@ -622,6 +624,7 @@
 				3AD46925297D3DCF0090B2D3 /* Lottie */,
 				3A97F45F297D81B9002B4BDB /* ToastUI */,
 				3A8C1E752980DB39004FAF89 /* WelcomeSheet */,
+				39F5AC4E29968890001F9D1E /* QGrid */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -681,6 +684,7 @@
 				3AD46924297D3DCF0090B2D3 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				3A97F45E297D81B9002B4BDB /* XCRemoteSwiftPackageReference "ToastUI" */,
 				3A8C1E742980DB39004FAF89 /* XCRemoteSwiftPackageReference "Welcome-Sheet" */,
+				39F5AC4D29968890001F9D1E /* XCRemoteSwiftPackageReference "QGrid" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -1211,6 +1215,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		39F5AC4D29968890001F9D1E /* XCRemoteSwiftPackageReference "QGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Q-Mobile/QGrid.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
 		3A8C1E742980DB39004FAF89 /* XCRemoteSwiftPackageReference "Welcome-Sheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MAJKFL/Welcome-Sheet.git";
@@ -1254,6 +1266,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		39F5AC4E29968890001F9D1E /* QGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39F5AC4D29968890001F9D1E /* XCRemoteSwiftPackageReference "QGrid" */;
+			productName = QGrid;
+		};
 		3A1F890D297ABD8E00E1B4C4 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3AC152CD296D8170009CAA1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
