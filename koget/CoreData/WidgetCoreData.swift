@@ -133,6 +133,8 @@ class WidgetCoreData: ObservableObject {
         loadData()
     }
     
+
+    
 }
 
 
@@ -146,3 +148,5 @@ public extension URL {
         return fileContainer.appendingPathComponent("\(databaseName).sqlite")
     }
 }
+
+

@@ -117,8 +117,8 @@ final class MakeWidgetViewModel: ObservableObject {
 }
 
 enum LinkType {
-    case inApp
-    case custom
+    case app
+    case web
 }
 
 /// DeepLinking 할 앱의 정보
@@ -126,7 +126,7 @@ struct LinkWidget {
     
     // DB 데이터
     let id = UUID()
-    let type: LinkType = .inApp
+    let type: LinkType = .app
     let name: String
     let nameKr: String
     let nameEn: String

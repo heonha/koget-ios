@@ -37,5 +37,13 @@ class MainWidgetViewModel: ObservableObject {
         
     }
     
+    func checkLinkType(url: String) -> LinkType {
+        if url.contains("http://") || url.contains("https://") {
+            return LinkType.web
+        } else {
+            return LinkType.app
+        }
+    }
+    
     
 }
