@@ -15,6 +15,7 @@ struct WidgetGrid: View {
     let offColor = Color.init(red: 225/255, green: 225/255, blue: 235/255)
     var width = DEVICE_SIZE.width / 4.3
     @StateObject var coredata = WidgetCoreData.shared
+    @StateObject var viewModel = MainWidgetViewModel.shared
 
     var body: some View {
         ZStack {
@@ -26,6 +27,11 @@ struct WidgetGrid: View {
                         .foregroundColor(.black)
                         .opacity(0.9)
                     
+                    Text(viewModel.isEditingMode ? "편집모드" : "")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundColor(.init(uiColor: .systemBlue))
+                        .animation(Animation.linear(duration: 0.2))
+
                     Spacer()
                     
                 }
