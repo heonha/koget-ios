@@ -40,7 +40,11 @@ struct EditTextField: View {
                 // 편집 모드
                 TextField(placeHolder, text: $text)
                     .frame(height: 35)
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
+                    .textCase(.none)
                     .background(AppColors.secondaryBackgroundColor)
+                
             } else {
                 // 뷰어 모드
                 TextField(placeHolder, text: $text)
