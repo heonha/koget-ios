@@ -73,14 +73,24 @@ struct WidgetAssetList: View {
                             .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
 
                             .padding([.trailing, .vertical], 4)
-                            Text(widget.displayName)
-                                .fontWeight(.semibold)
-                                .foregroundColor(textColor)
-                            if !widget.canOpen {
-                                Text("(미설치)")
-                                    .font(.system(size: 14, weight: .bold))
-                                    .foregroundColor(.black)
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text(widget.displayName)
+                                        .fontWeight(.semibold)
+                                    .foregroundColor(textColor)
+                                    if !widget.canOpen {
+                                        Text("(미설치)")
+                                            .font(.system(size: 14, weight: .bold))
+                                            .foregroundColor(.black)
+                                    }
+                                }
+                                Text(MainWidgetViewModel.shared.checkLinkType(url: widget.url).rawValue)
+                                    .font(.system(size: 12, weight: .medium))
+                                    .foregroundColor(.init(uiColor: .secondaryLabel))
+                                    .padding(.leading, 1)
                             }
+                            
+
                         }
                     }
                     .disabled(Switcher.shared.isTestMode ? false : !widget.canOpen)
