@@ -116,9 +116,9 @@ final class MakeWidgetViewModel: ObservableObject {
     
 }
 
-enum LinkType {
-    case app
-    case web
+enum LinkType: String {
+    case app = "앱"
+    case web = "웹 페이지"
 }
 
 /// DeepLinking 할 앱의 정보
