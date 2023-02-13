@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import QGrid
 
 struct WidgetGrid: View {
     
@@ -31,21 +32,12 @@ struct WidgetGrid: View {
                 .padding([.horizontal, .top])
                 
                 
-                LazyVGrid(columns: gridItem, alignment: .center, spacing: 4) {
-                    
-                    //MARK: 위젯 Cell
-                    ForEach($coredata.linkWidgets.wrappedValue, id: \.id) { widget in
-                        WidgetIconCell(widget: widget, cellWidth: width)
-                            .padding()
-                        
-                    }
+                QGrid($coredata.linkWidgets.wrappedValue, columns: 4) { widget in
+                    WidgetIconCell(widget: widget, cellWidth: width)
                 }
-                .background(RoundedRectangle(cornerRadius: 25)
-                    .fill(offColor)
-                    .shadow(color: Color.black.opacity(0.2), radius: 2, x: 3, y: 3)
-                )
-                .frame(width: DEVICE_SIZE.width - 32)
                 Spacer()
+
+
             }
         }
         }
