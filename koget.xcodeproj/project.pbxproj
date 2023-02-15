@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39835ACF299D1F6600BEDF88 /* WidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835ACE299D1F6600BEDF88 /* WidgetButton.swift */; };
+		39835AD1299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */; };
 		39D02E0B298F47C900D812F3 /* AdminContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02E0A298F47C900D812F3 /* AdminContactView.swift */; };
 		39D02E0D298F484E00D812F3 /* AdminContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02E0C298F484E00D812F3 /* AdminContactViewModel.swift */; };
 		39F5AC4F29968890001F9D1E /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39F5AC4E29968890001F9D1E /* QGrid */; };
@@ -153,6 +155,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		39835ACE299D1F6600BEDF88 /* WidgetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetButton.swift; sourceTree = "<group>"; };
+		39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLinkTypeIcon.swift; sourceTree = "<group>"; };
 		39D02E0A298F47C900D812F3 /* AdminContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminContactView.swift; sourceTree = "<group>"; };
 		39D02E0C298F484E00D812F3 /* AdminContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminContactViewModel.swift; sourceTree = "<group>"; };
 		39F5AC5029968906001F9D1E /* EmptyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGrid.swift; sourceTree = "<group>"; };
@@ -322,7 +326,9 @@
 				3A0566D42931E9F2007B0A7A /* WidgetGridView.swift */,
 				39F5AC5829968DDE001F9D1E /* WidgetGrid.swift */,
 				3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */,
+				39835ACE299D1F6600BEDF88 /* WidgetButton.swift */,
 				39F5AC5029968906001F9D1E /* EmptyGrid.swift */,
+				39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */,
 			);
 			path = Grid;
 			sourceTree = "<group>";
@@ -793,6 +799,7 @@
 				39F5AC5929968DDE001F9D1E /* WidgetGrid.swift in Sources */,
 				3AE4B143296DA2F400DB219B /* UploadLinkViewModel.swift in Sources */,
 				39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */,
+				39835AD1299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift in Sources */,
 				3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
@@ -829,6 +836,7 @@
 				3ABD50FF292945EB00F878AE /* WidgetCoreData.swift in Sources */,
 				3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */,
 				3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */,
+				39835ACF299D1F6600BEDF88 /* WidgetButton.swift in Sources */,
 				3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */,
 				3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */,
 				3A8339D72932165B00DC9527 /* EditingToggleButton.swift in Sources */,
