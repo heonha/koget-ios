@@ -16,18 +16,18 @@ struct WidgetButton: View {
     var imageSize: CGSize
     var textSize: CGSize!
     let titleColor: Color = AppColors.label
+    @ObservedObject var viewModel: MainWidgetViewModel
 
-    init(name: String, url: String, widgetImage: UIImage, cellWidth: CGFloat) {
+    init(name: String, url: String, widgetImage: UIImage, cellWidth: CGFloat, imageSize: CGSize, textSize: CGSize, viewModel: MainWidgetViewModel) {
         self.name = name
         self.url = url
         self.widgetImage = widgetImage
         self.cellWidth = cellWidth
-        self.imageSize = CGSize(width: cellWidth * 0.63, height: cellWidth * 0.63)
-        self.textSize = CGSize(width: cellWidth, height: cellWidth * 0.40)
-
+        self.imageSize = imageSize
+        self.textSize = textSize
+        self.viewModel = viewModel
     }
     
-    @ObservedObject var viewModel = MainWidgetViewModel.shared
     
     var body: some View {
         VStack {
@@ -73,6 +73,6 @@ struct WidgetButton: View {
 
 struct WidgetButton_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: CELL_WIDTH)
+        WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: CELL_WIDTH, imageSize: CGSize(width: CELL_WIDTH * 0.63, height: CELL_WIDTH * 0.63), textSize: CGSize(width: CELL_WIDTH, height: CELL_WIDTH * 0.40), viewModel: MainWidgetViewModel.shared)
     }
 }
