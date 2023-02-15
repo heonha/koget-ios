@@ -13,8 +13,8 @@ struct WidgetIconCell: View {
     let titleColor: Color = AppColors.label
     var cellWidth: CGFloat
     
-    var imageSize: CGSize = .zero
-    var textSize: CGSize = .zero
+    var imageSize: CGSize!
+    var textSize: CGSize!
     
     
     
@@ -28,64 +28,90 @@ struct WidgetIconCell: View {
     
     @ObservedObject var viewModel = MainWidgetViewModel.shared
     @ObservedObject var coredata = WidgetCoreData.shared
-
+    
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     
     var body: some View {
-        
-        // 버튼
-        Button {
-            if viewModel.isEditingMode {
-                self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
-                    DetailWidgetView(selectedWidget: widget)
-                })
-            } else {
-                if let url = widget.url {
-                    viewModel.openURL(urlString: url)
-                } else {
-                    print("CoreData url Error")
+        if let data = widget.image {
+            if let widgetImage = UIImage(data: data) {
+                
+                // 버튼
+                Menu {
+                    Label {
+                        Text(widget.name ?? "")
+                            .fontWeight(.medium)
+                    } icon: {
+                        Image(uiImage: widgetImage)
+                            .clipShape(Circle())
+                    }
+                    
+                    Button {
+                        if let url = widget.url {
+                            viewModel.openURL(urlString: url)
+                        } else {
+                            print("CoreData url Error")
+                        }
+                    } label: {
+                        Label("실행하기", systemImage: "arrow.up.left.square.fill")
+                    }
+                    Button {
+                        self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                            DetailWidgetView(selectedWidget: widget)
+                        })
+                    } label: {
+                        Label("편집", systemImage: "slider.horizontal.3")
+                    }
+                    
+                    Button {
+                        WidgetCoreData.shared.deleteData(data: widget)
+//                        self.dismiss()
+                        MainWidgetViewModel.shared.deleteSuccessful = true
+
+                    } label: {
+                        Label("삭제", systemImage: "trash.fill")
+                    }
+                    
+                    
+                    
+                } label: {
+                    VStack(spacing: 2) {
+                        Spacer()
+                        
+                        VStack {
+                            ZStack {
+                                Color.white
+                                    .clipShape(Circle())
+                                    .shadow(radius: 1, x: 2, y: 2)
+                                Image(uiImage: widgetImage)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .clipShape(Circle())
+                                ImageTrailingBottomIcon(viewModel: viewModel, widget: widget)
+                                
+                            }
+                            .frame(width: imageSize.width, height: imageSize.height)
+                            .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
+                            .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
+                        }
+                        
+                        Text(widget.name ?? "알수없는 이름")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundColor(titleColor)
+                            .shadow(radius: 0.5, x: 0.5, y: 0.5)
+                            .frame(width: textSize.width, height: textSize.height)
+                            .lineLimit(2)
+                        
+                        Spacer()
+                    }
+                    .background(viewModel.isEditingMode ? Color.init(uiColor: .secondarySystemFill) : .clear)
+                    .frame(width: cellWidth, height: cellWidth * 1.1)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    
                 }
             }
-            
-        } label: {
-                if let data = widget.image {
-                    if let widgetImage = UIImage(data: data) {
-                        VStack(spacing: 2) {
-                            Spacer()
-                            
-                            VStack {
-                                ZStack {
-                                    Color.white
-                                        .clipShape(Circle())
-                                        .shadow(radius: 1, x: 2, y: 2)
-                                    Image(uiImage: widgetImage)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .clipShape(Circle())
-                                    ImageTrailingBottomIcon(viewModel: viewModel, widget: widget)
-                                    
-                                }
-                                .frame(width: imageSize.width, height: imageSize.height)
-                                .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
-                                .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
-                            }
-                            
-                            Text(widget.name ?? "알수없는 이름")
-                                .font(.system(size: 13, weight: .semibold))
-                                .foregroundColor(titleColor)
-                                .shadow(radius: 0.5, x: 0.5, y: 0.5)
-                                .frame(width: textSize.width, height: textSize.height)
-                                .lineLimit(2)
-                            
-                            Spacer()
-                        }
-                        .background(viewModel.isEditingMode ? Color.init(uiColor: .secondarySystemFill) : .clear)
-                        .frame(width: cellWidth, height: cellWidth * 1.1)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        
-                    }
-            }
         }
+        
+        
     }
 }
 

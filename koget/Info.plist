@@ -55,6 +55,7 @@
 		<string>strava</string>
 		<string>tmap</string>
 		<string>youtube</string>
+		<string>authy</string>
 	</array>
 	<key>NSUserActivityTypes</key>
 	<array>
