@@ -17,7 +17,7 @@ struct LinkWidgetView: View {
                 .ignoresSafeArea(edges: .bottom)
             VStack {
                 // Grid
-                WidgetGridView()
+                WidgetGrid(title: "나의 잠금화면 위젯")
             }
         }
     }

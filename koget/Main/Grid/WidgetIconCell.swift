@@ -11,15 +11,17 @@ struct WidgetIconCell: View {
     
     var widget: DeepLink
     var cellWidth: CGFloat
+    var viewModel: MainWidgetViewModel
+    var coreData: WidgetCoreData
     
-    init(widget: DeepLink, cellWidth: CGFloat) {
+    init(widget: DeepLink, cellWidth: CGFloat, viewModel: MainWidgetViewModel, coreData: WidgetCoreData) {
         self.widget = widget
         self.cellWidth = cellWidth
+        self.viewModel = viewModel
+        self.coreData = coreData
     }
     
-    
-    @ObservedObject var viewModel = MainWidgetViewModel.shared
-    @ObservedObject var coredata = WidgetCoreData.shared
+
     
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     
@@ -54,7 +56,7 @@ struct WidgetIconCell: View {
                     }
                     
                 } label: {
-                    WidgetButton(name: name, url: url, widgetImage: widgetImage, cellWidth: cellWidth)
+                    WidgetButton(name: name, url: url, widgetImage: widgetImage, cellWidth: cellWidth, imageSize: CGSize(width: cellWidth * 0.63, height: cellWidth * 0.63), textSize: CGSize(width: cellWidth, height: cellWidth * 0.40), viewModel: viewModel)
                 }
                 // 버튼
                 
@@ -75,7 +77,7 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
                 .ignoresSafeArea()
             
             // 컨텐츠
-            WidgetIconCell(widget: DeepLink.example, cellWidth: DEVICE_SIZE.width / 5)
+            WidgetIconCell(widget: DeepLink.example, cellWidth: CELL_WIDTH, viewModel: MainWidgetViewModel.shared, coreData: WidgetCoreData.shared)
         }
         .environmentObject(StorageProvider())
     }
