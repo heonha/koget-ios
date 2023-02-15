@@ -12,7 +12,7 @@ let DEVICE_SIZE = UIScreen.main.bounds.size
 let SCHEME_LINK = "link://"
 let SCHEME_OPEN = "open://"
 let APP_VERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-
+let CELL_WIDTH = DEVICE_SIZE.width / 4.3
 
 struct Constants {
     

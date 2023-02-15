@@ -13,7 +13,7 @@ struct WidgetGrid: View {
     var title: String
     var gridItem = [GridItem(), GridItem(), GridItem(), GridItem()]
     let offColor = Color.init(red: 225/255, green: 225/255, blue: 235/255)
-    var width = DEVICE_SIZE.width / 4.3
+    var width = CELL_WIDTH
     @StateObject var coredata = WidgetCoreData.shared
     @StateObject var viewModel = MainWidgetViewModel.shared
 
