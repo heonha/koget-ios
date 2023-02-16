@@ -14,7 +14,7 @@ struct WidgetGrid: View {
     var gridItem = [GridItem(), GridItem(), GridItem(), GridItem()]
     let offColor = Color.init(red: 225/255, green: 225/255, blue: 235/255)
     var width = CELL_WIDTH
-    @StateObject var coreData = WidgetCoreData.shared
+    @StateObject var coreData: WidgetCoreData
     @StateObject var viewModel = MainWidgetViewModel.shared
     
     var body: some View {
@@ -78,6 +78,6 @@ struct WidgetGrid: View {
     
     struct WidgetGrid_Previews: PreviewProvider {
         static var previews: some View {
-            WidgetGrid(title: "타이틀")
+            WidgetGrid(title: "타이틀", coreData: WidgetCoreData.shared)
         }
     }

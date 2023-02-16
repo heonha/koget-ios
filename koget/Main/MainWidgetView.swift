@@ -29,7 +29,7 @@ struct MainWidgetView: View {
                         .frame(width: DEVICE_SIZE.width, height: 14)
                         .foregroundStyle(Color.init(uiColor: .secondarySystemBackground))
                     // 링크위젯
-                    LinkWidgetView()
+                    LinkWidgetView(viewModel: viewModel, coreData: WidgetCoreData.shared)
                 }
                 NewFloatingButton(isOpen: $isOpen)
                 
@@ -41,6 +41,15 @@ struct MainWidgetView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 50)
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            viewModel.isGridView.toggle()
+                        } label: {
+                            Image(systemName: viewModel.isGridView ? "list.bullet" : "square.grid.3x3")
+                        }
+
                 }
 
             }
