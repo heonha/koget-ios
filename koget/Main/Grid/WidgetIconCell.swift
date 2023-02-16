@@ -32,8 +32,8 @@ struct WidgetIconCell: View {
                 
                 Menu {
                     Button {
-                        if let url = widget.url {
-                            viewModel.openURL(urlString: url)
+                        if let url = widget.url, let id = widget.id {
+                            viewModel.maybeOpenedFromWidget(urlString: "\(SCHEME_LINK)\(url)\(ID_SEPARATOR)\(id.uuidString)")
                         } else {
                             print("CoreData url Error")
                         }

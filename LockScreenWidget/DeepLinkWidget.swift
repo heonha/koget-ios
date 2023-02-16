@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import CoreData
 //MARK: - Protocol : Provider
 
 /// 위젯의 업데이트 시기를 WidgetKit에 알려줍니다.
@@ -47,6 +48,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
     func getTimeline(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (Timeline<DeepLinkEntry>) -> Void) {
         let selectedApp = configuration.app
         // ID가 같으면 그 이미지를 반환한다.
+        var deepLink: DeepLink?
         
         if let app = selectedApp {
             let image = {
@@ -137,7 +139,7 @@ struct DeepLinkWidgetEntryView : View {
     let mainURL = "link://"
     let selectWidgetURL = "open://"
     @State var placeholderOpacity: CGFloat = 1
-    @ObservedObject var viewModel = WidgetCoreData.shared
+    @ObservedObject var coreData = WidgetCoreData.shared
 
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
@@ -174,7 +176,7 @@ struct DeepLinkWidgetEntryView : View {
                                       ?? UIImage(systemName: "questionmark.circle")!)
                                 .resizable()
                                 .scaledToFit()
-                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)"))
+                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(ID_SEPARATOR)\(entry.id!)"))
                                 .clipShape(Circle())
                             }
                             .opacity(0.7)
@@ -194,7 +196,7 @@ struct DeepLinkWidgetEntryView : View {
                 .onAppear {
                     self.placeholderOpacity = 0
                 }
-                
+
             default:
                 VStack {
                     Text("Error")
@@ -202,6 +204,7 @@ struct DeepLinkWidgetEntryView : View {
                 .widgetURL(URL(string: selectWidgetURL))
             }
         }
+        
         
         
     }
@@ -226,7 +229,8 @@ struct DeepLinkWidget: Widget {
     let kind: String = "LockScreenWidget"
     let title: String = "바로가기 위젯"
     let subtitle: String = "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요."
-    
+    @ObservedObject var coreData = WidgetCoreData.shared
+
     
     /// 위젯의 Contents를 나타냅니다.
     var body: some WidgetConfiguration {
@@ -239,8 +243,9 @@ struct DeepLinkWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: DeepLinkAppIntent.self,
-            provider: DeepLinkProvider()) { (entry) in
+            provider: DeepLinkProvider()) { entry in
                 DeepLinkWidgetEntryView(entry: entry) // 위젯이 표현할 SwiftUI View입니다.
+                    
             }
             .configurationDisplayName(title)
             .description(subtitle)

@@ -17,6 +17,7 @@ struct MainWidgetView: View {
     @State var isPresentHelper = true
     @State var isOpen = false
     @StateObject var viewModel: MainWidgetViewModel
+    @EnvironmentObject var coreData: WidgetCoreData
     
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     var body: some View {
@@ -29,7 +30,7 @@ struct MainWidgetView: View {
                         .frame(width: DEVICE_SIZE.width, height: 14)
                         .foregroundStyle(Color.init(uiColor: .secondarySystemBackground))
                     // 링크위젯
-                    LinkWidgetView(viewModel: viewModel, coreData: WidgetCoreData.shared)
+                    LinkWidgetView(viewModel: viewModel, coreData: _coreData)
                 }
                 NewFloatingButton(isOpen: $isOpen)
                 
