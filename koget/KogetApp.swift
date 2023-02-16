@@ -33,7 +33,7 @@ struct KogetApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    private let widgetCoreData = WidgetCoreData.shared
+    private let coreData = WidgetCoreData.shared
     
     var body: some Scene {
         
@@ -44,26 +44,45 @@ struct KogetApp: App {
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }
-                .environmentObject(widgetCoreData)
-                .environment(\.managedObjectContext, widgetCoreData.container.viewContext)
+                .environmentObject(coreData)
+                .environment(\.managedObjectContext, coreData.container.viewContext)
         }
     }
-    
-    func handlingURL(url: String) -> URL {
-        let urlString = url.deletingPrefix(SCHEME_LINK)
-        
-        return URL(string: urlString)!
-    }
+//    
+//    func handlingURL(url: String) -> URL {
+//        let urlString = url.deletingPrefix(SCHEME_LINK)
+//        
+//        return URL(string: urlString)!
+//    }
     
     //MARK: Deeplink 처리
     /// 위젯 scheme을 확인하고 deepLink를 엽니다.
-    private func maybeOpenedFromWidget(urlString: String) {
+    func maybeOpenedFromWidget(urlString: String) {
         print("‼️위젯으로 앱을 열었습니다. ")
         
-        let url = URL(string: "\(urlString.deletingPrefix(SCHEME_LINK))")!
         
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        let separatedURL = urlString.split(separator: ID_SEPARATOR, maxSplits: 1)
+        let url = String(separatedURL[0]).deletingPrefix(SCHEME_LINK)
+        let id = String(separatedURL[1])
         
+        coreData.linkWidgets.contains { deepLink in
+            if deepLink.id?.uuidString == id {
+                deepLink.runCount += 1
+                coreData.saveData()
+                coreData.loadData()
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        print(id)
+
+        
+        UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+        
+        return
+
     }
 }
 

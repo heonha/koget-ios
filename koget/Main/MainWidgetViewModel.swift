@@ -45,5 +45,32 @@ class MainWidgetViewModel: ObservableObject {
         }
     }
     
+    func maybeOpenedFromWidget(urlString: String) {
+        print("‼️앱에서 링크를 열었습니다. ")
+        
+        
+        let separatedURL = urlString.split(separator: ID_SEPARATOR, maxSplits: 1)
+        let url = String(separatedURL[0]).deletingPrefix(SCHEME_LINK)
+        let id = String(separatedURL[1])
+        
+        WidgetCoreData.shared.linkWidgets.contains { deepLink in
+            if deepLink.id?.uuidString == id {
+                print("ID: \(deepLink.name!)")
+
+                deepLink.runCount += 1
+                WidgetCoreData.shared.saveData()
+                WidgetCoreData.shared.loadData()
+                return true
+            } else {
+                return false
+            }
+        }
+
+
+        UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+        
+        return
+
+    }
     
 }

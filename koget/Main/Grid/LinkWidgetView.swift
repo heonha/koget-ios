@@ -11,17 +11,19 @@ struct LinkWidgetView: View {
     
     let backgroundColor: Color = AppColors.backgroundColor
     @StateObject var viewModel: MainWidgetViewModel
-    @StateObject var coreData = WidgetCoreData.shared
+    @EnvironmentObject var coreData: WidgetCoreData
 
     var body: some View {
         ZStack {
             backgroundColor
                 .ignoresSafeArea(edges: .bottom)
             VStack {
-                // Grid
+                // 그리드뷰
                 if viewModel.isGridView {
-                    WidgetGrid(title: "나의 잠금화면 위젯", coreData: coreData)
+                    WidgetGrid(title: "나의 잠금화면 위젯")
                 } else {
+                    
+                    // 리스트뷰
                     List(coreData.linkWidgets, id: \.id) { widget in
                         
 
@@ -43,10 +45,14 @@ struct LinkWidgetView: View {
                                             .foregroundColor(.gray)
                                     }
                                 }
+                                Spacer()
+                                    Text("지금까지 \(Int(widget.runCount))회 실행")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.gray)
                             }
                             .frame(height: 50)
                             .onTapGesture {
-                                print(widget.name!)
+                                print("\(widget.name!): \(coreData.lastSelectedWidget?.name)")
                             }
                         
 

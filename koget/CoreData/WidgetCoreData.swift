@@ -15,6 +15,7 @@ class WidgetCoreData: ObservableObject {
     
     @Published var linkWidgets = [DeepLink]()
     @Published var lastUpdatedDate = Date()
+    @Published var lastSelectedWidget: DeepLink?
     var container = NSPersistentContainer(name: Constants.coreDataContainerName)
     
     private init() {
@@ -84,12 +85,34 @@ class WidgetCoreData: ObservableObject {
     }
     
     
-    //원하는 entity 타입의 데이터 불러오기(Read)
-    func loadData(sortKey: String = "updatedDate", ascending: Bool = false) {
+//    //원하는 entity 타입의 데이터 불러오기(Read)
+//    func loadData() {
+//
+//        let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
+//
+//
+//        // 데이터 가져오기
+//        do {
+//            linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
+//            self.objectWillChange.send()
+//            print("로드완료")
+//
+//        } catch {
+//            print("데이터 가져오기 에러 발생 : \(error)")
+//            fatalError("데이터 가져오기 에러 발생")
+//        }
+//    }
+    
+    enum WidgetSortKeys: String {
+        case updatedDate = "updatedDate"
+        case runCount = "runCount"
+    }
+    
+    func loadData(sortKey: WidgetSortKeys = .runCount, ascending: Bool = false) {
         
         let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
         // 정렬방식 설정
-        let sortDescriptor = NSSortDescriptor(key: sortKey, ascending: ascending)
+        let sortDescriptor = NSSortDescriptor(key: sortKey.rawValue, ascending: ascending)
         request.sortDescriptors = [sortDescriptor]
         
         // 데이터 가져오기
