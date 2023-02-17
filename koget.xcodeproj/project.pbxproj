@@ -17,7 +17,6 @@
 		39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5029968906001F9D1E /* EmptyGrid.swift */; };
 		39F5AC532996895C001F9D1E /* TestAssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC522996895C001F9D1E /* TestAssetsView.swift */; };
 		39F5AC5529968A3B001F9D1E /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5429968A3B001F9D1E /* Switcher.swift */; };
-		39F5AC5929968DDE001F9D1E /* WidgetGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5829968DDE001F9D1E /* WidgetGrid.swift */; };
 		3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA652931EFBE004FBF80 /* EditTextField.swift */; };
 		3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA682931F3F1004FBF80 /* StorageProvider.swift */; };
 		3A01E775296AADDD0019CD2D /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E774296AADDD0019CD2D /* CustomTextfield.swift */; };
@@ -164,7 +163,6 @@
 		39F5AC5029968906001F9D1E /* EmptyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGrid.swift; sourceTree = "<group>"; };
 		39F5AC522996895C001F9D1E /* TestAssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAssetsView.swift; sourceTree = "<group>"; };
 		39F5AC5429968A3B001F9D1E /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
-		39F5AC5829968DDE001F9D1E /* WidgetGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGrid.swift; sourceTree = "<group>"; };
 		3A00CA652931EFBE004FBF80 /* EditTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextField.swift; sourceTree = "<group>"; };
 		3A00CA682931F3F1004FBF80 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		3A01E774296AADDD0019CD2D /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -324,7 +322,6 @@
 			isa = PBXGroup;
 			children = (
 				3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */,
-				39F5AC5829968DDE001F9D1E /* WidgetGrid.swift */,
 				3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */,
 				39835ACE299D1F6600BEDF88 /* WidgetButton.swift */,
 				39F5AC5029968906001F9D1E /* EmptyGrid.swift */,
@@ -798,7 +795,6 @@
 				3ADA2E97297FD779004AADEE /* SettingMenu.swift in Sources */,
 				39D02E0D298F484E00D812F3 /* AdminContactViewModel.swift in Sources */,
 				3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */,
-				39F5AC5929968DDE001F9D1E /* WidgetGrid.swift in Sources */,
 				3AE4B143296DA2F400DB219B /* UploadLinkViewModel.swift in Sources */,
 				39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */,
 				39835AD1299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift in Sources */,
