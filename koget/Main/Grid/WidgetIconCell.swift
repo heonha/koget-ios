@@ -7,21 +7,28 @@
 
 import SwiftUI
 
+enum WidgetIconCellType {
+    case grid
+    case list
+}
+
 struct WidgetIconCell: View {
     
     var widget: DeepLink
-    var cellWidth: CGFloat
-    var viewModel: MainWidgetViewModel
-    var coreData: WidgetCoreData
+    var size: CGFloat
+    var type: WidgetIconCellType
     
-    init(widget: DeepLink, cellWidth: CGFloat, viewModel: MainWidgetViewModel, coreData: WidgetCoreData) {
+    @ObservedObject var viewModel: MainWidgetViewModel
+    @EnvironmentObject var coreData: WidgetCoreData
+
+    
+    init(widget: DeepLink, size: CGFloat, viewModel: MainWidgetViewModel, type: WidgetIconCellType) {
         self.widget = widget
-        self.cellWidth = cellWidth
+        self.size = size
         self.viewModel = viewModel
-        self.coreData = coreData
+        self.type = type
     }
     
-
     
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     
@@ -56,7 +63,40 @@ struct WidgetIconCell: View {
                     }
                     
                 } label: {
-                    WidgetButton(name: name, url: url, widgetImage: widgetImage, cellWidth: cellWidth, imageSize: CGSize(width: cellWidth * 0.63, height: cellWidth * 0.63), textSize: CGSize(width: cellWidth, height: cellWidth * 0.40), viewModel: viewModel)
+                    
+                    if type == .grid {
+                        WidgetButton(name: name, url: url, widgetImage: widgetImage, cellWidth: size, imageSize: CGSize(width: size * 0.63, height: size * 0.63), textSize: CGSize(width: size, height: size * 0.40), viewModel: viewModel)
+                    } else {
+                        
+                        HStack {
+                            Image(uiImage: .init(data: widget.image!) ?? UIImage(named: "questionmark.circle")!)
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                                .clipShape(Circle())
+                            VStack(alignment: .leading) {
+                                Text(widget.name ?? "알수없음")
+                                switch viewModel.checkLinkType(url: widget.url ?? "" ) {
+                                case .app:
+                                    Text("앱")
+                                        .font(.system(size: 13))
+                                        .foregroundColor(.gray)
+                                case .web:
+                                    Text("웹 페이지")
+                                        .font(.system(size: 13))
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                            Spacer()
+                            VStack {
+                                Text("지금까지 \(Int(widget.runCount))회 실행")
+                            }
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
+                            
+                        }
+                        .frame(height: size)
+                    }
+
                 }
                 // 버튼
                 
@@ -77,7 +117,7 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
                 .ignoresSafeArea()
             
             // 컨텐츠
-            WidgetIconCell(widget: DeepLink.example, cellWidth: CELL_WIDTH, viewModel: MainWidgetViewModel.shared, coreData: WidgetCoreData.shared)
+            WidgetIconCell(widget: DeepLink.example, size: CELL_WIDTH, viewModel: MainWidgetViewModel.shared, type: .grid)
         }
         .environmentObject(StorageProvider())
     }

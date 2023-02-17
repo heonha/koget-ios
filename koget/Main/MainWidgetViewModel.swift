@@ -15,7 +15,6 @@ class MainWidgetViewModel: ObservableObject {
     @Published var isGridView: Bool = false
     @AppStorage("FirstRun") var isFirstRun = true
     
-    
     @Published var isEditingMode: Bool = false
 
         
