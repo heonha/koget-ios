@@ -27,7 +27,7 @@ struct MainWidgetView: View {
                     .ignoresSafeArea()
                 VStack {
                     Rectangle()
-                        .frame(width: DEVICE_SIZE.width, height: 14)
+                        .frame(width: DEVICE_SIZE.width, height: 8)
                         .foregroundStyle(Color.init(uiColor: .secondarySystemBackground))
                     // 링크위젯
                     LinkWidgetView(viewModel: viewModel, coreData: _coreData)
@@ -45,11 +45,17 @@ struct MainWidgetView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
+                    if !$coreData.linkWidgets.wrappedValue.isEmpty {
+                        
                         Button {
                             viewModel.isGridView.toggle()
                         } label: {
                             Image(systemName: viewModel.isGridView ? "list.bullet" : "square.grid.3x3")
+                                .foregroundColor(.init(uiColor: .label))
+                                .opacity(0.9)
+                                .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
                         }
+                    }
 
                 }
 

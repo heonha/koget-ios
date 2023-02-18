@@ -13,7 +13,7 @@ struct LinkWidgetView: View {
     let backgroundColor: Color = AppColors.backgroundColor
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
-
+    
     var body: some View {
         ZStack {
             backgroundColor
@@ -27,7 +27,7 @@ struct LinkWidgetView: View {
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.black)
                             .opacity(0.9)
-
+                        
                         Spacer()
                         
                     }
@@ -36,22 +36,25 @@ struct LinkWidgetView: View {
                     if viewModel.isGridView {
                         
                         //MARK: Grid View
-                        QGrid($coreData.linkWidgets.wrappedValue, columns: 4) { widget in
-                            WidgetIconCell(widget: widget, size: CELL_WIDTH, viewModel: viewModel, type: .grid)
+                            
+                            QGrid($coreData.linkWidgets.wrappedValue, columns: 4) { widget in
+                                WidgetIconCell(widget: widget, size: CELL_WIDTH, viewModel: viewModel, type: .grid)
                         }
+                        
                     } else {
                         //MARK: List View
-                        WidgetList(viewModel: viewModel)
+                            WidgetList(viewModel: viewModel)
                     }
                     
                 } else {
                     Spacer()
                     
                     EmptyGrid()
-
+                    
                 }
                 
             }
+            .animation(.easeInOut(duration: 0.25), value: viewModel.isGridView)
         }
     }
 }
@@ -78,7 +81,7 @@ struct WidgetList: View {
             WidgetIconCell(widget: widget, size: 50, viewModel: viewModel, type: .list)
                 .environmentObject(WidgetCoreData.shared)
             
-
+            
             
             
         }
