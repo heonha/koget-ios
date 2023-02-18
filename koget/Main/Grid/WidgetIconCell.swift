@@ -15,16 +15,17 @@ enum WidgetIconCellType {
 struct WidgetIconCell: View {
     
     var widget: DeepLink
-    var size: CGFloat
     var type: WidgetIconCellType
+    var gridCellWidth: CGFloat = GRID_CELL_WIDTH
+    var listCellHeight: CGFloat = 50
+
     
     @ObservedObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
 
     
-    init(widget: DeepLink, size: CGFloat, viewModel: MainWidgetViewModel, type: WidgetIconCellType) {
+    init(widget: DeepLink, viewModel: MainWidgetViewModel, type: WidgetIconCellType) {
         self.widget = widget
-        self.size = size
         self.viewModel = viewModel
         self.type = type
     }
@@ -65,7 +66,7 @@ struct WidgetIconCell: View {
                 } label: {
                     
                     if type == .grid {
-                        WidgetButton(name: name, url: url, widgetImage: widgetImage, cellWidth: size, imageSize: CGSize(width: size * 0.63, height: size * 0.63), textSize: CGSize(width: size, height: size * 0.40), viewModel: viewModel)
+                        WidgetButton(name: name, url: url, widgetImage: widgetImage, cellWidth: gridCellWidth, imageSize: CGSize(width: gridCellWidth * 0.63, height: gridCellWidth * 0.63), textSize: CGSize(width: gridCellWidth, height: gridCellWidth * 0.40), viewModel: viewModel)
                     } else {
                         
                         HStack {
@@ -108,7 +109,7 @@ struct WidgetIconCell: View {
 
                             
                         }
-                        .frame(height: size)
+                        .frame(height: listCellHeight)
                     }
 
                 }
@@ -131,7 +132,7 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
                 .ignoresSafeArea()
             
             // 컨텐츠
-            WidgetIconCell(widget: DeepLink.example, size: CELL_WIDTH, viewModel: MainWidgetViewModel.shared, type: .grid)
+            WidgetIconCell(widget: DeepLink.example, viewModel: MainWidgetViewModel.shared, type: .grid)
         }
         .environmentObject(StorageProvider())
     }
