@@ -12,7 +12,7 @@ class MainWidgetViewModel: ObservableObject {
     
     @Published var makeSuccessful: Bool = false
     @Published var deleteSuccessful: Bool = false
-    @Published var isGridView: Bool = false
+    @AppStorage("isGridView") var isGridView = false
     @AppStorage("FirstRun") var isFirstRun = true
     
     @Published var isEditingMode: Bool = false

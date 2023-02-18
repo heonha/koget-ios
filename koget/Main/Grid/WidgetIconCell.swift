@@ -88,10 +88,24 @@ struct WidgetIconCell: View {
                             }
                             Spacer()
                             VStack {
-                                Text("지금까지 \(Int(widget.runCount))회 실행")
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(lineWidth: 1)
+                                        .foregroundStyle(Constants.kogetGradient)
+                                        .frame(width: 70, height: 20)
+                                        .opacity(0.8)
+                                    Group {
+                                        HStack(spacing: 0) {
+                                        Text("\(Int(widget.runCount))")
+                                            .font(.system(size: 14, weight: .semibold))
+                                        Text("회 실행")
+                                            .font(.system(size: 13, weight: .medium))
+                                        }
+                                        .foregroundColor(.init(uiColor: .label))
+                                    }
+                                }
                             }
-                            .font(.system(size: 14))
-                            .foregroundColor(.gray)
+
                             
                         }
                         .frame(height: size)
