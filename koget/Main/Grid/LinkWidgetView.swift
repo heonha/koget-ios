@@ -38,7 +38,7 @@ struct LinkWidgetView: View {
                         //MARK: Grid View
                             
                             QGrid($coreData.linkWidgets.wrappedValue, columns: 4) { widget in
-                                WidgetIconCell(widget: widget, size: CELL_WIDTH, viewModel: viewModel, type: .grid)
+                                WidgetIconCell(widget: widget, viewModel: viewModel, type: .grid)
                         }
                         
                     } else {
@@ -69,22 +69,3 @@ struct WidgetListGridView_Previews: PreviewProvider {
     }
 }
 
-struct WidgetList: View {
-    
-    @StateObject var viewModel: MainWidgetViewModel
-    @EnvironmentObject var coreData: WidgetCoreData
-    
-    
-    var body: some View {
-        List(coreData.linkWidgets, id: \.id) { widget in
-            
-            WidgetIconCell(widget: widget, size: 50, viewModel: viewModel, type: .list)
-                .environmentObject(WidgetCoreData.shared)
-            
-            
-            
-            
-        }
-        .listStyle(.plain)
-    }
-}

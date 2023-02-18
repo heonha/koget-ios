@@ -73,6 +73,6 @@ struct WidgetButton: View {
 
 struct WidgetButton_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: CELL_WIDTH, imageSize: CGSize(width: CELL_WIDTH * 0.63, height: CELL_WIDTH * 0.63), textSize: CGSize(width: CELL_WIDTH, height: CELL_WIDTH * 0.40), viewModel: MainWidgetViewModel.shared)
+        WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: GRID_CELL_WIDTH, imageSize: CGSize(width: GRID_CELL_WIDTH * 0.63, height: GRID_CELL_WIDTH * 0.63), textSize: CGSize(width: GRID_CELL_WIDTH, height: GRID_CELL_WIDTH * 0.40), viewModel: MainWidgetViewModel.shared)
     }
 }
