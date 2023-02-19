@@ -19,8 +19,6 @@ class MainWidgetViewModel: ObservableObject {
     @AppStorage("isGridView") var isGridView = false
     @AppStorage("FirstRun") var isFirstRun = true
     
-    //MARK: View Controller
-    @Environment(\.viewController) var viewControllerHolder: UIViewController?
 
         
     static let shared = MainWidgetViewModel()

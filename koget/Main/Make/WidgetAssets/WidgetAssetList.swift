@@ -17,6 +17,7 @@ struct WidgetAssetList: View {
     @State var viewModel: MakeWidgetViewModel
     @State private var searchText: String = ""
     @State var searching: Bool = false
+    @State var presentAssetRequestView: Bool = false
     
     @Environment(\.dismiss) var dismiss
     var body: some View {
@@ -35,6 +36,21 @@ struct WidgetAssetList: View {
                         .padding(.horizontal)
                     
                     HStack {
+                        
+                        Button {
+                            presentAssetRequestView.toggle()
+                        } label: {
+                            Text("앱 추가요청")
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundColor(.init(uiColor: .secondaryLabel))
+                                .padding(.leading, 16)
+                        }
+                        .sheet(isPresented: $presentAssetRequestView) {
+                            AssetRequestView()
+                        }
+
+
+                        
                         Spacer()
                         Text("설치된 앱만 보기")
                             .font(.system(size: 14, weight: .semibold))
