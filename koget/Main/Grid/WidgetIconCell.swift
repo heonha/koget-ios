@@ -31,7 +31,6 @@ struct WidgetIconCell: View {
     }
     
     
-    @Environment(\.viewController) var viewControllerHolder: UIViewController?
     
     var body: some View {
         if let data = widget.image, let name = widget.name, let url = widget.url {
@@ -49,7 +48,7 @@ struct WidgetIconCell: View {
                         Label("실행하기", systemImage: "arrow.up.left.square.fill")
                     }
                     Button {
-                        self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                        viewModel.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
                             DetailWidgetView(selectedWidget: widget)
                         })
                     } label: {
@@ -62,7 +61,7 @@ struct WidgetIconCell: View {
                     } label: {
                         Label("삭제", systemImage: "trash.fill")
                     }
-                    
+                
                 } label: {
                     
                     if type == .grid {
@@ -124,7 +123,9 @@ struct WidgetIconCell: View {
 
 
 struct DeepLinkWidgetIconView_Previews: PreviewProvider {
+
     static var previews: some View {
+        
         
         ZStack {
             // 배경

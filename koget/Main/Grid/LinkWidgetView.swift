@@ -35,15 +35,17 @@ struct LinkWidgetView: View {
                     
                     if viewModel.isGridView {
                         
-                        //MARK: Grid View
-                            
+                        //MARK: - Grid View
                             QGrid($coreData.linkWidgets.wrappedValue, columns: 4) { widget in
                                 WidgetIconCell(widget: widget, viewModel: viewModel, type: .grid)
                         }
                         
                     } else {
-                        //MARK: List View
-                            WidgetList(viewModel: viewModel)
+                        //MARK: - List View
+                        List(coreData.linkWidgets, id: \.id) { widget in
+                                WidgetIconCell(widget: widget, viewModel: viewModel, type: .list)
+                        }
+                        .listStyle(.plain)
                     }
                     
                 } else {
