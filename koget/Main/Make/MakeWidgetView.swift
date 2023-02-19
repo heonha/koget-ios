@@ -22,6 +22,8 @@ struct MakeWidgetView: View {
     @State var iconImage: UIImage = UIImage(named: "plus.circle")!
     @State var isSuccess = false
     @State var isError: Bool = false
+    @State var isImageError: Bool = false
+
     @State var errorMessage: String = ""
     @State var widgetType: WidgetType = .image
     
@@ -76,9 +78,16 @@ struct MakeWidgetView: View {
                     Button {
                         viewModel.checkTheTextFields { error in
                             if let error = error {
-                                // 실패
-                                self.errorMessage = error.rawValue
-                                self.isError.toggle()
+                                
+                                if error == .emptyImage {
+                                    isImageError.toggle()
+                                    
+                                } else {
+                                    // 실패
+                                    self.errorMessage = error.rawValue
+                                    self.isError.toggle()
+                                }
+                  
                             } else {
                                 // 성공
                                 viewModel.addWidget()
@@ -105,6 +114,22 @@ struct MakeWidgetView: View {
                     
                 }
                 .padding(.horizontal, 16)
+                .alert("이미지 확인", isPresented: $isImageError) {
+                    
+                    Button("이미지 없이 생성") {
+                        viewModel.image = UIImage(named: "AppIcon")
+                        saveWidget()
+                    }
+                    
+                    Button("취소") {
+                        return
+                    }
+                    
+
+                } message: {
+                    Text("아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?")
+                }
+
                 Spacer()
             }
             .navigationTitle("위젯 만들기")
@@ -127,6 +152,13 @@ struct MakeWidgetView: View {
         .onAppear {
             assetList = WidgetAssetList(viewModel: viewModel)
         }
+    }
+    
+    
+    private func saveWidget() {
+        viewModel.addWidget()
+        self.dismiss()
+        MainWidgetViewModel.shared.makeSuccessful = true
     }
 }
 

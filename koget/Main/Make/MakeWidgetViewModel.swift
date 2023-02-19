@@ -73,11 +73,11 @@ final class MakeWidgetViewModel: ObservableObject {
         if name == "" || url == "" {
             completion(.emptyField)
         }
-        else if image == nil {
-            completion(.emptyImage)
-        }
         else if !checkURLSyntex() {
             completion(.urlError)
+        }
+        else if image == nil {
+            completion(.emptyImage)
         }
         else {
             completion(nil)

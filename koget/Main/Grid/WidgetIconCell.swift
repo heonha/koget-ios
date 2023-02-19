@@ -22,6 +22,7 @@ struct WidgetIconCell: View {
     
     @ObservedObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
+    @Environment(\.viewController) var viewControllerHolder: UIViewController?
 
     
     init(widget: DeepLink, viewModel: MainWidgetViewModel, type: WidgetIconCellType) {
@@ -48,7 +49,7 @@ struct WidgetIconCell: View {
                         Label("실행하기", systemImage: "arrow.up.left.square.fill")
                     }
                     Button {
-                        viewModel.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                        self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
                             DetailWidgetView(selectedWidget: widget)
                         })
                     } label: {
