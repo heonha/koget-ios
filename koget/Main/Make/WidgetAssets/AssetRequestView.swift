@@ -6,91 +6,119 @@
 //
 
 import SwiftUI
+import ToastUI
 
 struct AssetRequestView: View {
     
-    @State var appName: String = ""
-    @State var bodyText: String = ""
+    @State var isSuccess: Bool = false
+    @State var isFailure: Bool = false
 
     
+    @ObservedObject var viewModel = AssetRequestViewModel()
+
+    @Environment(\.dismiss) var dismiss
     var body: some View {
 
-            VStack {
-
-                Group {
-                    VStack {
-                        Text("앱 추가 요청")
-                            .font(.system(size: 20))
-                            .fontWeight(.bold)
-                        Divider()
-                    }
-                }
-                .padding(.vertical, 16)
-
-                
-
-                //MARK: 앱 이름
-                HStack {
-                    Spacer()
-                    Text("앱 이름")
-                        .bold()
-                        .frame(width: 100)
-                    Spacer()
-
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.init(uiColor: .secondarySystemFill))
-                            .opacity(0.8)
-                        TextField("앱 이름", text: $appName)
-                            .padding(.horizontal, 4)
-                    }
-                    .padding(.trailing, 16)
-                    .padding(.vertical, 4)
-
-                }
-                .frame(height: 50)
-                
-                //MARK: 앱 이름
-                HStack {
-                    Spacer()
-
-                    Text("내용")
-                        .bold()
-                        .frame(width: 100)
-                    Spacer()
-                    
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.init(uiColor: .secondarySystemFill))
-                            .opacity(0.8)
-                        TextField("선택사항", text: $bodyText)
-                            .padding(.horizontal, 4)
-                    }
-                    .padding(.trailing, 16)
-                    .padding(.vertical, 4)
-                    
-                }
-                .frame(height: 50)
-
+        VStack {
+            
+            Text("앱/웹 추가 요청")
+                .font(.system(size: 20))
+                .fontWeight(.bold)
+            Divider()
+            
+            
+            
+            //MARK: 앱 이름
+            HStack {
                 Spacer()
-
-                Text("요청하신 앱은 검토 결과에 따라 앱에 추가 될 예정입니다.")
-                    .font(.system(size: 13))
-                    .padding()
-                             
+                Text("앱/웹 이름")
+                    .bold()
+                    .frame(width: 100)
+                Spacer()
                 
-                Button("요청하기"){
-                    
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.init(uiColor: .secondarySystemFill))
+                        .opacity(0.8)
+                    TextField("요청할 앱/웹 이름", text: $viewModel.appName)
+                        .padding(.horizontal, 4)
+                        .background(Color.clear)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                        .textCase(.none)
                 }
-                .backgroundStyle(.gray)
+                .padding(.trailing, 16)
                 .padding(.vertical, 4)
                 
+            }
+            .frame(height: 50)
+            
+            //MARK: 앱 이름
+            HStack {
+                Spacer()
+                
+                Text("내용")
+                    .bold()
+                    .frame(width: 100)
+                Spacer()
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.init(uiColor: .secondarySystemFill))
+                        .opacity(0.8)
+                    TextField("선택사항", text: $viewModel.body)
+                        .padding(.horizontal, 4)
+                        .background(Color.clear)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                        .textCase(.none)
+                }
+                .padding(.trailing, 16)
+                .padding(.vertical, 4)
+                
+            }
+            .frame(height: 50)
+            
+            
+            Text("요청하신 앱/웹은 검토 결과에 따라 앱에 추가 될 예정입니다.")
+                .font(.system(size: 13))
+                .padding()
+            
+            
+            Button {
+                viewModel.checkTheField { result in
+                    switch result {
+                    case true:
+                        self.isSuccess.toggle()
+                    case false:
+                        self.isFailure.toggle()
+                    }
+                }
+            } label: {
+                ButtonWithText(title: "요청하기", titleColor: .white, color: Color("Navy"))
+                
+            }
+            .padding(.horizontal, 24)
+                
+                Spacer()
                 
                 
             }
             .padding(.vertical)
+            .presentationDetents([.medium])
+            .onTapGesture {
+                hideKeyboard()
+            }
+            .toast(isPresented: $isSuccess, dismissAfter: 1.3, onDismiss: {
+                dismiss()
+            }) {
+                ToastAlert(jsonName: .send, title: "앱/웹 추가요청 성공", subtitle: "요청을 보내주셔서 감사합니다.")
+            }
+            .toast(isPresented: $isFailure, dismissAfter: 1.0, onDismiss: {
 
-            .presentationDetents([.height(DEVICE_SIZE.height / 3)])
+            }) {
+                ToastAlert(jsonName: .error, title: "앱/웹 이름을 기재해주세요.", subtitle: nil)
+            }
 
     }
 }
