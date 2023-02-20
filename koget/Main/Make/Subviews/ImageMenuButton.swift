@@ -21,7 +21,7 @@ struct ImageMenuButton: View {
                 Button(action: {
                     isPhotoPickerPresent.toggle()
                 }) {
-                    Label("사진 변경", systemImage: "photo")
+                    Label("이미지 선택", systemImage: "photo")
                 }
                 
             } label: {
@@ -42,11 +42,19 @@ struct ImageMenuButton: View {
                         .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
                     } else {
                         ZStack {
-                            Image(systemName: "photo.circle")
-                                .font(.system(size: 100))
-                                .foregroundStyle(LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
+                            Circle()
+                                .fill(.white)
+                            Image("Koget")
+                                .resizable()
+                                .scaledToFit()
                                 .clipShape(Circle())
+                            .opacity(0.3)
+                            Text("이미지\n선택")
+                                .foregroundColor(.black)
+                                .font(.system(size: 16, weight: .bold))
                         }
+                        .frame(width: 100, height: 100)
+
                     }
 
                 }
