@@ -23,7 +23,7 @@ struct LinkWidgetView: View {
                 
                 if !$coreData.linkWidgets.wrappedValue.isEmpty {
                     HStack {
-                        Text("나의 잠금화면 위젯")
+                        Text("잠금화면 위젯")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.black)
                             .opacity(0.9)

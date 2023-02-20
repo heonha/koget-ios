@@ -52,7 +52,7 @@ struct WidgetAssetList: View {
 
                         
                         Spacer()
-                        Text("설치된 앱만 보기")
+                        Text("실행가능한 앱/웹 보기")
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundColor(.init(uiColor: .secondaryLabel))
                             .padding(.leading)
