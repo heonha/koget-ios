@@ -40,7 +40,7 @@ struct WidgetAssetList: View {
                         Button {
                             presentAssetRequestView.toggle()
                         } label: {
-                            Text("앱 추가요청")
+                            Text("앱/웹 추가요청")
                                 .font(.system(size: 14, weight: .semibold))
                                 .foregroundColor(.init(uiColor: .secondaryLabel))
                                 .padding(.leading, 16)

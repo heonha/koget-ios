@@ -29,6 +29,7 @@ struct EmptyGrid: View {
                         RoundedRectangle(cornerRadius: 25)
                             .stroke(lineWidth: 2)
                             .foregroundStyle(Constants.kogetGradient)
+                            .opacity(0.8)
                         
                         Text("첫번째 바로가기 위젯 만들기")
                             .font(.system(size: 18, weight: .semibold))
@@ -36,9 +37,11 @@ struct EmptyGrid: View {
                     }
                 }
                 .frame(width: DEVICE_SIZE.width - 32, height: 40)
+
             }
+            .frame(width: DEVICE_SIZE.width - 32, height: DEVICE_SIZE.height / 1.5)
+            
         }
-        .frame(width: DEVICE_SIZE.width - 32, height: DEVICE_SIZE.height / 1.5)
     }
 }
 

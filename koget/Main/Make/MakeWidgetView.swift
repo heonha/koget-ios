@@ -116,8 +116,9 @@ struct MakeWidgetView: View {
                 .padding(.horizontal, 16)
                 .alert("이미지 확인", isPresented: $isImageError) {
                     
-                    Button("이미지 없이 생성") {
-                        viewModel.image = UIImage(named: "AppIcon")
+                    Button("기본이미지로 생성") {
+                        viewModel.image = UIImage(named: "KogetClear")
+                        print(viewModel.image)
                         saveWidget()
                     }
                     

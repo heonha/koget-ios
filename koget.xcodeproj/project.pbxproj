@@ -13,6 +13,8 @@
 		3930108B299E6AAC009B13ED /* WidgetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39301089299E6AAC009B13ED /* WidgetConstants.swift */; };
 		39835ACF299D1F6600BEDF88 /* WidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835ACE299D1F6600BEDF88 /* WidgetButton.swift */; };
 		39835AD1299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */; };
+		39B23C4729A3B7A70047BBDB /* PatchNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */; };
+		39B23C4929A3BB6F0047BBDB /* PatchNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */; };
 		39D02E0B298F47C900D812F3 /* AdminContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02E0A298F47C900D812F3 /* AdminContactView.swift */; };
 		39D02E0D298F484E00D812F3 /* AdminContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02E0C298F484E00D812F3 /* AdminContactViewModel.swift */; };
 		39F5AC4F29968890001F9D1E /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39F5AC4E29968890001F9D1E /* QGrid */; };
@@ -162,6 +164,8 @@
 		39301089299E6AAC009B13ED /* WidgetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConstants.swift; sourceTree = "<group>"; };
 		39835ACE299D1F6600BEDF88 /* WidgetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetButton.swift; sourceTree = "<group>"; };
 		39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLinkTypeIcon.swift; sourceTree = "<group>"; };
+		39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteList.swift; sourceTree = "<group>"; };
+		39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteView.swift; sourceTree = "<group>"; };
 		39D02E0A298F47C900D812F3 /* AdminContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminContactView.swift; sourceTree = "<group>"; };
 		39D02E0C298F484E00D812F3 /* AdminContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminContactViewModel.swift; sourceTree = "<group>"; };
 		39F5AC5029968906001F9D1E /* EmptyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGrid.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				3A1F8909297AB25700E1B4C4 /* ContentView.swift */,
+				39F5AC5429968A3B001F9D1E /* Switcher.swift */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
 				3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */,
 				3A00CA642931EDB6004FBF80 /* Grid */,
@@ -322,6 +327,15 @@
 				3A08BD01292FC9E700E09B3E /* Settings */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		39B23C4A29A3C1B40047BBDB /* PatchNote */ = {
+			isa = PBXGroup;
+			children = (
+				39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */,
+				39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */,
+			);
+			path = PatchNote;
 			sourceTree = "<group>";
 		};
 		3A00CA642931EDB6004FBF80 /* Grid */ = {
@@ -375,6 +389,7 @@
 		3A08BD01292FC9E700E09B3E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				39B23C4A29A3C1B40047BBDB /* PatchNote */,
 				3ADA2E96297FD779004AADEE /* SettingMenu.swift */,
 				3A1591732985194C001924C3 /* AppStoreReviewable.swift */,
 				3A01E783296AD33C0019CD2D /* Contact */,
@@ -417,7 +432,6 @@
 				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
 				3A17026329728AD2001FB0E5 /* FloatingButtonTestView.swift */,
 				39F5AC522996895C001F9D1E /* TestAssetsView.swift */,
-				39F5AC5429968A3B001F9D1E /* Switcher.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -813,12 +827,14 @@
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthModel.swift in Sources */,
 				3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */,
+				39B23C4929A3BB6F0047BBDB /* PatchNoteView.swift in Sources */,
 				3A8C1E782980DB7C004FAF89 /* HelperSheetViewModel.swift in Sources */,
 				3A6449B8297E39E5002A710C /* TrashAlert.swift in Sources */,
 				3AD4692A297D3EC40090B2D3 /* LottieView.swift in Sources */,
 				3AE4B141296DA02800DB219B /* UploadLinkView.swift in Sources */,
 				39F5AC5529968A3B001F9D1E /* Switcher.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
+				39B23C4729A3B7A70047BBDB /* PatchNoteList.swift in Sources */,
 				3A6449B1297D8ACD002A710C /* ToastAlert.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */,
@@ -1091,7 +1107,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1131,7 +1147,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
