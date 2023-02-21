@@ -11,6 +11,7 @@ import WelcomeSheet
 class HelperSheetViewModel: ObservableObject {
     
     @Published var showWelcomeSheet = false
+    @Published var showPatchNote = false
     @Published var showUseLockscreen = false
 
     

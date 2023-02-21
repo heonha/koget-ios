@@ -83,7 +83,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
             completion(timeline)
             
         } else {
-            let defaultImage = UIImage(named: "questionmark.circle")!
+            let defaultImage = UIImage(named: "KogetClear")!
             let entry = DeepLinkEntry(
                 date: Date(),
                 name: "선택되지 않음",

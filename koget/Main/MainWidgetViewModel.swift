@@ -18,8 +18,6 @@ class MainWidgetViewModel: ObservableObject {
     //MARK: User Defaults
     @AppStorage("isGridView") var isGridView = false
     @AppStorage("FirstRun") var isFirstRun = true
-    
-
         
     static let shared = MainWidgetViewModel()
     

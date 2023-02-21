@@ -44,17 +44,13 @@ struct KogetApp: App {
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }
+                .tint(.black)
                 .environmentObject(coreData)
                 .environment(\.managedObjectContext, coreData.container.viewContext)
+                .background(Color.init(uiColor: .secondarySystemBackground))
         }
     }
-//    
-//    func handlingURL(url: String) -> URL {
-//        let urlString = url.deletingPrefix(SCHEME_LINK)
-//        
-//        return URL(string: urlString)!
-//    }
-    
+
     //MARK: Deeplink 처리
     /// 위젯 scheme을 확인하고 deepLink를 엽니다.
     func maybeOpenedFromWidget(urlString: String) {
@@ -91,5 +87,18 @@ extension String {
     func deletingPrefix(_ prefix: String) -> String {
         guard self.hasPrefix(prefix) else { return self }
         return String(self.dropFirst(prefix.count))
+    }
+}
+extension UICollectionReusableView {
+    override open var backgroundColor: UIColor? {
+        get { .clear }
+        set { }
+
+        // default separators use same color as background
+        // so to have it same but new (say red) it can be
+        // used as below, otherwise we just need custom separators
+        //
+        // set { super.backgroundColor = .red }
+
     }
 }

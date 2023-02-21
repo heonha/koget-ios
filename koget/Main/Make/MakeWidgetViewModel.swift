@@ -16,6 +16,7 @@ enum MakeWidgetErrorType: String {
 final class MakeWidgetViewModel: ObservableObject {
     
     let nameStringLimit: Int = 14
+    let defaultImage = UIImage(named: "KogetClear")!
     
     @Published var name: String = "" {
         didSet {

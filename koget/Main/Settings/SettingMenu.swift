@@ -15,22 +15,40 @@ struct SettingMenu: View, AppStoreReviewable {
     
     var body: some View {
         ZStack {
+            Color.init(uiColor: .secondarySystemBackground)
+                .ignoresSafeArea()
             VStack {
                 Spacer()
                 List {
-                    Section("도움말") {
+                    Section("공지사항") {
                         
-                        SettingMenuButton(title: "앱 소개 다시보기", imageType: .symbol, imageName: "book") {
-                            viewModel.showWelcomeSheet.toggle()
+                        NavigationLink {
+                            PatchNoteList()
+                        } label: {
+                            Label("업데이트 소식", systemImage: "square.and.pencil")
                         }
+                        // SettingMenuButton(title: "패치 노트", imageType: .symbol, imageName: "square.and.pencil") {
+                        //     viewModel.showPatchNote.toggle()
+                        // }
+                        NavigationLink {
+                            LockscreenHelper()
+                        } label: {
+                            Label("위젯을 잠금화면에 등록하는 방법", systemImage: "apps.iphone.badge.plus")
+                        }
+
+                        // SettingMenuButton(title: "만든 위젯을 잠금화면에 등록하는 방법", imageType: .symbol, imageName: "apps.iphone.badge.plus") {
+                        //     viewModel.showUseLockscreen.toggle()
+                        // }
                         
-                        SettingMenuButton(title: "만든 위젯을 잠금화면에 등록하는 방법", imageType: .symbol, imageName: "apps.iphone.badge.plus") {
-                            viewModel.showUseLockscreen.toggle()
-                        }
+         
                         
                     }
                     
                     Section("앱에 관하여") {
+                        
+                        SettingMenuButton(title: "앱 소개 다시보기", imageType: .symbol, imageName: "book") {
+                            viewModel.showWelcomeSheet.toggle()
+                        }
                         
                         
                         SettingMenuButton(title: "앱 평가하기", imageType: .symbol, imageName: "star.fill", imageColor: .yellow) {
@@ -52,6 +70,9 @@ struct SettingMenu: View, AppStoreReviewable {
         .welcomeSheet(isPresented: $viewModel.showWelcomeSheet, isSlideToDismissDisabled: true, pages: viewModel.pages)
         .sheet(isPresented: $viewModel.showUseLockscreen) {
             LockscreenHelper()
+        }
+        .sheet(isPresented: $viewModel.showPatchNote) {
+            PatchNoteList()
         }
 
     }

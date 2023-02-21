@@ -46,10 +46,12 @@ struct LinkWidgetView: View {
                                 WidgetIconCell(widget: widget, viewModel: viewModel, type: .list)
                         }
                         .listStyle(.plain)
+                        
                     }
+                    Spacer()
+
                     
                 } else {
-                    Spacer()
                     
                     EmptyGrid()
                     
