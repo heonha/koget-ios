@@ -14,18 +14,15 @@ extension LocalizedStringKey {
 }
 
 extension String {
-    static func localizedString(_ key: String,
-                                locale: Locale = .current) -> String {
+    static func localizedString(_ key: String, locale: Locale = .current) -> String {
         
-        let language = locale.language.languageCode?.identifier
-        if let path = Bundle.main.path(forResource: language, ofType: "lproj"), let bundle = Bundle(path: path) {
-            let localizedString = NSLocalizedString(key, bundle: bundle, comment: "")
-            return localizedString
-
-        } else {
-            
-            return "en"
-        }
+        let language = Locale.current.language.languageCode?.identifier
+        
+        let path = Bundle.main.path(forResource: language, ofType: "lproj")!
+        let bundle = Bundle(path: path)!
+        let localizedString = NSLocalizedString(key, bundle: bundle, comment: "")
+        return localizedString
+        
 
         
     }

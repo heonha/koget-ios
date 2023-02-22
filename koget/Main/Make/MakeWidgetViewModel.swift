@@ -33,7 +33,7 @@ final class MakeWidgetViewModel: ObservableObject {
     @Published var url: String = ""
     @Published var image: UIImage?
     @Published var nameMaxCountError = false
-    lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit)자 입니다."
+    lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit, specifier: "%d")자 입니다."
 
     
     

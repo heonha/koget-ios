@@ -27,7 +27,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
 }
-
 @main
 struct KogetApp: App {
     // register app delegate for Firebase setup
