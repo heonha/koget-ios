@@ -1,9 +1,9 @@
-/* 
+/*
   Localizable.strings
   koget
 
   Created by Heonjin Ha on 2023/02/22.
-  
+
 */
 
 // Main
@@ -168,3 +168,7 @@
 
 "바로가기 위젯" = "Shortcut Widget";
 "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요." = "Tap the icon and place it on the lock screen.\nAnd select the widget created by Koget.";
+
+
+//
+"이름의 최대글자수는 %d자 입니다." = "Maximum is %d chars.";
