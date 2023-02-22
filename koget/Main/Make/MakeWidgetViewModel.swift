@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Localize_Swift
 
 enum MakeWidgetErrorType: String {
     case emptyField = "빈칸을 채워주세요."
@@ -32,14 +33,14 @@ final class MakeWidgetViewModel: ObservableObject {
     @Published var url: String = ""
     @Published var image: UIImage?
     @Published var nameMaxCountError = false
-    lazy var nameMaxCountErrorMessage: String = "이름의 최대글자수는 \(nameStringLimit)자 입니다."
+    lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit)자 입니다."
 
     
     
     var targetURL: URL?
     
     func getWidgetData(selectedWidget: LinkWidget) {
-        self.name = selectedWidget.name
+        self.name = selectedWidget.displayName
         self.url = selectedWidget.url
         self.image = selectedWidget.image!
     }
@@ -117,7 +118,7 @@ final class MakeWidgetViewModel: ObservableObject {
     
 }
 
-enum LinkType: String {
+enum LinkType: LocalizedStringKey {
     case app = "앱"
     case web = "웹 페이지"
 }

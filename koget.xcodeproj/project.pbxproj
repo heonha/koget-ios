@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		390853B629A24EB2006E8311 /* AssetRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390853B529A24EB2006E8311 /* AssetRequestView.swift */; };
 		390853B829A3949F006E8311 /* AssetRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390853B729A3949F006E8311 /* AssetRequestViewModel.swift */; };
+		39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
+		39223B6229A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
+		39223B6329A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
+		39223B6E29A5E34600F59F54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B7229A5E34600F59F54 /* Localizable.strings */; };
+		39223B6F29A5E34600F59F54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B7229A5E34600F59F54 /* Localizable.strings */; };
+		39223B7029A5E34600F59F54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B7229A5E34600F59F54 /* Localizable.strings */; };
+		39223B7429A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */; };
+		39223B7529A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */; };
+		39223B7629A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */; };
+		39223B7929A6030A00F59F54 /* Localize_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = 39223B7829A6030A00F59F54 /* Localize_Swift */; };
+		39223B7B29A61EBC00F59F54 /* Localize_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = 39223B7A29A61EBC00F59F54 /* Localize_Swift */; };
 		3930108A299E6AAC009B13ED /* WidgetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39301089299E6AAC009B13ED /* WidgetConstants.swift */; };
 		3930108B299E6AAC009B13ED /* WidgetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39301089299E6AAC009B13ED /* WidgetConstants.swift */; };
 		39835ACF299D1F6600BEDF88 /* WidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835ACE299D1F6600BEDF88 /* WidgetButton.swift */; };
@@ -161,6 +172,11 @@
 /* Begin PBXFileReference section */
 		390853B529A24EB2006E8311 /* AssetRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetRequestView.swift; sourceTree = "<group>"; };
 		390853B729A3949F006E8311 /* AssetRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetRequestViewModel.swift; sourceTree = "<group>"; };
+		39223B6429A5E12800F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		39223B6729A5E15500F59F54 /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		39223B7129A5E34600F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationExtensions.swift; sourceTree = "<group>"; };
+		39223B7C29A6325800F59F54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39301089299E6AAC009B13ED /* WidgetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConstants.swift; sourceTree = "<group>"; };
 		39835ACE299D1F6600BEDF88 /* WidgetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetButton.swift; sourceTree = "<group>"; };
 		39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLinkTypeIcon.swift; sourceTree = "<group>"; };
@@ -183,7 +199,6 @@
 		3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetView.swift; sourceTree = "<group>"; };
 		3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetList.swift; sourceTree = "<group>"; };
 		3A0C03412935131600868B70 /* PhotoEditMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditMenu.swift; sourceTree = "<group>"; };
-		3A0F42A128C8DC19002F1CAD /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkWidgetViewModel.swift; sourceTree = "<group>"; };
 		3A1591732985194C001924C3 /* AppStoreReviewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewable.swift; sourceTree = "<group>"; };
 		3A17026129727151001FB0E5 /* FloatingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenu.swift; sourceTree = "<group>"; };
@@ -226,7 +241,6 @@
 		3AA8BC512976EBB900E4927D /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		3ABA6C1328C6043F005AA8E4 /* koget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = koget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABA6C2228C60440005AA8E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3ABA6C2528C60440005AA8E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3ABA6C2728C60440005AA8E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCoreData.swift; sourceTree = "<group>"; };
 		3ABFEFBC292E70A900455730 /* WidgetAssetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetViewModel.swift; sourceTree = "<group>"; };
@@ -283,6 +297,7 @@
 				3AD46926297D3DCF0090B2D3 /* Lottie in Frameworks */,
 				3AE4B13C296D848800DB219B /* FirebaseAnalytics in Frameworks */,
 				3AC152D3296D8170009CAA1B /* FirebaseFirestoreSwift in Frameworks */,
+				39223B7929A6030A00F59F54 /* Localize_Swift in Frameworks */,
 				3A97F460297D81B9002B4BDB /* ToastUI in Frameworks */,
 				3A1F890E297ABD8E00E1B4C4 /* FirebaseAuth in Frameworks */,
 			);
@@ -292,6 +307,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39223B7B29A61EBC00F59F54 /* Localize_Swift in Frameworks */,
 				3AF9F00628ED570D00F685E6 /* SwiftUI.framework in Frameworks */,
 				3AF9F00528ED570D00F685E6 /* WidgetKit.framework in Frameworks */,
 			);
@@ -506,6 +522,7 @@
 		3ABA6C0A28C6043F005AA8E4 = {
 			isa = PBXGroup;
 			children = (
+				39223B6529A5E12800F59F54 /* InfoPlist.strings */,
 				3A9BC0CE28E6C93A0041DA1B /* LockScreenWidgetExtension.entitlements */,
 				3ABA6C1528C6043F005AA8E4 /* koget */,
 				3AF9F00728ED570D00F685E6 /* LockScreenWidget */,
@@ -530,6 +547,7 @@
 			children = (
 				3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */,
 				3AE4B13D296D8A2D00DB219B /* KogetApp.swift */,
+				39223B7229A5E34600F59F54 /* Localizable.strings */,
 				3900CCE8299686A400092AD0 /* Main */,
 				3AE0F982294878CF008C9F5F /* CoreData */,
 				3AF7E59128F85FD200B14DFD /* Utils */,
@@ -596,6 +614,7 @@
 				3ACCB354294C3D3500A85E0F /* TextFieldView.swift */,
 				3A9C04FF292DB03C00442017 /* PhotoPicker.swift */,
 				39301089299E6AAC009B13ED /* WidgetConstants.swift */,
+				39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -661,6 +680,7 @@
 				3A97F45F297D81B9002B4BDB /* ToastUI */,
 				3A8C1E752980DB39004FAF89 /* WelcomeSheet */,
 				39F5AC4E29968890001F9D1E /* QGrid */,
+				39223B7829A6030A00F59F54 /* Localize_Swift */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -679,6 +699,9 @@
 			dependencies = (
 			);
 			name = LockScreenWidgetExtension;
+			packageProductDependencies = (
+				39223B7A29A61EBC00F59F54 /* Localize_Swift */,
+			);
 			productName = LockScreenWidgetExtension;
 			productReference = 3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -710,8 +733,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				"ko-KR",
+				Base,
 			);
 			mainGroup = 3ABA6C0A28C6043F005AA8E4;
 			packageReferences = (
@@ -721,6 +744,7 @@
 				3A97F45E297D81B9002B4BDB /* XCRemoteSwiftPackageReference "ToastUI" */,
 				3A8C1E742980DB39004FAF89 /* XCRemoteSwiftPackageReference "Welcome-Sheet" */,
 				39F5AC4D29968890001F9D1E /* XCRemoteSwiftPackageReference "QGrid" */,
+				39223B7729A6030A00F59F54 /* XCRemoteSwiftPackageReference "Localize-Swift" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -739,6 +763,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */,
+				39223B7029A5E34600F59F54 /* Localizable.strings in Resources */,
+				39223B6329A5E12800F59F54 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +773,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ADA2E9F297FE7FD004AADEE /* rightArrow.json in Resources */,
+				39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */,
 				3ADA2E99297FD99C004AADEE /* lockscreenTutorial.mp4 in Resources */,
 				3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */,
 				3A6449B3297D8C81002A710C /* error.json in Resources */,
@@ -755,6 +782,7 @@
 				3A1A1FE7296BC9FF00819214 /* GoogleService-Info.plist in Resources */,
 				3A6449BA297E3A2C002A710C /* trash.json in Resources */,
 				3ADA2E9D297FE698004AADEE /* createApp.json in Resources */,
+				39223B6E29A5E34600F59F54 /* Localizable.strings in Resources */,
 				3ADA2E9B297FE2A8004AADEE /* apps.json in Resources */,
 				3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */,
 				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
@@ -767,6 +795,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */,
+				39223B6F29A5E34600F59F54 /* Localizable.strings in Resources */,
+				39223B6229A5E12800F59F54 /* InfoPlist.strings in Resources */,
 				3AF9F00B28ED570E00F685E6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -785,6 +815,7 @@
 				3ACCB34C294C33C300A85E0F /* AppColors.swift in Sources */,
 				3A3C119F28EDB5B400C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3AA8BC502976DE1C00E4927D /* WidgetCoreData.swift in Sources */,
+				39223B7629A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */,
 				3A1CD19D28F9819300AC5D1C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -817,6 +848,7 @@
 				39D02E0D298F484E00D812F3 /* AdminContactViewModel.swift in Sources */,
 				3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */,
 				3AE4B143296DA2F400DB219B /* UploadLinkViewModel.swift in Sources */,
+				39223B7429A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */,
 				39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */,
 				39835AD1299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift in Sources */,
 				3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */,
@@ -876,6 +908,7 @@
 				3AA8BC4E2976DE1A00E4927D /* WidgetCoreData.swift in Sources */,
 				3A1CD19E28F9819400AC5D1C /* Constants.swift in Sources */,
 				3AE9DC0E28F8F890008A3316 /* WidgetModel.xcdatamodeld in Sources */,
+				39223B7529A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */,
 				3A7CD3822965562C008FAB75 /* LinkWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -896,11 +929,27 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		39223B6529A5E12800F59F54 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39223B6429A5E12800F59F54 /* en */,
+				39223B6729A5E15500F59F54 /* ko-KR */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		39223B7229A5E34600F59F54 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39223B7129A5E34600F59F54 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3ABA6C2528C60440005AA8E4 /* Base */,
-				3A0F42A128C8DC19002F1CAD /* ko-KR */,
+				39223B7C29A6325800F59F54 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1261,6 +1310,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		39223B7729A6030A00F59F54 /* XCRemoteSwiftPackageReference "Localize-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Localize-Swift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
 		39F5AC4D29968890001F9D1E /* XCRemoteSwiftPackageReference "QGrid" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Q-Mobile/QGrid.git";
@@ -1312,6 +1369,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		39223B7829A6030A00F59F54 /* Localize_Swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39223B7729A6030A00F59F54 /* XCRemoteSwiftPackageReference "Localize-Swift" */;
+			productName = Localize_Swift;
+		};
+		39223B7A29A61EBC00F59F54 /* Localize_Swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39223B7729A6030A00F59F54 /* XCRemoteSwiftPackageReference "Localize-Swift" */;
+			productName = Localize_Swift;
+		};
 		39F5AC4E29968890001F9D1E /* QGrid */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 39F5AC4D29968890001F9D1E /* XCRemoteSwiftPackageReference "QGrid" */;

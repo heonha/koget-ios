@@ -43,23 +43,23 @@ struct ContactView: View {
                                 Button {
                                     viewModel.contactType = .app
                                 } label: {
-                                    Text(ContectType.app.rawValue)
+                                    Text(ContectType.app.rawValue.localized())
                                 }
                                 Button {
                                     viewModel.contactType = .addApp
                                     
                                 } label: {
-                                    Text(ContectType.addApp.rawValue)
+                                    Text(ContectType.addApp.rawValue.localized())
                                 }
                                 Button {
                                     viewModel.contactType = .feedback
                                 } label: {
-                                    Text(ContectType.feedback.rawValue)
+                                    Text(ContectType.feedback.rawValue.localized())
                                 }
                                 Button {
                                     viewModel.contactType = .etc
                                 } label: {
-                                    Text(ContectType.etc.rawValue)
+                                    Text(ContectType.etc.rawValue.localized())
                                 }
                                 
                                 
@@ -70,7 +70,7 @@ struct ContactView: View {
                                         RoundedRectangle(cornerRadius: 8)
                                             .foregroundColor(.init(uiColor: .secondarySystemFill))
                                     }
-                                    Text(viewModel.contactType.rawValue)
+                                    Text(viewModel.contactType.rawValue.localized())
                                         .bold()
                                         .frame(width: DEVICE_SIZE.width / 1.5, height: 35)
                                         .foregroundColor(.black)
@@ -142,12 +142,12 @@ struct ContactView: View {
             .toast(isPresented: $isSuccess, dismissAfter: 1.5, onDismiss: {
                 dismiss()
             }) {
-                ToastAlert(jsonName: .send, title: "문의 보내기 성공", subtitle: "피드백을 보내주셔서 감사합니다.")
+                ToastAlert(jsonName: .send, title: "문의 보내기 성공".localized(), subtitle: "피드백을 보내주셔서 감사합니다.".localized())
             }
             .toast(isPresented: $isFailure, dismissAfter: 1.5, onDismiss: {
 
             }) {
-                ToastAlert(jsonName: .error, title: "빈칸을 확인해주세요.", subtitle: nil)
+                ToastAlert(jsonName: .error, title: "빈칸을 확인해주세요.".localized(), subtitle: nil)
             }
             .alert("내용 확인", isPresented: $isPresentSendAlert) {
                 Button {

@@ -84,7 +84,7 @@ struct MakeWidgetView: View {
                                     
                                 } else {
                                     // 실패
-                                    self.errorMessage = error.rawValue
+                                    self.errorMessage = error.rawValue.localized()
                                     self.isError.toggle()
                                 }
                   

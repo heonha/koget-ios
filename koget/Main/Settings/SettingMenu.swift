@@ -94,7 +94,7 @@ struct SettingMenuButton: View {
         case asset
     }
 
-    var title: String
+    var title: LocalizedStringKey
     var titleColor: Color = .black
     var subtitle: String? = nil
     var subtitleColor: Color = .black

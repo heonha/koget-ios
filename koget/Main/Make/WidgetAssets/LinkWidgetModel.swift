@@ -43,10 +43,11 @@ final class LinkWidgetModel: ObservableObject {
                 let url = app[3]
                 let imageName = app[4]
                 
+                let displayName = getLocalName(appName: name, appNameEn: nameEn)
                 let canOpen = canOpenURL(url: url)
                 let image = getImage(imageName: imageName)
                 
-                let myApp = LinkWidget(name: name, nameKr: nameKr, nameEn: nameEn, url: url, imageName: imageName, displayName: name, image: image, canOpen: canOpen)
+                let myApp = LinkWidget(name: name, nameKr: nameKr, nameEn: nameEn, url: url, imageName: imageName, displayName: displayName, image: image, canOpen: canOpen)
                 
                 
                 apps.append(myApp)

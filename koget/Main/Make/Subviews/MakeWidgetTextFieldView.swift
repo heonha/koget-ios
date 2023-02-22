@@ -15,11 +15,11 @@ struct MakeWidgetTextFieldView: View {
     
     @ObservedObject var viewModel: MakeWidgetViewModel
     
-    let nameTitle = "위젯 이름"
-    let namePlaceholder = "위젯 이름을 입력하세요."
+    let nameTitle: LocalizedStringKey = "위젯 이름"
+    let namePlaceholder: LocalizedStringKey = "위젯 이름을 입력하세요."
     
-    let urlTitle = "URL"
-    let urlPlaceholder = "앱주소:// 또는 https://웹주소"
+    let urlTitle: LocalizedStringKey = "URL"
+    let urlPlaceholder: LocalizedStringKey = "앱주소:// 또는 https://웹주소"
     
     var body: some View {
         VStack {
