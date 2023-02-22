@@ -23,7 +23,7 @@ enum FloatingMenuType {
 struct FloatingMenuButton: View {
     
     var systemName: String
-    var text: String
+    var text: LocalizedStringKey
     var link: NavigationLinkType
     var type: FloatingMenuType
     
@@ -33,7 +33,7 @@ struct FloatingMenuButton: View {
     
     // content
     var textInfo: (color: Color, fontSize: CGFloat, weight: Font.Weight)
-        = (color: .black, fontSize: 18, weight: .medium)
+        = (color: .black, fontSize: 15, weight: .medium)
     
     // view
     var borderColor = Color(hex: "F4F4F4")
@@ -60,6 +60,8 @@ struct FloatingMenuButton: View {
                         Text(text)
                             .lineLimit(1)
                             .font(.system(size: textInfo.fontSize, weight: textInfo.weight))
+                            .lineLimit(2, reservesSpace: false)
+                            .multilineTextAlignment(.center)
                             .foregroundStyle(textInfo.color)
                         Spacer()
                     }

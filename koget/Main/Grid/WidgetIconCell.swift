@@ -31,6 +31,9 @@ struct WidgetIconCell: View {
         self.type = type
     }
     
+    let app: LocalizedStringKey = "앱"
+    let web: LocalizedStringKey = "웹 페이지"
+
     
     
     var body: some View {
@@ -78,11 +81,11 @@ struct WidgetIconCell: View {
                                 Text(widget.name ?? "알수없음")
                                 switch viewModel.checkLinkType(url: widget.url ?? "" ) {
                                 case .app:
-                                    Text("앱")
+                                    Text(self.app)
                                         .font(.system(size: 13))
                                         .foregroundColor(.gray)
                                 case .web:
-                                    Text("웹 페이지")
+                                    Text(self.web)
                                         .font(.system(size: 13))
                                         .foregroundColor(.gray)
                                 }

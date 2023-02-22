@@ -25,63 +25,67 @@ struct PatchNoteView: View {
                     Text("업데이트 소식")
                         .font(.system(size: 26, weight: .bold))
                         .shadow(radius: 1.5, x: 2, y: 2)
-
+                    
                 }
                 .frame(height: 70)
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(.white)
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(lineWidth: 2)
-                        .fill(Constants.kogetGradient.opacity(0.8))
-                    Text("\(patchNote.version) 버전")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundColor(.init(uiColor: .secondaryLabel))
                     
-                }
-                .shadow(radius: 2, x: 1, y: 1)
-                .frame(width: 80, height: 24)
-                .padding(.bottom)
-                
-                VStack {
-                    Divider()
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(.white)
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(lineWidth: 2)
+                            .fill(Constants.kogetGradient.opacity(0.8))
+                        Text("\(patchNote.version) Ver.")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(.init(uiColor: .secondaryLabel))
+                        
+                    }
+                    .shadow(radius: 2, x: 1, y: 1)
+                    .frame(width: 80, height: 24)
+                    .padding(.bottom)
                     
-                    ForEach(patchNote.note, id: \.id) { note in
-                        HStack {
-                            
+                    VStack {
+                        Divider()
+                        ScrollView {
+
+                        ForEach(patchNote.note, id: \.id) { note in
                             HStack {
                                 
-                                Image(systemName: note.systemName)
-                                    .font(.system(size: 28))
-                                    .foregroundStyle(Constants.kogetGradient)
-                                    .padding(.horizontal, 8)
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(note.title)
-                                        .font(.system(size: 18, weight: .semibold))
-
-                                    Text(note.body)
-                                        .font(.system(size: 16))
-                                        .foregroundColor(.init(uiColor: .secondaryLabel))
+                                HStack {
+                                    
+                                    Image(systemName: note.systemName)
+                                        .font(.system(size: 28))
+                                        .foregroundStyle(Constants.kogetGradient)
+                                        .padding(.horizontal, 8)
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(note.title)
+                                            .font(.system(size: 18, weight: .semibold))
+                                        
+                                        Text(note.body)
+                                            .font(.system(size: 16))
+                                            .foregroundColor(.init(uiColor: .secondaryLabel))
+                                    }
+                                    Spacer()
                                 }
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
+                                
                                 Spacer()
+                                
+                                
                             }
-                            .padding(.horizontal, 12)
+                            .cornerRadius(8)
+                            .padding(.horizontal, 20)
                             .padding(.vertical, 8)
-                            
-                            Spacer()
                             
                             
                         }
-                        .cornerRadius(8)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 12)
                         
-                        
+                        Spacer()
                     }
-                    
-                    Spacer()
+                    .background(Color.white)
                 }
-                .background(Color.white)
+                
                 
             }
         }

@@ -112,7 +112,7 @@ struct AssetRequestView: View {
             .toast(isPresented: $isSuccess, dismissAfter: 1.3, onDismiss: {
                 dismiss()
             }) {
-                ToastAlert(jsonName: .send, title: "앱/웹 추가요청 성공", subtitle: "요청을 보내주셔서 감사합니다.")
+                ToastAlert(jsonName: .send, title: "앱/웹 추가요청 성공".localized(), subtitle: "요청을 보내주셔서 감사합니다.".localized())
             }
             .toast(isPresented: $isFailure, dismissAfter: 1.0, onDismiss: {
 

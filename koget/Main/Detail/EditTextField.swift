@@ -10,8 +10,8 @@ import ToastUI
 
 struct EditTextField: View {
     
-    let title: String
-    let placeHolder: String
+    let title: LocalizedStringKey
+    let placeHolder: LocalizedStringKey
     let padding: CGFloat = 32
     
     @StateObject var viewModel: MakeWidgetViewModel

@@ -6,22 +6,23 @@
 //
 
 import SwiftUI
+import Localize_Swift
 
 struct URLTestButton: View {
     
-    var title: String = "URL 실행 테스트"
+    var title: LocalizedStringKey = "URL 실행 테스트"
 
     
     
     @ObservedObject var viewModel: MakeWidgetViewModel
 
     // Error Alert
-    var alertTitle: LocalizedStringKey = "URL 확인"
-    var alertMessage: LocalizedStringKey = "문자열 :// 이 반드시 들어가야합니다. \n(앱이름:// 또는 https://주소)"
+    var alertTitle: String = "URL 확인".localized()
+    var alertMessage: String = "문자열 :// 이 반드시 들어가야합니다. \n(앱이름:// 또는 https://주소)".localized()
     @State var isAlertPresent: Bool = false
     
-    var urlStringAlertTitle: LocalizedStringKey = "URL 확인"
-    var urlStringAlertMessage: LocalizedStringKey = "URL에 들어갈 수 없는 글자가 있습니다."
+    var urlStringAlertTitle: String = "URL 확인".localized()
+    var urlStringAlertMessage: String = "URL에 들어갈 수 없는 글자가 있습니다.".localized()
     @State var isurlStringAlertPresent: Bool = false
 
     

@@ -13,8 +13,8 @@ enum Field: Hashable {
 
 struct CustomTextfield: View {
     
-    var title: String
-    var placeholder: String
+    var title: LocalizedStringKey
+    var placeholder: LocalizedStringKey
     @Binding var text: String
     @FocusState var focusState: Field?
     var equals: Field

@@ -9,9 +9,12 @@ import SwiftUI
 import WelcomeSheet
 import QGrid
 
+
+
+
 struct PatchNote: Identifiable {
     let id: UUID = .init()
-    let title: String
+    let title: LocalizedStringKey
     let version: String
     let date: String
     let note: [SheetBody]
@@ -20,9 +23,12 @@ struct PatchNote: Identifiable {
 struct SheetBody {
     let id: UUID = .init()
     let systemName: String
-    let title: String
-    let body: String
+    let title: LocalizedStringKey
+    let body: LocalizedStringKey
 }
+
+
+
 
 struct PatchNoteList: View {
     
@@ -35,6 +41,8 @@ struct PatchNoteList: View {
 
         ])
     ]
+    
+    let title: LocalizedStringKey = "업데이트 소식"
     
     var body: some View {
         
@@ -64,7 +72,7 @@ struct PatchNoteList: View {
                                         .foregroundColor(.init(hex: "000000"))
                                     Divider()
                                         .frame(width: DEVICE_SIZE.width / 2)
-                                    Text("\(note.version)버전")
+                                    Text("\(note.version) Ver.")
                                         .font(.system(size: 18, weight: .semibold))
                                         .shadow(radius: 1.5, x: 4, y: 4)
                                         .foregroundColor(.init(hex: "191919"))

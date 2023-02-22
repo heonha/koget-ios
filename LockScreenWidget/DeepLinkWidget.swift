@@ -161,7 +161,9 @@ struct DeepLinkWidgetEntryView : View {
                             ZStack {
                                 VStack {
                                     Text("바로가기")
+                                        .font(.system(size: 12))
                                     Text("위젯추가")
+                                        .font(.system(size: 12))
                                 }
                                 .bold()
                             }
@@ -224,11 +226,12 @@ struct Widgets: WidgetBundle {
 
 //MARK: - Protocol : Widget
 
+
 /// Widget : Widget의 컨텐츠를 나타내는 configuration 프로토콜
 struct DeepLinkWidget: Widget {
     let kind: String = "LockScreenWidget"
-    let title: String = "바로가기 위젯"
-    let subtitle: String = "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요."
+    let title: LocalizedStringKey = "바로가기 위젯"
+    let subtitle: LocalizedStringKey = "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요."
     @ObservedObject var coreData = WidgetCoreData.shared
 
     

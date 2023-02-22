@@ -15,7 +15,7 @@ enum TextFieldType {
 struct TextFieldView: View {
     
     var systemName: String? = nil
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     let padding: CGFloat = 32
     
     var type: TextFieldType = .title
