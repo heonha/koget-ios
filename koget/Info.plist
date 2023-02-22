@@ -56,6 +56,21 @@
 		<string>tmap</string>
 		<string>youtube</string>
 		<string>authy</string>
+		<string>nflx</string>
+		<string>nikerunclub</string>
+		<string>facebook</string>
+		<string>whatsapp</string>
+		<string>google</string>
+		<string>spotify</string>
+		<string>telegram</string>
+		<string>uber</string>
+		<string>disneyplus</string>
+		<string>twitter</string>
+		<string>googleassistant</string>
+		<string>fb455753897775430</string>
+		<string>reddit</string>
+		<string>goodnotes5</string>
+		<string>tiktok</string>
 	</array>
 	<key>NSUserActivityTypes</key>
 	<array>
