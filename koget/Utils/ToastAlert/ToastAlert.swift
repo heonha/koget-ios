@@ -20,7 +20,7 @@ struct ToastAlert: View {
     
     var title: String
     var subtitle: String?
-    var size = CGSize(width: 250, height: 250)
+    var size = CGSize(width: 250, height: 280)
     var opacity: CGFloat = 0.8
     
     @Environment(\.dismiss) var dismiss
