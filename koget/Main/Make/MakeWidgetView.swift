@@ -29,6 +29,7 @@ struct MakeWidgetView: View {
     
     //Present Views
     @State var isAppPickerPresent: Bool = false
+    @State var isPresentQustionmark: Bool = false
     
     @Environment(\.dismiss) var dismiss
     
@@ -75,9 +76,41 @@ struct MakeWidgetView: View {
                     HStack {
                         Text("투명도")
                             .font(.system(size: 20, weight: .bold))
+                  
+                        if let image = viewModel.image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .grayscale(1)
+                                .clipShape(Circle())
+                                .opacity(viewModel.opacityValue)
+                                .opacity(0.7)
+                        }
                         Spacer()
                         OpacityPicker(viewModel: viewModel, proxy: proxy)
                         Spacer()
+                        Button {
+                            isPresentQustionmark.toggle()
+                        } label: {
+                            Image(systemName: "questionmark.circle")
+                                .foregroundColor(.gray)
+                        }
+                        .overlay(
+                            ZStack(content: {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(.white)
+                                    .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
+                                Text("잠금화면에서의 아이콘 투명도입니다.")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.black)
+                            })
+                            .frame(width: 250, height: 30)
+                            .offset(x: -110, y: -40)
+                            .opacity(
+                                isPresentQustionmark ? 0.7 : 0.0
+                            )
+                            .animation(.linear(duration: 0.2), value: isPresentQustionmark)
+                        )
                     }
                     .padding(.horizontal, 16)
                     .padding(.top, 8)
@@ -159,6 +192,7 @@ struct MakeWidgetView: View {
             // }
             .onTapGesture {
                 hideKeyboard()
+                isPresentQustionmark = false
             }
             .toolbarBackground(.visible, for: .navigationBar)
             .onAppear {
@@ -185,136 +219,3 @@ struct AddWidgetView_Previews: PreviewProvider {
 
 
 
-
-struct OpacityPicker: View {
-    
-    @StateObject var viewModel: MakeWidgetViewModel
-    var proxy: GeometryProxy
-    @State var checkedMenu = 0
-    
-    var body: some View {
-        
-        
-        Menu {
-            Button {
-                viewModel.opacityValue = 0.0
-                print(viewModel.opacityValue)
-
-            } label: {
-                HStack {
-                    Text("0%")
-                    Spacer()
-                    if viewModel.opacityValue == 0.0 {
-                    Image(systemName: "checkmark")
-                    }
-                }
-            }
-            .tag(0)
-            
-            Button {
-                viewModel.opacityValue = 0.25
-                print(viewModel.opacityValue)
-
-            } label: {
-                HStack {
-                    Text("25%")
-                    Spacer()
-                    if viewModel.opacityValue == 0.25 {
-                    Image(systemName: "checkmark")
-                    }
-                }
-            }
-            .tag(25)
-
-            
-            Button {
-                viewModel.opacityValue = 0.5
-                print(viewModel.opacityValue)
-
-            } label: {
-                HStack {
-                    Text("50%")
-                    Spacer()
-                    if viewModel.opacityValue == 0.5 {
-                    Image(systemName: "checkmark")
-                    }
-                }
-            }
-            .tag(50)
-
-            
-            Button {
-                viewModel.opacityValue = 0.75
-                print(viewModel.opacityValue)
-            } label: {
-                Text("75%")
-                if viewModel.opacityValue == 0.75 {
-                Image(systemName: "checkmark")
-                }
-            }
-            .tag(75)
-
-            
-            Button {
-                viewModel.opacityValue = 1.0
-            } label: {
-                Text("100%")
-                if viewModel.opacityValue == 1.0 {
-                Image(systemName: "checkmark")
-                }
-            }
-            .tag(100)
-
-            
-            
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(lineWidth: 1)
-                    .frame(height: 30)
-                    .foregroundStyle(.gray)
-                    .opacity(1.0)
-                
-                if viewModel.opacityValue == 1.1 {
-                    Text("선택하세요")
-                        .foregroundColor(.black)
-                } else {
-                    Text("\(Int(viewModel.opacityValue * 100))%")
-                        .foregroundColor(.black)
-                }
-            }
-            .frame(width: proxy.size.width * 0.5)
-        }
-        
-        
-        
-    }
-}
-//
-//
-// struct CheckablePopupMenuView: View {
-//     let menuItems = ["Item 1", "Item 2", "Item 3", "Item 4"]
-//     @State private var selectedItems: Set<String> = []
-//
-//     var body: some View {
-//         Menu("Select Items") {
-//             ForEach(menuItems, id: \.self) { menuItem in
-//                 Button(action: {
-//                     if selectedItems.contains(menuItem) {
-//                         selectedItems.remove(menuItem)
-//                     } else {
-//                         selectedItems.insert(menuItem)
-//                     }
-//                 }) {
-//                     HStack {
-//                         Text(menuItem)
-//                         Spacer()
-//                         if selectedItems.contains(menuItem) {
-//                             Image(systemName: "checkmark")
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
