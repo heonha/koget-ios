@@ -33,13 +33,14 @@ class WidgetCoreData: ObservableObject {
         loadData()
     }
     
-    func addLinkWidget(name: String, image: UIImage?, url: String) {
+    func addLinkWidget(name: String, image: UIImage?, url: String, opacity: Double = 0.7) {
         let widget = DeepLink(context: container.viewContext)
         widget.id = UUID()
         widget.name = name
         widget.image = image?.pngData()
         widget.url = url
         widget.updatedDate = Date()
+        widget.opacity = (opacity) as NSNumber
         
         saveData()
         loadData()
