@@ -32,6 +32,8 @@ final class MakeWidgetViewModel: ObservableObject {
     
     @Published var url: String = ""
     @Published var image: UIImage?
+    @Published var opacityValue: Double?
+
     @Published var nameMaxCountError = false
     lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit, specifier: "%d")자 입니다."
 
@@ -48,11 +50,11 @@ final class MakeWidgetViewModel: ObservableObject {
 
     
     func addWidget() {
-        WidgetCoreData.shared.addLinkWidget(name: name, image: image, url: url)
+        WidgetCoreData.shared.addLinkWidget(name: name, image: image, url: url, opacity: opacityValue ?? 1.0)
     }
     
     func editWidgetData(widget: DeepLink) {
-        WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, widget: widget)
+        WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, opacity: opacityValue ?? 1.0, widget: widget)
     }
     
     func checkURLSyntex() -> Bool {

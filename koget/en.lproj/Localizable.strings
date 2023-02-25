@@ -172,3 +172,4 @@
 
 //
 "이름의 최대글자수는 %d자 입니다." = "Maximum is %d chars.";
+"투명도" = "Opacity";

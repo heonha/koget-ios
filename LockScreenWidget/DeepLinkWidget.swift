@@ -58,6 +58,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
                     if let appID = app.identifier {
                         if appAsset.id?.uuidString == appID {
                             appImage = UIImage(data: appAsset.image!)!
+                            deepLink = appAsset
                             return true
                         } else {
                             return false
@@ -75,7 +76,8 @@ struct DeepLinkProvider: IntentTimelineProvider {
                 name: app.displayString,
                 url: app.url!,
                 image: image,
-                id: app.identifier
+                id: app.identifier,
+                opacity: deepLink?.opacity?.doubleValue ?? 0.7
             )
             
             let timeline = Timeline(entries: [entry], policy: .atEnd)
@@ -89,7 +91,8 @@ struct DeepLinkProvider: IntentTimelineProvider {
                 name: "선택되지 않음",
                 url: "",
                 image: defaultImage,
-                id: nil
+                id: nil,
+                opacity: deepLink?.opacity?.doubleValue ?? 0.7
             )
             
             let timeline = Timeline(entries: [entry], policy: .never)
@@ -128,6 +131,7 @@ struct DeepLinkEntry: TimelineEntry {
     var url: String?
     var image: UIImage?
     var id: String?
+    var opacity: Double? = 0.7
 }
 
 //MARK: - Widget View
@@ -181,7 +185,9 @@ struct DeepLinkWidgetEntryView : View {
                                 .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(ID_SEPARATOR)\(entry.id!)"))
                                 .clipShape(Circle())
                             }
+                            .opacity(entry.opacity ?? 0.7)
                             .opacity(0.7)
+
                             
                         }
                         
