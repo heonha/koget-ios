@@ -11,7 +11,7 @@ import ToastUI
 struct DetailWidgetView: View {
     
     
-    var size: CGSize = .init(width: 300, height: 410)
+    var size: CGSize = .init(width: 300, height: 450)
     
     @State var selectedWidget: DeepLink
     
@@ -24,6 +24,7 @@ struct DetailWidgetView: View {
     @State var isDeleteAlertPresent: Bool = false
     @State var isEditingMode: Bool = false
     @State var isDelete: Bool = false
+    @State var isPresentQustionmark: Bool = false
     
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     @Environment(\.dismiss) var dismiss
@@ -91,6 +92,41 @@ struct DetailWidgetView: View {
                 // 위젯 정보
                 EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.name)
                 EditTextField(title: "URL", placeHolder: "예시: youtube://", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.url)
+                HStack {
+                    Text("투명도")
+                        .font(.system(size: 18, weight: .bold))
+                    
+                    Spacer()
+                    if isEditingMode {
+                        OpacityPicker(viewModel: viewModel, widthRatio: 0.3, type: .detail)
+                    } else {
+                        if let opacity = selectedWidget.opacity {
+                            Text("\(Int(opacity.doubleValue * 100.0))%")
+                            
+                        } else {
+                            Text("기본값")
+                        }
+                        Spacer()
+                        
+                    }
+                    
+                    if let image = viewModel.image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .grayscale(1)
+                            .clipShape(Circle())
+                            .opacity(viewModel.opacityValue ?? 1.0)
+                            .opacity(0.7)
+                            .animation(.easeInOut(duration: 0.4), value: viewModel.opacityValue)
+                    }
+                    
+                }
+                .frame(height: 30)
+                .padding(.horizontal, 16)
+                
+                
+                
                 Spacer()
                 
                 
@@ -106,6 +142,8 @@ struct DetailWidgetView: View {
                     
                     
                 }
+                .padding(.top, 16)
+                
                 
                 Spacer()
                 
@@ -114,6 +152,12 @@ struct DetailWidgetView: View {
             viewModel.name = selectedWidget.name!
             viewModel.url = selectedWidget.url!
             viewModel.image = UIImage(data: selectedWidget.image ?? UIColor.white.image().pngData()!)
+            if selectedWidget.opacity == nil {
+                selectedWidget.opacity = 1.0
+                viewModel.opacityValue = 1.0
+                WidgetCoreData.shared.saveData()
+                WidgetCoreData.shared.loadData()
+            }
         }
         .frame(width: size.width, height: size.height)
         .background(Color.init(uiColor: .clear))

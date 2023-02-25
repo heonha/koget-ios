@@ -24,7 +24,7 @@ struct EditTextField: View {
             HStack {
                 Text(title)
                     .font(.system(size: 18, weight: .bold))
-                .lineLimit(1)
+                    .lineLimit(1)
                 Spacer()
                 if title != "URL" && viewModel.nameMaxCountError == true {
                         withAnimation {

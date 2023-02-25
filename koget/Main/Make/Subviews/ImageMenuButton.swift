@@ -34,7 +34,7 @@ struct ImageMenuButton: View {
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFit()
-                                .opacity(viewModel.opacityValue)
+                                .opacity(viewModel.opacityValue ?? 1.0)
 
                         }
                         .frame(width: 100, height: 100)

@@ -47,7 +47,7 @@ class WidgetCoreData: ObservableObject {
     }
     
     
-    func editLinkWidget(name: String, image: UIImage?, url: String, widget: DeepLink) {
+    func editLinkWidget(name: String, image: UIImage?, url: String, opacity: Double, widget: DeepLink) {
         
         widget.name = name
         if widget.image != image?.pngData() {
@@ -55,6 +55,7 @@ class WidgetCoreData: ObservableObject {
         }
         widget.url = url
         widget.updatedDate = Date()
+        widget.opacity = (opacity) as NSNumber
         
         saveData()
         loadData()
