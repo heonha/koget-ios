@@ -43,7 +43,7 @@ struct EditingToggleButton: View {
                 } else {
                     viewModel.editWidgetData(widget: selectedWidget)
                 }
-            }
+            } 
             withAnimation {
                 isEditingMode.toggle()
             }

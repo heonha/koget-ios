@@ -33,8 +33,7 @@ struct OpacityPicker: View {
                     
                 } label: {
                     HStack {
-                        Text("안보이게(0%)")
-                        Spacer()
+                        Text("0% - 보이지 않음")
                         if viewModel.opacityValue == 0.0 {
                             Image(systemName: "checkmark")
                         }
@@ -89,7 +88,7 @@ struct OpacityPicker: View {
                 Button {
                     viewModel.opacityValue = 1.0
                 } label: {
-                    Text("100%")
+                    Text("100% - 기본값")
                     if viewModel.opacityValue == 1.0 {
                         Image(systemName: "checkmark")
                     }
@@ -100,22 +99,26 @@ struct OpacityPicker: View {
                 
             } label: {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(lineWidth: 1)
-                        .frame(height: 30)
-                        .foregroundStyle(.gray)
-                        .opacity(1.0)
-                    
+                    // RoundedRectangle(cornerRadius: 8)
+                    //     .stroke(lineWidth: 1)
+                    //     .frame(height: 30)
+                    //     .foregroundStyle(.gray)
+                    //     .opacity(1.0)
+                    //
                     if let opacity = viewModel.opacityValue {
                         Text("\(Int(opacity * 100))%")
-                            .foregroundColor(.black)
+                            .foregroundColor(.init(uiColor: .secondaryLabel))
+                            .bold()
                     } else {
-                        Text("기본설정(100%)")
+                        HStack {
+                            Text("선택하세요")
+                            Image(systemName: "hand.point.up")
+                        }
                             .foregroundColor(.black)
                     }
-                    
                 }
                 .frame(width: DEVICE_SIZE.width * widthRatio)
+                .shadow(radius: 1)
                 .animation(.none, value: viewModel.opacityValue)
             }
             Spacer()

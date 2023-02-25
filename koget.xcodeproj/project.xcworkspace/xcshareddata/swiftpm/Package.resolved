@@ -145,6 +145,15 @@
       }
     },
     {
+      "identity" : "swiftui-tooltip",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/quassum/SwiftUI-Tooltip.git",
+      "state" : {
+        "revision" : "b45b43145930042b20c802cd06a175a7f2265824",
+        "version" : "1.0.4"
+      }
+    },
+    {
       "identity" : "toastui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/quanshousio/ToastUI.git",

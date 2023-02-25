@@ -120,7 +120,6 @@ struct MakeWidgetView: View {
                         
                         Button("기본이미지로 생성") {
                             viewModel.image = UIImage(named: "KogetClear")
-                            print(viewModel.image)
                             saveWidget()
                         }
                         
@@ -197,20 +196,23 @@ struct LinkWidgetOpacityPicker: View {
                     .foregroundColor(.gray)
             }
             .overlay(
-                ZStack(content: {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(.white)
-                        .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
-                    Text("잠금화면에서의 아이콘 투명도입니다.")
-                        .font(.system(size: 14))
-                        .foregroundColor(.black)
-                })
-                .frame(width: 250, height: 30)
-                .offset(x: -110, y: -40)
-                .opacity(
-                    isPresentQustionmark ? 0.7 : 0.0
-                )
+                GeometryReader { geometry in
+                    ZStack(content: {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(.white)
+                            .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
+
+                        Text("잠금화면에서의 아이콘 투명도입니다.")
+                            .font(.system(size: 14))
+                            .foregroundColor(.black)
+                    })
+                    .frame(idealWidth: max(geometry.size.width, 250), idealHeight: 30)
+                    .offset(x: -110, y: -40)
+                    .opacity(
+                        isPresentQustionmark ? 0.7 : 0.0
+                    )
                 .animation(.linear(duration: 0.2), value: isPresentQustionmark)
+                }
             )
             
            

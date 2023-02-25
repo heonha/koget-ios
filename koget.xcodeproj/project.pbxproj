@@ -27,7 +27,7 @@
 		39B23C4729A3B7A70047BBDB /* PatchNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */; };
 		39B23C4929A3BB6F0047BBDB /* PatchNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */; };
 		39B7B69529A9C57C0028AE10 /* OpacityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69429A9C57C0028AE10 /* OpacityPicker.swift */; };
-		39B7B69729AA032E0028AE10 /* DetailWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */; };
+		39BFD99529AA2D72000E0D4C /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 39BFD99429AA2D72000E0D4C /* SwiftUITooltip */; };
 		39D02E0B298F47C900D812F3 /* AdminContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02E0A298F47C900D812F3 /* AdminContactView.swift */; };
 		39D02E0D298F484E00D812F3 /* AdminContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02E0C298F484E00D812F3 /* AdminContactViewModel.swift */; };
 		39F5AC4F29968890001F9D1E /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39F5AC4E29968890001F9D1E /* QGrid */; };
@@ -300,6 +300,7 @@
 				3AC152D5296D8170009CAA1B /* FirebaseStorage in Frameworks */,
 				3AD46926297D3DCF0090B2D3 /* Lottie in Frameworks */,
 				3AE4B13C296D848800DB219B /* FirebaseAnalytics in Frameworks */,
+				39BFD99529AA2D72000E0D4C /* SwiftUITooltip in Frameworks */,
 				3AC152D3296D8170009CAA1B /* FirebaseFirestoreSwift in Frameworks */,
 				39223B7929A6030A00F59F54 /* Localize_Swift in Frameworks */,
 				3A97F460297D81B9002B4BDB /* ToastUI in Frameworks */,
@@ -384,8 +385,8 @@
 		3A08BCFF292FBF0B00E09B3E /* Make */ = {
 			isa = PBXGroup;
 			children = (
-				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
 				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
+				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
 				39B7B69429A9C57C0028AE10 /* OpacityPicker.swift */,
 				3900CCE72996851700092AD0 /* WidgetAssets */,
 				3A6449BB297E428C002A710C /* Subviews */,
@@ -687,6 +688,7 @@
 				3A8C1E752980DB39004FAF89 /* WelcomeSheet */,
 				39F5AC4E29968890001F9D1E /* QGrid */,
 				39223B7829A6030A00F59F54 /* Localize_Swift */,
+				39BFD99429AA2D72000E0D4C /* SwiftUITooltip */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -751,6 +753,7 @@
 				3A8C1E742980DB39004FAF89 /* XCRemoteSwiftPackageReference "Welcome-Sheet" */,
 				39F5AC4D29968890001F9D1E /* XCRemoteSwiftPackageReference "QGrid" */,
 				39223B7729A6030A00F59F54 /* XCRemoteSwiftPackageReference "Localize-Swift" */,
+				39BFD99329AA2D72000E0D4C /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -1326,6 +1329,14 @@
 				minimumVersion = 3.2.0;
 			};
 		};
+		39BFD99329AA2D72000E0D4C /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quassum/SwiftUI-Tooltip.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		39F5AC4D29968890001F9D1E /* XCRemoteSwiftPackageReference "QGrid" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Q-Mobile/QGrid.git";
@@ -1386,6 +1397,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39223B7729A6030A00F59F54 /* XCRemoteSwiftPackageReference "Localize-Swift" */;
 			productName = Localize_Swift;
+		};
+		39BFD99429AA2D72000E0D4C /* SwiftUITooltip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39BFD99329AA2D72000E0D4C /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */;
+			productName = SwiftUITooltip;
 		};
 		39F5AC4E29968890001F9D1E /* QGrid */ = {
 			isa = XCSwiftPackageProductDependency;

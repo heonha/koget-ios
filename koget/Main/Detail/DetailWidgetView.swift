@@ -109,6 +109,8 @@ struct DetailWidgetView: View {
                         Spacer()
                         
                     }
+                    Spacer()
+
                     
                     if let image = viewModel.image {
                         Image(uiImage: image)
@@ -157,6 +159,8 @@ struct DetailWidgetView: View {
                 viewModel.opacityValue = 1.0
                 WidgetCoreData.shared.saveData()
                 WidgetCoreData.shared.loadData()
+            } else {
+                viewModel.opacityValue = selectedWidget.opacity as? Double
             }
         }
         .frame(width: size.width, height: size.height)
