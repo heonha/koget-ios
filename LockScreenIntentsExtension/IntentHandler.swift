@@ -6,6 +6,7 @@
 //
 
 import Intents
+import SwiftUI
 
 
 
@@ -149,7 +150,7 @@ extension IntentHandler: DeepLinkAppIntentHandling {
     // AppInfo -> AppDefinition으로 데이터를 전달한다.
     // 데이터의 전달은 DeepLinkAppIntentHandling 프로토콜의 provideAppOptionsCollection 메소드를 통해 전달한다.
         
-    let avaliableApps = WidgetCoreData.shared.getStoredDataForDeepLink()!
+        let avaliableApps = WidgetCoreData.shared.linkWidgets
     
         /// AppInfo Data를 AppDefinition에 mapping 하여 만든 배열
         let apps: [AppDefinition] = avaliableApps.map { deepLink in
