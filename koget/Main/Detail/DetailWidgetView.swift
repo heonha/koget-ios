@@ -109,7 +109,7 @@ struct DetailWidgetView: View {
                     //MARK: - 투명도
 
                 HStack {
-                    Text("투명도")
+                    Text("불투명도")
                         .font(.system(size: 18, weight: .bold))
                     Spacer()
                     Text("\(Int(viewModel.opacityValue * 100))%")
