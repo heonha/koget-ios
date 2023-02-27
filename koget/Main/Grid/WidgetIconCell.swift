@@ -18,7 +18,8 @@ struct WidgetIconCell: View {
     var type: WidgetIconCellType
     var gridCellWidth: CGFloat = GRID_CELL_WIDTH
     var listCellHeight: CGFloat = 50
-
+    
+    @State var isDelete: Bool = false
     
     @ObservedObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
@@ -27,13 +28,14 @@ struct WidgetIconCell: View {
     
     init(widget: DeepLink, viewModel: MainWidgetViewModel, type: WidgetIconCellType) {
         self.widget = widget
-        self.viewModel = viewModel
         self.type = type
+        self.viewModel = viewModel
     }
     
     let app: LocalizedStringKey = "앱"
     let web: LocalizedStringKey = "웹 페이지"
 
+    @Environment(\.dismiss) var dismiss
     
     
     var body: some View {
@@ -51,6 +53,7 @@ struct WidgetIconCell: View {
                     } label: {
                         Label("실행하기", systemImage: "arrow.up.left.square.fill")
                     }
+                    
                     Button {
                         self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
                             DetailWidgetView(selectedWidget: widget)
@@ -58,13 +61,16 @@ struct WidgetIconCell: View {
                     } label: {
                         Label("편집", systemImage: "slider.horizontal.3")
                     }
-                    Divider()
                     Button(role: .destructive) {
-                        WidgetCoreData.shared.deleteData(data: widget)
-                        MainWidgetViewModel.shared.deleteSuccessful = true
+                        isDelete.toggle()
+                        // WidgetCoreData.shared.deleteData(data: widget)
+                        // MainWidgetViewModel.shared.deleteSuccessful = true
+
+
                     } label: {
                         Label("삭제", systemImage: "trash.fill")
                     }
+                    
                 
                 } label: {
                     
@@ -113,10 +119,19 @@ struct WidgetIconCell: View {
                             
                         }
                         .frame(height: listCellHeight)
+                        .alert("삭제 확인", isPresented: $isDelete, actions: {
+                            Button("삭제", role: .destructive) {
+                                WidgetCoreData.shared.deleteData(data: widget)
+                                MainWidgetViewModel.shared.deleteSuccessful = true
+                                isDelete = false
+                                self.dismiss()
+                                
+                            }
+                            Button("취소", role: .cancel) {}
+                        }, message: { Text("\(widget.name ?? "알수없음")정말 삭제 하시겠습니까?") })
                     }
 
                 }
-                // 버튼
                 
                 
                 
