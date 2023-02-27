@@ -111,6 +111,27 @@ struct DetailWidgetView: View {
                 HStack {
                     Text("불투명도")
                         .font(.system(size: 18, weight: .bold))
+                    Button {
+                        isPresentQustionmark.toggle()
+                    } label: {
+                        Image(systemName: "questionmark.circle")
+                            .foregroundColor(.gray)
+                    }
+                    .overlay(
+                            ZStack(content: {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(.white)
+                                    .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
+
+                                Text("잠금화면 위젯의 불투명도입니다.")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.black)
+                            })
+                            .frame(width: DEVICE_SIZE.width * 0.5, height: 30)
+                            .offset(x: 50, y: -40)
+                            .opacity( isPresentQustionmark ? 0.9 : 0.0 )
+                            .animation(.linear(duration: 0.2), value: isPresentQustionmark)
+                    )
                     Spacer()
                     Text("\(Int(viewModel.opacityValue * 100))%")
                         .bold()
@@ -175,6 +196,9 @@ struct DetailWidgetView: View {
         .background(Color.init(uiColor: .clear))
         .cornerRadius(10)
         .shadow(radius: 1)
+        .onTapGesture {
+            isPresentQustionmark = false
+        }
     }
     
     
