@@ -142,3 +142,4 @@ struct OpacityPicker_Previews: PreviewProvider {
         }
     }
 }
+

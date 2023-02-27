@@ -11,11 +11,11 @@ import ToastUI
 struct DetailWidgetView: View {
     
     
-    var size: CGSize = .init(width: 300, height: 450)
+    var size: CGSize = .init(width: 300, height: 500)
     
     @State var selectedWidget: DeepLink
     
-    @ObservedObject var viewModel = MakeWidgetViewModel()
+    @ObservedObject var viewModel = DetailWidgetViewModel()
     
     //Present Views
     @State var isPresent: Bool = false
@@ -44,8 +44,13 @@ struct DetailWidgetView: View {
                     }
                     .background(Color.init(uiColor: .darkGray))
                     
+                    
+                    
+                    //MARK: - 상단 바
+
                     HStack {
-                        // 상단 바 아이템
+                        
+                        //MARK: 삭제 버튼
                         Button {
                             isDeleteAlertPresent.toggle()
                         } label: {
@@ -67,6 +72,8 @@ struct DetailWidgetView: View {
                         
                         Spacer()
                         
+                        //MARK: 닫기버튼
+                        
                         Button {
                             self.dismiss()
                         } label: {
@@ -79,59 +86,60 @@ struct DetailWidgetView: View {
                 }
                 
                 
-                // 위젯 이미지
-                Spacer()
-                PhotoEditMenu(isEditingMode: $isEditingMode,
-                              isPhotoViewPresent: $isPhotoViewPresent,
-                              viewModel: viewModel)
-                .shadow(radius: 1, x: 0.2, y: 0.3)
+                //MARK: - 아이콘
                 
+                Group {
+                    
+                    PhotoEditMenu(isEditingMode: $isEditingMode,
+                                  isPhotoViewPresent: $isPhotoViewPresent,
+                                  viewModel: viewModel)
+                    .shadow(radius: 1, x: 0.2, y: 0.3)
+                    
+                }
+
+                //MARK: - 이름, URL
                 
-                Spacer()
-                
-                // 위젯 정보
-                EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.name)
-                EditTextField(title: "URL", placeHolder: "예시: youtube://", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.url)
+                    
+               
+                VStack {
+                    
+                    EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.name)
+                    
+                    EditTextField(title: "URL", placeHolder: "예시: youtube://", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.url)
+                    //MARK: - 투명도
+
                 HStack {
                     Text("투명도")
                         .font(.system(size: 18, weight: .bold))
-                    
                     Spacer()
-                    if isEditingMode {
-                        OpacityPicker(viewModel: viewModel, widthRatio: 0.3, type: .detail)
-                    } else {
-                        if let opacity = selectedWidget.opacity {
-                            Text("\(Int(opacity.doubleValue * 100.0))%")
-                            
-                        } else {
-                            Text("기본값")
-                        }
-                        Spacer()
-                        
-                    }
+                    Text("\(Int(viewModel.opacityValue * 100))%")
+                        .bold()
                     Spacer()
-
-                    
                     if let image = viewModel.image {
                         Image(uiImage: image)
                             .resizable()
                             .frame(width: 25, height: 25)
                             .grayscale(1)
                             .clipShape(Circle())
-                            .opacity(viewModel.opacityValue ?? 1.0)
+                            .opacity(viewModel.opacityValue)
                             .opacity(0.7)
                             .animation(.easeInOut(duration: 0.4), value: viewModel.opacityValue)
                     }
+
+                }
                     
                 }
-                .frame(height: 30)
-                .padding(.horizontal, 16)
+                .padding(.horizontal)
+
+                if isEditingMode {
+                    OpacitySlider(viewModel: viewModel, widthRatio: 0.3, type: .detail)
+                        .padding(.horizontal)
+                }
+          
+
                 
                 
-                
-                Spacer()
-                
-                
+              
                 
                 VStack(alignment: .center, spacing: 12) {
                     // 편집 버튼
@@ -160,7 +168,7 @@ struct DetailWidgetView: View {
                 WidgetCoreData.shared.saveData()
                 WidgetCoreData.shared.loadData()
             } else {
-                viewModel.opacityValue = selectedWidget.opacity as? Double
+                viewModel.opacityValue = selectedWidget.opacity as? Double ?? 1.0
             }
         }
         .frame(width: size.width, height: size.height)

@@ -14,7 +14,7 @@ struct EditTextField: View {
     let placeHolder: LocalizedStringKey
     let padding: CGFloat = 32
     
-    @StateObject var viewModel: MakeWidgetViewModel
+    @StateObject var viewModel: DetailWidgetViewModel
     @Binding var isEditingMode: Bool
     @Binding var text: String
     
@@ -30,11 +30,9 @@ struct EditTextField: View {
                         withAnimation {
                             Text(viewModel.nameMaxCountErrorMessage)
                                 .foregroundColor(.red)
+                                .font(.system(size: 12))
                         }
-                } else {
-                    
-                }
-               
+                } 
             }
             if isEditingMode {
                 // 편집 모드
@@ -58,7 +56,6 @@ struct EditTextField: View {
             hideKeyboard()
         }
         .cornerRadius(8)
-        .padding(.horizontal, 16)
         
 
     }
