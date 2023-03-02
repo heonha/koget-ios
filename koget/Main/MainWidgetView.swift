@@ -13,7 +13,7 @@ import ToastUI
 // 메인 뷰
 struct MainWidgetView: View {
     
-    
+    let HiVari: Int = 0
     var tintColor: Color = .black
     @State var isPresentHelper = true
     @State var isOpen = false
