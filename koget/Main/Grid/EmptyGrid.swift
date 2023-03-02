@@ -36,10 +36,10 @@ struct EmptyGrid: View {
                             .padding()
                     }
                 }
-                .frame(width: DEVICE_SIZE.width - 32, height: 40)
+                .frame(width: deviceSize.width - 32, height: 40)
 
             }
-            .frame(width: DEVICE_SIZE.width - 32, height: DEVICE_SIZE.height / 1.5)
+            .frame(width: deviceSize.width - 32, height: deviceSize.height / 1.5)
             
         }
     }

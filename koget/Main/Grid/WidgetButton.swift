@@ -14,7 +14,7 @@ struct WidgetButton: View {
     var widgetImage: UIImage
     var cellWidth: CGFloat
     var imageSize: CGSize
-    var textSize: CGSize!
+    var textSize: CGSize
     let titleColor: Color = AppColors.label
     @ObservedObject var viewModel: MainWidgetViewModel
 
@@ -27,13 +27,11 @@ struct WidgetButton: View {
         self.textSize = textSize
         self.viewModel = viewModel
     }
-    
-    
+
     var body: some View {
         VStack {
             Spacer()
-            
-            
+
             //MARK: 위젯 아이콘
             ZStack {
                 // 아이콘배경
@@ -50,7 +48,6 @@ struct WidgetButton: View {
             .frame(width: imageSize.width, height: imageSize.height)
             .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
             .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
-            
             
             Spacer()
 
@@ -73,6 +70,6 @@ struct WidgetButton: View {
 
 struct WidgetButton_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: GRID_CELL_WIDTH, imageSize: CGSize(width: GRID_CELL_WIDTH * 0.63, height: GRID_CELL_WIDTH * 0.63), textSize: CGSize(width: GRID_CELL_WIDTH, height: GRID_CELL_WIDTH * 0.40), viewModel: MainWidgetViewModel.shared)
+        WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: widgetCellWidthForGrid, imageSize: CGSize(width: widgetCellWidthForGrid * 0.63, height: widgetCellWidthForGrid * 0.63), textSize: CGSize(width: widgetCellWidthForGrid, height: widgetCellWidthForGrid * 0.40), viewModel: MainWidgetViewModel.shared)
     }
 }

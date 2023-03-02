@@ -12,7 +12,6 @@ protocol AppStoreReviewable {
     func requestReview()
 }
 
-
 extension AppStoreReviewable {
     
     func requestReview() {
@@ -26,7 +25,6 @@ extension AppStoreReviewable {
         }
     }
 }
-
 
 extension UIApplication {
     

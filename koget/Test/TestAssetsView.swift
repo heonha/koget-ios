@@ -5,7 +5,6 @@
 //  Created by Heonjin Ha on 2023/02/10.
 //
 
-
 import SwiftUI
 
 struct TestAssetsView: View {
@@ -50,7 +49,7 @@ struct TestAssetsView: View {
                         
                     }
                     Rectangle()
-                        .frame(width: DEVICE_SIZE.width, height: 12)
+                        .frame(width: deviceSize.width, height: 12)
                         .foregroundColor(.init(uiColor: .secondarySystemFill))
                 }
                 
@@ -99,12 +98,7 @@ struct TestAssetsView: View {
                 
             }
         }
-        
-        
     }
-    
-    
-    
 }
 
 struct TestAssetsView_Previews: PreviewProvider {
@@ -112,4 +106,3 @@ struct TestAssetsView_Previews: PreviewProvider {
         TestAssetsView(viewModel: MakeWidgetViewModel())
     }
 }
-

@@ -18,7 +18,6 @@ class EditViewModel {
 
     }
     
-    
     //MARK: - Async Objects (Rx)
     /// 소스포토 Observable (임시로 저장)
     var sourcePhotoSubject = BehaviorSubject<UIImage?>(value: nil)
@@ -45,8 +44,6 @@ class EditViewModel {
         imageView.image = photo
     }
     
- 
-    
     /**
      `스크린 사이즈에 따라서 높이를 조절합니다.`
      >
@@ -60,7 +57,6 @@ class EditViewModel {
         let screenSize = UIScreen.main.bounds
         let imageHeight = (imageSize.height * screenSize.width) / imageSize.width
         let resizeHeight = (screenSize.height - imageHeight) / 2
- 
 
         /// 이미지뷰 레이아웃
         imageView.snp.remakeConstraints { make in

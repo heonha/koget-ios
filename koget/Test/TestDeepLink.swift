@@ -8,7 +8,6 @@
 import Foundation
 import CoreData
 
-
 struct TestDeepLink {
     let id: UUID = UUID()
     let name: String
@@ -16,8 +15,6 @@ struct TestDeepLink {
     let deepLink: String
     let updatedDate = Date()
 }
-
-
 
 // Exists to provide a movie to use with MovieDetailView and MovieEditView
 extension DeepLink {
@@ -36,11 +33,8 @@ extension DeepLink {
         do {
             results = try context.fetch(fetchRequest)
         } catch {
-            fatalError()
+            fatalError("fetchRequest Error")
         }
-        
         return results.first!
     }
-    
-    
 }

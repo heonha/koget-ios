@@ -28,7 +28,7 @@ struct MainWidgetView: View {
                     .ignoresSafeArea()
                 VStack {
                     Rectangle()
-                        .frame(width: DEVICE_SIZE.width, height: 8)
+                        .frame(width: deviceSize.width, height: 8)
                         .foregroundStyle(Color.init(uiColor: .secondarySystemBackground))
                     // 링크위젯
                     LinkWidgetView(viewModel: viewModel, coreData: _coreData)
@@ -65,7 +65,6 @@ struct MainWidgetView: View {
                 isOpen = false
             }
             .onDisappear {
-                print("Disappear")
                 isOpen = false
             }
 
@@ -82,7 +81,6 @@ struct MainWidgetView: View {
         .welcomeSheet(isPresented: $viewModel.isFirstRun, isSlideToDismissDisabled: true, pages: HelperSheetViewModel.shared.pages)
     }
 }
-
 
 struct MainWidgetView_Previews: PreviewProvider {
     static var previews: some View {

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct OpacitySlider: View {
     
     enum OpacityPickerType {
@@ -21,9 +20,7 @@ struct OpacitySlider: View {
     @State var checkedMenu = 0
     
     var body: some View {
-        
-        
-            
+
             Slider(
                 value: $viewModel.opacityValue,
                 in: 0.0...1.0,
@@ -48,13 +45,8 @@ struct OpacitySlider: View {
 
         .background(Color.init(uiColor: .secondarySystemBackground))
         .cornerRadius(8)
-        
-
-        
-        
     }
 }
-
 
 struct OpacitySlider_Previews: PreviewProvider {
     static var previews: some View {

@@ -21,10 +21,8 @@ extension String {
         let path = Bundle.main.path(forResource: language, ofType: "lproj")!
         let bundle = Bundle(path: path)!
         let localizedString = NSLocalizedString(key, bundle: bundle, comment: "")
+        
         return localizedString
-        
-
-        
     }
 }
 

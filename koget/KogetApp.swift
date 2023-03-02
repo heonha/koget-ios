@@ -8,14 +8,11 @@
 import SwiftUI
 import FirebaseCore
 
-
 class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         
         //MARK: - Firebase Configuration
         FirebaseApp.configure()
-        
         
         UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "chevron.left")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left")
@@ -35,8 +32,7 @@ struct KogetApp: App {
     private let coreData = WidgetCoreData.shared
     
     var body: some Scene {
-        
-        
+
         WindowGroup {
             
             ContentView()
@@ -53,11 +49,9 @@ struct KogetApp: App {
     //MARK: Deeplink 처리
     /// 위젯 scheme을 확인하고 deepLink를 엽니다.
     func maybeOpenedFromWidget(urlString: String) {
-        print("‼️위젯으로 앱을 열었습니다. ")
-        
-        
-        let separatedURL = urlString.split(separator: ID_SEPARATOR, maxSplits: 1)
-        let url = String(separatedURL[0]).deletingPrefix(SCHEME_LINK)
+        // print("‼️위젯으로 앱을 열었습니다. ")
+        let separatedURL = urlString.split(separator: idSeparator, maxSplits: 1)
+        let url = String(separatedURL[0]).deletingPrefix(schemeToAppLink)
         let id = String(separatedURL[1])
         
         coreData.linkWidgets.contains { deepLink in
@@ -70,17 +64,13 @@ struct KogetApp: App {
                 return false
             }
         }
-        
-        print(id)
-
-        
+        // print(id)
         UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
         
         return
 
     }
 }
-
 
 extension String {
     func deletingPrefix(_ prefix: String) -> String {

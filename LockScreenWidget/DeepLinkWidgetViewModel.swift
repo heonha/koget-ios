@@ -8,17 +8,14 @@
 import SwiftUI
 import CoreData
 
-
 class DeepLinkWidgetViewModel: ObservableObject {
     
     static let shared = DeepLinkWidgetViewModel()
     
     @Published var linkWidgets: [DeepLink] = WidgetCoreData.shared.linkWidgets
-    
-    
+
     private init() {
         
     }
-    
     
 }

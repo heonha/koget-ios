@@ -8,8 +8,6 @@
 import Intents
 import SwiftUI
 
-
-
 // 예를 들어 이 클래스는 메시지 의도를 처리하도록 설정됩니다.
 // 이를 교체하거나 적절하게 다른 인텐트를 추가할 수 있습니다.
 // 처리하려는 인텐트는 확장 프로그램의 Info.plist에 선언되어 있어야 합니다.
@@ -44,7 +42,7 @@ class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessag
             for recipient in recipients {
                 let matchingContacts = [recipient] // Implement your contact matching logic here to create an array of matching contacts
                 switch matchingContacts.count {
-                case 2  ... Int.max:
+                case 2 ... Int.max:
                     // We need Siri's help to ask user to pick one from the matches.
                     resolutionResults += [INSendMessageRecipientResolutionResult.disambiguation(with: matchingContacts)]
                     
@@ -126,16 +124,11 @@ class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessag
     }
 }
 
-
-
 //MARK: - ViewIcon Intent Handling
 
 extension IntentHandler: DeepLinkAppIntentHandling {
-
-    
     
     /// 위젯 데이터를 가져오고 배열로 만듭니다.
-
     func provideAppOptionsCollection(for intent: DeepLinkAppIntent, with completion: @escaping (INObjectCollection<AppDefinition>?, Error?) -> Void) {
 
     // MARK: 데이터의 흐름
@@ -170,7 +163,4 @@ extension IntentHandler: DeepLinkAppIntentHandling {
         /// 위에서 정의한 위젯 INObjectCollection 컬렉션을 completion 으로 전달한다.
         completion(collection, nil)
     }
-    
-
-    
 }

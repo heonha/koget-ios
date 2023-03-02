@@ -12,8 +12,6 @@ struct AssetRequestView: View {
     
     @State var isSuccess: Bool = false
     @State var isFailure: Bool = false
-
-    
     @ObservedObject var viewModel = AssetRequestViewModel()
 
     @Environment(\.dismiss) var dismiss
@@ -25,9 +23,7 @@ struct AssetRequestView: View {
                 .font(.system(size: 20))
                 .fontWeight(.bold)
             Divider()
-            
-            
-            
+
             //MARK: 앱 이름
             HStack {
                 Spacer()
@@ -78,13 +74,11 @@ struct AssetRequestView: View {
                 
             }
             .frame(height: 50)
-            
-            
+
             Text("요청하신 앱/웹은 검토 결과에 따라 앱에 추가 될 예정입니다.")
                 .font(.system(size: 13))
                 .padding()
-            
-            
+
             Button {
                 viewModel.checkTheField { result in
                     switch result {
@@ -101,7 +95,6 @@ struct AssetRequestView: View {
             .padding(.horizontal, 24)
                 
                 Spacer()
-                
                 
             }
             .padding(.vertical)

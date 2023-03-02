@@ -25,10 +25,8 @@ struct PhotoEditMenu: View {
         .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
         .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
 
-
     }
 }
-
 
 struct PhotoEditMenu_Previews: PreviewProvider {
     static var previews: some View {

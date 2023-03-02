@@ -68,7 +68,6 @@
 		3A1591722984FCF0001924C3 /* DeepLinkWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */; };
 		3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591732985194C001924C3 /* AppStoreReviewable.swift */; };
 		3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17026129727151001FB0E5 /* FloatingMenu.swift */; };
-		3A17026429728AD2001FB0E5 /* FloatingButtonTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17026329728AD2001FB0E5 /* FloatingButtonTestView.swift */; };
 		3A1A1FE7296BC9FF00819214 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */; };
 		3A1CD19D28F9819300AC5D1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A1CD19E28F9819400AC5D1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
@@ -235,7 +234,6 @@
 		3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkWidgetViewModel.swift; sourceTree = "<group>"; };
 		3A1591732985194C001924C3 /* AppStoreReviewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewable.swift; sourceTree = "<group>"; };
 		3A17026129727151001FB0E5 /* FloatingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenu.swift; sourceTree = "<group>"; };
-		3A17026329728AD2001FB0E5 /* FloatingButtonTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonTestView.swift; sourceTree = "<group>"; };
 		3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A1F89072978F9DC00E1B4C4 /* LockscreenHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockscreenHelper.swift; sourceTree = "<group>"; };
 		3A1F8909297AB25700E1B4C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -537,7 +535,6 @@
 			children = (
 				3ABFEFC6292F481F00455730 /* TestDeepLink.swift */,
 				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
-				3A17026329728AD2001FB0E5 /* FloatingButtonTestView.swift */,
 				39F5AC522996895C001F9D1E /* TestAssetsView.swift */,
 			);
 			path = Test;
@@ -925,6 +922,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		39FD1C3C29B0DE6100B442F5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -938,7 +936,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/airbnb.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --config ~/airbnb.swiftlint.yml\n  fi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -984,7 +982,6 @@
 				3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */,
 				3AD46923297D39D40090B2D3 /* SuccessAlert.swift in Sources */,
 				3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */,
-				3A17026429728AD2001FB0E5 /* FloatingButtonTestView.swift in Sources */,
 				39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */,
 				390853B829A3949F006E8311 /* AssetRequestViewModel.swift in Sources */,
 				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,

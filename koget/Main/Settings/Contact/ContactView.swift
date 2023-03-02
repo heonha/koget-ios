@@ -61,8 +61,6 @@ struct ContactView: View {
                                 } label: {
                                     Text(ContectType.etc.rawValue.localized())
                                 }
-                                
-                                
                             } label: {
                                 ZStack {
                                     
@@ -72,11 +70,11 @@ struct ContactView: View {
                                     }
                                     Text(viewModel.contactType.rawValue.localized())
                                         .bold()
-                                        .frame(width: DEVICE_SIZE.width / 1.5, height: 35)
+                                        .frame(width: deviceSize.width / 1.5, height: 35)
                                         .foregroundColor(.black)
                                 }
                             }
-                            .frame(width: DEVICE_SIZE.width / 1.5, height: 35)
+                            .frame(width: deviceSize.width / 1.5, height: 35)
                             Spacer()
                             
                         }
@@ -89,7 +87,6 @@ struct ContactView: View {
                         CustomTextEditor(placeHolder: "이곳에 문의내용을 입력하세요.", text: $viewModel.body)
                             .frame(height: geometryProxy.size.height / 2.5)
                             .padding([.top, .bottom], 8)
-                        
                         
                         Button {
                             isPresentSendAlert.toggle()
@@ -111,10 +108,7 @@ struct ContactView: View {
                             .font(.system(size: 15))
                         }
                         .foregroundColor(.gray)
-                        
-                        
-                        
-                        
+
                         Spacer()
                         
                     }
@@ -177,7 +171,6 @@ struct ContactView: View {
     }
 }
 
-
 struct ContactView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -185,4 +178,3 @@ struct ContactView_Previews: PreviewProvider {
         }
     }
 }
-

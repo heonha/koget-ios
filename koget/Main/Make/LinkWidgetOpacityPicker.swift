@@ -13,10 +13,8 @@ struct LinkWidgetOpacityPicker: View {
     var pickerWidthRatio: CGFloat = 0.5
     @Binding var isPresentQustionmark: Bool
 
-    
     var body: some View {
-        
-        
+
         HStack {
             Text("투명도")
                 .font(.system(size: 20, weight: .bold))
@@ -36,13 +34,12 @@ struct LinkWidgetOpacityPicker: View {
                             .font(.system(size: 12))
                             .foregroundColor(.black)
                     })
-                    .frame(width: DEVICE_SIZE.width * 0.5, height: 30)
+                    .frame(width: deviceSize.width * 0.5, height: 30)
                     .offset(x: 50, y: -40)
                     .opacity( isPresentQustionmark ? 0.7 : 0.0 )
                     .animation(.linear(duration: 0.2), value: isPresentQustionmark)
             )
-            
-           
+
             Spacer()
             OpacityPicker(viewModel: viewModel, widthRatio: pickerWidthRatio, type: .make)
             Spacer()
@@ -55,8 +52,6 @@ struct LinkWidgetOpacityPicker: View {
                     .opacity(viewModel.opacityValue ?? 1.0)
                     .opacity(0.7)
             }
-            
-            
         }
         .padding(.horizontal, 16)
         .padding(.top, 8)
@@ -64,7 +59,6 @@ struct LinkWidgetOpacityPicker: View {
         .padding(.bottom, 16)
     }
 }
-
 
 struct LinkWidgetOpcityPicker_Previews: PreviewProvider {
     static var previews: some View {

@@ -20,7 +20,6 @@ struct PhotoPicker: UIViewControllerRepresentable {
         return picker
     }
     
-    
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<PhotoPicker>) {
 
     }
@@ -36,9 +35,8 @@ struct PhotoPicker: UIViewControllerRepresentable {
         init(photoPicker: PhotoPicker) {
             self.photoPicker = photoPicker
         }
-        
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
                 photoPicker.widgetModel?.image = image
             } else {

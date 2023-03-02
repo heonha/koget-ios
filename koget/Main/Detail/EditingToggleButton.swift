@@ -9,7 +9,6 @@ import SwiftUI
 
 struct EditingToggleButton: View {
     
-    
     var selectedWidget: DeepLink
     var size: CGSize = .init(width: 200, height: 35)
     
@@ -54,11 +53,7 @@ struct EditingToggleButton: View {
         
     }
     
-
-    
-    
 }
-
 
 struct EditToggleButton_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,7 +8,6 @@
 import SwiftUI
 import WelcomeSheet
 
-
 struct SettingMenu: View, AppStoreReviewable {
     
     @ObservedObject var viewModel = HelperSheetViewModel.shared
@@ -27,21 +26,13 @@ struct SettingMenu: View, AppStoreReviewable {
                         } label: {
                             Label("업데이트 소식", systemImage: "square.and.pencil")
                         }
-                        // SettingMenuButton(title: "패치 노트", imageType: .symbol, imageName: "square.and.pencil") {
-                        //     viewModel.showPatchNote.toggle()
-                        // }
+
                         NavigationLink {
                             LockscreenHelper()
                         } label: {
                             Label("위젯을 잠금화면에 등록하는 방법", systemImage: "apps.iphone.badge.plus")
                         }
 
-                        // SettingMenuButton(title: "만든 위젯을 잠금화면에 등록하는 방법", imageType: .symbol, imageName: "apps.iphone.badge.plus") {
-                        //     viewModel.showUseLockscreen.toggle()
-                        // }
-                        
-         
-                        
                     }
                     
                     Section("앱에 관하여") {
@@ -49,13 +40,12 @@ struct SettingMenu: View, AppStoreReviewable {
                         SettingMenuButton(title: "앱 소개 다시보기", imageType: .symbol, imageName: "book") {
                             viewModel.showWelcomeSheet.toggle()
                         }
-                        
-                        
+
                         SettingMenuButton(title: "앱 평가하기", imageType: .symbol, imageName: "star.fill", imageColor: .yellow) {
                             requestReview()
                         }
                         
-                        SettingMenuButton(title: "코젯 버전", subtitle: APP_VERSION, imageType: .asset, imageName: "Koget") {
+                        SettingMenuButton(title: "코젯 버전", subtitle: appVersion, imageType: .asset, imageName: "Koget") {
                         }
                         .disabled(true)
                     }
@@ -84,9 +74,6 @@ struct HowToUseMenus_Previews: PreviewProvider {
     }
 }
 
-
-
-
 struct SettingMenuButton: View {
     
     enum ImageType {
@@ -104,7 +91,6 @@ struct SettingMenuButton: View {
     var imageSize: CGFloat = 20
     var action: () -> Void
 
-    
     var body: some View {
         Button {
             action()
@@ -136,6 +122,4 @@ struct SettingMenuButton: View {
             }
         }
     }
-    
-    
 }

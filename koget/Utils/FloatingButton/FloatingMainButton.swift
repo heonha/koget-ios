@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct FloatingMainButton: View {
     
     var buttonSize: CGFloat = 50
@@ -29,7 +28,6 @@ struct FloatingMainButton: View {
         
     }
 }
-
 
 struct FloatingMainButton_Previews: PreviewProvider {
     static var previews: some View {

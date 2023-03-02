@@ -33,8 +33,6 @@ final class DetailWidgetViewModel: ObservableObject {
     @Published var image: UIImage?
     @Published var opacityValue: Double = 1.0
     @Published var isEditing: Bool = false
-
-
     @Published var nameMaxCountError = false
     lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit, specifier: "%d")자 입니다."
 
@@ -73,7 +71,4 @@ final class DetailWidgetViewModel: ObservableObject {
             completion(nil)
         }
     }
-    
-    
 }
-

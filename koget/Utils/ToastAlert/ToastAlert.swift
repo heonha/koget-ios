@@ -57,9 +57,8 @@ struct ErrorAlert_Previews: PreviewProvider {
     }
 }
 
-
 struct VisualEffect: UIViewRepresentable {
-    @State var style : UIBlurEffect.Style // 1
+    @State var style: UIBlurEffect.Style // 1
     func makeUIView(context: Context) -> UIVisualEffectView {
         return UIVisualEffectView(effect: UIBlurEffect(style: style)) // 2
     }

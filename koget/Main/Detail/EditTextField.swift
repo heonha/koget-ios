@@ -57,7 +57,6 @@ struct EditTextField: View {
         }
         .cornerRadius(8)
         
-
     }
 }
 

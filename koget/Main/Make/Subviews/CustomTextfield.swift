@@ -36,9 +36,7 @@ struct CustomTextfield: View {
                     
                 }
             }
-            
-            
-            
+
             ZStack(alignment: .center) {
                 
                 RoundedRectangle(cornerRadius: 5)

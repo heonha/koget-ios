@@ -39,7 +39,7 @@ struct ManageWidgetView: View {
                     }
                     .onDelete { indexSet in
                         for index in indexSet{
-                            print(index)
+                            // print(index)
                             WidgetCoreData.shared.deleteData(data: viewModel.linkWidgets[index])
                         }
                     }

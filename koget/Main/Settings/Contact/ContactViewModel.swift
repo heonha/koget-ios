@@ -8,7 +8,6 @@
 import SwiftUI
 import FirebaseFirestore
 
-
 final class ContactViewModel: ObservableObject {
     
     @ObservedObject var authModel = GuestAuthModel()
@@ -55,21 +54,18 @@ final class ContactViewModel: ObservableObject {
                 "date": date
             ]
             
-            
-            
             Firestore.firestore().collection("Questions").addDocument(data: data) { error in
                 if let error = error {
-                    print(error.localizedDescription)
+                    // print(error.localizedDescription)
                 } else {
-                    print("전송 완료")
+                    // print("전송 완료")
                 }
             }
         } else {
-            print("로그인 되어 있지 않음.")
+            // print("로그인 되어 있지 않음.")
             return
         }
         
-       
     }
     
 }

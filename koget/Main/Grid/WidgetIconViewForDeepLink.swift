@@ -14,7 +14,7 @@ struct WidgetIconView: View {
     
     var body: some View {
         VStack {
-            Image(uiImage: .init(data:(selectedObject.image!))!)
+            Image(uiImage: .init(data: (selectedObject.image!))!)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .clipShape(Circle())
@@ -26,11 +26,8 @@ struct WidgetIconView: View {
     }
 }
 
-
 struct DeepLinkWidgetIconView_Previews: PreviewProvider {
     static var previews: some View {
         WidgetIconView(selectedObject: DeepLink.example)
     }
 }
-
-

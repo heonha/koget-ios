@@ -50,7 +50,6 @@ struct LinkWidgetView: View {
                     }
                     Spacer()
 
-                    
                 } else {
                     
                     EmptyGrid()
@@ -63,7 +62,6 @@ struct LinkWidgetView: View {
     }
 }
 
-
 struct WidgetListGridView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -72,4 +70,3 @@ struct WidgetListGridView_Previews: PreviewProvider {
         .environmentObject(StorageProvider(inMemory: true))
     }
 }
-

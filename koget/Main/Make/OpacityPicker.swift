@@ -13,9 +13,7 @@ struct OpacityPicker: View {
         case make
         case detail
     }
-    
-    
-    
+
     @StateObject var viewModel: MakeWidgetViewModel
     var widthRatio: CGFloat
     var type: OpacityPickerType
@@ -29,8 +27,7 @@ struct OpacityPicker: View {
             Menu {
                 Button {
                     viewModel.opacityValue = 0.0
-                    print(viewModel.opacityValue)
-                    
+                    // print(viewModel.opacityValue)
                 } label: {
                     HStack {
                         Text("0% - 보이지 않음")
@@ -43,8 +40,7 @@ struct OpacityPicker: View {
                 
                 Button {
                     viewModel.opacityValue = 0.25
-                    print(viewModel.opacityValue)
-                    
+                    // print(viewModel.opacityValue)
                 } label: {
                     HStack {
                         Text("25%")
@@ -56,11 +52,10 @@ struct OpacityPicker: View {
                 }
                 .tag(25)
                 
-                
                 Button {
                     viewModel.opacityValue = 0.5
-                    print(viewModel.opacityValue)
-                    
+                    // print(viewModel.opacityValue)
+
                 } label: {
                     HStack {
                         Text("50%")
@@ -71,11 +66,10 @@ struct OpacityPicker: View {
                     }
                 }
                 .tag(50)
-                
-                
+
                 Button {
                     viewModel.opacityValue = 0.75
-                    print(viewModel.opacityValue)
+                    // print(viewModel.opacityValue)
                 } label: {
                     Text("75%")
                     if viewModel.opacityValue == 0.75 {
@@ -83,7 +77,6 @@ struct OpacityPicker: View {
                     }
                 }
                 .tag(75)
-                
                 
                 Button {
                     viewModel.opacityValue = 1.0
@@ -94,17 +87,9 @@ struct OpacityPicker: View {
                     }
                 }
                 .tag(100)
-                
-                
-                
+
             } label: {
                 ZStack {
-                    // RoundedRectangle(cornerRadius: 8)
-                    //     .stroke(lineWidth: 1)
-                    //     .frame(height: 30)
-                    //     .foregroundStyle(.gray)
-                    //     .opacity(1.0)
-                    //
                     if let opacity = viewModel.opacityValue {
                         Text("\(Int(opacity * 100))%")
                             .foregroundColor(.init(uiColor: .secondaryLabel))
@@ -117,23 +102,14 @@ struct OpacityPicker: View {
                             .foregroundColor(.black)
                     }
                 }
-                .frame(width: DEVICE_SIZE.width * widthRatio)
+                .frame(width: deviceSize.width * widthRatio)
                 .shadow(radius: 1)
                 .animation(.none, value: viewModel.opacityValue)
             }
             Spacer()
-            
-           
         }
-        .onAppear {
-            
-        }
-        
-        
-        
     }
 }
-
 
 struct OpacityPicker_Previews: PreviewProvider {
     static var previews: some View {
@@ -142,4 +118,3 @@ struct OpacityPicker_Previews: PreviewProvider {
         }
     }
 }
-

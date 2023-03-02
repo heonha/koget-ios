@@ -47,8 +47,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
         }
         completion(appImage, deepLink)
     }
-    
-    
+
     /// Widget이 업데이트 될 미래 시간을 전달합니다. (미래날짜가 포함된 타임라인 엔트리배열)
     func getTimeline(for configuration: DeepLinkAppIntent,
                      in context: Context,
@@ -94,9 +93,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
             completion(timeline)
             
         }
-        
-        
-        
+
         /// 타임라인을 만들어서 Completion으로 넘깁니다.
         /// > Parameters
         /// - entries : 시간을 담은 배열
@@ -130,7 +127,7 @@ struct DeepLinkEntry: TimelineEntry {
 }
 
 //MARK: - Widget View
-struct DeepLinkWidgetEntryView : View {
+struct DeepLinkWidgetEntryView: View {
     var entry: DeepLinkProvider.Entry
     
     @Environment(\.widgetFamily) var family
@@ -176,13 +173,12 @@ struct DeepLinkWidgetEntryView : View {
                                 Image(uiImage: entry.image ?? UIImage(systemName: "questionmark.circle")!)
                                 .resizable()
                                 .scaledToFit()
-                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(ID_SEPARATOR)\(entry.id!)"))
+                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(idSeparator)\(entry.id!)"))
                                 .clipShape(Circle())
                             }
                             .opacity(entry.opacity ?? 1.0)
                             .opacity(0.7)
 
-                            
                         }
                         
                     } else {
@@ -225,14 +221,12 @@ struct DeepLinkWidgetEntryView : View {
                                 Image(uiImage: entry.image ?? UIImage(systemName: "questionmark.circle")!)
                                 .resizable()
                                 .scaledToFit()
-                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(ID_SEPARATOR)\(entry.id!)"))
+                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(idSeparator)\(entry.id!)"))
                                 .clipShape(Circle())
                             }
                             .opacity(1)
 
-                            
                         }
-                        
                     } else {
                         ZStack {
                             VStack {
@@ -243,8 +237,6 @@ struct DeepLinkWidgetEntryView : View {
                         }
                     }
                 }
-                
-                
             default:
                 VStack {
                     Text("위젯오류")
@@ -252,9 +244,7 @@ struct DeepLinkWidgetEntryView : View {
                 .widgetURL(URL(string: selectWidgetURL))
             }
         }
-        
-        
-        
+
     }
     
 }
@@ -271,7 +261,6 @@ struct Widgets: WidgetBundle {
 
 //MARK: - Protocol : Widget
 
-
 /// Widget : Widget의 컨텐츠를 나타내는 configuration 프로토콜
 struct DeepLinkWidget: Widget {
     let kind: String = "LockScreenWidget"
@@ -279,7 +268,6 @@ struct DeepLinkWidget: Widget {
     let subtitle: LocalizedStringKey = "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요."
     @ObservedObject var coreData = WidgetCoreData.shared
 
-    
     /// 위젯의 Contents를 나타냅니다.
     var body: some WidgetConfiguration {
         
@@ -300,8 +288,6 @@ struct DeepLinkWidget: Widget {
             .supportedFamilies([.accessoryCircular, .systemSmall]) // 위젯이 지원하는 위젯의 종류입니다.
     }
 }
-
-
 
 //MARK: - Widget Preview
 /// 위젯 프리뷰 구성

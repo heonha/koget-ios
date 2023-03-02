@@ -21,22 +21,17 @@ enum FloatingMenuType {
 }
 
 struct FloatingMenuButton: View {
-    
     var systemName: String
     var text: LocalizedStringKey
     var link: NavigationLinkType
     var type: FloatingMenuType
-    
-    
     var symbolColor = LinearGradient(colors: [.red, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
     var size = CGSize(width: 140, height: 50)
-    
     // content
     var textInfo: (color: Color, fontSize: CGFloat, weight: Font.Weight)
         = (color: .black, fontSize: 15, weight: .medium)
-    
     // view
-    var borderColor = Color(hex: "F4F4F4")
+    var borderColor = Color("F4F4F4")
     var backgroundColor = Color.white
     var shadow: (color: Color, radius: CGFloat, x: CGFloat, y: CGFloat)
         = (color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
@@ -77,7 +72,6 @@ struct FloatingMenuButton: View {
                     
                 }
 
-                
             case .sheet:
                 Button {
                     self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {

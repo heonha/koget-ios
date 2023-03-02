@@ -19,13 +19,11 @@ struct WelcomeSheetContent {
     }
 }
 
-
 class HelperSheetViewModel: ObservableObject {
     
     @Published var showWelcomeSheet = false
     @Published var showPatchNote = false
     @Published var showUseLockscreen = false
-    
     
     let rawContents = [
         WelcomeSheetContent(title: "코젯을 소개합니다!", rows: [
@@ -38,12 +36,6 @@ class HelperSheetViewModel: ObservableObject {
     private init() {
         
     }
-    
-    
-    
-    
-
-    
     
     lazy var pages = [
         WelcomeSheetPage(title: String.localizedString("코젯을 소개합니다!") , rows: [
@@ -74,7 +66,7 @@ class HelperSheetViewModel: ObservableObject {
                                 accentColor: .black,
                                 title: String.localizedString("연결되는 링크 URL 공개"),
                                 content: String.localizedString("위젯 생성시 연결되는 URL을 볼 수 있어서 신뢰할 수 있는 링크인지 확인이 가능해요.")),
-
+            
         ], mainButtonTitle: String.localizedString("코젯 시작하기"))
     ]
     
@@ -92,4 +84,3 @@ struct WelcomeSheetViewModel_Previews: PreviewProvider {
         
     }
 }
-

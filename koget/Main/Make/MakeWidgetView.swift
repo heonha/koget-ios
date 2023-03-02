@@ -13,7 +13,6 @@ enum WidgetType {
 
 struct MakeWidgetView: View {
     
-    
     let navigationBarColor = AppColors.secondaryBackgroundColor
     
     @StateObject var viewModel = MakeWidgetViewModel()
@@ -32,7 +31,6 @@ struct MakeWidgetView: View {
     @State var isPresentQustionmark: Bool = false
     
     @Environment(\.dismiss) var dismiss
-    
     
     var body: some View {
         
@@ -61,7 +59,7 @@ struct MakeWidgetView: View {
                                 .foregroundColor(.black)
                         }
                     }
-                    .frame(width: DEVICE_SIZE.width - 32, height: 40)
+                    .frame(width: deviceSize.width - 32, height: 40)
                     .padding(.vertical)
                     .sheet(isPresented: $isAppPickerPresent) {
                         assetList
@@ -126,8 +124,6 @@ struct MakeWidgetView: View {
                         Button("취소") {
                             return
                         }
-                        
-                        
                     } message: {
                         Text("아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?")
                     }
@@ -148,7 +144,6 @@ struct MakeWidgetView: View {
         }
     }
     
-    
     private func saveWidget() {
         viewModel.addWidget()
         self.dismiss()
@@ -163,7 +158,3 @@ struct AddWidgetView_Previews: PreviewProvider {
         }
     }
 }
-
-
-
-

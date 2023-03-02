@@ -31,7 +31,6 @@ extension EnvironmentValues {
     }
 }
 
-
 extension UIViewController {
     func present<Content: View>(style: UIModalPresentationStyle = .automatic, transitionStyle: UIModalTransitionStyle = .coverVertical, @ViewBuilder builder: () -> Content) {
         let toPresent = UIHostingController(rootView: AnyView(EmptyView()))

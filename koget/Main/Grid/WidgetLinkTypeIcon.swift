@@ -52,13 +52,8 @@ struct WidgetLinkTypeIcon: View {
                 }
                 .padding([.bottom, .trailing], -4)
             }
-        
-        
     }
 }
-
-
-
 
 struct WidgetLinkTypeIcon_Previews: PreviewProvider {
     static var previews: some View {

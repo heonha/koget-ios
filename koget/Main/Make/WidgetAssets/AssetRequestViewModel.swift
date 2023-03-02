@@ -8,7 +8,6 @@
 import SwiftUI
 import FirebaseFirestore
 
-
 final class AssetRequestViewModel: ObservableObject {
     
     @ObservedObject var authModel = GuestAuthModel()
@@ -20,7 +19,6 @@ final class AssetRequestViewModel: ObservableObject {
     
     func checkTheField(completion: @escaping (Bool) -> Void) {
         
-
         if appName == "" {
             // 알럿 표시 -> 빈칸을 채워주세요.
             completion(false)
@@ -52,21 +50,18 @@ final class AssetRequestViewModel: ObservableObject {
                 "date": date
             ]
             
-            
-            
             Firestore.firestore().collection("Request-Add-App").addDocument(data: data) { error in
                 if let error = error {
-                    print(error.localizedDescription)
+                    // print(error.localizedDescription)
                 } else {
-                    print("전송 완료")
+                    // print("전송 완료")
                 }
             }
         } else {
-            print("로그인 되어 있지 않음.")
+            // print("로그인 되어 있지 않음.")
             return
         }
         
-       
     }
     
 }

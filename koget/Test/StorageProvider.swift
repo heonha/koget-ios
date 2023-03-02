@@ -43,7 +43,7 @@ class StorageProvider: ObservableObject {
             try storageProvider.persistentContainer.viewContext.save()
         } catch {
             // 문제가 발생 시 Crash 😭
-            print("Failed to save test movies: \(error)")
+            // print("Failed to save test movies: \(error)")
         }
 
         return storageProvider
@@ -66,10 +66,7 @@ class StorageProvider: ObservableObject {
                 // 현재로서는 모델 로드 실패는 프로그래밍 오류이며 복구할 수 없습니다.
                 fatalError("Core Data store failed to load with error: \(error)")
             } else {
-                
-                print("Successfully loaded persistent stores.")
-                
-                // Get all the movies
+                // print("Successfully loaded persistent stores.")
                 self.linkWidgets = self.getAllWidgets()
             }
             
@@ -77,7 +74,6 @@ class StorageProvider: ObservableObject {
     }
     
 }
-
 
 // saveData
 extension StorageProvider {
@@ -98,17 +94,13 @@ extension StorageProvider {
             
             // Persist the data in this managed object context to the underlying store
             try persistentContainer.viewContext.save()
-            
-            print("Movie saved successfully")
-            
+            // print("saved successfully")
             // Refresh
             linkWidgets = getAllWidgets()
             
         } catch {
-            
             // Something went wrong 😭
-            print("Failed to save data: \(error)")
-            
+            // print("Failed to save data: \(error)")
             // 관리 개체 컨텍스트의 모든 변경 사항을 롤백합니다.
             persistentContainer.viewContext.rollback()
             
@@ -118,13 +110,11 @@ extension StorageProvider {
 
 }
 
-
 // Get all the Data
 extension StorageProvider {
     
     // View는 StorageProvider의 배열을 통해 Core Data에서 검색된 데이터에 액세스하므로 비공개로 설정됩니다.
     private func getAllWidgets() -> [DeepLink] {
-        
         // 주석으로 유형을 지정해야 합니다. 그렇지 않으면 Xcode는 사용할 fetchRequest()의 오버로드를 알 수 없습니다(엔터티용으로 사용하려고 함).
         // 일반적인 인수 <EntityName>는 Swift가 fetchRequest가 반환하는 관리 객체의 종류를 알 수 있도록 하여 영화 목록을 배열로 반환하는 것을 더 쉽게 만듭니다.
         let fetchRequest: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
@@ -135,9 +125,7 @@ extension StorageProvider {
             return try persistentContainer.viewContext.fetch(fetchRequest)
             
         } catch {
-            
-            print("Failed to fetch Widgets \(error)")
-            
+            // print("Failed to fetch Widgets \(error)")
         }
         
         // 오류가 발생하면 아무 것도 반환하지 않음
@@ -145,4 +133,3 @@ extension StorageProvider {
     }
     
 }
-

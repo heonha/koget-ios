@@ -49,8 +49,6 @@ struct WidgetAssetList: View {
                             AssetRequestView()
                         }
 
-
-                        
                         Spacer()
                         Text("실행가능한 앱/웹 보기")
                             .font(.system(size: 14, weight: .semibold))
@@ -65,7 +63,7 @@ struct WidgetAssetList: View {
                         
                     }
                     Rectangle()
-                        .frame(width: DEVICE_SIZE.width, height: 12)
+                        .frame(width: deviceSize.width, height: 12)
                         .foregroundColor(.init(uiColor: .secondarySystemFill))
                 }
                 
@@ -105,8 +103,6 @@ struct WidgetAssetList: View {
                                     .foregroundColor(.init(uiColor: .secondaryLabel))
                                     .padding(.leading, 1)
                             }
-                            
-
                         }
                     }
                     .disabled(Switcher.shared.isTestMode ? false : !widget.canOpen)
@@ -124,12 +120,7 @@ struct WidgetAssetList: View {
                 
             }
         }
-        
-        
     }
-    
-    
-    
 }
 
 struct WidgetListForDeepLink_Previews: PreviewProvider {

@@ -58,14 +58,9 @@ struct TextFieldView: View {
                 }
 
             }
-
-            
         }
-            
-
     }
 }
-
 
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {

@@ -5,7 +5,6 @@
 //  Created by HeonJin Ha on 2022/11/20.
 //
 
-
 import SwiftUI
 import CoreData
 
@@ -45,8 +44,7 @@ class WidgetCoreData: ObservableObject {
         saveData()
         loadData()
     }
-    
-    
+
     func editLinkWidget(name: String, image: UIImage?, url: String, opacity: Double, widget: DeepLink) {
         
         widget.name = name
@@ -69,41 +67,21 @@ class WidgetCoreData: ObservableObject {
             
             return deepLinks
             
-        } catch let error {
-            print("데이터 가져오기 에러 발생 : \(error)")
+        } catch {
+            // print("데이터 가져오기 에러 발생 : \(error)")
         }
         return nil
     }
     
-    
     func saveData() {
         do {
             try container.viewContext.save()
-            print("저장완료")
+            // print("저장완료")
         } catch {
-            print("context 저장중 에러 발생 : \(error)")
+            // print("context 저장중 에러 발생 : \(error)")
             fatalError("context 저장중 에러 발생")
         }
     }
-    
-    
-//    //원하는 entity 타입의 데이터 불러오기(Read)
-//    func loadData() {
-//
-//        let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
-//
-//
-//        // 데이터 가져오기
-//        do {
-//            linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
-//            self.objectWillChange.send()
-//            print("로드완료")
-//
-//        } catch {
-//            print("데이터 가져오기 에러 발생 : \(error)")
-//            fatalError("데이터 가져오기 에러 발생")
-//        }
-//    }
     
     enum WidgetSortKeys: String {
         case updatedDate = "updatedDate"
@@ -121,10 +99,9 @@ class WidgetCoreData: ObservableObject {
         do {
             linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
             self.objectWillChange.send()
-            print("로드완료")
-
+            // print("로드완료")
         } catch {
-            print("데이터 가져오기 에러 발생 : \(error)")
+            // print("데이터 가져오기 에러 발생 : \(error)")
             fatalError("데이터 가져오기 에러 발생")
         }
     }
@@ -145,23 +122,17 @@ class WidgetCoreData: ObservableObject {
         do {
             linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
         } catch {
-            print("데이터 가져오기 에러 발생 : \(error)")
+            // print("데이터 가져오기 에러 발생 : \(error)")
             fatalError("데이터 가져오기 에러 발생")
         }
     }
 
-
-    
     func deleteData(data: DeepLink) {
         container.viewContext.delete(data)
         saveData()
         loadData()
     }
-    
-
-    
 }
-
 
 public extension URL {
     /// sqlite 데이터베이스를 가리키는 지정된 앱 그룹 및 데이터베이스의 URL을 반환합니다.
@@ -173,5 +144,3 @@ public extension URL {
         return fileContainer.appendingPathComponent("\(databaseName).sqlite")
     }
 }
-
-

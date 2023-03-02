@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 /// 기기의 종류에 따른 분기
 extension UIDevice {
     

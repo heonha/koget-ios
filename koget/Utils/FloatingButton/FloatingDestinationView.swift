@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct FloatingDestinationView: View {
     
     var type: NavigationLinkType
@@ -27,12 +26,8 @@ struct FloatingDestinationView: View {
     }
 }
 
-
 struct FloatingDestinationView_Previews: PreviewProvider {
     static var previews: some View {
         FloatingDestinationView(type: .aboutApp)
     }
 }
-
-
-

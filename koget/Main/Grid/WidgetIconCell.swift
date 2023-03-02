@@ -16,7 +16,7 @@ struct WidgetIconCell: View {
     
     var widget: DeepLink
     var type: WidgetIconCellType
-    var gridCellWidth: CGFloat = GRID_CELL_WIDTH
+    var gridCellWidth: CGFloat = widgetCellWidthForGrid
     var listCellHeight: CGFloat = 50
     
     @State var isDelete: Bool = false
@@ -25,7 +25,6 @@ struct WidgetIconCell: View {
     @EnvironmentObject var coreData: WidgetCoreData
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
 
-    
     init(widget: DeepLink, viewModel: MainWidgetViewModel, type: WidgetIconCellType) {
         self.widget = widget
         self.type = type
@@ -36,19 +35,16 @@ struct WidgetIconCell: View {
     let web: LocalizedStringKey = "웹 페이지"
 
     @Environment(\.dismiss) var dismiss
-    
-    
+
     var body: some View {
         if let data = widget.image, let name = widget.name, let url = widget.url {
             if let widgetImage = UIImage(data: data) {
-                
-                
                 Menu {
                     Button {
                         if let url = widget.url, let id = widget.id {
-                            viewModel.maybeOpenedFromWidget(urlString: "\(SCHEME_LINK)\(url)\(ID_SEPARATOR)\(id.uuidString)")
+                            viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
                         } else {
-                            print("CoreData url Error")
+                            // print("CoreData url Error")
                         }
                     } label: {
                         Label("실행하기", systemImage: "arrow.up.left.square.fill")
@@ -65,13 +61,9 @@ struct WidgetIconCell: View {
                         isDelete.toggle()
                         // WidgetCoreData.shared.deleteData(data: widget)
                         // MainWidgetViewModel.shared.deleteSuccessful = true
-
-
                     } label: {
                         Label("삭제", systemImage: "trash.fill")
                     }
-                    
-                
                 } label: {
                     
                     if type == .grid {
@@ -115,8 +107,6 @@ struct WidgetIconCell: View {
                                     }
                                 }
                             }
-
-                            
                         }
                         .frame(height: listCellHeight)
                         .alert("삭제 확인", isPresented: $isDelete, actions: {
@@ -132,19 +122,14 @@ struct WidgetIconCell: View {
                     }
 
                 }
-                
-                
-                
             }
         }
     }
 }
 
-
 struct DeepLinkWidgetIconView_Previews: PreviewProvider {
 
     static var previews: some View {
-        
         
         ZStack {
             // 배경
@@ -157,6 +142,3 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
         .environmentObject(StorageProvider())
     }
 }
-
-
-

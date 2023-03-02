@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 class MainWidgetViewModel: ObservableObject {
     
     //MARK: Published Variables
@@ -31,7 +30,7 @@ class MainWidgetViewModel: ObservableObject {
             UIApplication.shared.open(url.absoluteURL)
 
         } else {
-            print("URL Open Error: \(urlString)")
+            // print("URL Open Error: \(urlString)")
             return
         }
         
@@ -46,16 +45,15 @@ class MainWidgetViewModel: ObservableObject {
     }
     
     func maybeOpenedFromWidget(urlString: String) {
-        print("‼️앱에서 링크를 열었습니다. ")
-        
-        
-        let separatedURL = urlString.split(separator: ID_SEPARATOR, maxSplits: 1)
-        let url = String(separatedURL[0]).deletingPrefix(SCHEME_LINK)
+        // print("‼️앱에서 링크를 열었습니다. ")
+
+        let separatedURL = urlString.split(separator: idSeparator, maxSplits: 1)
+        let url = String(separatedURL[0]).deletingPrefix(schemeToAppLink)
         let id = String(separatedURL[1])
         
         WidgetCoreData.shared.linkWidgets.contains { deepLink in
             if deepLink.id?.uuidString == id {
-                print("ID: \(deepLink.name!)")
+                // print("ID: \(deepLink.name!)")
 
                 deepLink.runCount += 1
                 WidgetCoreData.shared.saveData()
@@ -65,7 +63,6 @@ class MainWidgetViewModel: ObservableObject {
                 return false
             }
         }
-
 
         UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
         

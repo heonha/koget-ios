@@ -10,11 +10,9 @@ import ToastUI
 
 struct DetailWidgetView: View {
     
-    
     var size: CGSize = .init(width: 300, height: 500)
     
     @State var selectedWidget: DeepLink
-    
     @ObservedObject var viewModel = DetailWidgetViewModel()
     
     //Present Views
@@ -43,9 +41,7 @@ struct DetailWidgetView: View {
                             .padding(.horizontal, 35)
                     }
                     .background(Color.init(uiColor: .darkGray))
-                    
-                    
-                    
+
                     //MARK: - 상단 바
 
                     HStack {
@@ -69,11 +65,9 @@ struct DetailWidgetView: View {
                             Button("취소", role: .cancel) {}
                         }, message: { Text("정말 삭제 하시겠습니까?") })
                         
-                        
                         Spacer()
                         
                         //MARK: 닫기버튼
-                        
                         Button {
                             self.dismiss()
                         } label: {
@@ -84,7 +78,6 @@ struct DetailWidgetView: View {
                     }
                     .padding(.horizontal, 8)
                 }
-                
                 
                 //MARK: - 아이콘
                 
@@ -98,9 +91,6 @@ struct DetailWidgetView: View {
                 }
 
                 //MARK: - 이름, URL
-                
-                    
-               
                 VStack {
                     
                     EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.name)
@@ -127,7 +117,7 @@ struct DetailWidgetView: View {
                                     .font(.system(size: 12))
                                     .foregroundColor(.black)
                             })
-                            .frame(width: DEVICE_SIZE.width * 0.5, height: 30)
+                            .frame(width: deviceSize.width * 0.5, height: 30)
                             .offset(x: 50, y: -40)
                             .opacity( isPresentQustionmark ? 0.9 : 0.0 )
                             .animation(.linear(duration: 0.2), value: isPresentQustionmark)
@@ -156,12 +146,7 @@ struct DetailWidgetView: View {
                     OpacitySlider(viewModel: viewModel, widthRatio: 0.3, type: .detail)
                         .padding(.horizontal)
                 }
-          
 
-                
-                
-              
-                
                 VStack(alignment: .center, spacing: 12) {
                     // 편집 버튼
                     EditingToggleButton(selectedWidget: selectedWidget, isEditingMode: $isEditingMode, viewModel: viewModel)
@@ -170,12 +155,8 @@ struct DetailWidgetView: View {
                     DetailWidgetButton(text: "닫기", buttonColor: .init(uiColor: .systemFill)) {
                         self.dismiss()
                     }
-                    
-                    
                 }
                 .padding(.top, 16)
-                
-                
                 Spacer()
                 
             }
@@ -200,14 +181,10 @@ struct DetailWidgetView: View {
             isPresentQustionmark = false
         }
     }
-    
-    
-    
 }
 
 struct EditWidgetView_Previews: PreviewProvider {
-    
-    
+
     static var previews: some View {
         NavigationView {
             DetailWidgetView(selectedWidget: DeepLink.example)
@@ -215,5 +192,3 @@ struct EditWidgetView_Previews: PreviewProvider {
     }
     
 }
-
-

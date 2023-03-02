@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct PatchNoteView: View {
     
     var patchNote: PatchNote
@@ -72,12 +71,10 @@ struct PatchNoteView: View {
                                 
                                 Spacer()
                                 
-                                
                             }
                             .cornerRadius(8)
                             .padding(.horizontal, 20)
                             .padding(.vertical, 8)
-                            
                             
                         }
                         
@@ -85,13 +82,10 @@ struct PatchNoteView: View {
                     }
                     .background(Color.white)
                 }
-                
-                
             }
         }
     }
 }
-
 
 struct PatchNoteView_Previews: PreviewProvider {
     static var previews: some View {
