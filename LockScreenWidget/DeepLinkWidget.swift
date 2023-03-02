@@ -145,11 +145,11 @@ struct DeepLinkWidgetEntryView : View {
     var body: some View {
         
         ZStack {
-            VStack {
-                Text("바로가기")
-                Text("위젯추가")
-            }
-            .opacity(placeholderOpacity)
+            // VStack {
+            //     Text("바로가기")
+            //     Text("위젯추가")
+            // }
+            // .opacity(placeholderOpacity)
             
             switch family {
             case .accessoryCircular:
@@ -198,10 +198,56 @@ struct DeepLinkWidgetEntryView : View {
                 .onAppear {
                     self.placeholderOpacity = 0
                 }
+                .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
+                    // make sure you don't call this too often
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
 
+            case .systemSmall:
+                ZStack {
+                    // entry에 id가 Set되어 있는경우
+                    if entry.id != nil {
+                        if entry.id == "Ssn2&}g3f`M-Fe.k" {
+                                VStack {
+                                    Text("바로가기")
+                                        .font(.system(size: 12))
+                                    Text("위젯추가")
+                                        .font(.system(size: 12))
+                                }
+                                .bold()
+                            
+                        } else {
+                            // 코어 데이터의 데이터
+                            // entry의 데이터
+                            // 코어데이터 바뀜 -> 코어데이터 업데이트 -> Entry 업데이트 -> 위젯 업데이트
+                            
+                            VStack(alignment: .center) {
+                                Image(uiImage: entry.image ?? UIImage(systemName: "questionmark.circle")!)
+                                .resizable()
+                                .scaledToFit()
+                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(ID_SEPARATOR)\(entry.id!)"))
+                                .clipShape(Circle())
+                            }
+                            .opacity(1)
+
+                            
+                        }
+                        
+                    } else {
+                        ZStack {
+                            VStack {
+                                Text("눌러서")
+                                Text("위젯선택")
+                            }
+                            .bold()
+                        }
+                    }
+                }
+                
+                
             default:
                 VStack {
-                    Text("Error")
+                    Text("위젯오류")
                 }
                 .widgetURL(URL(string: selectWidgetURL))
             }
@@ -210,28 +256,6 @@ struct DeepLinkWidgetEntryView : View {
         
         
     }
-    
-    
-    func getImage(entry: DeepLinkProvider.Entry) {
-        let image = {
-            var appImage = UIImage(named: "questionmark.circle")!
-            WidgetCoreData.shared.linkWidgets.contains { appAsset in
-                if let appID = entry.id {
-                    if appAsset.id?.uuidString == appID {
-                        appImage = UIImage(data: appAsset.image!)!
-                        // deepLink = appAsset
-                        return true
-                    } else {
-                        return false
-                    }
-                } else {
-                    return false
-                }
-            }
-            return appImage
-        }
-    }
-    
     
 }
 
@@ -273,7 +297,7 @@ struct DeepLinkWidget: Widget {
             }
             .configurationDisplayName(title)
             .description(subtitle)
-            .supportedFamilies([.accessoryCircular]) // 위젯이 지원하는 위젯의 종류입니다.
+            .supportedFamilies([.accessoryCircular, .systemSmall]) // 위젯이 지원하는 위젯의 종류입니다.
     }
 }
 

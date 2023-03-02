@@ -24,21 +24,21 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>7</integer>
 		***REMOVED***
 		<key>Promises (Playground) 2.xcscheme</key>
 		***REMOVED***
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>8</integer>
 		***REMOVED***
 		<key>Promises (Playground).xcscheme</key>
 		***REMOVED***
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>6</integer>
 		***REMOVED***
 		<key>koget-Debug.xcscheme_^#shared#^_</key>
 		***REMOVED***
@@ -51,6 +51,14 @@
 		***REMOVED***
 			<key>orderHint</key>
 			<integer>0</integer>
+		***REMOVED***
+	***REMOVED***
+	<key>SuppressBuildableAutocreation</key>
+	***REMOVED***
+		<key>396BCB6329AE1CC600B1E759</key>
+		***REMOVED***
+			<key>primary</key>
+			<true/>
 		***REMOVED***
 	***REMOVED***
 ***REMOVED***
