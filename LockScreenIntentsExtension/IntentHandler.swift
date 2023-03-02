@@ -10,14 +10,14 @@ import SwiftUI
 
 
 
-// As an example, this class is set up to handle Message intents.
-// You will want to replace this or add other intents as appropriate.
-// The intents you wish to handle must be declared in the extension's Info.plist.
+// 예를 들어 이 클래스는 메시지 의도를 처리하도록 설정됩니다.
+// 이를 교체하거나 적절하게 다른 인텐트를 추가할 수 있습니다.
+// 처리하려는 인텐트는 확장 프로그램의 Info.plist에 선언되어 있어야 합니다.
 
-// You can test your example integration by saying things to Siri like:
-// "Send a message using <myApp>"
-// "<myApp> John saying hello"
-// "Search for messages in <myApp>"
+// Siri에게 다음과 같이 말하여 예제 통합을 테스트할 수 있습니다.
+// "<myApp>을 사용하여 메시지 보내기"
+// "<myApp> John이 인사하는 중"
+// "<myApp>에서 메시지 검색"
 
 class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessagesIntentHandling, INSetMessageAttributeIntentHandling {
     
@@ -133,11 +133,6 @@ class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessag
 extension IntentHandler: DeepLinkAppIntentHandling {
 
     
-    // func provideAppOptionsCollection(for intent: DeepLinkAppIntent) async throws -> INObjectCollection<AppDefinition> {
-    //     
-    // }
-    
-
     
     /// 위젯 데이터를 가져오고 배열로 만듭니다.
 
@@ -164,6 +159,7 @@ extension IntentHandler: DeepLinkAppIntentHandling {
             // 아래는 위젯에 추가로 전달할 데이터이다.
 
             item.url = deepLink.url // 딥링크 주소
+            item.opacity = deepLink.opacity
             
             return item
         }
@@ -174,6 +170,7 @@ extension IntentHandler: DeepLinkAppIntentHandling {
         /// 위에서 정의한 위젯 INObjectCollection 컬렉션을 completion 으로 전달한다.
         completion(collection, nil)
     }
+    
 
     
 }
