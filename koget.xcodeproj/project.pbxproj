@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		390853B629A24EB2006E8311 /* AssetRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390853B529A24EB2006E8311 /* AssetRequestView.swift */; };
 		390853B829A3949F006E8311 /* AssetRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390853B729A3949F006E8311 /* AssetRequestViewModel.swift */; };
+		390B5CBA29B1A70600B61E35 /* NoticePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CB929B1A70600B61E35 /* NoticePage.swift */; };
+		390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CBB29B1AED900B61E35 /* MainTabView.swift */; };
+		390B5CBE29B20B0A00B61E35 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */; };
 		39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
 		39223B6229A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
 		39223B6329A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
@@ -49,6 +52,9 @@
 		39B23C4729A3B7A70047BBDB /* PatchNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */; };
 		39B23C4929A3BB6F0047BBDB /* PatchNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */; };
 		39B7B69529A9C57C0028AE10 /* OpacityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69429A9C57C0028AE10 /* OpacityPicker.swift */; };
+		39CD9F2929B215A100C28534 /* SDSwagger.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2829B215A100C28534 /* SDSwagger.otf */; };
+		39CD9F3029B215D000C28534 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */; };
+		39CD9F3129B215D000C28534 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */; };
 		39F5AC4F29968890001F9D1E /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39F5AC4E29968890001F9D1E /* QGrid */; };
 		39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5029968906001F9D1E /* EmptyGrid.swift */; };
 		39F5AC532996895C001F9D1E /* TestAssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC522996895C001F9D1E /* TestAssetsView.swift */; };
@@ -188,6 +194,9 @@
 /* Begin PBXFileReference section */
 		390853B529A24EB2006E8311 /* AssetRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetRequestView.swift; sourceTree = "<group>"; };
 		390853B729A3949F006E8311 /* AssetRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetRequestViewModel.swift; sourceTree = "<group>"; };
+		390B5CB929B1A70600B61E35 /* NoticePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticePage.swift; sourceTree = "<group>"; };
+		390B5CBB29B1AED900B61E35 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		39223B6429A5E12800F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39223B7129A5E34600F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationExtensions.swift; sourceTree = "<group>"; };
@@ -216,6 +225,9 @@
 		39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteView.swift; sourceTree = "<group>"; };
 		39B7B69429A9C57C0028AE10 /* OpacityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacityPicker.swift; sourceTree = "<group>"; };
 		39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetViewModel.swift; sourceTree = "<group>"; };
+		39CD9F2829B215A100C28534 /* SDSwagger.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDSwagger.otf; sourceTree = "<group>"; };
+		39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		39F5AC5029968906001F9D1E /* EmptyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGrid.swift; sourceTree = "<group>"; };
 		39F5AC522996895C001F9D1E /* TestAssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAssetsView.swift; sourceTree = "<group>"; };
 		39F5AC5429968A3B001F9D1E /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
@@ -373,8 +385,10 @@
 			children = (
 				3A1F8909297AB25700E1B4C4 /* ContentView.swift */,
 				39F5AC5429968A3B001F9D1E /* Switcher.swift */,
+				390B5CBB29B1AED900B61E35 /* MainTabView.swift */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
 				3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */,
+				390B5CB929B1A70600B61E35 /* NoticePage.swift */,
 				3A00CA642931EDB6004FBF80 /* Grid */,
 				3A08BCFF292FBF0B00E09B3E /* Make */,
 				3A08BD00292FBF1B00E09B3E /* Detail */,
@@ -383,6 +397,35 @@
 				3A08BD01292FC9E700E09B3E /* Settings */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		390B5CC029B20BEC00B61E35 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				39CD9F2829B215A100C28534 /* SDSwagger.otf */,
+				39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */,
+				39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */,
+				390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		390B5CC329B20D9200B61E35 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				3ADA2E98297FD975004AADEE /* lockscreenTutorial.mp4 */,
+				3ABA6C2228C60440005AA8E4 /* Assets.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		390B5CC429B20DA100B61E35 /* plists */ = {
+			isa = PBXGroup;
+			children = (
+				3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */,
+				3ABA6C2728C60440005AA8E4 /* Info.plist */,
+			);
+			name = plists;
 			sourceTree = "<group>";
 		};
 		396BCB6529AE1CC600B1E759 /* Koget-Admin */ = {
@@ -650,11 +693,10 @@
 		3ABA6C2D28C60465005AA8E4 /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				3ADA2E98297FD975004AADEE /* lockscreenTutorial.mp4 */,
-				3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */,
-				3ABA6C2228C60440005AA8E4 /* Assets.xcassets */,
+				390B5CC429B20DA100B61E35 /* plists */,
+				390B5CC329B20D9200B61E35 /* Assets */,
+				390B5CC029B20BEC00B61E35 /* Fonts */,
 				3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */,
-				3ABA6C2728C60440005AA8E4 /* Info.plist */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -888,21 +930,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ADA2E9F297FE7FD004AADEE /* rightArrow.json in Resources */,
-				39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */,
 				3ADA2E99297FD99C004AADEE /* lockscreenTutorial.mp4 in Resources */,
+				390B5CBE29B20B0A00B61E35 /* NotoSansKR-Bold.otf in Resources */,
+				3A1A1FE7296BC9FF00819214 /* GoogleService-Info.plist in Resources */,
+				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
+				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
+				3ADA2E9F297FE7FD004AADEE /* rightArrow.json in Resources */,
+				39CD9F3029B215D000C28534 /* NotoSansKR-Light.otf in Resources */,
 				3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */,
 				3A6449B3297D8C81002A710C /* error.json in Resources */,
-				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
+				39CD9F2929B215A100C28534 /* SDSwagger.otf in Resources */,
 				3A6449B6297E3895002A710C /* sendSuccess.json in Resources */,
-				3A1A1FE7296BC9FF00819214 /* GoogleService-Info.plist in Resources */,
+				39CD9F3129B215D000C28534 /* NotoSansKR-Medium.otf in Resources */,
 				3A6449BA297E3A2C002A710C /* trash.json in Resources */,
 				3ADA2E9D297FE698004AADEE /* createApp.json in Resources */,
-				39223B6E29A5E34600F59F54 /* Localizable.strings in Resources */,
 				3ADA2E9B297FE2A8004AADEE /* apps.json in Resources */,
 				3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */,
-				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
 				3AD4692C297D3F610090B2D3 /* success.json in Resources */,
+				39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */,
+				39223B6E29A5E34600F59F54 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -936,7 +982,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/kodeco.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/kodeco.swiftlint.yml\n  fi\nfi\n";
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/airbnb.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/airbnb.swiftlint.yml\n  fi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1018,6 +1064,7 @@
 				39F5AC5529968A3B001F9D1E /* Switcher.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
 				39B23C4729A3B7A70047BBDB /* PatchNoteList.swift in Sources */,
+				390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */,
 				3A6449B1297D8ACD002A710C /* ToastAlert.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */,
@@ -1031,6 +1078,7 @@
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
 				3A01E779296AB04F0019CD2D /* MakeWidgetTextFieldView.swift in Sources */,
+				390B5CBA29B1A70600B61E35 /* NoticePage.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* LinkWidgetView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
 				39F5AC532996895C001F9D1E /* TestAssetsView.swift in Sources */,

@@ -2,6 +2,12 @@
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSansKR-Light.otf</string>
+		<string>NotoSansKR-Medium.otf</string>
+		<string>NotoSansKR-Bold.otf</string>
+	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		***REMOVED***

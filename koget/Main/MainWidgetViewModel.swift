@@ -53,8 +53,6 @@ class MainWidgetViewModel: ObservableObject {
         
         WidgetCoreData.shared.linkWidgets.contains { deepLink in
             if deepLink.id?.uuidString == id {
-                // print("ID: \(deepLink.name!)")
-
                 deepLink.runCount += 1
                 WidgetCoreData.shared.saveData()
                 WidgetCoreData.shared.loadData()

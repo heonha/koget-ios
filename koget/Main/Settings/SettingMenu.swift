@@ -13,56 +13,77 @@ struct SettingMenu: View, AppStoreReviewable {
     @ObservedObject var viewModel = HelperSheetViewModel.shared
     
     var body: some View {
-        ZStack {
-            Color.init(uiColor: .secondarySystemBackground)
-                .ignoresSafeArea()
-            VStack {
-                Spacer()
-                List {
-                    Section("공지사항") {
-                        
-                        NavigationLink {
-                            PatchNoteList()
-                        } label: {
-                            Label("업데이트 소식", systemImage: "square.and.pencil")
-                        }
+        NavigationView {
+            ZStack {
+                
+                Color.init(uiColor: .secondarySystemBackground)
+                    .ignoresSafeArea()
 
-                        NavigationLink {
-                            LockscreenHelper()
-                        } label: {
-                            Label("위젯을 잠금화면에 등록하는 방법", systemImage: "apps.iphone.badge.plus")
-                        }
-
-                    }
-                    
-                    Section("앱에 관하여") {
-                        
-                        SettingMenuButton(title: "앱 소개 다시보기", imageType: .symbol, imageName: "book") {
-                            viewModel.showWelcomeSheet.toggle()
-                        }
-
-                        SettingMenuButton(title: "앱 평가하기", imageType: .symbol, imageName: "star.fill", imageColor: .yellow) {
-                            requestReview()
-                        }
-                        
-                        SettingMenuButton(title: "코젯 버전", subtitle: appVersion, imageType: .asset, imageName: "Koget") {
-                        }
-                        .disabled(true)
+                ZStack {
+                    AppColors.secondaryBackgroundColor
+                        .ignoresSafeArea()
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Image("KogetLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
                     }
 
                 }
-                .listStyle(.insetGrouped)
 
+
+
+                VStack {
+                    Spacer()
+                    List {
+                        Section("공지사항") {
+
+                            NavigationLink {
+                                PatchNoteList()
+                            } label: {
+                                Label("업데이트 소식", systemImage: "square.and.pencil")
+                            }
+
+                            NavigationLink {
+                                LockscreenHelper()
+                            } label: {
+                                Label("위젯을 잠금화면에 등록하는 방법", systemImage: "apps.iphone.badge.plus")
+                            }
+
+                        }
+
+                        Section("앱에 관하여") {
+
+                            SettingMenuButton(title: "앱 소개 다시보기", imageType: .symbol, imageName: "book") {
+                                viewModel.showWelcomeSheet.toggle()
+                            }
+
+                            SettingMenuButton(title: "앱 평가하기", imageType: .symbol, imageName: "star.fill", imageColor: .yellow) {
+                                requestReview()
+                            }
+
+                            SettingMenuButton(title: "코젯 버전", subtitle: appVersion, imageType: .asset, imageName: "Koget") {
+                            }
+                            .disabled(true)
+                        }
+
+                    }
+                    .listStyle(.insetGrouped)
+
+                }
+                .navigationTitle("더보기")
             }
-            .navigationTitle("더보기")
+            .tint(.black)
+            .welcomeSheet(isPresented: $viewModel.showWelcomeSheet, isSlideToDismissDisabled: true, pages: viewModel.pages)
+            .sheet(isPresented: $viewModel.showUseLockscreen) {
+                LockscreenHelper()
+            }
+            .sheet(isPresented: $viewModel.showPatchNote) {
+                PatchNoteList()
         }
-        .tint(.black)
-        .welcomeSheet(isPresented: $viewModel.showWelcomeSheet, isSlideToDismissDisabled: true, pages: viewModel.pages)
-        .sheet(isPresented: $viewModel.showUseLockscreen) {
-            LockscreenHelper()
-        }
-        .sheet(isPresented: $viewModel.showPatchNote) {
-            PatchNoteList()
         }
 
     }

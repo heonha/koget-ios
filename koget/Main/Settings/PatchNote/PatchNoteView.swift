@@ -20,29 +20,20 @@ struct PatchNoteView: View {
                     Image("Koget")
                         .resizable()
                         .scaledToFit()
-                        .opacity(0.25)
+                        .opacity(0.2)
+                    VStack {
+
                     Text("업데이트 소식")
                         .font(.system(size: 26, weight: .bold))
                         .shadow(radius: 1.5, x: 2, y: 2)
+                    Text("\(patchNote.version) Ver.")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundColor(.init(uiColor: .secondaryLabel))
+                    }
                     
                 }
                 .frame(height: 70)
-                    
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(.white)
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(lineWidth: 2)
-                            .fill(Constants.kogetGradient.opacity(0.8))
-                        Text("\(patchNote.version) Ver.")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(.init(uiColor: .secondaryLabel))
-                        
-                    }
-                    .shadow(radius: 2, x: 1, y: 1)
-                    .frame(width: 80, height: 24)
-                    .padding(.bottom)
-                    
+
                     VStack {
                         Divider()
                         ScrollView {

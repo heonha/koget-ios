@@ -17,7 +17,6 @@ struct WidgetButton: View {
     let titleColor: Color = .init(uiColor: .label)
     @ObservedObject var viewModel: MainWidgetViewModel
 
-
     init(name: String, url: String, widgetImage: UIImage, cellWidth: CGFloat, viewModel: MainWidgetViewModel) {
         self.name = name
         self.url = url

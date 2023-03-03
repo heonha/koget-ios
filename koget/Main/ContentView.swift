@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = MainWidgetViewModel.shared
     @State var isDebugMode = false
     
     var body: some View {
-        MainWidgetView(viewModel: viewModel)
+        MainTabView()
     }
 }
 

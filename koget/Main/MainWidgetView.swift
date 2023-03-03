@@ -18,22 +18,26 @@ struct MainWidgetView: View {
     @State var isOpen = false
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
-    
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
+
     var body: some View {
         NavigationView {
             ZStack {
-                AppColors.secondaryBackgroundColor
-                    .ignoresSafeArea()
+                // AppColors.secondaryBackgroundColor
+                //     .ignoresSafeArea()
                 VStack {
-                    Rectangle()
-                        .frame(width: deviceSize.width, height: 8)
-                        .foregroundStyle(Color.init(uiColor: .secondarySystemBackground))
+                    Divider()
+                    NoticePage()
+                        .padding(.vertical, 4)
+                    Divider()
                     // 링크위젯
                     LinkWidgetView(viewModel: viewModel, coreData: _coreData)
                 }
+                .background(.white)
+                .padding(.top)
+
                 NewFloatingButton(isOpen: $isOpen)
-                
+
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

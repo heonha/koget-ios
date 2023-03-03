@@ -22,16 +22,6 @@ struct LinkWidgetView: View {
                 // 그리드뷰
                 
                 if !$coreData.linkWidgets.wrappedValue.isEmpty {
-                    HStack {
-                        Text("잠금화면 위젯")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.black)
-                            .opacity(0.9)
-                        
-                        Spacer()
-                        
-                    }
-                    .padding([.horizontal, .top])
                     
                     if viewModel.isGridView {
                         
