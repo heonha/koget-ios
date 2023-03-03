@@ -36,8 +36,8 @@ struct WidgetButton: View {
                 // 아이콘배경
                 Color.white
                     .clipShape(Circle())
-                    .shadow(radius: 1, x: 2, y: 2)
-                
+                    // .shadow(radius: 1, x: 2, y: 2)
+
                 Image(uiImage: widgetImage)
                     .resizable()
                     .scaledToFill()
@@ -45,9 +45,9 @@ struct WidgetButton: View {
                 WidgetLinkTypeIcon(viewModel: viewModel, url: url)
             }
             .frame(width: imageSize.width, height: imageSize.height)
-            .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
-            .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
-            
+            .shadow(color: .black.opacity(0.15), radius: 0.5, x: 0.3, y: 0.3)
+            .shadow(color: .black.opacity(0.15), radius: 0.5, x: -0.3, y: -0.3)
+
             Spacer()
 
             //MARK: 위젯 이름

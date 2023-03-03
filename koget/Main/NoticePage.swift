@@ -16,7 +16,7 @@ struct NoticePage: View {
         ZStack {
             TabView {
                 NoticePageCell(named: "KogetLogo", frame: frame.height)
-                    NoticePageCell(systemName: "rectangle.and.pencil.and.ellipsis", frame: 30)
+                NoticePageCell(systemName: "rectangle.and.pencil.and.ellipsis", frame: frame.height)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }
@@ -64,7 +64,7 @@ struct NoticePageCell: View {
                     }
 
                 HStack {
-
+                    Spacer()
                     if !named.isEmpty {
                         // Image(named)
                         //     .resizable()
@@ -76,7 +76,6 @@ struct NoticePageCell: View {
                             .font(.system(size: 40))
                             .padding(12)
                     }
-                    Spacer()
 
                 }
 
@@ -86,14 +85,13 @@ struct NoticePageCell: View {
                             .font(Font.custom("NotoSansKR-Bold", size: 18))
                         Text("새로워진 코젯 확인하기") 
                             .font(Font.custom("NotoSansKR-Light", size: 16))
-
                     }
                     .font(.system(size: 16, weight: .medium))
                     .padding(.leading)
                     Spacer()
                 })
                 }
-                .frame(width: deviceSize.width - 48, height: frame * 0.8)
+                .frame(width: deviceSize.width - 48, height: frame * 0.9)
 
             }
         }

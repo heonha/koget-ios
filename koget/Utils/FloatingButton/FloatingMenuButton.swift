@@ -33,8 +33,6 @@ struct FloatingMenuButton: View {
     // view
     var borderColor = Color("F4F4F4")
     var backgroundColor = Color.white
-    // var shadow: (color: Color, radius: CGFloat, x: CGFloat, y: CGFloat)
-    //     = (color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
 
     @State var isPresent = false
     @Environment(\.viewController) var viewControllerHolder: UIViewController?

@@ -23,8 +23,6 @@ struct MainWidgetView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                // AppColors.secondaryBackgroundColor
-                //     .ignoresSafeArea()
                 VStack {
                     Divider()
                     NoticePage()
@@ -34,7 +32,6 @@ struct MainWidgetView: View {
                     LinkWidgetView(viewModel: viewModel, coreData: _coreData)
                 }
                 .background(.white)
-                .padding(.top)
 
                 NewFloatingButton(isOpen: $isOpen)
 
@@ -42,7 +39,7 @@ struct MainWidgetView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Image("KogetLogo")
+                    Image("KogetClear")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 50)
