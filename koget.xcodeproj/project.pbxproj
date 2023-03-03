@@ -57,7 +57,6 @@
 		39CD9F3129B215D000C28534 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */; };
 		39F5AC4F29968890001F9D1E /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39F5AC4E29968890001F9D1E /* QGrid */; };
 		39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5029968906001F9D1E /* EmptyGrid.swift */; };
-		39F5AC532996895C001F9D1E /* TestAssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC522996895C001F9D1E /* TestAssetsView.swift */; };
 		39F5AC5529968A3B001F9D1E /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5429968A3B001F9D1E /* Switcher.swift */; };
 		3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA652931EFBE004FBF80 /* EditTextField.swift */; };
 		3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA682931F3F1004FBF80 /* StorageProvider.swift */; };
@@ -121,7 +120,6 @@
 		3ABFEFBD292E70A900455730 /* WidgetAssetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFBC292E70A900455730 /* WidgetAssetViewModel.swift */; };
 		3ABFEFC1292F136B00455730 /* DetailWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC0292F136B00455730 /* DetailWidgetView.swift */; };
 		3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC4292F214200455730 /* MainWidgetView.swift */; };
-		3ABFEFC7292F481F00455730 /* TestDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC6292F481F00455730 /* TestDeepLink.swift */; };
 		3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */; };
 		3AC152CF296D8170009CAA1B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 3AC152CE296D8170009CAA1B /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		3AC152D1296D8170009CAA1B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3AC152D0296D8170009CAA1B /* FirebaseFirestore */; };
@@ -229,7 +227,6 @@
 		39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		39F5AC5029968906001F9D1E /* EmptyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGrid.swift; sourceTree = "<group>"; };
-		39F5AC522996895C001F9D1E /* TestAssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAssetsView.swift; sourceTree = "<group>"; };
 		39F5AC5429968A3B001F9D1E /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		3A00CA652931EFBE004FBF80 /* EditTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextField.swift; sourceTree = "<group>"; };
 		3A00CA682931F3F1004FBF80 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
@@ -289,7 +286,6 @@
 		3ABFEFBC292E70A900455730 /* WidgetAssetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetViewModel.swift; sourceTree = "<group>"; };
 		3ABFEFC0292F136B00455730 /* DetailWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetView.swift; sourceTree = "<group>"; };
 		3ABFEFC4292F214200455730 /* MainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetView.swift; sourceTree = "<group>"; };
-		3ABFEFC6292F481F00455730 /* TestDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDeepLink.swift; sourceTree = "<group>"; };
 		3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurBackgroundView.swift; sourceTree = "<group>"; };
 		3AC3E1E828E690B800BFF455 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		3AC3E1EA28E690B800BFF455 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -576,9 +572,6 @@
 		3A3CDA6629640806009A8756 /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				3ABFEFC6292F481F00455730 /* TestDeepLink.swift */,
-				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
-				39F5AC522996895C001F9D1E /* TestAssetsView.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -729,6 +722,7 @@
 				3A0F429E28C89742002F1CAD /* Extensions */,
 				3AB4A3EB28CF01390062EC18 /* Animation */,
 				3A9BC0D928E6E1AE0041DA1B /* Constants.swift */,
+				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
 				3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */,
 				3ACCB354294C3D3500A85E0F /* TextFieldView.swift */,
 				3A9C04FF292DB03C00442017 /* PhotoPicker.swift */,
@@ -1031,7 +1025,6 @@
 				39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */,
 				390853B829A3949F006E8311 /* AssetRequestViewModel.swift in Sources */,
 				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,
-				3ABFEFC7292F481F00455730 /* TestDeepLink.swift in Sources */,
 				3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */,
 				3ACCB357294C54A500A85E0F /* NewFloatingButton.swift in Sources */,
 				3930108A299E6AAC009B13ED /* WidgetConstants.swift in Sources */,
@@ -1081,7 +1074,6 @@
 				390B5CBA29B1A70600B61E35 /* NoticePage.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* LinkWidgetView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
-				39F5AC532996895C001F9D1E /* TestAssetsView.swift in Sources */,
 				3A1F89082978F9DC00E1B4C4 /* LockscreenHelper.swift in Sources */,
 				39B7B69529A9C57C0028AE10 /* OpacityPicker.swift in Sources */,
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,

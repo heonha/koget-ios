@@ -133,3 +133,33 @@ extension StorageProvider {
     }
     
 }
+
+struct TestDeepLink {
+    let id: UUID = UUID()
+    let name: String
+    let image: Data
+    let deepLink: String
+    let updatedDate = Date()
+}
+
+extension DeepLink {
+
+    // Xcode 미리보기를 위한 예제 데이터
+    static var example: DeepLink {
+
+        // 메모리 내 Core Data 저장소에서 가져오기
+        let context = StorageProvider.preview.persistentContainer.viewContext
+
+        let fetchRequest: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
+        fetchRequest.fetchLimit = 1
+
+        var results: [DeepLink] = []
+
+        do {
+            results = try context.fetch(fetchRequest)
+        } catch {
+            fatalError("fetchRequest Error")
+        }
+        return results.first!
+    }
+}
