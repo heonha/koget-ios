@@ -29,7 +29,10 @@ struct CustomFont {
         typealias RawValue = String
 
         static let light = "NotoSansKR-Light"
-        static let medium = "NotoSansKR-Bold"
+        static let regular = "NotoSansKR-Regular"
+        static let medium = "NotoSansKR-Medium"
         static let bold = "NotoSansKR-Bold"
     }
+
+    static let sdSwagger = "SDSwagger"
 }

@@ -26,7 +26,7 @@ struct SettingMenu: View, AppStoreReviewable {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
-                        Image("KogetLogo")
+                        Image("KogetClear")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 50, height: 50)

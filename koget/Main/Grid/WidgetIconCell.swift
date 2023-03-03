@@ -73,20 +73,28 @@ struct WidgetIconCell: View {
                                      cellWidth: cellSize.grid, viewModel: viewModel)
                     } else {
                         HStack {
-                            Image(uiImage: .init(data: widget.image!) ?? UIImage(named: "questionmark.circle")!)
-                                .resizable()
-                                .frame(width: 40, height: 40)
-                                .clipShape(Circle())
+                            ZStack {
+                                Circle()
+                                    .fill(.white)
+                                    .shadow(color: .black.opacity(0.6), radius: 0.5, x: -0.2, y: -0.5)
+                                    .shadow(color: .black.opacity(0.6), radius: 0.5, x: 0.2, y: 0.5)
+
+                                Image(uiImage: .init(data: widget.image!) ?? UIImage(named: "questionmark.circle")!)
+                                    .resizable()
+                            }
+                            .frame(width: 40, height: 40)
+                            .clipShape(Circle())
+
                             VStack(alignment: .leading) {
                                 Text(widget.name ?? "알수없음")
                                 switch viewModel.checkLinkType(url: widget.url ?? "" ) {
                                 case .app:
                                     Text(self.app)
-                                        .font(.system(size: 13))
+                                        .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
                                         .foregroundColor(.gray)
                                 case .web:
                                     Text(self.web)
-                                        .font(.system(size: 13))
+                                        .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
                                         .foregroundColor(.gray)
                                 }
                             }
@@ -94,18 +102,21 @@ struct WidgetIconCell: View {
                             VStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(lineWidth: 1)
-                                        .foregroundStyle(Constants.kogetGradient)
+                                        .foregroundStyle(Color.init(uiColor: .gray))
                                         .frame(width: 70, height: 20)
-                                        .opacity(0.8)
+                                        .shadow(color: .black.opacity(0.4), radius: 0.5, x: 0.2, y: 0.5)
+                                        .opacity(0.7)
                                     Group {
                                         HStack(spacing: 0) {
                                         Text("\(Int(widget.runCount))")
                                             .font(.system(size: 14, weight: .semibold))
+                                            .shadow(color: .black.opacity(0.4), radius: 0.5, x: 0.2, y: 0.5)
+
                                         Text("회 실행")
                                             .font(.system(size: 13, weight: .medium))
+                                            .shadow(color: .black.opacity(0.4), radius: 0.5, x: 0.2, y: 0.5)
                                         }
-                                        .foregroundColor(.init(uiColor: .label))
+                                        .foregroundStyle(Color.init(uiColor: .white))
                                     }
                                 }
                             }
@@ -136,7 +147,8 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
                 .ignoresSafeArea()
             
             // 컨텐츠
-            WidgetIconCell(widget: DeepLink.example, viewModel: MainWidgetViewModel.shared, type: .grid)
+            WidgetIconCell(widget: DeepLink.example, viewModel: MainWidgetViewModel.shared, type: .list)
+                .padding(.horizontal)
         }
         .environmentObject(StorageProvider())
     }

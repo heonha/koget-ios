@@ -151,7 +151,7 @@ extension DeepLink {
         let context = StorageProvider.preview.persistentContainer.viewContext
 
         let fetchRequest: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
-        fetchRequest.fetchLimit = 1
+        fetchRequest.fetchLimit = 2
 
         var results: [DeepLink] = []
 
