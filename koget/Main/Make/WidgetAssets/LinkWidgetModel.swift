@@ -65,7 +65,6 @@ final class LinkWidgetModel: ObservableObject {
             .init(name: "스타벅스", nameKr: "스타벅스", nameEn: "Starbucks", url: "starbucks://", imageName: "starbucks"),
             .init(name: "Strava", nameKr: "스트라바", nameEn: "Strava", url: "strava://", imageName: "strava"),
             .init(name: "텔레그램", nameKr: "텔레그램", nameEn: "Telegram", url: "telegram://", imageName: "telegram"),
-            .init(name: "TikTok", nameKr: "틱톡", nameEn: "TikTok", url: "tiktok://", imageName: "tiktok"),
             .init(name: "TMAP", nameKr: "티맵", nameEn: "TMAP", url: "tmap://", imageName: "tmap"),
             .init(name: "Twitter", nameKr: "트위터", nameEn: "Twitter", url: "twitter://", imageName: "twitter"),
             .init(name: "Uber", nameKr: "우버", nameEn: "Uber", url: "uber://", imageName: "uber"),

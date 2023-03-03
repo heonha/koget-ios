@@ -23,7 +23,6 @@ struct NewFloatingButton: View {
                              buttons: [
                                 FloatingMenuButton(systemName: "plus.circle.fill", text: "위젯 만들기", link: .add,  type: .navigationLink),
                                 FloatingMenuButton(systemName: "mail", text: "문의하기", link: .contact,  type: .navigationLink),
-                                FloatingMenuButton(systemName: "ellipsis.circle", text: "더보기", link: .aboutApp,  type: .navigationLink),
                              ].reversed())
                 .opacity(0.95)
             }
