@@ -34,18 +34,10 @@ struct SettingMenu: View, AppStoreReviewable {
 
                 }
 
-
-
                 VStack {
                     Spacer()
                     List {
-                        Section("공지사항") {
-
-                            NavigationLink {
-                                PatchNoteList()
-                            } label: {
-                                Label("업데이트 소식", systemImage: "square.and.pencil")
-                            }
+                        Section("사용방법") {
 
                             NavigationLink {
                                 LockscreenHelper()

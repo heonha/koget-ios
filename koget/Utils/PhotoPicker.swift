@@ -11,7 +11,9 @@ struct PhotoPicker: UIViewControllerRepresentable {
     
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
 
-    weak var widgetModel: MakeWidgetViewModel?
+    weak var makeModel: MakeWidgetViewModel?
+    weak var detailModel: DetailWidgetViewModel?
+
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<PhotoPicker>) -> UIImagePickerController {
         let picker = UIImagePickerController()
@@ -38,7 +40,11 @@ struct PhotoPicker: UIViewControllerRepresentable {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-                photoPicker.widgetModel?.image = image
+                if photoPicker.makeModel != nil {
+                    photoPicker.makeModel?.image = image
+                } else {
+                    photoPicker.detailModel?.image = image
+                }
             } else {
                 return
             }
@@ -50,3 +56,4 @@ struct PhotoPicker: UIViewControllerRepresentable {
     }
 }
     
+

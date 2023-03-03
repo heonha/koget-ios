@@ -52,7 +52,7 @@ struct WidgetButton: View {
 
             //MARK: 위젯 이름
             Text(name)
-                .font(.system(size: 13, weight: .semibold))
+                .font(.custom(CustomFont.NotoSansKR.medium, size: 13))
                 .foregroundColor(titleColor)
                 .shadow(radius: 0.5, x: 0.5, y: 0.5)
                 .frame(width: textSize.width, height: textSize.height)

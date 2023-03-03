@@ -39,7 +39,7 @@ struct OpacitySlider: View {
             } onEditingChanged: { editing in
                 viewModel.isEditing = editing
             }
-            .tint(.pink)
+            .tint(.blue)
             .padding(.horizontal)
             .padding(.vertical, 4)
 

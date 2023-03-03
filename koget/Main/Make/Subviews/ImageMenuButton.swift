@@ -64,7 +64,7 @@ struct ImageMenuButton: View {
                 appPicker
             }
             .sheet(isPresented: $isPhotoPickerPresent) {
-                PhotoPicker(widgetModel: viewModel)
+                PhotoPicker(makeModel: viewModel)
             }
         }
     }

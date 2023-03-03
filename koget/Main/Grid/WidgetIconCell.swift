@@ -87,6 +87,7 @@ struct WidgetIconCell: View {
 
                             VStack(alignment: .leading) {
                                 Text(widget.name ?? "알수없음")
+                                    .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                                 switch viewModel.checkLinkType(url: widget.url ?? "" ) {
                                 case .app:
                                     Text(self.app)
