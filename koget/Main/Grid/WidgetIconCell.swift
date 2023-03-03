@@ -122,18 +122,19 @@ struct WidgetIconCell: View {
                             }
                         }
                         .frame(height: cellSize.list)
-                        .alert("삭제 확인", isPresented: $isDelete, actions: {
-                            Button("삭제", role: .destructive) {
-                                WidgetCoreData.shared.deleteData(data: widget)
-                                MainWidgetViewModel.shared.deleteSuccessful = true
-                                isDelete = false
-                                self.dismiss()
-                                
-                            }
-                            Button("취소", role: .cancel) {}
-                        }, message: {Text("\(widget.name ?? "알수없음")정말 삭제 하시겠습니까?")})
+
                     }
                 }
+                .alert("삭제 확인", isPresented: $isDelete, actions: {
+                    Button("삭제", role: .destructive) {
+                        WidgetCoreData.shared.deleteData(data: widget)
+                        MainWidgetViewModel.shared.deleteSuccessful = true
+                        isDelete = false
+                        self.dismiss()
+
+                    }
+                    Button("취소", role: .cancel) {}
+                }, message: {Text("\(widget.name ?? "알수없음")정말 삭제 하시겠습니까?")})
             }
         }
     }
