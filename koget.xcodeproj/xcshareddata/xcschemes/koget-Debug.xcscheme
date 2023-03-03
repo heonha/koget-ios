@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A49E90D2988C06700B6E2D1"
-               BuildableName = "koget-Debug.app"
-               BlueprintName = "koget-Debug"
+               BlueprintIdentifier = "3ABA6C1228C6043F005AA8E4"
+               BuildableName = "koget.app"
+               BlueprintName = "koget"
                ReferencedContainer = "container:koget.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,6 +34,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      enableAddressSanitizer = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -44,9 +45,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A49E90D2988C06700B6E2D1"
-            BuildableName = "koget-Debug.app"
-            BlueprintName = "koget-Debug"
+            BlueprintIdentifier = "3ABA6C1228C6043F005AA8E4"
+            BuildableName = "koget.app"
+            BlueprintName = "koget"
             ReferencedContainer = "container:koget.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +62,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A49E90D2988C06700B6E2D1"
-            BuildableName = "koget-Debug.app"
-            BlueprintName = "koget-Debug"
+            BlueprintIdentifier = "3ABA6C1228C6043F005AA8E4"
+            BuildableName = "koget.app"
+            BlueprintName = "koget"
             ReferencedContainer = "container:koget.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

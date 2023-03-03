@@ -18,7 +18,6 @@ import SwiftUI
 // "<myApp>에서 메시지 검색"
 
 class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessagesIntentHandling, INSetMessageAttributeIntentHandling {
-    
     override func handler(for intent: INIntent) -> Any {
         // This is the default implementation.  If you want different objects to handle different intents,
         // you can override this and return the handler you want for that particular intent.
@@ -31,9 +30,8 @@ class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessag
     // Implement resolution methods to provide additional information about your intent (optional).
     func resolveRecipients(for intent: INSendMessageIntent, with completion: @escaping ([INSendMessageRecipientResolutionResult]) -> Void) {
         if let recipients = intent.recipients {
-            
-            // If no recipients were provided we'll need to prompt for a value.
-            if recipients.count == 0 {
+            // 받는 사람이 제공되지 않은 경우 값을 입력해야 합니다.
+            if recipients.isEmpty {
                 completion([INSendMessageRecipientResolutionResult.needsValue()])
                 return
             }
@@ -56,7 +54,6 @@ class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessag
                     
                 default:
                     break
-                    
                 }
             }
             completion(resolutionResults)
@@ -108,7 +105,10 @@ class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessag
             content: "I am so excited about SiriKit!",
             dateSent: Date(),
             sender: INPerson(personHandle: INPersonHandle(value: "sarah@example.com", type: .emailAddress), nameComponents: nil, displayName: "Sarah", image: nil,  contactIdentifier: nil, customIdentifier: nil),
-            recipients: [INPerson(personHandle: INPersonHandle(value: "+1-415-555-5555", type: .phoneNumber), nameComponents: nil, displayName: "John", image: nil,  contactIdentifier: nil, customIdentifier: nil)]
+            recipients: [
+                INPerson(personHandle: INPersonHandle(value: "+1-415-555-5555", type: .phoneNumber),
+                                  nameComponents: nil, displayName: "John", image: nil,  contactIdentifier: nil,
+                                  customIdentifier: nil)]
             )]
         completion(response)
     }
@@ -124,10 +124,8 @@ class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessag
     }
 }
 
-//MARK: - ViewIcon Intent Handling
-
+// MARK: ViewIcon Intent Handling
 extension IntentHandler: DeepLinkAppIntentHandling {
-    
     /// 위젯 데이터를 가져오고 배열로 만듭니다.
     func provideAppOptionsCollection(for intent: DeepLinkAppIntent, with completion: @escaping (INObjectCollection<AppDefinition>?, Error?) -> Void) {
 
@@ -142,7 +140,6 @@ extension IntentHandler: DeepLinkAppIntentHandling {
     
         /// AppInfo Data를 AppDefinition에 mapping 하여 만든 배열
         let apps: [AppDefinition] = avaliableApps.map { deepLink in
-            
             /// 위젯에 필수적으로 전달해야할 데이터이다.
             /// UUID와 위젯편집 시 리스트에 표현될 이름으로 구성된다.
             let item = AppDefinition(

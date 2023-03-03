@@ -22,6 +22,7 @@
 		39223B7B29A61EBC00F59F54 /* Localize_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = 39223B7A29A61EBC00F59F54 /* Localize_Swift */; };
 		3930108A299E6AAC009B13ED /* WidgetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39301089299E6AAC009B13ED /* WidgetConstants.swift */; };
 		3930108B299E6AAC009B13ED /* WidgetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39301089299E6AAC009B13ED /* WidgetConstants.swift */; };
+		3945A81929B1807300C11939 /* ToastUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3945A81829B1807300C11939 /* ToastUI */; };
 		395A0F0229AEF09900D34E0D /* AppAdditionContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0129AEF09900D34E0D /* AppAdditionContact.swift */; };
 		395A0F0429AEF0C100D34E0D /* AppAdditionContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0329AEF0C100D34E0D /* AppAdditionContactViewModel.swift */; };
 		395A0F0629AEF18700D34E0D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0529AEF18700D34E0D /* ContactView.swift */; };
@@ -101,7 +102,6 @@
 		3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D82932167500DC9527 /* DetailWidgetButton.swift */; };
 		3A8C1E762980DB39004FAF89 /* WelcomeSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8C1E752980DB39004FAF89 /* WelcomeSheet */; };
 		3A8C1E782980DB7C004FAF89 /* HelperSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C1E772980DB7C004FAF89 /* HelperSheetViewModel.swift */; };
-		3A97F460297D81B9002B4BDB /* ToastUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3A97F45F297D81B9002B4BDB /* ToastUI */; };
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C04FF292DB03C00442017 /* PhotoPicker.swift */; };
 		3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */; };
@@ -331,6 +331,7 @@
 				3AC152CF296D8170009CAA1B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				3A8C1E762980DB39004FAF89 /* WelcomeSheet in Frameworks */,
 				3AC92E08297247D8000E94F9 /* FloatingButton in Frameworks */,
+				3945A81929B1807300C11939 /* ToastUI in Frameworks */,
 				3AC152D1296D8170009CAA1B /* FirebaseFirestore in Frameworks */,
 				3AC152D5296D8170009CAA1B /* FirebaseStorage in Frameworks */,
 				3AD46926297D3DCF0090B2D3 /* Lottie in Frameworks */,
@@ -338,7 +339,6 @@
 				3980C93929AE3FB5003C1C1A /* FirebaseMessaging in Frameworks */,
 				3AC152D3296D8170009CAA1B /* FirebaseFirestoreSwift in Frameworks */,
 				39223B7929A6030A00F59F54 /* Localize_Swift in Frameworks */,
-				3A97F460297D81B9002B4BDB /* ToastUI in Frameworks */,
 				3A1F890E297ABD8E00E1B4C4 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,11 +777,11 @@
 				3AC92E07297247D8000E94F9 /* FloatingButton */,
 				3A1F890D297ABD8E00E1B4C4 /* FirebaseAuth */,
 				3AD46925297D3DCF0090B2D3 /* Lottie */,
-				3A97F45F297D81B9002B4BDB /* ToastUI */,
 				3A8C1E752980DB39004FAF89 /* WelcomeSheet */,
 				39F5AC4E29968890001F9D1E /* QGrid */,
 				39223B7829A6030A00F59F54 /* Localize_Swift */,
 				3980C93829AE3FB5003C1C1A /* FirebaseMessaging */,
+				3945A81829B1807300C11939 /* ToastUI */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -845,11 +845,11 @@
 				3AC152CD296D8170009CAA1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3AC92E06297247D8000E94F9 /* XCRemoteSwiftPackageReference "FloatingButton" */,
 				3AD46924297D3DCF0090B2D3 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				3A97F45E297D81B9002B4BDB /* XCRemoteSwiftPackageReference "ToastUI" */,
 				3A8C1E742980DB39004FAF89 /* XCRemoteSwiftPackageReference "Welcome-Sheet" */,
 				39F5AC4D29968890001F9D1E /* XCRemoteSwiftPackageReference "QGrid" */,
 				39223B7729A6030A00F59F54 /* XCRemoteSwiftPackageReference "Localize-Swift" */,
 				39BFD99329AA2D72000E0D4C /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */,
+				3945A81729B1807300C11939 /* XCRemoteSwiftPackageReference "ToastUI" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -936,7 +936,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/airbnb.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --config ~/airbnb.swiftlint.yml\n  fi\nfi\n";
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/kodeco.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/kodeco.swiftlint.yml\n  fi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1422,7 +1422,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1552,6 +1552,14 @@
 				minimumVersion = 3.2.0;
 			};
 		};
+		3945A81729B1807300C11939 /* XCRemoteSwiftPackageReference "ToastUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quanshousio/ToastUI.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.0.1;
+			};
+		};
 		39BFD99329AA2D72000E0D4C /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/quassum/SwiftUI-Tooltip.git";
@@ -1574,14 +1582,6 @@
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 1.1.1;
-			};
-		};
-		3A97F45E297D81B9002B4BDB /* XCRemoteSwiftPackageReference "ToastUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/quanshousio/ToastUI.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 3.0.1;
 			};
 		};
 		3AC152CD296D8170009CAA1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1621,6 +1621,11 @@
 			package = 39223B7729A6030A00F59F54 /* XCRemoteSwiftPackageReference "Localize-Swift" */;
 			productName = Localize_Swift;
 		};
+		3945A81829B1807300C11939 /* ToastUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3945A81729B1807300C11939 /* XCRemoteSwiftPackageReference "ToastUI" */;
+			productName = ToastUI;
+		};
 		3980C92029AE1ED1003C1C1A /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3AC152CD296D8170009CAA1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1655,11 +1660,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3A8C1E742980DB39004FAF89 /* XCRemoteSwiftPackageReference "Welcome-Sheet" */;
 			productName = WelcomeSheet;
-		};
-		3A97F45F297D81B9002B4BDB /* ToastUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A97F45E297D81B9002B4BDB /* XCRemoteSwiftPackageReference "ToastUI" */;
-			productName = ToastUI;
 		};
 		3AC152CE296D8170009CAA1B /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -16,11 +16,8 @@ struct WidgetIconCell: View {
     
     var widget: DeepLink
     var type: WidgetIconCellType
-    var gridCellWidth: CGFloat = widgetCellWidthForGrid
-    var listCellHeight: CGFloat = 50
-    
-    @State var isDelete: Bool = false
-    
+    var cellSize: (grid: CGFloat, list: CGFloat)
+
     @ObservedObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
@@ -29,7 +26,13 @@ struct WidgetIconCell: View {
         self.widget = widget
         self.type = type
         self.viewModel = viewModel
+        self.cellSize = (grid: deviceSize.width / 4.3, list: 50)
+
     }
+
+    @State var isDelete: Bool = false
+    lazy var imageSize = CGSize(width: cellSize.grid * 0.63, height: cellSize.grid * 0.63)
+    lazy var textSize = CGSize(width: cellSize.grid, height: cellSize.grid * 0.40)
     
     let app: LocalizedStringKey = "앱"
     let web: LocalizedStringKey = "웹 페이지"
@@ -65,11 +68,10 @@ struct WidgetIconCell: View {
                         Label("삭제", systemImage: "trash.fill")
                     }
                 } label: {
-                    
                     if type == .grid {
-                        WidgetButton(name: name, url: url, widgetImage: widgetImage, cellWidth: gridCellWidth, imageSize: CGSize(width: gridCellWidth * 0.63, height: gridCellWidth * 0.63), textSize: CGSize(width: gridCellWidth, height: gridCellWidth * 0.40), viewModel: viewModel)
+                        WidgetButton(name: name, url: url, widgetImage: widgetImage,
+                                     cellWidth: cellSize.grid, viewModel: viewModel)
                     } else {
-                        
                         HStack {
                             Image(uiImage: .init(data: widget.image!) ?? UIImage(named: "questionmark.circle")!)
                                 .resizable()
@@ -108,7 +110,7 @@ struct WidgetIconCell: View {
                                 }
                             }
                         }
-                        .frame(height: listCellHeight)
+                        .frame(height: cellSize.list)
                         .alert("삭제 확인", isPresented: $isDelete, actions: {
                             Button("삭제", role: .destructive) {
                                 WidgetCoreData.shared.deleteData(data: widget)
@@ -118,9 +120,8 @@ struct WidgetIconCell: View {
                                 
                             }
                             Button("취소", role: .cancel) {}
-                        }, message: { Text("\(widget.name ?? "알수없음")정말 삭제 하시겠습니까?") })
+                        }, message: {Text("\(widget.name ?? "알수없음")정말 삭제 하시겠습니까?")})
                     }
-
                 }
             }
         }
@@ -128,9 +129,7 @@ struct WidgetIconCell: View {
 }
 
 struct DeepLinkWidgetIconView_Previews: PreviewProvider {
-
     static var previews: some View {
-        
         ZStack {
             // 배경
             AppColors.secondaryBackgroundColor

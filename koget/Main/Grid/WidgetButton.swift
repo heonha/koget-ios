@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct WidgetButton: View {
-    
     var name: String
     var url: String
     var widgetImage: UIImage
@@ -18,13 +17,14 @@ struct WidgetButton: View {
     let titleColor: Color = AppColors.label
     @ObservedObject var viewModel: MainWidgetViewModel
 
-    init(name: String, url: String, widgetImage: UIImage, cellWidth: CGFloat, imageSize: CGSize, textSize: CGSize, viewModel: MainWidgetViewModel) {
+
+    init(name: String, url: String, widgetImage: UIImage, cellWidth: CGFloat, viewModel: MainWidgetViewModel) {
         self.name = name
         self.url = url
         self.widgetImage = widgetImage
         self.cellWidth = cellWidth
-        self.imageSize = imageSize
-        self.textSize = textSize
+        self.imageSize = CGSize(width: cellWidth * 0.63, height: cellWidth * 0.63)
+        self.textSize = CGSize(width: cellWidth, height: cellWidth * 0.40)
         self.viewModel = viewModel
     }
 
@@ -70,6 +70,6 @@ struct WidgetButton: View {
 
 struct WidgetButton_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: widgetCellWidthForGrid, imageSize: CGSize(width: widgetCellWidthForGrid * 0.63, height: widgetCellWidthForGrid * 0.63), textSize: CGSize(width: widgetCellWidthForGrid, height: widgetCellWidthForGrid * 0.40), viewModel: MainWidgetViewModel.shared)
+        WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel.shared)
     }
 }

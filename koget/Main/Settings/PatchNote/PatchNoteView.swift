@@ -87,8 +87,8 @@ struct PatchNoteView: View {
     }
 }
 
-struct PatchNoteView_Previews: PreviewProvider {
-    static var previews: some View {
-        PatchNoteView(patchNote: PatchNote.init(title: "타이틀", version: "1.1", date: "2023-02-21", note: [SheetBody.init(systemName: "person.fill", title: "타이틀", body: "이곳에 내용을 입력해주세요. 이곳에 내용을 입력해주세요."),SheetBody.init(systemName: "person.fill", title: "타이틀", body: "이곳에 내용을 입력해주세요. 이곳에 내용을 입력해주세요."),SheetBody.init(systemName: "person.fill", title: "타이틀", body: "이곳에 내용을 입력해주세요. 이곳에 내용을 입력해주세요.")]))
-    }
-}
+// struct PatchNoteView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         PatchNoteView(patchNote: PatchNote.init(title: "타이틀", version: "1.1", date: "2023-02-21", note: [SheetBody.init(systemName: "person.fill", title: "타이틀", body: "이곳에 내용을 입력해주세요. 이곳에 내용을 입력해주세요."),SheetBody.init(systemName: "person.fill", title: "타이틀", body: "이곳에 내용을 입력해주세요. 이곳에 내용을 입력해주세요."),SheetBody.init(systemName: "person.fill", title: "타이틀", body: "이곳에 내용을 입력해주세요. 이곳에 내용을 입력해주세요.")]))
+//     }
+// }

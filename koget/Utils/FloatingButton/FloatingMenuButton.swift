@@ -33,14 +33,13 @@ struct FloatingMenuButton: View {
     // view
     var borderColor = Color("F4F4F4")
     var backgroundColor = Color.white
-    var shadow: (color: Color, radius: CGFloat, x: CGFloat, y: CGFloat)
-        = (color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
-    
+    // var shadow: (color: Color, radius: CGFloat, x: CGFloat, y: CGFloat)
+    //     = (color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
+
     @State var isPresent = false
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
     var body: some View {
         ZStack {
-            
             switch type {
             case .navigationLink:
                 NavigationLink {
@@ -68,8 +67,7 @@ struct FloatingMenuButton: View {
                     )
                     .background(backgroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .shadow(color: shadow.color, radius: shadow.radius, x: shadow.x, y: shadow.y)
-                    
+                    .shadow(color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
                 }
 
             case .sheet:
@@ -82,7 +80,6 @@ struct FloatingMenuButton: View {
                         Image(systemName: systemName)
                             .font(.system(size: textInfo.fontSize))
                             .foregroundStyle(symbolColor)
-                        
                         Spacer()
                         Text(text)
                             .lineLimit(1)
@@ -97,7 +94,7 @@ struct FloatingMenuButton: View {
                     )
                     .background(backgroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .shadow(color: shadow.color, radius: shadow.radius, x: shadow.x, y: shadow.y)
+                    .shadow(color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
 
                 }
                 

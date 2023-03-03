@@ -71,7 +71,8 @@ final class LinkWidgetModel: ObservableObject {
             .init(name: "Uber", nameKr: "우버", nameEn: "Uber", url: "uber://", imageName: "uber"),
             .init(name: "Wallet", nameKr: "월렛", nameEn: "Wallet", url: "wallet://", imageName: "wallet"),
             .init(name: "WhatsApp", nameKr: "왓츠앱", nameEn: "WhatApp", url: "whatsapp://", imageName: "whatsapp"),
-            .init(name: "YouTube", nameKr: "유튜브", nameEn: "Youtube", url: "youtube://", imageName: "youtube"), 
+            .init(name: "YouTube", nameKr: "유튜브", nameEn: "Youtube", url: "youtube://", imageName: "youtube"),
+
         ]
 
         for var app in apps {
