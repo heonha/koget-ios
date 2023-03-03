@@ -23,3 +23,13 @@ enum Constants {
   static let unknownImage = Image(systemName: "questionmark.circle")
   static let unknownUIImage = UIImage(systemName: "questionmark.circle")!
 }
+
+struct CustomFont {
+    enum NotoSansKR {
+        typealias RawValue = String
+
+        static let light = "NotoSansKR-Light"
+        static let medium = "NotoSansKR-Bold"
+        static let bold = "NotoSansKR-Bold"
+    }
+}

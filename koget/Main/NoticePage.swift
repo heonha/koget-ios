@@ -82,9 +82,9 @@ struct NoticePageCell: View {
                 HStack(content: {
                     VStack(alignment: .leading) {
                         Text("UPDATED 1.1")
-                            .font(Font.custom("NotoSansKR-Bold", size: 18))
+                            .font(Font.custom(CustomFont.NotoSansKR.bold, size: 18))
                         Text("새로워진 코젯 확인하기") 
-                            .font(Font.custom("NotoSansKR-Light", size: 16))
+                            .font(Font.custom(CustomFont.NotoSansKR.light, size: 16))
                     }
                     .font(.system(size: 16, weight: .medium))
                     .padding(.leading)
