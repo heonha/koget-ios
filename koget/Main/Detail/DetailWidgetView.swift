@@ -9,7 +9,7 @@ import SwiftUI
 import ToastUI
 
 struct DetailWidgetView: View {
-    var size: CGSize = .init(width: 300, height: 500)
+    var size: CGSize = .init(width: 350, height: 600)
     
     @State var selectedWidget: DeepLink
     @ObservedObject var viewModel = DetailWidgetViewModel()
@@ -71,6 +71,8 @@ struct DetailWidgetView: View {
                     }
                     .padding(.horizontal, 8)
                 }
+                .frame(height: 45)
+
                 
                 // MARK: - 아이콘
                 Group {
@@ -79,6 +81,7 @@ struct DetailWidgetView: View {
                                   viewModel: viewModel)
                     .shadow(radius: 1, x: 0.2, y: 0.3)
                 }
+                .padding(4)
 
                 // MARK: - 이름, URL
                 VStack {
@@ -87,7 +90,7 @@ struct DetailWidgetView: View {
                     // MARK: - 투명도
                     HStack {
                         Text("불투명도")
-                            .font(.system(size: 18, weight: .bold))
+                            .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
                         Button {
                             isPresentQustionmark.toggle()
                         } label: {
@@ -101,7 +104,7 @@ struct DetailWidgetView: View {
                                     .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
 
                                 Text("잠금화면 위젯의 불투명도입니다.")
-                                    .font(.system(size: 12))
+                                    .font(.custom(CustomFont.NotoSansKR.light, size: 12))
                                     .foregroundColor(.black)
                             })
                             .frame(width: deviceSize.width * 0.5, height: 30)
@@ -141,9 +144,17 @@ struct DetailWidgetView: View {
                     DetailWidgetButton(text: "닫기", buttonColor: .init(uiColor: .systemFill)) {
                         self.dismiss()
                     }
+
+
                 }
                 .padding(.top, 16)
                 Spacer()
+                Text("편집 후 실제 위젯에 반영되기까지 약 15분 이내의 시간이 소요됩니다.")
+                    .font(.custom(CustomFont.NotoSansKR.regular, size: 13))
+                    .foregroundColor(.gray)
+                    .lineLimit(2)
+                    .frame(height: 45)
+                    .padding(.vertical)
             }
         }.onAppear {
             viewModel.name = selectedWidget.name ?? "unknown"

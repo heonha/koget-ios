@@ -16,7 +16,6 @@ struct NoticePage: View {
         ZStack {
             TabView {
                 NoticePageCell(named: "KogetLogo", frame: frame.height)
-                NoticePageCell(systemName: "rectangle.and.pencil.and.ellipsis", frame: frame.height)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }

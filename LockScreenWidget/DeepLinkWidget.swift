@@ -88,7 +88,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
                 opacity: 1.0
             )
             
-            let timeline = Timeline(entries: [entry], policy: .never)
+            let timeline = Timeline(entries: [entry], policy: .atEnd)
             completion(timeline)
             
         }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct EditingToggleButton: View {
     var selectedWidget: DeepLink
@@ -40,6 +41,7 @@ struct EditingToggleButton: View {
                     return
                 } else {
                     viewModel.editWidgetData(widget: selectedWidget)
+                    WidgetCenter.shared.reloadAllTimelines()
                 }
             } 
             withAnimation {

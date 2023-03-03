@@ -23,14 +23,14 @@ struct EditTextField: View {
             // 타이틀
             HStack {
                 Text(title)
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
                     .lineLimit(1)
                 Spacer()
                 if title != "URL" && viewModel.nameMaxCountError == true {
                         withAnimation {
                             Text(viewModel.nameMaxCountErrorMessage)
                                 .foregroundColor(.red)
-                                .font(.system(size: 12))
+                                .font(.custom(CustomFont.NotoSansKR.light, size: 12))
                         }
                 } 
             }

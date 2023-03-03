@@ -11,36 +11,25 @@ struct EmptyGrid: View {
     var body: some View {
         ZStack {
             VStack {
-                VStack(spacing: 8) {
-                    
-                    Text("🤔")
-                        .font(.system(size: 50))
-                        .padding(.horizontal, 16)
-                    Text("아직 생성한 위젯이 없어요,")
-                    Text("첫번째 바로가기 위젯을 생성해보세요!")
-                }
-                .padding(.bottom, 32)
+
                 
                 NavigationLink {
                     MakeWidgetView()
                     
                 } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 25)
-                            .stroke(lineWidth: 2)
+                    VStack(spacing: 8) {
+
+                        Text("이곳을 눌러 바로가기 위젯을 생성하고")
+                            .font(.custom(CustomFont.NotoSansKR.bold, size: 16))
+                        Text("다양한 앱/웹페이지에 빠르게 접근하세요!")
+                            .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
                             .foregroundStyle(Constants.kogetGradient)
-                            .opacity(0.8)
-                        
-                        Text("첫번째 바로가기 위젯 만들기")
-                            .font(.system(size: 18, weight: .semibold))
-                            .padding()
                     }
+                    .padding(.bottom, 32)
                 }
                 .frame(width: deviceSize.width - 32, height: 40)
 
             }
-            .frame(width: deviceSize.width - 32, height: deviceSize.height / 1.5)
-            
         }
     }
 }
