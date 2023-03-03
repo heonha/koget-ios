@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CustomTextEditor: View {
-    
     var placeHolder: LocalizedStringKey
     @Binding var text: String
     
@@ -19,7 +18,7 @@ struct CustomTextEditor: View {
                 .foregroundColor(.init(uiColor: .label))
                 .colorMultiply(AppColors.secondaryBackgroundColor)
                 .padding(4)
-            if text == "" {
+            if text.isEmpty {
                 VStack {
                     HStack {
                         Text(placeHolder)
@@ -33,7 +32,6 @@ struct CustomTextEditor: View {
             }
         }
         .cornerRadius(5)
-        
     }
 }
 

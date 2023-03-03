@@ -20,7 +20,6 @@ struct WelcomeSheetContent {
 }
 
 class HelperSheetViewModel: ObservableObject {
-    
     @Published var showWelcomeSheet = false
     @Published var showPatchNote = false
     @Published var showUseLockscreen = false
@@ -34,7 +33,6 @@ class HelperSheetViewModel: ObservableObject {
     static let shared = HelperSheetViewModel()
     
     private init() {
-        
     }
     
     lazy var pages = [

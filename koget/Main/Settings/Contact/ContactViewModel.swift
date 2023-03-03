@@ -9,36 +9,29 @@ import SwiftUI
 import FirebaseFirestore
 
 final class ContactViewModel: ObservableObject {
-    
     @ObservedObject var authModel = GuestAuthModel()
-    
     @Published var contactType: ContectType = .none
     @Published var title: String = ""
     @Published var body: String = ""
-    var version: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+
+    var version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     func checkTheField(completion: @escaping (Bool) -> Void) {
-        
         if contactType == .none {
             // 알럿 표시 -> 유형을 선택하세요.
             completion(false)
-        }
-        else if title == "" || body == "" {
+        } else if title == "" || body == "" {
             // 알럿 표시 -> 빈칸을 채워주세요.
             completion(false)
-        }
-        else {
+        } else {
             // -> 내용 이메일로 보내기
             sendQuestion(type: contactType, title: title, body: body)
             completion(true)
-
         }
     }
     
     func sendQuestion(type: ContectType, title: String, body: String) {
-        
         if let guestUser = authModel.guestSession {
-            
             let uid = guestUser.uid
             let type = type.rawValue
             let title = title
@@ -50,7 +43,7 @@ final class ContactViewModel: ObservableObject {
                 "type": type,
                 "title": title,
                 "body": body,
-                "version": version,
+                "version": version ?? "-",
                 "date": date
             ]
             
@@ -65,7 +58,5 @@ final class ContactViewModel: ObservableObject {
             // print("로그인 되어 있지 않음.")
             return
         }
-        
     }
-    
 }

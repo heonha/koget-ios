@@ -16,7 +16,6 @@ enum ContectType: String {
 }
 
 struct ContactView: View {
-    
     @State var titleText: String = ""
     @State var bodyText: String = ""
     @State var isSuccess: Bool = false
@@ -27,14 +26,11 @@ struct ContactView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        
-        GeometryReader { (geometryProxy) in
+        GeometryReader { geometryProxy in
             ZStack {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
-                        
                         HStack {
-                            
                             Text("문의 유형")
                             
                             Spacer()
@@ -63,7 +59,6 @@ struct ContactView: View {
                                 }
                             } label: {
                                 ZStack {
-                                    
                                     if viewModel.contactType == .none {
                                         RoundedRectangle(cornerRadius: 8)
                                             .foregroundColor(.init(uiColor: .secondarySystemFill))
@@ -76,15 +71,17 @@ struct ContactView: View {
                             }
                             .frame(width: deviceSize.width / 1.5, height: 35)
                             Spacer()
-                            
                         }
                         
                         Divider()
-                        TextFieldView(placeholder: "문의 제목", type: .title, text: $viewModel.title)
+                        TextFieldView(placeholder: "문의 제목",
+                                      type: .title,
+                                      text: $viewModel.title)
                             .padding([.top, .bottom], 8)
                         
                         Divider()
-                        CustomTextEditor(placeHolder: "이곳에 문의내용을 입력하세요.", text: $viewModel.body)
+                        CustomTextEditor(placeHolder: "이곳에 문의내용을 입력하세요.",
+                                         text: $viewModel.body)
                             .frame(height: geometryProxy.size.height / 2.5)
                             .padding([.top, .bottom], 8)
                         
@@ -110,9 +107,7 @@ struct ContactView: View {
                         .foregroundColor(.gray)
 
                         Spacer()
-                        
                     }
-                    
                     .padding(16)
                 }
             }
@@ -124,7 +119,7 @@ struct ContactView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Text("코젯 버전")
-                        Text("\(viewModel.version)")
+                        Text("\(viewModel.version ?? "-")")
                             .bold()
                     }
                     .font(.system(size: 14))
@@ -139,7 +134,6 @@ struct ContactView: View {
                 ToastAlert(jsonName: .send, title: "문의 보내기 성공".localized(), subtitle: "피드백을 보내주셔서 감사합니다.".localized())
             }
             .toast(isPresented: $isFailure, dismissAfter: 1.5, onDismiss: {
-
             }) {
                 ToastAlert(jsonName: .error, title: "빈칸을 확인해주세요.".localized(), subtitle: nil)
             }
@@ -158,16 +152,13 @@ struct ContactView: View {
                 }
                 
                 Button {
-                    
                 } label: {
                     Text("취소")
                 }
             } message: {
                 Text("문의를 보낼까요?")
             }
-
         }
-        
     }
 }
 

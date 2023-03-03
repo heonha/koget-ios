@@ -12,7 +12,6 @@ enum WidgetType {
 }
 
 struct MakeWidgetView: View {
-    
     let navigationBarColor = AppColors.secondaryBackgroundColor
     
     @StateObject var viewModel = MakeWidgetViewModel()
@@ -20,15 +19,13 @@ struct MakeWidgetView: View {
     
     @State var iconImage: UIImage = UIImage(named: "plus.circle")!
     @State var isSuccess = false
-    @State var isError: Bool = false
-    @State var isImageError: Bool = false
-    
-    @State var errorMessage: String = ""
+    @State var isError = false
+    @State var isImageError = false
+    @State var errorMessage = ""
     @State var widgetType: WidgetType = .image
-    
     //Present Views
-    @State var isAppPickerPresent: Bool = false
-    @State var isPresentQustionmark: Bool = false
+    @State var isAppPickerPresent = false
+    @State var isPresentQustionmark = false
     
     @Environment(\.dismiss) var dismiss
     

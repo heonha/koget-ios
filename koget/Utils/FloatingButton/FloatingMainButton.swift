@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FloatingMainButton: View {
-    
     var buttonSize: CGFloat = 50
     var imageSize: CGFloat = 30
     
@@ -21,11 +20,9 @@ struct FloatingMainButton: View {
                 .scaleEffect(x: 1, y: 1.2, anchor: .center)
                 .foregroundColor(Color.init(uiColor: .white))
                 .padding()
-            
         }
         .shadow(color: .black.opacity(0.3), radius: 4, x: 2, y: 2)
         .frame(width: buttonSize, height: buttonSize)
-        
     }
 }
 

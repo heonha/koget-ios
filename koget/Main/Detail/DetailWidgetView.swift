@@ -9,20 +9,19 @@ import SwiftUI
 import ToastUI
 
 struct DetailWidgetView: View {
-    
     var size: CGSize = .init(width: 300, height: 500)
     
     @State var selectedWidget: DeepLink
     @ObservedObject var viewModel = DetailWidgetViewModel()
     
-    //Present Views
-    @State var isPresent: Bool = false
-    @State var isPhotoViewPresent: Bool = false
-    @State var isShowingPicker: Bool = false
-    @State var isDeleteAlertPresent: Bool = false
-    @State var isEditingMode: Bool = false
-    @State var isDelete: Bool = false
-    @State var isPresentQustionmark: Bool = false
+    // Present Views
+    @State var isPresent = false
+    @State var isPhotoViewPresent = false
+    @State var isShowingPicker = false
+    @State var isDeleteAlertPresent = false
+    @State var isEditingMode = false
+    @State var isDelete = false
+    @State var isPresentQustionmark = false
     
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     @Environment(\.dismiss) var dismiss
@@ -31,7 +30,6 @@ struct DetailWidgetView: View {
             AppColors.backgroundColor
             VStack {
                 ZStack {
-                    
                     // 제목
                     HStack(alignment: .center) {
                         Text(viewModel.name)
@@ -42,10 +40,8 @@ struct DetailWidgetView: View {
                     }
                     .background(Color.init(uiColor: .darkGray))
 
-                    //MARK: - 상단 바
-
+                    // MARK: - 상단 바
                     HStack {
-                        
                         //MARK: 삭제 버튼
                         Button {
                             isDeleteAlertPresent.toggle()
@@ -54,7 +50,6 @@ struct DetailWidgetView: View {
                                 .font(.system(size: 18, weight: .semibold))
                                 .foregroundColor(.red)
                                 .fontWeight(.bold)
-                            
                         }
                         .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
                             Button("삭제", role: .destructive) {
@@ -64,10 +59,8 @@ struct DetailWidgetView: View {
                             }
                             Button("취소", role: .cancel) {}
                         }, message: { Text("정말 삭제 하시겠습니까?") })
-                        
                         Spacer()
-                        
-                        //MARK: 닫기버튼
+                        // MARK: 닫기버튼
                         Button {
                             self.dismiss()
                         } label: {
@@ -79,35 +72,29 @@ struct DetailWidgetView: View {
                     .padding(.horizontal, 8)
                 }
                 
-                //MARK: - 아이콘
-                
+                // MARK: - 아이콘
                 Group {
-                    
                     PhotoEditMenu(isEditingMode: $isEditingMode,
                                   isPhotoViewPresent: $isPhotoViewPresent,
                                   viewModel: viewModel)
                     .shadow(radius: 1, x: 0.2, y: 0.3)
-                    
                 }
 
-                //MARK: - 이름, URL
+                // MARK: - 이름, URL
                 VStack {
-                    
                     EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.name)
-                    
                     EditTextField(title: "URL", placeHolder: "예시: youtube://", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.url)
-                    //MARK: - 투명도
-
-                HStack {
-                    Text("불투명도")
-                        .font(.system(size: 18, weight: .bold))
-                    Button {
-                        isPresentQustionmark.toggle()
-                    } label: {
-                        Image(systemName: "questionmark.circle")
-                            .foregroundColor(.gray)
-                    }
-                    .overlay(
+                    // MARK: - 투명도
+                    HStack {
+                        Text("불투명도")
+                            .font(.system(size: 18, weight: .bold))
+                        Button {
+                            isPresentQustionmark.toggle()
+                        } label: {
+                            Image(systemName: "questionmark.circle")
+                                .foregroundColor(.gray)
+                        }
+                        .overlay(
                             ZStack(content: {
                                 RoundedRectangle(cornerRadius: 8)
                                     .fill(.white)
@@ -121,24 +108,22 @@ struct DetailWidgetView: View {
                             .offset(x: 50, y: -40)
                             .opacity( isPresentQustionmark ? 0.9 : 0.0 )
                             .animation(.linear(duration: 0.2), value: isPresentQustionmark)
-                    )
-                    Spacer()
-                    Text("\(Int(viewModel.opacityValue * 100))%")
-                        .bold()
-                    Spacer()
-                    if let image = viewModel.image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .grayscale(1)
-                            .clipShape(Circle())
-                            .opacity(viewModel.opacityValue)
-                            .opacity(0.7)
-                            .animation(.easeInOut(duration: 0.4), value: viewModel.opacityValue)
+                        )
+                        Spacer()
+                        Text("\(Int(viewModel.opacityValue * 100))%")
+                            .bold()
+                        Spacer()
+                        if let image = viewModel.image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .grayscale(1)
+                                .clipShape(Circle())
+                                .opacity(viewModel.opacityValue)
+                                .opacity(0.7)
+                                .animation(.easeInOut(duration: 0.4), value: viewModel.opacityValue)
+                        }
                     }
-
-                }
-                    
                 }
                 .padding(.horizontal)
 
@@ -149,8 +134,9 @@ struct DetailWidgetView: View {
 
                 VStack(alignment: .center, spacing: 12) {
                     // 편집 버튼
-                    EditingToggleButton(selectedWidget: selectedWidget, isEditingMode: $isEditingMode, viewModel: viewModel)
-                    
+                    EditingToggleButton(selectedWidget: selectedWidget,
+                                        isEditingMode: $isEditingMode,
+                                        viewModel: viewModel)
                     // 닫기 버튼
                     DetailWidgetButton(text: "닫기", buttonColor: .init(uiColor: .systemFill)) {
                         self.dismiss()
@@ -158,11 +144,10 @@ struct DetailWidgetView: View {
                 }
                 .padding(.top, 16)
                 Spacer()
-                
             }
         }.onAppear {
-            viewModel.name = selectedWidget.name!
-            viewModel.url = selectedWidget.url!
+            viewModel.name = selectedWidget.name ?? "unknown"
+            viewModel.url = selectedWidget.url ?? "unknown"
             viewModel.image = UIImage(data: selectedWidget.image ?? UIColor.white.image().pngData()!)
             if selectedWidget.opacity == nil {
                 selectedWidget.opacity = 1.0
@@ -184,11 +169,9 @@ struct DetailWidgetView: View {
 }
 
 struct EditWidgetView_Previews: PreviewProvider {
-
     static var previews: some View {
         NavigationView {
             DetailWidgetView(selectedWidget: DeepLink.example)
         }
     }
-    
 }

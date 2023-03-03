@@ -12,13 +12,12 @@ enum Field: Hashable {
 }
 
 struct CustomTextfield: View {
-    
     var title: LocalizedStringKey
     var placeholder: LocalizedStringKey
     @Binding var text: String
     @FocusState var focusState: Field?
-    var equals: Field
     @StateObject var viewModel: MakeWidgetViewModel
+    var equals: Field
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -59,6 +58,6 @@ struct CustomTextfield: View {
 
 struct TextfieldWithTitle_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTextfield(title: "타이틀", placeholder: "플레이스홀더", text: .constant(""), equals: .name, viewModel: MakeWidgetViewModel())
+        CustomTextfield(title: "타이틀", placeholder: "플레이스홀더", text: .constant(""), viewModel: MakeWidgetViewModel(), equals: .name)
     }
 }

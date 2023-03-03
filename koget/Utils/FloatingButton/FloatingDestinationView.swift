@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FloatingDestinationView: View {
-    
     var type: NavigationLinkType
 
     var body: some View {

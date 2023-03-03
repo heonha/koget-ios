@@ -23,10 +23,10 @@ struct MakeWidgetTextFieldView: View {
     
     var body: some View {
         VStack {
-            CustomTextfield(title: nameTitle, placeholder: namePlaceholder, text: $viewModel.name, equals: .name, viewModel: viewModel)
+            CustomTextfield(title: nameTitle, placeholder: namePlaceholder, text: $viewModel.name, viewModel: viewModel, equals: .name)
             
             ZStack {
-                CustomTextfield(title: urlTitle, placeholder: urlPlaceholder, text: $viewModel.url, equals: .url, viewModel: viewModel)
+                CustomTextfield(title: urlTitle, placeholder: urlPlaceholder, text: $viewModel.url, viewModel: viewModel, equals: .url)
                 if viewModel.url != "" {
                     URLTestButton(viewModel: viewModel)
                         .padding(.trailing)

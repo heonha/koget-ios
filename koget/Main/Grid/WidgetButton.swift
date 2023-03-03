@@ -14,7 +14,7 @@ struct WidgetButton: View {
     var cellWidth: CGFloat
     var imageSize: CGSize
     var textSize: CGSize
-    let titleColor: Color = AppColors.label
+    let titleColor: Color = .init(uiColor: .label)
     @ObservedObject var viewModel: MainWidgetViewModel
 
 

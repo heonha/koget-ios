@@ -13,11 +13,8 @@ struct ViewControllerHolder {
 
 struct ViewControllerKey: EnvironmentKey {
     static var defaultValue: ViewControllerHolder {
-        
         var viewController: UIViewController?
-        
         let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        
         viewController = firstScene?.windows.first?.rootViewController
         
         return ViewControllerHolder(value: viewController )

@@ -19,7 +19,6 @@ struct FloatingMenu: View {
     let mainButton = FloatingMainButton()
     
     var body: some View {
-        
         FloatingButton(mainButtonView: mainButton, buttons: buttons, isOpen: $isOpen)
             .straight()
             .animation(.easeInOut(duration: 0.3))
@@ -28,7 +27,6 @@ struct FloatingMenu: View {
             .initialOpacity(0)
             .delays(delayDelta: 0.05)
             .padding(16)
-
     }
 }
 // 

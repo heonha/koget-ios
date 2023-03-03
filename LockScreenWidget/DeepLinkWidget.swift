@@ -9,8 +9,7 @@ import WidgetKit
 import SwiftUI
 import Intents
 import CoreData
-//MARK: - Protocol : Provider
-
+// MARK: - Protocol : Provider
 /// 위젯의 업데이트 시기를 WidgetKit에 알려줍니다.
 /// WidgetKit은 업데이트 시기를 Provider에 요청합니다.
 /// > WidgetKit이 요청하는 것
@@ -106,16 +105,13 @@ struct DeepLinkProvider: IntentTimelineProvider {
     
     /// 위젯을 추가할 때 표시할 프리뷰를 구성합니다.
     func getContext(context: Context) -> DeepLinkEntry {
-        
         let entry: DeepLinkEntry = DeepLinkEntry(date: Date(), name: "", url: nil, image: nil, id: nil)
         
         return entry
     }
-    
 }
 
-//MARK: - Protocol : Entry
-
+// MARK: - Protocol : Entry
 /// 위젯을 표시할 시기를 WidgetKit에 알려주는 날짜가 있는 하나 이상의 타임라인 항목을 만듭니다.
 struct DeepLinkEntry: TimelineEntry {
     let date: Date // Widget을 rendering할 Date
@@ -126,7 +122,7 @@ struct DeepLinkEntry: TimelineEntry {
     var opacity: Double? = 1.0
 }
 
-//MARK: - Widget View
+// MARK: - Widget View
 struct DeepLinkWidgetEntryView: View {
     var entry: DeepLinkProvider.Entry
     
@@ -140,14 +136,7 @@ struct DeepLinkWidgetEntryView: View {
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
     var body: some View {
-        
         ZStack {
-            // VStack {
-            //     Text("바로가기")
-            //     Text("위젯추가")
-            // }
-            // .opacity(placeholderOpacity)
-            
             switch family {
             case .accessoryCircular:
                 ZStack {
@@ -163,12 +152,10 @@ struct DeepLinkWidgetEntryView: View {
                                 }
                                 .bold()
                             }
-                            
                         } else {
                             // 코어 데이터의 데이터
                             // entry의 데이터
                             // 코어데이터 바뀜 -> 코어데이터 업데이트 -> Entry 업데이트 -> 위젯 업데이트
-                            
                             VStack(alignment: .center) {
                                 Image(uiImage: entry.image ?? UIImage(systemName: "questionmark.circle")!)
                                 .resizable()
@@ -178,9 +165,7 @@ struct DeepLinkWidgetEntryView: View {
                             }
                             .opacity(entry.opacity ?? 1.0)
                             .opacity(0.7)
-
                         }
-                        
                     } else {
                         ZStack {
                             VStack {
@@ -211,7 +196,6 @@ struct DeepLinkWidgetEntryView: View {
                                         .font(.system(size: 12))
                                 }
                                 .bold()
-                            
                         } else {
                             // 코어 데이터의 데이터
                             // entry의 데이터
@@ -225,7 +209,6 @@ struct DeepLinkWidgetEntryView: View {
                                 .clipShape(Circle())
                             }
                             .opacity(1)
-
                         }
                     } else {
                         ZStack {
@@ -244,14 +227,11 @@ struct DeepLinkWidgetEntryView: View {
                 .widgetURL(URL(string: selectWidgetURL))
             }
         }
-
     }
-    
 }
 
-//MARK: - MAIN
+// MARK: - MAIN
 @main
-
 /// 다양한 종류의 위젯그룹을 만듭니다.
 struct Widgets: WidgetBundle {
     var body: some Widget {
@@ -259,8 +239,7 @@ struct Widgets: WidgetBundle {
     }
 }
 
-//MARK: - Protocol : Widget
-
+// MARK: - Protocol : Widget
 /// Widget : Widget의 컨텐츠를 나타내는 configuration 프로토콜
 struct DeepLinkWidget: Widget {
     let kind: String = "LockScreenWidget"
@@ -270,7 +249,6 @@ struct DeepLinkWidget: Widget {
 
     /// 위젯의 Contents를 나타냅니다.
     var body: some WidgetConfiguration {
-        
         /// Static Configuration : 사용자가 커스텀 할 수 없는 정적인 위젯
         /// 구성 : Kind, provider, entry
         /// kind : 위젯의 식별자. 즉, ID입니다.
@@ -281,7 +259,6 @@ struct DeepLinkWidget: Widget {
             intent: DeepLinkAppIntent.self,
             provider: DeepLinkProvider()) { entry in
                 DeepLinkWidgetEntryView(entry: entry) // 위젯이 표현할 SwiftUI View입니다.
-                    
             }
             .configurationDisplayName(title)
             .description(subtitle)
@@ -289,21 +266,16 @@ struct DeepLinkWidget: Widget {
     }
 }
 
-//MARK: - Widget Preview
+// MARK: - Widget Preview
 /// 위젯 프리뷰 구성
 struct LockScreenWidget_Previews: PreviewProvider {
     static var previews: some View {
-        
         let entrys = [DeepLinkEntry(date: Date(), name: "카카오톡", url: "kakaotalk://", image: UIImage(named: "tmap")!, id: UUID().uuidString),
                       DeepLinkEntry(date: Date(), name: "카카오톡", url: "kakaotalk://", image: UIImage(named: "instagram")!, id: UUID().uuidString)
-                      
         ]
-        
         ForEach(entrys, id: \.id) { entry in
             DeepLinkWidgetEntryView(entry: entry)
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-
         }
-        
     }
 }
