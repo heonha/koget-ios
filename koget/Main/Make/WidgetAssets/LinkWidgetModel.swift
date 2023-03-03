@@ -14,46 +14,81 @@ final class LinkWidgetModel: ObservableObject {
     static let shared = LinkWidgetModel()
     
     /// 앱에 내장된 DeepLink의 목록입니다.
-    var builtInApps: [LinkWidget] = []
+    var builtInApps = [LinkWidget]()
     
     private init() {
-        builtInApps = getWidgetData()
+        setWidgetData()
     }
     
-    func getWidgetData() -> [LinkWidget] {
-
-        // let appData = "&Authenticator,구글OTP,Authenticator,googleauthenticator://,authenticator&캐시워크,캐시워크,Cash Walk,cashwalkapp://,cashwalk&Google Maps,구글맵스,Google Maps,googlemaps://,googlemaps&Instagram,인스타그램,Instagram,instagram://,instagram&카카오맵,카카오맵,Kakao Map,kakaomap://,kakaomap&카카오네비,카카오네비,Kakao Navi,kakaonavi://,kakaonavi&카카오페이,카카오페이,Kakao Pay,kakaopay://,kakaopay&Messenger,페이스북메신저,Messenger,fb-messenger-public://,messenger&모바일신분증,모바일신분증,Mobile ID,MobileID://,mobileid&NAVER,네이버,NAVER,naversearchapp://,naver&네이버 지도,네이버맵,Naver Map,navermap://,navermap&네이버페이,네이버페이,Naver Pay,naverpayapp://,naverpay&PASS by KT,패스,PASS by KT,ktAuth://,passapp&PASS by SKT,패스,PASS by SKT,tauthlink://,passapp&PASS by U+,패스,PASS by U+,uplusauth://,passapp&PAYCO,페이코,PAYCO,payco://,payco&신한플레이,신한플레이,shinhan play,shpayfan-touchpay://,shinhanplay&신한터치페이,신한터치페이,Shinhan TouchPay,shpayfan-touchpay://touch,shinhanplay&스타벅스,스타벅스,Starbucks,starbucks://,starbucks&Strava,스트라바,Strava,strava://,strava&TMAP,티맵,TMAP,tmap://,tmap&YouTube,유튜브,Youtube,youtube://,youtube&ChatGPT,챗지피티,ChatGPT,https://chat.openai.com,chatgpt&Authy,Authy,Authy,authy://,authy"
-
-        let appData = "&Apple TV,애플TV,Apple TV,videos://,appletv&Assistant,구글 어시스턴트,Assistant,googleassistant://,googleassistant&Authenticator,구글OTP,Authenticator,googleauthenticator://,authenticator&Authy,Authy,Authy,authy://,authy&캐시워크,캐시워크,Cash Walk,cashwalkapp://,cashwalk&Disney+,디즈니+,Disney+,disneyplus://,disneyplus&ChatGPT,챗지피티,ChatGPT,https://chat.openai.com,chatgpt&facebook,페이스북,Facebook,facebook://,facebook&나의 찾기,나의 찾기,Find My,findmy://,findmy&Freeform,프리폼,FreeForm,freeform://,freeform&GoodNotes,굿노트5,GoodNotes5,goodnotes5://,goodnotes5&Google,구글,Google,google://,google&Google Maps,구글맵스,Google Maps,googlemaps://,googlemaps&건강,건강,Health,x-apple-health://,health&Instagram,인스타그램,Instagram,instagram://,instagram&카카오맵,카카오맵,Kakao Map,kakaomap://,kakaomap&카카오네비,카카오네비,Kakao Navi,kakaonavi://,kakaonavi&카카오페이,카카오페이,Kakao Pay,kakaopay://,kakaopay&카카오톡,카카오톡,Kakao Talk,kakaotalk://,kakaotalk&지도,지도,Maps,maps://,applemaps&메모,메모,Memo,mobilenotes://,memo&메시지,메시지,Messages,messages://,messages&Messenger,페이스북메신저,Messenger,fb-messenger-public://,messenger&모바일신분증,모바일신분증,Mobile ID,MobileID://,mobileid&애플 뮤직,음악,Music,musics://,applemusic&네이버,네이버,NAVER,naversearchapp://,naver&네이버지도,네이버맵,Naver Map,navermap://,navermap&네이버페이,네이버페이,Naver Pay,naverpayapp://,naverpay&네이버웹툰,네이버웹툰,Naver Webtoon,fb455753897775430://,naverwebtoon&Netflix,넷플릭스,Netflix,nflx://,netflix&Nike Run Club,나이키런클럽,Nike Run Club,nikerunclub://,nikerunclub&PASS by KT,패스,PASS by KT,ktAuth://,passapp&PASS by SKT,패스,PASS by SKT,tauthlink://,passapp&PASS by U+,패스,PASS by U+,uplusauth://,passapp&PAYCO,페이코,PAYCO,payco://,payco&Raddit,레딧,Raddit,reddit://,reddit&신한플레이,신한플레이,shinhan play,shpayfan-touchpay://,shinhanplay&신한터치페이,신한터치페이,Shinhan TouchPay,shpayfan-touchpay://touch,shinhanplay&Spotify,스포티파이,Spotify,spotify://,spotify&스타벅스,스타벅스,Starbucks,starbucks://,starbucks&Strava,스트라바,Strava,strava://,strava&텔레그램,텔레그램,Telegram,telegram://,telegram&TikTok,틱톡,TikTok,tiktok://,tiktok&TMAP,티맵,TMAP,tmap://,tmap&Twitter,트위터,Twitter,twitter://,twitter&Uber,우버,Uber,uber://,uber&Wallet,월렛,Wallet,wallet://,wallet&WhatsApp,왓츠앱,WhatApp,whatsapp://,whatsapp&YouTube,유튜브,Youtube,youtube://,youtube"
+    func setWidgetData() {
 
         // 구분자 처리
-        let divideString = appData.components(separatedBy: "&")
-        
-        var apps: [LinkWidget] = []
-        
-        for str in divideString {
-            let app = str.components(separatedBy: ",")
-            
-            if app == [""] {
-                
-            } else {
-                
-                let name = app[0]
-                let nameKr = app[1]
-                let nameEn = app[2]
-                let url = app[3]
-                let imageName = app[4]
-                
-                let displayName = getLocalName(appName: name, appNameEn: nameEn)
-                let canOpen = canOpenURL(url: url)
-                let image = getImage(imageName: imageName)
-                
-                let myApp = LinkWidget(name: name, nameKr: nameKr, nameEn: nameEn, url: url, imageName: imageName, displayName: displayName, image: image, canOpen: canOpen)
 
-                apps.append(myApp)
-            }
+        let apps: [LinkWidget] = [
+            .init(name: "Apple TV", nameKr: "애플TV", nameEn: "Apple TV", url: "videos://", imageName: "appletv"),
+            .init(name: "Google Assistant", nameKr: "구글 어시스턴트", nameEn: "Assistant", url: "googleassistant://", imageName: "googleassistant"),
+            .init(name: "Authenticator", nameKr: "구글OTP", nameEn: "Authenticator", url: "googleauthenticator://", imageName: "authenticator"),
+            .init(name: "캐시워크", nameKr: "캐시워크", nameEn: "Cash Walk", url: "cashwalkapp://", imageName: "cashwalk"),
+            .init(name: "Disney+", nameKr: "디즈니+", nameEn: "Disney+", url: "disneyplus://", imageName: "disneyplus"),
+            .init(name: "facebook", nameKr: "페이스북", nameEn: "Facebook", url: "facebook://", imageName: "facebook"),
+            .init(name: "나의 찾기", nameKr: "나의 찾기", nameEn: "Find My", url: "findmy://", imageName: "findmy"),
+            .init(name: "Freeform", nameKr: "프리폼", nameEn: "FreeForm", url: "freeform://", imageName: "freeform"),
+            .init(name: "GoodNotes", nameKr: "굿노트5", nameEn: "GoodNotes5", url: "goodnotes5://", imageName: "goodnotes5"),
+            .init(name: "Google", nameKr: "구글", nameEn: "Google", url: "google://", imageName: "google"),
+            .init(name: "Google Maps", nameKr: "구글맵스", nameEn: "Google Maps", url: "googlemaps://", imageName: "googlemaps"),
+            .init(name: "건강", nameKr: "건강", nameEn: "Health", url: "x-apple-health://", imageName: "health"),
+            .init(name: "Instagram", nameKr: "인스타그램", nameEn: "Instagram", url: "instagram://", imageName: "instagram"),
+            .init(name: "카카오맵", nameKr: "카카오맵", nameEn: "Kakao Map", url: "kakaomap://", imageName: "kakaomap"),
+            .init(name: "카카오네비", nameKr: "카카오네비", nameEn: "Kakao Navi", url: "kakaonavi://", imageName: "kakaonavi"),
+            .init(name: "카카오페이", nameKr: "카카오페이", nameEn: "Kakao Pay", url: "kakaopay://", imageName: "kakaopay"),
+            .init(name: "카카오톡", nameKr: "카카오톡", nameEn: "Kakao Talk", url: "kakaotalk://", imageName: "kakaotalk"),
+            .init(name: "지도", nameKr: "지도", nameEn: "Maps", url: "maps://", imageName: "applemaps"),
+            .init(name: "메모", nameKr: "메모", nameEn: "Memo", url: "mobilenotes://", imageName: "memo"),
+            .init(name: "메시지", nameKr: "메시지", nameEn: "Messages", url: "messages://", imageName: "messages"),
+            .init(name: "Messenger", nameKr: "페이스북메신저", nameEn: "Messenger", url: "fb-messenger-public://", imageName: "messenger"),
+            .init(name: "모바일신분증", nameKr: "모바일신분증", nameEn: "Mobile ID", url: "MobileID://", imageName: "mobileid"),
+            .init(name: "애플 뮤직", nameKr: "음악", nameEn: "Music", url: "musics://", imageName: "applemusic"),
+            .init(name: "네이버", nameKr: "네이버", nameEn: "NAVER", url: "naversearchapp://", imageName: "naver"),
+            .init(name: "네이버지도", nameKr: "네이버맵", nameEn: "Naver Map", url: "navermap://", imageName: "navermap"),
+            .init(name: "네이버페이", nameKr: "네이버페이", nameEn: "Naver Pay", url: "naverpayapp://", imageName: "naverpay"),
+            .init(name: "네이버웹툰", nameKr: "네이버웹툰", nameEn: "Naver Webtoon Kr", url: "fb455753897775430://", imageName: "naverwebtoon"),
+            .init(name: "Netflix", nameKr: "넷플릭스", nameEn: "Netflix", url: "nflx://", imageName: "netflix"),
+            .init(name: "Nike Run Club", nameKr: "나이키런클럽", nameEn: "Nike Run Club", url: "nikerunclub://", imageName: "nikerunclub"),
+            .init(name: "PASS by KT", nameKr: "패스", nameEn: "PASS by KT", url: "ktAuth://", imageName: "passapp"),
+            .init(name: "PASS by SKT", nameKr: "패스", nameEn: "PASS by SKT", url: "tauthlink://", imageName: "passapp"),
+            .init(name: "PASS by U+", nameKr: "패스", nameEn: "PASS by U+", url: "uplusauth://", imageName: "passapp"),
+            .init(name: "PAYCO", nameKr: "페이코", nameEn: "PAYCO", url: "payco://", imageName: "payco"),
+            .init(name: "Raddit", nameKr: "레딧", nameEn: "Raddit", url: "reddit://", imageName: "reddit"),
+            .init(name: "신한플레이", nameKr: "신한플레이", nameEn: "shinhan play", url: "shpayfan-touchpay://", imageName: "shinhanplay"),
+            .init(name: "신한터치페이", nameKr: "신한터치페이", nameEn: "Shinhan TouchPay", url: "shpayfan-touchpay://touch", imageName: "shinhanplay"),
+            .init(name: "Spotify", nameKr: "스포티파이", nameEn: "Spotify", url: "spotify://", imageName: "spotify"),
+            .init(name: "스타벅스", nameKr: "스타벅스", nameEn: "Starbucks", url: "starbucks://", imageName: "starbucks"),
+            .init(name: "Strava", nameKr: "스트라바", nameEn: "Strava", url: "strava://", imageName: "strava"),
+            .init(name: "텔레그램", nameKr: "텔레그램", nameEn: "Telegram", url: "telegram://", imageName: "telegram"),
+            .init(name: "TikTok", nameKr: "틱톡", nameEn: "TikTok", url: "tiktok://", imageName: "tiktok"),
+            .init(name: "TMAP", nameKr: "티맵", nameEn: "TMAP", url: "tmap://", imageName: "tmap"),
+            .init(name: "Twitter", nameKr: "트위터", nameEn: "Twitter", url: "twitter://", imageName: "twitter"),
+            .init(name: "Uber", nameKr: "우버", nameEn: "Uber", url: "uber://", imageName: "uber"),
+            .init(name: "Wallet", nameKr: "월렛", nameEn: "Wallet", url: "wallet://", imageName: "wallet"),
+            .init(name: "WhatsApp", nameKr: "왓츠앱", nameEn: "WhatApp", url: "whatsapp://", imageName: "whatsapp"),
+            .init(name: "YouTube", nameKr: "유튜브", nameEn: "Youtube", url: "youtube://", imageName: "youtube"), 
+        ]
+
+        for var app in apps {
+
+            let displayName = getLocalName(appName: app.name, appNameEn: app.nameEn)
+            let canOpen = canOpenURL(url: app.url)
+            let image = getImage(imageName: app.imageName)
+
+            app.displayName = displayName
+            app.canOpen = canOpen
+            app.image = image
+
+            builtInApps.append(app)
         }
-        return apps
+
+        builtInApps.sort { $0.displayName > $1.displayName }
+
     }
     
      func getImage(imageName: String) -> UIImage {

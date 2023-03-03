@@ -132,18 +132,8 @@ struct LinkWidget {
     let imageName: String
     
     // 후가공 데이터
-    var displayName: String
+    var displayName: String = ""
     var image: UIImage?
-    var canOpen: Bool
+    var canOpen: Bool = false
     
 }
-//
-// struct FBLinkModel: Codable, Identifiable {
-//     @DocumentID var id: String?
-//     let name: String
-//     let nameKr: String
-//     let nameEn: String
-//     let url: String
-//     let imageURL: String
-//
-// }
