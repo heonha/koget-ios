@@ -26,7 +26,7 @@ struct LinkWidgetView: View {
                     if viewModel.isGridView {
                         
                         //MARK: - Grid View
-                            QGrid($coreData.linkWidgets.wrappedValue, columns: 4) { widget in
+                            QGrid($coreData.linkWidgets.wrappedValue, columns: 3) { widget in
                                 WidgetIconCell(widget: widget, viewModel: viewModel, type: .grid)
                         }
                         

@@ -73,7 +73,6 @@ struct DetailWidgetView: View {
                 }
                 .frame(height: 45)
 
-                
                 // MARK: - 아이콘
                 Group {
                     PhotoEditMenu(isEditingMode: $isEditingMode,
@@ -145,7 +144,6 @@ struct DetailWidgetView: View {
                         self.dismiss()
                     }
 
-
                 }
                 .padding(.top, 16)
                 Spacer()
@@ -156,6 +154,7 @@ struct DetailWidgetView: View {
                     .frame(height: 45)
                     .padding(.vertical)
             }
+
         }.onAppear {
             viewModel.name = selectedWidget.name ?? "unknown"
             viewModel.url = selectedWidget.url ?? "unknown"

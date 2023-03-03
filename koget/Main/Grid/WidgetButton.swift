@@ -28,8 +28,7 @@ struct WidgetButton: View {
     }
 
     var body: some View {
-        VStack {
-            Spacer()
+        VStack(spacing: 2) {
 
             //MARK: 위젯 아이콘
             ZStack {
@@ -48,17 +47,15 @@ struct WidgetButton: View {
             .shadow(color: .black.opacity(0.15), radius: 0.5, x: 0.3, y: 0.3)
             .shadow(color: .black.opacity(0.15), radius: 0.5, x: -0.3, y: -0.3)
 
-            Spacer()
-
             //MARK: 위젯 이름
             Text(name)
-                .font(.custom(CustomFont.NotoSansKR.medium, size: 13))
+                .font(.custom(CustomFont.NotoSansKR.medium, size: 12))
                 .foregroundColor(titleColor)
                 .shadow(radius: 0.5, x: 0.5, y: 0.5)
                 .frame(width: textSize.width, height: textSize.height)
                 .lineLimit(2)
+                .frame(height: 30)
             
-            Spacer()
         }
         .background(viewModel.isEditingMode ? Color.init(uiColor: .secondarySystemFill) : .clear)
         .frame(width: cellWidth, height: cellWidth * 1.15)
