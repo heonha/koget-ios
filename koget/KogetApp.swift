@@ -24,11 +24,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
 }
+
+class SceneDelegate: NSObject, UIWindowSceneDelegate {
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // Add your custom code here
+    }
+}
+
 @main
 struct KogetApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+    @Environment(\.scenePhase) private var scenePhase
+
     private let coreData = WidgetCoreData.shared
     
     var body: some Scene {
@@ -91,3 +99,4 @@ extension UICollectionReusableView {
 
     }
 }
+
