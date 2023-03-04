@@ -24,10 +24,8 @@ struct MainWidgetView: View {
         NavigationView {
             ZStack {
                 VStack {
-                    Divider()
                     NoticePage()
                         .padding(.vertical, 4)
-                    Divider()
                     // 링크위젯
                     LinkWidgetView(viewModel: viewModel, coreData: _coreData)
                 }
