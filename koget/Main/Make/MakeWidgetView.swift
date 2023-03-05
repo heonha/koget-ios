@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftEntryKit
 
 enum WidgetType {
     case image
@@ -26,6 +27,8 @@ struct MakeWidgetView: View {
     //Present Views
     @State var isAppPickerPresent = false
     @State var isPresentQustionmark = false
+
+    @State var toastUIView = UIView()
     
     @Environment(\.dismiss) var dismiss
     
@@ -89,7 +92,7 @@ struct MakeWidgetView: View {
                                     // 성공
                                     viewModel.addWidget()
                                     self.dismiss()
-                                    MainWidgetViewModel.shared.makeSuccessful = true
+                                    self.displayToast()
                                 }
                             }
                         } label: {
@@ -137,14 +140,19 @@ struct MakeWidgetView: View {
             .toolbarBackground(.visible, for: .navigationBar)
             .onAppear {
                 assetList = WidgetAssetList(viewModel: viewModel)
+                toastUIView = EKMaker.setToastView(title: "위젯 생성 완료!", subtitle: "코젯앱을 잠금화면에 추가해 사용하세요.", named: "success")
             }
+
         }
     }
     
     private func saveWidget() {
         viewModel.addWidget()
         self.dismiss()
-        MainWidgetViewModel.shared.makeSuccessful = true
+    }
+
+    func displayToast() {
+        SwiftEntryKit.display(entry: toastUIView, using: EKMaker.whiteAlertAttribute)
     }
 }
 

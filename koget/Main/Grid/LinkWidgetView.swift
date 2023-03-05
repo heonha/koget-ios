@@ -13,14 +13,14 @@ struct LinkWidgetView: View {
     let backgroundColor: Color = AppColors.backgroundColor
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
-    
+
     var body: some View {
         ZStack {
             backgroundColor
                 .ignoresSafeArea(edges: .bottom)
             VStack {
                 // 그리드뷰
-                
+
                 if !$coreData.linkWidgets.wrappedValue.isEmpty {
                     
                     if viewModel.isGridView {
@@ -32,18 +32,31 @@ struct LinkWidgetView: View {
                         
                     } else {
                         //MARK: - List View
-                        List(coreData.linkWidgets, id: \.id) { widget in
-                                WidgetIconCell(widget: widget, viewModel: viewModel, type: .list)
+                        VStack {
+                            if viewModel.isEditMode == .active {
+                                HStack {
+                                    ForEach(viewModel.selection) { widget in
+                                        Image(uiImage: .init(data: widget.image!) ?? UIImage(named: "questionmark.circle")!)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 80, height: 80)
+                                    }
+                                }
+
+                            }
+
+                            List {
+                                ForEach(coreData.linkWidgets, id: \.id) { widget in
+                                    WidgetIconCell(widget: widget, viewModel: viewModel, type: .list)
+                                }
+                              }
+                            .listStyle(.plain)
                         }
-                        .listStyle(.plain)
-                        
+
                     }
                     Spacer()
-
                 } else {
-                    
                     EmptyGrid()
-                    
                 }
                 
             }

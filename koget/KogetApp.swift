@@ -42,7 +42,6 @@ struct KogetApp: App {
     var body: some Scene {
 
         WindowGroup {
-            
             ContentView()
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)

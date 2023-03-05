@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Localize_Swift
+import SwiftEntryKit
 
 enum MakeWidgetErrorType: String {
     case emptyField = "빈칸을 채워주세요."

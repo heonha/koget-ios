@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftEntryKit
+import UIKit
 
 struct ContentView: View {
+    
     @State var isDebugMode = false
     
     var body: some View {

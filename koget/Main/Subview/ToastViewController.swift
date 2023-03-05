@@ -8,7 +8,7 @@ import UIKit
 import SnapKit
 import SwiftEntryKit
 
-class SwiftEntryKitForUIViewController: UIViewController {
+class ToastViewController: UIViewController {
 
     let button: UIButton = {
         let btn = UIButton()
@@ -35,7 +35,10 @@ class SwiftEntryKitForUIViewController: UIViewController {
         super.viewDidLoad()
         setup()
         setEntryKit()
+    }
 
+    override func viewDidAppear(_ animated: Bool) {
+        SwiftEntryKit.display(entry: contentView, using: attributes)
     }
 
     // MARK: - Setup
@@ -51,10 +54,15 @@ class SwiftEntryKitForUIViewController: UIViewController {
         }
     }
 
-
-
     // MARK: - Set Actions
-    @objc func buttonAction(_ sender: UIButton) {
+    @objc func buttonAction() {
+        print("button action")
+
+        SwiftEntryKit.display(entry: contentView, using: attributes)
+    }
+
+    func actions() {
+
         SwiftEntryKit.display(entry: contentView, using: attributes)
     }
 
@@ -62,12 +70,14 @@ class SwiftEntryKitForUIViewController: UIViewController {
 
         let title = EKProperty.LabelContent(text: "title", style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .black))
         let description = EKProperty.LabelContent(text: "description", style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray)))
-        let image = EKProperty.ImageContent(image: UIImage(named: "testImage")!, size: CGSize(width: 35, height: 35))
+        let image = EKProperty.ImageContent(image: UIImage(named: "KogetLogo")!, size: CGSize(width: 35, height: 35))
         let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
 
         self.contentView = EKNotificationMessageView(with: notificationMessage)
+
     }
 
-}
 
+
+}

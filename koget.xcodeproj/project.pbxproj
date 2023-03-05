@@ -27,6 +27,15 @@
 		39504A8F29B3A01E008A7BA4 /* SUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A8D29B3A01E008A7BA4 /* SUIViewController.swift */; };
 		39504A9029B3A01E008A7BA4 /* SUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A8E29B3A01E008A7BA4 /* SUIView.swift */; };
 		39504A9329B3A059008A7BA4 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A9229B3A059008A7BA4 /* SwiftEntryKit */; };
+		39504A9629B3A09C008A7BA4 /* ToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9529B3A09C008A7BA4 /* ToastViewController.swift */; };
+		39504A9929B3A117008A7BA4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A9829B3A117008A7BA4 /* SnapKit */; };
+		39504A9D29B429AF008A7BA4 /* EKMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9C29B429AF008A7BA4 /* EKMaker.swift */; };
+		39504A9F29B4374F008A7BA4 /* CGRect+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9E29B4374F008A7BA4 /* CGRect+Utils.swift */; };
+		39504AA129B43796008A7BA4 /* UIScreen+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA029B43796008A7BA4 /* UIScreen+Utils.swift */; };
+		39504AA329B43F16008A7BA4 /* EKMakerTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA229B43F16008A7BA4 /* EKMakerTester.swift */; };
+		39504AA529B466D1008A7BA4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 39504AA429B466D1008A7BA4 /* FirebaseFirestore */; };
+		39504AA729B466D6008A7BA4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 39504AA629B466D6008A7BA4 /* FirebaseAuth */; };
+		39504AA929B48E73008A7BA4 /* EKCustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA829B48E73008A7BA4 /* EKCustomColor.swift */; };
 		395A0F0229AEF09900D34E0D /* AppAdditionContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0129AEF09900D34E0D /* AppAdditionContact.swift */; };
 		395A0F0429AEF0C100D34E0D /* AppAdditionContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0329AEF0C100D34E0D /* AppAdditionContactViewModel.swift */; };
 		395A0F0629AEF18700D34E0D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0529AEF18700D34E0D /* ContactView.swift */; };
@@ -202,6 +211,12 @@
 		39301089299E6AAC009B13ED /* WidgetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConstants.swift; sourceTree = "<group>"; };
 		39504A8D29B3A01E008A7BA4 /* SUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUIViewController.swift; sourceTree = "<group>"; };
 		39504A8E29B3A01E008A7BA4 /* SUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUIView.swift; sourceTree = "<group>"; };
+		39504A9529B3A09C008A7BA4 /* ToastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastViewController.swift; sourceTree = "<group>"; };
+		39504A9C29B429AF008A7BA4 /* EKMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMaker.swift; sourceTree = "<group>"; };
+		39504A9E29B4374F008A7BA4 /* CGRect+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Utils.swift"; sourceTree = "<group>"; };
+		39504AA029B43796008A7BA4 /* UIScreen+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Utils.swift"; sourceTree = "<group>"; };
+		39504AA229B43F16008A7BA4 /* EKMakerTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMakerTester.swift; sourceTree = "<group>"; };
+		39504AA829B48E73008A7BA4 /* EKCustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCustomColor.swift; sourceTree = "<group>"; };
 		395A0F0129AEF09900D34E0D /* AppAdditionContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdditionContact.swift; sourceTree = "<group>"; };
 		395A0F0329AEF0C100D34E0D /* AppAdditionContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdditionContactViewModel.swift; sourceTree = "<group>"; };
 		395A0F0529AEF18700D34E0D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
@@ -319,6 +334,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39504AA529B466D1008A7BA4 /* FirebaseFirestore in Frameworks */,
+				39504AA729B466D6008A7BA4 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +354,7 @@
 				39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */,
 				39822CFA29B367C800B687E4 /* QGrid in Frameworks */,
 				39822D0329B3682600B687E4 /* WelcomeSheet in Frameworks */,
+				39504A9929B3A117008A7BA4 /* SnapKit in Frameworks */,
 				39822CF429B3677400B687E4 /* FloatingButton in Frameworks */,
 				39822CFD29B367E600B687E4 /* Localize_Swift in Frameworks */,
 				39F8475529B3990B000B817E /* FirebaseFirestoreSwift in Frameworks */,
@@ -377,6 +395,7 @@
 		3900CCE8299686A400092AD0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				39504A9429B3A09C008A7BA4 /* Subview */,
 				3A1F8909297AB25700E1B4C4 /* ContentView.swift */,
 				39F5AC5429968A3B001F9D1E /* Switcher.swift */,
 				390B5CBB29B1AED900B61E35 /* MainTabView.swift */,
@@ -430,6 +449,24 @@
 				39504A8E29B3A01E008A7BA4 /* SUIView.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		39504A9429B3A09C008A7BA4 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				39504A9529B3A09C008A7BA4 /* ToastViewController.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		39504AAA29B48E83008A7BA4 /* SwiftEntryKit */ = {
+			isa = PBXGroup;
+			children = (
+				39504A9C29B429AF008A7BA4 /* EKMaker.swift */,
+				39504AA229B43F16008A7BA4 /* EKMakerTester.swift */,
+				39504AA829B48E73008A7BA4 /* EKCustomColor.swift */,
+			);
+			path = SwiftEntryKit;
 			sourceTree = "<group>";
 		};
 		396BCB6529AE1CC600B1E759 /* Koget-Admin */ = {
@@ -554,6 +591,8 @@
 			children = (
 				3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */,
 				3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */,
+				39504A9E29B4374F008A7BA4 /* CGRect+Utils.swift */,
+				39504AA029B43796008A7BA4 /* UIScreen+Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -725,6 +764,7 @@
 		3AF7E59128F85FD200B14DFD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				39504AAA29B48E83008A7BA4 /* SwiftEntryKit */,
 				39504A8C29B3A01E008A7BA4 /* UIKit */,
 				3A6D809A297441A600E62389 /* FloatingButton */,
 				3AD46921297D39C60090B2D3 /* ToastAlert */,
@@ -770,6 +810,10 @@
 			dependencies = (
 			);
 			name = "Koget-Admin";
+			packageProductDependencies = (
+				39504AA429B466D1008A7BA4 /* FirebaseFirestore */,
+				39504AA629B466D6008A7BA4 /* FirebaseAuth */,
+			);
 			productName = "Koget-Admin";
 			productReference = 396BCB6429AE1CC600B1E759 /* Koget-Admin.app */;
 			productType = "com.apple.product-type.application";
@@ -822,6 +866,7 @@
 				39F8475629B3990B000B817E /* FirebaseStorage */,
 				39504A8A29B39CB6008A7BA4 /* Lottie */,
 				39504A9229B3A059008A7BA4 /* SwiftEntryKit */,
+				39504A9829B3A117008A7BA4 /* SnapKit */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -888,6 +933,7 @@
 				39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				39504A8929B39CB6008A7BA4 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				39504A9129B3A059008A7BA4 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
+				39504A9729B3A117008A7BA4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -1023,6 +1069,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */,
+				39504A9629B3A09C008A7BA4 /* ToastViewController.swift in Sources */,
 				3AD46923297D39D40090B2D3 /* SuccessAlert.swift in Sources */,
 				3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */,
@@ -1030,6 +1077,7 @@
 				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,
 				3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */,
 				3ACCB357294C54A500A85E0F /* NewFloatingButton.swift in Sources */,
+				39504AA329B43F16008A7BA4 /* EKMakerTester.swift in Sources */,
 				3930108A299E6AAC009B13ED /* WidgetConstants.swift in Sources */,
 				3A1F890A297AB25700E1B4C4 /* ContentView.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* LinkWidgetModel.swift in Sources */,
@@ -1050,10 +1098,13 @@
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
 				3A1591712984FA40001924C3 /* DeepLinkWidgetViewModel.swift in Sources */,
+				39504AA129B43796008A7BA4 /* UIScreen+Utils.swift in Sources */,
 				390853B629A24EB2006E8311 /* AssetRequestView.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthModel.swift in Sources */,
+				39504A9D29B429AF008A7BA4 /* EKMaker.swift in Sources */,
 				3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */,
+				39504AA929B48E73008A7BA4 /* EKCustomColor.swift in Sources */,
 				39B23C4929A3BB6F0047BBDB /* PatchNoteView.swift in Sources */,
 				3A8C1E782980DB7C004FAF89 /* HelperSheetViewModel.swift in Sources */,
 				3A6449B8297E39E5002A710C /* TrashAlert.swift in Sources */,
@@ -1090,6 +1141,7 @@
 				39835ACF299D1F6600BEDF88 /* WidgetButton.swift in Sources */,
 				3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */,
 				3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */,
+				39504A9F29B4374F008A7BA4 /* CGRect+Utils.swift in Sources */,
 				3A8339D72932165B00DC9527 /* EditingToggleButton.swift in Sources */,
 				3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */,
 			);
@@ -1605,6 +1657,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		39504A9729B3A117008A7BA4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
 		39822CF229B3677400B687E4 /* XCRemoteSwiftPackageReference "FloatingButton" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/FloatingButton.git";
@@ -1673,6 +1733,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39504A9129B3A059008A7BA4 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
 			productName = SwiftEntryKit;
+		};
+		39504A9829B3A117008A7BA4 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39504A9729B3A117008A7BA4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		39504AA429B466D1008A7BA4 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		39504AA629B466D6008A7BA4 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 		39822CF329B3677400B687E4 /* FloatingButton */ = {
 			isa = XCSwiftPackageProductDependency;

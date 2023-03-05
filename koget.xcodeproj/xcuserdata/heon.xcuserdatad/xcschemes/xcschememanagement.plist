@@ -24,14 +24,14 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>8</integer>
 		***REMOVED***
 		<key>Promises (Playground) 2.xcscheme</key>
 		***REMOVED***
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>9</integer>
 		***REMOVED***
 		<key>Promises (Playground) 3.xcscheme</key>
 		***REMOVED***
@@ -55,6 +55,27 @@
 			<integer>11</integer>
 		***REMOVED***
 		<key>Promises (Playground).xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
+		***REMOVED***
+		<key>SnapKitPlayground (Playground) 1.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
+		***REMOVED***
+		<key>SnapKitPlayground (Playground) 2.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
+		***REMOVED***
+		<key>SnapKitPlayground (Playground).xcscheme</key>
 		***REMOVED***
 			<key>isShown</key>
 			<false/>

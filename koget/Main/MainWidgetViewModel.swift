@@ -10,18 +10,20 @@ import SwiftUI
 class MainWidgetViewModel: ObservableObject {
     
     //MARK: Published Variables
-    @Published var makeSuccessful: Bool = false
-    @Published var deleteSuccessful: Bool = false
+    // @Published var makeSuccessful: Bool = false
+    // @Published var deleteSuccessful: Bool = false
     @Published var isEditingMode: Bool = false
+    @Published var selection = [DeepLink]()
+    @Published var isEditMode: EditMode = .inactive
 
     //MARK: User Defaults
     @AppStorage("isGridView") var isGridView = false
     @AppStorage("FirstRun") var isFirstRun = true
-        
+    
     static let shared = MainWidgetViewModel()
     
     private init() {
-        
+
     }
     
     func openURL(urlString: String) {
@@ -67,5 +69,14 @@ class MainWidgetViewModel: ObservableObject {
         return
 
     }
-    
+
+    func deleteItem(completion: @escaping() -> Void) {
+        for widget in selection {
+            WidgetCoreData.shared.deleteData(data: widget)
+        }
+
+        completion()
+
+    }
+
 }

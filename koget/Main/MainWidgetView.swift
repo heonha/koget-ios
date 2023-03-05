@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 import FloatingButton
 import ToastUI
+import SwiftEntryKit
 
 // 메인 뷰
 struct MainWidgetView: View {
@@ -57,10 +58,12 @@ struct MainWidgetView: View {
                     }
 
                 }
-
             }
             .onTapGesture {
                 isOpen = false
+            }
+            .onAppear {
+                
             }
             .onDisappear {
                 isOpen = false
@@ -68,16 +71,14 @@ struct MainWidgetView: View {
 
         }
         .tint(.black)
-        .toast(isPresented: $viewModel.makeSuccessful, dismissAfter: 1.3) {
-        } content: {
-            ToastAlert(jsonName: .normal, title: "위젯 생성 완료!".localized(), subtitle: "코젯앱을 잠금화면에 추가해 사용하세요.".localized())
-        }
-        .toast(isPresented: $viewModel.deleteSuccessful, dismissAfter: 0.7, onDismiss: {
-        }) {
-            ToastAlert(jsonName: .trash, title: "위젯 삭제 완료!".localized(), subtitle: nil)
-        }
+        // .toast(isPresented: $viewModel.deleteSuccessful, dismissAfter: 0.7, onDismiss: {
+        // }) {
+        //     ToastAlert(jsonName: .trash, title: "위젯 삭제 완료!".localized(), subtitle: nil)
+        // }
         .welcomeSheet(isPresented: $viewModel.isFirstRun, isSlideToDismissDisabled: true, pages: HelperSheetViewModel.shared.pages)
     }
+
+
 }
 
 struct MainWidgetView_Previews: PreviewProvider {

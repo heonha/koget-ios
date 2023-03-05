@@ -55,7 +55,7 @@ struct DetailWidgetView: View {
                             Button("삭제", role: .destructive) {
                                 WidgetCoreData.shared.deleteData(data: selectedWidget)
                                 self.dismiss()
-                                MainWidgetViewModel.shared.deleteSuccessful = true
+                                
                             }
                             Button("취소", role: .cancel) {}
                         }, message: { Text("정말 삭제 하시겠습니까?") })
