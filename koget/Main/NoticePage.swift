@@ -14,8 +14,9 @@ struct NoticePage: View {
 
     var body: some View {
         ZStack {
+            Color.init(uiColor: .systemBackground)
             TabView {
-                NoticePageCell(named: "KogetLogo", frame: frame.height)
+                NoticePageCell(named: "KogetClear", frame: frame.height)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }
@@ -47,6 +48,7 @@ struct NoticePageCell: View {
 
     var body: some View {
         ZStack {
+            Color("FeedBackgroundColor")
             NavigationLink {
                 PatchNoteView(patchNote: patchNotes.first!)
             } label: {
@@ -57,7 +59,7 @@ struct NoticePageCell: View {
                         Image(named)
                             .resizable()
                             .scaledToFit()
-                            .scaleEffect(1.5)
+                            .scaleEffect(3)
                         .opacity(0.2)
                         .padding(.leading, 30)
                     }
@@ -82,8 +84,11 @@ struct NoticePageCell: View {
                     VStack(alignment: .leading) {
                         Text("UPDATED 1.1")
                             .font(Font.custom(CustomFont.NotoSansKR.bold, size: 18))
+                            .foregroundColor(.init(uiColor: .label))
                         Text("새로워진 코젯 확인하기") 
                             .font(Font.custom(CustomFont.NotoSansKR.light, size: 16))
+                            .foregroundColor(.init(uiColor: .secondaryLabel))
+
                     }
                     .font(.system(size: 16, weight: .medium))
                     .padding(.leading)

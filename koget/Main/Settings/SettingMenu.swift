@@ -46,6 +46,7 @@ struct SettingMenu: View, AppStoreReviewable {
                             }
 
                         }
+                        .foregroundColor(.init(uiColor: .label))
 
                         Section("앱에 관하여") {
 
@@ -95,14 +96,16 @@ struct SettingMenuButton: View {
     }
 
     var title: LocalizedStringKey
-    var titleColor: Color = .black
     var subtitle: String? = nil
-    var subtitleColor: Color = .black
     var imageType: ImageType
     var imageName: String
-    var imageColor: Color = .black
     var imageSize: CGFloat = 20
+    var imageColor: Color = .init(uiColor: .label)
     var action: () -> Void
+
+    var titleColor: Color = .init(uiColor: .label)
+    var subtitleColor: Color = .init(uiColor: .secondaryLabel)
+
 
     var body: some View {
         Button {
@@ -131,6 +134,7 @@ struct SettingMenuButton: View {
                             .foregroundStyle(subtitleColor)
                     }
                 }
+                
                 
             }
         }

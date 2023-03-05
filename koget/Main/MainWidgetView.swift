@@ -31,7 +31,7 @@ struct MainWidgetView: View {
                     // 링크위젯
                     LinkWidgetView(viewModel: viewModel, coreData: _coreData)
                 }
-                .background(.white)
+                .background(Color.init(uiColor: .systemBackground))
 
                 NewFloatingButton(isOpen: $isOpen)
 

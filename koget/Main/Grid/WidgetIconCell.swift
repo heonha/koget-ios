@@ -115,17 +115,18 @@ struct WidgetIconCell: View {
                     Text(widget.name ?? "알수없음")
                         .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                         .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
+                        .foregroundColor(Color.init(uiColor: .label))
 
                     switch viewModel.checkLinkType(url: widget.url ?? "" ) {
                     case .app:
                         Text(self.app)
                             .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color.init(uiColor: .secondaryLabel))
                             .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
                     case .web:
                         Text(self.web)
                             .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color.init(uiColor: .secondaryLabel))
                             .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
 
                     }

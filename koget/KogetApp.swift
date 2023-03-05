@@ -16,7 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "chevron.left")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left")
-        UINavigationBar.appearance().tintColor = .black
+        UINavigationBar.appearance().tintColor = .label
         UIBarButtonItem.appearance().setTitleTextAttributes([
             NSAttributedString.Key.foregroundColor: UIColor.label
         ], for: .normal)

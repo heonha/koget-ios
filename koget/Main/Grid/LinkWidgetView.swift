@@ -10,14 +10,13 @@ import QGrid
 
 struct LinkWidgetView: View {
     
-    let backgroundColor: Color = AppColors.backgroundColor
+    let backgroundColor: Color = Color("ListBackgroundColor")
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
 
     var body: some View {
         ZStack {
             backgroundColor
-                .ignoresSafeArea(edges: .bottom)
             VStack {
                 if !$coreData.linkWidgets.wrappedValue.isEmpty {
                     if viewModel.isGridView {
@@ -32,6 +31,7 @@ struct LinkWidgetView: View {
             }
             .animation(.easeInOut(duration: 0.25), value: viewModel.isGridView)
         }
+        .cornerRadius(5)
     }
 
     var gridView: some View {
@@ -42,16 +42,6 @@ struct LinkWidgetView: View {
 
     var listView: some View {
         VStack {
-            if viewModel.isEditMode == .active {
-                HStack {
-                    ForEach(viewModel.selection) { widget in
-                        Image(uiImage: .init(data: widget.image!) ?? UIImage(named: "questionmark.circle")!)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 80, height: 80)
-                    }
-                }
-            }
             List {
                 ForEach(coreData.linkWidgets, id: \.id) { widget in
                     WidgetIconCell(widget: widget, viewModel: viewModel, type: .list)
