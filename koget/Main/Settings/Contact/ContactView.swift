@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SwiftEntryKit
+import Localize_Swift
 
 enum ContectType: String {
     case app = "앱 관련 문제"
@@ -24,7 +26,10 @@ struct ContactView: View {
     @State var isPresentSendAlert = false
     @StateObject var viewModel = ContactViewModel()
     @Environment(\.dismiss) var dismiss
-    
+
+    @State var successAlert = UIView()
+    @State var errorAlert = UIView()
+
     var body: some View {
         GeometryReader { geometryProxy in
             ZStack {
@@ -128,22 +133,14 @@ struct ContactView: View {
                 }
             }
             .toolbarBackground(.visible, for: .navigationBar)
-            .toast(isPresented: $isSuccess, dismissAfter: 1.5, onDismiss: {
-                dismiss()
-            }) {
-                ToastAlert(jsonName: .send, title: "문의 보내기 성공".localized(), subtitle: "피드백을 보내주셔서 감사합니다.".localized())
-            }
-            .toast(isPresented: $isFailure, dismissAfter: 1.5, onDismiss: {
-            }) {
-                ToastAlert(jsonName: .error, title: "빈칸을 확인해주세요.".localized(), subtitle: nil)
-            }
             .alert("내용 확인", isPresented: $isPresentSendAlert) {
                 Button {
                     viewModel.checkTheField { result in
                         if result {
-                            isSuccess.toggle()
+                            self.dismiss()
+                            self.presentSuccessAlert()
                         } else {
-                            isFailure.toggle()
+                            self.presentErrorAlert()
                         }
                     }
                 } label: {
@@ -158,7 +155,27 @@ struct ContactView: View {
             } message: {
                 Text("문의를 보낼까요?")
             }
+            .onAppear {
+                successAlert = setAlertView()
+                errorAlert = setErrorAlertView()
+            }
         }
+    }
+
+    private func setAlertView() -> UIView {
+        return EKMaker.setToastView(title: "문의 보내기 성공".localized(), subtitle: "피드백을 보내주셔서 감사합니다.".localized(), named: "success")
+    }
+
+    private func presentSuccessAlert() {
+        SwiftEntryKit.display(entry: successAlert, using: EKMaker.whiteAlertAttribute)
+    }
+
+    private func setErrorAlertView() -> UIView {
+        return EKMaker.setToastView(title: "확인 필요".localized(), subtitle: "빈칸을 확인해주세요.".localized(), named: "failed")
+    }
+
+    private func presentErrorAlert() {
+        SwiftEntryKit.display(entry: errorAlert, using: EKMaker.whiteAlertAttribute)
     }
 }
 

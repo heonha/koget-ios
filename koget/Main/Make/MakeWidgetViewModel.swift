@@ -50,10 +50,6 @@ final class MakeWidgetViewModel: ObservableObject {
         WidgetCoreData.shared.addLinkWidget(name: name, image: image, url: url, opacity: opacityValue ?? 1.0)
     }
     
-    func editWidgetData(widget: DeepLink) {
-        WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, opacity: opacityValue ?? 1.0, widget: widget)
-    }
-    
     func checkURLSyntex() -> Bool {
         
         if self.url.contains("://") {

@@ -17,8 +17,6 @@ struct OpacitySlider: View {
     @StateObject var viewModel: DetailWidgetViewModel
     var widthRatio: CGFloat
     var type: OpacityPickerType
-    @State var checkedMenu = 0
-    
     var body: some View {
 
             Slider(

@@ -33,6 +33,8 @@ final class DetailWidgetViewModel: ObservableObject {
     @Published var image: UIImage?
     @Published var opacityValue: Double = 1.0
     @Published var isEditing: Bool = false
+    @Published var isEditingMode = false
+
     @Published var nameMaxCountError = false
     lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit, specifier: "%d")자 입니다."
 
@@ -43,7 +45,10 @@ final class DetailWidgetViewModel: ObservableObject {
     }
     
     func editWidgetData(widget: DeepLink) {
+        print("4")
         WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, opacity: opacityValue, widget: widget)
+        print("6")
+
     }
     
     func checkURLSyntex() -> Bool {

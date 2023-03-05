@@ -36,6 +36,7 @@
 		39504AA529B466D1008A7BA4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 39504AA429B466D1008A7BA4 /* FirebaseFirestore */; };
 		39504AA729B466D6008A7BA4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 39504AA629B466D6008A7BA4 /* FirebaseAuth */; };
 		39504AA929B48E73008A7BA4 /* EKCustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA829B48E73008A7BA4 /* EKCustomColor.swift */; };
+		39504AAC29B4BF06008A7BA4 /* NewDetailWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AAB29B4BF06008A7BA4 /* NewDetailWidgetView.swift */; };
 		395A0F0229AEF09900D34E0D /* AppAdditionContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0129AEF09900D34E0D /* AppAdditionContact.swift */; };
 		395A0F0429AEF0C100D34E0D /* AppAdditionContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0329AEF0C100D34E0D /* AppAdditionContactViewModel.swift */; };
 		395A0F0629AEF18700D34E0D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0529AEF18700D34E0D /* ContactView.swift */; };
@@ -217,6 +218,7 @@
 		39504AA029B43796008A7BA4 /* UIScreen+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Utils.swift"; sourceTree = "<group>"; };
 		39504AA229B43F16008A7BA4 /* EKMakerTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMakerTester.swift; sourceTree = "<group>"; };
 		39504AA829B48E73008A7BA4 /* EKCustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCustomColor.swift; sourceTree = "<group>"; };
+		39504AAB29B4BF06008A7BA4 /* NewDetailWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDetailWidgetView.swift; sourceTree = "<group>"; };
 		395A0F0129AEF09900D34E0D /* AppAdditionContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdditionContact.swift; sourceTree = "<group>"; };
 		395A0F0329AEF0C100D34E0D /* AppAdditionContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdditionContactViewModel.swift; sourceTree = "<group>"; };
 		395A0F0529AEF18700D34E0D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 				3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */,
 				3AA8BC512976EBB900E4927D /* DetailViewModel.swift */,
 				39691F4529ACDA58002BD874 /* OpacitySlider.swift */,
+				39504AAB29B4BF06008A7BA4 /* NewDetailWidgetView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1143,6 +1146,7 @@
 				3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */,
 				39504A9F29B4374F008A7BA4 /* CGRect+Utils.swift in Sources */,
 				3A8339D72932165B00DC9527 /* EditingToggleButton.swift in Sources */,
+				39504AAC29B4BF06008A7BA4 /* NewDetailWidgetView.swift in Sources */,
 				3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

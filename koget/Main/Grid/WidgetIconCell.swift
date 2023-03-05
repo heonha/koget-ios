@@ -21,27 +21,25 @@ struct WidgetIconCell: View {
 
     @ObservedObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
-    @Environment(\.viewController) var viewControllerHolder: UIViewController?
-    @State var isOn = false
     @State var deleteAlertView = UIView()
+    @State var isPresentDetailView = false
+    @State var isDelete: Bool = false
 
+    let app: LocalizedStringKey = "앱"
+    let web: LocalizedStringKey = "웹 페이지"
+
+    lazy var imageSize = CGSize(width: cellSize.grid * 0.63, height: cellSize.grid * 0.63)
+    lazy var textSize = CGSize(width: cellSize.grid, height: cellSize.grid * 0.40)
+
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.viewController) var viewControllerHolder: UIViewController?
 
     init(widget: DeepLink, viewModel: MainWidgetViewModel, type: WidgetIconCellType) {
         self.widget = widget
         self.type = type
         self.viewModel = viewModel
         self.cellSize = (grid: deviceSize.width / 4.3, list: 50)
-
     }
-
-    @State var isDelete: Bool = false
-    lazy var imageSize = CGSize(width: cellSize.grid * 0.63, height: cellSize.grid * 0.63)
-    lazy var textSize = CGSize(width: cellSize.grid, height: cellSize.grid * 0.40)
-    
-    let app: LocalizedStringKey = "앱"
-    let web: LocalizedStringKey = "웹 페이지"
-
-    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         if let data = widget.image, let name = widget.name, let url = widget.url {
@@ -51,8 +49,6 @@ struct WidgetIconCell: View {
                     Button {
                         if let url = widget.url, let id = widget.id {
                             viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
-                        } else {
-                            // print("CoreData url Error")
                         }
                     } label: {
                         Label("실행하기", systemImage: "arrow.up.left.square.fill")
@@ -67,8 +63,6 @@ struct WidgetIconCell: View {
                     }
                     Button(role: .destructive) {
                         isDelete.toggle()
-                        // WidgetCoreData.shared.deleteData(data: widget)
-                        // MainWidgetViewModel.shared.deleteSuccessful = true
                     } label: {
                         Label("삭제", systemImage: "trash.fill")
                     }
@@ -82,13 +76,18 @@ struct WidgetIconCell: View {
                 }
                 .alert("\(widget.name ?? "알수없음")", isPresented: $isDelete, actions: {
                     Button("삭제", role: .destructive) {
-                        WidgetCoreData.shared.deleteData(data: widget)
-                        isDelete = false
+                        coreData.deleteData(data: widget)
                         self.dismiss()
                         self.displayToast()
+                        isDelete = false
                     }
-                    Button("취소", role: .cancel) {}
+                    Button("취소", role: .cancel) {
+                        isDelete = false
+                    }
                 }, message: {Text("이 위젯을 삭제 할까요?")})
+                .sheet(isPresented: $isPresentDetailView, content: {
+                    DetailWidgetView(selectedWidget: widget)
+                })
                 .onAppear {
                     deleteAlertView = EKMaker.redAlertView(title: "위젯 삭제 완료!", subtitle: "삭제한 위젯은 잠금화면에서도 변경 또는 삭제 해주세요", named: "success.white")
                 }
@@ -100,26 +99,6 @@ struct WidgetIconCell: View {
     var listCell: some View {
         ZStack {
             HStack {
-                if viewModel.isEditMode == .active {
-
-                    Button {
-                        isOn.toggle()
-                    } label: {
-                        if isOn {
-                            Image(systemName: "checkmark.circle.fill")
-                                .font(.system(size: 18))
-                                .foregroundColor(.red)
-                                .shadow(color: Color.black.opacity(0.2), radius: 2, x: 2, y: 2)
-                                .bold()
-                        } else {
-                            Image(systemName: "circle")
-                                .font(.system(size: 18))
-                                .foregroundColor(.gray)
-                                .shadow(color: Color.black.opacity(0.2), radius: 2, x: 2, y: 2)
-                                .bold()
-                        }
-                    }
-                }
                 ZStack {
                     Circle()
                         .fill(.white)

@@ -10,6 +10,7 @@ import CoreData
 import FloatingButton
 import ToastUI
 import SwiftEntryKit
+import WelcomeSheet
 
 // 메인 뷰
 struct MainWidgetView: View {
@@ -19,7 +20,7 @@ struct MainWidgetView: View {
     @State var isOpen = false
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
-    @Environment(\.viewController) var viewControllerHolder: UIViewController?
+    // @Environment(\.viewController) var viewControllerHolder: UIViewController?
 
     var body: some View {
         NavigationView {
@@ -62,23 +63,14 @@ struct MainWidgetView: View {
             .onTapGesture {
                 isOpen = false
             }
-            .onAppear {
-                
-            }
             .onDisappear {
                 isOpen = false
             }
 
         }
         .tint(.black)
-        // .toast(isPresented: $viewModel.deleteSuccessful, dismissAfter: 0.7, onDismiss: {
-        // }) {
-        //     ToastAlert(jsonName: .trash, title: "위젯 삭제 완료!".localized(), subtitle: nil)
-        // }
         .welcomeSheet(isPresented: $viewModel.isFirstRun, isSlideToDismissDisabled: true, pages: HelperSheetViewModel.shared.pages)
     }
-
-
 }
 
 struct MainWidgetView_Previews: PreviewProvider {

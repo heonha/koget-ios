@@ -12,19 +12,18 @@ struct DetailWidgetView: View {
     var size: CGSize = .init(width: 350, height: 600)
     
     @State var selectedWidget: DeepLink
-    @ObservedObject var viewModel = DetailWidgetViewModel()
+    @StateObject var viewModel = DetailWidgetViewModel()
     
     // Present Views
     @State var isPresent = false
     @State var isPhotoViewPresent = false
     @State var isShowingPicker = false
     @State var isDeleteAlertPresent = false
-    @State var isEditingMode = false
     @State var isDelete = false
     @State var isPresentQustionmark = false
-    
-    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
+
     @Environment(\.dismiss) var dismiss
+
     var body: some View {
         ZStack {
             AppColors.backgroundColor
@@ -55,7 +54,6 @@ struct DetailWidgetView: View {
                             Button("삭제", role: .destructive) {
                                 WidgetCoreData.shared.deleteData(data: selectedWidget)
                                 self.dismiss()
-                                
                             }
                             Button("취소", role: .cancel) {}
                         }, message: { Text("정말 삭제 하시겠습니까?") })
@@ -75,7 +73,7 @@ struct DetailWidgetView: View {
 
                 // MARK: - 아이콘
                 Group {
-                    PhotoEditMenu(isEditingMode: $isEditingMode,
+                    PhotoEditMenu(isEditingMode: $viewModel.isEditingMode,
                                   isPhotoViewPresent: $isPhotoViewPresent,
                                   viewModel: viewModel)
                     .shadow(radius: 1, x: 0.2, y: 0.3)
@@ -84,8 +82,8 @@ struct DetailWidgetView: View {
 
                 // MARK: - 이름, URL
                 VStack {
-                    EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.name)
-                    EditTextField(title: "URL", placeHolder: "예시: youtube://", viewModel: viewModel, isEditingMode: $isEditingMode, text: $viewModel.url)
+                    EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", viewModel: viewModel, isEditingMode:  $viewModel.isEditingMode, text: $viewModel.name)
+                    EditTextField(title: "URL", placeHolder: "예시: youtube://", viewModel: viewModel, isEditingMode: $viewModel.isEditingMode, text: $viewModel.url)
                     // MARK: - 투명도
                     HStack {
                         Text("불투명도")
@@ -129,16 +127,14 @@ struct DetailWidgetView: View {
                 }
                 .padding(.horizontal)
 
-                if isEditingMode {
+                if viewModel.isEditingMode {
                     OpacitySlider(viewModel: viewModel, widthRatio: 0.3, type: .detail)
                         .padding(.horizontal)
                 }
 
                 VStack(alignment: .center, spacing: 12) {
                     // 편집 버튼
-                    EditingToggleButton(selectedWidget: selectedWidget,
-                                        isEditingMode: $isEditingMode,
-                                        viewModel: viewModel)
+                    EditingToggleButton(selectedWidget: selectedWidget, viewModel: viewModel)
                     // 닫기 버튼
                     DetailWidgetButton(text: "닫기", buttonColor: .init(uiColor: .systemFill)) {
                         self.dismiss()
@@ -167,6 +163,7 @@ struct DetailWidgetView: View {
             } else {
                 viewModel.opacityValue = selectedWidget.opacity as? Double ?? 1.0
             }
+            
         }
         .frame(width: size.width, height: size.height)
         .background(Color.init(uiColor: .clear))
