@@ -135,44 +135,55 @@ struct WidgetIconCell: View {
                 VStack(alignment: .leading) {
                     Text(widget.name ?? "알수없음")
                         .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                        .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
+
                     switch viewModel.checkLinkType(url: widget.url ?? "" ) {
                     case .app:
                         Text(self.app)
                             .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
                             .foregroundColor(.gray)
+                            .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
                     case .web:
                         Text(self.web)
                             .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
                             .foregroundColor(.gray)
+                            .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
+
                     }
                 }
                 Spacer()
                 VStack {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundStyle(Color.init(uiColor: .gray))
-                            .frame(width: 70, height: 20)
-                            .shadow(color: .black.opacity(0.4), radius: 0.5, x: 0.2, y: 0.5)
-                            .opacity(0.7)
-                        Group {
-                            HStack(spacing: 0) {
-                                Text("\(Int(widget.runCount))")
-                                    .font(.system(size: 14, weight: .semibold))
-                                    .shadow(color: .black.opacity(0.4), radius: 0.5, x: 0.2, y: 0.5)
-
-                                Text("회 실행")
-                                    .font(.system(size: 13, weight: .medium))
-                                    .shadow(color: .black.opacity(0.4), radius: 0.5, x: 0.2, y: 0.5)
-                            }
-                            .foregroundStyle(Color.init(uiColor: .white))
-                        }
-                    }
+                    // MARK: 실행 횟수
+                    runCountView
                 }
             }
             .frame(height: cellSize.list)
 
         }
     }
+
+    var runCountView: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundStyle(Color.init(uiColor: .tertiarySystemFill))
+                .frame(width: 70, height: 20)
+                .shadow(color: .black.opacity(0.4), radius: 0.5, x: 0.2, y: 0.5)
+                .opacity(0.7)
+            Group {
+                HStack(spacing: 2) {
+                    Image(systemName: "bolt.horizontal.fill")
+                        .font(.system(size: 13, weight: .semibold))
+                        .shadow(color: .black.opacity(0.7), radius: 0.5, x: 0.5, y: 0.5)
+                        .foregroundColor(.yellow)
+                    Text("\(Int(widget.runCount))")
+                        .font(.system(size: 14, weight: .semibold))
+                        .shadow(color: .black.opacity(0.6), radius: 0.5, x: 0.3, y: 0.5)
+                }
+                .foregroundStyle(Color.init(uiColor: .white))
+            }
+        }
+    }
+
 
     func displayToast() {
         SwiftEntryKit.display(entry: deleteAlertView, using: EKMaker.redAlertAttribute)

@@ -158,7 +158,8 @@ struct EKMaker {
         attributes.exitAnimation = .init(
             translate: .init(duration: 0.2)
         )
-        attributes.displayDuration = 1.5
+
+        attributes.displayDuration = 2
 
         return attributes
     }()
@@ -174,8 +175,6 @@ struct EKMaker {
         themes = .init(.init(image: .thumb(with: image, edgeSize: 100)))
         let popupMessage = EKPopUpMessage(themeImage: themes, title: title, description: description,
                                           button: bottomPopupBtn, action: voidAction)
-        // let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
-
         return EKPopUpMessageView(with: popupMessage)
     }
 
