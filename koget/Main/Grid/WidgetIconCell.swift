@@ -184,7 +184,6 @@ struct WidgetIconCell: View {
         }
     }
 
-
     func displayToast() {
         SwiftEntryKit.display(entry: deleteAlertView, using: EKMaker.redAlertAttribute)
     }

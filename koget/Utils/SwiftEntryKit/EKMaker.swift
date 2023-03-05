@@ -183,7 +183,6 @@ struct EKMaker {
     }
 }
 
-
 struct EKMaker_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

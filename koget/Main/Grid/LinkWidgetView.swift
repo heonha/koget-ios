@@ -19,48 +19,45 @@ struct LinkWidgetView: View {
             backgroundColor
                 .ignoresSafeArea(edges: .bottom)
             VStack {
-                // 그리드뷰
-
                 if !$coreData.linkWidgets.wrappedValue.isEmpty {
-                    
                     if viewModel.isGridView {
-                        
-                        //MARK: - Grid View
-                            QGrid($coreData.linkWidgets.wrappedValue, columns: 3) { widget in
-                                WidgetIconCell(widget: widget, viewModel: viewModel, type: .grid)
-                        }
-                        
+                        gridView
                     } else {
-                        //MARK: - List View
-                        VStack {
-                            if viewModel.isEditMode == .active {
-                                HStack {
-                                    ForEach(viewModel.selection) { widget in
-                                        Image(uiImage: .init(data: widget.image!) ?? UIImage(named: "questionmark.circle")!)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 80, height: 80)
-                                    }
-                                }
-
-                            }
-
-                            List {
-                                ForEach(coreData.linkWidgets, id: \.id) { widget in
-                                    WidgetIconCell(widget: widget, viewModel: viewModel, type: .list)
-                                }
-                              }
-                            .listStyle(.plain)
-                        }
-
+                        listView
                     }
                     Spacer()
                 } else {
                     EmptyGrid()
                 }
-                
             }
             .animation(.easeInOut(duration: 0.25), value: viewModel.isGridView)
+        }
+    }
+
+    var gridView: some View {
+        QGrid($coreData.linkWidgets.wrappedValue, columns: 3) { widget in
+            WidgetIconCell(widget: widget, viewModel: viewModel, type: .grid)
+        }
+    }
+
+    var listView: some View {
+        VStack {
+            if viewModel.isEditMode == .active {
+                HStack {
+                    ForEach(viewModel.selection) { widget in
+                        Image(uiImage: .init(data: widget.image!) ?? UIImage(named: "questionmark.circle")!)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                    }
+                }
+            }
+            List {
+                ForEach(coreData.linkWidgets, id: \.id) { widget in
+                    WidgetIconCell(widget: widget, viewModel: viewModel, type: .list)
+                }
+            }
+            .listStyle(.plain)
         }
     }
 }
