@@ -19,7 +19,8 @@ final class MakeWidgetViewModel: ObservableObject {
     
     let nameStringLimit: Int = 14
     let defaultImage = UIImage(named: "KogetClear")!
-    
+
+    @Published var isEditing = false
     @Published var name: String = "" {
         didSet {
             if name.count > nameStringLimit {
@@ -33,7 +34,7 @@ final class MakeWidgetViewModel: ObservableObject {
     
     @Published var url: String = ""
     @Published var image: UIImage?
-    @Published var opacityValue: Double? = 1.0
+    @Published var opacityValue: Double = 1.0
 
     @Published var nameMaxCountError = false
     lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit, specifier: "%d")자 입니다."
@@ -47,7 +48,7 @@ final class MakeWidgetViewModel: ObservableObject {
     }
 
     func addWidget() {
-        WidgetCoreData.shared.addLinkWidget(name: name, image: image, url: url, opacity: opacityValue ?? 1.0)
+        WidgetCoreData.shared.addLinkWidget(name: name, image: image, url: url, opacity: opacityValue)
     }
     
     func checkURLSyntex() -> Bool {

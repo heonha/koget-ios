@@ -39,9 +39,8 @@ struct LinkWidgetOpacityPicker: View {
                     .opacity( isPresentQustionmark ? 0.7 : 0.0 )
                     .animation(.linear(duration: 0.2), value: isPresentQustionmark)
             )
-
             Spacer()
-            OpacityPicker(viewModel: viewModel, widthRatio: pickerWidthRatio, type: .make)
+            MakeOpacitySlider(viewModel: viewModel, widthRatio: pickerWidthRatio)
             Spacer()
             if let image = viewModel.image {
                 Image(uiImage: image)
@@ -49,7 +48,7 @@ struct LinkWidgetOpacityPicker: View {
                     .frame(width: 25, height: 25)
                     .grayscale(1)
                     .clipShape(Circle())
-                    .opacity(viewModel.opacityValue ?? 1.0)
+                    .opacity(viewModel.opacityValue)
                     .opacity(0.7)
             }
         }

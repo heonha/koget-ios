@@ -16,21 +16,23 @@ struct MakeWidgetTextFieldView: View {
     @ObservedObject var viewModel: MakeWidgetViewModel
     
     let nameTitle: LocalizedStringKey = "위젯 이름"
-    let namePlaceholder: LocalizedStringKey = "위젯 이름을 입력하세요."
+    let namePlaceholder: LocalizedStringKey = "위젯 이름"
     
     let urlTitle: LocalizedStringKey = "URL"
-    let urlPlaceholder: LocalizedStringKey = "앱주소:// 또는 https://웹주소"
+    let urlPlaceholder: LocalizedStringKey = "앱 / 웹 주소 (특수문자 :// 포함)"
     
     var body: some View {
         VStack {
-            CustomTextfield(title: nameTitle, placeholder: namePlaceholder, text: $viewModel.name, viewModel: viewModel, equals: .name)
+            CustomTextfield(title: nameTitle, placeholder: namePlaceholder, systemName: "tag", text: $viewModel.name, viewModel: viewModel, equals: .name)
             
-            ZStack {
-                CustomTextfield(title: urlTitle, placeholder: urlPlaceholder, text: $viewModel.url, viewModel: viewModel, equals: .url)
-                if viewModel.url != "" {
-                    URLTestButton(viewModel: viewModel)
-                        .padding(.trailing)
-                        .padding(.bottom, 48)
+            CustomTextfield(title: urlTitle, placeholder: urlPlaceholder, systemName: "link", text: $viewModel.url, viewModel: viewModel, equals: .url)
+            if viewModel.url != "" {
+                withAnimation {
+                    HStack {
+                        Spacer()
+                        URLTestButton(viewModel: viewModel)
+                            .padding(.trailing)
+                    }
                 }
             }
         }

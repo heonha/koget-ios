@@ -87,20 +87,11 @@ struct OpacityPicker: View {
                     }
                 }
                 .tag(100)
-
             } label: {
                 ZStack {
-                    if let opacity = viewModel.opacityValue {
-                        Text("\(Int(opacity * 100))%")
-                            .foregroundColor(.init(uiColor: .secondaryLabel))
-                            .bold()
-                    } else {
-                        HStack {
-                            Text("선택하세요")
-                            Image(systemName: "hand.point.up")
-                        }
-                            .foregroundColor(.black)
-                    }
+                    Text("\(Int(viewModel.opacityValue * 100))%")
+                        .foregroundColor(.init(uiColor: .secondaryLabel))
+                        .bold()
                 }
                 .frame(width: deviceSize.width * widthRatio)
                 .shadow(radius: 1)

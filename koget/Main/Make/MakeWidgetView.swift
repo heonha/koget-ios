@@ -32,7 +32,6 @@ struct MakeWidgetView: View {
     @State var successAlert = UIView()
     @State var errorAlert = UIView()
 
-    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -65,6 +64,7 @@ struct MakeWidgetView: View {
                     
                     // 텍스트필드 그룹
                     MakeWidgetTextFieldView(viewModel: viewModel)
+
                     LinkWidgetOpacityPicker(viewModel: viewModel, isPresentQustionmark: $isPresentQustionmark)
 
                     Group {
@@ -74,11 +74,6 @@ struct MakeWidgetView: View {
                         } label: {
                             ButtonWithText(title: "완료", titleColor: .white, color: Color.secondary)
                         }
-                        // .toast(isPresented: $isError, dismissAfter: 1.5) {
-                        //
-                        // } content: {
-                        //     ToastAlert(jsonName: .error, title: errorMessage, subtitle: nil)
-                        // }
                         // 돌아가기 버튼
                         Button {
                             self.dismiss()

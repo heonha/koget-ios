@@ -128,7 +128,7 @@ struct DetailWidgetView: View {
                 .padding(.horizontal)
 
                 if viewModel.isEditingMode {
-                    OpacitySlider(viewModel: viewModel, widthRatio: 0.3, type: .detail)
+                    OpacitySlider(viewModel: viewModel, widthRatio: 0.3)
                         .padding(.horizontal)
                 }
 

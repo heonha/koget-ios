@@ -10,7 +10,7 @@ import Localize_Swift
 
 struct URLTestButton: View {
     
-    var title: LocalizedStringKey = "URL 실행 테스트"
+    var title: LocalizedStringKey = "URL 테스트"
 
     @ObservedObject var viewModel: MakeWidgetViewModel
 
@@ -32,43 +32,19 @@ struct URLTestButton: View {
     
     var body: some View {
         HStack {
-            
             Spacer()
-            if let canOpen = canOpenResult {
-                if canOpen {
-                    Text("실행성공")
-                        .foregroundColor(.green)
-                        .font(.system(size: 16, weight: .semibold))
-                        
-                } else {
-                    Text("실행실패")
-                        .foregroundColor(.red)
-                        .font(.system(size: 16, weight: .semibold))
-                }
-            }
+            resultTextView
             
             //MARK: 테스트 버튼
             Button {
-                
-                viewModel.checkCanOpenURL { error in
-                    if let error = error {
-                        // print(error)
-                        switch error {
-                        case .openError:
-                            isOpenURLAlertPresent.toggle()
-                        case .typeError:
-                            isAlertPresent.toggle()
-                        }
-                    } else {
-                        isOpenURLAlertPresent.toggle()
-                    }
-                }
+                urlCheckAction()
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
-                        .tint(.init(uiColor: .secondarySystemFill))
+                        .stroke(lineWidth: 2)
+                        .foregroundStyle(Constants.kogetGradient)
                     Text(title)
-                        .foregroundColor(.black)
+                        .foregroundColor(.init(uiColor: .label))
                         .font(.system(size: 16))
                 }
             }
@@ -94,6 +70,40 @@ struct URLTestButton: View {
                 Text(openURLAlertMessage)
             }
             
+        }
+        .padding(4)
+    }
+
+    var resultTextView: some View {
+        ZStack {
+            if let canOpen = canOpenResult {
+                if canOpen {
+                    Text("실행성공")
+                        .foregroundColor(.green)
+                        .font(.system(size: 16, weight: .semibold))
+                } else {
+                    Text("실행실패")
+                        .foregroundColor(.red)
+                        .font(.system(size: 16, weight: .semibold))
+                }
+            }
+        }
+    }
+
+
+    func urlCheckAction() {
+        viewModel.checkCanOpenURL { error in
+            if let error = error {
+                // print(error)
+                switch error {
+                case .openError:
+                    isOpenURLAlertPresent.toggle()
+                case .typeError:
+                    isAlertPresent.toggle()
+                }
+            } else {
+                isOpenURLAlertPresent.toggle()
+            }
         }
     }
 }
