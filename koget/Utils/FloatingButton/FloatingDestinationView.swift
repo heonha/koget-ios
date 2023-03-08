@@ -14,7 +14,6 @@ struct FloatingDestinationView: View {
         switch type {
         case .add:
             MakeWidgetView()
-
         case .aboutApp:
             SettingMenu()
         case .contact:

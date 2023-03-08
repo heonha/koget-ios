@@ -10,7 +10,7 @@ import SwiftUI
 struct NewFloatingButton: View {
     
     var size: CGFloat = 50
-    var color: Color = AppColors.buttonMainColor
+    var color: Color = AppColor.buttonMainColor
     @Binding var isOpen: Bool
     
     var body: some View {
@@ -28,7 +28,6 @@ struct NewFloatingButton: View {
             }
         }
         .padding()
-        .tint(.white)
     }
 }
 

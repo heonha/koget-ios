@@ -13,10 +13,10 @@ struct CustomTextEditor: View {
     
     var body: some View {
         ZStack {
-            AppColors.secondaryBackgroundColor
+            AppColor.Background.first
             TextEditor(text: $text)
-                .foregroundColor(.init(uiColor: .label))
-                .colorMultiply(AppColors.secondaryBackgroundColor)
+                .foregroundColor(AppColor.Label.first)
+                .colorMultiply(AppColor.Background.third)
                 .padding(4)
             if text.isEmpty {
                 VStack {

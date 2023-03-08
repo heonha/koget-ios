@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageMenuButton: View {
+struct ChooseImageMenuButton: View {
     
     @ObservedObject var viewModel: MakeWidgetViewModel
     @Binding var appPicker: WidgetAssetList?
@@ -30,7 +30,7 @@ struct ImageMenuButton: View {
                 case .image:
                     if let image = viewModel.image {
                         ZStack {
-                            Color.white
+                            AppColor.Background.first
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFit()
@@ -43,21 +43,20 @@ struct ImageMenuButton: View {
                         ZStack {
                             Circle()
                                 .fill(.white)
+                                .opacity(Constants.isDarkMode ? 0.3 : 1.0)
                             Image("Koget")
                                 .resizable()
                                 .scaledToFit()
                                 .clipShape(Circle())
-                            .opacity(0.3)
+                                .opacity(Constants.isDarkMode ? 0.3 : 0.5)
                             Text("이미지\n선택")
-                                .foregroundColor(.black)
+                                .foregroundColor(AppColor.Label.second)
+                                .shadow(radius: 1)
                                 .font(.system(size: 16, weight: .bold))
                         }
                         .frame(width: 100, height: 100)
-
                     }
-
                 }
-                
             }.sheet(isPresented: $isAppPickerPresent) {
                 appPicker
             }
@@ -71,6 +70,6 @@ struct ImageMenuButton: View {
 struct ImageButton_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = MakeWidgetViewModel()
-        ImageMenuButton(viewModel: viewModel, appPicker: .constant(WidgetAssetList(viewModel: viewModel)), widgetType: .constant(.image))
+        ChooseImageMenuButton(viewModel: viewModel, appPicker: .constant(WidgetAssetList(viewModel: viewModel)), widgetType: .constant(.image))
     }
 }

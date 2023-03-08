@@ -14,7 +14,7 @@ struct WidgetButton: View {
     var cellWidth: CGFloat
     var imageSize: CGSize
     var textSize: CGSize
-    let titleColor: Color = .init(uiColor: .label)
+    let titleColor: Color = AppColor.Label.first
     @ObservedObject var viewModel: MainWidgetViewModel
 
     init(name: String, url: String, widgetImage: UIImage, cellWidth: CGFloat, viewModel: MainWidgetViewModel) {
@@ -33,7 +33,7 @@ struct WidgetButton: View {
             //MARK: 위젯 아이콘
             ZStack {
                 // 아이콘배경
-                Color.white
+                AppColor.Background.first
                     .clipShape(Circle())
                     // .shadow(radius: 1, x: 2, y: 2)
 

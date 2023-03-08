@@ -14,7 +14,7 @@ enum WidgetType {
 }
 
 struct MakeWidgetView: View {
-    let navigationBarColor = AppColors.secondaryBackgroundColor
+    let navigationBarColor = AppColor.Background.second
     
     @StateObject var viewModel = MakeWidgetViewModel()
     @State var assetList: WidgetAssetList?
@@ -40,10 +40,10 @@ struct MakeWidgetView: View {
             ZStack {
                 
                 //MARK: - Background
-                AppColors.secondaryBackgroundColor
+                AppColor.Background.second
                     .ignoresSafeArea()
                 Rectangle()
-                    .foregroundColor(AppColors.backgroundColor)
+                    .foregroundColor(AppColor.Background.first)
                 
                 //MARK: - Contents
                 VStack(spacing: 16) {
@@ -59,48 +59,28 @@ struct MakeWidgetView: View {
                         assetList
                     }
                     // 아이콘
-                    ImageMenuButton(viewModel: viewModel, appPicker: $assetList, widgetType: $widgetType)
+                    ChooseImageMenuButton(viewModel: viewModel, appPicker: $assetList, widgetType: $widgetType)
                         .shadow(radius: 0.7, x: 0.1, y: 0.1)
                     
                     // 텍스트필드 그룹
                     MakeWidgetTextFieldView(viewModel: viewModel)
 
-                    LinkWidgetOpacityPicker(viewModel: viewModel, isPresentQustionmark: $isPresentQustionmark)
+                    if viewModel.image != nil {
+                        LinkWidgetOpacityPicker(viewModel: viewModel, isPresentQustionmark: $isPresentQustionmark)
+                    }
 
-                    Group {
-                        // 위젯생성 버튼
-                        Button {
-                            makeWidgetAction()
-                        } label: {
-                            ButtonWithText(title: "완료", titleColor: .white, color: Color.secondary)
+                    makeAndBackButton
+                        .padding(.horizontal, 16)
+                        .alert("이미지 확인", isPresented: $isImageError) {
+                            defaultImageCheckAlert
+                        } message: {
+                            Text("아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?")
                         }
-                        // 돌아가기 버튼
-                        Button {
-                            self.dismiss()
-                        } label: {
-                            ButtonWithText(title: "돌아가기")
-                        }
-                    }
-                    .padding(.horizontal, 16)
-                    .alert("이미지 확인", isPresented: $isImageError) {
-                        
-                        Button("기본이미지로 생성") {
-                            viewModel.image = UIImage(named: "KogetClear")
-                            saveWidget()
-                        }
-                        
-                        Button("취소") {
-                            return
-                        }
-                    } message: {
-                        Text("아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?")
-                    }
-                    
                     Spacer()
                 }
                 .navigationTitle("위젯 만들기")
+                .navigationBarTitleDisplayMode(.large)
             }
-
             .onTapGesture {
                 hideKeyboard()
                 isPresentQustionmark = false
@@ -110,18 +90,53 @@ struct MakeWidgetView: View {
                 assetList = WidgetAssetList(viewModel: viewModel)
                 successAlert = setAlertView()
             }
+        }
+    }
 
+    // MARK: - Assets
+
+    var makeAndBackButton: some View {
+        Group {
+            // 위젯생성 버튼
+            Button {
+                makeWidgetAction()
+            } label: {
+                ButtonWithText(title: "완료", titleColor: .white, color: AppColor.Background.third)
+            }
+            // 돌아가기 버튼
+            Button {
+                self.dismiss()
+            } label: {
+                ButtonWithText(title: "돌아가기")
+            }
+        }
+    }
+
+    var defaultImageCheckAlert: some View {
+        Group {
+            Button("기본이미지로 생성") {
+                viewModel.image = UIImage(named: "KogetClear")
+                saveWidget()
+            }
+            Button("취소") {
+                return
+            }
         }
     }
 
     var fetchAppListLabel: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .stroke(lineWidth: 1)
                 .foregroundStyle(Constants.kogetGradient)
+                .shadow(color: .black.opacity(0.3), radius: 0.5, x: 1, y: 2)
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundStyle(Constants.isDarkMode ? Color.black : Color.white)
+                .opacity(0.15)
+
             Text("앱 리스트에서 가져오기")
                 .font(.system(size: 18, weight: .semibold))
-                .foregroundColor(.black)
+                .foregroundColor(.white)
+                .shadow(color: .black.opacity(0.5), radius: 0.5, x: 1, y: 1)
         }
     }
     

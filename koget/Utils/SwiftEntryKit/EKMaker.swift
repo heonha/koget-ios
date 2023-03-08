@@ -98,7 +98,7 @@ struct EKMaker {
             text: "",
             style: .init(
                 font: UIFont(name: CustomFont.NotoSansKR.light, size: 16)!,
-                color: .init(.label),
+                color: .init(UIColor(AppColor.Label.first)),
                 displayMode: displayMode
             )
         ),

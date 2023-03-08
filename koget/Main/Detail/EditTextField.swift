@@ -41,13 +41,13 @@ struct EditTextField: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .textCase(.none)
-                    .background(AppColors.secondaryBackgroundColor)
+                    .background(AppColor.Background.second)
                 
             } else {
                 // 뷰어 모드
                 TextField(placeHolder, text: $text)
                     .frame(height: 35)
-                    .background(AppColors.backgroundColor)
+                    .background(AppColor.Background.first)
                     .disabled(!isEditingMode)
             }
             

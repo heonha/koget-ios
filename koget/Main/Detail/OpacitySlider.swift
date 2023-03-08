@@ -32,11 +32,11 @@ struct OpacitySlider: View {
             } onEditingChanged: { editing in
                 viewModel.isEditing = editing
             }
-            .tint(.blue)
+            .tint(AppColor.Behavior.errorRed)
             .padding(.horizontal)
             .padding(.vertical, 4)
 
-        .background(Color.init(uiColor: .secondarySystemBackground))
+        .background(AppColor.Background.second)
         .cornerRadius(8)
     }
 }
@@ -47,9 +47,7 @@ struct OpacitySlider_Previews: PreviewProvider {
     }
 }
 
-
 struct MakeOpacitySlider: View {
-
 
     @StateObject var viewModel: MakeWidgetViewModel
 
@@ -73,11 +71,11 @@ struct MakeOpacitySlider: View {
             } onEditingChanged: { editing in
                 viewModel.isEditing = editing
             }
-            .tint(.blue)
+            .tint(AppColor.Behavior.errorRed)
             .padding(.horizontal)
             .padding(.vertical, 4)
 
-        .background(Color.init(uiColor: .secondarySystemBackground))
+        .background(AppColor.Background.second)
         .cornerRadius(8)
     }
 }

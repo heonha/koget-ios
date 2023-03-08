@@ -84,7 +84,7 @@ struct NoticePageCell: View {
                     VStack(alignment: .leading) {
                         Text("UPDATED 1.1")
                             .font(Font.custom(CustomFont.NotoSansKR.bold, size: 18))
-                            .foregroundColor(.init(uiColor: .label))
+                            .foregroundColor(AppColor.Label.first)
                         Text("새로워진 코젯 확인하기") 
                             .font(Font.custom(CustomFont.NotoSansKR.light, size: 16))
                             .foregroundColor(.init(uiColor: .secondaryLabel))
@@ -99,7 +99,7 @@ struct NoticePageCell: View {
 
             }
         }
-        .background(Color.init(uiColor: .secondarySystemBackground))
+        .background(AppColor.Background.second)
         .cornerRadius(10)
         .shadow(radius: 2)
         .tint(.black)

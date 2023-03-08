@@ -11,7 +11,7 @@ struct WidgetAssetList: View {
     
     @StateObject var widgetAssets = WidgetAssetViewModel()
     
-    var textColor: Color = .init(uiColor: .label)
+    var textColor: Color = AppColor.Label.first
     var imageSize: CGSize = .init(width: 40, height: 40)
     
     @State var viewModel: MakeWidgetViewModel

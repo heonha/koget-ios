@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailWidgetButton: View {
     
     var text: LocalizedStringKey
-    var titleColor: Color = .init(uiColor: .label)
+    var titleColor: Color = AppColor.Label.first
     var buttonColor: Color
     var size: CGSize = .init(width: 200, height: 35)
     var action: () -> Void

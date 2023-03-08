@@ -15,9 +15,22 @@ enum AppColor {
         static let third = Color("ThirdBackgroundColor")
     }
 
+    enum Label {
+        static let first = Color("LabelColor")
+        static let second = Color("SecondaryLabelColor")
+        static let third = Color("ThirdLabelColor")
+    }
+
+    enum Behavior {
+        static let errorRed = Color("ErrorRed")
+    }
+
+    enum Accent {
+        static let primary = Color("PrimaryAccent")
+    }
+
     static let deepDarkGrey = Color("deepDarkGray")
     static let normalDarkGrey = Color("normalDarkGrey")
-
     static let buttonMainColor = Color.init(uiColor: .secondaryLabel)
     static let buttonApplyColor = Color.init(uiColor: .systemBlue)
     static let buttonSecondaryMainColor = Color.init(uiColor: .secondarySystemFill)

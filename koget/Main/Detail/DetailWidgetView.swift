@@ -26,7 +26,7 @@ struct DetailWidgetView: View {
 
     var body: some View {
         ZStack {
-            AppColors.backgroundColor
+            AppColor.Background.first
             VStack {
                 ZStack {
                     // 제목
@@ -97,7 +97,7 @@ struct DetailWidgetView: View {
                         .overlay(
                             ZStack(content: {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .fill(.white)
+                                    .fill(AppColor.Background.first)
                                     .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
 
                                 Text("잠금화면 위젯의 불투명도입니다.")

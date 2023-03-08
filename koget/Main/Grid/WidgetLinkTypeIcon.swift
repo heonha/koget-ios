@@ -22,7 +22,7 @@ struct WidgetLinkTypeIcon: View {
                         Spacer()
                         ZStack {
                             Circle()
-                                .foregroundStyle(.white)
+                                .foregroundStyle(AppColor.Background.first)
                                 .frame(width: 13, height: 13)
                             Image(systemName: "arrow.up.left.circle.fill")
                                 .foregroundStyle(Color.init(uiColor: .systemPink))
@@ -41,7 +41,7 @@ struct WidgetLinkTypeIcon: View {
                         Spacer()
                         ZStack {
                             Circle()
-                                .foregroundStyle(.white)
+                                .foregroundStyle(AppColor.Background.first)
                                 .frame(width: 13, height: 13)
                             Image(systemName: "network")
                                 .font(.system(size: 18, weight: .semibold))
@@ -63,8 +63,6 @@ struct WidgetLinkTypeIcon_Previews: PreviewProvider {
             WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "tmap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel.shared)
             WidgetButton(name: "위젯이름", url: "fdsf://google.com", widgetImage: UIImage.init(named: "tmap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel.shared)
         }
-
-
-        
+ 
     }
 }

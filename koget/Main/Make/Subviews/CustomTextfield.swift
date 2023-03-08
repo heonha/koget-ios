@@ -11,31 +11,35 @@ enum Field: Hashable {
     case url
 }
 
+enum TextfieldType {
+    case normal
+    case widgetName
+}
+
 struct CustomTextfield: View {
+
     var title: LocalizedStringKey
     var placeholder: LocalizedStringKey
     var systemName: String
     @Binding var text: String
-    @FocusState var focusState: Field?
     @StateObject var viewModel: MakeWidgetViewModel
     var equals: Field
+    @FocusState var focusState: Field?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-
             HStack {
-
+                // 식별 이미지 부분
                 Image(systemName: systemName)
                     .font(.system(size: 20, weight: .bold))
                     .frame(width: 40, height: 40)
                     .foregroundColor(.init(uiColor: .lightGray))
 
+                // 텍스트필드 부분
                 ZStack(alignment: .center) {
-
                     RoundedRectangle(cornerRadius: 5)
                         .frame(height: 40)
-                        .foregroundColor(AppColors.secondaryBackgroundColor)
-
+                        .foregroundColor(AppColor.Background.second)
                     TextField(placeholder, text: $text)
                         .background(Color.clear)
                         .autocorrectionDisabled()
@@ -46,13 +50,12 @@ struct CustomTextfield: View {
                 }
             }
 
-            if title != "URL" && viewModel.nameMaxCountError == true {
+            if equals == .name && viewModel.nameMaxCountError == true {
                 withAnimation {
                     Text(viewModel.nameMaxCountErrorMessage)
-                        .foregroundColor(.red)
+                        .font(.custom(CustomFont.NotoSansKR.light, size: 14))
+                        .foregroundColor(AppColor.Behavior.errorRed)
                 }
-            } else {
-
             }
         }
         .padding(.horizontal, 16)

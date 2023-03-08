@@ -29,10 +29,10 @@ struct FloatingMenuButton: View {
     var size = CGSize(width: 140, height: 50)
     // content
     var textInfo: (color: Color, fontSize: CGFloat, weight: Font.Weight)
-        = (color: .black, fontSize: 15, weight: .medium)
+    = (color: Color.init(uiColor: .label), fontSize: 15, weight: .medium)
     // view
-    var borderColor = Color("F4F4F4")
-    var backgroundColor = Color.white
+    var borderColor = AppColor.Background.third
+    var backgroundColor = AppColor.Background.second
 
     @State var isPresent = false
     @Environment(\.viewController) var viewControllerHolder: UIViewController?

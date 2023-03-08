@@ -41,7 +41,7 @@ struct PatchNoteList: View {
     var body: some View {
         
         ZStack {
-            Color.init(uiColor: .secondarySystemBackground)
+            AppColor.Background.second
                 .ignoresSafeArea()
             VStack {
                 Divider()

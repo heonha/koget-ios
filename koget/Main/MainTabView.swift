@@ -25,8 +25,6 @@ struct MainTabView: View {
                     Text("설정")
                 }
         }
-        .tint(.init("deepDarkGray"))
-
     }
 }
 

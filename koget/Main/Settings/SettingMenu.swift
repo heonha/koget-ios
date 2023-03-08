@@ -15,23 +15,9 @@ struct SettingMenu: View, AppStoreReviewable {
     var body: some View {
         NavigationView {
             ZStack {
-                
-                Color.init(uiColor: .secondarySystemBackground)
-                    .ignoresSafeArea()
-
                 ZStack {
-                    AppColors.secondaryBackgroundColor
-                        .ignoresSafeArea()
-                }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        Image("KogetClear")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                    }
-
+                    AppColor.Background.second
+                        .ignoresSafeArea(edges: .top)
                 }
 
                 VStack {
@@ -46,7 +32,7 @@ struct SettingMenu: View, AppStoreReviewable {
                             }
 
                         }
-                        .foregroundColor(.init(uiColor: .label))
+                        .foregroundColor(AppColor.Label.first)
 
                         Section("앱에 관하여") {
 
@@ -77,8 +63,16 @@ struct SettingMenu: View, AppStoreReviewable {
             .sheet(isPresented: $viewModel.showPatchNote) {
                 PatchNoteList()
         }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("KogetClear")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                }
+            }
         }
-
     }
 }
 
@@ -100,12 +94,11 @@ struct SettingMenuButton: View {
     var imageType: ImageType
     var imageName: String
     var imageSize: CGFloat = 20
-    var imageColor: Color = .init(uiColor: .label)
+    var imageColor: Color = AppColor.Label.first
     var action: () -> Void
 
-    var titleColor: Color = .init(uiColor: .label)
-    var subtitleColor: Color = .init(uiColor: .secondaryLabel)
-
+    var titleColor: Color = AppColor.Label.first
+    var subtitleColor: Color = AppColor.Label.second
 
     var body: some View {
         Button {

@@ -52,7 +52,7 @@ struct MainWidgetView: View {
                             viewModel.isGridView.toggle()
                         } label: {
                             Image(systemName: viewModel.isGridView ? "list.bullet" : "square.grid.3x3")
-                                .foregroundColor(.init(uiColor: .label))
+                                .foregroundColor(AppColor.Label.first)
                                 .opacity(0.9)
                                 .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
                         }
@@ -68,7 +68,6 @@ struct MainWidgetView: View {
             }
 
         }
-        .tint(.black)
         .welcomeSheet(isPresented: $viewModel.isFirstRun, isSlideToDismissDisabled: true, pages: HelperSheetViewModel.shared.pages)
     }
 }

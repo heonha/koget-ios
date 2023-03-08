@@ -108,7 +108,7 @@
 		3A3C11A328EDC14700C9CCED /* LinkWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C11A228EDC14700C9CCED /* LinkWidgetModel.swift */; };
 		3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
-		3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
+		3A559C7028EB1D4900D5D9E4 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColor.swift */; };
 		3A6449B1297D8ACD002A710C /* ToastAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449B0297D8ACD002A710C /* ToastAlert.swift */; };
 		3A6449B3297D8C81002A710C /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B2297D8C81002A710C /* error.json */; };
 		3A6449B6297E3895002A710C /* sendSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B5297E3895002A710C /* sendSuccess.json */; };
@@ -137,7 +137,7 @@
 		3ABFEFC1292F136B00455730 /* DetailWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC0292F136B00455730 /* DetailWidgetView.swift */; };
 		3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC4292F214200455730 /* MainWidgetView.swift */; };
 		3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC9292F4D1400455730 /* BlurBackgroundView.swift */; };
-		3ACCB34C294C33C300A85E0F /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */; };
+		3ACCB34C294C33C300A85E0F /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColor.swift */; };
 		3ACCB34D294C33C300A85E0F /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */; };
 		3ACCB34E294C33C300A85E0F /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
 		3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB354294C3D3500A85E0F /* TextFieldView.swift */; };
@@ -154,7 +154,7 @@
 		3ADA2E9D297FE698004AADEE /* createApp.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADA2E9C297FE698004AADEE /* createApp.json */; };
 		3ADA2E9F297FE7FD004AADEE /* rightArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADA2E9E297FE7FD004AADEE /* rightArrow.json */; };
 		3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE4B13D296D8A2D00DB219B /* KogetApp.swift */; };
-		3AE6AB4329617F7B000F2C1D /* ImageMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */; };
+		3AE6AB4329617F7B000F2C1D /* ChooseImageMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4229617F7B000F2C1D /* ChooseImageMenuButton.swift */; };
 		3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4429618319000F2C1D /* ButtonWithText.swift */; };
 		3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */; };
 		3AE9DC0E28F8F890008A3316 /* WidgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */; };
@@ -274,7 +274,7 @@
 		3A3C119828EDB4B800C9CCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A3C11A028EDB69A00C9CCED /* LockScreenIntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenIntentsExtension.entitlements; sourceTree = "<group>"; };
 		3A3C11A228EDC14700C9CCED /* LinkWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetModel.swift; sourceTree = "<group>"; };
-		3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		3A559C6F28EB1D4900D5D9E4 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		3A6449B0297D8ACD002A710C /* ToastAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastAlert.swift; sourceTree = "<group>"; };
 		3A6449B2297D8C81002A710C /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		3A6449B5297E3895002A710C /* sendSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sendSuccess.json; sourceTree = "<group>"; };
@@ -322,7 +322,7 @@
 		3ADA2E9C297FE698004AADEE /* createApp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = createApp.json; sourceTree = "<group>"; };
 		3ADA2E9E297FE7FD004AADEE /* rightArrow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rightArrow.json; sourceTree = "<group>"; };
 		3AE4B13D296D8A2D00DB219B /* KogetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogetApp.swift; sourceTree = "<group>"; };
-		3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMenuButton.swift; sourceTree = "<group>"; };
+		3AE6AB4229617F7B000F2C1D /* ChooseImageMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageMenuButton.swift; sourceTree = "<group>"; };
 		3AE6AB4429618319000F2C1D /* ButtonWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithText.swift; sourceTree = "<group>"; };
 		3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WidgetModel.xcdatamodel; sourceTree = "<group>"; };
 		3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -644,7 +644,7 @@
 		3A6449BB297E428C002A710C /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				3AE6AB4229617F7B000F2C1D /* ImageMenuButton.swift */,
+				3AE6AB4229617F7B000F2C1D /* ChooseImageMenuButton.swift */,
 				3AE6AB4429618319000F2C1D /* ButtonWithText.swift */,
 				3A01E774296AADDD0019CD2D /* CustomTextfield.swift */,
 				3A01E776296AADEF0019CD2D /* URLTestButton.swift */,
@@ -775,7 +775,7 @@
 				3AB4A3EB28CF01390062EC18 /* Animation */,
 				3A9BC0D928E6E1AE0041DA1B /* Constants.swift */,
 				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
-				3A559C6F28EB1D4900D5D9E4 /* AppColors.swift */,
+				3A559C6F28EB1D4900D5D9E4 /* AppColor.swift */,
 				3ACCB354294C3D3500A85E0F /* TextFieldView.swift */,
 				3A9C04FF292DB03C00442017 /* PhotoPicker.swift */,
 				39301089299E6AAC009B13ED /* WidgetConstants.swift */,
@@ -1059,7 +1059,7 @@
 				3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */,
 				3AE9DC0F28F8F891008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				3ACCB34E294C33C300A85E0F /* UIDevice+Utils.swift in Sources */,
-				3ACCB34C294C33C300A85E0F /* AppColors.swift in Sources */,
+				3ACCB34C294C33C300A85E0F /* AppColor.swift in Sources */,
 				3A3C119F28EDB5B400C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3AA8BC502976DE1C00E4927D /* WidgetCoreData.swift in Sources */,
 				39223B7629A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */,
@@ -1088,7 +1088,7 @@
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				3A0566CE2931E87D007B0A7A /* WidgetIconCell.swift in Sources */,
 				39504A9029B3A01E008A7BA4 /* SUIView.swift in Sources */,
-				3A559C7028EB1D4900D5D9E4 /* AppColors.swift in Sources */,
+				3A559C7028EB1D4900D5D9E4 /* AppColor.swift in Sources */,
 				3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */,
 				3ABFEFC1292F136B00455730 /* DetailWidgetView.swift in Sources */,
 				3ABFEFBD292E70A900455730 /* WidgetAssetViewModel.swift in Sources */,
@@ -1122,7 +1122,7 @@
 				3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
 				39691F4829ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift in Sources */,
-				3AE6AB4329617F7B000F2C1D /* ImageMenuButton.swift in Sources */,
+				3AE6AB4329617F7B000F2C1D /* ChooseImageMenuButton.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3AA8BC522976EBB900E4927D /* DetailViewModel.swift in Sources */,
 				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,

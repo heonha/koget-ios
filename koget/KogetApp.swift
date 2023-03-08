@@ -14,13 +14,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         //MARK: - Firebase Configuration
         FirebaseApp.configure()
         
-        UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "chevron.left")
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left")
-        UINavigationBar.appearance().tintColor = .label
-        UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSAttributedString.Key.foregroundColor: UIColor.label
-        ], for: .normal)
-        
+        // UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "chevron.left")
+        // UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left")
+        // UINavigationBar.appearance().tintColor = UIColor(AppColor.Label.first)
+        // UIBarButtonItem.appearance().setTitleTextAttributes([
+        //     NSAttributedString.Key.foregroundColor: AppColor.Label.first
+        // ], for: .normal)
+        // 
         return true
     }
 }
@@ -46,10 +46,9 @@ struct KogetApp: App {
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }
-                .tint(.black)
+                .tint(AppColor.Label.first)
                 .environmentObject(coreData)
                 .environment(\.managedObjectContext, coreData.container.viewContext)
-                .background(Color.init(uiColor: .secondarySystemBackground))
         }
     }
 

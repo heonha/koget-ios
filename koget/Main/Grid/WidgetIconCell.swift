@@ -115,7 +115,7 @@ struct WidgetIconCell: View {
                     Text(widget.name ?? "알수없음")
                         .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                         .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
-                        .foregroundColor(Color.init(uiColor: .label))
+                        .foregroundColor(AppColor.Label.first)
 
                     switch viewModel.checkLinkType(url: widget.url ?? "" ) {
                     case .app:
@@ -173,7 +173,7 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             // 배경
-            AppColors.secondaryBackgroundColor
+            AppColor.Background.second
                 .ignoresSafeArea()
             
             // 컨텐츠

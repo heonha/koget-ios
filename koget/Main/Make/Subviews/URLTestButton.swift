@@ -44,7 +44,7 @@ struct URLTestButton: View {
                         .stroke(lineWidth: 2)
                         .foregroundStyle(Constants.kogetGradient)
                     Text(title)
-                        .foregroundColor(.init(uiColor: .label))
+                        .foregroundColor(AppColor.Label.first)
                         .font(.system(size: 16))
                 }
             }

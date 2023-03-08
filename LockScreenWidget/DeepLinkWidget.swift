@@ -262,7 +262,7 @@ struct DeepLinkWidget: Widget {
             }
             .configurationDisplayName(title)
             .description(subtitle)
-            .supportedFamilies([.accessoryCircular, .systemSmall]) // 위젯이 지원하는 위젯의 종류입니다.
+            .supportedFamilies([.accessoryCircular]) // 위젯이 지원하는 위젯의 종류입니다.
     }
 }
 
