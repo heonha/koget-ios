@@ -23,6 +23,8 @@ enum AppColor {
 
     enum Behavior {
         static let errorRed = Color("ErrorRed")
+        static let toggleLight = Color("toggleLight")
+
     }
 
     enum Accent {

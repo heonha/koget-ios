@@ -19,7 +19,6 @@ struct SettingMenu: View, AppStoreReviewable {
                     AppColor.Background.second
                         .ignoresSafeArea(edges: .top)
                 }
-
                 VStack {
                     Spacer()
                     List {
@@ -127,8 +126,6 @@ struct SettingMenuButton: View {
                             .foregroundStyle(subtitleColor)
                     }
                 }
-                
-                
             }
         }
     }

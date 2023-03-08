@@ -15,7 +15,7 @@ struct FloatingMainButton: View {
         ZStack {
             LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .clipShape(Circle())
-                .opacity(Constants.isDarkMode ? 0.9 : 1.0)
+                .opacity(Constants.shared.isDarkMode ? 0.9 : 1.0)
 
             Image(systemName: "line.3.horizontal")
                 .font(.system(size: imageSize, weight: .medium))

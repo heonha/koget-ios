@@ -62,6 +62,7 @@
 		39822D0629B3686300B687E4 /* ToastUI in Frameworks */ = {isa = PBXBuildFile; productRef = 39822D0529B3686300B687E4 /* ToastUI */; };
 		39835ACF299D1F6600BEDF88 /* WidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835ACE299D1F6600BEDF88 /* WidgetButton.swift */; };
 		39835AD1299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */; };
+		39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */; };
 		39B23C4729A3B7A70047BBDB /* PatchNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */; };
 		39B23C4929A3BB6F0047BBDB /* PatchNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */; };
 		39B7B69529A9C57C0028AE10 /* OpacityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69429A9C57C0028AE10 /* OpacityPicker.swift */; };
@@ -237,6 +238,7 @@
 		3980C93429AE306D003C1C1A /* UserContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContactListViewModel.swift; sourceTree = "<group>"; };
 		39835ACE299D1F6600BEDF88 /* WidgetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetButton.swift; sourceTree = "<group>"; };
 		39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLinkTypeIcon.swift; sourceTree = "<group>"; };
+		39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeToggleStyle.swift; sourceTree = "<group>"; };
 		39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteList.swift; sourceTree = "<group>"; };
 		39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteView.swift; sourceTree = "<group>"; };
 		39B7B69429A9C57C0028AE10 /* OpacityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacityPicker.swift; sourceTree = "<group>"; };
@@ -780,6 +782,7 @@
 				3A9C04FF292DB03C00442017 /* PhotoPicker.swift */,
 				39301089299E6AAC009B13ED /* WidgetConstants.swift */,
 				39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */,
+				39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1101,6 +1104,7 @@
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
 				3A1591712984FA40001924C3 /* DeepLinkWidgetViewModel.swift in Sources */,
+				39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */,
 				39504AA129B43796008A7BA4 /* UIScreen+Utils.swift in Sources */,
 				390853B629A24EB2006E8311 /* AssetRequestView.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,

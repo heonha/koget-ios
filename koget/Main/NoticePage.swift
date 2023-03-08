@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct NoticePage: View {
-    var frame: CGSize = .init(width: .zero, height: 110)
-
-    let gridItem = [GridItem()]
-
+    var frame: CGSize = .init(width: .zero, height: deviceSize.height / 7.5)
     var body: some View {
         ZStack {
             Color.init(uiColor: .systemBackground)
             TabView {
                 NoticePageCell(named: "KogetClear", frame: frame.height)
+                    .padding(.vertical)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }
@@ -95,7 +93,6 @@ struct NoticePageCell: View {
                     Spacer()
                 })
                 }
-                .frame(width: deviceSize.width - 48, height: frame * 0.9)
 
             }
         }

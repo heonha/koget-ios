@@ -33,7 +33,8 @@ struct MakeWidgetView: View {
     @State var errorAlert = UIView()
 
     @Environment(\.dismiss) var dismiss
-    
+    @EnvironmentObject var constant: Constants
+
     var body: some View {
         
         GeometryReader { proxy in
@@ -41,7 +42,7 @@ struct MakeWidgetView: View {
                 
                 //MARK: - Background
                 AppColor.Background.second
-                    .ignoresSafeArea()
+                    .ignoresSafeArea(edges: .bottom)
                 Rectangle()
                     .foregroundColor(AppColor.Background.first)
                 
@@ -130,7 +131,7 @@ struct MakeWidgetView: View {
                 .foregroundStyle(Constants.kogetGradient)
                 .shadow(color: .black.opacity(0.3), radius: 0.5, x: 1, y: 2)
             RoundedRectangle(cornerRadius: 8)
-                .foregroundStyle(Constants.isDarkMode ? Color.black : Color.white)
+                .foregroundStyle(Constants.shared.isDarkMode ? Color.black : Color.white)
                 .opacity(0.15)
 
             Text("앱 리스트에서 가져오기")

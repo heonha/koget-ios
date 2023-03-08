@@ -14,7 +14,8 @@ let schemeToOpenLink = "open://"
 let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
 let widgetCellWidthForGrid = deviceSize.width / 4.3
 
-enum Constants {
+final class Constants: ObservableObject {
+
     static let coreDataContainerName = "WidgetModel"
     static let appGroupID = "group.ZH5GA3W8UP.com.heon.koget"
     static let kogetGradient = LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -22,13 +23,14 @@ enum Constants {
     static let unknownName = "알수없음"
     static let unknownImage = Image(systemName: "questionmark.circle")
     static let unknownUIImage = UIImage(systemName: "questionmark.circle")!
-    static let isDarkMode = {
-        if UITraitCollection.current.userInterfaceStyle == .dark {
-            return true
-        } else {
-            return false
-        }
-    }()
+
+    @AppStorage("isDarkMode") var isDarkMode = false
+
+    static let shared = Constants()
+
+    private init() {
+
+    }
 }
 
 struct CustomFont {

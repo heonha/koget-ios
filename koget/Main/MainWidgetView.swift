@@ -20,55 +20,58 @@ struct MainWidgetView: View {
     @State var isOpen = false
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
-    // @Environment(\.viewController) var viewControllerHolder: UIViewController?
+    @EnvironmentObject var constant: Constants
 
     var body: some View {
         NavigationView {
             ZStack {
-                VStack {
-                    NoticePage()
-                        .padding(.vertical, 4)
-                    // 링크위젯
-                    LinkWidgetView(viewModel: viewModel, coreData: _coreData)
+                    VStack {
+                        NoticePage()
+                            .padding(.vertical, 4)
+                        // 링크위젯
+                        LinkWidgetView(viewModel: viewModel, coreData: _coreData)
+                    }
+                    .background(Color.init(uiColor: .systemBackground))
+                    NewFloatingButton(isOpen: $isOpen)
                 }
-                .background(Color.init(uiColor: .systemBackground))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Image("KogetClear")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                    }
+                    ToolbarItem(placement: .navigationBarLeading) {
 
-                NewFloatingButton(isOpen: $isOpen)
+                        Toggle(isOn: $constant.isDarkMode) {
+                        }
+                        .toggleStyle(DarkModeToggleStyle())
 
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Image("KogetClear")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    if !$coreData.linkWidgets.wrappedValue.isEmpty {
-                        
-                        Button {
-                            viewModel.isGridView.toggle()
-                        } label: {
-                            Image(systemName: viewModel.isGridView ? "list.bullet" : "square.grid.3x3")
-                                .foregroundColor(AppColor.Label.first)
-                                .opacity(0.9)
-                                .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if !$coreData.linkWidgets.wrappedValue.isEmpty {
+
+                            Button {
+                                viewModel.isGridView.toggle()
+                            } label: {
+                                Image(systemName: viewModel.isGridView ? "list.bullet" : "square.grid.3x3")
+                                    .foregroundColor(AppColor.Label.first)
+                                    .opacity(0.9)
+                                    .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
+                            }
                         }
                     }
-
                 }
+                .welcomeSheet(isPresented: $viewModel.isFirstRun, isSlideToDismissDisabled: true, pages: HelperSheetViewModel.shared.pages)
+                .onTapGesture {
+                    isOpen = false
+                }
+                .onDisappear {
+                    isOpen = false
             }
-            .onTapGesture {
-                isOpen = false
-            }
-            .onDisappear {
-                isOpen = false
-            }
-
         }
-        .welcomeSheet(isPresented: $viewModel.isFirstRun, isSlideToDismissDisabled: true, pages: HelperSheetViewModel.shared.pages)
+
     }
 }
 

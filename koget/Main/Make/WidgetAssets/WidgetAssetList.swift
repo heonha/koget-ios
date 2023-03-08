@@ -12,6 +12,7 @@ struct WidgetAssetList: View {
     @StateObject var widgetAssets = WidgetAssetViewModel()
     
     var textColor: Color = AppColor.Label.first
+    var installTextColor: Color = AppColor.Label.second
     var imageSize: CGSize = .init(width: 40, height: 40)
     
     @State var viewModel: MakeWidgetViewModel
@@ -22,12 +23,11 @@ struct WidgetAssetList: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack {
-            Color.white
+            AppColor.Background.first
                 .ignoresSafeArea()
             VStack {
                 
                 Text("앱 리스트")
-                    .foregroundColor(.black)
                     .font(.system(size: 18, weight: .bold))
                     .padding(.vertical, 12)
                 
@@ -95,12 +95,12 @@ struct WidgetAssetList: View {
                                     if !widget.canOpen {
                                         Text("(미설치)")
                                             .font(.system(size: 14, weight: .bold))
-                                            .foregroundColor(.black)
+                                            .foregroundColor(installTextColor)
                                     }
                                 }
                                 Text(MainWidgetViewModel.shared.checkLinkType(url: widget.url).rawValue)
                                     .font(.system(size: 12, weight: .medium))
-                                    .foregroundColor(.init(uiColor: .secondaryLabel))
+                                    .foregroundColor(installTextColor)
                                     .padding(.leading, 1)
                             }
                         }

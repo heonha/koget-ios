@@ -114,7 +114,7 @@ struct EKMaker {
 
         attributes = bottomAlertAttributes
         attributes.displayMode = displayMode
-        attributes.entryBackground = .color(color: .white)
+        attributes.entryBackground = .color(color: .init(UIColor(AppColor.Background.second)))
         attributes.popBehavior = .overridden
         attributes.entranceAnimation = .init(
             translate: .init(
@@ -141,7 +141,7 @@ struct EKMaker {
 
         attributes = bottomAlertAttributes
         attributes.displayMode = displayMode
-        attributes.entryBackground = .color(color: .init(.systemRed))
+        attributes.entryBackground = .color(color: .init(UIColor(AppColor.Behavior.errorRed)))
         attributes.popBehavior = .overridden
         attributes.entranceAnimation = .init(
             translate: .init(
