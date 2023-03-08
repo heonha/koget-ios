@@ -16,7 +16,7 @@ struct LockscreenHelper: View {
         
         GeometryReader { (geometry) in
             ZStack {
-                Color.white
+                AppColor.Background.first
                 
                 VStack(alignment: .center ,spacing: 8) {
                     
@@ -36,7 +36,7 @@ struct LockscreenHelper: View {
                     .cornerRadius(12)
                     
                     ZStack {
-                        Color.init(uiColor: .secondarySystemFill)
+                        AppColor.Background.second
                             .cornerRadius(12)
                         VStack {
                             TabView {
