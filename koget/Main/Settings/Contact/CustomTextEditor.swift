@@ -13,10 +13,10 @@ struct CustomTextEditor: View {
     
     var body: some View {
         ZStack {
-            AppColor.Background.first
+            AppColor.Background.second
             TextEditor(text: $text)
                 .foregroundColor(AppColor.Label.first)
-                .colorMultiply(AppColor.Background.third)
+                .scrollContentBackground(.hidden) // <- Hide it
                 .padding(4)
             if text.isEmpty {
                 VStack {
@@ -24,7 +24,7 @@ struct CustomTextEditor: View {
                         Text(placeHolder)
                             .padding(.leading, 8)
                             .padding(.top, 12)
-                            .foregroundColor(.init(uiColor: .tertiaryLabel))
+                            .foregroundColor(AppColor.Label.third)
                         Spacer()
                     }
                     Spacer()
@@ -38,5 +38,8 @@ struct CustomTextEditor: View {
 struct CustomTextEditor_Previews: PreviewProvider {
     static var previews: some View {
         CustomTextEditor(placeHolder: "플레이스홀더", text: .constant(""))
+        NavigationView {
+            ContactView()
+        }
     }
 }
