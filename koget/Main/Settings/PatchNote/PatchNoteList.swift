@@ -53,7 +53,7 @@ struct PatchNoteList: View {
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(.white)
+                                .background(AppColor.Background.first)
                                 .shadow(color: .black.opacity(0.3), radius: 2, x: 4, y: 4)
                             Image("Koget")
                                 .resizable()
@@ -77,7 +77,6 @@ struct PatchNoteList: View {
                         }
                         .padding(4)
                         .frame(width: deviceSize.width / 1.2, height: deviceSize.width / 2.5)
-                        .tint(.black)
                     }
                 }
             }

@@ -66,12 +66,10 @@ struct PatchNoteView: View {
                             .cornerRadius(8)
                             .padding(.horizontal, 20)
                             .padding(.vertical, 8)
-                            
                         }
-                        
                         Spacer()
                     }
-                    .background(Color.white)
+                    .background(AppColor.Background.second)
                 }
             }
         }
