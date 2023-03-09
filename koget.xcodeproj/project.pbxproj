@@ -71,6 +71,7 @@
 		39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274C29B98431001C368E /* SFSafeSymbols */; };
 		39ED274F29B98707001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274E29B98707001C368E /* SFSafeSymbols */; };
 		39ED275129B9871C001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275029B9871C001C368E /* SFSafeSymbols */; };
+		39ED275329B9D780001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275229B9D780001C368E /* SFSafeSymbols */; };
 		39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5029968906001F9D1E /* EmptyGrid.swift */; };
 		39F5AC5529968A3B001F9D1E /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5429968A3B001F9D1E /* Switcher.swift */; };
 		39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8474E29B3990B000B817E /* FirebaseAnalytics */; };
@@ -111,10 +112,8 @@
 		3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3A559C7028EB1D4900D5D9E4 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559C6F28EB1D4900D5D9E4 /* AppColor.swift */; };
-		3A6449B1297D8ACD002A710C /* ToastAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449B0297D8ACD002A710C /* ToastAlert.swift */; };
 		3A6449B3297D8C81002A710C /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B2297D8C81002A710C /* error.json */; };
 		3A6449B6297E3895002A710C /* sendSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B5297E3895002A710C /* sendSuccess.json */; };
-		3A6449B8297E39E5002A710C /* TrashAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449B7297E39E5002A710C /* TrashAlert.swift */; };
 		3A6449BA297E3A2C002A710C /* trash.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B9297E3A2C002A710C /* trash.json */; };
 		3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */; };
 		3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */; };
@@ -147,7 +146,6 @@
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
 		3AD4691B297D19190090B2D3 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD4691A297D19190090B2D3 /* ContactViewModel.swift */; };
 		3AD4691D297D1FAE0090B2D3 /* GuestAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD4691C297D1FAE0090B2D3 /* GuestAuthModel.swift */; };
-		3AD46923297D39D40090B2D3 /* SuccessAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD46922297D39D40090B2D3 /* SuccessAlert.swift */; };
 		3AD4692A297D3EC40090B2D3 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD46929297D3EC40090B2D3 /* LottieView.swift */; };
 		3AD4692C297D3F610090B2D3 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4692B297D3F610090B2D3 /* success.json */; };
 		3ADA2E97297FD779004AADEE /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2E96297FD779004AADEE /* SettingMenu.swift */; };
@@ -276,10 +274,8 @@
 		3A3C11A028EDB69A00C9CCED /* LockScreenIntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenIntentsExtension.entitlements; sourceTree = "<group>"; };
 		3A3C11A228EDC14700C9CCED /* LinkWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetModel.swift; sourceTree = "<group>"; };
 		3A559C6F28EB1D4900D5D9E4 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
-		3A6449B0297D8ACD002A710C /* ToastAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastAlert.swift; sourceTree = "<group>"; };
 		3A6449B2297D8C81002A710C /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		3A6449B5297E3895002A710C /* sendSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sendSuccess.json; sourceTree = "<group>"; };
-		3A6449B7297E39E5002A710C /* TrashAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashAlert.swift; sourceTree = "<group>"; };
 		3A6449B9297E3A2C002A710C /* trash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trash.json; sourceTree = "<group>"; };
 		3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetViewModel.swift; sourceTree = "<group>"; };
 		3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWidgetView.swift; sourceTree = "<group>"; };
@@ -314,7 +310,6 @@
 		3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingIndicatorGray.json; sourceTree = "<group>"; };
 		3AD4691A297D19190090B2D3 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		3AD4691C297D1FAE0090B2D3 /* GuestAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestAuthModel.swift; sourceTree = "<group>"; };
-		3AD46922297D39D40090B2D3 /* SuccessAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessAlert.swift; sourceTree = "<group>"; };
 		3AD46929297D3EC40090B2D3 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		3AD4692B297D3F610090B2D3 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		3ADA2E96297FD779004AADEE /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
@@ -337,6 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39ED275329B9D780001C368E /* SFSafeSymbols in Frameworks */,
 				39504AA529B466D1008A7BA4 /* FirebaseFirestore in Frameworks */,
 				39504AA729B466D6008A7BA4 /* FirebaseAuth in Frameworks */,
 			);
@@ -738,17 +734,6 @@
 			name = Files;
 			sourceTree = "<group>";
 		};
-		3AD46921297D39C60090B2D3 /* ToastAlert */ = {
-			isa = PBXGroup;
-			children = (
-				3A6449B4297D90B6002A710C /* Lottie */,
-				3AD46922297D39D40090B2D3 /* SuccessAlert.swift */,
-				3A6449B0297D8ACD002A710C /* ToastAlert.swift */,
-				3A6449B7297E39E5002A710C /* TrashAlert.swift */,
-			);
-			path = ToastAlert;
-			sourceTree = "<group>";
-		};
 		3AE0F982294878CF008C9F5F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -761,10 +746,10 @@
 		3AF7E59128F85FD200B14DFD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3A6449B4297D90B6002A710C /* Lottie */,
 				39504AAA29B48E83008A7BA4 /* SwiftEntryKit */,
 				39504A8C29B3A01E008A7BA4 /* UIKit */,
 				3A6D809A297441A600E62389 /* FloatingButton */,
-				3AD46921297D39C60090B2D3 /* ToastAlert */,
 				3A0F429E28C89742002F1CAD /* Extensions */,
 				3AB4A3EB28CF01390062EC18 /* Animation */,
 				3A9BC0D928E6E1AE0041DA1B /* Constants.swift */,
@@ -811,6 +796,7 @@
 			packageProductDependencies = (
 				39504AA429B466D1008A7BA4 /* FirebaseFirestore */,
 				39504AA629B466D6008A7BA4 /* FirebaseAuth */,
+				39ED275229B9D780001C368E /* SFSafeSymbols */,
 			);
 			productName = "Koget-Admin";
 			productReference = 396BCB6429AE1CC600B1E759 /* Koget-Admin.app */;
@@ -1018,7 +1004,7 @@
 		39FD1C3C29B0DE6100B442F5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1032,6 +1018,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/airbnb.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/airbnb.swiftlint.yml\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1075,7 +1062,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */,
-				3AD46923297D39D40090B2D3 /* SuccessAlert.swift in Sources */,
 				3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */,
 				390853B829A3949F006E8311 /* AssetRequestViewModel.swift in Sources */,
@@ -1113,13 +1099,11 @@
 				39504AA929B48E73008A7BA4 /* EKCustomColor.swift in Sources */,
 				39B23C4929A3BB6F0047BBDB /* PatchNoteView.swift in Sources */,
 				3A8C1E782980DB7C004FAF89 /* HelperSheetViewModel.swift in Sources */,
-				3A6449B8297E39E5002A710C /* TrashAlert.swift in Sources */,
 				3AD4692A297D3EC40090B2D3 /* LottieView.swift in Sources */,
 				39F5AC5529968A3B001F9D1E /* Switcher.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
 				39B23C4729A3B7A70047BBDB /* PatchNoteList.swift in Sources */,
 				390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */,
-				3A6449B1297D8ACD002A710C /* ToastAlert.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */,
 				3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */,
@@ -1466,9 +1450,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = koget/koget.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZH5GA3W8UP;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = koget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코젯";
@@ -1487,6 +1473,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.heon.koget";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1505,9 +1493,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = koget/koget.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZH5GA3W8UP;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZH5GA3W8UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = koget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코젯";
@@ -1526,6 +1516,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.heon.koget";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1542,6 +1534,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = LockScreenWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
@@ -1558,6 +1551,7 @@
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget.LockScreenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1571,6 +1565,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = LockScreenWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZH5GA3W8UP;
@@ -1587,6 +1582,7 @@
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget.LockScreenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1604,7 +1600,7 @@
 				396BCB7029AE1CC700B1E759 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		3A3C119C28EDB4B800C9CCED /* Build configuration list for PBXNativeTarget "LockScreenIntentsExtension" */ = {
 			isa = XCConfigurationList;
@@ -1613,7 +1609,7 @@
 				3A3C119E28EDB4B800C9CCED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		3ABA6C0E28C6043F005AA8E4 /* Build configuration list for PBXProject "koget" */ = {
 			isa = XCConfigurationList;
@@ -1622,7 +1618,7 @@
 				3ABA6C2928C60440005AA8E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		3ABA6C2A28C60440005AA8E4 /* Build configuration list for PBXNativeTarget "koget" */ = {
 			isa = XCConfigurationList;
@@ -1631,7 +1627,7 @@
 				3ABA6C2C28C60440005AA8E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		3AF9F01028ED570E00F685E6 /* Build configuration list for PBXNativeTarget "LockScreenWidgetExtension" */ = {
 			isa = XCConfigurationList;
@@ -1640,7 +1636,7 @@
 				3AF9F01228ED570E00F685E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -1802,6 +1798,11 @@
 			productName = SFSafeSymbols;
 		};
 		39ED275029B9871C001C368E /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		39ED275229B9D780001C368E /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;

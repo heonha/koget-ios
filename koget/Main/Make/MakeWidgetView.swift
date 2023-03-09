@@ -144,12 +144,12 @@ struct MakeWidgetView: View {
     }
 
 }
-
-struct AddWidgetView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            MakeWidgetView(assetList: WidgetAssetList(viewModel: MakeWidgetViewModel()))
-                .environmentObject(Constants.shared)
-        }
-    }
-}
+// 
+// struct AddWidgetView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         NavigationView {
+//             MakeWidgetView(assetList: WidgetAssetList(viewModel: MakeWidgetViewModel()))
+//                 .environmentObject(Constants.shared)
+//         }
+//     }
+// }

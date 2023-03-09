@@ -12,8 +12,8 @@ struct DetailWidgetView: View {
     var size: CGSize = .init(width: 350, height: 600)
     
     @State var selectedWidget: DeepLink
-    @StateObject var viewModel = DetailWidgetViewModel()
-    
+    @ObservedObject var constant = Constants.shared
+
     // Present Views
     @State var isPresent = false
     @State var isPhotoViewPresent = false
@@ -22,11 +22,16 @@ struct DetailWidgetView: View {
     @State var isDelete = false
     @State var isPresentQustionmark = false
 
+    @StateObject var viewModel = DetailWidgetViewModel()
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         ZStack {
-            AppColor.Background.first
+            if constant.isDarkMode {
+                AppColor.Background.second
+            } else {
+                AppColor.Background.first
+            }
             VStack {
                 ZStack {
                     // 제목
@@ -60,7 +65,7 @@ struct DetailWidgetView: View {
                         Spacer()
                         // MARK: 닫기버튼
                         Button {
-                            self.dismiss()
+                            dismiss()
                         } label: {
                             Image(systemSymbol: .xmark)
                                 .font(.system(size: 18, weight: .semibold))
@@ -137,7 +142,7 @@ struct DetailWidgetView: View {
                     EditingToggleButton(selectedWidget: selectedWidget, viewModel: viewModel)
                     // 닫기 버튼
                     DetailWidgetButton(text: "닫기", buttonColor: .init(uiColor: .systemFill)) {
-                        self.dismiss()
+                        dismiss()
                     }
 
                 }

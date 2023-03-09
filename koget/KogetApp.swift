@@ -29,23 +29,20 @@ struct KogetApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @Environment(\.scenePhase) private var scenePhase
-    @ObservedObject var constant = Constants.shared
-    @ObservedObject var coreData = WidgetCoreData.shared
+    @EnvironmentObject var coreData: WidgetCoreData
     
     var body: some Scene {
 
         WindowGroup {
             ContentView()
-                .preferredColorScheme(constant.isDarkMode ? .dark : .light)
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }
                 .tint(AppColor.Label.first)
                 .background(AppColor.Background.first)
-                .animation(.linear(duration: 0.2), value: constant.isDarkMode)
-                .environmentObject(coreData)
-                .environmentObject(constant)
-                .environment(\.managedObjectContext, coreData.container.viewContext)
+                .environmentObject(Constants.shared)
+                .environmentObject(WidgetCoreData.shared)
+                .environment(\.managedObjectContext, WidgetCoreData.shared.container.viewContext)
         }
     }
 

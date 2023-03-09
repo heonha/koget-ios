@@ -12,10 +12,13 @@ import SwiftEntryKit
 
 struct ContentView: View {
 
+    @EnvironmentObject var constant: Constants
     @State var isDebugMode = false
     
     var body: some View {
         MainTabView()
+            .preferredColorScheme(constant.isDarkMode ? .dark : .light)
+            .animation(.linear(duration: 0.2), value: constant.isDarkMode)
     }
 }
 

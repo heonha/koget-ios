@@ -90,7 +90,7 @@ struct WidgetIconCell: View {
                     DetailWidgetView(selectedWidget: widget)
                 })
                 .onAppear {
-                    deleteAlertView = EKMaker.redAlertView(title: "위젯 삭제 완료!", subtitle: "삭제한 위젯은 잠금화면에서도 변경 또는 삭제 해주세요", named: "success.white")
+                    deleteAlertView = EKMaker.setToastView(title: "위젯 삭제 완료!", subtitle: "삭제한 위젯은 잠금화면에서도 변경 또는 삭제 해주세요", named: "success")
                 }
 
             }
