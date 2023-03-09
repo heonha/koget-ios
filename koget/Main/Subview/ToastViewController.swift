@@ -68,8 +68,8 @@ class ToastViewController: UIViewController {
 
     func setEntryKit() {
 
-        let title = EKProperty.LabelContent(text: "title", style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .black))
-        let description = EKProperty.LabelContent(text: "description", style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray)))
+        let title = EKProperty.LabelContent(text: "title", style: .init(font: UIFont.init(name: CustomFont.NotoSansKR.bold, size: 16)!, color: .black))
+        let description = EKProperty.LabelContent(text: "description", style: .init(font: UIFont.init(name: CustomFont.NotoSansKR.medium, size: 14)!, color: .init(.gray)))
         let image = EKProperty.ImageContent(image: UIImage(named: "KogetLogo")!, size: CGSize(width: 35, height: 35))
         let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
@@ -77,7 +77,4 @@ class ToastViewController: UIViewController {
         self.contentView = EKNotificationMessageView(with: notificationMessage)
 
     }
-
-
-
 }

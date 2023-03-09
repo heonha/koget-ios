@@ -11,42 +11,48 @@ import WelcomeSheet
 struct SettingMenu: View, AppStoreReviewable {
     
     @ObservedObject var viewModel = HelperSheetViewModel.shared
+    @EnvironmentObject var constant: Constants
     
     var body: some View {
         NavigationView {
             ZStack {
                 ZStack {
-                    AppColor.Background.second
-                        .ignoresSafeArea(edges: .top)
+                    AppColor.Background.first
                 }
                 VStack {
                     Spacer()
                     List {
                         Section("사용방법") {
-
                             NavigationLink {
                                 LockscreenHelper()
                             } label: {
                                 Label("위젯을 잠금화면에 등록하는 방법", systemImage: "apps.iphone.badge.plus")
                             }
 
-                        }
-                        .foregroundColor(AppColor.Label.first)
-
-                        Section("앱에 관하여") {
-
-                            SettingMenuButton(title: "앱 소개 다시보기", imageType: .symbol, imageName: "book") {
+                            SettingMenuButton(title: "소개화면 다시보기", imageType: .symbol, imageName: "doc.append", imageColor: AppColor.Label.second) {
                                 viewModel.showWelcomeSheet.toggle()
                             }
+                        }
+
+                        Section("소통하기") {
+                            SettingMenuButton(title: "앱 추가요청", imageType: .symbol, imageName: "doc.append", imageColor: AppColor.Label.second) {
+                                viewModel.showAssetRequestView.toggle()
+                            }
+
+                            SettingMenuButton(title: "문의하기", imageType: .symbol, imageName: "paperplane.fill", imageColor: AppColor.Label.second) {
+                                viewModel.showContactView.toggle()
+                            }
+                        }
+                            Section("앱에 관하여") {
 
                             SettingMenuButton(title: "앱 평가하기", imageType: .symbol, imageName: "star.fill", imageColor: .yellow) {
                                 requestReview()
                             }
-
                             SettingMenuButton(title: "코젯 버전", subtitle: appVersion, imageType: .asset, imageName: "Koget") {
                             }
                             .disabled(true)
                         }
+
 
                     }
                     .listStyle(.insetGrouped)
@@ -55,13 +61,19 @@ struct SettingMenu: View, AppStoreReviewable {
                 .navigationTitle("더보기")
             }
             .tint(.black)
-            .welcomeSheet(isPresented: $viewModel.showWelcomeSheet, isSlideToDismissDisabled: true, pages: viewModel.pages)
+            .welcomeSheet(isPresented: $viewModel.showWelcomeSheet, isSlideToDismissDisabled: true, preferredColorScheme: constant.isDarkMode ? .dark : .light, pages: viewModel.pages)
             .sheet(isPresented: $viewModel.showUseLockscreen) {
                 LockscreenHelper()
             }
             .sheet(isPresented: $viewModel.showPatchNote) {
                 PatchNoteList()
-        }
+            }
+            .sheet(isPresented: $viewModel.showContactView, content: {
+                ContactView()
+            })
+            .sheet(isPresented: $viewModel.showAssetRequestView, content: {
+                AssetRequestView()
+            })
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -117,7 +129,7 @@ struct SettingMenuButton: View {
                         .frame(width: imageSize, height: imageSize)
                         .clipShape(Circle())
                 }
-               
+
                 LazyHStack {
                     Text(title)
                         .foregroundStyle(titleColor)

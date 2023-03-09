@@ -16,8 +16,13 @@ struct LinkWidgetOpacityPicker: View {
     var body: some View {
 
         HStack {
-            Text("투명도")
-                .font(.system(size: 20, weight: .bold))
+            Image(systemName: "circle.dashed")
+                .font(.custom(CustomFont.NotoSansKR.bold, size: 20))
+                .foregroundColor(.init(uiColor: .lightGray))
+            Spacer()
+            MakeOpacitySlider(viewModel: viewModel, widthRatio: pickerWidthRatio)
+            Spacer()
+
             Button {
                 isPresentQustionmark.toggle()
             } label: {
@@ -31,7 +36,7 @@ struct LinkWidgetOpacityPicker: View {
                             .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
 
                         Text("잠금화면 위젯의 불투명도입니다.")
-                            .font(.system(size: 12))
+                            .font(.custom(CustomFont.NotoSansKR.light, size: 12))
                             .foregroundColor(.black)
                     })
                     .frame(width: deviceSize.width * 0.5, height: 30)
@@ -39,22 +44,9 @@ struct LinkWidgetOpacityPicker: View {
                     .opacity( isPresentQustionmark ? 0.7 : 0.0 )
                     .animation(.linear(duration: 0.2), value: isPresentQustionmark)
             )
-            Spacer()
-            MakeOpacitySlider(viewModel: viewModel, widthRatio: pickerWidthRatio)
-            Spacer()
-            if let image = viewModel.image {
-                Image(uiImage: image)
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .grayscale(1)
-                    .clipShape(Circle())
-                    .opacity(viewModel.opacityValue)
-                    .opacity(0.7)
-            }
         }
         .padding(.horizontal, 16)
         .padding(.top, 8)
-        
         .padding(.bottom, 16)
     }
 }

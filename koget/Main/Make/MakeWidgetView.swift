@@ -45,9 +45,12 @@ struct MakeWidgetView: View {
                     .ignoresSafeArea(edges: .bottom)
                 Rectangle()
                     .foregroundColor(AppColor.Background.first)
-                
+
+
                 //MARK: - Contents
                 VStack(spacing: 16) {
+
+
                     // 앱 리스트에서 가져오기
                     Button {
                         isAppPickerPresent.toggle()
@@ -59,6 +62,8 @@ struct MakeWidgetView: View {
                     .sheet(isPresented: $isAppPickerPresent) {
                         assetList
                     }
+
+
                     // 아이콘
                     ChooseImageMenuButton(viewModel: viewModel, appPicker: $assetList, widgetType: $widgetType)
                         .shadow(radius: 0.7, x: 0.1, y: 0.1)
@@ -78,6 +83,7 @@ struct MakeWidgetView: View {
                             Text("아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?")
                         }
                     Spacer()
+
                 }
                 .navigationTitle("위젯 만들기")
                 .navigationBarTitleDisplayMode(.large)
@@ -96,13 +102,29 @@ struct MakeWidgetView: View {
 
     // MARK: - Assets
 
+    var fetchAppListLabel: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundStyle(Constants.kogetGradient)
+                .shadow(color: .black.opacity(0.3), radius: 0.5, x: 1, y: 2)
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundStyle(constant.isDarkMode ? Color.black : Color.clear)
+                .opacity(0.15)
+
+            Text("앱 리스트에서 가져오기")
+                .font(.custom(CustomFont.NotoSansKR.medium, size: 18))
+                .foregroundColor(.white)
+                .shadow(color: .black.opacity(0.5), radius: 0.5, x: 1, y: 1)
+        }
+    }
+
     var makeAndBackButton: some View {
         Group {
             // 위젯생성 버튼
             Button {
                 makeWidgetAction()
             } label: {
-                ButtonWithText(title: "완료", titleColor: .white, color: AppColor.Background.third)
+                ButtonWithText(title: "완료", titleColor: .white, color: AppColor.kogetRed)
             }
             // 돌아가기 버튼
             Button {
@@ -125,22 +147,6 @@ struct MakeWidgetView: View {
         }
     }
 
-    var fetchAppListLabel: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 8)
-                .foregroundStyle(Constants.kogetGradient)
-                .shadow(color: .black.opacity(0.3), radius: 0.5, x: 1, y: 2)
-            RoundedRectangle(cornerRadius: 8)
-                .foregroundStyle(Constants.shared.isDarkMode ? Color.black : Color.white)
-                .opacity(0.15)
-
-            Text("앱 리스트에서 가져오기")
-                .font(.system(size: 18, weight: .semibold))
-                .foregroundColor(.white)
-                .shadow(color: .black.opacity(0.5), radius: 0.5, x: 1, y: 1)
-        }
-    }
-    
     private func saveWidget() {
         viewModel.addWidget()
         self.dismiss()
@@ -186,6 +192,7 @@ struct AddWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             MakeWidgetView(assetList: WidgetAssetList(viewModel: MakeWidgetViewModel()))
+                .environmentObject(Constants.shared)
         }
     }
 }

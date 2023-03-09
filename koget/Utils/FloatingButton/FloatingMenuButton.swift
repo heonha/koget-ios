@@ -32,7 +32,7 @@ struct FloatingMenuButton: View {
     = (color: Color.init(uiColor: .label), fontSize: 15, weight: .medium)
     // view
     var borderColor = AppColor.Background.third
-    var backgroundColor = AppColor.Background.second
+    @EnvironmentObject var constant: Constants
 
     @State var isPresent = false
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
@@ -63,7 +63,7 @@ struct FloatingMenuButton: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(borderColor, lineWidth: 1)
                     )
-                    .background(backgroundColor)
+                    .background(constant.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .shadow(color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
                 }
@@ -90,7 +90,7 @@ struct FloatingMenuButton: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(borderColor, lineWidth: 1)
                     )
-                    .background(backgroundColor)
+                    .background(constant.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .shadow(color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
 

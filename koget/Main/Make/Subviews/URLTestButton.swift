@@ -24,7 +24,7 @@ struct URLTestButton: View {
     @State var isurlStringAlertPresent: Bool = false
 
     // OpenURL Alert
-    var openURLAlertTitle: LocalizedStringKey = "URL테스트"
+    var openURLAlertTitle: LocalizedStringKey = "URL 테스트"
     var openURLAlertMessage: LocalizedStringKey = "입력한 URL을 실행하시겠습니까?\n 성공 시 앱 또는 웹 브라우저로 연결됩니다."
     @State var targetURL: URL?
     @State var isOpenURLAlertPresent: Bool = false
@@ -41,11 +41,10 @@ struct URLTestButton: View {
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
-                        .stroke(lineWidth: 2)
-                        .foregroundStyle(Constants.kogetGradient)
+                        .foregroundStyle(AppColor.Label.third)
                     Text(title)
-                        .foregroundColor(AppColor.Label.first)
-                        .font(.system(size: 16))
+                        .foregroundColor(.white)
+                        .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                 }
             }
             .frame(width: 120, height: 25)
@@ -80,16 +79,15 @@ struct URLTestButton: View {
                 if canOpen {
                     Text("실행성공")
                         .foregroundColor(.green)
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                 } else {
                     Text("실행실패")
                         .foregroundColor(.red)
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                 }
             }
         }
     }
-
 
     func urlCheckAction() {
         viewModel.checkCanOpenURL { error in

@@ -31,7 +31,7 @@ struct MainWidgetView: View {
                         // 링크위젯
                         LinkWidgetView(viewModel: viewModel, coreData: _coreData)
                     }
-                    .background(Color.init(uiColor: .systemBackground))
+                    .background(AppColor.Background.first)
                     NewFloatingButton(isOpen: $isOpen)
                 }
                 .navigationBarTitleDisplayMode(.inline)

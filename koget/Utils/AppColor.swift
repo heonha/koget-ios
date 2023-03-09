@@ -38,4 +38,8 @@ enum AppColor {
     static let buttonSecondaryMainColor = Color.init(uiColor: .secondarySystemFill)
     static let destroy = Color("destroy")
     static let darkGray = Color("darkGray")
+
+    static let kogetBlue = Color("kogetBlue")
+    static let kogetRed = Color("kogetRed")
+
 }

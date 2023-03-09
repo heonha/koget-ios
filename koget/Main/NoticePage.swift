@@ -11,7 +11,7 @@ struct NoticePage: View {
     var frame: CGSize = .init(width: .zero, height: deviceSize.height / 7.5)
     var body: some View {
         ZStack {
-            Color.init(uiColor: .systemBackground)
+            AppColor.Background.first
             TabView {
                 NoticePageCell(named: "KogetClear", frame: frame.height)
                     .padding(.vertical)
@@ -88,7 +88,6 @@ struct NoticePageCell: View {
                             .foregroundColor(.init(uiColor: .secondaryLabel))
 
                     }
-                    .font(.system(size: 16, weight: .medium))
                     .padding(.leading)
                     Spacer()
                 })

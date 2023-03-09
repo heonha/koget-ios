@@ -28,7 +28,7 @@ struct WidgetAssetList: View {
             VStack {
                 
                 Text("앱 리스트")
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
                     .padding(.vertical, 12)
                 
                 VStack(alignment: .leading) {
@@ -41,7 +41,7 @@ struct WidgetAssetList: View {
                             presentAssetRequestView.toggle()
                         } label: {
                             Text("앱/웹 추가요청")
-                                .font(.system(size: 14, weight: .semibold))
+                                .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
                                 .foregroundColor(.init(uiColor: .secondaryLabel))
                                 .padding(.leading, 16)
                         }
@@ -51,7 +51,7 @@ struct WidgetAssetList: View {
 
                         Spacer()
                         Text("실행가능한 앱/웹 보기")
-                            .font(.system(size: 14, weight: .semibold))
+                            .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
                             .foregroundColor(.init(uiColor: .secondaryLabel))
                             .padding(.leading)
                         Toggle(isOn: $widgetAssets.isOnlyInstalledApp) {
@@ -94,12 +94,12 @@ struct WidgetAssetList: View {
                                     .foregroundColor(textColor)
                                     if !widget.canOpen {
                                         Text("(미설치)")
-                                            .font(.system(size: 14, weight: .bold))
+                                            .font(.custom(CustomFont.NotoSansKR.bold, size: 14))
                                             .foregroundColor(installTextColor)
                                     }
                                 }
                                 Text(MainWidgetViewModel.shared.checkLinkType(url: widget.url).rawValue)
-                                    .font(.system(size: 12, weight: .medium))
+                                    .font(.custom(CustomFont.NotoSansKR.medium, size: 12))
                                     .foregroundColor(installTextColor)
                                     .padding(.leading, 1)
                             }

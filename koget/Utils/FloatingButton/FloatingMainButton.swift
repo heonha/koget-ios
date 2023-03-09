@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FloatingMainButton: View {
+
+    @EnvironmentObject var constant: Constants
+
     var buttonSize: CGFloat = 50
     var imageSize: CGFloat = 30
     
@@ -15,7 +18,7 @@ struct FloatingMainButton: View {
         ZStack {
             LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .clipShape(Circle())
-                .opacity(Constants.shared.isDarkMode ? 0.9 : 1.0)
+                .opacity(constant.isDarkMode ? 0.9 : 1.0)
 
             Image(systemName: "line.3.horizontal")
                 .font(.system(size: imageSize, weight: .medium))

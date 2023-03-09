@@ -15,6 +15,8 @@ struct ChooseImageMenuButton: View {
     @State var isPhotoPickerPresent: Bool = false
     @Binding var widgetType: WidgetType
 
+    @EnvironmentObject var constant: Constants
+
     var body: some View {
         ZStack {
             Menu {
@@ -43,12 +45,12 @@ struct ChooseImageMenuButton: View {
                         ZStack {
                             Circle()
                                 .fill(.white)
-                                .opacity(Constants.shared.isDarkMode ? 0.3 : 1.0)
+                                .opacity(constant.isDarkMode ? 0.3 : 1.0)
                             Image("Koget")
                                 .resizable()
                                 .scaledToFit()
                                 .clipShape(Circle())
-                                .opacity(Constants.shared.isDarkMode ? 0.3 : 0.5)
+                                .opacity(constant.isDarkMode ? 0.3 : 0.5)
                             Text("이미지\n선택")
                                 .foregroundColor(AppColor.Label.second)
                                 .shadow(radius: 1)

@@ -22,7 +22,7 @@ struct MakeWidgetTextFieldView: View {
     let urlPlaceholder: LocalizedStringKey = "앱 / 웹 주소 (특수문자 :// 포함)"
     
     var body: some View {
-        VStack {
+        VStack(spacing: 8) {
             CustomTextfield(title: nameTitle, placeholder: namePlaceholder, systemName: "tag", text: $viewModel.name, viewModel: viewModel, equals: .name)
             
             CustomTextfield(title: urlTitle, placeholder: urlPlaceholder, systemName: "link", text: $viewModel.url, viewModel: viewModel, equals: .url)

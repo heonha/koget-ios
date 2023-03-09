@@ -25,6 +25,7 @@ struct MainTabView: View {
                     Text("설정")
                 }
         }
+
     }
 }
 
