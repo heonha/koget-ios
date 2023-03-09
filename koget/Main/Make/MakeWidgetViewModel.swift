@@ -16,10 +16,12 @@ enum MakeWidgetErrorType: String {
 }
 
 final class MakeWidgetViewModel: ObservableObject {
-    
+
+    @Published var alertView = UIView()
+
     let nameStringLimit: Int = 14
     let defaultImage = UIImage(named: "KogetClear")!
-
+    @Published var isImageError = false
     @Published var isEditing = false
     @Published var name: String = "" {
         didSet {
@@ -36,6 +38,8 @@ final class MakeWidgetViewModel: ObservableObject {
     @Published var image: UIImage?
     @Published var opacityValue: Double = 1.0
 
+    @Published var errorMessage = ""
+
     @Published var nameMaxCountError = false
     lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit, specifier: "%d")자 입니다."
 
@@ -50,7 +54,7 @@ final class MakeWidgetViewModel: ObservableObject {
     func addWidget() {
         WidgetCoreData.shared.addLinkWidget(name: name, image: image, url: url, opacity: opacityValue)
     }
-    
+
     func checkURLSyntex() -> Bool {
         
         if self.url.contains("://") {
@@ -110,6 +114,58 @@ final class MakeWidgetViewModel: ObservableObject {
             completion(false)
         }
     }
+
+    func makeWidgetAction(completion: @escaping(ResultType) -> Void) {
+        checkTheTextFields { [weak self] error in
+            guard let self = self else { return }
+
+            if let error = error {
+                if error == .emptyImage {
+                    self.isImageError.toggle()
+                    completion(.error)
+                } else {
+                    // 실패
+                    self.errorMessage = error.rawValue.localized()
+                    self.alertHandelr(type: .userError)
+                    completion(.error)
+                }
+            } else {
+                // 성공
+                self.addWidget()
+                self.alertHandelr(type: .success)
+                completion(.success)
+
+            }
+        }
+    }
+
+    // MARK: - Alerts
+
+    func alertHandelr(type: RequestReturnType) {
+        switch type {
+        case .success:
+            alertView = setSuccessAlert()
+            displayToast()
+        case .userError:
+            alertView = setErrorAlertView(subtitle: errorMessage)
+            displayToast()
+        case .serverError:
+            return
+        }
+    }
+
+    private func setSuccessAlert() -> UIView {
+        return EKMaker.setToastView(title: "위젯 생성 완료!", subtitle: "코젯앱을 잠금화면에 추가해 사용하세요.", named: "success")
+    }
+
+    private func setErrorAlertView(subtitle: String) -> UIView {
+        return EKMaker.setToastView(title: "확인 필요", subtitle: subtitle, named: "failed")
+    }
+
+    private func displayToast() {
+        SwiftEntryKit.display(entry: alertView, using: EKMaker.whiteAlertAttribute)
+    }
+
 }
 
 enum LinkType: LocalizedStringKey {

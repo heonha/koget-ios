@@ -39,7 +39,7 @@
 		39504AAC29B4BF06008A7BA4 /* NewDetailWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AAB29B4BF06008A7BA4 /* NewDetailWidgetView.swift */; };
 		395A0F0229AEF09900D34E0D /* AppAdditionContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0129AEF09900D34E0D /* AppAdditionContact.swift */; };
 		395A0F0429AEF0C100D34E0D /* AppAdditionContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0329AEF0C100D34E0D /* AppAdditionContactViewModel.swift */; };
-		395A0F0629AEF18700D34E0D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0529AEF18700D34E0D /* ContactView.swift */; };
+		395A0F0629AEF18700D34E0D /* AdminContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0529AEF18700D34E0D /* AdminContactView.swift */; };
 		39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */; };
 		39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4529ACDA58002BD874 /* OpacitySlider.swift */; };
 		39691F4829ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */; };
@@ -222,7 +222,7 @@
 		39504AAB29B4BF06008A7BA4 /* NewDetailWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDetailWidgetView.swift; sourceTree = "<group>"; };
 		395A0F0129AEF09900D34E0D /* AppAdditionContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdditionContact.swift; sourceTree = "<group>"; };
 		395A0F0329AEF0C100D34E0D /* AppAdditionContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdditionContactViewModel.swift; sourceTree = "<group>"; };
-		395A0F0529AEF18700D34E0D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		395A0F0529AEF18700D34E0D /* AdminContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminContactView.swift; sourceTree = "<group>"; };
 		39691F4529ACDA58002BD874 /* OpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacitySlider.swift; sourceTree = "<group>"; };
 		39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetOpacityPicker.swift; sourceTree = "<group>"; };
 		396BCB6429AE1CC600B1E759 /* Koget-Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Koget-Admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -509,7 +509,7 @@
 		3980C93329AE3046003C1C1A /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				395A0F0529AEF18700D34E0D /* ContactView.swift */,
+				395A0F0529AEF18700D34E0D /* AdminContactView.swift */,
 				3980C93129AE2B34003C1C1A /* UserContactList.swift */,
 				3980C93429AE306D003C1C1A /* UserContactListViewModel.swift */,
 				395A0F0129AEF09900D34E0D /* AppAdditionContact.swift */,
@@ -621,13 +621,6 @@
 			path = LockScreenIntentsExtension;
 			sourceTree = "<group>";
 		};
-		3A3CDA6629640806009A8756 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
 		3A6449B4297D90B6002A710C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -729,7 +722,6 @@
 				3900CCE8299686A400092AD0 /* Main */,
 				3AE0F982294878CF008C9F5F /* CoreData */,
 				3AF7E59128F85FD200B14DFD /* Utils */,
-				3A3CDA6629640806009A8756 /* Test */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
 			path = koget;
@@ -1041,7 +1033,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				395A0F0229AEF09900D34E0D /* AppAdditionContact.swift in Sources */,
-				395A0F0629AEF18700D34E0D /* ContactView.swift in Sources */,
+				395A0F0629AEF18700D34E0D /* AdminContactView.swift in Sources */,
 				396BCB6929AE1CC600B1E759 /* ContentView.swift in Sources */,
 				3980C92F29AE2594003C1C1A /* AdminConstants.swift in Sources */,
 				395A0F0429AEF0C100D34E0D /* AppAdditionContactViewModel.swift in Sources */,

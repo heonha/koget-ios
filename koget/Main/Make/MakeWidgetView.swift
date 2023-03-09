@@ -20,16 +20,12 @@ struct MakeWidgetView: View {
     @State var assetList: WidgetAssetList?
     
     @State var iconImage: UIImage = UIImage(named: "plus.circle")!
-    @State var isSuccess = false
-    @State var isError = false
-    @State var isImageError = false
-    @State var errorMessage = ""
+
     @State var widgetType: WidgetType = .image
     //Present Views
     @State var isAppPickerPresent = false
     @State var isPresentQustionmark = false
 
-    @State var successAlert = UIView()
     @State var errorAlert = UIView()
 
     @Environment(\.dismiss) var dismiss
@@ -45,12 +41,8 @@ struct MakeWidgetView: View {
                     .ignoresSafeArea(edges: .bottom)
                 Rectangle()
                     .foregroundColor(AppColor.Background.first)
-
-
                 //MARK: - Contents
                 VStack(spacing: 16) {
-
-
                     // 앱 리스트에서 가져오기
                     Button {
                         isAppPickerPresent.toggle()
@@ -62,9 +54,7 @@ struct MakeWidgetView: View {
                     .sheet(isPresented: $isAppPickerPresent) {
                         assetList
                     }
-
-
-                    // 아이콘
+                    // 위젯 아이콘
                     ChooseImageMenuButton(viewModel: viewModel, appPicker: $assetList, widgetType: $widgetType)
                         .shadow(radius: 0.7, x: 0.1, y: 0.1)
                     
@@ -75,15 +65,15 @@ struct MakeWidgetView: View {
                         LinkWidgetOpacityPicker(viewModel: viewModel, isPresentQustionmark: $isPresentQustionmark)
                     }
 
+                    // 만들기, 뒤로가기 버튼
                     makeAndBackButton
                         .padding(.horizontal, 16)
-                        .alert("이미지 확인", isPresented: $isImageError) {
+                        .alert("이미지 확인", isPresented: $viewModel.isImageError) {
                             defaultImageCheckAlert
                         } message: {
                             Text("아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?")
                         }
                     Spacer()
-
                 }
                 .navigationTitle("위젯 만들기")
                 .navigationBarTitleDisplayMode(.large)
@@ -92,10 +82,8 @@ struct MakeWidgetView: View {
                 hideKeyboard()
                 isPresentQustionmark = false
             }
-            .toolbarBackground(.visible, for: .navigationBar)
             .onAppear {
                 assetList = WidgetAssetList(viewModel: viewModel)
-                successAlert = setAlertView()
             }
         }
     }
@@ -122,7 +110,14 @@ struct MakeWidgetView: View {
         Group {
             // 위젯생성 버튼
             Button {
-                makeWidgetAction()
+                viewModel.makeWidgetAction { result in
+                    switch result {
+                    case .success:
+                        self.dismiss()
+                    case .error:
+                        return
+                    }
+                }
             } label: {
                 ButtonWithText(title: "완료", titleColor: .white, color: AppColor.kogetRed)
             }
@@ -139,7 +134,8 @@ struct MakeWidgetView: View {
         Group {
             Button("기본이미지로 생성") {
                 viewModel.image = UIImage(named: "KogetClear")
-                saveWidget()
+                viewModel.addWidget()
+                dismiss()
             }
             Button("취소") {
                 return
@@ -147,45 +143,6 @@ struct MakeWidgetView: View {
         }
     }
 
-    private func saveWidget() {
-        viewModel.addWidget()
-        self.dismiss()
-    }
-
-    private func makeWidgetAction() -> Void {
-        viewModel.checkTheTextFields { error in
-            if let error = error {
-                if error == .emptyImage {
-                    isImageError.toggle()
-                } else {
-                    // 실패
-                    self.errorAlert = setErrorAlertView(subtitle: error.rawValue.localized())
-                    self.presentErrorAlert()
-                }
-            } else {
-                // 성공
-                viewModel.addWidget()
-                self.dismiss()
-                self.displayToast()
-            }
-        }
-    }
-
-    private func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: "위젯 생성 완료!", subtitle: "코젯앱을 잠금화면에 추가해 사용하세요.", named: "success")
-    }
-
-    private func displayToast() {
-        SwiftEntryKit.display(entry: successAlert, using: EKMaker.whiteAlertAttribute)
-    }
-
-    private func setErrorAlertView(subtitle: String) -> UIView {
-        return EKMaker.setToastView(title: "확인 필요", subtitle: subtitle, named: "failed")
-    }
-    
-    private func presentErrorAlert() {
-        SwiftEntryKit.display(entry: errorAlert, using: EKMaker.whiteAlertAttribute)
-    }
 }
 
 struct AddWidgetView_Previews: PreviewProvider {

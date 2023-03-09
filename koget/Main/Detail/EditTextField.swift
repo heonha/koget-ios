@@ -42,7 +42,6 @@ struct EditTextField: View {
                     .textInputAutocapitalization(.never)
                     .textCase(.none)
                     .background(AppColor.Background.second)
-                
             } else {
                 // 뷰어 모드
                 TextField(placeHolder, text: $text)

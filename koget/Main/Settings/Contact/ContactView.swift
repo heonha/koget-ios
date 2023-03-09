@@ -64,19 +64,8 @@ struct ContactView: View {
                         }
                         .padding([.top, .bottom], 8)
                         Divider()
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("문의 안내사항")
-                                .bold()
-                            
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("* 문의 내용에 개인정보를 입력하지 마세요.")
-                                Text("* 문의는 익명으로 발송됩니다.")
-                                Text("* 문의 내용은 앱 서비스 개선에 활용됩니다.")
-                                Text("* 앱 개선을 위하여 기기의 버전정보를 수집합니다.")
-                            }
-                            .font(.system(size: 15))
-                        }
-                        .foregroundColor(.gray)
+
+                        noticeMessage
 
                         Spacer()
                     }
@@ -127,6 +116,23 @@ struct ContactView: View {
                 errorAlert = setErrorAlertView()
             }
         }
+    }
+
+    var noticeMessage: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("문의 안내사항")
+                .bold()
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text("* 문의 내용에 개인정보를 입력하지 마세요.")
+                Text("* 문의는 익명으로 발송됩니다.")
+                Text("* 문의 내용은 앱 서비스 개선에 활용됩니다.")
+                Text("* 앱 개선을 위하여 기기의 버전정보를 수집합니다.")
+            }
+            .font(.system(size: 15))
+        }
+        .foregroundColor(.gray)
+
     }
 
     var contactTypeMenu: some View {
