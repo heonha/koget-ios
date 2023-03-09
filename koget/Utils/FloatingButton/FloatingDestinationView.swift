@@ -7,16 +7,13 @@
 
 import SwiftUI
 
-
 struct FloatingDestinationView: View {
-    
     var type: NavigationLinkType
 
     var body: some View {
         switch type {
         case .add:
             MakeWidgetView()
-
         case .aboutApp:
             SettingMenu()
         case .contact:
@@ -27,12 +24,8 @@ struct FloatingDestinationView: View {
     }
 }
 
-
 struct FloatingDestinationView_Previews: PreviewProvider {
     static var previews: some View {
         FloatingDestinationView(type: .aboutApp)
     }
 }
-
-
-

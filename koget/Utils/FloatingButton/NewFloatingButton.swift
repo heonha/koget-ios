@@ -10,7 +10,7 @@ import SwiftUI
 struct NewFloatingButton: View {
     
     var size: CGFloat = 50
-    var color: Color = AppColors.buttonMainColor
+    var color: Color = AppColor.buttonMainColor
     @Binding var isOpen: Bool
     
     var body: some View {
@@ -23,13 +23,11 @@ struct NewFloatingButton: View {
                              buttons: [
                                 FloatingMenuButton(systemName: "plus.circle.fill", text: "위젯 만들기", link: .add,  type: .navigationLink),
                                 FloatingMenuButton(systemName: "mail", text: "문의하기", link: .contact,  type: .navigationLink),
-                                FloatingMenuButton(systemName: "ellipsis.circle", text: "더보기", link: .aboutApp,  type: .navigationLink),
                              ].reversed())
                 .opacity(0.95)
             }
         }
         .padding()
-        .tint(.white)
     }
 }
 

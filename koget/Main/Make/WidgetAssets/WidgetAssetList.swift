@@ -11,7 +11,8 @@ struct WidgetAssetList: View {
     
     @StateObject var widgetAssets = WidgetAssetViewModel()
     
-    var textColor: Color = AppColors.label
+    var textColor: Color = AppColor.Label.first
+    var installTextColor: Color = AppColor.Label.second
     var imageSize: CGSize = .init(width: 40, height: 40)
     
     @State var viewModel: MakeWidgetViewModel
@@ -22,13 +23,12 @@ struct WidgetAssetList: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack {
-            Color.white
+            AppColor.Background.first
                 .ignoresSafeArea()
             VStack {
                 
                 Text("앱 리스트")
-                    .foregroundColor(.black)
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
                     .padding(.vertical, 12)
                 
                 VStack(alignment: .leading) {
@@ -41,7 +41,7 @@ struct WidgetAssetList: View {
                             presentAssetRequestView.toggle()
                         } label: {
                             Text("앱/웹 추가요청")
-                                .font(.system(size: 14, weight: .semibold))
+                                .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
                                 .foregroundColor(.init(uiColor: .secondaryLabel))
                                 .padding(.leading, 16)
                         }
@@ -49,11 +49,9 @@ struct WidgetAssetList: View {
                             AssetRequestView()
                         }
 
-
-                        
                         Spacer()
                         Text("실행가능한 앱/웹 보기")
-                            .font(.system(size: 14, weight: .semibold))
+                            .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
                             .foregroundColor(.init(uiColor: .secondaryLabel))
                             .padding(.leading)
                         Toggle(isOn: $widgetAssets.isOnlyInstalledApp) {
@@ -65,7 +63,7 @@ struct WidgetAssetList: View {
                         
                     }
                     Rectangle()
-                        .frame(width: DEVICE_SIZE.width, height: 12)
+                        .frame(width: deviceSize.width, height: 12)
                         .foregroundColor(.init(uiColor: .secondarySystemFill))
                 }
                 
@@ -96,17 +94,15 @@ struct WidgetAssetList: View {
                                     .foregroundColor(textColor)
                                     if !widget.canOpen {
                                         Text("(미설치)")
-                                            .font(.system(size: 14, weight: .bold))
-                                            .foregroundColor(.black)
+                                            .font(.custom(CustomFont.NotoSansKR.bold, size: 14))
+                                            .foregroundColor(installTextColor)
                                     }
                                 }
                                 Text(MainWidgetViewModel.shared.checkLinkType(url: widget.url).rawValue)
-                                    .font(.system(size: 12, weight: .medium))
-                                    .foregroundColor(.init(uiColor: .secondaryLabel))
+                                    .font(.custom(CustomFont.NotoSansKR.medium, size: 12))
+                                    .foregroundColor(installTextColor)
                                     .padding(.leading, 1)
                             }
-                            
-
                         }
                     }
                     .disabled(Switcher.shared.isTestMode ? false : !widget.canOpen)
@@ -124,12 +120,7 @@ struct WidgetAssetList: View {
                 
             }
         }
-        
-        
     }
-    
-    
-    
 }
 
 struct WidgetListForDeepLink_Previews: PreviewProvider {

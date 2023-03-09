@@ -77,6 +77,14 @@
 		<string>ConfigurationIntent</string>
 		<string>DeepLinkAppIntent</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSansKR-Light.otf</string>
+		<string>NotoSansKR-Medium.otf</string>
+		<string>NotoSansKR-Bold.otf</string>
+		<string>NotoSansKR-Regular.otf</string>
+		<string>SDSwagger.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	***REMOVED***
 		<key>UIApplicationSupportsMultipleScenes</key>

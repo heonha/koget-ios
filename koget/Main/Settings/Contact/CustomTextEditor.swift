@@ -8,24 +8,23 @@
 import SwiftUI
 
 struct CustomTextEditor: View {
-    
     var placeHolder: LocalizedStringKey
     @Binding var text: String
     
     var body: some View {
         ZStack {
-            AppColors.secondaryBackgroundColor
+            AppColor.Background.second
             TextEditor(text: $text)
-                .foregroundColor(.init(uiColor: .label))
-                .colorMultiply(AppColors.secondaryBackgroundColor)
+                .foregroundColor(AppColor.Label.first)
+                .scrollContentBackground(.hidden) // <- Hide it
                 .padding(4)
-            if text == "" {
+            if text.isEmpty {
                 VStack {
                     HStack {
                         Text(placeHolder)
                             .padding(.leading, 8)
                             .padding(.top, 12)
-                            .foregroundColor(.init(uiColor: .tertiaryLabel))
+                            .foregroundColor(AppColor.Label.third)
                         Spacer()
                     }
                     Spacer()
@@ -33,12 +32,14 @@ struct CustomTextEditor: View {
             }
         }
         .cornerRadius(5)
-        
     }
 }
 
 struct CustomTextEditor_Previews: PreviewProvider {
     static var previews: some View {
         CustomTextEditor(placeHolder: "플레이스홀더", text: .constant(""))
+        NavigationView {
+            ContactView()
+        }
     }
 }

@@ -9,7 +9,7 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>WPhMXz</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>22C65</string>
+	<string>22D68</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>14C18</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -107,7 +107,7 @@
 			<key>INTypeDisplayNameID</key>
 			<string>Kzz0Bj</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>137</integer>
+			<integer>139</integer>
 			<key>INTypeName</key>
 			<string>AppDefinition</string>
 			<key>INTypeProperties</key>
@@ -175,6 +175,20 @@
 					<integer>114</integer>
 					<key>INTypePropertyType</key>
 					<string>String</string>
+				***REMOVED***
+				***REMOVED***
+					<key>INTypePropertyDisplayName</key>
+					<string>Opacity</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>vesIlm</string>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>6</integer>
+					<key>INTypePropertyName</key>
+					<string>opacity</string>
+					<key>INTypePropertyTag</key>
+					<integer>139</integer>
+					<key>INTypePropertyType</key>
+					<string>Decimal</string>
 				***REMOVED***
 			</array>
 		***REMOVED***

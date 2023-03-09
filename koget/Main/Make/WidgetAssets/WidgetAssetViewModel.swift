@@ -14,7 +14,7 @@ final class WidgetAssetViewModel: ObservableObject {
     @Published var searchResults: [LinkWidget] = []
     
     init() {
-        data = LinkWidgetModel.shared.getWidgetData()
+        data = LinkWidgetModel.shared.builtInApps
     }
     
     func canOpenApp(_ canOpen: Bool) -> Double {
@@ -31,12 +31,10 @@ final class WidgetAssetViewModel: ObservableObject {
                 widget.canOpen == true
             })
         } else {
-            data = LinkWidgetModel.shared.getWidgetData()
+            data = LinkWidgetModel.shared.builtInApps
         }
         
     }
-    
-    
     
     func fetchSearchData(searchText: String) {
         searchResults = data.filter({ widget in
@@ -54,6 +52,4 @@ final class WidgetAssetViewModel: ObservableObject {
             widget.nameEn.lowercased().contains(searchText.lowercased())
         })
     }
-
-    
 }

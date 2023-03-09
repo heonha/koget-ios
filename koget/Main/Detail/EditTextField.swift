@@ -14,7 +14,7 @@ struct EditTextField: View {
     let placeHolder: LocalizedStringKey
     let padding: CGFloat = 32
     
-    @StateObject var viewModel: MakeWidgetViewModel
+    @StateObject var viewModel: DetailWidgetViewModel
     @Binding var isEditingMode: Bool
     @Binding var text: String
     
@@ -23,18 +23,16 @@ struct EditTextField: View {
             // 타이틀
             HStack {
                 Text(title)
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
                     .lineLimit(1)
                 Spacer()
                 if title != "URL" && viewModel.nameMaxCountError == true {
                         withAnimation {
                             Text(viewModel.nameMaxCountErrorMessage)
                                 .foregroundColor(.red)
+                                .font(.custom(CustomFont.NotoSansKR.light, size: 12))
                         }
-                } else {
-                    
-                }
-               
+                } 
             }
             if isEditingMode {
                 // 편집 모드
@@ -43,13 +41,13 @@ struct EditTextField: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .textCase(.none)
-                    .background(AppColors.secondaryBackgroundColor)
+                    .background(AppColor.Background.second)
                 
             } else {
                 // 뷰어 모드
                 TextField(placeHolder, text: $text)
                     .frame(height: 35)
-                    .background(AppColors.backgroundColor)
+                    .background(AppColor.Background.first)
                     .disabled(!isEditingMode)
             }
             
@@ -58,9 +56,7 @@ struct EditTextField: View {
             hideKeyboard()
         }
         .cornerRadius(8)
-        .padding(.horizontal, 16)
         
-
     }
 }
 

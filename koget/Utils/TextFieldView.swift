@@ -28,7 +28,7 @@ struct TextFieldView: View {
             
             RoundedRectangle(cornerRadius: 8)
                 .frame(height: 40)
-                .foregroundColor(AppColors.secondaryBackgroundColor)
+                .foregroundColor(AppColor.Background.second)
             ZStack(alignment: .leading) {
                 HStack {
 
@@ -39,7 +39,8 @@ struct TextFieldView: View {
                         .padding(.horizontal, 8)
                         .foregroundColor(.gray)
                     TextField(placeholder, text: $text)
-                        .background(Color.clear)
+                        .foregroundColor(AppColor.Label.third)
+                        .background(AppColor.Background.second)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                         .textCase(.none)
@@ -47,7 +48,8 @@ struct TextFieldView: View {
 
                 } else {
                     TextField(placeholder, text: $text)
-                        .background(Color.clear)
+                        .foregroundColor(AppColor.Label.third)
+                        .background(AppColor.Background.second)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                         .textCase(.none)
@@ -58,14 +60,9 @@ struct TextFieldView: View {
                 }
 
             }
-
-            
         }
-            
-
     }
 }
-
 
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {

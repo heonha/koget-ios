@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SwiftEntryKit
+import Localize_Swift
 
 enum ContectType: String {
     case app = "앱 관련 문제"
@@ -16,7 +18,6 @@ enum ContectType: String {
 }
 
 struct ContactView: View {
-    
     @State var titleText: String = ""
     @State var bodyText: String = ""
     @State var isSuccess: Bool = false
@@ -25,71 +26,36 @@ struct ContactView: View {
     @State var isPresentSendAlert = false
     @StateObject var viewModel = ContactViewModel()
     @Environment(\.dismiss) var dismiss
-    
+
+    @State var successAlert = UIView()
+    @State var errorAlert = UIView()
+
     var body: some View {
-        
-        GeometryReader { (geometryProxy) in
+        GeometryReader { geometryProxy in
             ZStack {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
-                        
                         HStack {
-                            
                             Text("문의 유형")
                             
                             Spacer()
-                            
-                            Menu {
-                                Button {
-                                    viewModel.contactType = .app
-                                } label: {
-                                    Text(ContectType.app.rawValue.localized())
-                                }
-                                Button {
-                                    viewModel.contactType = .addApp
-                                    
-                                } label: {
-                                    Text(ContectType.addApp.rawValue.localized())
-                                }
-                                Button {
-                                    viewModel.contactType = .feedback
-                                } label: {
-                                    Text(ContectType.feedback.rawValue.localized())
-                                }
-                                Button {
-                                    viewModel.contactType = .etc
-                                } label: {
-                                    Text(ContectType.etc.rawValue.localized())
-                                }
-                                
-                                
-                            } label: {
-                                ZStack {
-                                    
-                                    if viewModel.contactType == .none {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .foregroundColor(.init(uiColor: .secondarySystemFill))
-                                    }
-                                    Text(viewModel.contactType.rawValue.localized())
-                                        .bold()
-                                        .frame(width: DEVICE_SIZE.width / 1.5, height: 35)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                            .frame(width: DEVICE_SIZE.width / 1.5, height: 35)
+
+                            contactTypeMenu
+                                .frame(width: deviceSize.width / 1.5, height: 35)
                             Spacer()
-                            
                         }
                         
                         Divider()
-                        TextFieldView(placeholder: "문의 제목", type: .title, text: $viewModel.title)
-                            .padding([.top, .bottom], 8)
+                        TextFieldView(placeholder: "문의 제목",
+                                      type: .title,
+                                      text: $viewModel.title)
+                        .padding([.top, .bottom], 8)
                         
                         Divider()
-                        CustomTextEditor(placeHolder: "이곳에 문의내용을 입력하세요.", text: $viewModel.body)
-                            .frame(height: geometryProxy.size.height / 2.5)
-                            .padding([.top, .bottom], 8)
-                        
+                        CustomTextEditor(placeHolder: "이곳에 문의내용을 입력하세요.",
+                                         text: $viewModel.body)
+                        .frame(height: geometryProxy.size.height / 2.5)
+                        .padding([.top, .bottom], 8)
                         
                         Button {
                             isPresentSendAlert.toggle()
@@ -111,14 +77,9 @@ struct ContactView: View {
                             .font(.system(size: 15))
                         }
                         .foregroundColor(.gray)
-                        
-                        
-                        
-                        
+
                         Spacer()
-                        
                     }
-                    
                     .padding(16)
                 }
             }
@@ -130,7 +91,7 @@ struct ContactView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Text("코젯 버전")
-                        Text("\(viewModel.version)")
+                        Text("\(viewModel.version ?? "-")")
                             .bold()
                     }
                     .font(.system(size: 14))
@@ -139,23 +100,14 @@ struct ContactView: View {
                 }
             }
             .toolbarBackground(.visible, for: .navigationBar)
-            .toast(isPresented: $isSuccess, dismissAfter: 1.5, onDismiss: {
-                dismiss()
-            }) {
-                ToastAlert(jsonName: .send, title: "문의 보내기 성공".localized(), subtitle: "피드백을 보내주셔서 감사합니다.".localized())
-            }
-            .toast(isPresented: $isFailure, dismissAfter: 1.5, onDismiss: {
-
-            }) {
-                ToastAlert(jsonName: .error, title: "빈칸을 확인해주세요.".localized(), subtitle: nil)
-            }
             .alert("내용 확인", isPresented: $isPresentSendAlert) {
                 Button {
                     viewModel.checkTheField { result in
                         if result {
-                            isSuccess.toggle()
+                            self.dismiss()
+                            self.presentSuccessAlert()
                         } else {
-                            isFailure.toggle()
+                            self.presentErrorAlert()
                         }
                     }
                 } label: {
@@ -164,19 +116,72 @@ struct ContactView: View {
                 }
                 
                 Button {
-                    
                 } label: {
                     Text("취소")
                 }
             } message: {
                 Text("문의를 보낼까요?")
             }
-
+            .onAppear {
+                successAlert = setAlertView()
+                errorAlert = setErrorAlertView()
+            }
         }
-        
+    }
+
+    var contactTypeMenu: some View {
+        Menu {
+            Button {
+                viewModel.contactType = .app
+            } label: {
+                Text(ContectType.app.rawValue.localized())
+            }
+            Button {
+                viewModel.contactType = .addApp
+
+            } label: {
+                Text(ContectType.addApp.rawValue.localized())
+            }
+            Button {
+                viewModel.contactType = .feedback
+            } label: {
+                Text(ContectType.feedback.rawValue.localized())
+            }
+            Button {
+                viewModel.contactType = .etc
+            } label: {
+                Text(ContectType.etc.rawValue.localized())
+            }
+        } label: {
+            ZStack {
+                if viewModel.contactType == .none {
+                    RoundedRectangle(cornerRadius: 8)
+                        .foregroundColor(.init(uiColor: .secondarySystemFill))
+                }
+                Text(viewModel.contactType.rawValue.localized())
+                    .bold()
+                    .frame(width: deviceSize.width / 1.5, height: 35)
+                    .foregroundColor(AppColor.Label.first)
+            }
+        }
+    }
+
+    private func setAlertView() -> UIView {
+        return EKMaker.setToastView(title: "문의 보내기 성공".localized(), subtitle: "피드백을 보내주셔서 감사합니다.".localized(), named: "success")
+    }
+
+    private func presentSuccessAlert() {
+        SwiftEntryKit.display(entry: successAlert, using: EKMaker.whiteAlertAttribute)
+    }
+
+    private func setErrorAlertView() -> UIView {
+        return EKMaker.setToastView(title: "확인 필요".localized(), subtitle: "빈칸을 확인해주세요.".localized(), named: "failed")
+    }
+
+    private func presentErrorAlert() {
+        SwiftEntryKit.display(entry: errorAlert, using: EKMaker.whiteAlertAttribute)
     }
 }
-
 
 struct ContactView_Previews: PreviewProvider {
     static var previews: some View {
@@ -185,4 +190,3 @@ struct ContactView_Previews: PreviewProvider {
         }
     }
 }
-

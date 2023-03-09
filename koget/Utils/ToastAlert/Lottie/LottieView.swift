@@ -10,12 +10,12 @@ import Lottie
 
 // 로티 애니메이션 뷰
 struct LottieView: UIViewRepresentable {
-    var name : String
+    var name: String
     var loopMode: LottieLoopMode
     var speed: CGFloat
     
     // 간단하게 View로 JSON 파일 이름으로 애니메이션을 실행합니다.
-    init(jsonName: String, loopMode : LottieLoopMode = .loop, speed: CGFloat = 1.0){
+    init(jsonName: String, loopMode: LottieLoopMode = .loop, speed: CGFloat = 1.0){
         self.name = jsonName
         self.loopMode = loopMode
         self.speed = speed
@@ -30,8 +30,6 @@ struct LottieView: UIViewRepresentable {
         animationView.backgroundBehavior = .pauseAndRestore
         animationView.animationSpeed = speed
         animationView.play()
-
-
         animationView.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(animationView)
@@ -45,6 +43,7 @@ struct LottieView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIViewType, context: Context) {
+
     }
 }
 

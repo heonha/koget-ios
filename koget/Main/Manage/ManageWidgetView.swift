@@ -15,7 +15,6 @@ struct ManageWidgetView: View {
     var body: some View {
         ZStack {
             if !viewModel.linkWidgets.isEmpty {
-                
                 List{
                     
                     ForEach(viewModel.linkWidgets) { widget in
@@ -39,7 +38,7 @@ struct ManageWidgetView: View {
                     }
                     .onDelete { indexSet in
                         for index in indexSet{
-                            print(index)
+                            // print(index)
                             WidgetCoreData.shared.deleteData(data: viewModel.linkWidgets[index])
                         }
                     }
@@ -74,6 +73,6 @@ struct ManageWidgetView: View {
 struct ManageWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         ManageWidgetView()
-            .environmentObject(StorageProvider())
+            .environmentObject(StorageProvider.preview)
     }
 }

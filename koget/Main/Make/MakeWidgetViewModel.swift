@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Localize_Swift
+import SwiftEntryKit
 
 enum MakeWidgetErrorType: String {
     case emptyField = "빈칸을 채워주세요."
@@ -18,7 +19,8 @@ final class MakeWidgetViewModel: ObservableObject {
     
     let nameStringLimit: Int = 14
     let defaultImage = UIImage(named: "KogetClear")!
-    
+
+    @Published var isEditing = false
     @Published var name: String = "" {
         didSet {
             if name.count > nameStringLimit {
@@ -32,13 +34,11 @@ final class MakeWidgetViewModel: ObservableObject {
     
     @Published var url: String = ""
     @Published var image: UIImage?
-    @Published var opacityValue: Double?
+    @Published var opacityValue: Double = 1.0
 
     @Published var nameMaxCountError = false
     lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit, specifier: "%d")자 입니다."
 
-    
-    
     var targetURL: URL?
     
     func getWidgetData(selectedWidget: LinkWidget) {
@@ -46,15 +46,9 @@ final class MakeWidgetViewModel: ObservableObject {
         self.url = selectedWidget.url
         self.image = selectedWidget.image!
     }
-    
 
-    
     func addWidget() {
-        WidgetCoreData.shared.addLinkWidget(name: name, image: image, url: url, opacity: opacityValue ?? 1.0)
-    }
-    
-    func editWidgetData(widget: DeepLink) {
-        WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, opacity: opacityValue ?? 1.0, widget: widget)
+        WidgetCoreData.shared.addLinkWidget(name: name, image: image, url: url, opacity: opacityValue)
     }
     
     func checkURLSyntex() -> Bool {
@@ -97,7 +91,7 @@ final class MakeWidgetViewModel: ObservableObject {
         if url.contains("://") {
             if let url = URL(string: url) {
                 self.targetURL = url
-                print(url)
+                // print(url)
                 completion(nil)
             } else {
                 completion(.openError)
@@ -116,8 +110,6 @@ final class MakeWidgetViewModel: ObservableObject {
             completion(false)
         }
     }
-    
-    
 }
 
 enum LinkType: LocalizedStringKey {
@@ -138,18 +130,8 @@ struct LinkWidget {
     let imageName: String
     
     // 후가공 데이터
-    var displayName: String
+    var displayName: String = ""
     var image: UIImage?
-    var canOpen: Bool
+    var canOpen: Bool = false
     
 }
-//
-// struct FBLinkModel: Codable, Identifiable {
-//     @DocumentID var id: String?
-//     let name: String
-//     let nameKr: String
-//     let nameEn: String
-//     let url: String
-//     let imageURL: String
-//
-// }

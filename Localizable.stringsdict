@@ -1,0 +1,30 @@
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+	<key>StringKey</key>
+	***REMOVED***
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		***REMOVED***
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string></string>
+			<key>zero</key>
+			<string></string>
+			<key>one</key>
+			<string></string>
+			<key>two</key>
+			<string></string>
+			<key>few</key>
+			<string></string>
+			<key>many</key>
+			<string></string>
+			<key>other</key>
+			<string></string>
+		***REMOVED***
+	***REMOVED***
+***REMOVED***
+***REMOVED***

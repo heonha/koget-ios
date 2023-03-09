@@ -9,9 +9,6 @@ import SwiftUI
 import WelcomeSheet
 import QGrid
 
-
-
-
 struct PatchNote: Identifiable {
     let id: UUID = .init()
     let title: LocalizedStringKey
@@ -26,9 +23,6 @@ struct SheetBody {
     let title: LocalizedStringKey
     let body: LocalizedStringKey
 }
-
-
-
 
 struct PatchNoteList: View {
     
@@ -47,7 +41,7 @@ struct PatchNoteList: View {
     var body: some View {
         
         ZStack {
-            Color.init(uiColor: .secondarySystemBackground)
+            AppColor.Background.second
                 .ignoresSafeArea()
             VStack {
                 Divider()
@@ -59,7 +53,7 @@ struct PatchNoteList: View {
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(.white)
+                                .background(AppColor.Background.first)
                                 .shadow(color: .black.opacity(0.3), radius: 2, x: 4, y: 4)
                             Image("Koget")
                                 .resizable()
@@ -69,21 +63,20 @@ struct PatchNoteList: View {
                                     Text("업데이트 소식")
                                         .font(.system(size: 20, weight: .heavy))
                                         .shadow(radius: 1.5, x: 4, y: 4)
-                                        .foregroundColor(.init(hex: "000000"))
+                                        .foregroundColor(.init("000000"))
                                     Divider()
-                                        .frame(width: DEVICE_SIZE.width / 2)
+                                        .frame(width: deviceSize.width / 2)
                                     Text("\(note.version) Ver.")
                                         .font(.system(size: 18, weight: .semibold))
                                         .shadow(radius: 1.5, x: 4, y: 4)
-                                        .foregroundColor(.init(hex: "191919"))
+                                        .foregroundColor(.init("191919"))
 
                                 }
                                 .multilineTextAlignment(.leading)
                             
                         }
                         .padding(4)
-                        .frame(width: DEVICE_SIZE.width / 1.2, height: DEVICE_SIZE.width / 2.5)
-                        .tint(.black)
+                        .frame(width: deviceSize.width / 1.2, height: deviceSize.width / 2.5)
                     }
                 }
             }
@@ -100,4 +93,3 @@ struct PatchNoteList_Previews: PreviewProvider {
         }
     }
 }
-

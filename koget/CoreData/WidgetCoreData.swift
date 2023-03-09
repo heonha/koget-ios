@@ -5,7 +5,6 @@
 //  Created by HeonJin Ha on 2022/11/20.
 //
 
-
 import SwiftUI
 import CoreData
 
@@ -37,26 +36,44 @@ class WidgetCoreData: ObservableObject {
         let widget = DeepLink(context: container.viewContext)
         widget.id = UUID()
         widget.name = name
-        widget.image = image?.pngData()
+        widget.image = compressPNGData(with: image)
         widget.url = url
         widget.updatedDate = Date()
         widget.opacity = (opacity) as NSNumber
-        
+
         saveData()
         loadData()
     }
-    
-    
+
+    func compressPNGData(with image: UIImage?) -> Data {
+
+        // 새로운 이미지 크기 설정
+        let newSize = CGSize(width: 128, height: 128)
+
+        // 그래픽 컨텍스트 생성
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image?.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        // PNG 데이터 생성
+        if let imageData = newImage?.pngData() {
+            return imageData
+        } else {
+            return Data()
+        }
+    }
+
     func editLinkWidget(name: String, image: UIImage?, url: String, opacity: Double, widget: DeepLink) {
         
         widget.name = name
         if widget.image != image?.pngData() {
-            widget.image = image?.pngData()
+            widget.image = compressPNGData(with: image)
         }
         widget.url = url
         widget.updatedDate = Date()
-        widget.opacity = (opacity) as NSNumber
-        
+        widget.opacity = NSNumber(floatLiteral: opacity)
+        print("5")
         saveData()
         loadData()
     }
@@ -69,12 +86,11 @@ class WidgetCoreData: ObservableObject {
             
             return deepLinks
             
-        } catch let error {
+        } catch {
             print("데이터 가져오기 에러 발생 : \(error)")
         }
         return nil
     }
-    
     
     func saveData() {
         do {
@@ -85,25 +101,6 @@ class WidgetCoreData: ObservableObject {
             fatalError("context 저장중 에러 발생")
         }
     }
-    
-    
-//    //원하는 entity 타입의 데이터 불러오기(Read)
-//    func loadData() {
-//
-//        let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
-//
-//
-//        // 데이터 가져오기
-//        do {
-//            linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
-//            self.objectWillChange.send()
-//            print("로드완료")
-//
-//        } catch {
-//            print("데이터 가져오기 에러 발생 : \(error)")
-//            fatalError("데이터 가져오기 에러 발생")
-//        }
-//    }
     
     enum WidgetSortKeys: String {
         case updatedDate = "updatedDate"
@@ -121,10 +118,9 @@ class WidgetCoreData: ObservableObject {
         do {
             linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
             self.objectWillChange.send()
-            print("로드완료")
-
+            // print("로드완료")
         } catch {
-            print("데이터 가져오기 에러 발생 : \(error)")
+            // print("데이터 가져오기 에러 발생 : \(error)")
             fatalError("데이터 가져오기 에러 발생")
         }
     }
@@ -145,23 +141,17 @@ class WidgetCoreData: ObservableObject {
         do {
             linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
         } catch {
-            print("데이터 가져오기 에러 발생 : \(error)")
+            // print("데이터 가져오기 에러 발생 : \(error)")
             fatalError("데이터 가져오기 에러 발생")
         }
     }
 
-
-    
     func deleteData(data: DeepLink) {
         container.viewContext.delete(data)
         saveData()
         loadData()
     }
-    
-
-    
 }
-
 
 public extension URL {
     /// sqlite 데이터베이스를 가리키는 지정된 앱 그룹 및 데이터베이스의 URL을 반환합니다.
@@ -173,5 +163,3 @@ public extension URL {
         return fileContainer.appendingPathComponent("\(databaseName).sqlite")
     }
 }
-
-

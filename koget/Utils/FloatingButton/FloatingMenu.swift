@@ -9,7 +9,6 @@ import SwiftUI
 import FloatingButton
 
 struct FloatingMenu: View {
-    
     enum ButtonFocus {
         case mainButton
         case subButton
@@ -20,7 +19,6 @@ struct FloatingMenu: View {
     let mainButton = FloatingMainButton()
     
     var body: some View {
-        
         FloatingButton(mainButtonView: mainButton, buttons: buttons, isOpen: $isOpen)
             .straight()
             .animation(.easeInOut(duration: 0.3))
@@ -29,17 +27,14 @@ struct FloatingMenu: View {
             .initialOpacity(0)
             .delays(delayDelta: 0.05)
             .padding(16)
-            
-        
     }
 }
-
-struct FloatingMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        FloatingMenu(isOpen: .constant(false), buttons: [
-            FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .aboutApp, type: .navigationLink),
-            FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add, type: .sheet)
-        ])    }
-}
-
-
+// 
+// struct FloatingMenu_Previews: PreviewProvider {
+//     static var previews: some View {
+//         FloatingMenu(isOpen: .constant(false), buttons: [
+//             FloatingMenuButton(systemName: "gearshape.fill", text: "설정", link: .aboutApp, type: .navigationLink),
+//             FloatingMenuButton(systemName: "plus.circle.fill", text: "만들기", link: .add, type: .sheet)
+//         ])    }
+// }
+// 

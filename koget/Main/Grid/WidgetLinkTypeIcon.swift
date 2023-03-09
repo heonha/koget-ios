@@ -22,13 +22,14 @@ struct WidgetLinkTypeIcon: View {
                         Spacer()
                         ZStack {
                             Circle()
-                                .foregroundStyle(.white)
+                                .foregroundStyle(AppColor.Background.first)
                                 .frame(width: 13, height: 13)
-                            Image(systemName: "arrow.up.left.square.fill")
-                                .foregroundStyle(Constants.kogetGradient)
+                            Image(systemName: "arrow.up.left.circle.fill")
+                                .foregroundStyle(AppColor.kogetRed)
                                 .font(.system(size: 18, weight: .semibold))
-                                .clipShape(Circle())
-                                .shadow(radius: 0.3, x: 0.5, y: 0.5)
+                                .shadow(color: .black.opacity(0.2) ,radius: 0.3, x: 0.5, y: 0.5)
+                                .opacity(0.8)
+
                         }
                     }
                 }
@@ -40,28 +41,28 @@ struct WidgetLinkTypeIcon: View {
                         Spacer()
                         ZStack {
                             Circle()
-                                .foregroundStyle(.white)
+                                .foregroundStyle(AppColor.Background.first)
                                 .frame(width: 13, height: 13)
                             Image(systemName: "network")
                                 .font(.system(size: 18, weight: .semibold))
                                 .foregroundStyle(.blue)
                                 .clipShape(Circle())
-                                .shadow(radius: 0.3, x: 0.5, y: 0.5)
+                                .shadow(color: .black.opacity(0.2) ,radius: 0.3, x: 0.5, y: 0.5)
                         }
                     }
                 }
                 .padding([.bottom, .trailing], -4)
+                .opacity(0.8)
             }
-        
-        
     }
 }
 
-
-
-
 struct WidgetLinkTypeIcon_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetLinkTypeIcon(viewModel: MainWidgetViewModel.shared, url: "url")
+        VStack {
+            WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "tmap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel.shared)
+            WidgetButton(name: "위젯이름", url: "fdsf://google.com", widgetImage: UIImage.init(named: "tmap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel.shared)
+        }
+ 
     }
 }

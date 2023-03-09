@@ -4,15 +4,20 @@
 ***REMOVED***
 	<key>SchemeUserState</key>
 	***REMOVED***
+		<key>Koget-Admin.xcscheme_^#shared#^_</key>
+		***REMOVED***
+			<key>orderHint</key>
+			<integer>4</integer>
+		***REMOVED***
 		<key>LockScreenIntentsExtension.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		***REMOVED***
 		<key>LockScreenWidgetExtension.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		***REMOVED***
 		<key>Promises (Playground) 1.xcscheme</key>
 		***REMOVED***
@@ -28,6 +33,27 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		***REMOVED***
+		<key>Promises (Playground) 3.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
+		***REMOVED***
+		<key>Promises (Playground) 4.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>12</integer>
+		***REMOVED***
+		<key>Promises (Playground) 5.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>13</integer>
+		***REMOVED***
 		<key>Promises (Playground).xcscheme</key>
 		***REMOVED***
 			<key>isShown</key>
@@ -35,7 +61,56 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		***REMOVED***
+		<key>SnapKitPlayground (Playground) 1.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
+		***REMOVED***
+		<key>SnapKitPlayground (Playground) 2.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
+		***REMOVED***
+		<key>SnapKitPlayground (Playground) 3.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>15</integer>
+		***REMOVED***
+		<key>SnapKitPlayground (Playground) 4.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>16</integer>
+		***REMOVED***
+		<key>SnapKitPlayground (Playground) 5.xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>17</integer>
+		***REMOVED***
+		<key>SnapKitPlayground (Playground).xcscheme</key>
+		***REMOVED***
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
+		***REMOVED***
 		<key>koget-Debug.xcscheme_^#shared#^_</key>
+		***REMOVED***
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		***REMOVED***
+		<key>koget-debug.xcscheme_^#shared#^_</key>
 		***REMOVED***
 			<key>orderHint</key>
 			<integer>1</integer>
@@ -44,6 +119,19 @@
 		***REMOVED***
 			<key>orderHint</key>
 			<integer>0</integer>
+		***REMOVED***
+	***REMOVED***
+	<key>SuppressBuildableAutocreation</key>
+	***REMOVED***
+		<key>396BCB6329AE1CC600B1E759</key>
+		***REMOVED***
+			<key>primary</key>
+			<true/>
+		***REMOVED***
+		<key>3ABA6C1228C6043F005AA8E4</key>
+		***REMOVED***
+			<key>primary</key>
+			<true/>
 		***REMOVED***
 	***REMOVED***
 ***REMOVED***

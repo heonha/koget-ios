@@ -8,73 +8,82 @@
 import SwiftUI
 import WelcomeSheet
 
-
 struct SettingMenu: View, AppStoreReviewable {
     
     @ObservedObject var viewModel = HelperSheetViewModel.shared
+    @EnvironmentObject var constant: Constants
     
     var body: some View {
-        ZStack {
-            Color.init(uiColor: .secondarySystemBackground)
-                .ignoresSafeArea()
-            VStack {
-                Spacer()
-                List {
-                    Section("공지사항") {
-                        
-                        NavigationLink {
-                            PatchNoteList()
-                        } label: {
-                            Label("업데이트 소식", systemImage: "square.and.pencil")
-                        }
-                        // SettingMenuButton(title: "패치 노트", imageType: .symbol, imageName: "square.and.pencil") {
-                        //     viewModel.showPatchNote.toggle()
-                        // }
-                        NavigationLink {
-                            LockscreenHelper()
-                        } label: {
-                            Label("위젯을 잠금화면에 등록하는 방법", systemImage: "apps.iphone.badge.plus")
+        NavigationView {
+            ZStack {
+                ZStack {
+                    AppColor.Background.first
+                }
+                VStack {
+                    Spacer()
+                    List {
+                        Section("사용방법") {
+                            NavigationLink {
+                                LockscreenHelper()
+                            } label: {
+                                Label("위젯을 잠금화면에 등록하는 방법", systemImage: "apps.iphone.badge.plus")
+                            }
+
+                            SettingMenuButton(title: "소개화면 다시보기", imageType: .symbol, imageName: "doc.append", imageColor: AppColor.Label.second) {
+                                viewModel.showWelcomeSheet.toggle()
+                            }
                         }
 
-                        // SettingMenuButton(title: "만든 위젯을 잠금화면에 등록하는 방법", imageType: .symbol, imageName: "apps.iphone.badge.plus") {
-                        //     viewModel.showUseLockscreen.toggle()
-                        // }
-                        
-         
-                        
+                        Section("소통하기") {
+                            SettingMenuButton(title: "앱 추가요청", imageType: .symbol, imageName: "doc.append", imageColor: AppColor.Label.second) {
+                                viewModel.showAssetRequestView.toggle()
+                            }
+
+                            SettingMenuButton(title: "문의하기", imageType: .symbol, imageName: "paperplane.fill", imageColor: AppColor.Label.second) {
+                                viewModel.showContactView.toggle()
+                            }
+                        }
+                            Section("앱에 관하여") {
+
+                            SettingMenuButton(title: "앱 평가하기", imageType: .symbol, imageName: "star.fill", imageColor: .yellow) {
+                                requestReview()
+                            }
+                            SettingMenuButton(title: "코젯 버전", subtitle: appVersion, imageType: .asset, imageName: "Koget") {
+                            }
+                            .disabled(true)
+                        }
+
+
                     }
-                    
-                    Section("앱에 관하여") {
-                        
-                        SettingMenuButton(title: "앱 소개 다시보기", imageType: .symbol, imageName: "book") {
-                            viewModel.showWelcomeSheet.toggle()
-                        }
-                        
-                        
-                        SettingMenuButton(title: "앱 평가하기", imageType: .symbol, imageName: "star.fill", imageColor: .yellow) {
-                            requestReview()
-                        }
-                        
-                        SettingMenuButton(title: "코젯 버전", subtitle: APP_VERSION, imageType: .asset, imageName: "Koget") {
-                        }
-                        .disabled(true)
-                    }
+                    .listStyle(.insetGrouped)
 
                 }
-                .listStyle(.insetGrouped)
-
+                .navigationTitle("더보기")
             }
-            .navigationTitle("더보기")
+            .tint(.black)
+            .welcomeSheet(isPresented: $viewModel.showWelcomeSheet, isSlideToDismissDisabled: true, preferredColorScheme: constant.isDarkMode ? .dark : .light, pages: viewModel.pages)
+            .sheet(isPresented: $viewModel.showUseLockscreen) {
+                LockscreenHelper()
+            }
+            .sheet(isPresented: $viewModel.showPatchNote) {
+                PatchNoteList()
+            }
+            .sheet(isPresented: $viewModel.showContactView, content: {
+                ContactView()
+            })
+            .sheet(isPresented: $viewModel.showAssetRequestView, content: {
+                AssetRequestView()
+            })
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("KogetClear")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                }
+            }
         }
-        .tint(.black)
-        .welcomeSheet(isPresented: $viewModel.showWelcomeSheet, isSlideToDismissDisabled: true, pages: viewModel.pages)
-        .sheet(isPresented: $viewModel.showUseLockscreen) {
-            LockscreenHelper()
-        }
-        .sheet(isPresented: $viewModel.showPatchNote) {
-            PatchNoteList()
-        }
-
     }
 }
 
@@ -84,9 +93,6 @@ struct HowToUseMenus_Previews: PreviewProvider {
     }
 }
 
-
-
-
 struct SettingMenuButton: View {
     
     enum ImageType {
@@ -95,16 +101,16 @@ struct SettingMenuButton: View {
     }
 
     var title: LocalizedStringKey
-    var titleColor: Color = .black
     var subtitle: String? = nil
-    var subtitleColor: Color = .black
     var imageType: ImageType
     var imageName: String
-    var imageColor: Color = .black
     var imageSize: CGFloat = 20
+    var imageColor: Color = AppColor.Label.first
     var action: () -> Void
 
-    
+    var titleColor: Color = AppColor.Label.first
+    var subtitleColor: Color = AppColor.Label.second
+
     var body: some View {
         Button {
             action()
@@ -123,7 +129,7 @@ struct SettingMenuButton: View {
                         .frame(width: imageSize, height: imageSize)
                         .clipShape(Circle())
                 }
-               
+
                 LazyHStack {
                     Text(title)
                         .foregroundStyle(titleColor)
@@ -132,10 +138,7 @@ struct SettingMenuButton: View {
                             .foregroundStyle(subtitleColor)
                     }
                 }
-                
             }
         }
     }
-    
-    
 }

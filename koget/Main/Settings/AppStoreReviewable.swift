@@ -12,11 +12,8 @@ protocol AppStoreReviewable {
     func requestReview()
 }
 
-
 extension AppStoreReviewable {
-    
     func requestReview() {
-        
         // [현재 연결된 뷰 화면 얻어오기 : IOS 15 대응]
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
@@ -27,9 +24,7 @@ extension AppStoreReviewable {
     }
 }
 
-
 extension UIApplication {
-    
     var keyWindow: UIWindow? {
         // Get connected scenes
         return UIApplication.shared.connectedScenes
@@ -42,5 +37,4 @@ extension UIApplication {
             // Finally, keep only the key window
             .first(where: \.isKeyWindow)
     }
-    
 }

@@ -7,5 +7,4 @@
 
 import Foundation
 
-let ID_SEPARATOR = "Z8a~du!!"
-
+let idSeparator = "Z8a~du!!"

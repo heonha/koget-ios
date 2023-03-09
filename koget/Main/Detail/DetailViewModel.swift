@@ -9,10 +9,8 @@ import SwiftUI
 
 class DetailViewModel: ObservableObject {
     
-    
     @Published var name: String = ""
     @Published var url: String = ""
     @Published var image: UIImage?
-    
     
 }

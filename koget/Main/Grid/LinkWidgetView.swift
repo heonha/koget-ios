@@ -10,59 +10,47 @@ import QGrid
 
 struct LinkWidgetView: View {
     
-    let backgroundColor: Color = AppColors.backgroundColor
+    let backgroundColor: Color = Color("ListBackgroundColor")
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
-    
+
     var body: some View {
         ZStack {
             backgroundColor
-                .ignoresSafeArea(edges: .bottom)
             VStack {
-                // 그리드뷰
-                
                 if !$coreData.linkWidgets.wrappedValue.isEmpty {
-                    HStack {
-                        Text("잠금화면 위젯")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.black)
-                            .opacity(0.9)
-                        
-                        Spacer()
-                        
-                    }
-                    .padding([.horizontal, .top])
-                    
                     if viewModel.isGridView {
-                        
-                        //MARK: - Grid View
-                            QGrid($coreData.linkWidgets.wrappedValue, columns: 4) { widget in
-                                WidgetIconCell(widget: widget, viewModel: viewModel, type: .grid)
-                        }
-                        
+                        gridView
                     } else {
-                        //MARK: - List View
-                        List(coreData.linkWidgets, id: \.id) { widget in
-                                WidgetIconCell(widget: widget, viewModel: viewModel, type: .list)
-                        }
-                        .listStyle(.plain)
-                        
+                        listView
                     }
                     Spacer()
-
-                    
                 } else {
-                    
                     EmptyGrid()
-                    
                 }
-                
             }
             .animation(.easeInOut(duration: 0.25), value: viewModel.isGridView)
         }
+        .cornerRadius(5)
+    }
+
+    var gridView: some View {
+        QGrid($coreData.linkWidgets.wrappedValue, columns: 3) { widget in
+            WidgetIconCell(widget: widget, viewModel: viewModel, type: .grid)
+        }
+    }
+
+    var listView: some View {
+        VStack {
+            List {
+                ForEach(coreData.linkWidgets, id: \.id) { widget in
+                    WidgetIconCell(widget: widget, viewModel: viewModel, type: .list)
+                }
+            }
+            .listStyle(.plain)
+        }
     }
 }
-
 
 struct WidgetListGridView_Previews: PreviewProvider {
     static var previews: some View {
@@ -72,4 +60,3 @@ struct WidgetListGridView_Previews: PreviewProvider {
         .environmentObject(StorageProvider(inMemory: true))
     }
 }
-

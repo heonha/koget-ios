@@ -10,8 +10,8 @@ import SwiftUI
 struct ButtonWithText: View {
     
     var title: LocalizedStringKey
-    var titleColor: Color = AppColors.label
-    let font: Font = .system(size: 18, weight: .semibold)
+    var titleColor: Color = AppColor.Label.first
+    let font: Font =  .custom(CustomFont.NotoSansKR.bold, size: 16)
     let buttonHeight: CGFloat = 40
     var color: Color = .init(uiColor: .systemFill)
     
