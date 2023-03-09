@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 enum NavigationLinkType {
     case add
@@ -21,7 +22,7 @@ enum FloatingMenuType {
 }
 
 struct FloatingMenuButton: View {
-    var systemName: String
+    var systemName: SFSymbol
     var text: LocalizedStringKey
     var link: NavigationLinkType
     var type: FloatingMenuType
@@ -44,7 +45,7 @@ struct FloatingMenuButton: View {
                     FloatingDestinationView(type: link)
                 } label: {
                     HStack {
-                        Image(systemName: systemName)
+                        Image(systemSymbol: systemName)
                             .font(.system(size: textInfo.fontSize))
                             .foregroundStyle(symbolColor)
                         
@@ -75,7 +76,7 @@ struct FloatingMenuButton: View {
                     })
                 } label: {
                     HStack {
-                        Image(systemName: systemName)
+                        Image(systemSymbol: systemName)
                             .font(.system(size: textInfo.fontSize))
                             .foregroundStyle(symbolColor)
                         Spacer()
@@ -104,6 +105,6 @@ struct FloatingMenuButton: View {
 }
 struct FloatingMenuButton_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingMenuButton(systemName: "person.fill", text: "텍스트", link: .aboutApp, type: .navigationLink)
+        FloatingMenuButton(systemName: .personFill, text: "텍스트", link: .aboutApp, type: .navigationLink)
     }
 }

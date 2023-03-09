@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import ToastUI
+import SFSafeSymbols
 
 struct DetailWidgetView: View {
     var size: CGSize = .init(width: 350, height: 600)
@@ -45,7 +45,7 @@ struct DetailWidgetView: View {
                         Button {
                             isDeleteAlertPresent.toggle()
                         } label: {
-                            Image(systemName: "trash")
+                            Image(systemSymbol: .trash)
                                 .font(.system(size: 18, weight: .semibold))
                                 .foregroundColor(.red)
                                 .fontWeight(.bold)
@@ -62,7 +62,7 @@ struct DetailWidgetView: View {
                         Button {
                             self.dismiss()
                         } label: {
-                            Image(systemName: "xmark")
+                            Image(systemSymbol: .xmark)
                                 .font(.system(size: 18, weight: .semibold))
                                 .foregroundColor(.white)
                         }
@@ -82,7 +82,7 @@ struct DetailWidgetView: View {
 
                 // MARK: - 이름, URL
                 VStack {
-                    EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", viewModel: viewModel, isEditingMode:  $viewModel.isEditingMode, text: $viewModel.name)
+                    EditTextField(title: "위젯 이름", placeHolder: "위젯 이름", viewModel: viewModel, isEditingMode: $viewModel.isEditingMode, text: $viewModel.name)
                     EditTextField(title: "URL", placeHolder: "예시: youtube://", viewModel: viewModel, isEditingMode: $viewModel.isEditingMode, text: $viewModel.url)
                     // MARK: - 투명도
                     HStack {
@@ -91,7 +91,7 @@ struct DetailWidgetView: View {
                         Button {
                             isPresentQustionmark.toggle()
                         } label: {
-                            Image(systemName: "questionmark.circle")
+                            Image(systemSymbol: .questionmarkCircle)
                                 .foregroundColor(.gray)
                         }
                         .overlay(

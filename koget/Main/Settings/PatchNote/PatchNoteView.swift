@@ -42,8 +42,7 @@ struct PatchNoteView: View {
                             HStack {
                                 
                                 HStack {
-                                    
-                                    Image(systemName: note.systemName)
+                                    Image(systemSymbol: note.systemName)
                                         .font(.system(size: 28))
                                         .foregroundStyle(Constants.kogetGradient)
                                         .padding(.horizontal, 8)

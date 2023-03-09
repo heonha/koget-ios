@@ -73,7 +73,6 @@ class WidgetCoreData: ObservableObject {
         widget.url = url
         widget.updatedDate = Date()
         widget.opacity = NSNumber(floatLiteral: opacity)
-        print("5")
         saveData()
         loadData()
     }
@@ -87,7 +86,7 @@ class WidgetCoreData: ObservableObject {
             return deepLinks
             
         } catch {
-            print("데이터 가져오기 에러 발생 : \(error)")
+            // print("데이터 가져오기 에러 발생 : \(error)")
         }
         return nil
     }
@@ -95,10 +94,10 @@ class WidgetCoreData: ObservableObject {
     func saveData() {
         do {
             try container.viewContext.save()
-            print("저장완료")
+            // print("저장완료")
         } catch {
-            print("context 저장중 에러 발생 : \(error)")
-            fatalError("context 저장중 에러 발생")
+            // print("context 저장중 에러 발생 : \(error)")
+            // fatalError("context 저장중 에러 발생")
         }
     }
     

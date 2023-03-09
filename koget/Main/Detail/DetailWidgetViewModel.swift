@@ -45,10 +45,7 @@ final class DetailWidgetViewModel: ObservableObject {
     }
     
     func editWidgetData(widget: DeepLink) {
-        print("4")
         WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, opacity: opacityValue, widget: widget)
-        print("6")
-
     }
     
     func checkURLSyntex() -> Bool {

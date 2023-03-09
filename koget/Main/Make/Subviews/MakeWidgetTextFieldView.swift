@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 enum FocusFields {
     case name, url
@@ -23,9 +24,9 @@ struct MakeWidgetTextFieldView: View {
     
     var body: some View {
         VStack(spacing: 8) {
-            CustomTextfield(title: nameTitle, placeholder: namePlaceholder, systemName: "tag", text: $viewModel.name, viewModel: viewModel, equals: .name)
+            CustomTextfield(title: nameTitle, placeholder: namePlaceholder, systemName: .tag, text: $viewModel.name, viewModel: viewModel, equals: .name)
             
-            CustomTextfield(title: urlTitle, placeholder: urlPlaceholder, systemName: "link", text: $viewModel.url, viewModel: viewModel, equals: .url)
+            CustomTextfield(title: urlTitle, placeholder: urlPlaceholder, systemName: .link, text: $viewModel.url, viewModel: viewModel, equals: .url)
             if viewModel.url != "" {
                 withAnimation {
                     HStack {

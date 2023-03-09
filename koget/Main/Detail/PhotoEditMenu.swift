@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct PhotoEditMenu: View {
     
@@ -19,7 +20,7 @@ struct PhotoEditMenu: View {
             Button(action: {
                 isPhotoViewPresent.toggle()
             }) {
-                Label("이미지 선택", systemImage: "photo")
+                Label("이미지 선택", systemSymbol: .photo)
             }
         } label: {
             ZStack {
@@ -39,8 +40,6 @@ struct PhotoEditMenu: View {
             PhotoPicker(detailModel: viewModel)
         }
         .disabled(!isEditingMode)
-
-
     }
 }
 

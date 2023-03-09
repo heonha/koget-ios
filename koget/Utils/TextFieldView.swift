@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 enum TextFieldType {
     case title
@@ -14,7 +15,7 @@ enum TextFieldType {
 
 struct TextFieldView: View {
     
-    var systemName: String? = nil
+    var systemName: SFSymbol?
     let placeholder: LocalizedStringKey
     let padding: CGFloat = 32
     
@@ -33,8 +34,7 @@ struct TextFieldView: View {
                 HStack {
 
                 if let systemName = systemName {
-                        
-                    Image(systemName: systemName)
+                    Image(systemSymbol: systemName)
                         .font(.system(size: 15))
                         .padding(.horizontal, 8)
                         .foregroundColor(.gray)
@@ -45,7 +45,6 @@ struct TextFieldView: View {
                         .textInputAutocapitalization(.never)
                         .textCase(.none)
                         .padding(.leading, -12)
-
                 } else {
                     TextField(placeholder, text: $text)
                         .foregroundColor(AppColor.Label.third)
@@ -67,7 +66,7 @@ struct TextFieldView: View {
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TextFieldView(systemName: "magnifyingglass", placeholder: "앱 검색하기", text: .constant(""))
+            TextFieldView(systemName: .magnifyingglass, placeholder: "앱 검색하기", text: .constant(""))
             TextFieldView(placeholder: "내용을 입력하세요.", type: .body, text: .constant(""))
         }
     }

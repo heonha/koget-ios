@@ -14,7 +14,6 @@ struct PhotoPicker: UIViewControllerRepresentable {
     weak var makeModel: MakeWidgetViewModel?
     weak var detailModel: DetailWidgetViewModel?
 
-    
     func makeUIViewController(context: UIViewControllerRepresentableContext<PhotoPicker>) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
@@ -55,5 +54,3 @@ struct PhotoPicker: UIViewControllerRepresentable {
         }
     }
 }
-    
-

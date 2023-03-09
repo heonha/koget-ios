@@ -23,7 +23,7 @@ struct ChooseImageMenuButton: View {
                 Button(action: {
                     isPhotoPickerPresent.toggle()
                 }) {
-                    Label("이미지 선택", systemImage: "photo")
+                    Label("이미지 선택", systemSymbol: .photo)
                 }
                 
             } label: {

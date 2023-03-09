@@ -11,7 +11,7 @@ struct ButtonWithText: View {
     
     var title: LocalizedStringKey
     var titleColor: Color = AppColor.Label.first
-    let font: Font =  .custom(CustomFont.NotoSansKR.bold, size: 16)
+    let font: Font = .custom(CustomFont.NotoSansKR.bold, size: 16)
     let buttonHeight: CGFloat = 40
     var color: Color = .init(uiColor: .systemFill)
     

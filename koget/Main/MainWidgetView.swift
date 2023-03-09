@@ -8,9 +8,9 @@
 import SwiftUI
 import CoreData
 import FloatingButton
-import ToastUI
 import SwiftEntryKit
 import WelcomeSheet
+import SFSafeSymbols
 
 // 메인 뷰
 struct MainWidgetView: View {
@@ -55,7 +55,7 @@ struct MainWidgetView: View {
                             Button {
                                 viewModel.isGridView.toggle()
                             } label: {
-                                Image(systemName: viewModel.isGridView ? "list.bullet" : "square.grid.3x3")
+                                Image(systemSymbol: viewModel.isGridView ? SFSymbol.listBullet : SFSymbol.squareGrid3x3)
                                     .foregroundColor(AppColor.Label.first)
                                     .opacity(0.9)
                                     .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)

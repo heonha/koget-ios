@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftEntryKit
+import SFSafeSymbols
 
 enum WidgetIconCellType {
     case grid
@@ -51,7 +52,7 @@ struct WidgetIconCell: View {
                             viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
                         }
                     } label: {
-                        Label("실행하기", systemImage: "arrow.up.left.square.fill")
+                        Label("실행하기", systemSymbol: .arrowUpLeftSquareFill)
                     }
 
                     Button {
@@ -59,12 +60,12 @@ struct WidgetIconCell: View {
                             DetailWidgetView(selectedWidget: widget)
                         })
                     } label: {
-                        Label("편집", systemImage: "slider.horizontal.3")
+                        Label("편집", systemSymbol: .sliderHorizontal3)
                     }
                     Button(role: .destructive) {
                         isDelete.toggle()
                     } label: {
-                        Label("삭제", systemImage: "trash.fill")
+                        Label("삭제", systemSymbol: .trashFill)
                     }
                 } label: {
                     if type == .grid {
@@ -151,7 +152,7 @@ struct WidgetIconCell: View {
                 .opacity(0.7)
             Group {
                 HStack(spacing: 2) {
-                    Image(systemName: "bolt.horizontal.fill")
+                    Image(systemSymbol: .boltHorizontalFill)
                         .font(.system(size: 13, weight: .semibold))
                         .shadow(color: .black.opacity(0.7), radius: 0.5, x: 0.5, y: 0.5)
                         .foregroundColor(.yellow)

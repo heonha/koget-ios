@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct ManageWidgetView: View {
     
@@ -24,8 +25,7 @@ struct ManageWidgetView: View {
                                 
                             } label: {
                                 if let image = widget.image, let name = widget.name {
-                                    Image(uiImage: UIImage(data: image)
-                                          ?? UIImage(systemName: "questionmark.circle")!)
+                                    Image(uiImage: UIImage(data: image) ?? Constants.unknownUIImage)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 50, height: 50)

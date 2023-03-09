@@ -5,8 +5,8 @@
 //  Created by HeonJin Ha on 2022/09/30.
 //
 
-import Foundation
 import SwiftUI
+import SFSafeSymbols
 
 let deviceSize = UIScreen.main.bounds.size
 let schemeToAppLink = "link://"
@@ -21,9 +21,9 @@ final class Constants: ObservableObject {
     static let kogetGradient = LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
     // MARK: - 알수없는 데이터 Placeholder
     static let unknownName = "알수없음"
-    static let unknownImage = Image(systemName: "questionmark.circle")
-    static let unknownUIImage = UIImage(systemName: "questionmark.circle")!
-
+    static let unknownImage = Image(systemSymbol: .questionmarkCircle)
+    static let unknownUIImage = UIImage(systemSymbol: .questionmarkCircle)
+    
     @AppStorage("isDarkMode") var isDarkMode = false
 
     static let shared = Constants()

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct LinkWidgetOpacityPicker: View {
     
@@ -16,7 +17,7 @@ struct LinkWidgetOpacityPicker: View {
     var body: some View {
 
         HStack {
-            Image(systemName: "circle.dashed")
+            Image(systemSymbol: .circleDashed)
                 .font(.custom(CustomFont.NotoSansKR.bold, size: 20))
                 .foregroundColor(.init(uiColor: .lightGray))
             Spacer()
@@ -26,7 +27,7 @@ struct LinkWidgetOpacityPicker: View {
             Button {
                 isPresentQustionmark.toggle()
             } label: {
-                Image(systemName: "questionmark.circle")
+                Image(systemSymbol: .questionmarkCircle)
                     .foregroundColor(.gray)
             }
             .overlay(

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct WidgetAssetList: View {
     
@@ -32,7 +33,7 @@ struct WidgetAssetList: View {
                     .padding(.vertical, 12)
                 
                 VStack(alignment: .leading) {
-                    TextFieldView(systemName: "magnifyingglass", placeholder: "앱 검색하기", text: $searchText)
+                    TextFieldView(systemName: .magnifyingglass, placeholder: "앱 검색하기", text: $searchText)
                         .padding(.horizontal)
                     
                     HStack {

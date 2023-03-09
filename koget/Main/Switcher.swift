@@ -12,5 +12,4 @@ class Switcher: ObservableObject {
     static let shared = Switcher()
     
     @Published var isTestMode: Bool = false
-
 }
