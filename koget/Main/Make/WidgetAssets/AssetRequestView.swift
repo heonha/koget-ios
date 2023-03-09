@@ -6,18 +6,17 @@
 //
 
 import SwiftUI
-import ToastUI
+import Localize_Swift
+import SwiftEntryKit
 
 struct AssetRequestView: View {
-    @State var isSuccess = false
-    @State var isFailure = false
-    @ObservedObject var viewModel = AssetRequestViewModel()
+    @StateObject var viewModel = AssetRequestViewModel()
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         VStack {
             Text("앱/웹 추가 요청")
-                .font(.system(size: 20))
+                .font(.custom(CustomFont.NotoSansKR.light, size: 20))
                 .fontWeight(.bold)
             Divider()
             // MARK: 앱 이름
@@ -33,6 +32,7 @@ struct AssetRequestView: View {
                         .fill(Color.init(uiColor: .secondarySystemFill))
                         .opacity(0.8)
                     TextField("요청할 앱/웹 이름", text: $viewModel.appName)
+                        .font(.custom(CustomFont.NotoSansKR.light, size: 16))
                         .padding(.horizontal, 4)
                         .background(Color.clear)
                         .autocorrectionDisabled()
@@ -49,7 +49,7 @@ struct AssetRequestView: View {
                 Spacer()
                 
                 Text("내용")
-                    .bold()
+                    .font(.custom(CustomFont.NotoSansKR.bold, size: 16))
                     .frame(width: 100)
                 Spacer()
                 
@@ -58,6 +58,7 @@ struct AssetRequestView: View {
                         .fill(Color.init(uiColor: .secondarySystemFill))
                         .opacity(0.8)
                     TextField("선택사항", text: $viewModel.body)
+                        .font(.custom(CustomFont.NotoSansKR.light, size: 16))
                         .padding(.horizontal, 4)
                         .background(Color.clear)
                         .autocorrectionDisabled()
@@ -70,20 +71,22 @@ struct AssetRequestView: View {
             .frame(height: 50)
 
             Text("요청하신 앱/웹은 검토 결과에 따라 앱에 추가 될 예정입니다.")
-                .font(.system(size: 13))
+                .font(.custom(CustomFont.NotoSansKR.medium, size: 13))
                 .padding()
 
             Button {
                 viewModel.checkTheField { result in
                     switch result {
-                    case true:
-                        self.isSuccess.toggle()
-                    case false:
-                        self.isFailure.toggle()
+                    case .success:
+                        self.dismiss()
+                        viewModel.alertHandelr(type: result)
+                    default:
+                        viewModel.alertHandelr(type: result)
+                        return
                     }
                 }
             } label: {
-                ButtonWithText(title: "요청하기", titleColor: .white, color: Color("Navy"))
+                ButtonWithText(title: "보내기", titleColor: .white, color: AppColor.kogetRed)
             }
             .padding(.horizontal, 24)
             Spacer()
@@ -92,16 +95,6 @@ struct AssetRequestView: View {
         .presentationDetents([.medium])
         .onTapGesture {
             hideKeyboard()
-        }
-        .toast(isPresented: $isSuccess, dismissAfter: 1.3, onDismiss: {
-            dismiss()
-        }) {
-            ToastAlert(jsonName: .send,
-                       title: "앱/웹 추가요청 성공".localized(),
-                       subtitle: "요청을 보내주셔서 감사합니다.".localized())
-        }
-        .toast(isPresented: $isFailure, dismissAfter: 1.0, onDismiss: {}) {
-            ToastAlert(jsonName: .error, title: "앱/웹 이름을 기재해주세요.", subtitle: nil)
         }
     }
 }
