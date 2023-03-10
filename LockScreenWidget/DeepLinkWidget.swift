@@ -9,6 +9,7 @@ import WidgetKit
 import SwiftUI
 import Intents
 import CoreData
+import SFSafeSymbols
 // MARK: - Protocol : Provider
 /// 위젯의 업데이트 시기를 WidgetKit에 알려줍니다.
 /// WidgetKit은 업데이트 시기를 Provider에 요청합니다.
@@ -157,7 +158,7 @@ struct DeepLinkWidgetEntryView: View {
                             // entry의 데이터
                             // 코어데이터 바뀜 -> 코어데이터 업데이트 -> Entry 업데이트 -> 위젯 업데이트
                             VStack(alignment: .center) {
-                                Image(uiImage: entry.image ?? UIImage(systemName: "questionmark.circle")!)
+                                Image(uiImage: entry.image ?? UIImage(systemSymbol: .questionmarkCircle))
                                 .resizable()
                                 .scaledToFit()
                                 .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(idSeparator)\(entry.id!)"))
@@ -202,7 +203,7 @@ struct DeepLinkWidgetEntryView: View {
                             // 코어데이터 바뀜 -> 코어데이터 업데이트 -> Entry 업데이트 -> 위젯 업데이트
                             
                             VStack(alignment: .center) {
-                                Image(uiImage: entry.image ?? UIImage(systemName: "questionmark.circle")!)
+                                Image(uiImage: entry.image ?? UIImage(systemSymbol: .questionmarkCircle))
                                 .resizable()
                                 .scaledToFit()
                                 .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(idSeparator)\(entry.id!)"))

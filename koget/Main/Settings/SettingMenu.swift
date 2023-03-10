@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WelcomeSheet
+import SFSafeSymbols
 
 struct SettingMenu: View, AppStoreReviewable {
     
@@ -23,40 +24,35 @@ struct SettingMenu: View, AppStoreReviewable {
                     Spacer()
                     List {
                         Section("사용방법") {
-                            NavigationLink {
-                                LockscreenHelper()
-                            } label: {
-                                Label("위젯을 잠금화면에 등록하는 방법", systemImage: "apps.iphone.badge.plus")
+                            SettingMenuButton(title: "위젯을 잠금화면에 등록하는 방법", imageType: .symbol, systemSymbol: .appsIphoneBadgePlus, imageColor: AppColor.Label.second) {
+                                viewModel.showHowtoUseView.toggle()
                             }
 
-                            SettingMenuButton(title: "소개화면 다시보기", imageType: .symbol, imageName: "doc.append", imageColor: AppColor.Label.second) {
+                            SettingMenuButton(title: "소개화면 다시보기", imageType: .symbol, systemSymbol: .docAppend, imageColor: AppColor.Label.second) {
                                 viewModel.showWelcomeSheet.toggle()
                             }
                         }
 
                         Section("소통하기") {
-                            SettingMenuButton(title: "앱 추가요청", imageType: .symbol, imageName: "doc.append", imageColor: AppColor.Label.second) {
+                            SettingMenuButton(title: "앱 추가요청", imageType: .symbol, systemSymbol: .noteTextBadgePlus, imageColor: AppColor.Label.second) {
                                 viewModel.showAssetRequestView.toggle()
                             }
 
-                            SettingMenuButton(title: "문의하기", imageType: .symbol, imageName: "paperplane.fill", imageColor: AppColor.Label.second) {
+                            SettingMenuButton(title: "문의하기", imageType: .symbol, systemSymbol: .paperplaneFill, imageColor: AppColor.Label.second) {
                                 viewModel.showContactView.toggle()
                             }
                         }
                             Section("앱에 관하여") {
 
-                            SettingMenuButton(title: "앱 평가하기", imageType: .symbol, imageName: "star.fill", imageColor: .yellow) {
+                                SettingMenuButton(title: "앱 평가하기", imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
                                 requestReview()
                             }
                             SettingMenuButton(title: "코젯 버전", subtitle: appVersion, imageType: .asset, imageName: "Koget") {
                             }
                             .disabled(true)
                         }
-
-
                     }
                     .listStyle(.insetGrouped)
-
                 }
                 .navigationTitle("더보기")
             }
@@ -73,6 +69,9 @@ struct SettingMenu: View, AppStoreReviewable {
             })
             .sheet(isPresented: $viewModel.showAssetRequestView, content: {
                 AssetRequestView()
+            })
+            .sheet(isPresented: $viewModel.showHowtoUseView, content: {
+                LockscreenHelper()
             })
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -103,7 +102,8 @@ struct SettingMenuButton: View {
     var title: LocalizedStringKey
     var subtitle: String? = nil
     var imageType: ImageType
-    var imageName: String
+    var imageName: String = ""
+    var systemSymbol: SFSymbol?
     var imageSize: CGFloat = 20
     var imageColor: Color = AppColor.Label.first
     var action: () -> Void
@@ -119,10 +119,12 @@ struct SettingMenuButton: View {
                 
                 switch imageType {
                 case .symbol:
-                    Image(systemName: imageName)
-                        .tint(imageColor)
-                        .shadow(color: Color.black.opacity(0.2), radius: 0.1, x: 1, y: 1)
-                        .frame(width: imageSize)
+                    if let symbol = systemSymbol {
+                        Image(systemSymbol: symbol)
+                            .tint(imageColor)
+                            .shadow(color: Color.black.opacity(0.2), radius: 0.1, x: 1, y: 1)
+                            .frame(width: imageSize)
+                    }
                 case .asset:
                     Image(imageName)
                         .resizable()

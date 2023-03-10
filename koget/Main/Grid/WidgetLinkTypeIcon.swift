@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct WidgetLinkTypeIcon: View {
     
@@ -24,7 +25,7 @@ struct WidgetLinkTypeIcon: View {
                             Circle()
                                 .foregroundStyle(AppColor.Background.first)
                                 .frame(width: 13, height: 13)
-                            Image(systemName: "arrow.up.left.circle.fill")
+                            Image(systemSymbol: .arrowUpLeftCircleFill)
                                 .foregroundStyle(AppColor.kogetRed)
                                 .font(.system(size: 18, weight: .semibold))
                                 .shadow(color: .black.opacity(0.2) ,radius: 0.3, x: 0.5, y: 0.5)
@@ -43,7 +44,7 @@ struct WidgetLinkTypeIcon: View {
                             Circle()
                                 .foregroundStyle(AppColor.Background.first)
                                 .frame(width: 13, height: 13)
-                            Image(systemName: "network")
+                            Image(systemSymbol: .network)
                                 .font(.system(size: 18, weight: .semibold))
                                 .foregroundStyle(.blue)
                                 .clipShape(Circle())

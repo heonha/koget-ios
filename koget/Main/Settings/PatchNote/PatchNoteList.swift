@@ -8,6 +8,7 @@
 import SwiftUI
 import WelcomeSheet
 import QGrid
+import SFSafeSymbols
 
 struct PatchNote: Identifiable {
     let id: UUID = .init()
@@ -19,7 +20,7 @@ struct PatchNote: Identifiable {
 
 struct SheetBody {
     let id: UUID = .init()
-    let systemName: String
+    let systemName: SFSymbol
     let title: LocalizedStringKey
     let body: LocalizedStringKey
 }
@@ -28,10 +29,10 @@ struct PatchNoteList: View {
     
     var patchNotes: [PatchNote] = [
         PatchNote(title: "1.1 버전 업데이트 소식", version: "1.1", date: "2023-02-21", note: [
-            SheetBody(systemName: "list.bullet.rectangle.portrait", title: "리스트 보기 추가", body: "이제 메인화면 우측 상단 버튼을 누르면 보기를 전환 할 수 있어요."),
-            SheetBody(systemName: "arrow.up.backward.square.fill", title: "바로 실행하기", body: "메인화면에서 앱을 눌러보세요. 앱으로 바로 갈 수 있어요."),
-            SheetBody(systemName: "1.circle", title: "실행 횟수 확인", body: "링크를 통해 앱을 얼마나 실행했는지 기록되고, 자주 사용하는 앱이 상단으로 올라와요."),
-            SheetBody(systemName: "photo.circle", title: "아이콘은 옵션", body: "위젯 생성시 아이콘이 없어도 생성할 수 있어요. 아이콘은 코젯 아이콘으로 생성됩니다.")
+            SheetBody(systemName: .listBulletRectanglePortrait, title: "리스트 보기 추가", body: "이제 메인화면 우측 상단 버튼을 누르면 보기를 전환 할 수 있어요."),
+            SheetBody(systemName: .arrowUpBackwardSquareFill, title: "바로 실행하기", body: "메인화면에서 앱을 눌러보세요. 앱으로 바로 갈 수 있어요."),
+            SheetBody(systemName: ._1Circle, title: "실행 횟수 확인", body: "링크를 통해 앱을 얼마나 실행했는지 기록되고, 자주 사용하는 앱이 상단으로 올라와요."),
+            SheetBody(systemName: .photoCircle, title: "아이콘은 옵션", body: "위젯 생성시 아이콘이 없어도 생성할 수 있어요. 아이콘은 코젯 아이콘으로 생성됩니다.")
 
         ])
     ]

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftEntryKit
+import SFSafeSymbols
 
 enum WidgetIconCellType {
     case grid
@@ -51,20 +52,19 @@ struct WidgetIconCell: View {
                             viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
                         }
                     } label: {
-                        Label("실행하기", systemImage: "arrow.up.left.square.fill")
+                        Label("실행하기", systemSymbol: .arrowUpLeftSquareFill)
                     }
-
                     Button {
                         self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
                             DetailWidgetView(selectedWidget: widget)
                         })
                     } label: {
-                        Label("편집", systemImage: "slider.horizontal.3")
+                        Label("편집", systemSymbol: .sliderHorizontal3)
                     }
                     Button(role: .destructive) {
                         isDelete.toggle()
                     } label: {
-                        Label("삭제", systemImage: "trash.fill")
+                        Label("삭제", systemSymbol: .trashFill)
                     }
                 } label: {
                     if type == .grid {
@@ -77,8 +77,8 @@ struct WidgetIconCell: View {
                 .alert("\(widget.name ?? "알수없음")", isPresented: $isDelete, actions: {
                     Button("삭제", role: .destructive) {
                         coreData.deleteData(data: widget)
-                        self.dismiss()
-                        self.displayToast()
+                        dismiss()
+                        displayToast()
                         isDelete = false
                     }
                     Button("취소", role: .cancel) {
@@ -89,7 +89,7 @@ struct WidgetIconCell: View {
                     DetailWidgetView(selectedWidget: widget)
                 })
                 .onAppear {
-                    deleteAlertView = EKMaker.redAlertView(title: "위젯 삭제 완료!", subtitle: "삭제한 위젯은 잠금화면에서도 변경 또는 삭제 해주세요", named: "success.white")
+                    deleteAlertView = EKMaker.setToastView(title: "위젯 삭제 완료!", subtitle: "삭제한 위젯은 잠금화면에서도 변경 또는 삭제 해주세요", named: "success")
                 }
 
             }
@@ -151,7 +151,7 @@ struct WidgetIconCell: View {
                 .opacity(0.7)
             Group {
                 HStack(spacing: 2) {
-                    Image(systemName: "bolt.horizontal.fill")
+                    Image(systemSymbol: .boltHorizontalFill)
                         .font(.system(size: 13, weight: .semibold))
                         .shadow(color: .black.opacity(0.7), radius: 0.5, x: 0.5, y: 0.5)
                         .foregroundColor(.yellow)
@@ -165,7 +165,7 @@ struct WidgetIconCell: View {
     }
 
     func displayToast() {
-        SwiftEntryKit.display(entry: deleteAlertView, using: EKMaker.redAlertAttribute)
+        SwiftEntryKit.display(entry: deleteAlertView, using: EKMaker.whiteAlertAttribute)
     }
 }
 

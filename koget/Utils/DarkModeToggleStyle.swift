@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct DarkModeToggleStyle: ToggleStyle {
 
@@ -21,7 +22,7 @@ struct DarkModeToggleStyle: ToggleStyle {
                 .frame(width: toggleSize.width, height: toggleSize.height, alignment: .center)
                 .overlay(
                     ZStack(content: {
-                        Image(systemName: configuration.isOn ? "moon.fill" : "sun.max.fill")
+                        Image(systemSymbol: configuration.isOn ? .moonFill : .sunMaxFill)
                             .font(.system(size: 14, weight: .heavy))
                             .foregroundColor(.yellow)
                             .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.35), radius: 0.5, x: 0.5, y: 1)
@@ -36,22 +37,22 @@ struct DarkModeToggleStyle: ToggleStyle {
         }
     }
 }
-
-struct ToggleTester: View {
-    @StateObject var constatnt = Constants.shared
-    var body: some View {
-        HStack {
-            Toggle(isOn: $constatnt.isDarkMode) {
-            }
-            .toggleStyle(DarkModeToggleStyle())
-            Spacer()
-        }
-    }
-}
-
-struct DarkModeToggleStyle_Previews: PreviewProvider {
-
-    static var previews: some View {
-        ToggleTester()
-    }
-}
+//
+// struct ToggleTester: View {
+//     @StateObject var constatnt = Constants.shared
+//     var body: some View {
+//         HStack {
+//             Toggle(isOn: $constatnt.isDarkMode) {
+//             }
+//             .toggleStyle(DarkModeToggleStyle())
+//             Spacer()
+//         }
+//     }
+// }
+// 
+// struct DarkModeToggleStyle_Previews: PreviewProvider {
+// 
+//     static var previews: some View {
+//         ToggleTester()
+//     }
+// }

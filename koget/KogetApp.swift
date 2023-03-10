@@ -14,13 +14,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         //MARK: - Firebase Configuration
         FirebaseApp.configure()
         
-        // UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "chevron.left")
-        // UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left")
-        // UINavigationBar.appearance().tintColor = UIColor(AppColor.Label.first)
-        // UIBarButtonItem.appearance().setTitleTextAttributes([
-        //     NSAttributedString.Key.foregroundColor: AppColor.Label.first
-        // ], for: .normal)
-        // 
         return true
     }
 }
@@ -36,23 +29,20 @@ struct KogetApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @Environment(\.scenePhase) private var scenePhase
-    @ObservedObject var constant = Constants.shared
-    @ObservedObject var coreData = WidgetCoreData.shared
+    @EnvironmentObject var coreData: WidgetCoreData
     
     var body: some Scene {
 
         WindowGroup {
             ContentView()
-                .preferredColorScheme(constant.isDarkMode ? .dark : .light)
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }
                 .tint(AppColor.Label.first)
                 .background(AppColor.Background.first)
-                .animation(.linear(duration: 0.2), value: constant.isDarkMode)
-                .environmentObject(coreData)
-                .environmentObject(constant)
-                .environment(\.managedObjectContext, coreData.container.viewContext)
+                .environmentObject(Constants.shared)
+                .environmentObject(WidgetCoreData.shared)
+                .environment(\.managedObjectContext, WidgetCoreData.shared.container.viewContext)
         }
     }
 
@@ -93,12 +83,10 @@ extension UICollectionReusableView {
         get { .clear }
         set { }
 
-        // default separators use same color as background
-        // so to have it same but new (say red) it can be
-        // used as below, otherwise we just need custom separators
-        //
+        // 기본 구분 기호는 배경과 동일한 색상을 사용합니다.
+        // 동일하지만 새롭도록 하려면(예: 빨간색)
+        // 아래와 같이 사용됩니다. 그렇지 않으면 사용자 정의 구분자가 필요합니다.
         // set { super.backgroundColor = .red }
 
     }
 }
-

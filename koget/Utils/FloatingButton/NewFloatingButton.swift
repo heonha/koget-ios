@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct NewFloatingButton: View {
     
@@ -21,8 +22,7 @@ struct NewFloatingButton: View {
                 Spacer().layoutPriority(10)
                 FloatingMenu(isOpen: $isOpen,
                              buttons: [
-                                FloatingMenuButton(systemName: "plus.circle.fill", text: "위젯 만들기", link: .add,  type: .navigationLink),
-                                FloatingMenuButton(systemName: "mail", text: "문의하기", link: .contact,  type: .navigationLink),
+                                FloatingMenuButton(systemName: .plusCircleFill, text: "위젯 만들기", link: .add,  type: .navigationLink),
                              ].reversed())
                 .opacity(0.95)
             }

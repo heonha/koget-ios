@@ -8,9 +8,9 @@
 import SwiftUI
 import CoreData
 import FloatingButton
-import ToastUI
 import SwiftEntryKit
 import WelcomeSheet
+import SFSafeSymbols
 
 // 메인 뷰
 struct MainWidgetView: View {
@@ -21,57 +21,57 @@ struct MainWidgetView: View {
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
     @EnvironmentObject var constant: Constants
-
+    
     var body: some View {
         NavigationView {
             ZStack {
-                    VStack {
-                        NoticePage()
-                            .padding(.vertical, 4)
-                        // 링크위젯
-                        LinkWidgetView(viewModel: viewModel, coreData: _coreData)
-                    }
-                    .background(AppColor.Background.first)
-                    NewFloatingButton(isOpen: $isOpen)
+                VStack {
+                    NoticePage()
+                        .padding(.vertical, 4)
+                    // 링크위젯
+                    LinkWidgetView(viewModel: viewModel, coreData: _coreData)
                 }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        Image("KogetClear")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
+                .background(AppColor.Background.first)
+                NewFloatingButton(isOpen: $isOpen)
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("KogetClear")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    
+                    Toggle(isOn: $constant.isDarkMode) {
                     }
-                    ToolbarItem(placement: .navigationBarLeading) {
-
-                        Toggle(isOn: $constant.isDarkMode) {
+                    .toggleStyle(DarkModeToggleStyle())
+                    
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if !$coreData.linkWidgets.wrappedValue.isEmpty {
+                        
+                        Button {
+                            viewModel.isGridView.toggle()
+                        } label: {
+                            Image(systemSymbol: viewModel.isGridView ? SFSymbol.listBullet : SFSymbol.squareGrid3x3)
+                                .foregroundColor(AppColor.Label.first)
+                                .opacity(0.9)
+                                .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
                         }
-                        .toggleStyle(DarkModeToggleStyle())
-
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        if !$coreData.linkWidgets.wrappedValue.isEmpty {
-
-                            Button {
-                                viewModel.isGridView.toggle()
-                            } label: {
-                                Image(systemName: viewModel.isGridView ? "list.bullet" : "square.grid.3x3")
-                                    .foregroundColor(AppColor.Label.first)
-                                    .opacity(0.9)
-                                    .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
-                            }
-                        }
                     }
                 }
-                .welcomeSheet(isPresented: $viewModel.isFirstRun, isSlideToDismissDisabled: true, pages: HelperSheetViewModel.shared.pages)
-                .onTapGesture {
-                    isOpen = false
-                }
-                .onDisappear {
-                    isOpen = false
+            }
+            .welcomeSheet(isPresented: $viewModel.isFirstRun, isSlideToDismissDisabled: true, pages: HelperSheetViewModel.shared.pages)
+            .onTapGesture {
+                isOpen = false
+            }
+            .onDisappear {
+                isOpen = false
             }
         }
-
+        
     }
 }
 

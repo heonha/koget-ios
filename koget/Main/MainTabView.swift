@@ -6,26 +6,22 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct MainTabView: View {
-    @StateObject var viewModel = MainWidgetViewModel.shared
-
-    @State var index = 0
+    @ObservedObject var viewModel = MainWidgetViewModel.shared
 
     var body: some View {
-        TabView(selection: $index) {
+        TabView {
             MainWidgetView(viewModel: viewModel)
                 .tabItem {
-                    Image(systemName: "rectangle.grid.1x2")
-                    Text("위젯")
+                    Image(systemSymbol: SFSymbol.rectangleGrid1x2)
                 }
             SettingMenu()
                 .tabItem {
-                    Image(systemName: "gearshape")
-                    Text("설정")
+                    Image(systemSymbol: SFSymbol.gearshape)
                 }
         }
-
     }
 }
 

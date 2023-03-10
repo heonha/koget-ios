@@ -11,8 +11,6 @@ struct EmptyGrid: View {
     var body: some View {
         ZStack {
             VStack {
-
-                
                 NavigationLink {
                     MakeWidgetView()
                     

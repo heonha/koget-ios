@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftEntryKit
 import Localize_Swift
+import SFSafeSymbols
 
 struct EKMaker {
 
@@ -73,7 +74,7 @@ struct EKMaker {
 
         let title = EKProperty.LabelContent(text: title.localized(), style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .black))
         let description = EKProperty.LabelContent(text: subtitle.localized(), style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray)))
-        let image = EKProperty.ImageContent(image: UIImage(named: named) ?? UIImage(systemName: "questionmark.circle")!, size: size)
+        let image = EKProperty.ImageContent(image: UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle), size: size)
         let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
 
@@ -84,7 +85,7 @@ struct EKMaker {
 
         let title = EKProperty.LabelContent(text: title.localized(), style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .white))
         let description = EKProperty.LabelContent(text: subtitle.localized(), style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.white)))
-        let image = EKProperty.ImageContent(image: UIImage(named: named) ?? UIImage(systemName: "questionmark.circle")!, size: size)
+        let image = EKProperty.ImageContent(image: UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle), size: size)
         let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
 
@@ -168,8 +169,7 @@ struct EKMaker {
 
         let title = EKProperty.LabelContent(text: title.localized(), style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .black))
         let description = EKProperty.LabelContent(text: subtitle.localized(), style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray)))
-        // let image = EKProperty.ImageContent(image: UIImage(named: named) ?? UIImage(systemName: "questionmark.fill")!, size: size)
-        let image = UIImage(named: named) ?? UIImage(systemName: "questionmark.fill")!
+        let image = UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle)
         // let themeImage = EKPopUpMessage.ThemeImage(image: image, position: .centerToTop(offset: 12))
         var themes: EKPopUpMessage.ThemeImage? = nil
         themes = .init(.init(image: .thumb(with: image, edgeSize: 100)))
@@ -179,7 +179,7 @@ struct EKMaker {
     }
 
     static func voidAction() -> Void {
-        debugPrint("btn Action")
+        // debugPrint("btn Action")
     }
 }
 

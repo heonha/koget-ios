@@ -50,5 +50,3 @@ extension UIDevice {
         return false
     }
 }
-
-
