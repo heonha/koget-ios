@@ -56,7 +56,7 @@ struct MakeWidgetView: View {
                             assetList
                         }
                         // 위젯 아이콘
-                        PhotoEditMenu(isEditingMode: .constant(false), viewModel: viewModel)
+                        PhotoEditMenu(isEditingMode: .constant(true), viewModel: viewModel)
                             .shadow(radius: 0.7, x: 0.1, y: 0.1)
                             .padding(.horizontal, 16)
                         // 텍스트필드 그룹

@@ -45,9 +45,9 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
                 } else {
                     ZStack {
                         Circle()
-                            .fill(.white)
+                            .fill(constant.isDarkMode ? .black : .white)
                             .opacity(constant.isDarkMode ? 0.3 : 1.0)
-                        Image("Koget")
+                        Image("KogetClear")
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
