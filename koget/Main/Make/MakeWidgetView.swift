@@ -34,56 +34,59 @@ struct MakeWidgetView: View {
     var body: some View {
         
         GeometryReader { proxy in
-            ZStack {
-                
-                //MARK: - Background
-                AppColor.Background.second
-                    .ignoresSafeArea(edges: .bottom)
-                Rectangle()
-                    .foregroundColor(AppColor.Background.first)
-                //MARK: - Contents
-                VStack(spacing: 16) {
-                    // 앱 리스트에서 가져오기
-                    Button {
-                        isAppPickerPresent.toggle()
-                    } label: {
-                        fetchAppListLabel
-                    }
-                    .frame(width: deviceSize.width - 32, height: 40)
-                    .padding(.vertical)
-                    .sheet(isPresented: $isAppPickerPresent) {
-                        assetList
-                    }
-                    // 위젯 아이콘
-                    ChooseImageMenuButton(viewModel: viewModel, appPicker: $assetList, widgetType: $widgetType)
-                        .shadow(radius: 0.7, x: 0.1, y: 0.1)
-                    
-                    // 텍스트필드 그룹
-                    MakeWidgetTextFieldView(viewModel: viewModel)
+            ScrollView {
+                ZStack {
 
-                    if viewModel.image != nil {
-                        LinkWidgetOpacityPicker(viewModel: viewModel, isPresentQustionmark: $isPresentQustionmark)
-                    }
-
-                    // 만들기, 뒤로가기 버튼
-                    makeAndBackButton
-                        .padding(.horizontal, 16)
-                        .alert("이미지 확인", isPresented: $viewModel.isImageError) {
-                            defaultImageCheckAlert
-                        } message: {
-                            Text("아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?")
+                    //MARK: - Background
+                    AppColor.Background.second
+                        .ignoresSafeArea(edges: .bottom)
+                    Rectangle()
+                        .foregroundColor(AppColor.Background.first)
+                    //MARK: - Contents
+                    VStack(spacing: 16) {
+                        // 앱 리스트에서 가져오기
+                        Button {
+                            isAppPickerPresent.toggle()
+                        } label: {
+                            fetchAppListLabel
                         }
-                    Spacer()
+                        .frame(width: deviceSize.width - 32, height: 40)
+                        .padding(.vertical)
+                        .sheet(isPresented: $isAppPickerPresent) {
+                            assetList
+                        }
+                        // 위젯 아이콘
+                        ChooseImageMenuButton(viewModel: viewModel, appPicker: $assetList, widgetType: $widgetType)
+                            .shadow(radius: 0.7, x: 0.1, y: 0.1)
+                            .padding(.horizontal, 16)
+                        // 텍스트필드 그룹
+                        MakeWidgetTextFieldView(viewModel: viewModel)
+                            .padding(.horizontal, 16)
+
+                        if viewModel.image != nil {
+                            LinkWidgetOpacityPicker(viewModel: viewModel, isPresentQustionmark: $isPresentQustionmark)
+                                .padding(.horizontal, 16)
+                        }
+                        // 만들기, 뒤로가기 버튼
+                        makeAndBackButton
+                            .padding(.horizontal, 16)
+                            .alert("이미지 확인", isPresented: $viewModel.isImageError) {
+                                defaultImageCheckAlert
+                            } message: {
+                                Text("아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?")
+                            }
+                        Spacer()
+                    }
+                    .navigationTitle("위젯 만들기")
+                    .navigationBarTitleDisplayMode(.large)
                 }
-                .navigationTitle("위젯 만들기")
-                .navigationBarTitleDisplayMode(.large)
-            }
-            .onTapGesture {
-                hideKeyboard()
-                isPresentQustionmark = false
-            }
-            .onAppear {
-                assetList = WidgetAssetList(viewModel: viewModel)
+                .onTapGesture {
+                    hideKeyboard()
+                    isPresentQustionmark = false
+                }
+                .onAppear {
+                    assetList = WidgetAssetList(viewModel: viewModel)
+                }
             }
         }
     }
@@ -119,7 +122,7 @@ struct MakeWidgetView: View {
                     }
                 }
             } label: {
-                ButtonWithText(title: "완료", titleColor: .white, color: AppColor.kogetRed)
+                ButtonWithText(title: "완료", titleColor: .white, color: AppColor.kogetBlue)
             }
             // 돌아가기 버튼
             Button {
@@ -144,12 +147,12 @@ struct MakeWidgetView: View {
     }
 
 }
-// 
-// struct AddWidgetView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         NavigationView {
-//             MakeWidgetView(assetList: WidgetAssetList(viewModel: MakeWidgetViewModel()))
-//                 .environmentObject(Constants.shared)
-//         }
-//     }
-// }
+
+struct AddWidgetView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            MakeWidgetView(assetList: WidgetAssetList(viewModel: MakeWidgetViewModel()))
+                .environmentObject(Constants.shared)
+        }
+    }
+}

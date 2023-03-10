@@ -30,7 +30,7 @@ struct EditTextField: View {
                     // 편집 모드
                     ZStack {
                         RoundedRectangle(cornerRadius: 5)
-                            .fill(constant.isDarkMode ? AppColor.Background.first : AppColor.Background.second)
+                            .fill(AppColor.Background.third)
                             .frame(height: 40)
                         TextField(placeHolder, text: $text)
                             .frame(height: 35)
@@ -44,7 +44,7 @@ struct EditTextField: View {
                     // 뷰어 모드
                     ZStack {
                         RoundedRectangle(cornerRadius: 5)
-                            .fill(constant.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
+                            .fill(AppColor.Background.second)
                             .frame(height: 40)
                         TextField(placeHolder, text: $text)
                             .frame(height: 35)

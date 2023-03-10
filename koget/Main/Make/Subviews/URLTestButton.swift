@@ -10,7 +10,7 @@ import Localize_Swift
 
 struct URLTestButton: View {
     
-    var title: LocalizedStringKey = "URL 테스트"
+    var title: LocalizedStringKey = "테스트"
 
     @ObservedObject var viewModel: MakeWidgetViewModel
 
@@ -33,21 +33,27 @@ struct URLTestButton: View {
     var body: some View {
         HStack {
             Spacer()
-            resultTextView
-            
             //MARK: 테스트 버튼
             Button {
                 urlCheckAction()
             } label: {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .foregroundStyle(AppColor.Label.third)
-                    Text(title)
-                        .foregroundColor(.white)
-                        .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                if canOpenResult == nil {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 5)
+                            .foregroundStyle(AppColor.Label.third)
+                        Text(title)
+                            .foregroundColor(.white)
+                            .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                    }
+                    .frame(width: 100, height: 25)
+
+                } else {
+                    HStack {
+                        resultTextView
+                    }
+                    .frame(width: 25, height: 25)
                 }
             }
-            .frame(width: 120, height: 25)
             .alert(alertTitle, isPresented: $isAlertPresent) {} message: {
                 Text(alertMessage)
             }
@@ -77,13 +83,13 @@ struct URLTestButton: View {
         ZStack {
             if let canOpen = canOpenResult {
                 if canOpen {
-                    Text("실행성공")
+                    Image(systemSymbol: .checkmarkCircleFill)
                         .foregroundColor(.green)
-                        .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                        .font(.custom(CustomFont.NotoSansKR.medium, size: 20))
                 } else {
-                    Text("실행실패")
+                    Image(systemSymbol: .xmarkCircle)
                         .foregroundColor(.red)
-                        .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                        .font(.custom(CustomFont.NotoSansKR.medium, size: 20))
                 }
             }
         }

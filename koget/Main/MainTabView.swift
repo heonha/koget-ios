@@ -9,12 +9,10 @@ import SwiftUI
 import SFSafeSymbols
 
 struct MainTabView: View {
-    @StateObject var viewModel = MainWidgetViewModel.shared
-
-    @State var index = 0
+    @ObservedObject var viewModel = MainWidgetViewModel.shared
 
     var body: some View {
-        TabView(selection: $index) {
+        TabView {
             MainWidgetView(viewModel: viewModel)
                 .tabItem {
                     Image(systemSymbol: SFSymbol.rectangleGrid1x2)

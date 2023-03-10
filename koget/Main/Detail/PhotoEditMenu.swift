@@ -24,18 +24,22 @@ struct PhotoEditMenu: View {
             }
         } label: {
             ZStack {
-                Color.white
-
-                Image(uiImage: viewModel.image ?? UIImage(named: "plus.circle")!)
+                if viewModel.isOpacitySliderEditing {
+                    Color.clear
+                } else {
+                    Color.white
+                }
+                Image(uiImage: viewModel.image ?? UIImage(systemSymbol: .questionmark))
                     .resizable()
                     .scaledToFit()
             }
-            .frame(width: 90, height: 90)
             .clipShape(Circle())
+            .grayscale(viewModel.isOpacitySliderEditing ? 1 : 0)
+            .opacity(viewModel.isOpacitySliderEditing ? viewModel.opacityValue : 1)
             .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
             .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
-            .shadow(color: isEditingMode ? .blue : .clear, radius: 3)
         }
+        .frame(width: 90, height: 90)
         .sheet(isPresented: $isPhotoViewPresent) {
             PhotoPicker(detailModel: viewModel)
         }

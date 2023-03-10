@@ -25,6 +25,8 @@ class HelperSheetViewModel: ObservableObject {
     @Published var showUseLockscreen = false
     @Published var showContactView = false
     @Published var showAssetRequestView = false
+    @Published var showHowtoUseView = false
+
 
     let rawContents = [
         WelcomeSheetContent(title: "코젯을 소개합니다!", rows: [

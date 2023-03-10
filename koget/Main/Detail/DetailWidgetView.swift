@@ -31,19 +31,19 @@ struct DetailWidgetView: View {
             if constant.isDarkMode {
                 AppColor.Background.second
             } else {
-                AppColor.Background.first
+                AppColor.Background.second
             }
             VStack {
                 ZStack {
                     // 제목
+                    AppColor.Background.third
                     HStack(alignment: .center) {
                         Text(viewModel.name)
                             .frame(maxWidth: .infinity, maxHeight: 45, alignment: .center)
                             .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.init(uiColor: .white))
+                            .foregroundColor(AppColor.Label.first)
                             .padding(.horizontal, 35)
                     }
-                    .background(AppColor.Background.third)
 
                     // MARK: - 상단 바
                     HStack {
@@ -53,7 +53,7 @@ struct DetailWidgetView: View {
                         } label: {
                             Image(systemSymbol: .trash)
                                 .font(.system(size: 18, weight: .semibold))
-                                .foregroundColor(.red)
+                                .foregroundColor(AppColor.kogetRed)
                                 .fontWeight(.bold)
                         }
                         .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
@@ -70,12 +70,15 @@ struct DetailWidgetView: View {
                         } label: {
                             Image(systemSymbol: .xmark)
                                 .font(.system(size: 18, weight: .semibold))
-                                .foregroundColor(.white)
+                                .foregroundColor(AppColor.Label.second)
+
                         }
                     }
                     .padding(.horizontal, 8)
                 }
                 .frame(height: 45)
+
+                Spacer()
 
                 // MARK: - 아이콘
                 PhotoEditMenu(isEditingMode: $viewModel.isEditingMode,
@@ -83,6 +86,8 @@ struct DetailWidgetView: View {
                               viewModel: viewModel)
                 .shadow(radius: 1, x: 0.2, y: 0.3)
                 .padding(4)
+
+                Spacer()
 
                 // MARK: - 이름, URL
                 VStack(spacing: 16) {
@@ -113,7 +118,7 @@ struct DetailWidgetView: View {
                                     .foregroundColor(AppColor.Label.first)
                             })
                             .frame(width: deviceSize.width * 0.5, height: 30)
-                            .offset(x: -80, y: -40)
+                            .offset(x: 80, y: -40)
                             .opacity( isPresentQustionmark ? 1.0 : 0.0 )
                             .animation(.linear(duration: 0.2), value: isPresentQustionmark)
                         )
@@ -121,7 +126,8 @@ struct DetailWidgetView: View {
 
                         ZStack {
                             Text("\(Int(viewModel.opacityValue * 100))%")
-                                .font(.custom(CustomFont.NotoSansKR.light, size: 18))
+                                .font(.custom(viewModel.isOpacitySliderEditing ? CustomFont.NotoSansKR.medium : CustomFont.NotoSansKR.bold, size: 18))
+                                .foregroundColor(viewModel.isOpacitySliderEditing ? AppColor.kogetBlue : AppColor.Label.first)
                         }
 
                         Spacer()
@@ -129,10 +135,8 @@ struct DetailWidgetView: View {
                     .frame(height: 40)
                     ZStack {
                         RoundedRectangle(cornerRadius: 8)
-                            .fill(viewModel.isEditingMode
-                                  ? (constant.isDarkMode ? AppColor.Background.third : AppColor.Background.second)
-                                  : (constant.isDarkMode ? AppColor.Background.second : AppColor.Background.first))
-                        OpacitySlider(viewModel: viewModel, widthRatio: 0.3)
+                            .fill(viewModel.isEditingMode ? AppColor.Background.third : AppColor.Background.second)
+                        DetailOpacitySlider(viewModel: viewModel, widthRatio: 0.3)
                             .offset(x: 0, y: viewModel.isEditingMode ? 0 : -15)
                             .opacity(viewModel.isEditingMode ? 1 : 0)
                     }
@@ -190,8 +194,8 @@ struct DetailWidgetView: View {
                     .fill(viewModel.isEditingMode ? AppColor.kogetBlue : AppColor.Background.third)
                 Text(viewModel.isEditingMode ? "편집 완료" : "위젯 편집")
                     .foregroundColor(viewModel.isEditingMode
-                                     ? AppColor.Label.first
-                                     : (constant.isDarkMode ? AppColor.Label.first : AppColor.Background.first))
+                                     ? (constant.isDarkMode ? AppColor.Label.first : AppColor.Background.first)
+                                     : AppColor.Label.first )
                     .fontWeight(.bold)
                     .font(.system(size: 17))
             }
@@ -200,11 +204,11 @@ struct DetailWidgetView: View {
         .frame(width: 200, height: 35)
     }
 }
-// 
-// struct EditWidgetView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         NavigationView {
-//             DetailWidgetView(selectedWidget: DeepLink.example)
-//         }
-//     }
-// }
+
+struct EditWidgetView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            DetailWidgetView(selectedWidget: DeepLink.example)
+        }
+    }
+}

@@ -14,7 +14,6 @@ struct LockscreenHelper: View {
     
     var body: some View {
         
-        GeometryReader { (geometry) in
             ZStack {
                 AppColor.Background.first
                 
@@ -28,11 +27,11 @@ struct LockscreenHelper: View {
                     ZStack {
                         Color.black
                         VideoPlayer(player: player)
-                            .frame(height: geometry.size.height / 2.5)
+                            .frame(height: deviceSize.height / 2.5)
                             .cornerRadius(12)
                         
                     }
-                    .frame(height: geometry.size.height / 2.2)
+                    .frame(height: deviceSize.height / 2.2)
                     .cornerRadius(12)
                     
                     ZStack {
@@ -60,7 +59,7 @@ struct LockscreenHelper: View {
                             .tabViewStyle(.page(indexDisplayMode: .automatic))
                         }
                     }
-                    .frame(height: geometry.size.height / 3)
+                    .frame(height: deviceSize.height / 3)
                 }
                 .padding(.horizontal)
                 .navigationBarTitleDisplayMode(.inline)
@@ -76,8 +75,7 @@ struct LockscreenHelper: View {
                     player.play()
                 })
             }
-        }
-        
+
     }
 }
 

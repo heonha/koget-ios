@@ -25,22 +25,26 @@ struct ChooseImageMenuButton: View {
                 }) {
                     Label("이미지 선택", systemSymbol: .photo)
                 }
-                
             } label: {
                 
                 switch widgetType {
                 case .image:
                     if let image = viewModel.image {
                         ZStack {
-                            AppColor.Background.first
+                            if viewModel.isOpacitySliderEditing {
+                                Color.clear
+                            } else {
+                                Color.white
+                            }
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFit()
                         }
-                        .frame(width: 100, height: 100)
                         .clipShape(Circle())
                         .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
                         .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
+                        .opacity(viewModel.isOpacitySliderEditing ? viewModel.opacityValue : 1)
+                        .grayscale(viewModel.isOpacitySliderEditing ? 1 : 0)
                     } else {
                         ZStack {
                             Circle()
@@ -56,10 +60,11 @@ struct ChooseImageMenuButton: View {
                                 .shadow(radius: 1)
                                 .font(.system(size: 16, weight: .bold))
                         }
-                        .frame(width: 100, height: 100)
                     }
                 }
-            }.sheet(isPresented: $isAppPickerPresent) {
+            }
+            .frame(width: 80, height: 80)
+            .sheet(isPresented: $isAppPickerPresent) {
                 appPicker
             }
             .sheet(isPresented: $isPhotoPickerPresent) {

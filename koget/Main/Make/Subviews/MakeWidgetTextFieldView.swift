@@ -27,15 +27,16 @@ struct MakeWidgetTextFieldView: View {
             CustomTextfield(title: nameTitle, placeholder: namePlaceholder, systemName: .tag, text: $viewModel.name, viewModel: viewModel, equals: .name)
             
             CustomTextfield(title: urlTitle, placeholder: urlPlaceholder, systemName: .link, text: $viewModel.url, viewModel: viewModel, equals: .url)
-            if viewModel.url != "" {
-                withAnimation {
-                    HStack {
-                        Spacer()
-                        URLTestButton(viewModel: viewModel)
-                            .padding(.trailing)
+                .overlay {
+                    if viewModel.url != "" {
+                        withAnimation {
+                            HStack {
+                                Spacer()
+                                URLTestButton(viewModel: viewModel)
+                            }
+                        }
                     }
                 }
-            }
         }
     }
 }

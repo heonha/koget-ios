@@ -24,10 +24,8 @@ struct SettingMenu: View, AppStoreReviewable {
                     Spacer()
                     List {
                         Section("사용방법") {
-                            NavigationLink {
-                                LockscreenHelper()
-                            } label: {
-                                Label("위젯을 잠금화면에 등록하는 방법", systemSymbol: .appsIphoneBadgePlus)
+                            SettingMenuButton(title: "위젯을 잠금화면에 등록하는 방법", imageType: .symbol, systemSymbol: .appsIphoneBadgePlus, imageColor: AppColor.Label.second) {
+                                viewModel.showHowtoUseView.toggle()
                             }
 
                             SettingMenuButton(title: "소개화면 다시보기", imageType: .symbol, systemSymbol: .docAppend, imageColor: AppColor.Label.second) {
@@ -36,7 +34,7 @@ struct SettingMenu: View, AppStoreReviewable {
                         }
 
                         Section("소통하기") {
-                            SettingMenuButton(title: "앱 추가요청", imageType: .symbol, systemSymbol: .docAppend, imageColor: AppColor.Label.second) {
+                            SettingMenuButton(title: "앱 추가요청", imageType: .symbol, systemSymbol: .noteTextBadgePlus, imageColor: AppColor.Label.second) {
                                 viewModel.showAssetRequestView.toggle()
                             }
 
@@ -71,6 +69,9 @@ struct SettingMenu: View, AppStoreReviewable {
             })
             .sheet(isPresented: $viewModel.showAssetRequestView, content: {
                 AssetRequestView()
+            })
+            .sheet(isPresented: $viewModel.showHowtoUseView, content: {
+                LockscreenHelper()
             })
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

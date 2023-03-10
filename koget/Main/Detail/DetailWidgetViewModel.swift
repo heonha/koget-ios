@@ -36,7 +36,7 @@ class DetailWidgetViewModel: ObservableObject {
     @Published var url: String = ""
     @Published var image: UIImage?
     @Published var opacityValue: Double = 1.0
-    @Published var isEditing: Bool = false
+    @Published var isOpacitySliderEditing: Bool = false
     @Published var isEditingMode = false
     @Published var nameMaxCountError = false
 
@@ -45,7 +45,7 @@ class DetailWidgetViewModel: ObservableObject {
     func editWidgetData(widget: DeepLink) {
         WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, opacity: opacityValue, widget: widget)
     }
-    
+
     func checkURLSyntex() -> Bool {
         
         if self.url.contains("://") {

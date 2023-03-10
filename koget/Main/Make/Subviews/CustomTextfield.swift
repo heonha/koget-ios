@@ -60,7 +60,6 @@ struct CustomTextfield: View {
                 }
             }
         }
-        .padding(.horizontal, 16)
     }
 }
 

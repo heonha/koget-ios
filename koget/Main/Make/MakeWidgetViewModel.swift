@@ -22,7 +22,8 @@ final class MakeWidgetViewModel: ObservableObject {
     let nameStringLimit: Int = 14
     let defaultImage = UIImage(named: "KogetClear")!
     @Published var isImageError = false
-    @Published var isEditing = false
+    @Published var isOpacitySliderEditing = false
+    @Published var moreOptionOn = false
     @Published var name: String = "" {
         didSet {
             if name.count > nameStringLimit {
