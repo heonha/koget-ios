@@ -15,7 +15,7 @@ enum MakeWidgetErrorType: String {
     case urlError = "URL에 문자열 :// 이 반드시 들어가야 합니다."
 }
 
-final class MakeWidgetViewModel: ObservableObject {
+final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol {
 
     @Published var alertView = UIView()
 

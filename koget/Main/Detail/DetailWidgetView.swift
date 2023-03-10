@@ -136,7 +136,7 @@ struct DetailWidgetView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 8)
                             .fill(viewModel.isEditingMode ? AppColor.Background.third : AppColor.Background.second)
-                        DetailOpacitySlider(viewModel: viewModel, widthRatio: 0.3)
+                        OpacitySlider(viewModel: viewModel, widthRatio: 0.3)
                             .offset(x: 0, y: viewModel.isEditingMode ? 0 : -15)
                             .opacity(viewModel.isEditingMode ? 1 : 0)
                     }

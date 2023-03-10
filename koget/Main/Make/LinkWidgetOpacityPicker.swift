@@ -70,7 +70,7 @@ struct LinkWidgetOpacityPicker: View {
                 HStack {
                     Spacer()
                     VStack {
-                        MakeOpacitySlider(viewModel: viewModel, widthRatio: pickerWidthRatio)
+                        OpacitySlider(viewModel: viewModel, widthRatio: pickerWidthRatio)
                     }
                     Spacer()
                 }

@@ -12,7 +12,6 @@
 		390B5CBA29B1A70600B61E35 /* NoticePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CB929B1A70600B61E35 /* NoticePage.swift */; };
 		390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CBB29B1AED900B61E35 /* MainTabView.swift */; };
 		390B5CBE29B20B0A00B61E35 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */; };
-		3919538529BB162100E74DEC /* MakeOpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3919538429BB162100E74DEC /* MakeOpacitySlider.swift */; };
 		39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
 		39223B6229A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
 		39223B6329A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
@@ -41,7 +40,7 @@
 		395A0F0429AEF0C100D34E0D /* AppAdditionContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0329AEF0C100D34E0D /* AppAdditionContactViewModel.swift */; };
 		395A0F0629AEF18700D34E0D /* AdminContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A0F0529AEF18700D34E0D /* AdminContactView.swift */; };
 		39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */; };
-		39691F4629ACDA58002BD874 /* DetailOpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4529ACDA58002BD874 /* DetailOpacitySlider.swift */; };
+		39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4529ACDA58002BD874 /* OpacitySlider.swift */; };
 		39691F4829ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */; };
 		396BCB6729AE1CC600B1E759 /* Koget_AdminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396BCB6629AE1CC600B1E759 /* Koget_AdminApp.swift */; };
 		396BCB6929AE1CC600B1E759 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396BCB6829AE1CC600B1E759 /* ContentView.swift */; };
@@ -206,7 +205,6 @@
 		390B5CB929B1A70600B61E35 /* NoticePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticePage.swift; sourceTree = "<group>"; };
 		390B5CBB29B1AED900B61E35 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
-		3919538429BB162100E74DEC /* MakeOpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeOpacitySlider.swift; sourceTree = "<group>"; };
 		39223B6429A5E12800F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39223B7129A5E34600F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationExtensions.swift; sourceTree = "<group>"; };
@@ -224,7 +222,7 @@
 		395A0F0129AEF09900D34E0D /* AppAdditionContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdditionContact.swift; sourceTree = "<group>"; };
 		395A0F0329AEF0C100D34E0D /* AppAdditionContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdditionContactViewModel.swift; sourceTree = "<group>"; };
 		395A0F0529AEF18700D34E0D /* AdminContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminContactView.swift; sourceTree = "<group>"; };
-		39691F4529ACDA58002BD874 /* DetailOpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOpacitySlider.swift; sourceTree = "<group>"; };
+		39691F4529ACDA58002BD874 /* OpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacitySlider.swift; sourceTree = "<group>"; };
 		39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetOpacityPicker.swift; sourceTree = "<group>"; };
 		396BCB6429AE1CC600B1E759 /* Koget-Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Koget-Admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		396BCB6629AE1CC600B1E759 /* Koget_AdminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Koget_AdminApp.swift; sourceTree = "<group>"; };
@@ -460,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				390B5CB929B1A70600B61E35 /* NoticePage.swift */,
+				39691F4529ACDA58002BD874 /* OpacitySlider.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -557,7 +556,6 @@
 				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
 				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
 				39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */,
-				3919538429BB162100E74DEC /* MakeOpacitySlider.swift */,
 				3900CCE72996851700092AD0 /* WidgetAssets */,
 				3A6449BB297E428C002A710C /* Subviews */,
 			);
@@ -570,7 +568,6 @@
 				3ABFEFC0292F136B00455730 /* DetailWidgetView.swift */,
 				39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */,
 				3A00CA652931EFBE004FBF80 /* EditTextField.swift */,
-				39691F4529ACDA58002BD874 /* DetailOpacitySlider.swift */,
 				3A0C03412935131600868B70 /* PhotoEditMenu.swift */,
 				3A8339D62932165B00DC9527 /* EditingToggleButton.swift */,
 				3A8339D82932167500DC9527 /* DetailWidgetButton.swift */,
@@ -1070,7 +1067,7 @@
 			files = (
 				3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */,
 				3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */,
-				39691F4629ACDA58002BD874 /* DetailOpacitySlider.swift in Sources */,
+				39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */,
 				390853B829A3949F006E8311 /* AssetRequestViewModel.swift in Sources */,
 				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,
 				3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */,
@@ -1116,7 +1113,6 @@
 				3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
 				39691F4829ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift in Sources */,
-				3919538529BB162100E74DEC /* MakeOpacitySlider.swift in Sources */,
 				3AE6AB4329617F7B000F2C1D /* ChooseImageMenuButton.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,

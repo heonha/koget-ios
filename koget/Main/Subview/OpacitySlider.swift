@@ -1,18 +1,24 @@
 //
-//  MakeOpacitySlider.swift
+//  OpacitySlider.swift
 //  koget
 //
-//  Created by Heonjin Ha on 2023/03/10.
+//  Created by Heonjin Ha on 2023/02/27.
 //
 
 import SwiftUI
 
-struct MakeOpacitySlider: View {
+protocol VMOpacityProtocol: ObservableObject {
+    var opacityValue: Double { get set}
+    var isOpacitySliderEditing: Bool { get set}
+}
 
-    @StateObject var viewModel: MakeWidgetViewModel
+struct OpacitySlider<V: VMOpacityProtocol>: View {
 
+    @StateObject var viewModel: V
+    
     var widthRatio: CGFloat
     var body: some View {
+
             Slider(
                 value: $viewModel.opacityValue,
                 in: 0.0...1.0,
@@ -21,26 +27,24 @@ struct MakeOpacitySlider: View {
                 Text("Speed")
             } minimumValueLabel: {
                 Text("투명")
-                    .font(.system(size: 13))
+                    .font(.system(size: 12))
                     .foregroundColor(AppColor.Label.second)
             } maximumValueLabel: {
                 Text("불투명")
-                    .font(.system(size: 13))
+                    .font(.system(size: 12))
                     .foregroundColor(AppColor.Label.second)
-
             } onEditingChanged: { editing in
                 viewModel.isOpacitySliderEditing = editing
             }
             .tint(AppColor.kogetBlue)
-            .padding(.horizontal, 4)
-            .padding(.vertical, 4)
-
-        .background(AppColor.Background.second)
-        .cornerRadius(8)
+            .padding(.horizontal)
+            .padding(.vertical, 2)
+            .cornerRadius(8)
     }
 }
-struct MakeOpacitySlider_Previews: PreviewProvider {
+
+struct OpacitySlider_Previews: PreviewProvider {
     static var previews: some View {
-        MakeOpacitySlider(viewModel: MakeWidgetViewModel(), widthRatio: 0.3)
+        OpacitySlider(viewModel: DetailWidgetViewModel(), widthRatio: 1)
     }
 }
