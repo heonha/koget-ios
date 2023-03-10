@@ -54,7 +54,6 @@ struct WidgetIconCell: View {
                     } label: {
                         Label("실행하기", systemSymbol: .arrowUpLeftSquareFill)
                     }
-
                     Button {
                         self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
                             DetailWidgetView(selectedWidget: widget)
@@ -78,8 +77,8 @@ struct WidgetIconCell: View {
                 .alert("\(widget.name ?? "알수없음")", isPresented: $isDelete, actions: {
                     Button("삭제", role: .destructive) {
                         coreData.deleteData(data: widget)
-                        self.dismiss()
-                        self.displayToast()
+                        dismiss()
+                        displayToast()
                         isDelete = false
                     }
                     Button("취소", role: .cancel) {
@@ -166,7 +165,7 @@ struct WidgetIconCell: View {
     }
 
     func displayToast() {
-        SwiftEntryKit.display(entry: deleteAlertView, using: EKMaker.redAlertAttribute)
+        SwiftEntryKit.display(entry: deleteAlertView, using: EKMaker.whiteAlertAttribute)
     }
 }
 

@@ -74,7 +74,6 @@ class WidgetCoreData: ObservableObject {
         widget.updatedDate = Date()
         widget.opacity = NSNumber(floatLiteral: opacity)
         saveData()
-        loadData()
     }
     
     func getStoredDataForDeepLink() -> [DeepLink]? {

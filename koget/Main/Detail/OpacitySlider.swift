@@ -23,21 +23,18 @@ struct OpacitySlider: View {
             } minimumValueLabel: {
                 Text("투명")
                     .font(.system(size: 12))
-                    .foregroundColor(.gray)
+                    .foregroundColor(AppColor.Label.second)
             } maximumValueLabel: {
                 Text("불투명")
                     .font(.system(size: 12))
-                    .foregroundColor(.gray)
-
+                    .foregroundColor(AppColor.Label.second)
             } onEditingChanged: { editing in
                 viewModel.isEditing = editing
             }
-            .tint(AppColor.Behavior.errorRed)
+            .tint(AppColor.kogetBlue)
             .padding(.horizontal)
-            .padding(.vertical, 4)
-
-        .background(AppColor.Background.second)
-        .cornerRadius(8)
+            .padding(.vertical, 2)
+            .cornerRadius(8)
     }
 }
 

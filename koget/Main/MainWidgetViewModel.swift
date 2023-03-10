@@ -10,8 +10,6 @@ import SwiftUI
 class MainWidgetViewModel: ObservableObject {
     
     //MARK: Published Variables
-    // @Published var makeSuccessful: Bool = false
-    // @Published var deleteSuccessful: Bool = false
     @Published var isEditingMode: Bool = false
     @Published var selection = [DeepLink]()
     @Published var isEditMode: EditMode = .inactive

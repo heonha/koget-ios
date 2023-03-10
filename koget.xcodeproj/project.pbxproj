@@ -72,6 +72,8 @@
 		39ED274F29B98707001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274E29B98707001C368E /* SFSafeSymbols */; };
 		39ED275129B9871C001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275029B9871C001C368E /* SFSafeSymbols */; };
 		39ED275329B9D780001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275229B9D780001C368E /* SFSafeSymbols */; };
+		39EE797829BA095800B8D519 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 39EE797729BA095800B8D519 /* SwiftDate */; };
+		39EE797A29BA097C00B8D519 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 39EE797929BA097C00B8D519 /* SwiftDate */; };
 		39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5029968906001F9D1E /* EmptyGrid.swift */; };
 		39F5AC5529968A3B001F9D1E /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5429968A3B001F9D1E /* Switcher.swift */; };
 		39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8474E29B3990B000B817E /* FirebaseAnalytics */; };
@@ -332,6 +334,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39EE797A29BA097C00B8D519 /* SwiftDate in Frameworks */,
 				39ED275329B9D780001C368E /* SFSafeSymbols in Frameworks */,
 				39504AA529B466D1008A7BA4 /* FirebaseFirestore in Frameworks */,
 				39504AA729B466D6008A7BA4 /* FirebaseAuth in Frameworks */,
@@ -355,6 +358,7 @@
 				39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */,
 				39822CFA29B367C800B687E4 /* QGrid in Frameworks */,
 				39822D0329B3682600B687E4 /* WelcomeSheet in Frameworks */,
+				39EE797829BA095800B8D519 /* SwiftDate in Frameworks */,
 				39504A9929B3A117008A7BA4 /* SnapKit in Frameworks */,
 				39822CF429B3677400B687E4 /* FloatingButton in Frameworks */,
 				39822CFD29B367E600B687E4 /* Localize_Swift in Frameworks */,
@@ -554,7 +558,6 @@
 				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
 				3900CCE72996851700092AD0 /* WidgetAssets */,
 				3A6449BB297E428C002A710C /* Subviews */,
-				39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */,
 			);
 			path = Make;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				3ABFEFC0292F136B00455730 /* DetailWidgetView.swift */,
+				39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */,
 				39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */,
 				3A00CA652931EFBE004FBF80 /* EditTextField.swift */,
 				3A0C03412935131600868B70 /* PhotoEditMenu.swift */,
@@ -797,6 +801,7 @@
 				39504AA429B466D1008A7BA4 /* FirebaseFirestore */,
 				39504AA629B466D6008A7BA4 /* FirebaseAuth */,
 				39ED275229B9D780001C368E /* SFSafeSymbols */,
+				39EE797929BA097C00B8D519 /* SwiftDate */,
 			);
 			productName = "Koget-Admin";
 			productReference = 396BCB6429AE1CC600B1E759 /* Koget-Admin.app */;
@@ -855,6 +860,7 @@
 				39504A9229B3A059008A7BA4 /* SwiftEntryKit */,
 				39504A9829B3A117008A7BA4 /* SnapKit */,
 				39ED274C29B98431001C368E /* SFSafeSymbols */,
+				39EE797729BA095800B8D519 /* SwiftDate */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -926,6 +932,7 @@
 				39504A9129B3A059008A7BA4 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 				39504A9729B3A117008A7BA4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				39EE797629BA095800B8D519 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -1721,6 +1728,14 @@
 				minimumVersion = 4.1.1;
 			};
 		};
+		39EE797629BA095800B8D519 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1806,6 +1821,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
+		};
+		39EE797729BA095800B8D519 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39EE797629BA095800B8D519 /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
+		};
+		39EE797929BA097C00B8D519 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39EE797629BA095800B8D519 /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
 		};
 		39F8474E29B3990B000B817E /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
