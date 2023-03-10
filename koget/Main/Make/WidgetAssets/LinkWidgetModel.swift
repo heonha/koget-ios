@@ -72,6 +72,8 @@ final class LinkWidgetModel: ObservableObject {
             .init(name: "WhatsApp", nameKr: "왓츠앱", nameEn: "WhatApp", url: "whatsapp://", imageName: "whatsapp"),
             .init(name: "YouTube", nameKr: "유튜브", nameEn: "Youtube", url: "youtube://", imageName: "youtube"),
             .init(name: "chatGPT", nameKr: "chatGPT", nameEn: "chatGPT", url: "https://chat.openai.com/chat/", imageName: "chatgpt"),
+            .init(name: "알뜰교통카드", nameKr: "알뜰교통카드", nameEn: "알뜰교통카드", url: "watc://", imageName: "watc"),
+
         ]
 
         for var app in apps {
