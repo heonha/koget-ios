@@ -455,7 +455,6 @@
 		39504A9429B3A09C008A7BA4 /* Subview */ = {
 			isa = PBXGroup;
 			children = (
-				390B5CB929B1A70600B61E35 /* NoticePage.swift */,
 				39691F4529ACDA58002BD874 /* OpacitySlider.swift */,
 				3A0C03412935131600868B70 /* PhotoEditMenu.swift */,
 			);
@@ -522,6 +521,7 @@
 			children = (
 				39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */,
 				39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */,
+				390B5CB929B1A70600B61E35 /* NoticePage.swift */,
 			);
 			path = PatchNote;
 			sourceTree = "<group>";
@@ -578,9 +578,9 @@
 		3A08BD01292FC9E700E09B3E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				39B23C4A29A3C1B40047BBDB /* PatchNote */,
 				3ADA2E96297FD779004AADEE /* SettingMenu.swift */,
 				3A1591732985194C001924C3 /* AppStoreReviewable.swift */,
+				39B23C4A29A3C1B40047BBDB /* PatchNote */,
 				3A01E783296AD33C0019CD2D /* Contact */,
 			);
 			path = Settings;
