@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct PhotoPicker: UIViewControllerRepresentable {
-    
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
 
     weak var makeModel: MakeWidgetViewModel?
     weak var detailModel: DetailWidgetViewModel?
+    var viewModel: any VMPhotoEditProtocol
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<PhotoPicker>) -> UIImagePickerController {
         let picker = UIImagePickerController()
@@ -31,7 +31,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
     
     final class Coodinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         
-        let photoPicker: PhotoPicker
+        var photoPicker: PhotoPicker
         
         init(photoPicker: PhotoPicker) {
             self.photoPicker = photoPicker
@@ -39,11 +39,13 @@ struct PhotoPicker: UIViewControllerRepresentable {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-                if photoPicker.makeModel != nil {
-                    photoPicker.makeModel?.image = image
-                } else {
-                    photoPicker.detailModel?.image = image
-                }
+
+                photoPicker.viewModel.image = image
+                // if photoPicker.makeModel != nil {
+                //     photoPicker.makeModel?.image = image
+                // } else {
+                //     photoPicker.detailModel?.image = image
+                // }
             } else {
                 return
             }

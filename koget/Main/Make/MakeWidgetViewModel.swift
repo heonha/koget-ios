@@ -15,7 +15,7 @@ enum MakeWidgetErrorType: String {
     case urlError = "URL에 문자열 :// 이 반드시 들어가야 합니다."
 }
 
-final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol {
+final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditProtocol {
 
     @Published var alertView = UIView()
 
@@ -24,6 +24,7 @@ final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol {
     @Published var isImageError = false
     @Published var isOpacitySliderEditing = false
     @Published var moreOptionOn = false
+    @Published var isEditingMode = false
     @Published var name: String = "" {
         didSet {
             if name.count > nameStringLimit {

@@ -82,7 +82,6 @@ struct DetailWidgetView: View {
 
                 // MARK: - 아이콘
                 PhotoEditMenu(isEditingMode: $viewModel.isEditingMode,
-                              isPhotoViewPresent: $isPhotoViewPresent,
                               viewModel: viewModel)
                 .shadow(radius: 1, x: 0.2, y: 0.3)
                 .padding(4)
