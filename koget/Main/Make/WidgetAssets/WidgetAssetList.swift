@@ -106,7 +106,6 @@ struct WidgetAssetList: View {
                             }
                         }
                     }
-                    .disabled(Switcher.shared.isTestMode ? false : !widget.canOpen)
                     .opacity(widgetAssets.canOpenApp(widget.canOpen))
                     .listStyle(.plain)
                     
