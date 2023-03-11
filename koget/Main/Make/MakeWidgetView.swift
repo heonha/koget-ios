@@ -1,5 +1,5 @@
 //
-//  AddWidgetView.swift
+//  AddWidgetView.swiftplus.circle
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/11/22.
@@ -18,9 +18,6 @@ struct MakeWidgetView: View {
     
     @StateObject var viewModel = MakeWidgetViewModel()
     @State var assetList: WidgetAssetList?
-    
-    @State var iconImage: UIImage = UIImage(named: "plus.circle")!
-
     @State var widgetType: WidgetType = .image
     //Present Views
     @State var isAppPickerPresent = false

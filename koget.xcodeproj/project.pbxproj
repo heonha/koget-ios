@@ -61,7 +61,6 @@
 		39ED275329B9D780001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275229B9D780001C368E /* SFSafeSymbols */; };
 		39EE797829BA095800B8D519 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 39EE797729BA095800B8D519 /* SwiftDate */; };
 		39EE797A29BA097C00B8D519 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 39EE797929BA097C00B8D519 /* SwiftDate */; };
-		39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5AC5029968906001F9D1E /* EmptyGrid.swift */; };
 		39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8474E29B3990B000B817E /* FirebaseAnalytics */; };
 		39F8475129B3990B000B817E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8475029B3990B000B817E /* FirebaseAuth */; };
 		39F8475329B3990B000B817E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8475229B3990B000B817E /* FirebaseFirestore */; };
@@ -217,7 +216,6 @@
 		39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		39CD9F3229B2312600C28534 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
-		39F5AC5029968906001F9D1E /* EmptyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGrid.swift; sourceTree = "<group>"; };
 		3A00CA652931EFBE004FBF80 /* EditTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextField.swift; sourceTree = "<group>"; };
 		3A00CA682931F3F1004FBF80 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		3A01E774296AADDD0019CD2D /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -413,9 +411,28 @@
 			name = plists;
 			sourceTree = "<group>";
 		};
+		393E015229BC6C680018390D /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				3A6449B4297D90B6002A710C /* Lottie */,
+				39504AAA29B48E83008A7BA4 /* SwiftEntryKit */,
+				3A6D809A297441A600E62389 /* FloatingButton */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		393E015329BC6C9D0018390D /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				3A9BC0D928E6E1AE0041DA1B /* Constants.swift */,
+			);
+			path = constants;
+			sourceTree = "<group>";
+		};
 		39504A8C29B3A01E008A7BA4 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				3A9C04FF292DB03C00442017 /* PhotoPicker.swift */,
 				39504A8D29B3A01E008A7BA4 /* SUIViewController.swift */,
 				39504A8E29B3A01E008A7BA4 /* SUIView.swift */,
 			);
@@ -457,7 +474,6 @@
 				3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */,
 				3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */,
 				39835ACE299D1F6600BEDF88 /* WidgetButton.swift */,
-				39F5AC5029968906001F9D1E /* EmptyGrid.swift */,
 				39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */,
 			);
 			path = Grid;
@@ -544,14 +560,8 @@
 		3A6449B4297D90B6002A710C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				3ADA2E9E297FE7FD004AADEE /* rightArrow.json */,
-				3ADA2E9C297FE698004AADEE /* createApp.json */,
-				3ADA2E9A297FE2A8004AADEE /* apps.json */,
-				3A6449B5297E3895002A710C /* sendSuccess.json */,
+				3AB4A3EB28CF01390062EC18 /* Animation */,
 				3AD46929297D3EC40090B2D3 /* LottieView.swift */,
-				3AD4692B297D3F610090B2D3 /* success.json */,
-				3A6449B9297E3A2C002A710C /* trash.json */,
-				3A6449B2297D8C81002A710C /* error.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -601,6 +611,13 @@
 		3AB4A3EB28CF01390062EC18 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				3ADA2E9E297FE7FD004AADEE /* rightArrow.json */,
+				3ADA2E9C297FE698004AADEE /* createApp.json */,
+				3ADA2E9A297FE2A8004AADEE /* apps.json */,
+				3A6449B5297E3895002A710C /* sendSuccess.json */,
+				3AD4692B297D3F610090B2D3 /* success.json */,
+				3A6449B9297E3A2C002A710C /* trash.json */,
+				3A6449B2297D8C81002A710C /* error.json */,
 				3A2E21FC290FF9F800E4F46A /* downArrow.json */,
 				3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */,
 			);
@@ -638,7 +655,6 @@
 				3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */,
 				3AE4B13D296D8A2D00DB219B /* KogetApp.swift */,
 				3900CCE8299686A400092AD0 /* Main */,
-				3AE0F982294878CF008C9F5F /* CoreData */,
 				3AF7E59128F85FD200B14DFD /* Utils */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
@@ -668,17 +684,14 @@
 		3AF7E59128F85FD200B14DFD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3A6449B4297D90B6002A710C /* Lottie */,
-				39504AAA29B48E83008A7BA4 /* SwiftEntryKit */,
+				3AE0F982294878CF008C9F5F /* CoreData */,
+				393E015329BC6C9D0018390D /* constants */,
 				39504A8C29B3A01E008A7BA4 /* UIKit */,
-				3A6D809A297441A600E62389 /* FloatingButton */,
+				393E015229BC6C680018390D /* libs */,
 				3A0F429E28C89742002F1CAD /* Extensions */,
-				3AB4A3EB28CF01390062EC18 /* Animation */,
-				3A9BC0D928E6E1AE0041DA1B /* Constants.swift */,
 				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
 				3A559C6F28EB1D4900D5D9E4 /* AppColor.swift */,
 				3ACCB354294C3D3500A85E0F /* TextFieldView.swift */,
-				3A9C04FF292DB03C00442017 /* PhotoPicker.swift */,
 				39301089299E6AAC009B13ED /* WidgetConstants.swift */,
 				39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */,
 				39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */,
@@ -995,7 +1008,6 @@
 				3ADA2E97297FD779004AADEE /* SettingMenu.swift in Sources */,
 				3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */,
 				39223B7429A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */,
-				39F5AC5129968906001F9D1E /* EmptyGrid.swift in Sources */,
 				39835AD1299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift in Sources */,
 				3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,

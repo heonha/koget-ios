@@ -22,12 +22,11 @@ struct WidgetIconCell: View {
 
     @ObservedObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
-    @State var deleteAlertView = UIView()
     @State var isPresentDetailView = false
     @State var isDelete: Bool = false
 
-    let app: LocalizedStringKey = "앱"
-    let web: LocalizedStringKey = "웹 페이지"
+    let app: String = "앱"
+    let web: String = "웹 페이지"
 
     lazy var imageSize = CGSize(width: cellSize.grid * 0.63, height: cellSize.grid * 0.63)
     lazy var textSize = CGSize(width: cellSize.grid, height: cellSize.grid * 0.40)
@@ -78,7 +77,7 @@ struct WidgetIconCell: View {
                     Button("삭제", role: .destructive) {
                         coreData.deleteData(data: widget)
                         dismiss()
-                        displayToast()
+                        viewModel.displayToast()
                         isDelete = false
                     }
                     Button("취소", role: .cancel) {
@@ -88,14 +87,11 @@ struct WidgetIconCell: View {
                 .sheet(isPresented: $isPresentDetailView, content: {
                     DetailWidgetView(selectedWidget: widget)
                 })
-                .onAppear {
-                    deleteAlertView = EKMaker.setToastView(title: "위젯 삭제 완료!", subtitle: "삭제한 위젯은 잠금화면에서도 변경 또는 삭제 해주세요", named: "success")
-                }
-
             }
         }
     }
 
+    // 리스트 셀
     var listCell: some View {
         ZStack {
             HStack {
@@ -119,12 +115,12 @@ struct WidgetIconCell: View {
 
                     switch viewModel.checkLinkType(url: widget.url ?? "" ) {
                     case .app:
-                        Text(self.app)
+                        Text(self.app.localized())
                             .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
                             .foregroundColor(Color.init(uiColor: .secondaryLabel))
                             .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
                     case .web:
-                        Text(self.web)
+                        Text(self.web.localized())
                             .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
                             .foregroundColor(Color.init(uiColor: .secondaryLabel))
                             .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
@@ -142,6 +138,7 @@ struct WidgetIconCell: View {
         }
     }
 
+    // 실행 횟수 카운터
     var runCountView: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
@@ -162,10 +159,6 @@ struct WidgetIconCell: View {
                 .foregroundStyle(Color.init(uiColor: .white))
             }
         }
-    }
-
-    func displayToast() {
-        SwiftEntryKit.display(entry: deleteAlertView, using: EKMaker.whiteAlertAttribute)
     }
 }
 
