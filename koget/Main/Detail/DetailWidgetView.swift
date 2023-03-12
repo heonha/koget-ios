@@ -51,19 +51,17 @@ struct DetailWidgetView: View {
                 Spacer()
 
                 // MARK: - 이름, URL
-                VStack(spacing: 16) {
+                VStack(spacing: 12) {
 
-                    Group {
-                        EditTextField(systemSymbol: .tag,
-                                      placeHolder: "위젯 이름",
-                                      viewModel: viewModel,
-                                      text: $viewModel.name)
+                    EditTextField(systemSymbol: .tag,
+                                  placeHolder: "위젯 이름",
+                                  viewModel: viewModel,
+                                  text: $viewModel.name)
 
-                        EditTextField(systemSymbol: .link,
-                                      placeHolder: "예시: youtube://",
-                                      viewModel: viewModel,
-                                      text: $viewModel.url)
-                    }
+                    EditTextField(systemSymbol: .link,
+                                  placeHolder: "예시: youtube://",
+                                  viewModel: viewModel,
+                                  text: $viewModel.url)
 
                     OpacityPickerContainer(viewModel: viewModel,
                                            isPresentQustionmark: $isPresentQustionmark)
@@ -94,6 +92,7 @@ struct DetailWidgetView: View {
         .shadow(radius: 1)
         .onTapGesture {
             isPresentQustionmark = false
+            hideKeyboard()
         }
         .onAppear {
             setupView()

@@ -8,13 +8,20 @@
 import SwiftUI
 import SFSafeSymbols
 
-struct EditTextField: View {
+protocol VMTextFieldProtocol: ObservableObject {
+    var nameStringLimit: Int { get set }
+    var nameMaxCountError: Bool { get set }
+    var nameMaxCountErrorMessage: LocalizedStringKey { get set }
+    var isEditingMode: Bool { get set }
+}
+
+struct EditTextField<V: VMTextFieldProtocol>: View {
 
     let systemSymbol: SFSymbol
     let placeHolder: LocalizedStringKey
-    let padding: CGFloat = 32
+    // let padding: CGFloat = 32
     
-    @StateObject var viewModel: DetailWidgetViewModel
+    @StateObject var viewModel: V
     @ObservedObject var constant = Constants.shared
     @Binding var text: String
     
@@ -25,14 +32,15 @@ struct EditTextField: View {
                 Image(systemSymbol: systemSymbol)
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(AppColor.Label.second)
+                    .frame(width: 40)
 
                 if viewModel.isEditingMode {
                     // 편집 모드
                     ZStack {
                         RoundedRectangle(cornerRadius: 5)
-                            .fill(AppColor.Background.third)
-                            .frame(height: 40)
+                            .fill(AppColor.Fill.second)
                         TextField(placeHolder, text: $text)
+                            .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                             .frame(height: 35)
                             .autocorrectionDisabled()
                             .textInputAutocapitalization(.never)
@@ -45,8 +53,8 @@ struct EditTextField: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 5)
                             .fill(AppColor.Background.second)
-                            .frame(height: 40)
                         TextField(placeHolder, text: $text)
+                            .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                             .frame(height: 35)
                             .background(.clear)
                             .padding(.horizontal, 4)
@@ -56,10 +64,6 @@ struct EditTextField: View {
 
             }
             .cornerRadius(8)
-            .onTapGesture {
-                hideKeyboard()
-            }
-
             if systemSymbol == .tag && viewModel.nameMaxCountError == true {
                     withAnimation {
                         Text(viewModel.nameMaxCountErrorMessage)
@@ -68,7 +72,8 @@ struct EditTextField: View {
                     }
             }
         }
-        
+        .frame(height: 40)
+
     }
 }
 

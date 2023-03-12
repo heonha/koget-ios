@@ -24,6 +24,9 @@ struct MakeWidgetView: View {
     @State var isPresentQustionmark = false
     @State var errorAlert = UIView()
 
+    let namePlaceholder: LocalizedStringKey = "위젯 이름"
+    let urlPlaceholder: LocalizedStringKey = "앱 / 웹 주소 (특수문자 :// 포함)"
+
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var constant: Constants
 
@@ -54,20 +57,32 @@ struct MakeWidgetView: View {
                         .shadow(radius: 0.7, x: 0.1, y: 0.1)
                         .padding(.horizontal, 16)
                     // 텍스트필드 그룹
-                    MakeWidgetTextFieldView(viewModel: viewModel)
-                        .padding(.horizontal, 16)
+                    VStack(spacing: 8) {
+                        EditTextField(systemSymbol: .tag, placeHolder: namePlaceholder, viewModel: viewModel, text: $viewModel.name)
+
+                        EditTextField(systemSymbol: .link, placeHolder: urlPlaceholder, viewModel: viewModel, text: $viewModel.url)
+                            .overlay {
+                                if viewModel.url != "" {
+                                    withAnimation {
+                                        HStack {
+                                            Spacer()
+                                            URLTestButton(viewModel: viewModel)
+                                        }
+                                    }
+                                }
+                            }
+                    }
+                    .padding(.horizontal, 16)
 
                     // Opacity Picker
                     if viewModel.image != nil {
-
                         if !viewModel.moreOptionOn {
                             moreOptionButton
+                                .padding(.horizontal, 16)
                         } else {
                             OpacityPickerContainer(viewModel: viewModel, isPresentQustionmark: $isPresentQustionmark)
                                 .padding(.horizontal, 16)
                         }
-                        
-
                     }
                     
                     // 만들기, 뒤로가기 버튼
@@ -95,7 +110,7 @@ struct MakeWidgetView: View {
         }
     }
 
-    // MARK: - Assets
+    // MARK: - Views
 
     var fetchAppListLabel: some View {
         ZStack {
@@ -154,7 +169,6 @@ struct MakeWidgetView: View {
             Spacer()
             Button {
                 viewModel.moreOptionOn.toggle()
-                viewModel.isEditingMode.toggle()
             } label: {
                 ZStack {
                     Text("투명도 조절")

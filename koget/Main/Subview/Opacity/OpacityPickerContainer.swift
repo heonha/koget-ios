@@ -16,7 +16,10 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
     var body: some View {
         VStack {
             opacityPicker
+                .frame(height: 40)
+
             opacitySliderContainer
+                .frame(height: 40)
         }
     }
 
@@ -28,8 +31,19 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
                 .font(.system(size: 20, weight: .bold))
                 .foregroundColor(AppColor.Label.second)
                 .frame(width: 40)
-                .padding(.trailing, 8)
-            
+            // Opacity Value
+            ZStack {
+                Text("\(Int(viewModel.opacityValue * 100))%")
+                    .font(.custom(viewModel.isOpacitySliderEditing
+                                  ? CustomFont.NotoSansKR.bold
+                                  : CustomFont.NotoSansKR.medium,
+                                  size: 18))
+                    .padding(.horizontal, 4)
+                    .foregroundColor(viewModel.isOpacitySliderEditing
+                                     ? AppColor.kogetBlue
+                                     : AppColor.Label.first)
+            }
+
             // Popup
             Button {
                 isPresentQustionmark.toggle()
@@ -40,8 +54,8 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
             .overlay(
                 ZStack(content: {
                     RoundedRectangle(cornerRadius: 8)
-                        .foregroundColor(AppColor.Background.first)
-                        .opacity(0.9)
+                        .foregroundColor(AppColor.Background.third)
+                        .opacity(0.95)
                         .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
                     Text("잠금화면 위젯의 불투명도입니다.")
                         .font(.custom(CustomFont.NotoSansKR.light, size: 13))
@@ -53,20 +67,9 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
                 .animation(.linear(duration: 0.15), value: isPresentQustionmark)
             )
             Spacer()
-            
-            // Opacity Value
-            ZStack {
-                Text("\(Int(viewModel.opacityValue * 100))%")
-                    .font(.custom(viewModel.isOpacitySliderEditing
-                                  ? CustomFont.NotoSansKR.medium
-                                  : CustomFont.NotoSansKR.bold,
-                                  size: 18))
-                    .foregroundColor(viewModel.isOpacitySliderEditing
-                                     ? AppColor.kogetBlue
-                                     : AppColor.Label.first)
-            }
-            Spacer()
         }
+        .frame(height: 40)
+
     }
 
     var opacitySliderContainer: some View {
@@ -79,7 +82,6 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
                 .offset(x: 0, y: viewModel.isEditingMode ? 0 : -15)
                 .opacity(viewModel.isEditingMode ? 1 : 0)
         }
-        .frame(height: 40)
     }
 
 }

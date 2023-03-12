@@ -71,9 +71,7 @@
 		39F8475729B3990B000B817E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8475629B3990B000B817E /* FirebaseStorage */; };
 		3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA652931EFBE004FBF80 /* EditTextField.swift */; };
 		3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA682931F3F1004FBF80 /* StorageProvider.swift */; };
-		3A01E775296AADDD0019CD2D /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E774296AADDD0019CD2D /* CustomTextfield.swift */; };
 		3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E776296AADEF0019CD2D /* URLTestButton.swift */; };
-		3A01E779296AB04F0019CD2D /* MakeWidgetTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */; };
 		3A01E785296AD3470019CD2D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E784296AD3470019CD2D /* ContactView.swift */; };
 		3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */; };
 		3A0566CE2931E87D007B0A7A /* WidgetContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */; };
@@ -221,9 +219,7 @@
 		39CD9F3229B2312600C28534 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		3A00CA652931EFBE004FBF80 /* EditTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextField.swift; sourceTree = "<group>"; };
 		3A00CA682931F3F1004FBF80 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
-		3A01E774296AADDD0019CD2D /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 		3A01E776296AADEF0019CD2D /* URLTestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLTestButton.swift; sourceTree = "<group>"; };
-		3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetTextFieldView.swift; sourceTree = "<group>"; };
 		3A01E784296AD3470019CD2D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContainerCell.swift; sourceTree = "<group>"; };
@@ -428,6 +424,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		392EDF6C29BD9618000B1353 /* Opacity */ = {
+			isa = PBXGroup;
+			children = (
+				39691F4529ACDA58002BD874 /* OpacitySlider.swift */,
+				39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */,
+			);
+			path = Opacity;
+			sourceTree = "<group>";
+		};
+		392EDF6D29BD9626000B1353 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				3A8339D82932167500DC9527 /* TextButton.swift */,
+				392EDF6829BD5FAC000B1353 /* ToggleButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		393E015229BC6C680018390D /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,10 +473,9 @@
 		39504A9429B3A09C008A7BA4 /* Subview */ = {
 			isa = PBXGroup;
 			children = (
-				39691F4529ACDA58002BD874 /* OpacitySlider.swift */,
+				392EDF6D29BD9626000B1353 /* Button */,
+				392EDF6C29BD9618000B1353 /* Opacity */,
 				3A00CA652931EFBE004FBF80 /* EditTextField.swift */,
-				3A8339D82932167500DC9527 /* TextButton.swift */,
-				392EDF6829BD5FAC000B1353 /* ToggleButton.swift */,
 				3A0C03412935131600868B70 /* PhotoEditMenu.swift */,
 			);
 			path = Subview;
@@ -514,7 +527,7 @@
 			children = (
 				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
 				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
-				39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */,
+				3A01E776296AADEF0019CD2D /* URLTestButton.swift */,
 				3900CCE72996851700092AD0 /* WidgetAssets */,
 				3A6449BB297E428C002A710C /* Subviews */,
 			);
@@ -585,9 +598,6 @@
 		3A6449BB297E428C002A710C /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				3A01E774296AADDD0019CD2D /* CustomTextfield.swift */,
-				3A01E776296AADEF0019CD2D /* URLTestButton.swift */,
-				3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1045,13 +1055,11 @@
 				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
-				3A01E779296AB04F0019CD2D /* MakeWidgetTextFieldView.swift in Sources */,
 				390B5CBA29B1A70600B61E35 /* NoticePage.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* WidgetListContainerView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
 				3A1F89082978F9DC00E1B4C4 /* LockscreenHelper.swift in Sources */,
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,
-				3A01E775296AADDD0019CD2D /* CustomTextfield.swift in Sources */,
 				3ABD50FF292945EB00F878AE /* WidgetCoreData.swift in Sources */,
 				3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */,
 				39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */,
