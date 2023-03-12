@@ -22,7 +22,7 @@ struct ToggleButton: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
                     .fill(viewModel.isEditingMode ? AppColor.kogetBlue : AppColor.Fill.first)
-                Text(viewModel.isEditingMode ? "편집 완료" : "위젯 편집")
+                Text(viewModel.isEditingMode ? "편집 완료" : "편집 하기")
                     .foregroundColor(viewModel.isEditingMode
                                      ? (constant.isDarkMode ? AppColor.Label.first : AppColor.Background.first)
                                      : AppColor.Label.first )

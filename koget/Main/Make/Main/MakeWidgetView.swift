@@ -109,7 +109,7 @@ struct MakeWidgetView: View {
     var makeAndBackButton: some View {
         Group {
             // 위젯생성 버튼
-            Button {
+            TextButton(title: "만들기", titleColor: .white, backgroundColor: AppColor.kogetBlue) {
                 viewModel.makeWidgetAction { result in
                     switch result {
                     case .success:
@@ -118,14 +118,13 @@ struct MakeWidgetView: View {
                         return
                     }
                 }
-            } label: {
-                ButtonWithText(title: "완료", titleColor: .white, color: AppColor.kogetBlue)
             }
             // 돌아가기 버튼
-            Button {
+            TextButton(title: "뒤로가기",
+                        titleColor: .white,
+                        backgroundColor: AppColor.Fill.second) {
                 self.dismiss()
-            } label: {
-                ButtonWithText(title: "돌아가기")
+
             }
         }
     }
@@ -142,7 +141,6 @@ struct MakeWidgetView: View {
             }
         }
     }
-
 }
 
 struct AddWidgetView_Previews: PreviewProvider {

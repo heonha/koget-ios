@@ -74,7 +74,8 @@ struct AssetRequestView: View {
                 .font(.custom(CustomFont.NotoSansKR.medium, size: 13))
                 .padding()
 
-            Button {
+
+            TextButton(title: "보내기", titleColor: .white, backgroundColor: AppColor.kogetBlue) {
                 viewModel.checkTheField { result in
                     switch result {
                     case .success:
@@ -85,8 +86,6 @@ struct AssetRequestView: View {
                         return
                     }
                 }
-            } label: {
-                ButtonWithText(title: "보내기", titleColor: .white, color: AppColor.kogetRed)
             }
             .padding(.horizontal, 24)
             Spacer()

@@ -78,7 +78,7 @@ struct DetailWidgetView: View {
                 // 편집버튼
                 ToggleButton(viewModel: viewModel, widget: selectedWidget)
                 // 닫기 버튼
-                DetailWidgetCancelButton(text: "닫기", buttonColor: AppColor.Fill.third) {
+                TextButton(title: "닫기", backgroundColor: AppColor.Fill.third, size: (width: 200, height: 40)) {
                     dismiss()
                 }
 

@@ -38,7 +38,6 @@
 		39504AA529B466D1008A7BA4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 39504AA429B466D1008A7BA4 /* FirebaseFirestore */; };
 		39504AA729B466D6008A7BA4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 39504AA629B466D6008A7BA4 /* FirebaseAuth */; };
 		39504AA929B48E73008A7BA4 /* EKCustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA829B48E73008A7BA4 /* EKCustomColor.swift */; };
-		39504AAC29B4BF06008A7BA4 /* NewDetailWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AAB29B4BF06008A7BA4 /* NewDetailWidgetView.swift */; };
 		39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */; };
 		39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4529ACDA58002BD874 /* OpacitySlider.swift */; };
 		39691F4829ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */; };
@@ -110,7 +109,7 @@
 		3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809E2974426900E62389 /* FloatingMainButton.swift */; };
 		3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D80A02974429500E62389 /* FloatingDestinationView.swift */; };
 		3A7CD3822965562C008FAB75 /* LinkWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7CD3812965562C008FAB75 /* LinkWidget.swift */; };
-		3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D82932167500DC9527 /* DetailWidgetButton.swift */; };
+		3A8339D92932167500DC9527 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D82932167500DC9527 /* TextButton.swift */; };
 		3A8C1E782980DB7C004FAF89 /* HelperSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C1E772980DB7C004FAF89 /* HelperSheetViewModel.swift */; };
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C04FF292DB03C00442017 /* PhotoPicker.swift */; };
@@ -141,7 +140,6 @@
 		3ADA2E9D297FE698004AADEE /* createApp.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADA2E9C297FE698004AADEE /* createApp.json */; };
 		3ADA2E9F297FE7FD004AADEE /* rightArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADA2E9E297FE7FD004AADEE /* rightArrow.json */; };
 		3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE4B13D296D8A2D00DB219B /* KogetApp.swift */; };
-		3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6AB4429618319000F2C1D /* ButtonWithText.swift */; };
 		3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */; };
 		3AE9DC0E28F8F890008A3316 /* WidgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */; };
 		3AE9DC0F28F8F891008A3316 /* WidgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */; };
@@ -206,7 +204,6 @@
 		39504AA029B43796008A7BA4 /* UIScreen+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Utils.swift"; sourceTree = "<group>"; };
 		39504AA229B43F16008A7BA4 /* EKMakerTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMakerTester.swift; sourceTree = "<group>"; };
 		39504AA829B48E73008A7BA4 /* EKCustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCustomColor.swift; sourceTree = "<group>"; };
-		39504AAB29B4BF06008A7BA4 /* NewDetailWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDetailWidgetView.swift; sourceTree = "<group>"; };
 		39691F4529ACDA58002BD874 /* OpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacitySlider.swift; sourceTree = "<group>"; };
 		39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetOpacityPicker.swift; sourceTree = "<group>"; };
 		396BCB6429AE1CC600B1E759 /* Koget-Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Koget-Admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,7 +252,7 @@
 		3A6D809E2974426900E62389 /* FloatingMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMainButton.swift; sourceTree = "<group>"; };
 		3A6D80A02974429500E62389 /* FloatingDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingDestinationView.swift; sourceTree = "<group>"; };
 		3A7CD3812965562C008FAB75 /* LinkWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidget.swift; sourceTree = "<group>"; };
-		3A8339D82932167500DC9527 /* DetailWidgetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetButton.swift; sourceTree = "<group>"; };
+		3A8339D82932167500DC9527 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		3A8C1E772980DB7C004FAF89 /* HelperSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperSheetViewModel.swift; sourceTree = "<group>"; };
 		3A94E19D28EC1B950050EE80 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		3A94E1A828EC1B960050EE80 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
@@ -288,7 +285,6 @@
 		3ADA2E9C297FE698004AADEE /* createApp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = createApp.json; sourceTree = "<group>"; };
 		3ADA2E9E297FE7FD004AADEE /* rightArrow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rightArrow.json; sourceTree = "<group>"; };
 		3AE4B13D296D8A2D00DB219B /* KogetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogetApp.swift; sourceTree = "<group>"; };
-		3AE6AB4429618319000F2C1D /* ButtonWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithText.swift; sourceTree = "<group>"; };
 		3AE9DC0C28F8F87B008A3316 /* WidgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WidgetModel.xcdatamodel; sourceTree = "<group>"; };
 		3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkWidget.swift; sourceTree = "<group>"; };
@@ -429,16 +425,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		392EDF6629BD5CB8000B1353 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				3ABFEFC0292F136B00455730 /* DetailWidgetView.swift */,
-				39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */,
-				3ABFEFC9292F4D1400455730 /* ViewControllerHolderHelper.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		392EDF6729BD5CC2000B1353 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +466,9 @@
 			isa = PBXGroup;
 			children = (
 				39691F4529ACDA58002BD874 /* OpacitySlider.swift */,
+				3A00CA652931EFBE004FBF80 /* EditTextField.swift */,
+				3A8339D82932167500DC9527 /* TextButton.swift */,
+				392EDF6829BD5FAC000B1353 /* ToggleButton.swift */,
 				3A0C03412935131600868B70 /* PhotoEditMenu.swift */,
 			);
 			path = Subview;
@@ -540,11 +529,9 @@
 		3A08BD00292FBF1B00E09B3E /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				392EDF6629BD5CB8000B1353 /* Main */,
-				3A00CA652931EFBE004FBF80 /* EditTextField.swift */,
-				3A8339D82932167500DC9527 /* DetailWidgetButton.swift */,
-				392EDF6829BD5FAC000B1353 /* ToggleButton.swift */,
-				39504AAB29B4BF06008A7BA4 /* NewDetailWidgetView.swift */,
+				3ABFEFC0292F136B00455730 /* DetailWidgetView.swift */,
+				39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */,
+				3ABFEFC9292F4D1400455730 /* ViewControllerHolderHelper.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -603,7 +590,6 @@
 		3A6449BB297E428C002A710C /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				3AE6AB4429618319000F2C1D /* ButtonWithText.swift */,
 				3A01E774296AADDD0019CD2D /* CustomTextfield.swift */,
 				3A01E776296AADEF0019CD2D /* URLTestButton.swift */,
 				3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */,
@@ -1030,7 +1016,7 @@
 				3A0566CE2931E87D007B0A7A /* WidgetContainerCell.swift in Sources */,
 				39504A9029B3A01E008A7BA4 /* SUIView.swift in Sources */,
 				3A559C7028EB1D4900D5D9E4 /* AppColor.swift in Sources */,
-				3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */,
+				3A8339D92932167500DC9527 /* TextButton.swift in Sources */,
 				3ABFEFC1292F136B00455730 /* DetailWidgetView.swift in Sources */,
 				3ABFEFBD292E70A900455730 /* WidgetAssetViewModel.swift in Sources */,
 				3ADA2E97297FD779004AADEE /* SettingMenu.swift in Sources */,
@@ -1057,7 +1043,6 @@
 				390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */,
-				3AE6AB4529618319000F2C1D /* ButtonWithText.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
 				39691F4829ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
@@ -1081,7 +1066,6 @@
 				392EDF6129BD508A000B1353 /* NoticePageCell.swift in Sources */,
 				3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */,
 				39504A9F29B4374F008A7BA4 /* CGRect+Utils.swift in Sources */,
-				39504AAC29B4BF06008A7BA4 /* NewDetailWidgetView.swift in Sources */,
 				3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
