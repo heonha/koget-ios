@@ -422,6 +422,14 @@
 			path = NoticePage;
 			sourceTree = "<group>";
 		};
+		392EDF6329BD514B000B1353 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3AD4691C297D1FAE0090B2D3 /* GuestAuthModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		393E015229BC6C680018390D /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,7 +503,6 @@
 				3A01E784296AD3470019CD2D /* ContactView.swift */,
 				3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */,
 				3AD4691A297D19190090B2D3 /* ContactViewModel.swift */,
-				3AD4691C297D1FAE0090B2D3 /* GuestAuthModel.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -529,11 +536,11 @@
 		3A08BD01292FC9E700E09B3E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3A01E783296AD33C0019CD2D /* Contact */,
 				39B23C4A29A3C1B40047BBDB /* PatchNote */,
 				392EDF6229BD50FD000B1353 /* NoticePage */,
 				3ADA2E96297FD779004AADEE /* SettingMenu.swift */,
 				3A1591732985194C001924C3 /* AppStoreReviewable.swift */,
-				3A01E783296AD33C0019CD2D /* Contact */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -666,6 +673,7 @@
 				3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */,
 				3AE4B13D296D8A2D00DB219B /* KogetApp.swift */,
 				3900CCE8299686A400092AD0 /* Main */,
+				392EDF6329BD514B000B1353 /* Model */,
 				3AF7E59128F85FD200B14DFD /* Utils */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
