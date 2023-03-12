@@ -10,34 +10,32 @@ import SwiftUI
 enum AppColor {
 
     enum Background {
-        static let first = Color("BackgroundColor")
-        static let second = Color("SecondaryBackgroundColor")
-        static let third = Color("ThirdBackgroundColor")
+        static let first = Color.init(uiColor: .systemBackground)
+        static let second = Color.init(uiColor: .secondarySystemBackground)
+        static let third = Color.init(uiColor: .tertiarySystemBackground)
     }
 
     enum Label {
-        static let first = Color("LabelColor")
-        static let second = Color("SecondaryLabelColor")
-        static let third = Color("ThirdLabelColor")
+        static let first = Color.init(uiColor: .label)
+        static let second = Color.init(uiColor: .secondaryLabel)
+        static let third = Color.init(uiColor: .tertiaryLabel)
+        static let fourth = Color.init(uiColor: .quaternaryLabel)
     }
 
     enum Behavior {
-        static let errorRed = Color("ErrorRed")
+        static let errorRed = Color("errorRed")
         static let toggleLight = Color("toggleLight")
-
     }
 
     enum Accent {
         static let primary = Color("PrimaryAccent")
     }
 
-    static let deepDarkGrey = Color("deepDarkGray")
-    static let normalDarkGrey = Color("normalDarkGrey")
-    static let buttonMainColor = Color.init(uiColor: .secondaryLabel)
-    static let buttonApplyColor = Color.init(uiColor: .systemBlue)
-    static let buttonSecondaryMainColor = Color.init(uiColor: .secondarySystemFill)
-    static let destroy = Color("destroy")
-    static let darkGray = Color("darkGray")
+    enum Fill {
+        static let first = Color.init(uiColor: .systemFill)
+        static let second = Color.init(uiColor: .secondarySystemFill)
+        static let third = Color.init(uiColor: .tertiarySystemFill)
+    }
 
     static let kogetBlue = Color("kogetBlue")
     static let kogetRed = Color("kogetRed")

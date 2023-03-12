@@ -10,7 +10,7 @@ import QGrid
 
 struct LinkWidgetView: View {
     
-    let backgroundColor: Color = Color("ListBackgroundColor")
+    let backgroundColor: Color = AppColor.Background.first
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
 
@@ -33,10 +33,7 @@ struct LinkWidgetView: View {
         }
         .cornerRadius(5)
     }
-
-
     // MARK: - Widget Views
-
     // Grid
     var gridView: some View {
         QGrid($coreData.linkWidgets.wrappedValue, columns: 3) { widget in

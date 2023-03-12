@@ -51,7 +51,7 @@ struct NoticePageCell: View {
 
     var body: some View {
         ZStack {
-            Color("FeedBackgroundColor")
+            AppColor.Background.first
             NavigationLink {
                 PatchNoteView(patchNote: patchNotes.first!)
             } label: {

@@ -11,7 +11,6 @@ import SFSafeSymbols
 struct NewFloatingButton: View {
     
     var size: CGFloat = 50
-    var color: Color = AppColor.buttonMainColor
     @Binding var isOpen: Bool
     
     var body: some View {

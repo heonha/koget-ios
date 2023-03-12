@@ -18,7 +18,7 @@ struct DarkModeToggleStyle: ToggleStyle {
         HStack {
             configuration.label
             Circle()
-                .foregroundColor(configuration.isOn ? AppColor.darkGray : AppColor.Background.first)
+                .foregroundColor(configuration.isOn ? AppColor.Background.second : AppColor.Background.first)
                 .frame(width: toggleSize.width, height: toggleSize.height, alignment: .center)
                 .overlay(
                     ZStack(content: {
