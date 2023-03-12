@@ -57,10 +57,8 @@ struct ContactView: View {
                         .frame(height: geometryProxy.size.height / 2.5)
                         .padding([.top, .bottom], 8)
                         
-                        
                         TextButton(title: "문의 보내기", backgroundColor: AppColor.kogetBlue) {
                             isPresentSendAlert.toggle()
-                            
                         }
                         .padding([.top, .bottom], 8)
                         Divider()

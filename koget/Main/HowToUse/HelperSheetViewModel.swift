@@ -27,7 +27,6 @@ class HelperSheetViewModel: ObservableObject {
     @Published var showAssetRequestView = false
     @Published var showHowtoUseView = false
 
-
     let rawContents = [
         WelcomeSheetContent(title: "코젯을 소개합니다!", rows: [
             .init(title: "앱 바로가기", content: "자주 사용하는 앱을 등록하고 잠금화면에서 바로 실행할 수 있어요.", systemName: "arrow.up.forward.app.fill")

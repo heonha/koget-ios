@@ -24,6 +24,7 @@
 		392EDF6129BD508A000B1353 /* NoticePageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6029BD508A000B1353 /* NoticePageCell.swift */; };
 		392EDF6529BD55CA000B1353 /* WidgetListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6429BD55CA000B1353 /* WidgetListCell.swift */; };
 		392EDF6929BD5FAC000B1353 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6829BD5FAC000B1353 /* ToggleButton.swift */; };
+		392EDF6B29BD8E54000B1353 /* SettingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */; };
 		3930108A299E6AAC009B13ED /* WidgetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39301089299E6AAC009B13ED /* WidgetConstants.swift */; };
 		3930108B299E6AAC009B13ED /* WidgetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39301089299E6AAC009B13ED /* WidgetConstants.swift */; };
 		39504A8B29B39CB6008A7BA4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A8A29B39CB6008A7BA4 /* Lottie */; };
@@ -40,7 +41,7 @@
 		39504AA929B48E73008A7BA4 /* EKCustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA829B48E73008A7BA4 /* EKCustomColor.swift */; };
 		39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */; };
 		39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4529ACDA58002BD874 /* OpacitySlider.swift */; };
-		39691F4829ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */; };
+		39691F4829ACE9D8002BD874 /* OpacityPickerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */; };
 		3980C93029AE2721003C1C1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A1FE6296BC9FF00819214 /* GoogleService-Info.plist */; };
 		39822CF429B3677400B687E4 /* FloatingButton in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CF329B3677400B687E4 /* FloatingButton */; };
 		39822CFA29B367C800B687E4 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CF929B367C800B687E4 /* QGrid */; };
@@ -196,6 +197,7 @@
 		392EDF6029BD508A000B1353 /* NoticePageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticePageCell.swift; sourceTree = "<group>"; };
 		392EDF6429BD55CA000B1353 /* WidgetListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListCell.swift; sourceTree = "<group>"; };
 		392EDF6829BD5FAC000B1353 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuButton.swift; sourceTree = "<group>"; };
 		39301089299E6AAC009B13ED /* WidgetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConstants.swift; sourceTree = "<group>"; };
 		39504A8D29B3A01E008A7BA4 /* SUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUIViewController.swift; sourceTree = "<group>"; };
 		39504A8E29B3A01E008A7BA4 /* SUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUIView.swift; sourceTree = "<group>"; };
@@ -205,7 +207,7 @@
 		39504AA229B43F16008A7BA4 /* EKMakerTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMakerTester.swift; sourceTree = "<group>"; };
 		39504AA829B48E73008A7BA4 /* EKCustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCustomColor.swift; sourceTree = "<group>"; };
 		39691F4529ACDA58002BD874 /* OpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacitySlider.swift; sourceTree = "<group>"; };
-		39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetOpacityPicker.swift; sourceTree = "<group>"; };
+		39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacityPickerContainer.swift; sourceTree = "<group>"; };
 		396BCB6429AE1CC600B1E759 /* Koget-Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Koget-Admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridCell.swift; sourceTree = "<group>"; };
 		39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridLinkTypeIcon.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 			children = (
 				390B5CB929B1A70600B61E35 /* NoticePage.swift */,
 				392EDF6029BD508A000B1353 /* NoticePageCell.swift */,
+				392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */,
 			);
 			path = NoticePage;
 			sourceTree = "<group>";
@@ -423,15 +426,6 @@
 				3AD4691C297D1FAE0090B2D3 /* GuestAuthModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		392EDF6729BD5CC2000B1353 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
-				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		393E015229BC6C680018390D /* libs */ = {
@@ -518,10 +512,11 @@
 		3A08BCFF292FBF0B00E09B3E /* Make */ = {
 			isa = PBXGroup;
 			children = (
-				392EDF6729BD5CC2000B1353 /* Main */,
+				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
+				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
+				39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */,
 				3900CCE72996851700092AD0 /* WidgetAssets */,
 				3A6449BB297E428C002A710C /* Subviews */,
-				39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */,
 			);
 			path = Make;
 			sourceTree = "<group>";
@@ -1023,6 +1018,7 @@
 				392EDF6929BD5FAC000B1353 /* ToggleButton.swift in Sources */,
 				3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */,
 				39223B7429A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */,
+				392EDF6B29BD8E54000B1353 /* SettingMenuButton.swift in Sources */,
 				39835AD1299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* ViewControllerHolderHelper.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
@@ -1044,7 +1040,7 @@
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
-				39691F4829ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift in Sources */,
+				39691F4829ACE9D8002BD874 /* OpacityPickerContainer.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,

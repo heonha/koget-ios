@@ -79,7 +79,6 @@ struct NoticePageCell: View {
     }
 }
 
-
 struct NoticePageCell_Previews: PreviewProvider {
     static var previews: some View {
         NoticePageCell(frame: 100)

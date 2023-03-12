@@ -20,7 +20,6 @@ class MainWidgetViewModel: ObservableObject {
     @AppStorage("isGridView") var isGridView = false
     @AppStorage("FirstRun") var isFirstRun = true
 
-    
     static let shared = MainWidgetViewModel()
     
     private init() {

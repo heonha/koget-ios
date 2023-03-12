@@ -8,8 +8,9 @@
 import SwiftUI
 
 protocol VMOpacityProtocol: ObservableObject {
-    var opacityValue: Double { get set}
-    var isOpacitySliderEditing: Bool { get set}
+    var opacityValue: Double { get set }
+    var isOpacitySliderEditing: Bool { get set }
+    var isEditingMode: Bool { get set }
 }
 
 struct OpacitySlider<V: VMOpacityProtocol>: View {

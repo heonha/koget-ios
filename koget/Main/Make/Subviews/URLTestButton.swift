@@ -74,7 +74,6 @@ struct URLTestButton: View {
             } message: {
                 Text(openURLAlertMessage)
             }
-            
         }
         .padding(4)
     }
