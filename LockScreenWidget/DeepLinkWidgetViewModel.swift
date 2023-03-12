@@ -11,11 +11,11 @@ import CoreData
 class DeepLinkWidgetViewModel: ObservableObject {
     
     static let shared = DeepLinkWidgetViewModel()
-    
+    @AppStorage("widgetPadding") var widgetPadding = 1.0
+
     @Published var linkWidgets: [DeepLink] = WidgetCoreData.shared.linkWidgets
 
     private init() {
         
     }
-    
 }

@@ -63,6 +63,8 @@
 		39EBEB4E29BE03C300B1FD54 /* PatchNoteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4D29BE03C300B1FD54 /* PatchNoteListCell.swift */; };
 		39EBEB5029BE06E900B1FD54 /* PatchNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */; };
 		39EBEB5229BE0A7900B1FD54 /* PatchNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB5129BE0A7900B1FD54 /* PatchNoteModel.swift */; };
+		39EBEB5429BE2AF200B1FD54 /* WidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB5329BE2AF200B1FD54 /* WidgetViewModel.swift */; };
+		39EBEB5529BE2B5000B1FD54 /* DeepLinkWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */; };
 		39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274C29B98431001C368E /* SFSafeSymbols */; };
 		39ED274F29B98707001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274E29B98707001C368E /* SFSafeSymbols */; };
 		39ED275129B9871C001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275029B9871C001C368E /* SFSafeSymbols */; };
@@ -226,6 +228,7 @@
 		39EBEB4D29BE03C300B1FD54 /* PatchNoteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteListCell.swift; sourceTree = "<group>"; };
 		39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteList.swift; sourceTree = "<group>"; };
 		39EBEB5129BE0A7900B1FD54 /* PatchNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteModel.swift; sourceTree = "<group>"; };
+		39EBEB5329BE2AF200B1FD54 /* WidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewModel.swift; sourceTree = "<group>"; };
 		3A00CA652931EFBE004FBF80 /* EditTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextField.swift; sourceTree = "<group>"; };
 		3A00CA682931F3F1004FBF80 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		3A01E776296AADEF0019CD2D /* URLTestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLTestButton.swift; sourceTree = "<group>"; };
@@ -719,6 +722,7 @@
 				39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */,
 				39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */,
 				39EBEB4629BDDC4500B1FD54 /* CheckmarkToggleStyle.swift */,
+				39EBEB5329BE2AF200B1FD54 /* WidgetViewModel.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1004,6 +1008,7 @@
 				3A3C119F28EDB5B400C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3AA8BC502976DE1C00E4927D /* WidgetCoreData.swift in Sources */,
 				39223B7629A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */,
+				39EBEB5529BE2B5000B1FD54 /* DeepLinkWidgetViewModel.swift in Sources */,
 				3A1CD19D28F9819300AC5D1C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1060,6 +1065,7 @@
 				39EBEB4E29BE03C300B1FD54 /* PatchNoteListCell.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
 				39691F4829ACE9D8002BD874 /* OpacityPickerContainer.swift in Sources */,
+				39EBEB5429BE2AF200B1FD54 /* WidgetViewModel.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,
