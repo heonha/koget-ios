@@ -15,16 +15,16 @@ enum MakeWidgetErrorType: String {
     case urlError = "URL에 문자열 :// 이 반드시 들어가야 합니다."
 }
 
-final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditProtocol {
+final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
 
     @Published var alertView = UIView()
 
-    let nameStringLimit: Int = 14
+    var nameStringLimit: Int = 14
     let defaultImage = UIImage(named: "KogetClear")!
     @Published var isImageError = false
     @Published var isOpacitySliderEditing = false
     @Published var moreOptionOn = false
-    @Published var isEditingMode = false
+    @Published var isEditingMode = true
     @Published var name: String = "" {
         didSet {
             if name.count > nameStringLimit {

@@ -133,6 +133,7 @@ struct DeepLinkWidgetEntryView: View {
     let selectWidgetURL = "open://"
     @State var placeholderOpacity: CGFloat = 1
     @ObservedObject var coreData = WidgetCoreData.shared
+    @ObservedObject var viewModel = DeepLinkWidgetViewModel.shared
 
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
@@ -166,6 +167,7 @@ struct DeepLinkWidgetEntryView: View {
                             }
                             .opacity(entry.opacity ?? 1.0)
                             .opacity(0.7)
+                            .padding(CGFloat(viewModel.widgetPadding))
                         }
                     } else {
                         ZStack {

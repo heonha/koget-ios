@@ -29,7 +29,7 @@ struct MainWidgetView: View {
                     NoticePage()
                         .padding(.vertical, 4)
                     // 링크위젯
-                    LinkWidgetView(viewModel: viewModel, coreData: _coreData)
+                    WidgetListContainerView(viewModel: viewModel, coreData: _coreData)
                 }
                 .background(AppColor.Background.first)
                 NewFloatingButton(isOpen: $isOpen)

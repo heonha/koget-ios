@@ -11,25 +11,25 @@ import SFSafeSymbols
 struct DarkModeToggleStyle: ToggleStyle {
 
     let toggleSize = CGSize(width: 28, height: 28)
-    let darkBGColor = Color.purple
-    let lightBGColor = Color.yellow
+    let onBGColor = AppColor.Fill.first
+    let OffBGColor = AppColor.Fill.first
+    let onImage: SFSymbol = .moonFill
+    let offImage: SFSymbol = .sunMaxFill
 
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
             Circle()
-                .foregroundColor(configuration.isOn ? AppColor.darkGray : AppColor.Background.first)
+                .foregroundColor(configuration.isOn ? onBGColor : OffBGColor )
                 .frame(width: toggleSize.width, height: toggleSize.height, alignment: .center)
                 .overlay(
                     ZStack(content: {
-                        Image(systemSymbol: configuration.isOn ? .moonFill : .sunMaxFill)
+                        Image(systemSymbol: configuration.isOn ? onImage : offImage)
                             .font(.system(size: 14, weight: .heavy))
                             .foregroundColor(.yellow)
                             .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.35), radius: 0.5, x: 0.5, y: 1)
                             .padding(2)
-
                     })
-
                 )
                 .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.1), radius: 0.5, x: 0, y: 0)
                 .animation(.linear(duration: 0.2), value: configuration.isOn)
@@ -37,6 +37,8 @@ struct DarkModeToggleStyle: ToggleStyle {
         }
     }
 }
+
+
 //
 // struct ToggleTester: View {
 //     @StateObject var constatnt = Constants.shared
@@ -44,14 +46,14 @@ struct DarkModeToggleStyle: ToggleStyle {
 //         HStack {
 //             Toggle(isOn: $constatnt.isDarkMode) {
 //             }
-//             .toggleStyle(DarkModeToggleStyle())
+//             .toggleStyle(CheckMarkToggleStyle())
 //             Spacer()
 //         }
 //     }
 // }
-// 
+//
 // struct DarkModeToggleStyle_Previews: PreviewProvider {
-// 
+//
 //     static var previews: some View {
 //         ToggleTester()
 //     }

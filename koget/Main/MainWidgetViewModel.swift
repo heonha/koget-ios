@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftEntryKit
 
 class MainWidgetViewModel: ObservableObject {
     
@@ -13,15 +14,16 @@ class MainWidgetViewModel: ObservableObject {
     @Published var isEditingMode: Bool = false
     @Published var selection = [DeepLink]()
     @Published var isEditMode: EditMode = .inactive
+    @Published var alertView = UIView()
 
     //MARK: User Defaults
     @AppStorage("isGridView") var isGridView = false
     @AppStorage("FirstRun") var isFirstRun = true
-    
+
     static let shared = MainWidgetViewModel()
     
     private init() {
-
+        alertView = setAlertView()
     }
     
     func openURL(urlString: String) {
@@ -75,6 +77,14 @@ class MainWidgetViewModel: ObservableObject {
 
         completion()
 
+    }
+
+    func setAlertView() -> UIView {
+        return EKMaker.setToastView(title: "위젯 삭제 완료!", subtitle: "삭제한 위젯은 잠금화면에서도 변경 또는 삭제 해주세요", named: "success")
+    }
+
+    func displayToast() {
+        SwiftEntryKit.display(entry: alertView, using: EKMaker.whiteAlertAttribute)
     }
 
 }

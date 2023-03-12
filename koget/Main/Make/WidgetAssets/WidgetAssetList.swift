@@ -11,11 +11,6 @@ import SFSafeSymbols
 struct WidgetAssetList: View {
     
     @StateObject var widgetAssets = WidgetAssetViewModel()
-    
-    var textColor: Color = AppColor.Label.first
-    var installTextColor: Color = AppColor.Label.second
-    var imageSize: CGSize = .init(width: 40, height: 40)
-    
     @State var viewModel: MakeWidgetViewModel
     @State private var searchText: String = ""
     @State var searching: Bool = false
@@ -43,7 +38,7 @@ struct WidgetAssetList: View {
                         } label: {
                             Text("앱/웹 추가요청")
                                 .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
-                                .foregroundColor(.init(uiColor: .secondaryLabel))
+                                .foregroundColor(AppColor.Label.second)
                                 .padding(.leading, 16)
                         }
                         .sheet(isPresented: $presentAssetRequestView) {
@@ -51,17 +46,20 @@ struct WidgetAssetList: View {
                         }
 
                         Spacer()
+
                         Text("실행가능한 앱/웹 보기")
                             .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
-                            .foregroundColor(.init(uiColor: .secondaryLabel))
+                            .foregroundColor(AppColor.Label.second)
                             .padding(.leading)
+
                         Toggle(isOn: $widgetAssets.isOnlyInstalledApp) {
+
                         }
-                        .toggleStyle(.switch)
-                        .frame(width: 50, height: 30)
-                        .padding(.trailing, 24)
+                        .toggleStyle(CheckmarkToggleStyle())
+                        .frame(width: 30, height: 30)
                         .tint(.blue)
-                        
+                        .padding(.trailing, 20)
+
                     }
                     Rectangle()
                         .frame(width: deviceSize.width, height: 12)
@@ -70,54 +68,17 @@ struct WidgetAssetList: View {
                 
                 // 리스트
                 List(searchText.isEmpty ? widgetAssets.data : widgetAssets.searchResults, id: \.id) { widget in
-                    
-                    Button {
-                        viewModel.getWidgetData(selectedWidget: widget)
-                        self.dismiss()
-                    } label: {
-                        LazyHStack {
-                            ZStack {
-                                Color.white
-                                Image(uiImage: widget.image ?? UIImage(named: "questionmark.circle")!)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: imageSize.width, height: imageSize.height)
-                            }
-                            .clipShape(Circle())
-                            .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
-                            .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
+                    WidgetAssetCell(viewModel: viewModel, widget: widget)
+                        .opacity(widgetAssets.canOpenApp(widget.canOpen))
+                        .listStyle(.plain)
 
-                            .padding([.trailing, .vertical], 4)
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text(widget.displayName)
-                                        .fontWeight(.semibold)
-                                    .foregroundColor(textColor)
-                                    if !widget.canOpen {
-                                        Text("(미설치)")
-                                            .font(.custom(CustomFont.NotoSansKR.bold, size: 14))
-                                            .foregroundColor(installTextColor)
-                                    }
-                                }
-                                Text(MainWidgetViewModel.shared.checkLinkType(url: widget.url).rawValue)
-                                    .font(.custom(CustomFont.NotoSansKR.medium, size: 12))
-                                    .foregroundColor(installTextColor)
-                                    .padding(.leading, 1)
-                            }
-                        }
-                    }
-                    .opacity(widgetAssets.canOpenApp(widget.canOpen))
-                    .listStyle(.plain)
-                    
                 }
-                
                 .onChange(of: searchText) { searchText in
                     widgetAssets.fetchSearchData(searchText: searchText)
                 }
                 .onChange(of: widgetAssets.isOnlyInstalledApp) { isOnlyInstallApp in
                     widgetAssets.fetchData(isOnlyInstall: isOnlyInstallApp)
                 }
-                
             }
         }
     }

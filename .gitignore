@@ -1,8 +1,14 @@
 
 
-#Directory
-koget/Test/
-
 
 #Target
 Koget-Admin/
+
+#SPM
+koget.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/*
+
+#Firebase
+GoogleService-Info.plist
+
+#ETC
+.DS_Store

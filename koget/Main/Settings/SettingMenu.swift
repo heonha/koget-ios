@@ -13,16 +13,68 @@ struct SettingMenu: View, AppStoreReviewable {
     
     @ObservedObject var viewModel = HelperSheetViewModel.shared
     @EnvironmentObject var constant: Constants
-    
+
+    @State var widgetSizeTitle = "선택"
+
     var body: some View {
         NavigationView {
             ZStack {
                 ZStack {
-                    AppColor.Background.first
+                    Color.init(uiColor: .systemGroupedBackground)
+                        .ignoresSafeArea()
                 }
                 VStack {
                     Spacer()
                     List {
+                        Section("앱 설정") {
+                            Button {
+
+                            } label: {
+                                HStack {
+                                    Label("위젯 사이즈", systemSymbol: .arrowDownRightAndArrowUpLeftCircle)
+                                    Spacer()
+                                    Menu {
+                                        Button("기본") {
+                                            widgetSizeTitle = "기본"
+                                            DeepLinkWidgetViewModel.shared.widgetPadding = 2
+                                        }
+                                        Button("중간") {
+                                            widgetSizeTitle = "중간"
+                                            DeepLinkWidgetViewModel.shared.widgetPadding = 8
+                                        }
+                                        Button("작음") {
+                                            widgetSizeTitle = "작음"
+                                            DeepLinkWidgetViewModel.shared.widgetPadding = 16
+                                        }
+                                    } label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .fill(AppColor.Fill.second)
+                                            Text(widgetSizeTitle)
+                                                .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                                        }
+                                    }
+                                    .frame(width: 80)
+                                    .padding(1)
+                                }
+                            }
+                            .foregroundColor(AppColor.Label.first)
+                            .onAppear {
+                                switch DeepLinkWidgetViewModel.shared.widgetPadding {
+                                case 2:
+                                    widgetSizeTitle = "기본"
+                                case 8:
+                                    widgetSizeTitle = "중간"
+                                case 16:
+                                    widgetSizeTitle = "작음"
+                                default:
+                                    widgetSizeTitle = "선택하세요"
+
+                                }
+                            }
+
+                        }
+
                         Section("사용방법") {
                             SettingMenuButton(title: "위젯을 잠금화면에 등록하는 방법", imageType: .symbol, systemSymbol: .appsIphoneBadgePlus, imageColor: AppColor.Label.second) {
                                 viewModel.showHowtoUseView.toggle()
@@ -42,9 +94,10 @@ struct SettingMenu: View, AppStoreReviewable {
                                 viewModel.showContactView.toggle()
                             }
                         }
-                            Section("앱에 관하여") {
 
-                                SettingMenuButton(title: "앱 평가하기", imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
+                        Section("앱에 관하여") {
+
+                            SettingMenuButton(title: "앱 평가하기", imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
                                 requestReview()
                             }
                             SettingMenuButton(title: "코젯 버전", subtitle: appVersion, imageType: .asset, imageName: "Koget") {
@@ -89,58 +142,5 @@ struct SettingMenu: View, AppStoreReviewable {
 struct HowToUseMenus_Previews: PreviewProvider {
     static var previews: some View {
         SettingMenu()
-    }
-}
-
-struct SettingMenuButton: View {
-    
-    enum ImageType {
-        case symbol
-        case asset
-    }
-
-    var title: LocalizedStringKey
-    var subtitle: String? = nil
-    var imageType: ImageType
-    var imageName: String = ""
-    var systemSymbol: SFSymbol?
-    var imageSize: CGFloat = 20
-    var imageColor: Color = AppColor.Label.first
-    var action: () -> Void
-
-    var titleColor: Color = AppColor.Label.first
-    var subtitleColor: Color = AppColor.Label.second
-
-    var body: some View {
-        Button {
-            action()
-        } label: {
-            LazyHStack {
-                
-                switch imageType {
-                case .symbol:
-                    if let symbol = systemSymbol {
-                        Image(systemSymbol: symbol)
-                            .tint(imageColor)
-                            .shadow(color: Color.black.opacity(0.2), radius: 0.1, x: 1, y: 1)
-                            .frame(width: imageSize)
-                    }
-                case .asset:
-                    Image(imageName)
-                        .resizable()
-                        .frame(width: imageSize, height: imageSize)
-                        .clipShape(Circle())
-                }
-
-                LazyHStack {
-                    Text(title)
-                        .foregroundStyle(titleColor)
-                    if let subtitle = subtitle {
-                        Text(subtitle)
-                            .foregroundStyle(subtitleColor)
-                    }
-                }
-            }
-        }
     }
 }

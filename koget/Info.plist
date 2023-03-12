@@ -46,9 +46,6 @@
 		<string>naversearchapp</string>
 		<string>navermap</string>
 		<string>naverpayapp</string>
-		<string>ktAuth</string>
-		<string>tauthlink</string>
-		<string>uplusauth</string>
 		<string>payco</string>
 		<string>shpayfan-touchpay</string>
 		<string>starbucks</string>
@@ -72,6 +69,16 @@
 		<string>goodnotes5</string>
 		<string>tiktok</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	***REMOVED***
+		<key>Allows Arbitrary Loads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		***REMOVED***
+			<key>NSExceptionAllowsInsecureHTTPLoads</key>
+			<string>0</string>
+		***REMOVED***
+	***REMOVED***
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>ConfigurationIntent</string>

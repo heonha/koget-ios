@@ -26,10 +26,10 @@ struct ContactView: View {
     @State var isPresentSendAlert = false
     @StateObject var viewModel = ContactViewModel()
     @Environment(\.dismiss) var dismiss
-
+    
     @State var successAlert = UIView()
     @State var errorAlert = UIView()
-
+    
     var body: some View {
         GeometryReader { geometryProxy in
             ZStack {
@@ -39,7 +39,7 @@ struct ContactView: View {
                             Text("문의 유형")
                             
                             Spacer()
-
+                            
                             contactTypeMenu
                                 .frame(width: deviceSize.width / 1.5, height: 35)
                             Spacer()
@@ -57,16 +57,14 @@ struct ContactView: View {
                         .frame(height: geometryProxy.size.height / 2.5)
                         .padding([.top, .bottom], 8)
                         
-                        Button {
+                        TextButton(title: "문의 보내기", backgroundColor: AppColor.kogetBlue) {
                             isPresentSendAlert.toggle()
-                        } label: {
-                            ButtonWithText(title: "문의 보내기")
                         }
                         .padding([.top, .bottom], 8)
                         Divider()
-
+                        
                         noticeMessage
-
+                        
                         Spacer()
                     }
                     .padding(16)
@@ -85,7 +83,7 @@ struct ContactView: View {
                     }
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
-
+                    
                 }
             }
             .toolbarBackground(.visible, for: .navigationBar)
@@ -117,12 +115,12 @@ struct ContactView: View {
             }
         }
     }
-
+    
     var noticeMessage: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("문의 안내사항")
                 .bold()
-
+            
             VStack(alignment: .leading, spacing: 2) {
                 Text("* 문의 내용에 개인정보를 입력하지 마세요.")
                 Text("* 문의는 익명으로 발송됩니다.")
@@ -132,9 +130,9 @@ struct ContactView: View {
             .font(.system(size: 15))
         }
         .foregroundColor(.gray)
-
+        
     }
-
+    
     var contactTypeMenu: some View {
         Menu {
             Button {
@@ -144,7 +142,7 @@ struct ContactView: View {
             }
             Button {
                 viewModel.contactType = .addApp
-
+                
             } label: {
                 Text(ContectType.addApp.rawValue.localized())
             }
@@ -171,19 +169,19 @@ struct ContactView: View {
             }
         }
     }
-
+    
     private func setAlertView() -> UIView {
         return EKMaker.setToastView(title: "문의 보내기 성공".localized(), subtitle: "피드백을 보내주셔서 감사합니다.".localized(), named: "success")
     }
-
+    
     private func presentSuccessAlert() {
         SwiftEntryKit.display(entry: successAlert, using: EKMaker.whiteAlertAttribute)
     }
-
+    
     private func setErrorAlertView() -> UIView {
         return EKMaker.setToastView(title: "확인 필요".localized(), subtitle: "빈칸을 확인해주세요.".localized(), named: "failed")
     }
-
+    
     private func presentErrorAlert() {
         SwiftEntryKit.display(entry: errorAlert, using: EKMaker.whiteAlertAttribute)
     }

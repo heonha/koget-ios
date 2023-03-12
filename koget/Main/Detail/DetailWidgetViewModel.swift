@@ -16,9 +16,9 @@ enum DetailWidgetErrorType: String {
     case urlError = "URL에 문자열 :// 이 반드시 들어가야 합니다."
 }
 
-class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditProtocol {
-    
-    let nameStringLimit: Int = 14
+class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
+
+    var nameStringLimit: Int = 14
     @Published var alertView = UIView()
 
     @Published var alertMessage: String = "알수 없는 오류 발생"
