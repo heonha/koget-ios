@@ -31,7 +31,7 @@ struct DetailWidgetView: View {
             if constant.isDarkMode {
                 AppColor.Background.second
             } else {
-                AppColor.Background.second
+                AppColor.Background.first
             }
             VStack {
                 titleBar

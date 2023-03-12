@@ -16,19 +16,19 @@ struct ToggleButton: View {
     var widget: DeepLink
     let font: Font = .custom(CustomFont.NotoSansKR.medium, size: 18)
 
-
     var body: some View {
         Button {
             viewModel.editingAction(widget: widget)
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(viewModel.isEditingMode ? AppColor.kogetBlue : AppColor.Fill.first)
+                    .fill(viewModel.isEditingMode
+                          ? AppColor.kogetBlue
+                          : AppColor.Fill.first)
                 Text(viewModel.isEditingMode ? "저장" : "편집")
                     .foregroundColor(viewModel.isEditingMode
                                      ? (constant.isDarkMode ? AppColor.Label.first : AppColor.Background.first)
                                      : AppColor.Label.first )
-                    .fontWeight(.bold)
                     .font(font)
             }
         }

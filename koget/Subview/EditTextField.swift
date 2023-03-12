@@ -40,7 +40,7 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                         RoundedRectangle(cornerRadius: 5)
                             .fill(AppColor.Fill.second)
                         TextField(placeHolder, text: $text)
-                            .font(.custom(CustomFont.NotoSansKR.light, size: 16))
+                            .font(.custom(CustomFont.NotoSansKR.light, size: 18))
                             .frame(height: 35)
                             .autocorrectionDisabled()
                             .textInputAutocapitalization(.never)
@@ -52,9 +52,9 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                     // 뷰어 모드
                     ZStack {
                         RoundedRectangle(cornerRadius: 5)
-                            .fill(AppColor.Background.second)
+                            .fill(constant.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
                         TextField(placeHolder, text: $text)
-                            .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                            .font(.custom(CustomFont.NotoSansKR.medium, size: 18))
                             .frame(height: 35)
                             .background(.clear)
                             .padding(.horizontal, 4)

@@ -14,6 +14,8 @@ struct WidgetListContainerView: View {
     let backgroundColor: Color = AppColor.Background.first
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
+    @State var isDelete: Bool = false
+    @Environment(\.viewController) var viewControllerHolder: UIViewController?
 
     var body: some View {
         ZStack {
@@ -45,18 +47,46 @@ struct WidgetListContainerView: View {
         List {
             ForEach(coreData.linkWidgets) { widget in
                 WidgetContainerCell(widget: widget, viewModel: viewModel, type: .list)
-                    .swipeActions(allowsFullSwipe: true) {
-                        Button {
-                          print("Bookmark")
-                        } label: {
-                          Label("Bookmark", systemImage: "bookmark")
-                        }
-                        .onTapGesture {
-                            print("???")
-                        }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
 
+                        Button {
+                            isDelete.toggle()
+                        } label: {
+                            Label("삭제", systemSymbol: .trashFill)
+                        }
+                        .tint(Color.init(uiColor: .systemRed))
+                        Button {
+                            self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                                DetailWidgetView(selectedWidget: widget)
+                            })
+                        } label: {
+                            Label("편집", systemSymbol: .sliderHorizontal3)
+                        }
+                        .tint(AppColor.kogetBlue)
                     }
+                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                        Button {
+                            if let url = widget.url, let id = widget.id {
+                                viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
+                            }
+                        } label: {
+                            Label("실행하기", systemSymbol: .arrowUpLeftSquareFill)
+                        }
+                        .tint(Color.green)
+                    }
+                    .alert("\(widget.name ?? "알수없음")", isPresented: $isDelete, actions: {
+                        Button("삭제", role: .destructive) {
+                            coreData.deleteData(data: widget)
+                            viewModel.displayToast()
+                            isDelete = false
+                        }
+                        Button("취소", role: .cancel) {
+                            isDelete = false
+                        }
+                    }, message: {Text("이 위젯을 삭제 할까요?")})
+
             }
+
         }
         .listRowSeparator(.visible)
         .listStyle(.plain)

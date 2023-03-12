@@ -12,6 +12,7 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
     
     @StateObject var viewModel: V
     @Binding var isPresentQustionmark: Bool
+    @StateObject var constant = Constants.shared
 
     var body: some View {
         VStack {
@@ -77,7 +78,7 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
             RoundedRectangle(cornerRadius: 8)
                 .fill(viewModel.isEditingMode
                       ? AppColor.Fill.second
-                      : AppColor.Background.second)
+                      : (constant.isDarkMode ? AppColor.Background.second : AppColor.Background.first))
             OpacitySlider(viewModel: viewModel, widthRatio: 0.3)
                 .offset(x: 0, y: viewModel.isEditingMode ? 0 : -15)
                 .opacity(viewModel.isEditingMode ? 1 : 0)
