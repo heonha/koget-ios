@@ -18,8 +18,6 @@ struct FloatingDestinationView: View {
             SettingMenu()
         case .contact:
             ContactView()
-        case .edit:
-            ManageWidgetView()
         }
     }
 }

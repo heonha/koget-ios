@@ -8,7 +8,7 @@
 import SwiftUI
 import QGrid
 
-struct LinkWidgetView: View {
+struct WidgetView: View {
     
     let backgroundColor: Color = AppColor.Background.first
     @StateObject var viewModel: MainWidgetViewModel
@@ -79,7 +79,7 @@ struct LinkWidgetView: View {
 struct WidgetListGridView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            LinkWidgetView(viewModel: MainWidgetViewModel.shared)
+            WidgetView(viewModel: MainWidgetViewModel.shared)
         }
         .environmentObject(StorageProvider(inMemory: true))
     }

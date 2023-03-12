@@ -75,7 +75,7 @@
 		3A01E785296AD3470019CD2D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E784296AD3470019CD2D /* ContactView.swift */; };
 		3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */; };
 		3A0566CE2931E87D007B0A7A /* WidgetIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */; };
-		3A0566D32931E9A0007B0A7A /* LinkWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */; };
+		3A0566D32931E9A0007B0A7A /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D22931E9A0007B0A7A /* WidgetView.swift */; };
 		3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */; };
 		3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */; };
 		3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0C03412935131600868B70 /* PhotoEditMenu.swift */; };
@@ -104,7 +104,6 @@
 		3A6449B6297E3895002A710C /* sendSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B5297E3895002A710C /* sendSuccess.json */; };
 		3A6449BA297E3A2C002A710C /* trash.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6449B9297E3A2C002A710C /* trash.json */; };
 		3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */; };
-		3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */; };
 		3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809B2974420100E62389 /* FloatingMenuButton.swift */; };
 		3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809E2974426900E62389 /* FloatingMainButton.swift */; };
 		3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D80A02974429500E62389 /* FloatingDestinationView.swift */; };
@@ -226,7 +225,7 @@
 		3A01E784296AD3470019CD2D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIconCell.swift; sourceTree = "<group>"; };
-		3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetView.swift; sourceTree = "<group>"; };
+		3A0566D22931E9A0007B0A7A /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetView.swift; sourceTree = "<group>"; };
 		3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetList.swift; sourceTree = "<group>"; };
 		3A0C03412935131600868B70 /* PhotoEditMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditMenu.swift; sourceTree = "<group>"; };
@@ -249,7 +248,6 @@
 		3A6449B5297E3895002A710C /* sendSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sendSuccess.json; sourceTree = "<group>"; };
 		3A6449B9297E3A2C002A710C /* trash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trash.json; sourceTree = "<group>"; };
 		3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetViewModel.swift; sourceTree = "<group>"; };
-		3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWidgetView.swift; sourceTree = "<group>"; };
 		3A6D809B2974420100E62389 /* FloatingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuButton.swift; sourceTree = "<group>"; };
 		3A6D809E2974426900E62389 /* FloatingMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMainButton.swift; sourceTree = "<group>"; };
 		3A6D80A02974429500E62389 /* FloatingDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingDestinationView.swift; sourceTree = "<group>"; };
@@ -373,10 +371,9 @@
 				390B5CBB29B1AED900B61E35 /* MainTabView.swift */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
 				3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */,
-				3A00CA642931EDB6004FBF80 /* Grid */,
+				3A00CA642931EDB6004FBF80 /* WidgetList */,
 				3A08BCFF292FBF0B00E09B3E /* Make */,
 				3A08BD00292FBF1B00E09B3E /* Detail */,
-				3A69AD29297BAD7400A49ED7 /* Manage */,
 				3A1F89062978F94D00E1B4C4 /* HowToUse */,
 				3A08BD01292FC9E700E09B3E /* Settings */,
 			);
@@ -486,15 +483,15 @@
 			path = PatchNote;
 			sourceTree = "<group>";
 		};
-		3A00CA642931EDB6004FBF80 /* Grid */ = {
+		3A00CA642931EDB6004FBF80 /* WidgetList */ = {
 			isa = PBXGroup;
 			children = (
-				3A0566D22931E9A0007B0A7A /* LinkWidgetView.swift */,
+				3A0566D22931E9A0007B0A7A /* WidgetView.swift */,
 				3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */,
 				39835ACE299D1F6600BEDF88 /* WidgetButton.swift */,
 				39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */,
 			);
-			path = Grid;
+			path = WidgetList;
 			sourceTree = "<group>";
 		};
 		3A01E783296AD33C0019CD2D /* Contact */ = {
@@ -510,11 +507,11 @@
 		3A08BCFF292FBF0B00E09B3E /* Make */ = {
 			isa = PBXGroup;
 			children = (
+				3900CCE72996851700092AD0 /* WidgetAssets */,
+				3A6449BB297E428C002A710C /* Subviews */,
 				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
 				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
 				39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */,
-				3900CCE72996851700092AD0 /* WidgetAssets */,
-				3A6449BB297E428C002A710C /* Subviews */,
 			);
 			path = Make;
 			sourceTree = "<group>";
@@ -593,14 +590,6 @@
 				3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */,
 			);
 			path = Subviews;
-			sourceTree = "<group>";
-		};
-		3A69AD29297BAD7400A49ED7 /* Manage */ = {
-			isa = PBXGroup;
-			children = (
-				3A69AD2A297BAD8800A49ED7 /* ManageWidgetView.swift */,
-			);
-			path = Manage;
 			sourceTree = "<group>";
 		};
 		3A6D809A297441A600E62389 /* FloatingButton */ = {
@@ -1028,7 +1017,6 @@
 				3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */,
 				39223B7429A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */,
 				39835AD1299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift in Sources */,
-				3A69AD2B297BAD8800A49ED7 /* ManageWidgetView.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* BlurBackgroundView.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
 				3A1591712984FA40001924C3 /* DeepLinkWidgetViewModel.swift in Sources */,
@@ -1057,7 +1045,7 @@
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
 				3A01E779296AB04F0019CD2D /* MakeWidgetTextFieldView.swift in Sources */,
 				390B5CBA29B1A70600B61E35 /* NoticePage.swift in Sources */,
-				3A0566D32931E9A0007B0A7A /* LinkWidgetView.swift in Sources */,
+				3A0566D32931E9A0007B0A7A /* WidgetView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
 				3A1F89082978F9DC00E1B4C4 /* LockscreenHelper.swift in Sources */,
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,
