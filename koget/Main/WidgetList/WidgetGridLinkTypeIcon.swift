@@ -1,5 +1,5 @@
 //
-//  WidgetLinkTypeIcon.swift
+//  WidgetGridLinkTypeIcon.swift
 //  koget
 //
 //  Created by Heonjin Ha on 2023/02/15.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SFSafeSymbols
 
-struct WidgetLinkTypeIcon: View {
+struct WidgetGridLinkTypeIcon: View {
     
     @StateObject var viewModel: MainWidgetViewModel
     var url: String

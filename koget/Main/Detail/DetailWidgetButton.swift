@@ -1,5 +1,5 @@
 //
-//  DetailWidgetButton.swift
+//  DetailWidgetCancelButton.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/11/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailWidgetButton: View {
+struct DetailWidgetCancelButton: View {
     
     var text: LocalizedStringKey
     var titleColor: Color = AppColor.Label.first
@@ -31,7 +31,7 @@ struct DetailWidgetButton: View {
 
 struct DetailWidgetButton_Previews: PreviewProvider {
     static var previews: some View {
-        DetailWidgetButton(text: "닫기", buttonColor: .init(uiColor: .darkGray)) {
+        DetailWidgetCancelButton(text: "닫기", buttonColor: .init(uiColor: .darkGray)) {
         }
     }
 }

@@ -16,7 +16,6 @@ struct ViewControllerKey: EnvironmentKey {
         var viewController: UIViewController?
         let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         viewController = firstScene?.windows.first?.rootViewController
-        
         return ViewControllerHolder(value: viewController )
     }
 }

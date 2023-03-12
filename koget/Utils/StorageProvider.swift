@@ -28,9 +28,9 @@ class StorageProvider: ObservableObject {
         
         // 테스트 동영상 몇 개 추가
         let widgets = [
+            TestDeepLink(name: "Tmap", image: UIImage(named: "tmap")!.pngData()!, deepLink: "tmap://"),
             TestDeepLink(name: "스타벅스", image: UIImage(named: "starbucks")!.pngData()!, deepLink: "starbucks://"),
             TestDeepLink(name: "Strava", image: UIImage(named: "strava")!.pngData()!, deepLink: "strava://"),
-            TestDeepLink(name: "Tmap", image: UIImage(named: "tmap")!.pngData()!, deepLink: "tmap://"),
             TestDeepLink(name: "youtube", image: UIImage(named: "youtube")!.pngData()!, deepLink: "https://www.youtube.com"),
                     ]
                     

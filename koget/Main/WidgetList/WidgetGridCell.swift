@@ -43,7 +43,7 @@ struct WidgetGridCell: View {
                     .resizable()
                     .scaledToFill()
                     .clipShape(Circle())
-                WidgetLinkTypeIcon(viewModel: viewModel, url: url)
+                WidgetGridLinkTypeIcon(viewModel: viewModel, url: url)
             }
             .frame(width: imageSize.width, height: imageSize.height)
             .shadow(color: .black.opacity(0.15), radius: 0.5, x: 0.3, y: 0.3)
