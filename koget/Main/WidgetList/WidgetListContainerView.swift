@@ -38,7 +38,7 @@ struct WidgetListContainerView: View {
     // Grid
     var gridView: some View {
         QGrid($coreData.linkWidgets.wrappedValue, columns: 3) { widget in
-            WidgetIconCell(widget: widget, viewModel: viewModel, type: .grid)
+            WidgetContainerCell(widget: widget, viewModel: viewModel, type: .grid)
         }
     }
 
@@ -47,7 +47,7 @@ struct WidgetListContainerView: View {
         VStack {
             List {
                 ForEach(coreData.linkWidgets, id: \.id) { widget in
-                    WidgetIconCell(widget: widget, viewModel: viewModel, type: .list)
+                    WidgetContainerCell(widget: widget, viewModel: viewModel, type: .list)
                 }
             }
             .listStyle(.plain)

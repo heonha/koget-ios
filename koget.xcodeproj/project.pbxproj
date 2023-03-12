@@ -48,7 +48,7 @@
 		39822D0029B367FF00B687E4 /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CFF29B367FF00B687E4 /* SwiftUITooltip */; };
 		39822D0329B3682600B687E4 /* WelcomeSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 39822D0229B3682600B687E4 /* WelcomeSheet */; };
 		39822D0629B3686300B687E4 /* ToastUI in Frameworks */ = {isa = PBXBuildFile; productRef = 39822D0529B3686300B687E4 /* ToastUI */; };
-		39835ACF299D1F6600BEDF88 /* WidgetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835ACE299D1F6600BEDF88 /* WidgetButton.swift */; };
+		39835ACF299D1F6600BEDF88 /* WidgetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */; };
 		39835AD1299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */; };
 		39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */; };
 		39B23C4729A3B7A70047BBDB /* PatchNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */; };
@@ -75,7 +75,7 @@
 		3A01E779296AB04F0019CD2D /* MakeWidgetTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */; };
 		3A01E785296AD3470019CD2D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E784296AD3470019CD2D /* ContactView.swift */; };
 		3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */; };
-		3A0566CE2931E87D007B0A7A /* WidgetIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */; };
+		3A0566CE2931E87D007B0A7A /* WidgetContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */; };
 		3A0566D32931E9A0007B0A7A /* WidgetListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D22931E9A0007B0A7A /* WidgetListContainerView.swift */; };
 		3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */; };
 		3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */; };
@@ -209,7 +209,7 @@
 		39691F4529ACDA58002BD874 /* OpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacitySlider.swift; sourceTree = "<group>"; };
 		39691F4729ACE9D8002BD874 /* LinkWidgetOpacityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidgetOpacityPicker.swift; sourceTree = "<group>"; };
 		396BCB6429AE1CC600B1E759 /* Koget-Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Koget-Admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		39835ACE299D1F6600BEDF88 /* WidgetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetButton.swift; sourceTree = "<group>"; };
+		39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridCell.swift; sourceTree = "<group>"; };
 		39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLinkTypeIcon.swift; sourceTree = "<group>"; };
 		39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeToggleStyle.swift; sourceTree = "<group>"; };
 		39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteList.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 		3A01E778296AB04F0019CD2D /* MakeWidgetTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetTextFieldView.swift; sourceTree = "<group>"; };
 		3A01E784296AD3470019CD2D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
-		3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIconCell.swift; sourceTree = "<group>"; };
+		3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContainerCell.swift; sourceTree = "<group>"; };
 		3A0566D22931E9A0007B0A7A /* WidgetListContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListContainerView.swift; sourceTree = "<group>"; };
 		3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetView.swift; sourceTree = "<group>"; };
 		3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetList.swift; sourceTree = "<group>"; };
@@ -489,8 +489,8 @@
 			isa = PBXGroup;
 			children = (
 				3A0566D22931E9A0007B0A7A /* WidgetListContainerView.swift */,
-				3A0566CD2931E87D007B0A7A /* WidgetIconCell.swift */,
-				39835ACE299D1F6600BEDF88 /* WidgetButton.swift */,
+				3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */,
+				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
 				39835AD0299D1FC900BEDF88 /* WidgetLinkTypeIcon.swift */,
 				392EDF6429BD55CA000B1353 /* WidgetListCell.swift */,
 			);
@@ -1011,7 +1011,7 @@
 				3A3C11A328EDC14700C9CCED /* LinkWidgetModel.swift in Sources */,
 				3AD4691B297D19190090B2D3 /* ContactViewModel.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
-				3A0566CE2931E87D007B0A7A /* WidgetIconCell.swift in Sources */,
+				3A0566CE2931E87D007B0A7A /* WidgetContainerCell.swift in Sources */,
 				39504A9029B3A01E008A7BA4 /* SUIView.swift in Sources */,
 				3A559C7028EB1D4900D5D9E4 /* AppColor.swift in Sources */,
 				3A8339D92932167500DC9527 /* DetailWidgetButton.swift in Sources */,
@@ -1059,7 +1059,7 @@
 				39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */,
 				39504A8F29B3A01E008A7BA4 /* SUIViewController.swift in Sources */,
 				3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */,
-				39835ACF299D1F6600BEDF88 /* WidgetButton.swift in Sources */,
+				39835ACF299D1F6600BEDF88 /* WidgetGridCell.swift in Sources */,
 				3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */,
 				392EDF6129BD508A000B1353 /* NoticePageCell.swift in Sources */,
 				3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */,

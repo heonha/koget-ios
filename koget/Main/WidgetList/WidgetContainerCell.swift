@@ -1,5 +1,5 @@
 //
-//  WidgetIconCell.swift
+//  WidgetContainerCell.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/11/26.
@@ -9,16 +9,16 @@ import SwiftUI
 import SwiftEntryKit
 import SFSafeSymbols
 
-enum WidgetIconCellType {
+enum WidgetCellType {
     case grid
     case list
 }
 
 // list Cell 또는 Grid Cell을 포함하는 컨테이너
-struct WidgetIconCell: View {
+struct WidgetContainerCell: View {
     
     var widget: DeepLink
-    var type: WidgetIconCellType
+    var type: WidgetCellType
     var cellSize: (grid: CGFloat, list: CGFloat)
 
     @ObservedObject var viewModel: MainWidgetViewModel
@@ -26,14 +26,13 @@ struct WidgetIconCell: View {
     @State var isPresentDetailView = false
     @State var isDelete: Bool = false
 
-
     lazy var imageSize = CGSize(width: cellSize.grid * 0.63, height: cellSize.grid * 0.63)
     lazy var textSize = CGSize(width: cellSize.grid, height: cellSize.grid * 0.40)
 
     @Environment(\.dismiss) var dismiss
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
 
-    init(widget: DeepLink, viewModel: MainWidgetViewModel, type: WidgetIconCellType) {
+    init(widget: DeepLink, viewModel: MainWidgetViewModel, type: WidgetCellType) {
         self.widget = widget
         self.type = type
         self.viewModel = viewModel
@@ -101,7 +100,7 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
                 .ignoresSafeArea()
             
             // 컨텐츠
-            WidgetIconCell(widget: DeepLink.example, viewModel: MainWidgetViewModel.shared, type: .list)
+            WidgetContainerCell(widget: DeepLink.example, viewModel: MainWidgetViewModel.shared, type: .list)
                 .padding(.horizontal)
         }
         .environmentObject(StorageProvider())
