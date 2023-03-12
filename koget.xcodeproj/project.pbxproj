@@ -413,6 +413,15 @@
 			name = plists;
 			sourceTree = "<group>";
 		};
+		392EDF6229BD50FD000B1353 /* NoticePage */ = {
+			isa = PBXGroup;
+			children = (
+				390B5CB929B1A70600B61E35 /* NoticePage.swift */,
+				392EDF6029BD508A000B1353 /* NoticePageCell.swift */,
+			);
+			path = NoticePage;
+			sourceTree = "<group>";
+		};
 		393E015229BC6C680018390D /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,8 +474,6 @@
 			children = (
 				39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */,
 				39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */,
-				390B5CB929B1A70600B61E35 /* NoticePage.swift */,
-				392EDF6029BD508A000B1353 /* NoticePageCell.swift */,
 			);
 			path = PatchNote;
 			sourceTree = "<group>";
@@ -522,9 +529,10 @@
 		3A08BD01292FC9E700E09B3E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				39B23C4A29A3C1B40047BBDB /* PatchNote */,
+				392EDF6229BD50FD000B1353 /* NoticePage */,
 				3ADA2E96297FD779004AADEE /* SettingMenu.swift */,
 				3A1591732985194C001924C3 /* AppStoreReviewable.swift */,
-				39B23C4A29A3C1B40047BBDB /* PatchNote */,
 				3A01E783296AD33C0019CD2D /* Contact */,
 			);
 			path = Settings;
