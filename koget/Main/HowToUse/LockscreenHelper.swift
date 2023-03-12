@@ -8,6 +8,7 @@
 import SwiftUI
 import AVKit
 
+
 struct LockscreenHelper: View {
     
     @State var player = AVPlayer()
@@ -40,6 +41,7 @@ struct LockscreenHelper: View {
                         VStack {
                             TabView {
                                 VStack(alignment: .leading ,spacing: 8) {
+
                                     Spacer()
                                     Text("1. 잠금화면 상태에서 화면을 길게 탭하기.")
                                     Text("2. 사용자화 - 잠금화면 - 위젯선택 누르기")

@@ -53,12 +53,16 @@
 		39835ACF299D1F6600BEDF88 /* WidgetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */; };
 		39835AD1299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */; };
 		39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */; };
-		39B23C4729A3B7A70047BBDB /* PatchNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */; };
-		39B23C4929A3BB6F0047BBDB /* PatchNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */; };
 		39CD9F2929B215A100C28534 /* SDSwagger.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2829B215A100C28534 /* SDSwagger.otf */; };
 		39CD9F3029B215D000C28534 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */; };
 		39CD9F3129B215D000C28534 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */; };
 		39CD9F3329B2312600C28534 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F3229B2312600C28534 /* NotoSansKR-Regular.otf */; };
+		39EBEB4729BDDC4500B1FD54 /* CheckmarkToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4629BDDC4500B1FD54 /* CheckmarkToggleStyle.swift */; };
+		39EBEB4A29BDF7A000B1FD54 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 39EBEB4929BDF7A000B1FD54 /* Kingfisher */; };
+		39EBEB4C29BDF7F400B1FD54 /* NoticeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4B29BDF7F400B1FD54 /* NoticeImageView.swift */; };
+		39EBEB4E29BE03C300B1FD54 /* PatchNoteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4D29BE03C300B1FD54 /* PatchNoteListCell.swift */; };
+		39EBEB5029BE06E900B1FD54 /* PatchNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */; };
+		39EBEB5229BE0A7900B1FD54 /* PatchNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB5129BE0A7900B1FD54 /* PatchNoteModel.swift */; };
 		39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274C29B98431001C368E /* SFSafeSymbols */; };
 		39ED274F29B98707001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274E29B98707001C368E /* SFSafeSymbols */; };
 		39ED275129B9871C001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275029B9871C001C368E /* SFSafeSymbols */; };
@@ -212,13 +216,16 @@
 		39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridCell.swift; sourceTree = "<group>"; };
 		39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridLinkTypeIcon.swift; sourceTree = "<group>"; };
 		39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeToggleStyle.swift; sourceTree = "<group>"; };
-		39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteList.swift; sourceTree = "<group>"; };
-		39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteView.swift; sourceTree = "<group>"; };
 		39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetViewModel.swift; sourceTree = "<group>"; };
 		39CD9F2829B215A100C28534 /* SDSwagger.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDSwagger.otf; sourceTree = "<group>"; };
 		39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		39CD9F3229B2312600C28534 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		39EBEB4629BDDC4500B1FD54 /* CheckmarkToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkToggleStyle.swift; sourceTree = "<group>"; };
+		39EBEB4B29BDF7F400B1FD54 /* NoticeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeImageView.swift; sourceTree = "<group>"; };
+		39EBEB4D29BE03C300B1FD54 /* PatchNoteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteListCell.swift; sourceTree = "<group>"; };
+		39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteList.swift; sourceTree = "<group>"; };
+		39EBEB5129BE0A7900B1FD54 /* PatchNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteModel.swift; sourceTree = "<group>"; };
 		3A00CA652931EFBE004FBF80 /* EditTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextField.swift; sourceTree = "<group>"; };
 		3A00CA682931F3F1004FBF80 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		3A01E776296AADEF0019CD2D /* URLTestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLTestButton.swift; sourceTree = "<group>"; };
@@ -328,6 +335,7 @@
 				39F8475529B3990B000B817E /* FirebaseFirestoreSwift in Frameworks */,
 				39F8475329B3990B000B817E /* FirebaseFirestore in Frameworks */,
 				39504A9329B3A059008A7BA4 /* SwiftEntryKit in Frameworks */,
+				39EBEB4A29BDF7A000B1FD54 /* Kingfisher in Frameworks */,
 				39822D0029B367FF00B687E4 /* SwiftUITooltip in Frameworks */,
 				39F8475729B3990B000B817E /* FirebaseStorage in Frameworks */,
 				39822D0629B3686300B687E4 /* ToastUI in Frameworks */,
@@ -363,7 +371,6 @@
 		3900CCE8299686A400092AD0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				39504A9429B3A09C008A7BA4 /* Subview */,
 				3A1F8909297AB25700E1B4C4 /* ContentView.swift */,
 				390B5CBB29B1AED900B61E35 /* MainTabView.swift */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
@@ -405,16 +412,6 @@
 				3ABA6C2728C60440005AA8E4 /* Info.plist */,
 			);
 			name = plists;
-			sourceTree = "<group>";
-		};
-		392EDF6229BD50FD000B1353 /* NoticePage */ = {
-			isa = PBXGroup;
-			children = (
-				390B5CB929B1A70600B61E35 /* NoticePage.swift */,
-				392EDF6029BD508A000B1353 /* NoticePageCell.swift */,
-				392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */,
-			);
-			path = NoticePage;
 			sourceTree = "<group>";
 		};
 		392EDF6329BD514B000B1353 /* Model */ = {
@@ -495,20 +492,31 @@
 		39B23C4A29A3C1B40047BBDB /* PatchNote */ = {
 			isa = PBXGroup;
 			children = (
-				39B23C4629A3B7A70047BBDB /* PatchNoteList.swift */,
-				39B23C4829A3BB6F0047BBDB /* PatchNoteView.swift */,
+				390B5CB929B1A70600B61E35 /* NoticePage.swift */,
+				392EDF6029BD508A000B1353 /* NoticePageCell.swift */,
+				39EBEB4D29BE03C300B1FD54 /* PatchNoteListCell.swift */,
+				39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */,
+				39EBEB5129BE0A7900B1FD54 /* PatchNoteModel.swift */,
 			);
 			path = PatchNote;
+			sourceTree = "<group>";
+		};
+		39EBEB4129BDD3BA00B1FD54 /* NewPatchNote */ = {
+			isa = PBXGroup;
+			children = (
+				39EBEB4B29BDF7F400B1FD54 /* NoticeImageView.swift */,
+			);
+			path = NewPatchNote;
 			sourceTree = "<group>";
 		};
 		3A00CA642931EDB6004FBF80 /* WidgetList */ = {
 			isa = PBXGroup;
 			children = (
 				3A0566D22931E9A0007B0A7A /* WidgetListContainerView.swift */,
+				392EDF6429BD55CA000B1353 /* WidgetListCell.swift */,
 				3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */,
 				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
 				39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */,
-				392EDF6429BD55CA000B1353 /* WidgetListCell.swift */,
 			);
 			path = WidgetList;
 			sourceTree = "<group>";
@@ -549,10 +557,11 @@
 		3A08BD01292FC9E700E09B3E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				39EBEB4129BDD3BA00B1FD54 /* NewPatchNote */,
 				3A01E783296AD33C0019CD2D /* Contact */,
 				39B23C4A29A3C1B40047BBDB /* PatchNote */,
-				392EDF6229BD50FD000B1353 /* NoticePage */,
 				3ADA2E96297FD779004AADEE /* SettingMenu.swift */,
+				392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */,
 				3A1591732985194C001924C3 /* AppStoreReviewable.swift */,
 			);
 			path = Settings;
@@ -668,6 +677,7 @@
 				3AE4B13D296D8A2D00DB219B /* KogetApp.swift */,
 				3900CCE8299686A400092AD0 /* Main */,
 				392EDF6329BD514B000B1353 /* Model */,
+				39504A9429B3A09C008A7BA4 /* Subview */,
 				3AF7E59128F85FD200B14DFD /* Utils */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
@@ -708,6 +718,7 @@
 				39301089299E6AAC009B13ED /* WidgetConstants.swift */,
 				39223B7329A5F8DE00F59F54 /* LocalizationExtensions.swift */,
 				39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */,
+				39EBEB4629BDDC4500B1FD54 /* CheckmarkToggleStyle.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -805,6 +816,7 @@
 				39504A9829B3A117008A7BA4 /* SnapKit */,
 				39ED274C29B98431001C368E /* SFSafeSymbols */,
 				39EE797729BA095800B8D519 /* SwiftDate */,
+				39EBEB4929BDF7A000B1FD54 /* Kingfisher */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -877,6 +889,7 @@
 				39504A9729B3A117008A7BA4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				39EE797629BA095800B8D519 /* XCRemoteSwiftPackageReference "SwiftDate" */,
+				39EBEB4829BDF7A000B1FD54 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -1012,6 +1025,7 @@
 				3A1F890A297AB25700E1B4C4 /* ContentView.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* LinkWidgetModel.swift in Sources */,
 				3AD4691B297D19190090B2D3 /* ContactViewModel.swift in Sources */,
+				39EBEB5229BE0A7900B1FD54 /* PatchNoteModel.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				3A0566CE2931E87D007B0A7A /* WidgetContainerCell.swift in Sources */,
 				39504A9029B3A01E008A7BA4 /* SUIView.swift in Sources */,
@@ -1037,21 +1051,22 @@
 				39504A9D29B429AF008A7BA4 /* EKMaker.swift in Sources */,
 				3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */,
 				39504AA929B48E73008A7BA4 /* EKCustomColor.swift in Sources */,
-				39B23C4929A3BB6F0047BBDB /* PatchNoteView.swift in Sources */,
 				3A8C1E782980DB7C004FAF89 /* HelperSheetViewModel.swift in Sources */,
 				3AD4692A297D3EC40090B2D3 /* LottieView.swift in Sources */,
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
-				39B23C4729A3B7A70047BBDB /* PatchNoteList.swift in Sources */,
 				390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */,
+				39EBEB4E29BE03C300B1FD54 /* PatchNoteListCell.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
 				39691F4829ACE9D8002BD874 /* OpacityPickerContainer.swift in Sources */,
 				3A3C118D28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,
+				39EBEB4729BDDC4500B1FD54 /* CheckmarkToggleStyle.swift in Sources */,
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
 				390B5CBA29B1A70600B61E35 /* NoticePage.swift in Sources */,
+				39EBEB4C29BDF7F400B1FD54 /* NoticeImageView.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* WidgetListContainerView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
 				3A1F89082978F9DC00E1B4C4 /* LockscreenHelper.swift in Sources */,
@@ -1059,6 +1074,7 @@
 				3ABD50FF292945EB00F878AE /* WidgetCoreData.swift in Sources */,
 				3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */,
 				39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */,
+				39EBEB5029BE06E900B1FD54 /* PatchNoteList.swift in Sources */,
 				39504A8F29B3A01E008A7BA4 /* SUIViewController.swift in Sources */,
 				3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */,
 				39835ACF299D1F6600BEDF88 /* WidgetGridCell.swift in Sources */,
@@ -1646,6 +1662,14 @@
 				minimumVersion = 3.0.1;
 			};
 		};
+		39EBEB4829BDF7A000B1FD54 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.6.2;
+			};
+		};
 		39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols.git";
@@ -1727,6 +1751,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39822D0429B3686300B687E4 /* XCRemoteSwiftPackageReference "ToastUI" */;
 			productName = ToastUI;
+		};
+		39EBEB4929BDF7A000B1FD54 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39EBEB4829BDF7A000B1FD54 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		39ED274C29B98431001C368E /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;

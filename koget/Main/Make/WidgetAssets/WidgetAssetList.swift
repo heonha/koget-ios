@@ -55,7 +55,7 @@ struct WidgetAssetList: View {
                         Toggle(isOn: $widgetAssets.isOnlyInstalledApp) {
 
                         }
-                        .toggleStyle(CheckMarkToggleStyle())
+                        .toggleStyle(CheckmarkToggleStyle())
                         .frame(width: 30, height: 30)
                         .tint(.blue)
                         .padding(.trailing, 20)

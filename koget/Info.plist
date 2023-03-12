@@ -69,6 +69,16 @@
 		<string>goodnotes5</string>
 		<string>tiktok</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	***REMOVED***
+		<key>Allows Arbitrary Loads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		***REMOVED***
+			<key>NSExceptionAllowsInsecureHTTPLoads</key>
+			<string>0</string>
+		***REMOVED***
+	***REMOVED***
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>ConfigurationIntent</string>

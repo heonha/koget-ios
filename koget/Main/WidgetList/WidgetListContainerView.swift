@@ -18,20 +18,18 @@ struct WidgetListContainerView: View {
     var body: some View {
         ZStack {
             backgroundColor
-            VStack {
-                if !$coreData.linkWidgets.wrappedValue.isEmpty {
-                    if viewModel.isGridView {
-                        gridView
-                    } else {
-                        listView
-                    }
-                    Spacer()
+            if !$coreData.linkWidgets.wrappedValue.isEmpty {
+                if viewModel.isGridView {
+                    gridView
                 } else {
-                    emptyGrid
+                    listView
                 }
+                Spacer()
+            } else {
+                emptyGrid
             }
-            .animation(.easeInOut(duration: 0.25), value: viewModel.isGridView)
         }
+        .animation(.easeInOut(duration: 0.25), value: viewModel.isGridView)
         .cornerRadius(5)
     }
     // MARK: - Widget Views
@@ -44,14 +42,24 @@ struct WidgetListContainerView: View {
 
     // List
     var listView: some View {
-        VStack {
-            List {
-                ForEach(coreData.linkWidgets, id: \.id) { widget in
-                    WidgetContainerCell(widget: widget, viewModel: viewModel, type: .list)
-                }
+        List {
+            ForEach(coreData.linkWidgets) { widget in
+                WidgetContainerCell(widget: widget, viewModel: viewModel, type: .list)
+                    .swipeActions(allowsFullSwipe: true) {
+                        Button {
+                          print("Bookmark")
+                        } label: {
+                          Label("Bookmark", systemImage: "bookmark")
+                        }
+                        .onTapGesture {
+                            print("???")
+                        }
+
+                    }
             }
-            .listStyle(.plain)
         }
+        .listRowSeparator(.visible)
+        .listStyle(.plain)
     }
 
     // Placeholder (위젯 없을 때.)

@@ -8,14 +8,23 @@
 import SwiftUI
 import SFSafeSymbols
 
+// 메인화면 공지 Cell
 struct NoticePage: View {
     var frame: CGSize = .init(width: .zero, height: deviceSize.height / 7.5)
+
+    var url = "https://www.heon.dev/patchnote/patchnote1-1.jpg"
+
     var body: some View {
         ZStack {
             AppColor.Background.first
             TabView {
-                NoticePageCell(named: "KogetClear", frame: frame.height)
-                    .padding(.vertical)
+                NavigationLink {
+                    PatchNoteList()
+                } label: {
+                    NoticePageCell(title: "UPDATED 1.2", named: "KogetClear", frame: frame.height)
+                        .padding()
+                }
+
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }

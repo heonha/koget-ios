@@ -42,55 +42,55 @@ struct WidgetContainerCell: View {
     var body: some View {
         if let data = widget.image, let name = widget.name, let url = widget.url {
             if let widgetImage = UIImage(data: data) {
-
-                Menu {
-                    Button {
-                        if let url = widget.url, let id = widget.id {
-                            viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
+                if type == .grid {
+                    Menu {
+                        Button {
+                            if let url = widget.url, let id = widget.id {
+                                viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
+                            }
+                        } label: {
+                            Label("실행하기", systemSymbol: .arrowUpLeftSquareFill)
+                        }
+                        Button {
+                            self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                                DetailWidgetView(selectedWidget: widget)
+                            })
+                        } label: {
+                            Label("편집", systemSymbol: .sliderHorizontal3)
+                        }
+                        Button(role: .destructive) {
+                            isDelete.toggle()
+                        } label: {
+                            Label("삭제", systemSymbol: .trashFill)
                         }
                     } label: {
-                        Label("실행하기", systemSymbol: .arrowUpLeftSquareFill)
-                    }
-                    Button {
-                        self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
-                            DetailWidgetView(selectedWidget: widget)
-                        })
-                    } label: {
-                        Label("편집", systemSymbol: .sliderHorizontal3)
-                    }
-                    Button(role: .destructive) {
-                        isDelete.toggle()
-                    } label: {
-                        Label("삭제", systemSymbol: .trashFill)
-                    }
-                } label: {
-                    if type == .grid {
                         WidgetGridCell(name: name, url: url, widgetImage: widgetImage,
-                                     cellWidth: cellSize.grid, viewModel: viewModel)
+                                       cellWidth: cellSize.grid, viewModel: viewModel)
 
-                    } else {
-                        WidgetListCell(name: name, url: url, widgetImage: widgetImage, cellWidth: cellSize.list, runCount: Int(widget.runCount), cellHeight: cellSize.list, viewModel: viewModel)
                     }
+                    .alert("\(widget.name ?? "알수없음")", isPresented: $isDelete, actions: {
+                        Button("삭제", role: .destructive) {
+                            coreData.deleteData(data: widget)
+                            dismiss()
+                            viewModel.displayToast()
+                            isDelete = false
+                        }
+                        Button("취소", role: .cancel) {
+                            isDelete = false
+                        }
+                    }, message: {Text("이 위젯을 삭제 할까요?")})
+                    .sheet(isPresented: $isPresentDetailView, content: {
+                        DetailWidgetView(selectedWidget: widget)
+                    })
+
+                } else {
+                    WidgetListCell(name: name, url: url, widgetImage: widgetImage, cellWidth: cellSize.list, runCount: Int(widget.runCount), cellHeight: cellSize.list, viewModel: viewModel)
                 }
-                .alert("\(widget.name ?? "알수없음")", isPresented: $isDelete, actions: {
-                    Button("삭제", role: .destructive) {
-                        coreData.deleteData(data: widget)
-                        dismiss()
-                        viewModel.displayToast()
-                        isDelete = false
-                    }
-                    Button("취소", role: .cancel) {
-                        isDelete = false
-                    }
-                }, message: {Text("이 위젯을 삭제 할까요?")})
-                .sheet(isPresented: $isPresentDetailView, content: {
-                    DetailWidgetView(selectedWidget: widget)
-                })
             }
         }
     }
-
 }
+
 
 struct DeepLinkWidgetIconView_Previews: PreviewProvider {
     static var previews: some View {

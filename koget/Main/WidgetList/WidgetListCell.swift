@@ -26,7 +26,6 @@ struct WidgetListCell: View {
 
     // 리스트 셀
     var body: some View {
-        ZStack {
             HStack {
                 ZStack {
                     Circle()
@@ -68,7 +67,6 @@ struct WidgetListCell: View {
             }
             .frame(height: cellHeight)
 
-        }
     }
 
     // 실행 횟수 카운터
