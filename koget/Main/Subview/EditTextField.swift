@@ -40,7 +40,7 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                         RoundedRectangle(cornerRadius: 5)
                             .fill(AppColor.Fill.second)
                         TextField(placeHolder, text: $text)
-                            .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                            .font(.custom(CustomFont.NotoSansKR.light, size: 16))
                             .frame(height: 35)
                             .autocorrectionDisabled()
                             .textInputAutocapitalization(.never)

@@ -54,9 +54,6 @@ final class LinkWidgetModel: ObservableObject {
             .init(name: "네이버웹툰", nameKr: "네이버웹툰", nameEn: "Naver Webtoon Kr", url: "fb455753897775430://", imageName: "naverwebtoon"),
             .init(name: "Netflix", nameKr: "넷플릭스", nameEn: "Netflix", url: "nflx://", imageName: "netflix"),
             .init(name: "Nike Run Club", nameKr: "나이키런클럽", nameEn: "Nike Run Club", url: "nikerunclub://", imageName: "nikerunclub"),
-            .init(name: "PASS by KT", nameKr: "패스", nameEn: "PASS by KT", url: "ktAuth://", imageName: "passapp"),
-            .init(name: "PASS by SKT", nameKr: "패스", nameEn: "PASS by SKT", url: "tauthlink://", imageName: "passapp"),
-            .init(name: "PASS by U+", nameKr: "패스", nameEn: "PASS by U+", url: "uplusauth://", imageName: "passapp"),
             .init(name: "PAYCO", nameKr: "페이코", nameEn: "PAYCO", url: "payco://", imageName: "payco"),
             .init(name: "Raddit", nameKr: "레딧", nameEn: "Raddit", url: "reddit://", imageName: "reddit"),
             .init(name: "신한플레이", nameKr: "신한플레이", nameEn: "shinhan play", url: "shpayfan-touchpay://", imageName: "shinhanplay"),
@@ -73,7 +70,6 @@ final class LinkWidgetModel: ObservableObject {
             .init(name: "YouTube", nameKr: "유튜브", nameEn: "Youtube", url: "youtube://", imageName: "youtube"),
             .init(name: "chatGPT", nameKr: "chatGPT", nameEn: "chatGPT", url: "https://chat.openai.com/chat/", imageName: "chatgpt"),
             .init(name: "알뜰교통카드", nameKr: "알뜰교통카드", nameEn: "알뜰교통카드", url: "watc://", imageName: "watc"),
-
         ]
 
         for var app in apps {

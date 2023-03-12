@@ -10,7 +10,7 @@ import Localize_Swift
 
 struct URLTestButton: View {
     
-    var title: LocalizedStringKey = "테스트"
+    var title: String = "테스트".localized()
 
     @ObservedObject var viewModel: MakeWidgetViewModel
 
@@ -43,8 +43,9 @@ struct URLTestButton: View {
                         RoundedRectangle(cornerRadius: 5)
                             .foregroundStyle(AppColor.Background.second)
                             .opacity(0.95)
+                            .shadow(color: .black.opacity(0.2), radius: 0.5, x: 1, y: 1)
                         Text(title)
-                            .foregroundColor(.white)
+                            .foregroundColor(AppColor.Label.first)
                             .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                     }
                     .frame(width: 100, height: 25)

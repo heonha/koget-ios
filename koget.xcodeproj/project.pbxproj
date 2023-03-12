@@ -25,6 +25,7 @@
 		392EDF6529BD55CA000B1353 /* WidgetListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6429BD55CA000B1353 /* WidgetListCell.swift */; };
 		392EDF6929BD5FAC000B1353 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6829BD5FAC000B1353 /* ToggleButton.swift */; };
 		392EDF6B29BD8E54000B1353 /* SettingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */; };
+		392EDF6F29BDA3C4000B1353 /* WidgetAssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */; };
 		3930108A299E6AAC009B13ED /* WidgetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39301089299E6AAC009B13ED /* WidgetConstants.swift */; };
 		3930108B299E6AAC009B13ED /* WidgetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39301089299E6AAC009B13ED /* WidgetConstants.swift */; };
 		39504A8B29B39CB6008A7BA4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A8A29B39CB6008A7BA4 /* Lottie */; };
@@ -196,6 +197,7 @@
 		392EDF6429BD55CA000B1353 /* WidgetListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListCell.swift; sourceTree = "<group>"; };
 		392EDF6829BD5FAC000B1353 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuButton.swift; sourceTree = "<group>"; };
+		392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetCell.swift; sourceTree = "<group>"; };
 		39301089299E6AAC009B13ED /* WidgetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConstants.swift; sourceTree = "<group>"; };
 		39504A8D29B3A01E008A7BA4 /* SUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUIViewController.swift; sourceTree = "<group>"; };
 		39504A8E29B3A01E008A7BA4 /* SUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUIView.swift; sourceTree = "<group>"; };
@@ -353,8 +355,7 @@
 				3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */,
 				3ABFEFBC292E70A900455730 /* WidgetAssetViewModel.swift */,
 				3A3C11A228EDC14700C9CCED /* LinkWidgetModel.swift */,
-				390853B529A24EB2006E8311 /* AssetRequestView.swift */,
-				390853B729A3949F006E8311 /* AssetRequestViewModel.swift */,
+				392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */,
 			);
 			path = WidgetAssets;
 			sourceTree = "<group>";
@@ -518,6 +519,8 @@
 				3A01E784296AD3470019CD2D /* ContactView.swift */,
 				3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */,
 				3AD4691A297D19190090B2D3 /* ContactViewModel.swift */,
+				390853B529A24EB2006E8311 /* AssetRequestView.swift */,
+				390853B729A3949F006E8311 /* AssetRequestViewModel.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -529,7 +532,6 @@
 				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
 				3A01E776296AADEF0019CD2D /* URLTestButton.swift */,
 				3900CCE72996851700092AD0 /* WidgetAssets */,
-				3A6449BB297E428C002A710C /* Subviews */,
 			);
 			path = Make;
 			sourceTree = "<group>";
@@ -593,13 +595,6 @@
 				3AD46929297D3EC40090B2D3 /* LottieView.swift */,
 			);
 			path = Lottie;
-			sourceTree = "<group>";
-		};
-		3A6449BB297E428C002A710C /* Subviews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Subviews;
 			sourceTree = "<group>";
 		};
 		3A6D809A297441A600E62389 /* FloatingButton */ = {
@@ -1036,6 +1031,7 @@
 				39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */,
 				39504AA129B43796008A7BA4 /* UIScreen+Utils.swift in Sources */,
 				390853B629A24EB2006E8311 /* AssetRequestView.swift in Sources */,
+				392EDF6F29BDA3C4000B1353 /* WidgetAssetCell.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthModel.swift in Sources */,
 				39504A9D29B429AF008A7BA4 /* EKMaker.swift in Sources */,

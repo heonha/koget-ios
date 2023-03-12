@@ -52,6 +52,9 @@ struct MakeWidgetView: View {
                     .sheet(isPresented: $isAppPickerPresent) {
                         assetList
                     }
+
+                    Spacer()
+
                     // 위젯 아이콘
                     PhotoEditMenu(isEditingMode: .constant(true), viewModel: viewModel)
                         .shadow(radius: 0.7, x: 0.1, y: 0.1)
@@ -84,6 +87,8 @@ struct MakeWidgetView: View {
                                 .padding(.horizontal, 16)
                         }
                     }
+
+                    Spacer()
                     
                     // 만들기, 뒤로가기 버튼
                     makeAndBackButton
@@ -98,7 +103,6 @@ struct MakeWidgetView: View {
                 .navigationTitle("위젯 만들기")
                 .navigationBarTitleDisplayMode(.large)
                 .animation(.easeOut(duration: 0.2), value: viewModel.moreOptionOn)
-
             }
             .onTapGesture {
                 hideKeyboard()
@@ -118,8 +122,8 @@ struct MakeWidgetView: View {
                 .foregroundStyle(Constants.kogetGradient)
                 .shadow(color: .black.opacity(0.3), radius: 0.5, x: 1, y: 2)
             RoundedRectangle(cornerRadius: 8)
-                .foregroundStyle(constant.isDarkMode ? Color.black : Color.clear)
-                .opacity(0.15)
+                .foregroundStyle(constant.isDarkMode ? Color.black : Color.gray)
+                .opacity(0.5)
 
             Text("앱 리스트에서 가져오기")
                 .font(.custom(CustomFont.NotoSansKR.medium, size: 18))
@@ -143,8 +147,8 @@ struct MakeWidgetView: View {
             }
             // 돌아가기 버튼
             TextButton(title: "뒤로가기",
-                       titleColor: .white,
-                       backgroundColor: AppColor.Fill.second) {
+                       titleColor: AppColor.Label.first,
+                       backgroundColor: AppColor.Fill.first) {
                 self.dismiss()
 
             }
