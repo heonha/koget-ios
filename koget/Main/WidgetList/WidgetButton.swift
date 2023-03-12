@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import CoreData
 
-struct WidgetButton: View {
+struct WidgetGridCell: View {
     var name: String
     var url: String
     var widgetImage: UIImage
     var cellWidth: CGFloat
     var imageSize: CGSize
     var textSize: CGSize
+
     let titleColor: Color = AppColor.Label.first
     @ObservedObject var viewModel: MainWidgetViewModel
 
@@ -66,6 +68,6 @@ struct WidgetButton: View {
 
 struct WidgetButton_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetButton(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel.shared)
+        WidgetGridCell(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel.shared)
     }
 }

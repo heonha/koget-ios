@@ -8,7 +8,8 @@
 import SwiftUI
 import QGrid
 
-struct WidgetView: View {
+// 위젯 Grid 및 List를 표현하는 컨테이너
+struct WidgetListContainerView: View {
     
     let backgroundColor: Color = AppColor.Background.first
     @StateObject var viewModel: MainWidgetViewModel
@@ -79,7 +80,7 @@ struct WidgetView: View {
 struct WidgetListGridView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            WidgetView(viewModel: MainWidgetViewModel.shared)
+            WidgetListContainerView(viewModel: MainWidgetViewModel.shared)
         }
         .environmentObject(StorageProvider(inMemory: true))
     }

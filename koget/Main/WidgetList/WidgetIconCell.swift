@@ -14,6 +14,7 @@ enum WidgetIconCellType {
     case list
 }
 
+// list Cell 또는 Grid Cell을 포함하는 컨테이너
 struct WidgetIconCell: View {
     
     var widget: DeepLink
@@ -25,8 +26,6 @@ struct WidgetIconCell: View {
     @State var isPresentDetailView = false
     @State var isDelete: Bool = false
 
-    let app: String = "앱"
-    let web: String = "웹 페이지"
 
     lazy var imageSize = CGSize(width: cellSize.grid * 0.63, height: cellSize.grid * 0.63)
     lazy var textSize = CGSize(width: cellSize.grid, height: cellSize.grid * 0.40)
@@ -67,10 +66,11 @@ struct WidgetIconCell: View {
                     }
                 } label: {
                     if type == .grid {
-                        WidgetButton(name: name, url: url, widgetImage: widgetImage,
+                        WidgetGridCell(name: name, url: url, widgetImage: widgetImage,
                                      cellWidth: cellSize.grid, viewModel: viewModel)
+
                     } else {
-                        listCell
+                        WidgetListCell(name: name, url: url, widgetImage: widgetImage, cellWidth: cellSize.list, runCount: Int(widget.runCount), cellHeight: cellSize.list, viewModel: viewModel)
                     }
                 }
                 .alert("\(widget.name ?? "알수없음")", isPresented: $isDelete, actions: {
@@ -91,75 +91,6 @@ struct WidgetIconCell: View {
         }
     }
 
-    // 리스트 셀
-    var listCell: some View {
-        ZStack {
-            HStack {
-                ZStack {
-                    Circle()
-                        .fill(.white)
-                        .shadow(color: .black.opacity(0.6), radius: 0.5, x: -0.2, y: -0.5)
-                        .shadow(color: .black.opacity(0.6), radius: 0.5, x: 0.2, y: 0.5)
-
-                    Image(uiImage: .init(data: widget.image!) ?? UIImage(named: "questionmark.circle")!)
-                        .resizable()
-                }
-                .frame(width: 40, height: 40)
-                .clipShape(Circle())
-
-                VStack(alignment: .leading) {
-                    Text(widget.name ?? "알수없음")
-                        .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
-                        .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
-                        .foregroundColor(AppColor.Label.first)
-
-                    switch viewModel.checkLinkType(url: widget.url ?? "" ) {
-                    case .app:
-                        Text(self.app.localized())
-                            .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
-                            .foregroundColor(Color.init(uiColor: .secondaryLabel))
-                            .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
-                    case .web:
-                        Text(self.web.localized())
-                            .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
-                            .foregroundColor(Color.init(uiColor: .secondaryLabel))
-                            .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
-
-                    }
-                }
-                Spacer()
-                VStack {
-                    // MARK: 실행 횟수
-                    runCountView
-                }
-            }
-            .frame(height: cellSize.list)
-
-        }
-    }
-
-    // 실행 횟수 카운터
-    var runCountView: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 8)
-                .foregroundStyle(Color.init(uiColor: .tertiarySystemFill))
-                .frame(width: 70, height: 20)
-                .shadow(color: .black.opacity(0.4), radius: 0.5, x: 0.2, y: 0.5)
-                .opacity(0.7)
-            Group {
-                HStack(spacing: 2) {
-                    Image(systemSymbol: .boltHorizontalFill)
-                        .font(.system(size: 13, weight: .semibold))
-                        .shadow(color: .black.opacity(0.7), radius: 0.5, x: 0.5, y: 0.5)
-                        .foregroundColor(.yellow)
-                    Text("\(Int(widget.runCount))")
-                        .font(.system(size: 14, weight: .semibold))
-                        .shadow(color: .black.opacity(0.6), radius: 0.5, x: 0.3, y: 0.5)
-                }
-                .foregroundStyle(Color.init(uiColor: .white))
-            }
-        }
-    }
 }
 
 struct DeepLinkWidgetIconView_Previews: PreviewProvider {
