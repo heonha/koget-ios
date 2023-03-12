@@ -18,7 +18,8 @@ struct SettingMenu: View, AppStoreReviewable {
         NavigationView {
             ZStack {
                 ZStack {
-                    AppColor.Background.first
+                    Color.init(uiColor: .systemGroupedBackground)
+                        .ignoresSafeArea()
                 }
                 VStack {
                     Spacer()
@@ -42,9 +43,10 @@ struct SettingMenu: View, AppStoreReviewable {
                                 viewModel.showContactView.toggle()
                             }
                         }
-                            Section("앱에 관하여") {
 
-                                SettingMenuButton(title: "앱 평가하기", imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
+                        Section("앱에 관하여") {
+
+                            SettingMenuButton(title: "앱 평가하기", imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
                                 requestReview()
                             }
                             SettingMenuButton(title: "코젯 버전", subtitle: appVersion, imageType: .asset, imageName: "Koget") {
@@ -52,7 +54,7 @@ struct SettingMenu: View, AppStoreReviewable {
                             .disabled(true)
                         }
                     }
-                    .listStyle(.inset)
+                    .listStyle(.insetGrouped)
                 }
                 .navigationTitle("더보기")
             }
