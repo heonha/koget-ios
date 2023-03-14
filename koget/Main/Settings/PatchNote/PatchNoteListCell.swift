@@ -13,8 +13,10 @@ struct PatchNoteListCell: View {
     let title: String
     let subtitle: String
     let date: String
-    let url: String
+    let lightFileName: String
+    let darkFileName: String
     @State var isPresent: Bool = false
+    @EnvironmentObject var constant: Constants
 
     var body: some View {
         VStack {
@@ -38,7 +40,7 @@ struct PatchNoteListCell: View {
             .background(AppColor.Background.second)
 
             if isPresent {
-                NoticeImageView(url: url)
+                NoticeImageView(fileName: constant.isDarkMode ? darkFileName : lightFileName )
             }
         }
         .onTapGesture {
@@ -46,12 +48,12 @@ struct PatchNoteListCell: View {
         }
     }
 }
-
-struct PatchNoteListCell_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack(spacing: 4) {
-            PatchNoteListCell(title: "업데이트 1.2", subtitle: "다크모드 등", date: "2023-00-00", url: "")
-            PatchNoteListCell(title: "업데이트 1.1", subtitle: "리스트보기, 바로실행, 실행횟수 등", date: "2023-00-00", url: "")
-        }
-    }
-}
+// 
+// struct PatchNoteListCell_Previews: PreviewProvider {
+//     static var previews: some View {
+//         VStack(spacing: 4) {
+//             PatchNoteListCell(title: "업데이트 1.2", subtitle: "다크모드 등", date: "2023-00-00", url: "")
+//             PatchNoteListCell(title: "업데이트 1.1", subtitle: "리스트보기, 바로실행, 실행횟수 등", date: "2023-00-00", url: "")
+//         }
+//     }
+// }

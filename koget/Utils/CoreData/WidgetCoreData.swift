@@ -11,7 +11,8 @@ import CoreData
 class WidgetCoreData: ObservableObject {
     
     static let shared = WidgetCoreData()
-    
+
+    @AppStorage("widgetPadding") var widgetPadding = 1
     @Published var linkWidgets = [DeepLink]()
     @Published var lastUpdatedDate = Date()
     @Published var lastSelectedWidget: DeepLink?

@@ -29,7 +29,7 @@ struct KogetApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @Environment(\.scenePhase) private var scenePhase
-    @EnvironmentObject var coreData: WidgetCoreData
+    @ObservedObject var coreData = WidgetCoreData.shared
     
     var body: some Scene {
 

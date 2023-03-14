@@ -128,12 +128,11 @@ struct DeepLinkWidgetEntryView: View {
     var entry: DeepLinkProvider.Entry
     
     @Environment(\.widgetFamily) var family
-    
+
     let mainURL = "link://"
     let selectWidgetURL = "open://"
     @State var placeholderOpacity: CGFloat = 1
-    @ObservedObject var coreData = WidgetCoreData.shared
-    @ObservedObject var viewModel = DeepLinkWidgetViewModel.shared
+    @StateObject var coreData = WidgetCoreData.shared
 
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
@@ -167,7 +166,6 @@ struct DeepLinkWidgetEntryView: View {
                             }
                             .opacity(entry.opacity ?? 1.0)
                             .opacity(0.7)
-                            .padding(CGFloat(viewModel.widgetPadding))
                         }
                     } else {
                         ZStack {
@@ -186,46 +184,9 @@ struct DeepLinkWidgetEntryView: View {
                     // make sure you don't call this too often
                     WidgetCenter.shared.reloadAllTimelines()
                 }
-
-            case .systemSmall:
-                ZStack {
-                    // entry에 id가 Set되어 있는경우
-                    if entry.id != nil {
-                        if entry.id == "Ssn2&}g3f`M-Fe.k" {
-                                VStack {
-                                    Text("바로가기")
-                                        .font(.system(size: 12))
-                                    Text("위젯추가")
-                                        .font(.system(size: 12))
-                                }
-                                .bold()
-                        } else {
-                            // 코어 데이터의 데이터
-                            // entry의 데이터
-                            // 코어데이터 바뀜 -> 코어데이터 업데이트 -> Entry 업데이트 -> 위젯 업데이트
-                            
-                            VStack(alignment: .center) {
-                                Image(uiImage: entry.image ?? UIImage(systemSymbol: .questionmarkCircle))
-                                .resizable()
-                                .scaledToFit()
-                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(idSeparator)\(entry.id!)"))
-                                .clipShape(Circle())
-                            }
-                            .opacity(1)
-                        }
-                    } else {
-                        ZStack {
-                            VStack {
-                                Text("눌러서")
-                                Text("위젯선택")
-                            }
-                            .bold()
-                        }
-                    }
-                }
             default:
                 VStack {
-                    Text("위젯오류")
+                    Text("위젯확인")
                 }
                 .widgetURL(URL(string: selectWidgetURL))
             }

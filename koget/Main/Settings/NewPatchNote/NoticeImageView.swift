@@ -10,7 +10,8 @@ import Kingfisher
 
 struct NoticeImageView: View {
 
-    var url: String
+    var baseURL: String = "https://www.heon.dev/patchnote/"
+    var fileName: String
 
     @Environment(\.dismiss) var dismiss
 
@@ -20,7 +21,7 @@ struct NoticeImageView: View {
                 .ignoresSafeArea(edges: .top)
             VStack {
                 ScrollView {
-                    KFImage(URL(string: url)!)
+                    KFImage(URL(string: baseURL + fileName)!)
                         .resizable()
                         .scaledToFit()
                 }
@@ -31,6 +32,6 @@ struct NoticeImageView: View {
 
 struct NoticeImageView_Previews: PreviewProvider {
     static var previews: some View {
-        NoticeImageView(url: "https://www.heon.dev/patchnote/patchnote1-1.jpg")
+        NoticeImageView(baseURL: "https://www.heon.dev/patchnote/", fileName: "patchnote-en-light-1-1.png")
     }
 }

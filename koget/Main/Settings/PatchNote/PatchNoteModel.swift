@@ -13,7 +13,8 @@ struct PatchNoteData: Codable, Identifiable {
     var id: UUID = UUID()
     let title: String
     let subtitle: String
-    let url: String
+    let lightFileName: String
+    let darkFileName: String
     let date: Date
 }
 
@@ -41,9 +42,11 @@ struct PatchNoteModel {
                 for document in documents {
                     let title = document["title"] as? String ?? "unknown"
                     let subtitle = document["subtitle"] as? String ?? "unknown"
-                    let url = document["url"] as? String ?? "unknown"
+                    let light = document["light"] as? String ?? "unknown"
+                    let dark = document["dark"] as? String ?? "unknown"
+
                     let date = document["date"] as? Date ?? Date()
-                    let data = PatchNoteData(title: title, subtitle: subtitle, url: url, date: date)
+                    let data = PatchNoteData(title: title, subtitle: subtitle, lightFileName: light, darkFileName: dark, date: date)
                     noteArray.append(data)
                 }
                 completion(noteArray, nil)
@@ -67,7 +70,7 @@ final class PatchNoteViewModel: ObservableObject {
             guard let self = self else { return }
 
             if let error = error {
-                let errorData = PatchNoteData(title: "Server Error", subtitle: (error.localizedDescription), url: "", date: Date())
+                let errorData = PatchNoteData(title: "Server Error", subtitle: (error.localizedDescription), lightFileName: "", darkFileName: "", date: Date())
                 notes.append(errorData)
             } else if let patchnotes = patchnotes {
                 self.notes = patchnotes

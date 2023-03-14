@@ -26,54 +26,6 @@ struct SettingMenu: View, AppStoreReviewable {
                 VStack {
                     Spacer()
                     List {
-                        Section("앱 설정") {
-                            Button {
-
-                            } label: {
-                                HStack {
-                                    Label("위젯 사이즈", systemSymbol: .arrowDownRightAndArrowUpLeftCircle)
-                                    Spacer()
-                                    Menu {
-                                        Button("기본") {
-                                            widgetSizeTitle = "기본"
-                                            DeepLinkWidgetViewModel.shared.widgetPadding = 2
-                                        }
-                                        Button("중간") {
-                                            widgetSizeTitle = "중간"
-                                            DeepLinkWidgetViewModel.shared.widgetPadding = 8
-                                        }
-                                        Button("작음") {
-                                            widgetSizeTitle = "작음"
-                                            DeepLinkWidgetViewModel.shared.widgetPadding = 16
-                                        }
-                                    } label: {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .fill(AppColor.Fill.second)
-                                            Text(widgetSizeTitle)
-                                                .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
-                                        }
-                                    }
-                                    .frame(width: 80)
-                                    .padding(1)
-                                }
-                            }
-                            .foregroundColor(AppColor.Label.first)
-                            .onAppear {
-                                switch DeepLinkWidgetViewModel.shared.widgetPadding {
-                                case 2:
-                                    widgetSizeTitle = "기본"
-                                case 8:
-                                    widgetSizeTitle = "중간"
-                                case 16:
-                                    widgetSizeTitle = "작음"
-                                default:
-                                    widgetSizeTitle = "선택하세요"
-
-                                }
-                            }
-
-                        }
 
                         Section("사용방법") {
                             SettingMenuButton(title: "위젯을 잠금화면에 등록하는 방법", imageType: .symbol, systemSymbol: .appsIphoneBadgePlus, imageColor: AppColor.Label.second) {

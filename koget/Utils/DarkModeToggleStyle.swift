@@ -37,8 +37,6 @@ struct DarkModeToggleStyle: ToggleStyle {
         }
     }
 }
-
-
 //
 // struct ToggleTester: View {
 //     @StateObject var constatnt = Constants.shared
