@@ -14,6 +14,8 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
     @Binding var isPresentQustionmark: Bool
     @StateObject var constant = Constants.shared
 
+    let opacityDesctiption = S.OpacitySlider.description
+
     var body: some View {
         VStack {
             opacityPicker
@@ -58,7 +60,7 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
                         .foregroundColor(AppColor.Background.third)
                         .opacity(0.95)
                         .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
-                    Text("잠금화면 위젯의 불투명도입니다.")
+                    Text(opacityDesctiption)
                         .font(.custom(CustomFont.NotoSansKR.light, size: 13))
                         .foregroundColor(AppColor.Label.first)
                 })

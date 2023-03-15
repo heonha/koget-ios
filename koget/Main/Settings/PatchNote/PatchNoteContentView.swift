@@ -22,6 +22,10 @@ struct PatchNoteContentView: View {
             VStack {
                 ScrollView {
                     KFImage(URL(string: baseURL + fileName)!)
+                        .placeholder({ progress in
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: AppColor.Label.second))
+                        })
                         .resizable()
                         .scaledToFit()
                 }

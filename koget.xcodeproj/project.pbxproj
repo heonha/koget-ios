@@ -44,7 +44,6 @@
 		39822CF429B3677400B687E4 /* FloatingButton in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CF329B3677400B687E4 /* FloatingButton */; };
 		39822CFA29B367C800B687E4 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CF929B367C800B687E4 /* QGrid */; };
 		39822CFD29B367E600B687E4 /* Localize_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CFC29B367E600B687E4 /* Localize_Swift */; };
-		39822D0029B367FF00B687E4 /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CFF29B367FF00B687E4 /* SwiftUITooltip */; };
 		39822D0329B3682600B687E4 /* WelcomeSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 39822D0229B3682600B687E4 /* WelcomeSheet */; };
 		39822D0629B3686300B687E4 /* ToastUI in Frameworks */ = {isa = PBXBuildFile; productRef = 39822D0529B3686300B687E4 /* ToastUI */; };
 		39835ACF299D1F6600BEDF88 /* WidgetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */; };
@@ -325,7 +324,6 @@
 				39F8475329B3990B000B817E /* FirebaseFirestore in Frameworks */,
 				39504A9329B3A059008A7BA4 /* SwiftEntryKit in Frameworks */,
 				39EBEB4A29BDF7A000B1FD54 /* Kingfisher in Frameworks */,
-				39822D0029B367FF00B687E4 /* SwiftUITooltip in Frameworks */,
 				39F8475729B3990B000B817E /* FirebaseStorage in Frameworks */,
 				39822D0629B3686300B687E4 /* ToastUI in Frameworks */,
 				39F8475129B3990B000B817E /* FirebaseAuth in Frameworks */,
@@ -778,7 +776,6 @@
 				39822CF329B3677400B687E4 /* FloatingButton */,
 				39822CF929B367C800B687E4 /* QGrid */,
 				39822CFC29B367E600B687E4 /* Localize_Swift */,
-				39822CFF29B367FF00B687E4 /* SwiftUITooltip */,
 				39822D0229B3682600B687E4 /* WelcomeSheet */,
 				39822D0529B3686300B687E4 /* ToastUI */,
 				39F8474E29B3990B000B817E /* FirebaseAnalytics */,
@@ -852,7 +849,6 @@
 				39822CF229B3677400B687E4 /* XCRemoteSwiftPackageReference "FloatingButton" */,
 				39822CF829B367C800B687E4 /* XCRemoteSwiftPackageReference "QGrid" */,
 				39822CFB29B367E600B687E4 /* XCRemoteSwiftPackageReference "Localize-Swift" */,
-				39822CFE29B367FF00B687E4 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */,
 				39822D0129B3682600B687E4 /* XCRemoteSwiftPackageReference "Welcome-Sheet" */,
 				39822D0429B3686300B687E4 /* XCRemoteSwiftPackageReference "ToastUI" */,
 				39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
@@ -1517,14 +1513,6 @@
 				minimumVersion = 3.2.0;
 			};
 		};
-		39822CFE29B367FF00B687E4 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/quassum/SwiftUI-Tooltip.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.3.1;
-			};
-		};
 		39822D0129B3682600B687E4 /* XCRemoteSwiftPackageReference "Welcome-Sheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MAJKFL/Welcome-Sheet.git";
@@ -1605,11 +1593,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39822CFB29B367E600B687E4 /* XCRemoteSwiftPackageReference "Localize-Swift" */;
 			productName = Localize_Swift;
-		};
-		39822CFF29B367FF00B687E4 /* SwiftUITooltip */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 39822CFE29B367FF00B687E4 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */;
-			productName = SwiftUITooltip;
 		};
 		39822D0229B3682600B687E4 /* WelcomeSheet */ = {
 			isa = XCSwiftPackageProductDependency;

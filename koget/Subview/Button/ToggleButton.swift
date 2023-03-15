@@ -13,6 +13,9 @@ struct ToggleButton: View {
     @StateObject var viewModel: DetailWidgetViewModel
     @StateObject var constant = Constants.shared
 
+    let editLabel = S.Button.edit
+    let saveLabel = S.Button.save
+
     var widget: DeepLink
     let font: Font = .custom(CustomFont.NotoSansKR.medium, size: 18)
 
@@ -25,7 +28,7 @@ struct ToggleButton: View {
                     .fill(viewModel.isEditingMode
                           ? AppColor.kogetBlue
                           : AppColor.Fill.first)
-                Text(viewModel.isEditingMode ? "저장" : "편집")
+                Text(viewModel.isEditingMode ? saveLabel : editLabel)
                     .foregroundColor(viewModel.isEditingMode
                                      ? (constant.isDarkMode ? AppColor.Label.first : AppColor.Background.first)
                                      : AppColor.Label.first )

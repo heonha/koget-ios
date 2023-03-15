@@ -7,6 +7,7 @@
 
 import SwiftUI
 import QGrid
+import SFSafeSymbols
 
 // 위젯 Grid 및 List를 표현하는 컨테이너
 struct WidgetListContainerView: View {
@@ -16,6 +17,10 @@ struct WidgetListContainerView: View {
     @EnvironmentObject var coreData: WidgetCoreData
     @State var isDelete: Bool = false
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
+
+    //swipeuicell
+    var availableWidth: CGFloat = 40
+    @State var currentUserInteractionCellID: String?
 
     var body: some View {
         ZStack {
@@ -48,7 +53,6 @@ struct WidgetListContainerView: View {
             ForEach(coreData.linkWidgets) { widget in
                 WidgetContainerCell(widget: widget, viewModel: viewModel, type: .list)
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-
                         Button {
                             isDelete.toggle()
                         } label: {
@@ -114,12 +118,12 @@ struct WidgetListContainerView: View {
         }
     }
 }
-
-struct WidgetListGridView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            WidgetListContainerView(viewModel: MainWidgetViewModel.shared)
-        }
-        .environmentObject(StorageProvider(inMemory: true))
-    }
-}
+//
+// struct WidgetListGridView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         NavigationView {
+//             WidgetListContainerView(viewModel: MainWidgetViewModel.shared)
+//         }
+//         .environmentObject(StorageProvider(inMemory: true))
+//     }
+// }

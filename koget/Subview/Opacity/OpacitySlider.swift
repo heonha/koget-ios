@@ -16,8 +16,11 @@ protocol VMOpacityProtocol: ObservableObject {
 struct OpacitySlider<V: VMOpacityProtocol>: View {
 
     @StateObject var viewModel: V
-    
+
+    let opacityLabel = S.OpacitySlider.opacity
+    let transparencyLabel = S.OpacitySlider.transparency
     var widthRatio: CGFloat
+
     var body: some View {
 
             Slider(
@@ -25,13 +28,13 @@ struct OpacitySlider<V: VMOpacityProtocol>: View {
                 in: 0.0...1.0,
                 step: 0.1
             ) {
-                Text("Speed")
+
             } minimumValueLabel: {
-                Text("투명")
+                Text(transparencyLabel)
                     .font(.system(size: 12))
                     .foregroundColor(AppColor.Label.second)
             } maximumValueLabel: {
-                Text("불투명")
+                Text(opacityLabel)
                     .font(.system(size: 12))
                     .foregroundColor(AppColor.Label.second)
             } onEditingChanged: { editing in

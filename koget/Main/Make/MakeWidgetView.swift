@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftEntryKit
-import Localize_Swift
 
 enum WidgetType {
     case image

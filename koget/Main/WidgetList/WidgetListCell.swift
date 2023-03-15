@@ -47,12 +47,12 @@ struct WidgetListCell: View {
 
                     switch viewModel.checkLinkType(url: url) {
                     case .app:
-                        Text(self.app.localized())
+                        Text(app)
                             .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
                             .foregroundColor(Color.init(uiColor: .secondaryLabel))
                             .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
                     case .web:
-                        Text(self.web.localized())
+                        Text(web)
                             .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
                             .foregroundColor(Color.init(uiColor: .secondaryLabel))
                             .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)

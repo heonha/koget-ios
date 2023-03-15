@@ -6,13 +6,24 @@
 //
 
 import SwiftUI
-import Localize_Swift
 import SwiftEntryKit
 
-enum MakeWidgetErrorType: String {
-    case emptyField = "빈칸을 채워주세요."
-    case emptyImage = "사진을 추가해주세요."
-    case urlError = "URL에 문자열 :// 이 반드시 들어가야 합니다."
+enum MakeWidgetErrorType {
+    case emptyField
+    case emptyImage
+    case urlError
+
+    var localizedDescription: String {
+        switch self {
+        case .emptyField:
+            S.Error.emptyField
+        case .emptyImage:
+            S.Error.emptyImage
+        case .urlError:
+            S.Error.urlSyntax
+        }
+    }
+
 }
 
 final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
@@ -127,7 +138,7 @@ final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEdi
                     completion(.error)
                 } else {
                     // 실패
-                    self.errorMessage = error.rawValue.localized()
+                    self.errorMessage = error.localizedDescription
                     self.alertHandelr(type: .userError)
                     completion(.error)
                 }

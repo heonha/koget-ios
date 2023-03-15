@@ -58,7 +58,7 @@ struct WidgetContainerCell: View {
                         } label: {
                             Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
                         }
-                        Button {
+                        Button(role: .destructive) {
                             isDelete.toggle()
                         } label: {
                             Label(S.Button.delete, systemSymbol: .trashFill)

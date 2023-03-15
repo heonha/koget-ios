@@ -14,6 +14,8 @@
 "button.finish" = "Finish";
 "button.go_back" = "Back";
 "button.close" = "Close";
+"button.save" = "Save";
+
 
 
 "alert.check_delete" = "Confirm delete";
@@ -136,3 +138,8 @@
 
 // patch note list
 "patchnote_list.navigation_title" = "Update Notes";
+
+// opacity slider
+"opacity_slider.transparency" = "";
+"opacity_slider.opacity" = "";
+"opacity_slider.description" = "Opacity of lock screen widgets.";

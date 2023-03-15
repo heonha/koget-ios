@@ -9,7 +9,6 @@ import SwiftUI
 import CoreData
 import FloatingButton
 import SwiftEntryKit
-import WelcomeSheet
 import SFSafeSymbols
 
 // 메인 뷰
@@ -62,9 +61,6 @@ struct MainWidgetView: View {
                         }
                     }
                 }
-            }
-            .onTapGesture {
-                isOpen = false
             }
             .onDisappear {
                 isOpen = false

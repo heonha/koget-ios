@@ -17,7 +17,7 @@
 "button.finish" = "완료";
 "button.go_back" = "뒤로가기";
 "button.close" = "닫기";
-
+"button.save" = "저장";
 
 "alert.check_delete" = "삭제 확인";
 "alert.delete_success_title" = "위젯 삭제 완료!";
@@ -136,7 +136,19 @@
 "app_request.text_body_placeholder" = "선택사항";
 "app_request.description" = "요청하신 앱/웹은 검토 결과에 따라 앱에 추가 될 예정입니다.";
 "app_request.send" = "보내기";
+"app_request.alert.success" = "앱/웹 추가요청 성공";
+"app_request.alert.successSubtitle" = "빠르게 요청에 보답하겠습니다.";
+"app_request.alert.requestError" = "요청 전송 오류";
+"app_request.alert.requestErrorSubtitle" = "요청실패. 네트워크 또는 서버 오류.";
+"app_request.alert.needCheck" = "확인 필요";
+"app_request.alert.needCheckSubtitle" = "앱/웹 이름을 기재해주세요.";
+
 
 // patch note list
 "patchnote_list.navigation_title" = "업데이트 소식";
 
+
+// opacity slider
+"opacity_slider.transparency" = "투명";
+"opacity_slider.opacity" = "불투명";
+"opacity_slider.description" = "잠금화면 위젯의 불투명도입니다.";

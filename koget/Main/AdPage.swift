@@ -12,8 +12,6 @@ import SFSafeSymbols
 struct AdPage: View {
     var frame: CGSize = .init(width: .zero, height: deviceSize.height / 7.5)
 
-    var url = "https://www.heon.dev/patchnote/patchnote1-1.jpg"
-
     var body: some View {
         ZStack {
             AppColor.Background.first

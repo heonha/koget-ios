@@ -27,6 +27,14 @@ final class AssetRequestViewModel: ObservableObject {
     @Published var body: String = ""
     @Published var alertView = UIView()
 
+    //Label name
+    let success = S.AppRequest.Alert.success
+    let successSubtitle = S.AppRequest.Alert.successSubtitle
+    let requestError = S.AppRequest.Alert.requestError
+    let requestErrorSubtitle = S.AppRequest.Alert.requestErrorSubtitle
+    let needCheck = S.AppRequest.Alert.needCheck
+    let needCheckSubtitle = S.AppRequest.Alert.needCheckSubtitle
+
     var version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     func checkTheField(completion: @escaping (RequestReturnType) -> Void) {
@@ -61,6 +69,7 @@ final class AssetRequestViewModel: ObservableObject {
                 "version": version ?? "-",
                 "date": date
             ]
+
             Firestore.firestore().collection("Request-Add-App").addDocument(data: data) { error in
                 if let error = error {
                     completion(.error)
@@ -87,11 +96,11 @@ final class AssetRequestViewModel: ObservableObject {
     }
 
     private func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: "앱/웹 추가요청 성공".localized(), subtitle: "빠르게 요청에 보답하겠습니다.".localized(), named: "success")
+        return EKMaker.setToastView(title: success, subtitle: successSubtitle, named: "success")
     }
 
     private func setServerErrorAlert() -> UIView {
-        return EKMaker.setToastView(title: "요청 전송 오류".localized(), subtitle: "요청에 실패하였습니다. 관리자에 문의하세요.".localized(), named: "failed")
+        return EKMaker.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
     }
 
     private func presentSuccessAlert() {
@@ -99,6 +108,9 @@ final class AssetRequestViewModel: ObservableObject {
     }
 
     private func setErrorAlertView() -> UIView {
-        return EKMaker.setToastView(title: "확인 필요".localized(), subtitle: "앱/웹 이름을 기재해주세요.".localized(), named: "failed")
+        return EKMaker.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
     }
 }
+
+
+
