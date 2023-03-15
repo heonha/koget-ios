@@ -60,9 +60,12 @@
 "make_widget_view.navigation_title" = "Make Widget";
 
 
-"make_widget_view.fetch_app_list_label" = "fetch from app list";
+"make_widget_view.fetch_app_list_label" = "Import from app list";
 "make_widget_view.is_image_error.ok_button" = "Create as default image";
 "widget_asset_List.not_installed" = "(not installed)";
+
+// photo edit menu
+"photo_edit_menu.selectWidget" = "Select\nImage";
 
 
 
@@ -91,12 +94,10 @@
 "setting_menu.section.communicate.request_add_app" = "Request Add App";
 "setting_menu.section.communicate.contact_us" = "Contact Us";
 "setting_menu.section.about_app.title" = "About App";
-"setting_menu.section.about_app.vote_rate" = "Rate App";
+"setting_menu.section.about_app.vote_rate" = "Rating Stars";
 "setting_menu.navigation_title" = "More";
 
-
 "koget_version" = "KOGET Version";
-
 
 // contact view
 "contact_type.problem_app" = "Problem with App";

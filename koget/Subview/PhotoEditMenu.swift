@@ -20,6 +20,8 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
     @State var isPhotoViewPresent: Bool = false
     @StateObject var viewModel: V
     @ObservedObject var constant = Constants.shared
+
+    let selectImage = S.PhotoEditMenu.selectWidget
     
     var body: some View {
 
@@ -53,7 +55,7 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
                                 .scaledToFit()
                                 .clipShape(Circle())
                                 .opacity(constant.isDarkMode ? 0.3 : 0.5)
-                            Text("이미지\n선택")
+                            Text(selectImage)
                                 .foregroundColor(AppColor.Label.second)
                                 .shadow(radius: 1)
                                 .font(.system(size: 16, weight: .bold))

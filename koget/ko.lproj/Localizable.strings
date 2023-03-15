@@ -66,6 +66,9 @@
 "widget_asset_List.not_installed" = "(미설치)";
 
 
+// photo edit menu
+"photo_edit_menu.selectWidget" = "이미지\n선택";
+
 
 //detail
 "detail_widget_view.buttom_text" = "편집 후 실제 위젯에 반영되기까지 약 15분 이내의 시간이 소요됩니다. (iOS 위젯 업데이트시간)";
