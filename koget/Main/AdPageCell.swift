@@ -43,7 +43,7 @@ struct AdPageCell: View {
                         Text(title)
                             .font(Font.custom(CustomFont.NotoSansKR.bold, size: 18))
                             .foregroundColor(AppColor.Label.first)
-                        Text("새로워진 코젯 확인하기")
+                        Text(S.adCell)
                             .font(Font.custom(CustomFont.NotoSansKR.light, size: 16))
                             .foregroundColor(.init(uiColor: .secondaryLabel))
 
