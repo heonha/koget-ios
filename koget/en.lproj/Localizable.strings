@@ -12,7 +12,7 @@
 "button.cancel" = "Cancel";
 "button.change_opacity" = "Adjust opacity";
 "button.finish" = "Finish";
-"button.go_back" = "Go back";
+"button.go_back" = "Back";
 "button.close" = "Close";
 
 
@@ -40,6 +40,11 @@
 
 //ad cell
 "ad_cell" = "Check out the new KOGET";
+
+
+// Floating button
+"floating_button.make_widget" = "Make widget";
+
 
 
 // textFields
@@ -90,7 +95,7 @@
 "setting_menu.navigation_title" = "More";
 
 
-"koget_version" = "KOGET version";
+"koget_version" = "KOGET Version";
 
 
 // contact view

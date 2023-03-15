@@ -21,7 +21,7 @@ enum FloatingMenuType {
 
 struct FloatingMenuButton: View {
     var systemName: SFSymbol
-    var text: LocalizedStringKey
+    var text: String
     var link: NavigationLinkType
     var type: FloatingMenuType
     var symbolColor = LinearGradient(colors: [.red, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)

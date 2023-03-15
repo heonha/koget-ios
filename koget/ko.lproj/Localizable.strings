@@ -44,6 +44,9 @@
 //ad cell
 "ad_cell" = "새로워진 코젯 확인하기";
 
+// Floating button
+"floating_button.make_widget" = "위젯 만들기";
+
 
 // textField
 "textfield.placeholder.widget_Name" = "위젯 이름";

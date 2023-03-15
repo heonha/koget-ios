@@ -21,7 +21,7 @@ struct NewFloatingButton: View {
                 Spacer().layoutPriority(10)
                 FloatingMenu(isOpen: $isOpen,
                              buttons: [
-                                FloatingMenuButton(systemName: .plusCircleFill, text: "위젯 만들기", link: .add,  type: .navigationLink),
+                                FloatingMenuButton(systemName: .plusCircleFill, text: S.FloatingButton.makeWidget, link: .add,  type: .navigationLink),
                              ].reversed())
                 .opacity(0.95)
             }
