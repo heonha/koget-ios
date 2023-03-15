@@ -181,9 +181,19 @@ final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEdi
 
 }
 
-enum LinkType: LocalizedStringKey {
-    case app = "앱"
-    case web = "웹 페이지"
+enum LinkType {
+    case app
+    case web
+
+    var localizedString: String {
+        switch self {
+        case .app:
+            S.WidgetCell.WidgetType.app
+        case .web:
+            S.WidgetCell.WidgetType.web
+        }
+    }
+
 }
 
 /// DeepLinking 할 앱의 정보

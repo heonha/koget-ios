@@ -15,7 +15,13 @@ struct WidgetAssetList: View {
     @State private var searchText: String = ""
     @State var searching: Bool = false
     @State var presentAssetRequestView: Bool = false
-    
+
+    //Strings
+    let appList = S.WidgetAssetList.appList
+    let requestApp = S.WidgetAssetList.requestApp
+    let excutableToggleLabel = S.WidgetAssetList.excutableToggleLabel
+    let searchApp = S.WidgetAssetList.searchApp
+
     @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack {
@@ -23,7 +29,7 @@ struct WidgetAssetList: View {
                 .ignoresSafeArea()
             VStack {
                 
-                Text("앱 리스트")
+                Text(appList)
                     .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
                     .padding(.vertical, 12)
                 
@@ -36,7 +42,7 @@ struct WidgetAssetList: View {
                         Button {
                             presentAssetRequestView.toggle()
                         } label: {
-                            Text("앱/웹 추가요청")
+                            Text(requestApp)
                                 .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
                                 .foregroundColor(AppColor.Label.second)
                                 .padding(.leading, 16)
@@ -47,7 +53,7 @@ struct WidgetAssetList: View {
 
                         Spacer()
 
-                        Text("실행가능한 앱/웹 보기")
+                        Text(excutableToggleLabel)
                             .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
                             .foregroundColor(AppColor.Label.second)
                             .padding(.leading)

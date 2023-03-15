@@ -47,7 +47,7 @@ struct WidgetAssetCell: View {
                                 .foregroundColor(installTextColor)
                         }
                     }
-                    Text(MainWidgetViewModel.shared.checkLinkType(url: widget.url).rawValue)
+                    Text(MainWidgetViewModel.shared.checkLinkType(url: widget.url).localizedString)
                         .font(.custom(CustomFont.NotoSansKR.medium, size: 12))
                         .foregroundColor(installTextColor)
                         .padding(.leading, 1)

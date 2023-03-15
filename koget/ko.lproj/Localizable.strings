@@ -63,7 +63,12 @@
 
 "make_widget_view.fetch_app_list_label" = "앱 리스트에서 가져오기";
 "make_widget_view.is_image_error.ok_button" = "기본이미지로 생성";
-"widget_asset_List.not_installed" = "(미설치)";
+
+"widget_asset_list.not_installed" = "(미설치)";
+"widget_asset_list.appList" = "앱 리스트";
+"widget_asset_list.requestApp" = "앱/웹 추가요청";
+"widget_asset_list.excutableToggleLabel" = "실행가능한 앱/웹 보기";
+"widget_asset_list.searchApp" = "앱 검색하기";
 
 
 // photo edit menu
@@ -71,7 +76,7 @@
 
 
 //detail
-"detail_widget_view.buttom_text" = "편집 후 실제 위젯에 반영되기까지 약 15분 이내의 시간이 소요됩니다. (iOS 위젯 업데이트시간)";
+"detail_widget_view.bottom_text" = "편집 후 실제 위젯에 반영되기까지 약 15분 이내의 시간이 소요됩니다. (iOS 위젯 업데이트시간)";
 
 "alert.edit_success_title" = "위젯 편집 성공";
 "alert.edit_success_subtitle" = "편집된 내용은 15분 내 반영됩니다.";

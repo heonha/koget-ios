@@ -72,7 +72,7 @@
 
 
 //detail
-"detail_widget_view.bottom_text" = "It takes about 15 minutes after editing to be reflected on the actual widget. (iOS widget update time)";
+"detail_widget_view.bottom_text" = "It takes about 15 minutes after editing to be reflected on the actual widget.\n(iOS widget update time)";
 
 "alert.edit_success_title" = "Widget Edit Success";
 "alert.edit_success_subtitle" = "Edited content will be reflected within 15 minutes.";

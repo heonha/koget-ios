@@ -20,7 +20,7 @@ struct LockscreenHelper: View {
                 VStack(alignment: .center ,spacing: 8) {
                     //"잠금화면에 위젯 등록"
                     Text(S.LockscreenHelper.descriptionTitle)
-                        .font(.title)
+                        .font(.custom(CustomFont.NotoSansKR.bold, size: 20))
                         .fontWeight(.bold)
                         .padding(.vertical, 12)
                     

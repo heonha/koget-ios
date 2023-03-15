@@ -77,12 +77,13 @@ struct DetailWidgetView: View {
                 }
 
                 // 하단 텍스트: 반영까지 15분 걸립니다.
-                Text(S.DetailWidgetView.buttomText)
+                Text(S.DetailWidgetView.bottomText)
                     .font(.custom(CustomFont.NotoSansKR.regular, size: 14))
                     .foregroundColor(.gray)
-                    .lineLimit(2)
-                    .frame(height: 45)
-                    .padding()
+                    .lineLimit(3)
+                    .padding(.horizontal)
+                Spacer()
+
             }
             .animation(.linear(duration: 0.3), value: viewModel.isEditingMode)
 

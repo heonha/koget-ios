@@ -52,23 +52,17 @@ struct WidgetListContainerView: View {
         List {
             ForEach(coreData.linkWidgets) { widget in
                 WidgetContainerCell(widget: widget, viewModel: viewModel, type: .list)
-                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
                         Button {
                             isDelete.toggle()
                         } label: {
                             Label(S.Button.delete, systemSymbol: .trashFill)
                         }
                         .tint(Color.init(uiColor: .systemRed))
-                        Button {
-                            self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
-                                DetailWidgetView(selectedWidget: widget)
-                            })
-                        } label: {
-                            Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
-                        }
-                        .tint(AppColor.kogetBlue)
+
                     }
-                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+
                         Button {
                             if let url = widget.url, let id = widget.id {
                                 viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
@@ -77,6 +71,16 @@ struct WidgetListContainerView: View {
                             Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
                         }
                         .tint(Color.green)
+
+                        Button {
+                            self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                                DetailWidgetView(selectedWidget: widget)
+                            })
+                        } label: {
+                            Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
+                        }
+                        .tint(AppColor.kogetBlue)
+
                     }
                     .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
                         Button(S.Button.delete, role: .destructive) {
