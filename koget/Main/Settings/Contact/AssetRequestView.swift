@@ -13,16 +13,25 @@ struct AssetRequestView: View {
     @StateObject var viewModel = AssetRequestViewModel()
     @Environment(\.dismiss) var dismiss
 
+    // strings
+    let title = S.AppRequest.title
+    let appName = S.AppRequest.appName
+    let appNamePlaceholder = S.AppRequest.appNamePlaceholder
+    let textBody = S.AppRequest.textBody
+    let textBodyPlaceholder = S.AppRequest.textBodyPlaceholder
+    let description = S.AppRequest.description
+    let send = S.AppRequest.send
+
     var body: some View {
         VStack {
-            Text("앱/웹 추가 요청")
+            Text(title)
                 .font(.custom(CustomFont.NotoSansKR.light, size: 20))
                 .fontWeight(.bold)
             Divider()
             // MARK: 앱 이름
             HStack {
                 Spacer()
-                Text("앱/웹 이름")
+                Text(appName)
                     .bold()
                     .frame(width: 100)
                 Spacer()
@@ -31,7 +40,7 @@ struct AssetRequestView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.init(uiColor: .secondarySystemFill))
                         .opacity(0.8)
-                    TextField("요청할 앱/웹 이름", text: $viewModel.appName)
+                    TextField(appNamePlaceholder, text: $viewModel.appName)
                         .font(.custom(CustomFont.NotoSansKR.light, size: 16))
                         .padding(.horizontal, 4)
                         .background(Color.clear)
@@ -48,7 +57,7 @@ struct AssetRequestView: View {
             HStack {
                 Spacer()
                 
-                Text("내용")
+                Text(textBody)
                     .font(.custom(CustomFont.NotoSansKR.bold, size: 16))
                     .frame(width: 100)
                 Spacer()
@@ -57,7 +66,7 @@ struct AssetRequestView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.init(uiColor: .secondarySystemFill))
                         .opacity(0.8)
-                    TextField("선택사항", text: $viewModel.body)
+                    TextField(textBodyPlaceholder, text: $viewModel.body)
                         .font(.custom(CustomFont.NotoSansKR.light, size: 16))
                         .padding(.horizontal, 4)
                         .background(Color.clear)
@@ -70,11 +79,11 @@ struct AssetRequestView: View {
             }
             .frame(height: 50)
 
-            Text("요청하신 앱/웹은 검토 결과에 따라 앱에 추가 될 예정입니다.")
+            Text(description)
                 .font(.custom(CustomFont.NotoSansKR.medium, size: 13))
                 .padding()
 
-            TextButton(title: "보내기", titleColor: .white, backgroundColor: AppColor.kogetBlue) {
+            TextButton(title: send, titleColor: .white, backgroundColor: AppColor.kogetBlue) {
                 viewModel.checkTheField { result in
                     switch result {
                     case .success:

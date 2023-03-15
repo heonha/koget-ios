@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TextButton: View {
     
-    var title: LocalizedStringKey
+    var title: String
     var titleColor: Color = AppColor.Label.first
     var backgroundColor: Color
     var size: (width: CGFloat?, height: CGFloat?) = (width: nil, height: 40)

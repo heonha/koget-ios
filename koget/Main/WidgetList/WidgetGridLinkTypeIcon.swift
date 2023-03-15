@@ -30,7 +30,6 @@ struct WidgetGridLinkTypeIcon: View {
                                 .font(.system(size: 18, weight: .semibold))
                                 .shadow(color: .black.opacity(0.2) ,radius: 0.3, x: 0.5, y: 0.5)
                                 .opacity(0.8)
-
                         }
                     }
                 }

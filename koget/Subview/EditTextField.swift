@@ -11,14 +11,14 @@ import SFSafeSymbols
 protocol VMTextFieldProtocol: ObservableObject {
     var nameStringLimit: Int { get set }
     var nameMaxCountError: Bool { get set }
-    var nameMaxCountErrorMessage: LocalizedStringKey { get set }
+    var nameMaxCountErrorMessage: String { get set }
     var isEditingMode: Bool { get set }
 }
 
 struct EditTextField<V: VMTextFieldProtocol>: View {
 
     let systemSymbol: SFSymbol
-    let placeHolder: LocalizedStringKey
+    let placeHolder: String
     // let padding: CGFloat = 32
     
     @StateObject var viewModel: V
@@ -40,7 +40,7 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                         RoundedRectangle(cornerRadius: 5)
                             .fill(AppColor.Fill.second)
                         TextField(placeHolder, text: $text)
-                            .font(.custom(CustomFont.NotoSansKR.light, size: 18))
+                            .font(.custom(CustomFont.NotoSansKR.light, size: 16))
                             .frame(height: 35)
                             .autocorrectionDisabled()
                             .textInputAutocapitalization(.never)
@@ -54,7 +54,7 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                         RoundedRectangle(cornerRadius: 5)
                             .fill(constant.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
                         TextField(placeHolder, text: $text)
-                            .font(.custom(CustomFont.NotoSansKR.medium, size: 18))
+                            .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                             .frame(height: 35)
                             .background(.clear)
                             .padding(.horizontal, 4)

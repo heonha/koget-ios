@@ -6,3 +6,131 @@
 
 */
 
+
+// 공통사용
+"unknown" = "알수없음";
+"button.delete" = "삭제";
+"button.edit" = "편집";
+"button.run" = "실행하기";
+"button.cancel" = "취소";
+"button.change_opacity" = "투명도 조절";
+"button.finish" = "완료";
+"button.go_back" = "뒤로가기";
+"button.close" = "닫기";
+
+
+"alert.check_delete" = "삭제 확인";
+"alert.delete_success_title" = "위젯 삭제 완료!";
+"alert.delete_success_subtitle" = "삭제한 위젯은 잠금화면에서도 변경 또는 삭제 해주세요";
+"alert.message.check_Widget_Delete" = "이 위젯을 삭제 할까요?";
+"alert.need_check" = "확인 필요";
+
+
+"error.empty_field" = "빈칸을 채워주세요.";
+"error.empty_image" = "사진을 추가해주세요.";
+"error.url_syntax" = "URL에 문자열 :// 이 반드시 들어가야 합니다.";
+"error.name_letter_limited" = "이름의 최대글자수는 %d자 입니다.";
+
+
+
+
+// Main
+"main_widget_view.emptyGrid.message_line1" = "이곳을 눌러 바로가기 위젯을 생성하고";
+"main_widget_view.emptyGrid.message_line2" = "다양한 앱/웹페이지에 빠르게 접근하세요!";
+
+"widget_cell.widgetType.app" = "앱";
+"widget_cell.widgetType.web" = "웹 페이지";
+
+//ad cell
+"ad_cell" = "새로워진 코젯 확인하기";
+
+
+// textField
+"textfield.placeholder.widget_Name" = "위젯 이름";
+"textfield.placeholder.url" = "앱 / 웹 주소 (:// 포함)";
+"textfield.placeholder.widget_Name" = "위젯 이름";
+"textfield.placeholder.widget_url_short" = "예시: youtube://";
+
+
+// make
+"make_widget_view.is_image_error.title" = "이미지 확인";
+"make_widget_view.is_image_error.message" = "아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?";
+"make_widget_view.navigation_title" = "위젯 만들기";
+
+
+"make_widget_view.fetch_app_list_label" = "앱 리스트에서 가져오기";
+"make_widget_view.is_image_error.ok_button" = "기본이미지로 생성";
+"widget_asset_List.not_installed" = "(미설치)";
+
+
+
+//detail
+"detail_widget_view.buttom_text" = "편집 후 실제 위젯에 반영되기까지 약 15분 이내의 시간이 소요됩니다. (iOS 위젯 업데이트시간)";
+
+"alert.edit_success_title" = "위젯 편집 성공";
+"alert.edit_success_subtitle" = "편집된 내용은 15분 내 반영됩니다.";
+
+
+
+//How To use
+"lockscreen_helper.description_title" = "잠금화면에 위젯 등록";
+"lockscreen_helper.description1" = "1. 잠금화면 상태에서 화면을 길게 탭하기.";
+"lockscreen_helper.description2" = "2. 사용자화 - 잠금화면 - 위젯선택 누르기";
+"lockscreen_helper.description3" = "3. 위젯 리스트에서 코젯을 선택";
+"lockscreen_helper.description4" = "4.'바로가기 위젯추가' 를 누르세요.";
+"lockscreen_helper.description5" = "5.'눌러서 위젯선택'을 눌러 위젯을 선택하세요.";
+"lockscreen_helper.description6" = "6. 우측 상단 '완료' 버튼을 눌러 저장하세요.";
+
+
+// setting menu
+"setting_menu.section.how_to_use.title" = "사용방법";
+"setting_menu.section.how_to_use.add_widget" = "잠금화면에 위젯 등록";
+"setting_menu.section.communicate.title" = "소통하기";
+"setting_menu.section.communicate.request_add_app" = "앱 추가요청";
+"setting_menu.section.communicate.contact_us" = "문의하기";
+"setting_menu.section.about_app.title" = "앱에 관하여";
+"setting_menu.section.about_app.vote_rate" = "앱 평가하기";
+"setting_menu.navigation_title" = "더보기";
+
+
+"koget_version" = "코젯 버전";
+
+
+// contact view
+"contact_type.problem_app" = "앱 관련 문제";
+"contact_type.request_app" = "앱 추가요청";
+"contact_type.feedback" = "피드백 보내기";
+"contact_type.etc" = "기타 문의사항";
+"contact_type.select" = "선택하세요";
+
+"contact_view.type" = "문의 유형";
+"contact_view.title" = "문의 제목";
+"contact_view.title_placeholder" = "이곳에 문의내용을 입력하세요.";
+"contact_view.send_contact" = "문의 보내기";
+"contact_view.contact" = "문의하기";
+"contact_view.check_contents" = "내용 확인";
+"contact_view.send" = "보내기";
+"contact_view.can_you_send_contact" = "문의를 보낼까요?";
+"contact_view.description_title" = "문의 안내사항";
+"contact_view.description1" = "* 문의 내용에 개인정보를 입력하지 마세요.";
+"contact_view.description2" = "* 문의는 익명으로 발송됩니다.";
+"contact_view.description3" = "* 문의 내용은 앱 서비스 개선에 활용됩니다.";
+"contact_view.description4" = "* 앱 개선을 위하여 기기의 버전정보를 수집합니다.";
+"contact_view.alert.send_success" = "문의 보내기 성공";
+"contact_view.alert.send_success_subtitle" = "피드백을 보내주셔서 감사합니다.";
+"contact_view.alert.need_check" = "확인 필요";
+"contact_view.alert.check_empty_cell" = "빈칸을 확인해주세요.";
+
+//Asset Request view
+
+"app_request.title" = "앱/웹 추가 요청";
+"app_request.app_name" = "앱/웹 이름";
+"app_request.app_name_placeholder" = "요청할 앱/웹 이름";
+"app_request.text_body" = "내용";
+"app_request.text_body_placeholder" = "선택사항";
+"app_request.description" = "요청하신 앱/웹은 검토 결과에 따라 앱에 추가 될 예정입니다.";
+"app_request.send" = "보내기";
+
+// patch note list
+"patchnote_list.navigation_title" = "업데이트 소식";
+

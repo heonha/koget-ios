@@ -16,7 +16,7 @@ enum TextFieldType {
 struct TextFieldView: View {
     
     var systemName: SFSymbol?
-    let placeholder: LocalizedStringKey
+    let placeholder: String
     let padding: CGFloat = 32
     
     var type: TextFieldType = .title

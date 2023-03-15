@@ -52,7 +52,7 @@ struct WidgetListContainerView: View {
                         Button {
                             isDelete.toggle()
                         } label: {
-                            Label("삭제", systemSymbol: .trashFill)
+                            Label(S.Button.delete, systemSymbol: .trashFill)
                         }
                         .tint(Color.init(uiColor: .systemRed))
                         Button {
@@ -60,7 +60,7 @@ struct WidgetListContainerView: View {
                                 DetailWidgetView(selectedWidget: widget)
                             })
                         } label: {
-                            Label("편집", systemSymbol: .sliderHorizontal3)
+                            Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
                         }
                         .tint(AppColor.kogetBlue)
                     }
@@ -70,20 +70,20 @@ struct WidgetListContainerView: View {
                                 viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
                             }
                         } label: {
-                            Label("실행하기", systemSymbol: .arrowUpLeftSquareFill)
+                            Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
                         }
                         .tint(Color.green)
                     }
-                    .alert("\(widget.name ?? "알수없음")", isPresented: $isDelete, actions: {
-                        Button("삭제", role: .destructive) {
+                    .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
+                        Button(S.Button.delete, role: .destructive) {
                             coreData.deleteData(data: widget)
                             viewModel.displayToast()
                             isDelete = false
                         }
-                        Button("취소", role: .cancel) {
+                        Button(S.Button.cancel, role: .cancel) {
                             isDelete = false
                         }
-                    }, message: {Text("이 위젯을 삭제 할까요?")})
+                    }, message: {Text(S.Alert.Message.checkWidgetDelete)})
 
             }
 
@@ -100,9 +100,9 @@ struct WidgetListContainerView: View {
                     MakeWidgetView()
                 } label: {
                     VStack(spacing: 8) {
-                        Text("이곳을 눌러 바로가기 위젯을 생성하고")
+                        Text(S.MainWidgetView.EmptyGrid.messageLine1)
                             .font(.custom(CustomFont.NotoSansKR.bold, size: 16))
-                        Text("다양한 앱/웹페이지에 빠르게 접근하세요!")
+                        Text(S.MainWidgetView.EmptyGrid.messageLine2)
                             .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
                             .foregroundStyle(Constants.kogetGradient)
                     }

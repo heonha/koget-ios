@@ -1,5 +1,5 @@
 //
-//  NoticePageCell.swift
+//  AdPageCell.swift
 //  koget
 //
 //  Created by Heonjin Ha on 2023/03/12.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SFSafeSymbols
 
-struct NoticePageCell: View {
+struct AdPageCell: View {
 
     var title: String
     var named = ""
@@ -63,6 +63,6 @@ struct NoticePageCell: View {
 
 struct NoticePageCell_Previews: PreviewProvider {
     static var previews: some View {
-        NoticePageCell(title: "타이틀", frame: 100)
+        AdPageCell(title: "타이틀", frame: 100)
     }
 }

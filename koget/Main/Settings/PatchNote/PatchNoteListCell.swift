@@ -40,7 +40,7 @@ struct PatchNoteListCell: View {
             .background(AppColor.Background.second)
 
             if isPresent {
-                NoticeImageView(fileName: constant.isDarkMode ? darkFileName : lightFileName )
+                PatchNoteContentView(fileName: constant.isDarkMode ? darkFileName : lightFileName)
             }
         }
         .onTapGesture {

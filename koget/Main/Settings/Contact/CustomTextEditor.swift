@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomTextEditor: View {
-    var placeHolder: LocalizedStringKey
+    var placeHolder: String
     @Binding var text: String
     
     var body: some View {

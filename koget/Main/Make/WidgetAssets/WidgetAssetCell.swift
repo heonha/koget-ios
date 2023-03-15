@@ -42,7 +42,7 @@ struct WidgetAssetCell: View {
                             .fontWeight(.semibold)
                         .foregroundColor(textColor)
                         if !widget.canOpen {
-                            Text("(미설치)")
+                            Text(S.WidgetAssetList.notInstalled)
                                 .font(.custom(CustomFont.NotoSansKR.bold, size: 14))
                                 .foregroundColor(installTextColor)
                         }

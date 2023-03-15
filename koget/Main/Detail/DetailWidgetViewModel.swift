@@ -11,9 +11,20 @@ import SwiftEntryKit
 import CoreData
 
 enum DetailWidgetErrorType: String {
-    case emptyField = "빈칸을 채워주세요."
-    case emptyImage = "사진을 추가해주세요."
-    case urlError = "URL에 문자열 :// 이 반드시 들어가야 합니다."
+    case emptyField
+    case emptyImage
+    case urlError
+
+    var localizedDescription: String {
+        switch self {
+        case .emptyField:
+            return S.Error.emptyField
+        case .emptyImage:
+            return S.Error.emptyImage
+        case .urlError:
+            return S.Error.urlSyntax
+        }
+    }
 }
 
 class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
@@ -21,7 +32,7 @@ class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditPro
     var nameStringLimit: Int = 14
     @Published var alertView = UIView()
 
-    @Published var alertMessage: String = "알수 없는 오류 발생"
+    @Published var alertMessage: String = S.unknown
     @Published var name: String = "" {
         didSet {
             if name.count > nameStringLimit {
@@ -40,7 +51,7 @@ class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditPro
     @Published var isEditingMode = false
     @Published var nameMaxCountError = false
 
-    lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit, specifier: "%d")자 입니다."
+    lazy var nameMaxCountErrorMessage: String = S.Error.nameLetterLimited(nameStringLimit)
 
     func editWidgetData(widget: DeepLink) {
         WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, opacity: opacityValue, widget: widget)
@@ -56,7 +67,7 @@ class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditPro
         
     }
     
-    func checkTheTextFields(completion: @escaping(MakeWidgetErrorType?) -> Void) {
+    func checkTheTextFields(completion: @escaping(DetailWidgetErrorType?) -> Void) {
         
         if name == "" || url == "" {
             completion(.emptyField)
@@ -79,7 +90,7 @@ class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditPro
                 guard let self = self else { return }
 
                 if let error = error {
-                    self.alertView = setAlertView(subtitle: error.rawValue)
+                    self.alertView = setAlertView(subtitle: error.localizedDescription)
                     self.displayAlert()
                     return
                 } else {
@@ -94,12 +105,14 @@ class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditPro
         }
     }
 
+    // 위젯 편집 성공
     private func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: "위젯 편집 성공", subtitle: "편집된 내용은 15분 내 반영됩니다.", named: "success")
+        return EKMaker.setToastView(title: S.Alert.editSuccessTitle, subtitle: S.Alert.editSuccessSubtitle, named: "success")
     }
 
+    // 확인 필요
     private func setAlertView(subtitle: String) -> UIView {
-        return EKMaker.setToastView(title: "확인 필요", subtitle: subtitle, named: "failed")
+        return EKMaker.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
     }
 
     private func displayAlert() {

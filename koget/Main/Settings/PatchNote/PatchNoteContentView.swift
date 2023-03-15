@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-struct NoticeImageView: View {
+struct PatchNoteContentView: View {
 
     var baseURL: String = "https://www.heon.dev/patchnote/"
     var fileName: String
@@ -30,8 +30,8 @@ struct NoticeImageView: View {
     }
 }
 
-struct NoticeImageView_Previews: PreviewProvider {
+struct PatchNoteContentView_Previews: PreviewProvider {
     static var previews: some View {
-        NoticeImageView(baseURL: "https://www.heon.dev/patchnote/", fileName: "patchnote-en-light-1-1.png")
+        PatchNoteContentView(baseURL: "https://www.heon.dev/patchnote/", fileName: "patchnote-en-light-1-1.png")
     }
 }

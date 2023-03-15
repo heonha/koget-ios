@@ -17,8 +17,8 @@ struct WidgetListCell: View {
     var runCount: Int
     var cellHeight: CGFloat
 
-    let app: String = "앱"
-    let web: String = "웹 페이지"
+    let app: String = S.WidgetCell.WidgetType.app
+    let web: String = S.WidgetCell.WidgetType.web
     var imageSize = CGSize(width: 40, height: 40)
     let titleColor: Color = AppColor.Label.first
 

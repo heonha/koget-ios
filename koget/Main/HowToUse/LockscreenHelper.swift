@@ -8,7 +8,6 @@
 import SwiftUI
 import AVKit
 
-
 struct LockscreenHelper: View {
     
     @State var player = AVPlayer()
@@ -19,8 +18,8 @@ struct LockscreenHelper: View {
                 AppColor.Background.first
                 
                 VStack(alignment: .center ,spacing: 8) {
-                    
-                    Text("잠금화면에 위젯 등록")
+                    //"잠금화면에 위젯 등록"
+                    Text(S.LockscreenHelper.descriptionTitle)
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.vertical, 12)
@@ -39,20 +38,20 @@ struct LockscreenHelper: View {
                         AppColor.Background.second
                             .cornerRadius(12)
                         VStack {
+                            // 설명
                             TabView {
                                 VStack(alignment: .leading ,spacing: 8) {
-
                                     Spacer()
-                                    Text("1. 잠금화면 상태에서 화면을 길게 탭하기.")
-                                    Text("2. 사용자화 - 잠금화면 - 위젯선택 누르기")
-                                    Text("3. 위젯 리스트에서 코젯을 선택")
+                                    Text(S.LockscreenHelper.description1)
+                                    Text(S.LockscreenHelper.description2)
+                                    Text(S.LockscreenHelper.description3)
                                     Spacer()
                                 }
                                 VStack(alignment: .leading ,spacing: 8) {
                                     Spacer()
-                                    Text("4.'바로가기 위젯추가' 를 누르세요.")
-                                    Text("5.'눌러서 위젯선택'을 눌러 위젯을 선택하세요.")
-                                    Text("6. 우측 상단 '완료' 버튼을 눌러 저장하세요.")
+                                    Text(S.LockscreenHelper.description4)
+                                    Text(S.LockscreenHelper.description5)
+                                    Text(S.LockscreenHelper.description6)
                                     Spacer()
                                 }
                                 .fixedSize(horizontal: false, vertical: true)

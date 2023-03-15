@@ -24,8 +24,8 @@ struct MakeWidgetView: View {
     @State var isPresentQustionmark = false
     @State var errorAlert = UIView()
 
-    let namePlaceholder: LocalizedStringKey = "위젯 이름"
-    let urlPlaceholder: LocalizedStringKey = "앱 / 웹 주소 (특수문자 :// 포함)"
+    let namePlaceholder: String = S.Textfield.Placeholder.widgetName
+    let urlPlaceholder: String = S.Textfield.Placeholder.url
 
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var constant: Constants
@@ -93,14 +93,14 @@ struct MakeWidgetView: View {
                     // 만들기, 뒤로가기 버튼
                     makeAndBackButton
                         .padding(.horizontal, 16)
-                        .alert("이미지 확인", isPresented: $viewModel.isImageError) {
-                            defaultImageCheckAlert
+                        .alert(S.MakeWidgetView.IsImageError.title, isPresented: $viewModel.isImageError) {
+                            defaultImageCheckAlertView
                         } message: {
-                            Text("아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?")
+                            Text(S.MakeWidgetView.IsImageError.message)
                         }
                     Spacer()
                 }
-                .navigationTitle("위젯 만들기")
+                .navigationTitle(S.MakeWidgetView.navigationTitle)
                 .navigationBarTitleDisplayMode(.large)
                 .animation(.easeOut(duration: 0.2), value: viewModel.moreOptionOn)
             }
@@ -125,7 +125,7 @@ struct MakeWidgetView: View {
                 .foregroundStyle(constant.isDarkMode ? Color.black : Color.gray)
                 .opacity(0.5)
 
-            Text("앱 리스트에서 가져오기")
+            Text(S.MakeWidgetView.fetchAppListLabel)
                 .font(.custom(CustomFont.NotoSansKR.medium, size: 18))
                 .foregroundColor(.white)
                 .shadow(color: .black.opacity(0.5), radius: 0.5, x: 1, y: 1)
@@ -135,7 +135,7 @@ struct MakeWidgetView: View {
     var makeAndBackButton: some View {
         Group {
             // 위젯생성 버튼
-            TextButton(title: "만들기", titleColor: .white, backgroundColor: AppColor.kogetBlue) {
+            TextButton(title: S.Button.finish, titleColor: .white, backgroundColor: AppColor.kogetBlue) {
                 viewModel.makeWidgetAction { result in
                     switch result {
                     case .success:
@@ -146,7 +146,7 @@ struct MakeWidgetView: View {
                 }
             }
             // 돌아가기 버튼
-            TextButton(title: "뒤로가기",
+            TextButton(title: S.Button.goBack,
                        titleColor: AppColor.Label.first,
                        backgroundColor: AppColor.Fill.first) {
                 self.dismiss()
@@ -155,14 +155,14 @@ struct MakeWidgetView: View {
         }
     }
 
-    var defaultImageCheckAlert: some View {
+    var defaultImageCheckAlertView: some View {
         Group {
-            Button("기본이미지로 생성") {
+            Button(S.MakeWidgetView.IsImageError.okButton) { // 기본이미지로 생성
                 viewModel.image = UIImage(named: "KogetClear")
                 viewModel.addWidget()
                 dismiss()
             }
-            Button("취소") {
+            Button(S.Button.cancel) {
                 return
             }
         }
@@ -175,7 +175,7 @@ struct MakeWidgetView: View {
                 viewModel.moreOptionOn.toggle()
             } label: {
                 ZStack {
-                    Text("투명도 조절")
+                    Text(S.Button.changeOpacity)
                         .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
                         .foregroundColor(AppColor.Label.second)
                         .padding(4)

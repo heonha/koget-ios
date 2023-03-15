@@ -54,12 +54,12 @@ struct DetailWidgetView: View {
                 VStack(spacing: 12) {
 
                     EditTextField(systemSymbol: .tag,
-                                  placeHolder: "위젯 이름",
+                                  placeHolder: S.Textfield.Placeholder.widgetName,
                                   viewModel: viewModel,
                                   text: $viewModel.name)
 
                     EditTextField(systemSymbol: .link,
-                                  placeHolder: "예시: youtube://",
+                                  placeHolder: S.Textfield.Placeholder.widgetUrlShort,
                                   viewModel: viewModel,
                                   text: $viewModel.url)
 
@@ -72,11 +72,12 @@ struct DetailWidgetView: View {
                 // 편집버튼
                 ToggleButton(viewModel: viewModel, widget: selectedWidget)
                 // 닫기 버튼
-                TextButton(title: "닫기", backgroundColor: AppColor.Fill.third, size: (width: 200, height: 40)) {
+                TextButton(title: S.Button.close, backgroundColor: AppColor.Fill.third, size: (width: 200, height: 40)) {
                     dismiss()
                 }
 
-                Text("편집 후 실제 위젯에 반영되기까지 약 15분 이내의 시간이 소요됩니다. (iOS 위젯 업데이트시간)")
+                // 하단 텍스트: 반영까지 15분 걸립니다.
+                Text(S.DetailWidgetView.buttomText)
                     .font(.custom(CustomFont.NotoSansKR.regular, size: 14))
                     .foregroundColor(.gray)
                     .lineLimit(2)
@@ -106,8 +107,8 @@ struct DetailWidgetView: View {
     // MARK: - Setup
     // onAppear
     private func setupView() {
-        viewModel.name = selectedWidget.name ?? "unknown"
-        viewModel.url = selectedWidget.url ?? "unknown"
+        viewModel.name = selectedWidget.name ?? S.unknown
+        viewModel.url = selectedWidget.url ?? S.unknown
         viewModel.image = UIImage(data: selectedWidget.image!)!
         if selectedWidget.opacity == nil {
             selectedWidget.opacity = 1.0
@@ -142,13 +143,13 @@ struct DetailWidgetView: View {
                         .foregroundColor(AppColor.kogetRed)
                         .fontWeight(.bold)
                 }
-                .alert("삭제 확인", isPresented: $isDeleteAlertPresent, actions: {
-                    Button("삭제", role: .destructive) {
+                .alert(S.Alert.checkDelete, isPresented: $isDeleteAlertPresent, actions: {
+                    Button(S.Button.delete, role: .destructive) {
                         WidgetCoreData.shared.deleteData(data: selectedWidget)
                         self.dismiss()
                     }
-                    Button("취소", role: .cancel) {}
-                }, message: { Text("정말 삭제 하시겠습니까?") })
+                    Button(S.Button.cancel, role: .cancel) {}
+                }, message: { Text(S.Alert.Message.checkWidgetDelete) })
                 Spacer()
                 // MARK: 닫기버튼
                 Button {

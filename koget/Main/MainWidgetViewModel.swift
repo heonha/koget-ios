@@ -80,7 +80,7 @@ class MainWidgetViewModel: ObservableObject {
     }
 
     func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: "위젯 삭제 완료!", subtitle: "삭제한 위젯은 잠금화면에서도 변경 또는 삭제 해주세요", named: "success")
+        return EKMaker.setToastView(title: S.Alert.deleteSuccessTitle, subtitle: S.Alert.deleteSuccessSubtitle, named: "success")
     }
 
     func displayToast() {

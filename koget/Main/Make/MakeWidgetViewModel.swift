@@ -43,7 +43,7 @@ final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEdi
     @Published var errorMessage = ""
 
     @Published var nameMaxCountError = false
-    lazy var nameMaxCountErrorMessage: LocalizedStringKey = "이름의 최대글자수는 \(nameStringLimit, specifier: "%d")자 입니다."
+    lazy var nameMaxCountErrorMessage = S.Error.nameLetterLimited(nameStringLimit)
 
     var targetURL: URL?
     

@@ -5,171 +5,128 @@
   Created by Heonjin Ha on 2023/02/22.
 
 */
+"unknown" = "unknown";
+"button.delete" = "Delete";
+"button.edit" = "Edit";
+"button.run" = "Run";
+"button.cancel" = "Cancel";
+"button.change_opacity" = "Adjust opacity";
+"button.finish" = "Finish";
+"button.go_back" = "Go back";
+"button.close" = "Close";
+
+
+"alert.check_delete" = "Confirm delete";
+"alert.delete_success_title" = "Delete widget completed!";
+"alert.delete_success_subtitle" = "Please change or delete the deleted widget on the lock screen as well";
+"alert.message.check_Widget_Delete" = "Are you sure you want to delete this widget?";
+"alert.need_check" = "Needs confirmation";
+
+
+"error.empty_field" = "Please fill in the blanks.";
+"error.empty_image" = "Please add a picture.";
+"error.url_syntax" = "The string :// must be included in the URL.";
+"error.name_letter_limited" = "The maximum number of characters for a name is %d.";
+
+
+
 
 // Main
-"잠금화면 위젯" = "Lockscreen Widget";
+"main_widget_view.emptyGrid.message_line1" = "Click here to create a shortcut widget";
+"main_widget_view.emptyGrid.message_line2" = "Get quick access to various apps/webpages!";
+
+"widget_cell.widgetType.app" = "App";
+"widget_cell.widgetType.web" = "web page";
+
+//ad cell
+"ad_cell" = "Check out the new KOGET";
 
 
-// Make
-"앱 리스트에서 가져오기" = "Import from app list";
-"이미지 선택" = "Choose an image";
-"이미지\n선택" = "Choose";
-"위젯 이름" = "Name";
-"위젯 이름을 입력하세요." = "Enter a widget name.";
-"앱주소:// 또는 https://웹주소" = "App address:// or https://web address";
-"완료" = "Done"; //MARK: -
-"돌아가기" = "Back"; //MARK: -
-"URL 실행 테스트" = "URL Test";
+// textFields
+"textfield.placeholder.widget_Name" = "Widget Name";
+"textfield.placeholder.url" = "app/web address (with ://)";
+"textfield.placeholder.widget_Name" = "Widget Name";
+"textfield.placeholder.widget_url_short" = "Example: youtube://";
 
 
-
-// Assets
-"앱 리스트" = "App List";
-"앱/웹 추가요청" = "Request Add";
-"(미설치)" = "(Not Installed)";
-
-"실행가능한 앱/웹 보기" = "Executable App/Web"; //MARK: -
-"앱" = "App";
-"웹 페이지" = "Web";
-"앱 검색하기" = "Search Apps";
+// make
+"make_widget_view.is_image_error.title" = "Make Image";
+"make_widget_view.is_image_error.message" = "There is no image icon yet. \nDo you want to create a default image?";
+"make_widget_view.navigation_title" = "Make Widget";
 
 
-
-// Floating Button
-"위젯 만들기" = "Make";
-"문의하기" = "Contact us";
-"더보기" = "More";
-
-// More
-"업데이트 소식" = "Update Note";
-"1.1버전" = "Version 1.1";
-
-"위젯을 잠금화면에 등록하는 방법" = "How to widgets on the LockScreen";
-"앱 소개 다시보기" = "Welcome screen again";
-"앱 평가하기" = "Rate the app";
-"코젯 버전" = "Koget Version";
-"코젯을 소개합니다!" = "Welcome To Koget!";
-"앱 바로가기" = "App Shortcut";
-"자주 사용하는 앱을 등록하고 잠금화면에서 바로 실행할 수 있어요." = "You can register frequently used apps and launch them directly from the lock screen.";
-"웹페이지 바로가기" = "Go to web page quickly";
-"자주 들어가는 웹페이지 주소(URL)을 등록하면 웹 사이트도 바로 이동할 수 있어요" = "If you register a frequently visited web page address (URL), you can go directly to the website.";
-"다음" = "Next";
-"코젯의 특별한 점" = "What's special about Koget";
-"다양한 국내 앱 바로가기" = "Go to various Korean apps";
-"해외앱은 물론 국내에서 자주 사용하는 앱 바로가기를 탑재했어요" = "Equipped with overseas apps as well as shortcuts to frequently used apps in Korea";
-"내 마음대로 커스텀" = "Custom as you like";
-"바로가기 아이콘, URL을 내 마음대로 커스텀 할 수 있어요." = "You can customize the shortcut icon and URL as you like.";
-"연결되는 링크 URL 공개" = "Disclosure of link URL";
-"위젯 생성시 연결되는 URL을 볼 수 있어서 신뢰할 수 있는 링크인지 확인이 가능해요." = "When you create a widget, you can see the linked URL, so you can check whether it is a trustworthy link.";
-"코젯 시작하기" = "Getting Started with Koget";
+"make_widget_view.fetch_app_list_label" = "fetch from app list";
+"make_widget_view.is_image_error.ok_button" = "Create as default image";
+"widget_asset_List.not_installed" = "(not installed)";
 
 
 
+//detail
+"detail_widget_view.bottom_text" = "It takes about 15 minutes after editing to be reflected on the actual widget. (iOS widget update time)";
 
-// PatchNote
-"리스트 보기 추가" = "Add List View";
-"이제 메인화면 우측 상단 버튼을 누르면 보기를 전환 할 수 있어요." = "Now, you can switch the view by pressing the button at the top right of the main screen.";
-"바로 실행하기" = "Run right now";
-"메인화면에서 앱을 눌러보세요. 앱으로 바로 갈 수 있어요." = "Tap Apps on the main screen. You can go directly to the app";
-"실행 횟수 확인" = "check execution count";
-"링크를 통해 앱을 얼마나 실행했는지 기록되고, 자주 사용하는 앱이 상단으로 올라와요." = "It records how many times you have launched the app through the link, and frequently used apps are listed at the top.";
-"아이콘은 옵션" = "icon is optional";
-"위젯 생성시 아이콘이 없어도 생성할 수 있어요. 아이콘은 코젯 아이콘으로 생성됩니다." = "When creating a widget, it can be created even if there is no icon. The icon is created as a codet icon.";
+"alert.edit_success_title" = "Widget Edit Success";
+"alert.edit_success_subtitle" = "Edited content will be reflected within 15 minutes.";
 
 
 
-//
-"회 실행" = " runs";
-"빈칸을 채워주세요." = "Please fill in the blanks.";
-"사진을 추가해주세요." = "Please add a picture";
-"URL에 문자열 :// 이 반드시 들어가야 합니다." = "The string :// must be included in the URL.";
+//How To use
+"lockscreen_helper.description_title" = "Register widgets to lock screen";
+"lockscreen_helper.description1" = "1. Tap and hold the screen while on the lock screen.";
+"lockscreen_helper.description2" = "2. Customize - Lock Screen - Tap Select Widget";
+"lockscreen_helper.description3" = "3. Select a codget from the widget list";
+"lockscreen_helper.description4" = "4.Click 'Add Shortcut Widget'.";
+"lockscreen_helper.description5" = "5.Tap to select widgets to select widgets.";
+"lockscreen_helper.description6" = "6. Click the 'Done' button at the top right to save.";
 
 
-
-"문자열 :// 이 반드시 들어가야합니다. \n(앱이름:// 또는 https://주소)" = "The string :// must be included. \n (app name :// or https:// address)";
-"URL 확인" = "Check URL";
-"URL에 들어갈 수 없는 글자가 있습니다." = "There are characters that cannot be entered in the URL.";
-
-
-// OpenURL Alert
-"URL테스트" = "URL Test";
-"입력한 URL을 실행하시겠습니까?\n 성공 시 앱 또는 웹 브라우저로 연결됩니다." = "Are you sure you want to run the URL you entered?\nOn success, you will be directed to your app or web browser.";
-
-"실행실패" = "Open Failed";
-"실행성공" = "Open success";
-"URL실행" = "Open URL";
-"취소" = "Cancel";
-"기본이미지로 생성" = "Create as a Default Image";
-"이미지 확인" = "Check Image";
-"아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?" = "There is no image icon yet.\nShould I create it as a base image?";
-"위젯 생성 완료!" = "Widget creation complete!";
-"코젯앱을 잠금화면에 추가해 사용하세요." = "Use the Koget by adding it to the lock screen.";
-"위젯 삭제 완료!" = "Widget deleted!";
-
-"문의 유형" = "Type";
-"문의 제목" = "Title";
-"이곳에 문의내용을 입력하세요." = "Please enter your inquiry here.";
-"문의 보내기" = "Send Message";
-"문의 안내사항" = "Information";
-"* 문의 내용에 개인정보를 입력하지 마세요." = "* Do not enter personal information in the inquiry details.";
-"* 문의는 익명으로 발송됩니다." = "* Inquiries will be sent anonymously.";
-"* 문의 내용은 앱 서비스 개선에 활용됩니다." = "* Inquiries are used to improve app service.";
-"* 앱 개선을 위하여 기기의 버전정보를 수집합니다." = "We collect device version information to improve the app";
-"문의하기" = "contact us";
-"코젯 버전" = "Koget ver.";
-"문의 보내기 성공" = "Send Success";
-"피드백을 보내주셔서 감사합니다." = "Thank you for your feedback.";
-"빈칸을 확인해주세요." = "Please check the blanks.";
-"내용 확인" = "Check contents";
-"보내기" = "Send";
-"문의를 보낼까요?" = "Do you send inquiries?";
-"선택하세요" = "Choose";
-"앱 관련 문제" = "App related issues";
-"앱 추가요청" = "Request to add an app";
-"피드백 보내기" = "Feedback";
-"기타 문의사항" = "etc";
-"실행하기" = "Open";
-"편집" = "Edit";
-"삭제" = "Delete";
-"위젯 편집" = "Edit";
-"닫기" = "Close";
-"편집 완료" = "Done";
+// setting menu
+"setting_menu.section.how_to_use.title" = "How to use";
+"setting_menu.section.how_to_use.add_widget" = "Add widget to lock screen";
+"setting_menu.section.communicate.title" = "Communicate";
+"setting_menu.section.communicate.request_add_app" = "Request Add App";
+"setting_menu.section.communicate.contact_us" = "Contact Us";
+"setting_menu.section.about_app.title" = "About App";
+"setting_menu.section.about_app.vote_rate" = "Rate App";
+"setting_menu.navigation_title" = "More";
 
 
-// 안내서
-"잠금화면에 위젯 등록" = "Register widget on lock screen";
-"1. 잠금화면 상태에서 화면을 길게 탭하기." = "1. Tap and hold the screen on the lock screen.";
-"2. 사용자화 - 잠금화면 - 위젯선택 누르기" = "2. Customization - Lock Screen - Tap Select Widget";
-"3. 위젯 리스트에서 코젯을 선택" = "3. Select Codget from Widget List";
-"4.'바로가기 위젯추가' 를 누르세요." = "4. Click 'Add Shortcut'";
-"5.'눌러서 위젯선택'을 눌러 위젯을 선택하세요." = "5. Press 'Tap to select' to select a widget.";
-"6. 우측 상단 '완료' 버튼을 눌러 저장하세요." = "6. Click the 'Done' button at the top right to save.";
+"koget_version" = "KOGET version";
 
 
-"공지사항" = "Notice";
-"앱에 관하여" = "About App";
-"앱/웹 추가 요청" = "Request to add App/Web";
-"앱/웹 이름" = "Name";
-"요청할 앱/웹 이름" = "App/web name to request";
-"내용" = "Detail";
-"선택사항" = "Optional";
-"요청하신 앱/웹은 검토 결과에 따라 앱에 추가 될 예정입니다." = "The app/web you requested will be added to the app based on review results.";
-"요청하기" = "Request";
-"앱/웹 추가요청 성공" = "App/web addition request successful";
-"요청을 보내주셔서 감사합니다." = "Thank you for your request.";
-"앱/웹 이름을 기재해주세요." = "Please enter the name.";
+// contact view
+"contact_type.problem_app" = "Problem with App";
+"contact_type.request_app" = "Request to add an app";
+"contact_type.feedback" = "Send Feedback";
+"contact_type.etc" = "Other inquiries";
+"contact_type.select" = "Please select";
 
+"contact_view.type" = "Contact Type";
+"contact_view.title" = "Contact Title";
+"contact_view.title_placeholder" = "Enter your inquiry here.";
+"contact_view.send_contact" = "Send Inquiry";
+"contact_view.contact" = "Contact Us";
+"contact_view.check_contents" = "Check contents";
+"contact_view.send" = "Send";
+"contact_view.can_you_send_contact" = "Can you send an inquiry?";
+"contact_view.description_title" = "Contact Information";
+"contact_view.description1" = "* Please do not enter any personal information in the inquiry text.";
+"contact_view.description2" = "* Inquiries will be sent anonymously.";
+"contact_view.description3" = "* Contact information will be used to improve app service.";
+"contact_view.description4" = "* Collect device version information to improve the app.";
+"contact_view.alert.send_success" = "Send inquiry successful";
+"contact_view.alert.send_success_subtitle" = "Thank you for your feedback.";
+"contact_view.alert.need_check" = "Needs confirmation";
+"contact_view.alert.check_empty_cell" = "Please check the blanks.";
 
-//Widget Ext.
-"바로가기" = "Add";
-"위젯추가" = "Shortcut";
-"눌러서" = "Tap to";
-"위젯선택" = "select";
+//Asset Request view
 
-"바로가기 위젯" = "Shortcut Widget";
-"아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요." = "Tap the icon and place it on the lock screen.\nAnd select the widget created by Koget.";
+"app_request.title" = "App/Web Add Request";
+"app_request.app_name" = "App/Web Name";
+"app_request.app_name_placeholder" = "App/web name to request";
+"app_request.text_body" = "Content";
+"app_request.text_body_placeholder" = "optional";
+"app_request.description" = "The app/web you requested will be added to the app following review.";
+"app_request.send" = "Send";
 
-
-//
-"이름의 최대글자수는 %d자 입니다." = "Maximum is %d chars.";
-"투명도" = "Opacity";
+// patch note list
+"patchnote_list.navigation_title" = "Update Notes";

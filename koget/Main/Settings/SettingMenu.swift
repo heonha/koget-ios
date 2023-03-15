@@ -14,8 +14,6 @@ struct SettingMenu: View, AppStoreReviewable {
     @ObservedObject var viewModel = HelperSheetViewModel.shared
     @EnvironmentObject var constant: Constants
 
-    @State var widgetSizeTitle = "선택"
-
     var body: some View {
         NavigationView {
             ZStack {
@@ -27,42 +25,42 @@ struct SettingMenu: View, AppStoreReviewable {
                     Spacer()
                     List {
 
-                        Section("사용방법") {
-                            SettingMenuButton(title: "위젯을 잠금화면에 등록하는 방법", imageType: .symbol, systemSymbol: .appsIphoneBadgePlus, imageColor: AppColor.Label.second) {
+                        // 사용방법
+                        Section(S.SettingMenu.Section.HowToUse.title) {
+                            SettingMenuButton(
+                                title: S.SettingMenu.Section.HowToUse.addWidget,
+                                imageType: .symbol,
+                                systemSymbol: .appsIphoneBadgePlus,
+                                imageColor: AppColor.Label.second) {
                                 viewModel.showHowtoUseView.toggle()
                             }
-
-                            SettingMenuButton(title: "소개화면 다시보기", imageType: .symbol, systemSymbol: .docAppend, imageColor: AppColor.Label.second) {
-                                viewModel.showWelcomeSheet.toggle()
-                            }
                         }
-
-                        Section("소통하기") {
-                            SettingMenuButton(title: "앱 추가요청", imageType: .symbol, systemSymbol: .noteTextBadgePlus, imageColor: AppColor.Label.second) {
+                        // 소통하기
+                        Section(S.SettingMenu.Section.Communicate.title) {
+                            SettingMenuButton(title: S.SettingMenu.Section.Communicate.requestAddApp, imageType: .symbol, systemSymbol: .noteTextBadgePlus, imageColor: AppColor.Label.second) {
                                 viewModel.showAssetRequestView.toggle()
                             }
 
-                            SettingMenuButton(title: "문의하기", imageType: .symbol, systemSymbol: .paperplaneFill, imageColor: AppColor.Label.second) {
+                            SettingMenuButton(title: S.SettingMenu.Section.Communicate.contactUs, imageType: .symbol, systemSymbol: .paperplaneFill, imageColor: AppColor.Label.second) {
                                 viewModel.showContactView.toggle()
                             }
                         }
 
-                        Section("앱에 관하여") {
-
-                            SettingMenuButton(title: "앱 평가하기", imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
+                        // 앱에 관하여
+                        Section(S.SettingMenu.Section.AboutApp.title) {
+                            SettingMenuButton(title: S.SettingMenu.Section.AboutApp.voteRate, imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
                                 requestReview()
                             }
-                            SettingMenuButton(title: "코젯 버전", subtitle: appVersion, imageType: .asset, imageName: "Koget") {
+                            SettingMenuButton(title: S.kogetVersion, subtitle: appVersion, imageType: .asset, imageName: "Koget") {
                             }
                             .disabled(true)
                         }
                     }
                     .listStyle(.insetGrouped)
                 }
-                .navigationTitle("더보기")
+                .navigationTitle(S.SettingMenu.navigationTitle)
             }
             .tint(.black)
-            .welcomeSheet(isPresented: $viewModel.showWelcomeSheet, isSlideToDismissDisabled: true, preferredColorScheme: constant.isDarkMode ? .dark : .light, pages: viewModel.pages)
             .sheet(isPresented: $viewModel.showUseLockscreen) {
                 LockscreenHelper()
             }

@@ -49,36 +49,36 @@ struct WidgetContainerCell: View {
                                 viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
                             }
                         } label: {
-                            Label("실행하기", systemSymbol: .arrowUpLeftSquareFill)
+                            Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
                         }
                         Button {
                             self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
                                 DetailWidgetView(selectedWidget: widget)
                             })
                         } label: {
-                            Label("편집", systemSymbol: .sliderHorizontal3)
+                            Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
                         }
-                        Button(role: .destructive) {
+                        Button {
                             isDelete.toggle()
                         } label: {
-                            Label("삭제", systemSymbol: .trashFill)
+                            Label(S.Button.delete, systemSymbol: .trashFill)
                         }
                     } label: {
                         WidgetGridCell(name: name, url: url, widgetImage: widgetImage,
                                        cellWidth: cellSize.grid, viewModel: viewModel)
 
                     }
-                    .alert("\(widget.name ?? "알수없음")", isPresented: $isDelete, actions: {
-                        Button("삭제", role: .destructive) {
+                    .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
+                        Button(S.Button.delete, role: .destructive) {
                             coreData.deleteData(data: widget)
                             dismiss()
                             viewModel.displayToast()
                             isDelete = false
                         }
-                        Button("취소", role: .cancel) {
+                        Button(S.Button.cancel, role: .cancel) {
                             isDelete = false
                         }
-                    }, message: {Text("이 위젯을 삭제 할까요?")})
+                    }, message: {Text(S.Alert.Message.checkWidgetDelete)})
                     .sheet(isPresented: $isPresentDetailView, content: {
                         DetailWidgetView(selectedWidget: widget)
                     })
@@ -90,7 +90,6 @@ struct WidgetContainerCell: View {
         }
     }
 }
-
 
 struct DeepLinkWidgetIconView_Previews: PreviewProvider {
     static var previews: some View {

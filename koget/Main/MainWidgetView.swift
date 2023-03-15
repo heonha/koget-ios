@@ -26,7 +26,7 @@ struct MainWidgetView: View {
         NavigationView {
             ZStack {
                 VStack {
-                    NoticePage()
+                    AdPage()
                         .padding(.vertical, 4)
                     // 링크위젯
                     WidgetListContainerView(viewModel: viewModel, coreData: _coreData)
@@ -63,7 +63,6 @@ struct MainWidgetView: View {
                     }
                 }
             }
-            .welcomeSheet(isPresented: $viewModel.isFirstRun, isSlideToDismissDisabled: true, pages: HelperSheetViewModel.shared.pages)
             .onTapGesture {
                 isOpen = false
             }

@@ -10,11 +10,27 @@ import SwiftEntryKit
 import Localize_Swift
 
 enum ContectType: String {
-    case app = "앱 관련 문제"
-    case addApp = "앱 추가요청"
-    case feedback = "피드백 보내기"
-    case etc = "기타 문의사항"
-    case none = "선택하세요"
+    case app
+    case addApp
+    case feedback
+    case etc
+    case none
+
+    var localizedDescription: String {
+        switch self {
+        case .app:
+            S.ContactType.problemApp
+        case .addApp:
+            S.ContactType.requestApp
+        case .feedback:
+            S.ContactType.feedback
+        case .etc:
+            S.ContactType.etc
+        case .none:
+            S.ContactType.select
+        }
+    }
+
 }
 
 struct ContactView: View {
@@ -36,7 +52,7 @@ struct ContactView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("문의 유형")
+                            Text(S.ContactView.type)
                             
                             Spacer()
                             
@@ -46,18 +62,18 @@ struct ContactView: View {
                         }
                         
                         Divider()
-                        TextFieldView(placeholder: "문의 제목",
+                        TextFieldView(placeholder: S.ContactView.title,
                                       type: .title,
                                       text: $viewModel.title)
                         .padding([.top, .bottom], 8)
                         
                         Divider()
-                        CustomTextEditor(placeHolder: "이곳에 문의내용을 입력하세요.",
+                        CustomTextEditor(placeHolder: S.ContactView.titlePlaceholder,
                                          text: $viewModel.body)
                         .frame(height: geometryProxy.size.height / 2.5)
                         .padding([.top, .bottom], 8)
                         
-                        TextButton(title: "문의 보내기", backgroundColor: AppColor.kogetBlue) {
+                        TextButton(title: S.ContactView.sendContact, backgroundColor: AppColor.kogetBlue) {
                             isPresentSendAlert.toggle()
                         }
                         .padding([.top, .bottom], 8)
@@ -72,12 +88,12 @@ struct ContactView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("문의하기")
+                    Text(S.ContactView.contact)
                         .bold()
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
-                        Text("코젯 버전")
+                        Text(S.kogetVersion)
                         Text("\(viewModel.version ?? "-")")
                             .bold()
                     }
@@ -87,7 +103,7 @@ struct ContactView: View {
                 }
             }
             .toolbarBackground(.visible, for: .navigationBar)
-            .alert("내용 확인", isPresented: $isPresentSendAlert) {
+            .alert(S.ContactView.checkContents, isPresented: $isPresentSendAlert) {
                 Button {
                     viewModel.checkTheField { result in
                         if result {
@@ -98,16 +114,16 @@ struct ContactView: View {
                         }
                     }
                 } label: {
-                    Text("보내기")
+                    Text(S.ContactView.send)
                         .bold()
                 }
                 
                 Button {
                 } label: {
-                    Text("취소")
+                    Text(S.Button.cancel) // 취소
                 }
             } message: {
-                Text("문의를 보낼까요?")
+                Text(S.ContactView.canYouSendContact)
             }
             .onAppear {
                 successAlert = setAlertView()
@@ -118,14 +134,14 @@ struct ContactView: View {
     
     var noticeMessage: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("문의 안내사항")
+            Text(S.ContactView.descriptionTitle)
                 .bold()
             
             VStack(alignment: .leading, spacing: 2) {
-                Text("* 문의 내용에 개인정보를 입력하지 마세요.")
-                Text("* 문의는 익명으로 발송됩니다.")
-                Text("* 문의 내용은 앱 서비스 개선에 활용됩니다.")
-                Text("* 앱 개선을 위하여 기기의 버전정보를 수집합니다.")
+                Text(S.ContactView.description1)
+                Text(S.ContactView.description2)
+                Text(S.ContactView.description3)
+                Text(S.ContactView.description4)
             }
             .font(.system(size: 15))
         }
@@ -171,7 +187,7 @@ struct ContactView: View {
     }
     
     private func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: "문의 보내기 성공".localized(), subtitle: "피드백을 보내주셔서 감사합니다.".localized(), named: "success")
+        return EKMaker.setToastView(title: S.ContactView.Alert.sendSuccess.localized(), subtitle: S.ContactView.Alert.sendSuccessSubtitle.localized(), named: "success")
     }
     
     private func presentSuccessAlert() {
@@ -179,7 +195,7 @@ struct ContactView: View {
     }
     
     private func setErrorAlertView() -> UIView {
-        return EKMaker.setToastView(title: "확인 필요".localized(), subtitle: "빈칸을 확인해주세요.".localized(), named: "failed")
+        return EKMaker.setToastView(title: S.ContactView.Alert.needCheck.localized(), subtitle: S.ContactView.Alert.checkEmptyCell.localized(), named: "failed")
     }
     
     private func presentErrorAlert() {

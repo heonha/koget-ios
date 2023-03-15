@@ -19,7 +19,7 @@ struct PatchNoteList: View {
                 }
                 Spacer()
             }
-            .navigationTitle("업데이트 소식")
+            .navigationTitle(S.PatchnoteList.navigationTitle)
         }
     }
 }

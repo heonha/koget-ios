@@ -15,7 +15,7 @@ struct SettingMenuButton: View {
         case asset
     }
 
-    var title: LocalizedStringKey
+    var title: String
     var subtitle: String? = nil
     var imageType: ImageType
     var imageName: String = ""
