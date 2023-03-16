@@ -54,6 +54,7 @@ struct WidgetAssetCell: View {
                 }
             }
         }
+        .disabled(!widget.canOpen)
     }
 }
 

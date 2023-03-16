@@ -66,7 +66,7 @@ struct TextFieldView: View {
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TextFieldView(systemName: .magnifyingglass, placeholder: "앱 검색하기", text: .constant(""))
+            TextFieldView(systemName: .magnifyingglass, placeholder: S.WidgetAssetList.searchApp, text: .constant(""))
             TextFieldView(placeholder: "내용을 입력하세요.", type: .body, text: .constant(""))
         }
     }

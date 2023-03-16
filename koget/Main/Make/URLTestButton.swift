@@ -6,26 +6,25 @@
 //
 
 import SwiftUI
-import Localize_Swift
 
 struct URLTestButton: View {
     
-    var title: String = "테스트".localized()
+    var title: String = S.Button.test
 
     @ObservedObject var viewModel: MakeWidgetViewModel
 
     // Error Alert
-    var alertTitle: String = "URL 확인".localized()
-    var alertMessage: String = "문자열 :// 이 반드시 들어가야합니다. \n(앱이름:// 또는 https://주소)".localized()
+    var alertTitle: String = S.UrlTestButton.checkUrl
+    var alertMessage: String = S.UrlTestButton.checkUrlSubtitleSpecific
     @State var isAlertPresent: Bool = false
     
-    var urlStringAlertTitle: String = "URL 확인".localized()
-    var urlStringAlertMessage: String = "URL에 들어갈 수 없는 글자가 있습니다.".localized()
+    var urlStringAlertTitle: String = S.UrlTestButton.checkUrl
+    var urlStringAlertMessage: String = S.UrlTestButton.checkUrlSubtitleNourl
     @State var isurlStringAlertPresent: Bool = false
 
     // OpenURL Alert
-    var openURLAlertTitle: String = "URL 테스트".localized()
-    var openURLAlertMessage: String = "입력한 URL을 실행하시겠습니까?\n 성공 시 앱 또는 웹 브라우저로 연결됩니다.".localized()
+    var openURLAlertTitle: String = S.UrlTestButton.testUrl
+    var openURLAlertMessage: String = S.UrlTestButton.checkRun
 
     @State var targetURL: URL?
     @State var isOpenURLAlertPresent: Bool = false
@@ -65,10 +64,10 @@ struct URLTestButton: View {
             }
             .alert(openURLAlertTitle, isPresented: $isOpenURLAlertPresent) {
                 
-                Button("취소") {
+                Button(S.Button.cancel) {
                     
                 }
-                Button("URL실행") {
+                Button(S.UrlTestButton.runTest) {
                     viewModel.openURL { result in
                         // print(result)
                         self.canOpenResult = result

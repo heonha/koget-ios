@@ -40,54 +40,98 @@ struct WidgetContainerCell: View {
     }
 
     var body: some View {
-        if let data = widget.image, let name = widget.name, let url = widget.url {
-            if let widgetImage = UIImage(data: data) {
-                if type == .grid {
-                    Menu {
-                        Button {
-                            if let url = widget.url, let id = widget.id {
-                                viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
+
+        Group {
+            if let data = widget.image, let name = widget.name, let url = widget.url {
+                if let widgetImage = UIImage(data: data) {
+                    if type == .grid {
+                        Menu {
+                            Button {
+                                if let url = widget.url, let id = widget.id {
+                                    viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
+                                }
+                            } label: {
+                                Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
+                            }
+                            Button {
+                                self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                                    DetailWidgetView(selectedWidget: widget)
+                                })
+                            } label: {
+                                Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
+                            }
+                            Button(role: .destructive) {
+                                isDelete.toggle()
+                            } label: {
+                                Label(S.Button.delete, systemSymbol: .trashFill)
                             }
                         } label: {
-                            Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
-                        }
-                        Button {
-                            self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
-                                DetailWidgetView(selectedWidget: widget)
-                            })
-                        } label: {
-                            Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
-                        }
-                        Button(role: .destructive) {
-                            isDelete.toggle()
-                        } label: {
-                            Label(S.Button.delete, systemSymbol: .trashFill)
-                        }
-                    } label: {
-                        WidgetGridCell(name: name, url: url, widgetImage: widgetImage,
-                                       cellWidth: cellSize.grid, viewModel: viewModel)
+                            WidgetGridCell(name: name, url: url, widgetImage: widgetImage,
+                                           cellWidth: cellSize.grid, viewModel: viewModel)
 
+                        }
+                        .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
+                            Button(S.Button.delete, role: .destructive) {
+                                coreData.deleteData(data: widget)
+                                dismiss()
+                                viewModel.displayToast()
+                                isDelete = false
+                            }
+                            Button(S.Button.cancel, role: .cancel) {
+                                isDelete = false
+                            }
+                        }, message: {Text(S.Alert.Message.checkWidgetDelete)})
+                        .sheet(isPresented: $isPresentDetailView, content: {
+                            DetailWidgetView(selectedWidget: widget)
+                        })
+
+                    } else {
+                        WidgetListCell(name: name, url: url, widgetImage: widgetImage, cellWidth: cellSize.list, runCount: Int(widget.runCount), cellHeight: cellSize.list, viewModel: viewModel)
                     }
-                    .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
-                        Button(S.Button.delete, role: .destructive) {
-                            coreData.deleteData(data: widget)
-                            dismiss()
-                            viewModel.displayToast()
-                            isDelete = false
-                        }
-                        Button(S.Button.cancel, role: .cancel) {
-                            isDelete = false
-                        }
-                    }, message: {Text(S.Alert.Message.checkWidgetDelete)})
-                    .sheet(isPresented: $isPresentDetailView, content: {
-                        DetailWidgetView(selectedWidget: widget)
-                    })
-
-                } else {
-                    WidgetListCell(name: name, url: url, widgetImage: widgetImage, cellWidth: cellSize.list, runCount: Int(widget.runCount), cellHeight: cellSize.list, viewModel: viewModel)
                 }
             }
         }
+        .swipeActions(edge: .leading, allowsFullSwipe: false) {
+            Button {
+                isDelete.toggle()
+            } label: {
+                Label(S.Button.delete, systemSymbol: .trashFill)
+            }
+            .tint(Color.init(uiColor: .systemRed))
+
+        }
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+
+            Button {
+                if let url = widget.url, let id = widget.id {
+                    viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
+                }
+            } label: {
+                Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
+            }
+            .tint(Color.green)
+
+            Button {
+                self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                    DetailWidgetView(selectedWidget: widget)
+                })
+            } label: {
+                Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
+            }
+            .tint(AppColor.kogetBlue)
+
+        }
+        .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
+            Button(S.Button.delete, role: .destructive) {
+                coreData.deleteData(data: widget)
+                viewModel.displayToast()
+                isDelete = false
+            }
+            Button(S.Button.cancel, role: .cancel) {
+                isDelete = false
+            }
+        }, message: {Text(S.Alert.Message.checkWidgetDelete)})
+
     }
 }
 

@@ -10,7 +10,7 @@ import Kingfisher
 
 struct PatchNoteContentView: View {
 
-    var baseURL: String = "https://www.heon.dev/patchnote/"
+    var baseURL: String = "https://website.heon.dev/patchnote/"
     var fileName: String
 
     @Environment(\.dismiss) var dismiss

@@ -18,6 +18,16 @@
 "button.go_back" = "뒤로가기";
 "button.close" = "닫기";
 "button.save" = "저장";
+"button.test" = "테스트";
+
+// url test button
+"url_test_button.check_url" = "URL 확인";
+"url_test_button.check_url_subtitle_specific" = "문자열 :// 이 반드시 들어가야합니다. \n(앱이름:// 또는 https://주소)";
+"url_test_button.check_url_subtitle_nourl" = "URL에 들어갈 수 없는 글자가 있습니다.";
+"url_test_button.test_url" = "URL 테스트";
+"url_test_button.check_run" = "입력한 URL을 실행하시겠습니까?\n 성공 시 앱 또는 웹 브라우저로 연결됩니다.";
+"url_test_button.run_test" = "테스트 진행";
+
 
 "alert.check_delete" = "삭제 확인";
 "alert.delete_success_title" = "위젯 삭제 완료!";
@@ -50,7 +60,7 @@
 
 // textField
 "textfield.placeholder.widget_Name" = "위젯 이름";
-"textfield.placeholder.url" = "앱 / 웹 주소 (:// 포함)";
+"textfield.placeholder.url" = "URL - (특수문자 :// 포함)";
 "textfield.placeholder.widget_Name" = "위젯 이름";
 "textfield.placeholder.widget_url_short" = "예시: youtube://";
 
@@ -66,8 +76,8 @@
 
 "widget_asset_list.not_installed" = "(미설치)";
 "widget_asset_list.appList" = "앱 리스트";
-"widget_asset_list.requestApp" = "앱/웹 추가요청";
-"widget_asset_list.excutableToggleLabel" = "실행가능한 앱/웹 보기";
+"widget_asset_list.requestApp" = "앱 추가요청";
+"widget_asset_list.excutableToggleLabel" = "실행가능만 보기";
 "widget_asset_list.searchApp" = "앱 검색하기";
 
 
@@ -103,9 +113,7 @@
 "setting_menu.section.about_app.vote_rate" = "앱 평가하기";
 "setting_menu.navigation_title" = "더보기";
 
-
 "koget_version" = "코젯 버전";
-
 
 // contact view
 "contact_type.problem_app" = "앱 관련 문제";
@@ -157,3 +165,11 @@
 "opacity_slider.transparency" = "투명";
 "opacity_slider.opacity" = "불투명";
 "opacity_slider.description" = "잠금화면 위젯의 불투명도입니다.";
+
+
+//widget ext
+"widget.empty_placeholder" = "바로가기\n위젯추가";
+"widget.select_widget" = "눌러서\n위젯선택";
+"widget.check_widget" = "위젯확인";
+"widget.config.title" = "바로가기 위젯";
+"widget.config.subtitle"= "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요.";

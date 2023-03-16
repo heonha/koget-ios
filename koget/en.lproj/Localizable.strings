@@ -15,6 +15,7 @@
 "button.go_back" = "Back";
 "button.close" = "Close";
 "button.save" = "Save";
+"button.test" = "Test";
 
 
 
@@ -31,6 +32,12 @@
 "error.name_letter_limited" = "The maximum number of characters for a name is %d.";
 
 
+"url_test_button.check_url" = "Check URL";
+"url_test_button.check_url_subtitle_specific" = "The string :// must be included. \n (app name :// or https:// address)";
+"url_test_button.check_url_subtitle_nourl" = "There are characters that cannot be entered in the URL.";
+"url_test_button.test_url" = "Test URL";
+"url_test_button.check_run" = "Are you sure you want to execute the URL you entered?\n On success, you will be redirected to the app or web browser.";
+"url_test_button.run_test" = "Run Test";
 
 
 // Main
@@ -51,7 +58,7 @@
 
 // textFields
 "textfield.placeholder.widget_Name" = "Widget Name";
-"textfield.placeholder.url" = "app/web address (with ://)";
+"textfield.placeholder.url" = "URL - App/Web (with ://)";
 "textfield.placeholder.widget_Name" = "Widget Name";
 "textfield.placeholder.widget_url_short" = "Example: youtube://";
 
@@ -64,7 +71,12 @@
 
 "make_widget_view.fetch_app_list_label" = "Import from app list";
 "make_widget_view.is_image_error.ok_button" = "Create as default image";
-"widget_asset_List.not_installed" = "(not installed)";
+"widget_asset_list.not_installed" = "(Not Install)";
+"widget_asset_list.appList" = "App List";
+"widget_asset_list.requestApp" = "Request App";
+"widget_asset_list.excutableToggleLabel" = "Executable App";
+"widget_asset_list.searchApp" = "Search Apps";
+
 
 // photo edit menu
 "photo_edit_menu.selectWidget" = "Select\nImage";
@@ -143,3 +155,11 @@
 "opacity_slider.transparency" = "";
 "opacity_slider.opacity" = "";
 "opacity_slider.description" = "Opacity of lock screen widgets.";
+
+
+//widget ext
+"widget.empty_placeholder" = "Add\nWidget";
+"widget.select_widget" = "Select\nWidget";
+"widget.check_widget" = "Check\nWidget";
+"widget.config.title" = "Lockscreen Widget";
+"widget.config.subtitle"= "Tap the icon and place it on the Lockscreen.\nAnd select the widget created by Koget App.";

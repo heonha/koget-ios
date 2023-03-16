@@ -134,6 +134,10 @@ struct DeepLinkWidgetEntryView: View {
     @State var placeholderOpacity: CGFloat = 1
     @StateObject var coreData = WidgetCoreData.shared
 
+    let emptyPlaceholer = S.Widget.emptyPlaceholder
+    let checkWidget = S.Widget.checkWidget
+    let selectWidget = S.Widget.selectWidget
+
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
     var body: some View {
@@ -146,10 +150,9 @@ struct DeepLinkWidgetEntryView: View {
                         if entry.id == "Ssn2&}g3f`M-Fe.k" {
                             ZStack {
                                 VStack {
-                                    Text("바로가기")
+                                    Text(emptyPlaceholer)
                                         .font(.system(size: 12))
-                                    Text("위젯추가")
-                                        .font(.system(size: 12))
+                                        .multilineTextAlignment(.center)
                                 }
                                 .bold()
                             }
@@ -169,9 +172,9 @@ struct DeepLinkWidgetEntryView: View {
                         }
                     } else {
                         ZStack {
-                            VStack {
-                                Text("눌러서")
-                                Text("위젯선택")
+                            VStack(alignment: .center) {
+                                Text(selectWidget)
+                                    .multilineTextAlignment(.center)
                             }
                             .bold()
                         }
@@ -186,7 +189,8 @@ struct DeepLinkWidgetEntryView: View {
                 }
             default:
                 VStack {
-                    Text("위젯확인")
+                    Text(checkWidget)
+                        .multilineTextAlignment(.center)
                 }
                 .widgetURL(URL(string: selectWidgetURL))
             }
@@ -207,8 +211,8 @@ struct Widgets: WidgetBundle {
 /// Widget : Widget의 컨텐츠를 나타내는 configuration 프로토콜
 struct DeepLinkWidget: Widget {
     let kind: String = "LockScreenWidget"
-    let title: LocalizedStringKey = "바로가기 위젯"
-    let subtitle: LocalizedStringKey = "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요."
+    let title: String = S.Widget.Config.title
+    let subtitle: String = S.Widget.Config.subtitle
     @ObservedObject var coreData = WidgetCoreData.shared
 
     /// 위젯의 Contents를 나타냅니다.
