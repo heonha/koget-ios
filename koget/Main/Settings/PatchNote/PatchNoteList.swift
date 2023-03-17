@@ -14,7 +14,7 @@ struct PatchNoteList: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 4) {
-                ForEach(viewModel.notes) { note in
+                ForEach(viewModel.notes.reversed()) { note in
                     PatchNoteListCell(title: note.title, subtitle: note.subtitle, date: note.date.toFormat("yyyy-MM-dd"), lightFileName: note.lightFileName, darkFileName: note.darkFileName)
                 }
                 Spacer()

@@ -53,7 +53,6 @@ struct WidgetListContainerView: View {
             ForEach(coreData.linkWidgets) { widget in
                 WidgetContainerCell(widget: widget, viewModel: viewModel, type: .list)
                     
-
             }
 
         }

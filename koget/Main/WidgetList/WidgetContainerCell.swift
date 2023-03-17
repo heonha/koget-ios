@@ -93,23 +93,23 @@ struct WidgetContainerCell: View {
         }
         .swipeActions(edge: .leading, allowsFullSwipe: false) {
             Button {
-                isDelete.toggle()
-            } label: {
-                Label(S.Button.delete, systemSymbol: .trashFill)
-            }
-            .tint(Color.init(uiColor: .systemRed))
-
-        }
-        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-
-            Button {
                 if let url = widget.url, let id = widget.id {
                     viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
                 }
             } label: {
                 Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
             }
-            .tint(Color.green)
+            .tint(Color.init(uiColor: .systemGreen))
+
+        }
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+
+            Button {
+                isDelete.toggle()
+            } label: {
+                Label(S.Button.delete, systemSymbol: .trashFill)
+            }
+            .tint(Color.init(uiColor: .systemRed))
 
             Button {
                 self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
