@@ -90,11 +90,11 @@ class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditPro
                 guard let self = self else { return }
 
                 if let error = error {
-                    self.alertView = setAlertView(subtitle: error.localizedDescription)
+                    self.alertView = self.setAlertView(subtitle: error.localizedDescription)
                     self.displayAlert()
                     return
                 } else {
-                    self.alertView = setAlertView()
+                    self.alertView = self.setAlertView()
                     self.editWidgetData(widget: widget)
                     self.displayAlert()
                     self.isEditingMode = false

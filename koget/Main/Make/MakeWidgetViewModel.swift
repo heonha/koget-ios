@@ -16,14 +16,13 @@ enum MakeWidgetErrorType {
     var localizedDescription: String {
         switch self {
         case .emptyField:
-            S.Error.emptyField
+            return S.Error.emptyField
         case .emptyImage:
-            S.Error.emptyImage
+            return S.Error.emptyImage
         case .urlError:
-            S.Error.urlSyntax
+            return S.Error.urlSyntax
         }
     }
-
 }
 
 final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
@@ -188,9 +187,9 @@ enum LinkType {
     var localizedString: String {
         switch self {
         case .app:
-            S.WidgetCell.WidgetType.app
+            return S.WidgetCell.WidgetType.app
         case .web:
-            S.WidgetCell.WidgetType.web
+            return S.WidgetCell.WidgetType.web
         }
     }
 

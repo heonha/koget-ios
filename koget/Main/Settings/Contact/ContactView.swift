@@ -19,15 +19,15 @@ enum ContectType: String {
     var localizedDescription: String {
         switch self {
         case .app:
-            S.ContactType.problemApp
+            return S.ContactType.problemApp
         case .addApp:
-            S.ContactType.requestApp
+            return S.ContactType.requestApp
         case .feedback:
-            S.ContactType.feedback
+            return S.ContactType.feedback
         case .etc:
-            S.ContactType.etc
+            return S.ContactType.etc
         case .none:
-            S.ContactType.select
+            return S.ContactType.select
         }
     }
 

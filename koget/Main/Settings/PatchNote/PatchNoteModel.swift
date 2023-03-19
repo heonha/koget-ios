@@ -71,7 +71,7 @@ final class PatchNoteViewModel: ObservableObject {
 
             if let error = error {
                 let errorData = PatchNoteData(title: "Server Error", subtitle: (error.localizedDescription), lightFileName: "", darkFileName: "", date: Date())
-                notes.append(errorData)
+                self.notes.append(errorData)
             } else if let patchnotes = patchnotes {
                 self.notes = patchnotes
             }
