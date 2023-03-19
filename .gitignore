@@ -1,5 +1,5 @@
 #Target
-keys/
+**/keys/
 
 #SPM
 koget.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/*
