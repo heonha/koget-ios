@@ -490,7 +490,6 @@
 		3951F0B829C6EF500063722F /* keys */ = {
 			isa = PBXGroup;
 			children = (
-				3951F0B929C6EFF10063722F /* GoogleService-Info.plist */,
 			);
 			path = keys;
 			sourceTree = "<group>";
@@ -677,6 +676,7 @@
 		3ABA6C1528C6043F005AA8E4 /* koget */ = {
 			isa = PBXGroup;
 			children = (
+				3951F0B929C6EFF10063722F /* GoogleService-Info.plist */,
 				3951F0B829C6EF500063722F /* keys */,
 				39BB37AB29C0B4FD00BD91EC /* swiftgen */,
 				39223B7229A5E34600F59F54 /* Localizable.strings */,
