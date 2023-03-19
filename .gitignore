@@ -8,13 +8,13 @@ Koget-Admin/
 koget.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/*
 
 #Firebase
-GoogleService-Info.plist
+**/GoogleService-Info.plist
 
 #ETC
 .DS_Store
 
 #fastlane - 20230317 --
-# fastlane specific
+#fastlane specific
 **/fastlane/report.xml
 
 # deliver temporary files
@@ -25,6 +25,11 @@ GoogleService-Info.plist
 
 # scan temporary files
 **/fastlane/test_output
+
+# all fastlane Dir
+**/fastlane
+
+
 
 # keys
 *.p8
