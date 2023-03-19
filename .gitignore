@@ -1,6 +1,3 @@
-
-
-
 #Target
 Koget-Admin/
 
@@ -8,7 +5,11 @@ Koget-Admin/
 koget.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/*
 
 #Firebase
+<<<<<<< HEAD
 **/GoogleService-Info.plist
+=======
+koget/GoogleService-Info.plist
+>>>>>>> 9957140 (update gitignore)
 
 #ETC
 .DS_Store
@@ -26,16 +27,20 @@ koget.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/*
 # scan temporary files
 **/fastlane/test_output
 
+<<<<<<< HEAD
 # all fastlane Dir
 **/fastlane
 
 
 
+=======
+**/fastlane
+
+>>>>>>> 9957140 (update gitignore)
 # keys
 *.p8
 *.p12
 *.cer
-**/GoogleService-Info.plist
 *.mobileprovision
 *.sh
 
