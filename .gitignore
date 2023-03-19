@@ -25,3 +25,12 @@ GoogleService-Info.plist
 
 # scan temporary files
 **/fastlane/test_output
+
+# keys
+*.p8
+*.p12
+*.cer
+GoogleService-Info.plist
+*.mobileprovision
+*.sh
+
