@@ -39,6 +39,7 @@
 		39504AA329B43F16008A7BA4 /* EKMakerTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA229B43F16008A7BA4 /* EKMakerTester.swift */; };
 		39504AA929B48E73008A7BA4 /* EKCustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA829B48E73008A7BA4 /* EKCustomColor.swift */; };
 		3951F0BA29C6EFF10063722F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3951F0B929C6EFF10063722F /* GoogleService-Info.plist */; };
+		3951F0BC29C6F2790063722F /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 3951F0BB29C6F2790063722F /* FirebaseAppCheck */; };
 		39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */; };
 		39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4529ACDA58002BD874 /* OpacitySlider.swift */; };
 		39691F4829ACE9D8002BD874 /* OpacityPickerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */; };
@@ -315,6 +316,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3951F0BC29C6F2790063722F /* FirebaseAppCheck in Frameworks */,
 				39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */,
 				39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */,
 				39822CFA29B367C800B687E4 /* QGrid in Frameworks */,
@@ -677,8 +679,6 @@
 			isa = PBXGroup;
 			children = (
 				3951F0B929C6EFF10063722F /* GoogleService-Info.plist */,
-				3951F0B829C6EF500063722F /* keys */,
-				39BB37AB29C0B4FD00BD91EC /* swiftgen */,
 				39223B7229A5E34600F59F54 /* Localizable.strings */,
 				39223B6529A5E12800F59F54 /* InfoPlist.strings */,
 				3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */,
@@ -687,6 +687,8 @@
 				392EDF6329BD514B000B1353 /* Model */,
 				39504A9429B3A09C008A7BA4 /* Subview */,
 				3AF7E59128F85FD200B14DFD /* Utils */,
+				39BB37AB29C0B4FD00BD91EC /* swiftgen */,
+				3951F0B829C6EF500063722F /* keys */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
 			path = koget;
@@ -800,6 +802,7 @@
 				39ED274C29B98431001C368E /* SFSafeSymbols */,
 				39EE797729BA095800B8D519 /* SwiftDate */,
 				39EBEB4929BDF7A000B1FD54 /* Kingfisher */,
+				3951F0BB29C6F2790063722F /* FirebaseAppCheck */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -1599,6 +1602,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39504A9729B3A117008A7BA4 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		3951F0BB29C6F2790063722F /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
 		};
 		39822CF329B3677400B687E4 /* FloatingButton */ = {
 			isa = XCSwiftPackageProductDependency;

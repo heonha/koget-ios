@@ -6,12 +6,30 @@
 //
 
 import SwiftUI
-import FirebaseCore
+import Firebase
+import FirebaseAppCheck
 
+// class KogetAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
+//   func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
+//     return AppAttestProvider(app: app)
+//   }
+// }
+class KogetAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
+  func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
+    if #available(iOS 14.0, *) {
+      return AppAttestProvider(app: app)
+    } else {
+      return DeviceCheckProvider(app: app)
+    }
+  }
+}
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         
         //MARK: - Firebase Configuration
+        let providerFactory = AppCheckDebugProviderFactory()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
+
         FirebaseApp.configure()
         
         return true
