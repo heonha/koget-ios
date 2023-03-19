@@ -129,10 +129,14 @@ internal enum S {
     /// 문의 유형
     internal static let type = S.tr("Localizable", "contact_view.type", fallback: "문의 유형")
     internal enum Alert {
-      /// 빈칸을 확인해주세요.
-      internal static let checkEmptyCell = S.tr("Localizable", "contact_view.alert.check_empty_cell", fallback: "빈칸을 확인해주세요.")
       /// 확인 필요
       internal static let needCheck = S.tr("Localizable", "contact_view.alert.need_check", fallback: "확인 필요")
+      /// 빈칸을 확인해주세요.
+      internal static let needCheckSubtitle = S.tr("Localizable", "contact_view.alert.need_check_subtitle", fallback: "빈칸을 확인해주세요.")
+      /// 오류 발생
+      internal static let requestError = S.tr("Localizable", "contact_view.alert.request_error", fallback: "오류 발생")
+      /// 요청실패. 네트워크 또는 서버 오류.
+      internal static let requestErrorTitle = S.tr("Localizable", "contact_view.alert.request_error_title", fallback: "요청실패. 네트워크 또는 서버 오류.")
       /// 문의 보내기 성공
       internal static let sendSuccess = S.tr("Localizable", "contact_view.alert.send_success", fallback: "문의 보내기 성공")
       /// 피드백을 보내주셔서 감사합니다.

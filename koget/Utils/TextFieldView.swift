@@ -39,7 +39,7 @@ struct TextFieldView: View {
                         .padding(.horizontal, 8)
                         .foregroundColor(.gray)
                     TextField(placeholder, text: $text)
-                        .foregroundColor(AppColor.Label.third)
+                        .foregroundColor(AppColor.Label.first)
                         .background(AppColor.Background.second)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
@@ -47,7 +47,7 @@ struct TextFieldView: View {
                         .padding(.leading, -12)
                 } else {
                     TextField(placeholder, text: $text)
-                        .foregroundColor(AppColor.Label.third)
+                        .foregroundColor(AppColor.Label.first)
                         .background(AppColor.Background.second)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)

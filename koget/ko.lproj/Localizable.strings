@@ -138,7 +138,9 @@
 "contact_view.alert.send_success" = "문의 보내기 성공";
 "contact_view.alert.send_success_subtitle" = "피드백을 보내주셔서 감사합니다.";
 "contact_view.alert.need_check" = "확인 필요";
-"contact_view.alert.check_empty_cell" = "빈칸을 확인해주세요.";
+"contact_view.alert.need_check_subtitle" = "빈칸을 확인해주세요.";
+"contact_view.alert.request_error" = "오류 발생";
+"contact_view.alert.request_error_title" = "요청실패. 네트워크 또는 서버 오류.";
 
 //Asset Request view
 

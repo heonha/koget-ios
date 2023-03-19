@@ -72,8 +72,8 @@ struct EKMaker {
 
     static func setToastView(title: String, subtitle: String, named: String, size: CGSize = .init(width: 50, height: 50)) -> EKNotificationMessageView {
 
-        let title = EKProperty.LabelContent(text: title.localized(), style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .black))
-        let description = EKProperty.LabelContent(text: subtitle.localized(), style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray)))
+        let title = EKProperty.LabelContent(text: title, style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .black))
+        let description = EKProperty.LabelContent(text: subtitle, style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray)))
         let image = EKProperty.ImageContent(image: UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle), size: size)
         let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
@@ -83,8 +83,8 @@ struct EKMaker {
 
     static func redAlertView(title: String, subtitle: String, named: String, size: CGSize = .init(width: 50, height: 50)) -> EKNotificationMessageView {
 
-        let title = EKProperty.LabelContent(text: title.localized(), style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .white))
-        let description = EKProperty.LabelContent(text: subtitle.localized(), style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.white)))
+        let title = EKProperty.LabelContent(text: title, style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .white))
+        let description = EKProperty.LabelContent(text: subtitle, style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.white)))
         let image = EKProperty.ImageContent(image: UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle), size: size)
         let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
@@ -167,8 +167,8 @@ struct EKMaker {
 
     static func setPopupView(title: String, subtitle: String, named: String, size: CGSize = .init(width: 35, height: 35)) -> EKPopUpMessageView {
 
-        let title = EKProperty.LabelContent(text: title.localized(), style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .black))
-        let description = EKProperty.LabelContent(text: subtitle.localized(), style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray)))
+        let title = EKProperty.LabelContent(text: title, style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .black))
+        let description = EKProperty.LabelContent(text: subtitle, style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray)))
         let image = UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle)
         // let themeImage = EKPopUpMessage.ThemeImage(image: image, position: .centerToTop(offset: 12))
         var themes: EKPopUpMessage.ThemeImage? = nil
