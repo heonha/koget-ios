@@ -212,6 +212,7 @@
 		39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridCell.swift; sourceTree = "<group>"; };
 		39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridLinkTypeIcon.swift; sourceTree = "<group>"; };
 		39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeToggleStyle.swift; sourceTree = "<group>"; };
+		39B5BC6529C6EB5D007AB072 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetViewModel.swift; sourceTree = "<group>"; };
 		39BB37A929C0B2D000BD91EC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39BB37AA29C0B2DA00BD91EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -645,6 +646,7 @@
 		3ABA6C0A28C6043F005AA8E4 = {
 			isa = PBXGroup;
 			children = (
+				39B5BC6529C6EB5D007AB072 /* .gitignore */,
 				39438E2E29C6C8E3009BD1C7 /* LICENSE */,
 				3A9BC0CE28E6C93A0041DA1B /* LockScreenWidgetExtension.entitlements */,
 				3ABA6C1528C6043F005AA8E4 /* koget */,
@@ -1109,7 +1111,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = LockScreenIntentsExtension/LockScreenIntentsExtension.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
@@ -1128,7 +1130,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget.LockScreenIntentsExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.heon.koget.LockScreenIntentsExtension";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.heon.koget.LockScreenIntentsExtension";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1140,7 +1142,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = LockScreenIntentsExtension/LockScreenIntentsExtension.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
@@ -1159,7 +1161,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget.LockScreenIntentsExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.heon.koget.LockScreenIntentsExtension";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.heon.koget.LockScreenIntentsExtension";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1295,7 +1297,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = koget/koget.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
@@ -1319,7 +1321,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.heon.koget";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.heon.koget";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1339,7 +1341,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = koget/koget.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
@@ -1363,7 +1365,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.heon.koget";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.heon.koget";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1381,7 +1383,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = LockScreenWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
@@ -1400,7 +1402,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget.LockScreenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.heon.koget.LockScreenWidget";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.heon.koget.LockScreenWidget";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1415,7 +1417,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = LockScreenWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
@@ -1434,7 +1436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.heon.koget.LockScreenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.heon.koget.LockScreenWidget";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.heon.koget.LockScreenWidget";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
