@@ -14,6 +14,9 @@ class HelperSheetViewModel: ObservableObject {
     @Published var showContactView = false
     @Published var showAssetRequestView = false
     @Published var showHowtoUseView = false
+    @Published var showLicenseView = false
+
+
 
     static let shared = HelperSheetViewModel()
 

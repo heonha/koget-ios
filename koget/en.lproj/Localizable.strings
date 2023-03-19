@@ -163,3 +163,7 @@
 "widget.check_widget" = "Check\nWidget";
 "widget.config.title" = "Lockscreen Widget";
 "widget.config.subtitle"= "Tap the icon and place it on the Lockscreen.\nAnd select the widget created by Koget App.";
+
+// LICENSE
+"license.title" = "Open Source License";
+

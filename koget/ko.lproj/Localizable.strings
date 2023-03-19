@@ -173,3 +173,6 @@
 "widget.check_widget" = "위젯확인";
 "widget.config.title" = "바로가기 위젯";
 "widget.config.subtitle"= "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요.";
+
+// LICENSE
+"license.title" = "오픈소스 라이선스";

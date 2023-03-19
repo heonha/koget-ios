@@ -48,6 +48,11 @@ struct SettingMenu: View, AppStoreReviewable {
 
                         // 앱에 관하여
                         Section(S.SettingMenu.Section.AboutApp.title) {
+
+                            SettingMenuButton(title: S.License.title, imageType: .symbol, systemSymbol: .listBulletClipboard, imageColor: .gray) {
+                                viewModel.showLicenseView.toggle()
+                            }
+
                             SettingMenuButton(title: S.SettingMenu.Section.AboutApp.voteRate, imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
                                 requestReview()
                             }
@@ -75,6 +80,9 @@ struct SettingMenu: View, AppStoreReviewable {
             })
             .sheet(isPresented: $viewModel.showHowtoUseView, content: {
                 LockscreenHelper()
+            })
+            .sheet(isPresented: $viewModel.showLicenseView, content: {
+                LicenseView()
             })
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
