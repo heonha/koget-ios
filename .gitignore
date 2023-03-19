@@ -30,7 +30,7 @@ GoogleService-Info.plist
 *.p8
 *.p12
 *.cer
-GoogleService-Info.plist
+**/GoogleService-Info.plist
 *.mobileprovision
 *.sh
 
