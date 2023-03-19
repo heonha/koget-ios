@@ -110,7 +110,6 @@
 		3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809B2974420100E62389 /* FloatingMenuButton.swift */; };
 		3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D809E2974426900E62389 /* FloatingMainButton.swift */; };
 		3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D80A02974429500E62389 /* FloatingDestinationView.swift */; };
-		3A7CD3822965562C008FAB75 /* LinkWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7CD3812965562C008FAB75 /* LinkWidget.swift */; };
 		3A8339D92932167500DC9527 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8339D82932167500DC9527 /* TextButton.swift */; };
 		3A8C1E782980DB7C004FAF89 /* HelperSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C1E772980DB7C004FAF89 /* HelperSheetViewModel.swift */; };
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
@@ -259,7 +258,6 @@
 		3A6D809B2974420100E62389 /* FloatingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuButton.swift; sourceTree = "<group>"; };
 		3A6D809E2974426900E62389 /* FloatingMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMainButton.swift; sourceTree = "<group>"; };
 		3A6D80A02974429500E62389 /* FloatingDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingDestinationView.swift; sourceTree = "<group>"; };
-		3A7CD3812965562C008FAB75 /* LinkWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWidget.swift; sourceTree = "<group>"; };
 		3A8339D82932167500DC9527 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		3A8C1E772980DB7C004FAF89 /* HelperSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperSheetViewModel.swift; sourceTree = "<group>"; };
 		3A94E19D28EC1B950050EE80 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
@@ -726,7 +724,6 @@
 			children = (
 				3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */,
 				3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */,
-				3A7CD3812965562C008FAB75 /* LinkWidget.swift */,
 				3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */,
 				3AF9F00A28ED570E00F685E6 /* Assets.xcassets */,
 				3AF9F00C28ED570E00F685E6 /* Info.plist */,
@@ -1056,7 +1053,6 @@
 				3A1CD19E28F9819400AC5D1C /* Constants.swift in Sources */,
 				3AE9DC0E28F8F890008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				39223B7529A5F8DE00F59F54 /* LocalizationExtensions.swift in Sources */,
-				3A7CD3822965562C008FAB75 /* LinkWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
