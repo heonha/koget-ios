@@ -1,217 +1,92 @@
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
 	<key>SchemeUserState</key>
-	***REMOVED***
+	<dict>
 		<key>LockScreenIntentsExtension.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>orderHint</key>
-			<integer>3</integer>
-		***REMOVED***
-		<key>LockScreenWidgetExtension.xcscheme_^#shared#^_</key>
-		***REMOVED***
+		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
-		***REMOVED***
+		</dict>
+		<key>LockScreenWidgetExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Promises (Playground) 1.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
-		***REMOVED***
-		<key>Promises (Playground) 2.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
-		***REMOVED***
-		<key>Promises (Playground) 3.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>13</integer>
-		***REMOVED***
-		<key>Promises (Playground) 4.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>14</integer>
-		***REMOVED***
-		<key>Promises (Playground) 5.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>15</integer>
-		***REMOVED***
-		<key>Promises (Playground).xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 1.xcscheme</key>
-		***REMOVED***
+		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>5</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 2.xcscheme</key>
-		***REMOVED***
+		</dict>
+		<key>Promises (Playground) 2.xcscheme</key>
+		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 3.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>16</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 4.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>17</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 5.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>18</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground).xcscheme</key>
-		***REMOVED***
+		</dict>
+		<key>Promises (Playground).xcscheme</key>
+		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>4</integer>
-		***REMOVED***
-		<key>Spectre (Playground) 1.xcscheme</key>
-		***REMOVED***
+		</dict>
+		<key>SnapKitPlayground (Playground) 1.xcscheme</key>
+		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>21</integer>
-		***REMOVED***
-		<key>Spectre (Playground) 2.xcscheme</key>
-		***REMOVED***
+			<integer>8</integer>
+		</dict>
+		<key>SnapKitPlayground (Playground) 2.xcscheme</key>
+		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>22</integer>
-		***REMOVED***
-		<key>Spectre (Playground).xcscheme</key>
-		***REMOVED***
+			<integer>9</integer>
+		</dict>
+		<key>SnapKitPlayground (Playground).xcscheme</key>
+		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>20</integer>
-		***REMOVED***
+			<integer>7</integer>
+		</dict>
 		<key>SwiftDate (Playground) 1.xcscheme</key>
-		***REMOVED***
+		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>11</integer>
-		***REMOVED***
+		</dict>
 		<key>SwiftDate (Playground) 2.xcscheme</key>
-		***REMOVED***
+		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>12</integer>
-		***REMOVED***
-		<key>SwiftDate (Playground) 3.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>19</integer>
-		***REMOVED***
-		<key>SwiftDate (Playground) 4.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>20</integer>
-		***REMOVED***
-		<key>SwiftDate (Playground) 5.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>21</integer>
-		***REMOVED***
+		</dict>
 		<key>SwiftDate (Playground).xcscheme</key>
-		***REMOVED***
+		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>10</integer>
-		***REMOVED***
-		<key>SwiftGen (Playground) 1.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>24</integer>
-		***REMOVED***
-		<key>SwiftGen (Playground) 2.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>25</integer>
-		***REMOVED***
-		<key>SwiftGen (Playground).xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>23</integer>
-		***REMOVED***
+		</dict>
 		<key>koget-Debug.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>isShown</key>
-			<true/>
+		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
-		***REMOVED***
-		<key>koget-debug.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>orderHint</key>
-			<integer>1</integer>
-		***REMOVED***
+		</dict>
 		<key>koget.xcscheme_^#shared#^_</key>
-		***REMOVED***
+		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
-		***REMOVED***
-	***REMOVED***
-	<key>SuppressBuildableAutocreation</key>
-	***REMOVED***
-		<key>396BCB6329AE1CC600B1E759</key>
-		***REMOVED***
-			<key>primary</key>
-			<true/>
-		***REMOVED***
-		<key>3ABA6C1228C6043F005AA8E4</key>
-		***REMOVED***
-			<key>primary</key>
-			<true/>
-		***REMOVED***
-	***REMOVED***
-***REMOVED***
-***REMOVED***
+		</dict>
+	</dict>
+</dict>
+</plist>

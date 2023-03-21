@@ -1,11 +1,11 @@
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
 	<key>NSExtension</key>
-	***REMOVED***
+		<dict>
 		<key>NSExtensionAttributes</key>
-		***REMOVED***
+			<dict>
 			<key>IntentsRestrictedWhileLocked</key>
 			<array/>
 			<key>IntentsRestrictedWhileProtectedDataUnavailable</key>
@@ -16,11 +16,11 @@
 				<string>INSearchForMessagesIntent</string>
 				<string>INSetMessageAttributeIntent</string>
 			</array>
-		***REMOVED***
+		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.intents-service</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).IntentHandler</string>
-	***REMOVED***
-***REMOVED***
-***REMOVED***
+	</dict>
+</dict>
+</plist>

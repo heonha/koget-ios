@@ -1,223 +1,104 @@
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-	<key>SchemeUserState</key>
-	***REMOVED***
-		<key>BMUITester.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>orderHint</key>
-			<integer>5</integer>
-		***REMOVED***
-		<key>LockScreenIntent.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>orderHint</key>
-			<integer>4</integer>
-		***REMOVED***
-		<key>LockScreenIntentUI.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>orderHint</key>
-			<integer>0</integer>
-		***REMOVED***
-		<key>LockScreenIntentsExtension copy.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>orderHint</key>
-			<integer>9</integer>
-		***REMOVED***
-		<key>LockScreenIntentsExtension.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>isShown</key>
-			<true/>
-			<key>orderHint</key>
-			<integer>2</integer>
-		***REMOVED***
-		<key>LockScreenWidgetExtension copy.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>orderHint</key>
-			<integer>5</integer>
-		***REMOVED***
-		<key>LockScreenWidgetExtension.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>isShown</key>
-			<true/>
-			<key>orderHint</key>
-			<integer>1</integer>
-		***REMOVED***
-		<key>Promises (Playground) 1.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
-		***REMOVED***
-		<key>Promises (Playground) 2.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
-		***REMOVED***
-		<key>Promises (Playground).xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
-		***REMOVED***
-		<key>Rx (Playground) 1.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
-		***REMOVED***
-		<key>Rx (Playground) 2.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
-		***REMOVED***
-		<key>Rx (Playground) 3.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>12</integer>
-		***REMOVED***
-		<key>Rx (Playground) 4.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>13</integer>
-		***REMOVED***
-		<key>Rx (Playground) 5.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>14</integer>
-		***REMOVED***
-		<key>Rx (Playground) 6.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>19</integer>
-		***REMOVED***
-		<key>Rx (Playground) 7.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>20</integer>
-		***REMOVED***
-		<key>Rx (Playground) 8.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>21</integer>
-		***REMOVED***
-		<key>Rx (Playground).xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 1.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 2.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 3.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 4.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>10</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 5.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>11</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 6.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>16</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 7.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>17</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground) 8.xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>18</integer>
-		***REMOVED***
-		<key>SnapKitPlayground (Playground).xcscheme</key>
-		***REMOVED***
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
-		***REMOVED***
-		<key>koget-Debug.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>orderHint</key>
-			<integer>4</integer>
-		***REMOVED***
-		<key>koget.xcscheme_^#shared#^_</key>
-		***REMOVED***
-			<key>orderHint</key>
-			<integer>0</integer>
-		***REMOVED***
-	***REMOVED***
-	<key>SuppressBuildableAutocreation</key>
-	***REMOVED***
-		<key>3A3C119228EDB4B800C9CCED</key>
-		***REMOVED***
-			<key>primary</key>
-			<true/>
-		***REMOVED***
-		<key>3ABA6C1228C6043F005AA8E4</key>
-		***REMOVED***
-			<key>primary</key>
-			<true/>
-		***REMOVED***
-		<key>3AF9F00328ED570D00F685E6</key>
-		***REMOVED***
-			<key>primary</key>
-			<true/>
-		***REMOVED***
-	***REMOVED***
-***REMOVED***
-***REMOVED***
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>SchemeUserState</key>
+    <dict>
+        <key>BMUITester.xcscheme_^#shared#^_</key>
+        <dict>
+            <key>orderHint</key>
+            <integer>5</integer>
+        </dict>
+        <key>LockScreenIntent.xcscheme_^#shared#^_</key>
+        <dict>
+            <key>orderHint</key>
+            <integer>4</integer>
+        </dict>
+        <key>LockScreenIntentUI.xcscheme_^#shared#^_</key>
+        <dict>
+            <key>orderHint</key>
+            <integer>0</integer>
+        </dict>
+        <key>LockScreenIntentsExtension copy.xcscheme_^#shared#^_</key>
+        <dict>
+            <key>orderHint</key>
+            <integer>9</integer>
+        </dict>
+        <key>LockScreenIntentsExtension.xcscheme_^#shared#^_</key>
+        <dict>
+            <key>isShown</key>
+            <true/>
+            <key>orderHint</key>
+            <integer>2</integer>
+        </dict>
+        <key>LockScreenWidgetExtension copy.xcscheme_^#shared#^_</key>
+        <dict>
+            <key>orderHint</key>
+            <integer>5</integer>
+        </dict>
+        <key>LockScreenWidgetExtension.xcscheme_^#shared#^_</key>
+        <dict>
+            <key>isShown</key>
+            <true/>
+            <key>orderHint</key>
+            <integer>1</integer>
+        </dict>
+        <key>Promises (Playground) 1.xcscheme</key>
+        <dict>
+            <key>isShown</key>
+            <false/>
+            <key>orderHint</key>
+            <integer>7</integer>
+        </dict>
+        <key>Promises (Playground) 2.xcscheme</key>
+        <dict>
+            <key>isShown</key>
+            <false/>
+            <key>orderHint</key>
+            <integer>8</integer>
+        </dict>
+        <key>Promises (Playground).xcscheme</key>
+        <dict>
+            <key>isShown</key>
+            <false/>
+            <key>orderHint</key>
+            <integer>6</integer>
+        </dict>
+        <key>Rx (Playground) 1.xcscheme</key>
+        <dict>
+            <key>isShown</key>
+            <false/>
+            <key>orderHint</key>
+            <integer>6</integer>
+        </dict>
+        <key>Rx (Playground) 2.xcscheme</key>
+        <dict>
+            <key>isShown</key>
+            <false/>
+            <key>orderHint</key>
+            <integer>7</integer>
+        </dict>
+        <key>Rx (Playground) 3.xcscheme</key>
+        <dict>
+            <key>isShown</key>
+		</dict>
+			<key>SuppressBuildableAutocreation</key>
+			<dict>
+				<key>3A3C119228EDB4B800C9CCED</key>
+				<dict>
+					<key>primary</key>
+					<true/>
+				</dict>
+				<key>3ABA6C1228C6043F005AA8E4</key>
+				<dict>
+					<key>primary</key>
+					<true/>
+				</dict>
+				<key>3AF9F00328ED570D00F685E6</key>
+				<dict>
+					<key>primary</key>
+					<true/>
+				</dict>
+			</dict>
+	</dict>
+</plist>
