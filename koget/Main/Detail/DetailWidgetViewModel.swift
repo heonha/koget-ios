@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Localize_Swift
 import SwiftEntryKit
 import CoreData
 
