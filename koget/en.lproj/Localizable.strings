@@ -41,8 +41,8 @@
 
 
 // Main
-"main_widget_view.emptyGrid.message_line1" = "Click here to create a shortcut widget";
-"main_widget_view.emptyGrid.message_line2" = "Get quick access to various apps/webpages!";
+"main_widget_view.emptyGrid.message_line1" = "There is no widget yet,";
+"main_widget_view.emptyGrid.message_line2" = "Click here to Getting Start !";
 
 "widget_cell.widgetType.app" = "App";
 "widget_cell.widgetType.web" = "web page";
@@ -111,7 +111,7 @@
 "setting_menu.section.about_app.vote_rate" = "Rating Stars";
 "setting_menu.navigation_title" = "More";
 
-"koget_version" = "KOGET Version";
+"koget_version" = "App Ver.";
 
 // contact view
 "contact_type.problem_app" = "Problem with App";

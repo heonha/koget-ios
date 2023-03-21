@@ -38,7 +38,7 @@
 		39504AA129B43796008A7BA4 /* UIScreen+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA029B43796008A7BA4 /* UIScreen+Utils.swift */; };
 		39504AA329B43F16008A7BA4 /* EKMakerTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA229B43F16008A7BA4 /* EKMakerTester.swift */; };
 		39504AA929B48E73008A7BA4 /* EKCustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA829B48E73008A7BA4 /* EKCustomColor.swift */; };
-		3951F0BC29C6F2790063722F /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 3951F0BB29C6F2790063722F /* FirebaseAppCheck */; };
+		395307F729C9CB5600225951 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 395307F629C9CB5600225951 /* GoogleService-Info.plist */; };
 		39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */; };
 		39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4529ACDA58002BD874 /* OpacitySlider.swift */; };
 		39691F4829ACE9D8002BD874 /* OpacityPickerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */; };
@@ -208,6 +208,7 @@
 		39504AA029B43796008A7BA4 /* UIScreen+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Utils.swift"; sourceTree = "<group>"; };
 		39504AA229B43F16008A7BA4 /* EKMakerTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMakerTester.swift; sourceTree = "<group>"; };
 		39504AA829B48E73008A7BA4 /* EKCustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCustomColor.swift; sourceTree = "<group>"; };
+		395307F629C9CB5600225951 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "swiftgen/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		39691F4529ACDA58002BD874 /* OpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacitySlider.swift; sourceTree = "<group>"; };
 		39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacityPickerContainer.swift; sourceTree = "<group>"; };
 		39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridCell.swift; sourceTree = "<group>"; };
@@ -317,7 +318,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3951F0BC29C6F2790063722F /* FirebaseAppCheck in Frameworks */,
 				39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */,
 				39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */,
 				39822CFA29B367C800B687E4 /* QGrid in Frameworks */,
@@ -681,6 +681,7 @@
 				39504A9429B3A09C008A7BA4 /* Subview */,
 				3AF7E59128F85FD200B14DFD /* Utils */,
 				39BB37AB29C0B4FD00BD91EC /* swiftgen */,
+				395307F629C9CB5600225951 /* GoogleService-Info.plist */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
 			path = koget;
@@ -794,7 +795,6 @@
 				39ED274C29B98431001C368E /* SFSafeSymbols */,
 				39EE797729BA095800B8D519 /* SwiftDate */,
 				39EBEB4929BDF7A000B1FD54 /* Kingfisher */,
-				3951F0BB29C6F2790063722F /* FirebaseAppCheck */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -906,6 +906,7 @@
 				3ADA2E9B297FE2A8004AADEE /* apps.json in Resources */,
 				3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */,
 				3AD4692C297D3F610090B2D3 /* success.json in Resources */,
+				395307F729C9CB5600225951 /* GoogleService-Info.plist in Resources */,
 				39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */,
 				39223B6E29A5E34600F59F54 /* Localizable.strings in Resources */,
 			);
@@ -1570,11 +1571,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39504A9729B3A117008A7BA4 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		3951F0BB29C6F2790063722F /* FirebaseAppCheck */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAppCheck;
 		};
 		39822CF329B3677400B687E4 /* FloatingButton */ = {
 			isa = XCSwiftPackageProductDependency;

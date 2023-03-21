@@ -69,14 +69,18 @@ struct WidgetListContainerView: View {
                 } label: {
                     VStack(spacing: 8) {
                         Text(S.MainWidgetView.EmptyGrid.messageLine1)
-                            .font(.custom(CustomFont.NotoSansKR.bold, size: 16))
-                        Text(S.MainWidgetView.EmptyGrid.messageLine2)
                             .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
-                            .foregroundStyle(Constants.kogetGradient)
+                            .foregroundColor(AppColor.Label.second)
+                            .shadow(color: .black.opacity(0.25), radius: 0.6, x: 1, y: 1)
+
+                        Text(S.MainWidgetView.EmptyGrid.messageLine2)
+                            .font(.custom(CustomFont.NotoSansKR.bold, size: 20))
+                            .foregroundColor(AppColor.kogetBlue)
+                            .shadow(color: .black.opacity(0.25), radius: 0.6, x: 1, y: 1)
                     }
                     .padding(.bottom, 32)
                 }
-                .frame(width: deviceSize.width - 32, height: 40)
+                .frame(width: deviceSize.width - 32)
 
             }
         }

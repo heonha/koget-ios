@@ -12,14 +12,23 @@ struct PatchNoteList: View {
     @ObservedObject var viewModel = PatchNoteViewModel.shared
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 4) {
-                ForEach(viewModel.notes.reversed()) { note in
-                    PatchNoteListCell(title: note.title, subtitle: note.subtitle, date: note.date.toFormat("yyyy-MM-dd"), lightFileName: note.lightFileName, darkFileName: note.darkFileName)
+        Group {
+            ScrollView {
+                VStack(spacing: 4) {
+                    ForEach(viewModel.notes.reversed()) { note in
+                        PatchNoteListCell(title: note.title, subtitle: note.subtitle, date: note.date.toFormat("yyyy-MM-dd"), lightFileName: note.lightFileName, darkFileName: note.darkFileName)
+                    }
+                    Spacer()
                 }
-                Spacer()
+                .navigationTitle(S.PatchnoteList.navigationTitle)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Text("\(S.kogetVersion) \(appVersion)")
+                            .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
+                            .foregroundColor(AppColor.Label.second)
+                    }
+                }
             }
-            .navigationTitle(S.PatchnoteList.navigationTitle)
         }
     }
 }

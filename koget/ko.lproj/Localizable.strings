@@ -45,8 +45,8 @@
 
 
 // Main
-"main_widget_view.emptyGrid.message_line1" = "이곳을 눌러 바로가기 위젯을 생성하고";
-"main_widget_view.emptyGrid.message_line2" = "다양한 앱/웹페이지에 빠르게 접근하세요!";
+"main_widget_view.emptyGrid.message_line1" = "아직 잠금화면 위젯이 없어요.";
+"main_widget_view.emptyGrid.message_line2" = "여기를 눌러 바로 시작하세요!";
 
 "widget_cell.widgetType.app" = "앱";
 "widget_cell.widgetType.web" = "웹 페이지";
@@ -113,7 +113,7 @@
 "setting_menu.section.about_app.vote_rate" = "앱 평가하기";
 "setting_menu.navigation_title" = "더보기";
 
-"koget_version" = "코젯 버전";
+"koget_version" = "앱 버전";
 
 // contact view
 "contact_type.problem_app" = "앱 관련 문제";

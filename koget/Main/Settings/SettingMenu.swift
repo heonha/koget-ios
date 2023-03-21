@@ -49,13 +49,14 @@ struct SettingMenu: View, AppStoreReviewable {
                         // 앱에 관하여
                         Section(S.SettingMenu.Section.AboutApp.title) {
 
+                            SettingMenuButton(title: S.SettingMenu.Section.AboutApp.voteRate, imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
+                                requestReview()
+                            }
+
                             SettingMenuButton(title: S.License.title, imageType: .symbol, systemSymbol: .listBulletClipboard, imageColor: .gray) {
                                 viewModel.showLicenseView.toggle()
                             }
 
-                            SettingMenuButton(title: S.SettingMenu.Section.AboutApp.voteRate, imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
-                                requestReview()
-                            }
                             SettingMenuButton(title: S.kogetVersion, subtitle: appVersion, imageType: .asset, imageName: "Koget") {
                             }
                             .disabled(true)
