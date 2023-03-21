@@ -9,17 +9,6 @@ import SwiftUI
 import FirebaseFirestore
 import SwiftEntryKit
 
-enum RequestReturnType {
-    case success
-    case userError
-    case serverError
-}
-
-enum ResultType {
-    case success
-    case error
-}
-
 final class AssetRequestViewModel: ObservableObject {
     @ObservedObject var authModel = GuestAuthModel()
     @Published var contactType: ContectType = .addApp

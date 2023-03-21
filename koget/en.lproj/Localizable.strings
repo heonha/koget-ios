@@ -136,7 +136,9 @@
 "contact_view.alert.send_success" = "Send inquiry successful";
 "contact_view.alert.send_success_subtitle" = "Thank you for your feedback.";
 "contact_view.alert.need_check" = "Needs confirmation";
-"contact_view.alert.check_empty_cell" = "Please check the blanks.";
+"contact_view.alert.need_check_subtitle" = "Please check the blanks.";
+"contact_view.alert.request_error" = "Error occurred";
+"contact_view.alert.request_error_title" = "Request failed. Network or server error.";
 
 //Asset Request view
 
@@ -147,6 +149,13 @@
 "app_request.text_body_placeholder" = "optional";
 "app_request.description" = "The app/web you requested will be added to the app following review.";
 "app_request.send" = "Send";
+"app_request.alert.success" = "App/Web addition request successful";
+"app_request.alert.successSubtitle" = "I will respond to your request quickly.";
+"app_request.alert.requestError" = "Error occurred";
+"app_request.alert.requestErrorSubtitle" = "Request failed. Network or server error.";
+"app_request.alert.needCheck" = "Need Check";
+"app_request.alert.needCheckSubtitle" = "Please enter the app/web name.";
+
 
 // patch note list
 "patchnote_list.navigation_title" = "Update Notes";

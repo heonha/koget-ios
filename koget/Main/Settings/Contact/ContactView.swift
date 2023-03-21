@@ -7,33 +7,11 @@
 
 import SwiftUI
 import SwiftEntryKit
-import Localize_Swift
-
-enum ContectType: String {
-    case app
-    case addApp
-    case feedback
-    case etc
-    case none
-
-    var localizedDescription: String {
-        switch self {
-        case .app:
-            return S.ContactType.problemApp
-        case .addApp:
-            return S.ContactType.requestApp
-        case .feedback:
-            return S.ContactType.feedback
-        case .etc:
-            return S.ContactType.etc
-        case .none:
-            return S.ContactType.select
-        }
-    }
-
-}
 
 struct ContactView: View {
+
+    let title = S.ContactView.contact
+
     @State var titleText: String = ""
     @State var bodyText: String = ""
     @State var isSuccess: Bool = false
@@ -42,48 +20,51 @@ struct ContactView: View {
     @State var isPresentSendAlert = false
     @StateObject var viewModel = ContactViewModel()
     @Environment(\.dismiss) var dismiss
-    
-    @State var successAlert = UIView()
-    @State var errorAlert = UIView()
-    
+        
     var body: some View {
         GeometryReader { geometryProxy in
             ZStack {
-                ScrollView(showsIndicators: false) {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text(S.ContactView.type)
-                            
-                            Spacer()
-                            
-                            contactTypeMenu
-                                .frame(width: deviceSize.width / 1.5, height: 35)
+                VStack {
+                    Text(title)
+                        .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
+                        .padding(.vertical)
+                    Divider()
+                    ScrollView(showsIndicators: false) {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(S.ContactView.type)
+
+                                Spacer()
+
+                                contactTypeMenu
+                                    .frame(width: deviceSize.width / 1.5, height: 35)
+                                Spacer()
+                            }
+
+                            Divider()
+                            TextFieldView(placeholder: S.ContactView.title,
+                                          type: .title,
+                                          text: $viewModel.title)
+                            .padding([.top, .bottom], 8)
+
+                            Divider()
+                            CustomTextEditor(placeHolder: S.ContactView.titlePlaceholder,
+                                             text: $viewModel.body)
+                            .frame(height: geometryProxy.size.height / 2.5)
+                            .padding([.top, .bottom], 8)
+
+                            TextButton(title: S.ContactView.sendContact, titleColor: .white, backgroundColor: AppColor.kogetBlue) {
+                                isPresentSendAlert.toggle()
+                            }
+                            .padding([.top, .bottom], 8)
+                            Divider()
+
+                            noticeMessage
+
                             Spacer()
                         }
-                        
-                        Divider()
-                        TextFieldView(placeholder: S.ContactView.title,
-                                      type: .title,
-                                      text: $viewModel.title)
-                        .padding([.top, .bottom], 8)
-                        
-                        Divider()
-                        CustomTextEditor(placeHolder: S.ContactView.titlePlaceholder,
-                                         text: $viewModel.body)
-                        .frame(height: geometryProxy.size.height / 2.5)
-                        .padding([.top, .bottom], 8)
-                        
-                        TextButton(title: S.ContactView.sendContact, backgroundColor: AppColor.kogetBlue) {
-                            isPresentSendAlert.toggle()
-                        }
-                        .padding([.top, .bottom], 8)
-                        Divider()
-                        
-                        noticeMessage
-                        
-                        Spacer()
+                        .padding(16)
                     }
-                    .padding(16)
                 }
             }
             .toolbar {
@@ -104,30 +85,34 @@ struct ContactView: View {
             }
             .toolbarBackground(.visible, for: .navigationBar)
             .alert(S.ContactView.checkContents, isPresented: $isPresentSendAlert) {
-                Button {
-                    viewModel.checkTheField { result in
-                        if result {
-                            self.dismiss()
-                            self.presentSuccessAlert()
-                        } else {
-                            self.presentErrorAlert()
-                        }
-                    }
-                } label: {
-                    Text(S.ContactView.send)
-                        .bold()
-                }
-                
-                Button {
-                } label: {
-                    Text(S.Button.cancel) // 취소
-                }
+                alertCheckAction
             } message: {
                 Text(S.ContactView.canYouSendContact)
             }
-            .onAppear {
-                successAlert = setAlertView()
-                errorAlert = setErrorAlertView()
+        }
+    }
+
+    var alertCheckAction: some View {
+        Group {
+            Button {
+                viewModel.checkTheField { result in
+                    switch result {
+                    case .success:
+                        self.dismiss()
+                        viewModel.alertHandelr(type: result)
+                    default:
+                        viewModel.alertHandelr(type: result)
+                        return
+                    }
+                }
+            } label: {
+                Text(S.ContactView.send)
+                    .bold()
+            }
+            
+            Button {
+            } label: {
+                Text(S.Button.cancel) // 취소
             }
         }
     }
@@ -154,23 +139,23 @@ struct ContactView: View {
             Button {
                 viewModel.contactType = .app
             } label: {
-                Text(ContectType.app.rawValue.localized())
+                Text(ContectType.app.localizedDescription)
             }
             Button {
                 viewModel.contactType = .addApp
                 
             } label: {
-                Text(ContectType.addApp.rawValue.localized())
+                Text(ContectType.addApp.localizedDescription)
             }
             Button {
                 viewModel.contactType = .feedback
             } label: {
-                Text(ContectType.feedback.rawValue.localized())
+                Text(ContectType.feedback.localizedDescription)
             }
             Button {
                 viewModel.contactType = .etc
             } label: {
-                Text(ContectType.etc.rawValue.localized())
+                Text(ContectType.etc.localizedDescription)
             }
         } label: {
             ZStack {
@@ -178,28 +163,12 @@ struct ContactView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .foregroundColor(.init(uiColor: .secondarySystemFill))
                 }
-                Text(viewModel.contactType.rawValue.localized())
+                Text(viewModel.contactType.localizedDescription)
                     .bold()
                     .frame(width: deviceSize.width / 1.5, height: 35)
                     .foregroundColor(AppColor.Label.first)
             }
         }
-    }
-    
-    private func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: S.ContactView.Alert.sendSuccess.localized(), subtitle: S.ContactView.Alert.sendSuccessSubtitle.localized(), named: "success")
-    }
-    
-    private func presentSuccessAlert() {
-        SwiftEntryKit.display(entry: successAlert, using: EKMaker.whiteAlertAttribute)
-    }
-    
-    private func setErrorAlertView() -> UIView {
-        return EKMaker.setToastView(title: S.ContactView.Alert.needCheck.localized(), subtitle: S.ContactView.Alert.checkEmptyCell.localized(), named: "failed")
-    }
-    
-    private func presentErrorAlert() {
-        SwiftEntryKit.display(entry: errorAlert, using: EKMaker.whiteAlertAttribute)
     }
 }
 
