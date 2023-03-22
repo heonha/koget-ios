@@ -9,7 +9,7 @@ import SwiftUI
 import SFSafeSymbols
 
 struct PatchNoteListCell: View {
-    //
+
     let title: String
     let subtitle: String
     let date: String

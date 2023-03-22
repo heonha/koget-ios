@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSExtension</key>
-		<dict>
+	<dict>
 		<key>NSExtensionAttributes</key>
-			<dict>
+		<dict>
 			<key>IntentsRestrictedWhileLocked</key>
 			<array/>
 			<key>IntentsRestrictedWhileProtectedDataUnavailable</key>

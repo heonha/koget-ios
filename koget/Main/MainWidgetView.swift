@@ -14,13 +14,15 @@ import SFSafeSymbols
 // 메인 뷰
 struct MainWidgetView: View {
     
-    var tintColor: Color = .black
+    let backgroundColor = AppColor.Background.first
+
     @State var isPresentHelper = true
-    @State var isOpen = false
+    @State var isFloatingButtonOpen = false
+
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
     @EnvironmentObject var constant: Constants
-    
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -30,43 +32,50 @@ struct MainWidgetView: View {
                     // 링크위젯
                     WidgetListContainerView(viewModel: viewModel, coreData: _coreData)
                 }
-                .background(AppColor.Background.first)
-                NewFloatingButton(isOpen: $isOpen)
+                .background(backgroundColor)
+                NewFloatingButton(isOpen: $isFloatingButtonOpen)
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Image("KogetClear")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
+                    // 중앙 이미지
+                    navigationBarCenterImage()
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    
+                    // 다크모드 버튼
                     Toggle(isOn: $constant.isDarkMode) {
                     }
                     .toggleStyle(DarkModeToggleStyle())
-                    
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
+
+                    // 뷰 전환 토글
                     if !$coreData.linkWidgets.wrappedValue.isEmpty {
-                        
                         Button {
                             viewModel.isGridView.toggle()
                         } label: {
-                            Image(systemSymbol: viewModel.isGridView ? SFSymbol.listBullet : SFSymbol.squareGrid3x3)
-                                .foregroundColor(AppColor.Label.first)
-                                .opacity(0.9)
-                                .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
+                            Image(systemSymbol: viewModel.isGridView
+                                  ? SFSymbol.listBullet
+                                  : SFSymbol.squareGrid3x3)
+                            .foregroundColor(AppColor.Label.first)
+                            .opacity(0.9)
+                            .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
                         }
                     }
                 }
             }
             .onDisappear {
-                isOpen = false
+                isFloatingButtonOpen = false
             }
         }
         
+    }
+
+    func navigationBarCenterImage() -> some View {
+        Image("KogetClear")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 50, height: 50)
     }
 }
 
