@@ -1,14 +1,14 @@
 #  코젯 Koget
 
 <p align="center">
-<img src="readme/KogetClear.png" width="150" height=150>
+<img src="readme/KogetClear.png" width="120" height=120>
 </p>
 
 ---
 
 
 ### **앱 미리보기 및 다운로드**
-<img src="readme/preview.png">
+<img src="readme/preview/1-2.png">
 
 <br>
 
@@ -42,7 +42,7 @@
 
 ### **🚀 최근 업데이트 소식**
 ---
-**`1.2` 패치 노트 (출시 예정)**
+**`1.2` 패치 노트**
 - 이제 다크모드를 지원해요.
 - 폰트가 변경되었어요.
 - 패치 노트를 메인화면에 배치했어요.
