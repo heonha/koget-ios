@@ -48,7 +48,7 @@ struct WidgetContainerCell: View {
                         Menu {
                             Button {
                                 if let url = widget.url, let id = widget.id {
-                                    viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
+                                    viewModel.urlOpenedInApp(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
                                 }
                             } label: {
                                 Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
@@ -74,7 +74,7 @@ struct WidgetContainerCell: View {
                             Button(S.Button.delete, role: .destructive) {
                                 coreData.deleteData(data: widget)
                                 dismiss()
-                                viewModel.displayToast()
+                                viewModel.displayAlertView()
                                 isDelete = false
                             }
                             Button(S.Button.cancel, role: .cancel) {
@@ -94,7 +94,7 @@ struct WidgetContainerCell: View {
         .swipeActions(edge: .leading, allowsFullSwipe: false) {
             Button {
                 if let url = widget.url, let id = widget.id {
-                    viewModel.maybeOpenedFromWidget(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
+                    viewModel.urlOpenedInApp(urlString: "\(schemeToAppLink)\(url)\(idSeparator)\(id.uuidString)")
                 }
             } label: {
                 Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
@@ -124,7 +124,7 @@ struct WidgetContainerCell: View {
         .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
             Button(S.Button.delete, role: .destructive) {
                 coreData.deleteData(data: widget)
-                viewModel.displayToast()
+                viewModel.displayAlertView()
                 isDelete = false
             }
             Button(S.Button.cancel, role: .cancel) {

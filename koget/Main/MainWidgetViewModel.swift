@@ -8,12 +8,11 @@
 import SwiftUI
 import SwiftEntryKit
 
-class MainWidgetViewModel: ObservableObject {
+final class MainWidgetViewModel: ObservableObject {
     
     //MARK: Published Variables
     @Published var isEditingMode: Bool = false
     @Published var selection = [DeepLink]()
-    @Published var isEditMode: EditMode = .inactive
     @Published var alertView = UIView()
 
     //MARK: User Defaults
@@ -25,19 +24,8 @@ class MainWidgetViewModel: ObservableObject {
     private init() {
         alertView = setAlertView()
     }
-    
-    func openURL(urlString: String) {
-        
-        if let url = URL(string: urlString) {
-            UIApplication.shared.open(url.absoluteURL)
 
-        } else {
-            // print("URL Open Error: \(urlString)")
-            return
-        }
-        
-    }
-    
+    // Web & App 구분
     func checkLinkType(url: String) -> LinkType {
         if url.lowercased().contains("http://") || url.lowercased().contains("https://") {
             return LinkType.web
@@ -45,45 +33,35 @@ class MainWidgetViewModel: ObservableObject {
             return LinkType.app
         }
     }
-    
-    func maybeOpenedFromWidget(urlString: String) {
-        // print("‼️앱에서 링크를 열었습니다. ")
 
+    // 앱에서 url 실행
+    func urlOpenedInApp(urlString: String) {
         let separatedURL = urlString.split(separator: idSeparator, maxSplits: 1)
         let url = String(separatedURL[0]).deletingPrefix(schemeToAppLink)
         let id = String(separatedURL[1])
-        
-        WidgetCoreData.shared.linkWidgets.contains { deepLink in
-            if deepLink.id?.uuidString == id {
-                deepLink.runCount += 1
-                WidgetCoreData.shared.saveData()
-                WidgetCoreData.shared.loadData()
-                return true
-            } else {
-                return false
-            }
+
+        if let deepLink = WidgetCoreData.shared.linkWidgets.first(where: { $0.id?.uuidString == id }) {
+            deepLink.runCount += 1
+            WidgetCoreData.shared.saveData()
+            WidgetCoreData.shared.loadData()
+            UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+        } else {
+            return
         }
-
-        UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
-        
-        return
-
     }
 
     func deleteItem(completion: @escaping() -> Void) {
         for widget in selection {
             WidgetCoreData.shared.deleteData(data: widget)
         }
-
         completion()
-
     }
 
     func setAlertView() -> UIView {
         return EKMaker.setToastView(title: S.Alert.deleteSuccessTitle, subtitle: S.Alert.deleteSuccessSubtitle, named: "success")
     }
 
-    func displayToast() {
+    func displayAlertView() {
         SwiftEntryKit.display(entry: alertView, using: EKMaker.whiteAlertAttribute)
     }
 
