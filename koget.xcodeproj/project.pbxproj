@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		390853B629A24EB2006E8311 /* AssetRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390853B529A24EB2006E8311 /* AssetRequestView.swift */; };
 		390853B829A3949F006E8311 /* AssetRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390853B729A3949F006E8311 /* AssetRequestViewModel.swift */; };
-		390B5CBA29B1A70600B61E35 /* AdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CB929B1A70600B61E35 /* AdPage.swift */; };
+		390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CB929B1A70600B61E35 /* AdPageContainer.swift */; };
 		390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CBB29B1AED900B61E35 /* MainTabView.swift */; };
 		390B5CBE29B20B0A00B61E35 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */; };
 		39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
@@ -192,7 +192,7 @@
 /* Begin PBXFileReference section */
 		390853B529A24EB2006E8311 /* AssetRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetRequestView.swift; sourceTree = "<group>"; };
 		390853B729A3949F006E8311 /* AssetRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetRequestViewModel.swift; sourceTree = "<group>"; };
-		390B5CB929B1A70600B61E35 /* AdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPage.swift; sourceTree = "<group>"; };
+		390B5CB929B1A70600B61E35 /* AdPageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPageContainer.swift; sourceTree = "<group>"; };
 		390B5CBB29B1AED900B61E35 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		39223B6429A5E12800F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 				390B5CBB29B1AED900B61E35 /* MainTabView.swift */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
 				3A6449BC297E66A3002A710C /* MainWidgetViewModel.swift */,
-				390B5CB929B1A70600B61E35 /* AdPage.swift */,
+				390B5CB929B1A70600B61E35 /* AdPageContainer.swift */,
 				392EDF6029BD508A000B1353 /* AdPageCell.swift */,
 				3A00CA642931EDB6004FBF80 /* WidgetList */,
 				3A08BCFF292FBF0B00E09B3E /* Make */,
@@ -1052,7 +1052,7 @@
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,
 				39EBEB4729BDDC4500B1FD54 /* CheckmarkToggleStyle.swift in Sources */,
 				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
-				390B5CBA29B1A70600B61E35 /* AdPage.swift in Sources */,
+				390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */,
 				39EBEB4C29BDF7F400B1FD54 /* PatchNoteContentView.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* WidgetListContainerView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,

@@ -27,7 +27,7 @@ struct MainWidgetView: View {
         NavigationView {
             ZStack {
                 VStack {
-                    AdPage()
+                    AdPageContainer()
                         .padding(.vertical, 4)
                     // 링크위젯
                     WidgetListContainerView(viewModel: viewModel, coreData: _coreData)

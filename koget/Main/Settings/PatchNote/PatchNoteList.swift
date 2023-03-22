@@ -16,20 +16,29 @@ struct PatchNoteList: View {
             ScrollView {
                 VStack(spacing: 4) {
                     ForEach(viewModel.notes.reversed()) { note in
-                        PatchNoteListCell(title: note.title, subtitle: note.subtitle, date: note.date.toFormat("yyyy-MM-dd"), lightFileName: note.lightFileName, darkFileName: note.darkFileName)
+                        PatchNoteListCell(title: note.title,
+                                          subtitle: note.subtitle,
+                                          date: note.date.toFormat("yyyy-MM-dd"),
+                                          lightFileName: note.lightFileName,
+                                          darkFileName: note.darkFileName)
                     }
                     Spacer()
                 }
                 .navigationTitle(S.PatchnoteList.navigationTitle)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Text("\(S.kogetVersion) \(appVersion)")
-                            .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
-                            .foregroundColor(AppColor.Label.second)
+                        appVersionLabel()
                     }
                 }
             }
+            .navigationBarTitleDisplayMode(.automatic)
         }
+    }
+
+    func appVersionLabel() -> some View {
+        Text("\(S.kogetVersion) \(appVersion)")
+            .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
+            .foregroundColor(AppColor.Label.second)
     }
 }
 

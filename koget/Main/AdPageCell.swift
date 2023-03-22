@@ -10,34 +10,27 @@ import SFSafeSymbols
 
 struct AdPageCell: View {
 
+    var id = UUID()
     var title: String
-    var named = ""
+    var imageName = ""
     var systemName: SFSymbol?
-    var frame: CGFloat
 
     var body: some View {
-        ZStack {
-            AppColor.Background.second
+        NavigationLink {
+            PatchNoteList()
+        } label: {
             ZStack {
+                // 배경 이미지(우측)
                 HStack {
                     Spacer()
-                    Image(named)
+                    Image(imageName)
                         .resizable()
                         .scaledToFit()
                         .scaleEffect(3)
                         .opacity(0.2)
                         .padding(.leading, 30)
                 }
-                HStack {
-                    Spacer()
-                    if !named.isEmpty {
-
-                    } else if let symbol = systemName {
-                        Image(systemSymbol: symbol)
-                            .font(.system(size: 40))
-                            .padding(12)
-                    }
-                }
+                // 내용
                 HStack(content: {
                     VStack(alignment: .leading) {
                         Text(title)
@@ -52,17 +45,16 @@ struct AdPageCell: View {
                     Spacer()
                 })
             }
+            .background(AppColor.Background.second)
+            .cornerRadius(10)
+            .shadow(radius: 2)
+            .padding(.horizontal)
         }
-        .background(AppColor.Background.second)
-        .cornerRadius(10)
-        .shadow(radius: 2)
-        .tint(.black)
-        .padding(.horizontal)
     }
 }
 
 struct NoticePageCell_Previews: PreviewProvider {
     static var previews: some View {
-        AdPageCell(title: "타이틀", frame: 100)
+        AdPageCell(title: "타이틀")
     }
 }

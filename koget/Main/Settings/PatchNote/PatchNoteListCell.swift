@@ -15,21 +15,16 @@ struct PatchNoteListCell: View {
     let date: String
     let lightFileName: String
     let darkFileName: String
+    @State private var forwards = false
+
     @State var isPresent: Bool = false
     @EnvironmentObject var constant: Constants
 
     var body: some View {
         VStack {
             HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(title)
-                        .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
-                    Text(subtitle)
-                        .font(.custom(CustomFont.NotoSansKR.light, size: 14))
-                        .foregroundColor(AppColor.Label.second)
-                        .padding(.leading, 4)
-                }
-                .padding(8)
+                textView(title: title, subtitle: subtitle)
+                    .padding(8)
                 Spacer()
 
                 Text(date)
@@ -45,6 +40,18 @@ struct PatchNoteListCell: View {
         }
         .onTapGesture {
             isPresent.toggle()
+        }
+        .animation(.interactiveSpring(), value: isPresent) // 애니메이션 적용
+    }
+
+    func textView(title: String, subtitle: String) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title)
+                .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
+            Text(subtitle)
+                .font(.custom(CustomFont.NotoSansKR.light, size: 14))
+                .foregroundColor(AppColor.Label.second)
+                .padding(.leading, 4)
         }
     }
 }
