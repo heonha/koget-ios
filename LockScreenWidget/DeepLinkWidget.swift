@@ -17,26 +17,29 @@ import SFSafeSymbols
 /// - Snapshot : Widget의 현재상태를 나타내는 스탭샷
 /// - Timeline : Widget이 변경될 미래 날짜.
 /// - context : Widget이 렌더링되는 방법에 대한 세부정보가 포함된 객체
+enum WidgetError: Error {
+    case deleted
+}
+
 struct DeepLinkProvider: IntentTimelineProvider {
     typealias Intent = DeepLinkAppIntent
     typealias Entry = DeepLinkEntry
     
     /// 위젯을 추가할 때와 같이 일시적인 상황에 데이터를 전달합니다.
     func getSnapshot(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (DeepLinkEntry) -> Void) {
-        let entry = DeepLinkEntry(date: Date(), name: "", url: nil, image: nil, id: "Ssn2&}g3f`M-Fe.k")
+        let entry = DeepLinkEntry(date: Date(), name: "", url: nil, image: nil, id: WidgetConstant.placeHolderID)
 
         completion(entry)
     }
     
-    func getWidgetData(app: AppDefinition, completion: @escaping (UIImage, DeepLink?) -> Void) {
-        var appImage = UIImage(named: "questionmark.circle")!
+    func getWidgetData(app: AppDefinition, completion: @escaping (UIImage, DeepLink?, WidgetError?) -> Void) {
+        var appImage = UIImage()
         var deepLink: DeepLink?
         WidgetCoreData.shared.linkWidgets.contains { appAsset in
             if let appID = app.identifier {
                 if appAsset.id?.uuidString == appID {
                     appImage = UIImage(data: appAsset.image!)!
                     deepLink = appAsset
-
                     return true
                 } else {
                     return false
@@ -45,7 +48,12 @@ struct DeepLinkProvider: IntentTimelineProvider {
                 return false
             }
         }
-        completion(appImage, deepLink)
+
+        if appImage == UIImage() {
+            completion(appImage, nil, WidgetError.deleted)
+        } else {
+            completion(appImage, deepLink, nil)
+        }
     }
 
     /// Widget이 업데이트 될 미래 시간을 전달합니다. (미래날짜가 포함된 타임라인 엔트리배열)
@@ -53,36 +61,42 @@ struct DeepLinkProvider: IntentTimelineProvider {
                      in context: Context,
                      completion: @escaping (Timeline<DeepLinkEntry>) -> Void) {
         let selectedApp = configuration.app
-        // ID가 같으면 그 이미지를 반환한다.
-        
+
         if let app = selectedApp {
             
             // 위젯이 선택 된 경우.
-            getWidgetData(app: app) { image, deepLink in
-                
-                // 여기에 Simple Entry로 구성된 코드가 보여짐.
-                let entry = DeepLinkEntry(
-                    date: Date(),
-                    name: app.displayString,
-                    url: app.url!,
-                    image: image,
-                    id: app.identifier,
-                    opacity: deepLink?.opacity?.doubleValue ?? 1.0
-                )
-                
-                let timeline = Timeline(entries: [entry], policy: .atEnd)
-                
-                completion(timeline)
-                
+            getWidgetData(app: app) { image, deepLink, error in
+                if let error = error {
+                    let defaultImage = UIImage(systemSymbol: .plusCircle)
+                    let entry = DeepLinkEntry(
+                        date: Date(),
+                        name: "",
+                        url: "",
+                        image: defaultImage,
+                        id: nil,
+                        opacity: 1.0
+                    )
+                    let timeline = Timeline(entries: [entry], policy: .atEnd)
+                    completion(timeline)
+                } else {
+                    let entry = DeepLinkEntry(
+                        date: Date(),
+                        name: app.displayString,
+                        url: app.url!,
+                        image: image,
+                        id: app.identifier,
+                        opacity: deepLink?.opacity?.doubleValue ?? 1.0)
+                    let timeline = Timeline(entries: [entry], policy: .atEnd)
+                    completion(timeline)
+                }
             }
             
         } else {
-            
             // 위젯이 선택되지 않은 경우
-            let defaultImage = UIImage(named: "KogetClear")!
+            let defaultImage = UIImage(systemSymbol: .plusCircle)
             let entry = DeepLinkEntry(
                 date: Date(),
-                name: "선택되지 않음",
+                name: "",
                 url: "",
                 image: defaultImage,
                 id: nil,
@@ -129,72 +143,57 @@ struct DeepLinkWidgetEntryView: View {
     
     @Environment(\.widgetFamily) var family
 
-    let mainURL = "link://"
     let selectWidgetURL = "open://"
-    @State var placeholderOpacity: CGFloat = 1
     @StateObject var coreData = WidgetCoreData.shared
 
-    let emptyPlaceholer = S.Widget.emptyPlaceholder
+    let placeholderLabel = S.Widget.emptyPlaceholder
     let checkWidget = S.Widget.checkWidget
     let selectWidget = S.Widget.selectWidget
 
     // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
     var body: some View {
-        ZStack {
-            switch family {
-            case .accessoryCircular:
-                ZStack {
-                    // entry에 id가 Set되어 있는경우
-                    if entry.id != nil {
-                        if entry.id == "Ssn2&}g3f`M-Fe.k" {
-                            ZStack {
-                                VStack {
-                                    Text(emptyPlaceholer)
-                                        .font(.system(size: 12))
-                                        .multilineTextAlignment(.center)
-                                }
-                                .bold()
-                            }
-                        } else {
-                            // 코어 데이터의 데이터
-                            // entry의 데이터
-                            // 코어데이터 바뀜 -> 코어데이터 업데이트 -> Entry 업데이트 -> 위젯 업데이트
-                            VStack(alignment: .center) {
-                                Image(uiImage: entry.image ?? UIImage(systemSymbol: .questionmarkCircle))
-                                .resizable()
-                                .scaledToFit()
-                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(idSeparator)\(entry.id!)"))
-                                .clipShape(Circle())
-                            }
-                            .opacity(entry.opacity ?? 1.0)
-                            .opacity(0.7)
-                        }
+        switch family {
+        case .accessoryCircular:
+            VStack {
+                if let id = entry.id {
+                    // 위젯 추가 전 Placeholder 노출
+                    if id == WidgetConstant.placeHolderID {
+                        guideTextView(text: placeholderLabel)
                     } else {
-                        ZStack {
-                            VStack(alignment: .center) {
-                                Text(selectWidget)
-                                    .multilineTextAlignment(.center)
-                            }
-                            .bold()
+                        if let image = entry.image {
+                        widgetView(image: image,
+                                       url: entry.url ?? "",
+                                       id: id, opacity: entry.opacity)
+                        } else {
+                            guideTextView(text: selectWidget)
                         }
                     }
+                } else {
+                    guideTextView(text: selectWidget)
                 }
-                .onAppear {
-                    self.placeholderOpacity = 0
-                }
-                .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
-                    // make sure you don't call this too often
-                    WidgetCenter.shared.reloadAllTimelines()
-                }
-            default:
-                VStack {
-                    Text(checkWidget)
-                        .multilineTextAlignment(.center)
-                }
-                .widgetURL(URL(string: selectWidgetURL))
             }
+        default:
+            guideTextView(text: selectWidget)
         }
+    }
+
+    // 사용자 행동 유도 뷰
+    func guideTextView(text: String) -> some View {
+        Text(text)
+            .font(.system(size: 14, weight: .bold))
+            .multilineTextAlignment(.center)
+    }
+
+    // 위젯 아이콘 뷰
+    func widgetView(image: UIImage, url: String, id: String, opacity: Double?) -> some View  {
+        Image(uiImage: image)
+            .resizable()
+            .scaledToFit()
+            .widgetURL(URL(string: "\(WidgetConstant.mainURL)\(url)\(idSeparator)\(id)"))
+            .clipShape(Circle())
+            .opacity(opacity ?? 0.7)
+            .opacity(0.7)
     }
 }
 

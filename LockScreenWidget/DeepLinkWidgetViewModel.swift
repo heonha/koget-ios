@@ -14,6 +14,7 @@ class DeepLinkWidgetViewModel: ObservableObject {
 
     @Published var linkWidgets: [DeepLink] = WidgetCoreData.shared.linkWidgets
 
+
     private init() {
         
     }

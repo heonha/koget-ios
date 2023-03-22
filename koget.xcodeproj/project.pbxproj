@@ -45,6 +45,7 @@
 		39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */; };
 		39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4529ACDA58002BD874 /* OpacitySlider.swift */; };
 		39691F4829ACE9D8002BD874 /* OpacityPickerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */; };
+		3976101A29CB234200632313 /* WidgetConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3976101929CB232500632313 /* WidgetConstant.swift */; };
 		39822CF429B3677400B687E4 /* FloatingButton in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CF329B3677400B687E4 /* FloatingButton */; };
 		39822CFA29B367C800B687E4 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CF929B367C800B687E4 /* QGrid */; };
 		39822D0329B3682600B687E4 /* WelcomeSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 39822D0229B3682600B687E4 /* WelcomeSheet */; };
@@ -211,13 +212,14 @@
 		39504AA029B43796008A7BA4 /* UIScreen+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Utils.swift"; sourceTree = "<group>"; };
 		39504AA229B43F16008A7BA4 /* EKMakerTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMakerTester.swift; sourceTree = "<group>"; };
 		39504AA829B48E73008A7BA4 /* EKCustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCustomColor.swift; sourceTree = "<group>"; };
-		395307F629C9CB5600225951 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "swiftgen/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		395307F629C9CB5600225951 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3964E5EA29C9DFEE0010409B /* KogetClear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KogetClear.png; sourceTree = "<group>"; };
 		3964E5EB29C9DFEE0010409B /* downloadToAppStoreKr.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = downloadToAppStoreKr.svg; sourceTree = "<group>"; };
 		3964E5EE29C9DFFA0010409B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		39691F4529ACDA58002BD874 /* OpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacitySlider.swift; sourceTree = "<group>"; };
 		39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacityPickerContainer.swift; sourceTree = "<group>"; };
 		396D00EA29C9E2CA0078FAD3 /* preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preview.png; sourceTree = "<group>"; };
+		3976101929CB232500632313 /* WidgetConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConstant.swift; sourceTree = "<group>"; };
 		39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridCell.swift; sourceTree = "<group>"; };
 		39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridLinkTypeIcon.swift; sourceTree = "<group>"; };
 		39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeToggleStyle.swift; sourceTree = "<group>"; };
@@ -671,6 +673,7 @@
 				3964E5E929C9DFEE0010409B /* readme */,
 				39438E2E29C6C8E3009BD1C7 /* LICENSE */,
 				3ABA6C1528C6043F005AA8E4 /* koget */,
+				395307F629C9CB5600225951 /* GoogleService-Info.plist */,
 				3AF9F00728ED570D00F685E6 /* LockScreenWidget */,
 				3A3C119528EDB4B800C9CCED /* LockScreenIntentsExtension */,
 				3ABA6C1428C6043F005AA8E4 /* Products */,
@@ -700,7 +703,6 @@
 				39504A9429B3A09C008A7BA4 /* Subview */,
 				3AF7E59128F85FD200B14DFD /* Utils */,
 				39BB37AB29C0B4FD00BD91EC /* swiftgen */,
-				395307F629C9CB5600225951 /* GoogleService-Info.plist */,
 				3ABA6C2D28C60465005AA8E4 /* Files */,
 			);
 			path = koget;
@@ -752,6 +754,7 @@
 				3A9BC0CE28E6C93A0041DA1B /* LockScreenWidgetExtension.entitlements */,
 				3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */,
 				3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */,
+				3976101929CB232500632313 /* WidgetConstant.swift */,
 				3A3C118C28EDAEC600C9CCED /* LockScreenWidgetIntents.intentdefinition */,
 				3AF9F00A28ED570E00F685E6 /* Assets.xcassets */,
 				3AF9F00C28ED570E00F685E6 /* Info.plist */,
@@ -1079,6 +1082,7 @@
 				39AE7BA729C34D9E0030C70F /* Strings+Generated.swift in Sources */,
 				3AF9F00928ED570D00F685E6 /* DeepLinkWidget.swift in Sources */,
 				3930108B299E6AAC009B13ED /* WidgetConstants.swift in Sources */,
+				3976101A29CB234200632313 /* WidgetConstant.swift in Sources */,
 				3A1591722984FCF0001924C3 /* DeepLinkWidgetViewModel.swift in Sources */,
 				3A3C118E28EDB1B700C9CCED /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3AA8BC4E2976DE1A00E4927D /* WidgetCoreData.swift in Sources */,
