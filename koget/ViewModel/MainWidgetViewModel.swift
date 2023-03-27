@@ -37,7 +37,7 @@ final class MainWidgetViewModel: ObservableObject {
     // 앱에서 url 실행
     func urlOpenedInApp(urlString: String) {
         let separatedURL = urlString.split(separator: idSeparator, maxSplits: 1)
-        let url = String(separatedURL[0]).deletingPrefix(schemeToAppLink)
+        let url = String(separatedURL[0]).deletingPrefix(WidgetConstant.mainURL)
         let id = String(separatedURL[1])
 
         if let deepLink = WidgetCoreData.shared.linkWidgets.first(where: { $0.id?.uuidString == id }) {

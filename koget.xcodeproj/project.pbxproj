@@ -38,6 +38,8 @@
 		39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */; };
 		39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4529ACDA58002BD874 /* OpacitySlider.swift */; };
 		39691F4829ACE9D8002BD874 /* OpacityPickerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */; };
+		39737B8229D2517B00228A58 /* WidgetConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3976101929CB232500632313 /* WidgetConstant.swift */; };
+		39737B8429D25A1500228A58 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 39737B8329D25A1500228A58 /* swiftgen.yml */; };
 		3976101A29CB234200632313 /* WidgetConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3976101929CB232500632313 /* WidgetConstant.swift */; };
 		3979FA6B29D1D2E800900FBA /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C119628EDB4B800C9CCED /* IntentHandler.swift */; };
 		3979FA6C29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3979FA7029D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
@@ -210,6 +212,7 @@
 		39691F4529ACDA58002BD874 /* OpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacitySlider.swift; sourceTree = "<group>"; };
 		39691F4729ACE9D8002BD874 /* OpacityPickerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacityPickerContainer.swift; sourceTree = "<group>"; };
 		396D00EA29C9E2CA0078FAD3 /* 1-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-1.png"; sourceTree = "<group>"; };
+		39737B8329D25A1500228A58 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
 		3976101929CB232500632313 /* WidgetConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConstant.swift; sourceTree = "<group>"; };
 		3979FA6F29D1D8EB00900FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/LockScreenWidgetIntents.intentdefinition; sourceTree = "<group>"; };
 		3979FA7229D1D8F000900FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LockScreenWidgetIntents.strings; sourceTree = "<group>"; };
@@ -504,6 +507,7 @@
 				3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */,
 				3ABA6C2728C60440005AA8E4 /* Info.plist */,
 				395307F629C9CB5600225951 /* GoogleService-Info.plist */,
+				39737B8329D25A1500228A58 /* swiftgen.yml */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -901,6 +905,7 @@
 				3964E5EF29C9DFFA0010409B /* README.md in Resources */,
 				3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */,
 				3A6449B3297D8C81002A710C /* error.json in Resources */,
+				39737B8429D25A1500228A58 /* swiftgen.yml in Resources */,
 				39CD9F2929B215A100C28534 /* SDSwagger.otf in Resources */,
 				3A6449B6297E3895002A710C /* sendSuccess.json in Resources */,
 				39CD9F3129B215D000C28534 /* NotoSansKR-Medium.otf in Resources */,
@@ -1000,6 +1005,7 @@
 				3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */,
 				392EDF6B29BD8E54000B1353 /* SettingMenuButton.swift in Sources */,
 				39835AD1299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift in Sources */,
+				39737B8229D2517B00228A58 /* WidgetConstant.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* ViewControllerHolderHelper.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
 				3A1591712984FA40001924C3 /* DeepLinkWidgetViewModel.swift in Sources */,

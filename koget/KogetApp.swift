@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Firebase
+import FirebaseCore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
@@ -51,7 +51,7 @@ struct KogetApp: App {
     func maybeOpenedFromWidget(urlString: String) {
         // print("‼️위젯으로 앱을 열었습니다. ")
         let separatedURL = urlString.split(separator: idSeparator, maxSplits: 1)
-        let url = String(separatedURL[0]).deletingPrefix(schemeToAppLink)
+        let url = String(separatedURL[0]).deletingPrefix(WidgetConstant.mainURL)
         let id = String(separatedURL[1])
         
         coreData.linkWidgets.contains { deepLink in

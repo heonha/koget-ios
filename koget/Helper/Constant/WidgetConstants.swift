@@ -7,6 +7,6 @@
 
 import Foundation
 
-let idSeparator = "Z8a~du!!"
-let schemeToAppLink = "link://"
-let schemeToOpenLink = "koget://"
+//let idSeparator = "Z8a~du!!"
+//let schemeToAppLink = "link://"
+//let schemeToOpenLink = "koget://"

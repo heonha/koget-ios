@@ -12,8 +12,8 @@ import Foundation
 internal enum S {
   /// 새로워진 코젯 확인하기
   internal static let adCell = S.tr("Localizable", "ad_cell", fallback: "새로워진 코젯 확인하기")
-  /// 코젯 버전
-  internal static let kogetVersion = S.tr("Localizable", "koget_version", fallback: "코젯 버전")
+  /// 앱 버전
+  internal static let kogetVersion = S.tr("Localizable", "koget_version", fallback: "앱 버전")
   /// Localizable.strings
   ///   koget
   /// 
@@ -185,10 +185,10 @@ internal enum S {
   }
   internal enum MainWidgetView {
     internal enum EmptyGrid {
-      /// 이곳을 눌러 바로가기 위젯을 생성하고
-      internal static let messageLine1 = S.tr("Localizable", "main_widget_view.emptyGrid.message_line1", fallback: "이곳을 눌러 바로가기 위젯을 생성하고")
-      /// 다양한 앱/웹페이지에 빠르게 접근하세요!
-      internal static let messageLine2 = S.tr("Localizable", "main_widget_view.emptyGrid.message_line2", fallback: "다양한 앱/웹페이지에 빠르게 접근하세요!")
+      /// 아직 잠금화면 위젯이 없어요.
+      internal static let messageLine1 = S.tr("Localizable", "main_widget_view.emptyGrid.message_line1", fallback: "아직 잠금화면 위젯이 없어요.")
+      /// 여기를 눌러 바로 시작하세요!
+      internal static let messageLine2 = S.tr("Localizable", "main_widget_view.emptyGrid.message_line2", fallback: "여기를 눌러 바로 시작하세요!")
     }
   }
   internal enum MakeWidgetView {
