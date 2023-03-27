@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class HelperSheetViewModel: ObservableObject {
+class SettingMenuViewModel: ObservableObject {
 
     @Published var showPatchNote = false
     @Published var showUseLockscreen = false
@@ -16,9 +16,7 @@ class HelperSheetViewModel: ObservableObject {
     @Published var showHowtoUseView = false
     @Published var showLicenseView = false
 
-
-
-    static let shared = HelperSheetViewModel()
+    static let shared = SettingMenuViewModel()
 
     private init() {
     }

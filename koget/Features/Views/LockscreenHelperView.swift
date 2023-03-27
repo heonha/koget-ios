@@ -1,5 +1,5 @@
 //
-//  HowToUseMenu.swift
+//  LockscreenHelperView.swift
 //  koget
 //
 //  Created by HeonJin Ha on 2023/01/19.
@@ -8,7 +8,7 @@
 import SwiftUI
 import AVKit
 
-struct LockscreenHelper: View {
+struct LockscreenHelperView: View {
     
     @State var player = AVPlayer()
     
@@ -82,6 +82,6 @@ struct LockscreenHelper: View {
 
 struct HowToUseMenu_Previews: PreviewProvider {
     static var previews: some View {
-        LockscreenHelper()
+        LockscreenHelperView()
     }
 }

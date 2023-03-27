@@ -11,7 +11,7 @@ import SFSafeSymbols
 
 struct SettingMenu: View, AppStoreReviewable {
     
-    @ObservedObject var viewModel = HelperSheetViewModel.shared
+    @ObservedObject var viewModel = SettingMenuViewModel.shared
     @EnvironmentObject var constant: Constants
 
     var body: some View {
@@ -68,7 +68,7 @@ struct SettingMenu: View, AppStoreReviewable {
             }
             .tint(.black)
             .sheet(isPresented: $viewModel.showUseLockscreen) {
-                LockscreenHelper()
+                LockscreenHelperView()
             }
             .sheet(isPresented: $viewModel.showPatchNote) {
                 PatchNoteList()
@@ -80,7 +80,7 @@ struct SettingMenu: View, AppStoreReviewable {
                 AssetRequestView()
             })
             .sheet(isPresented: $viewModel.showHowtoUseView, content: {
-                LockscreenHelper()
+                LockscreenHelperView()
             })
             .sheet(isPresented: $viewModel.showLicenseView, content: {
                 LicenseView()
