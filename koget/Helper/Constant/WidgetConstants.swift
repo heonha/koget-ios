@@ -9,4 +9,4 @@ import Foundation
 
 let idSeparator = "Z8a~du!!"
 let schemeToAppLink = "link://"
-let schemeToOpenLink = "open://"
+let schemeToOpenLink = "koget://"
