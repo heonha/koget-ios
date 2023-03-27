@@ -16,11 +16,13 @@ class WidgetCoreData: ObservableObject {
     @Published var linkWidgets = [DeepLink]()
     @Published var lastUpdatedDate = Date()
     @Published var lastSelectedWidget: DeepLink?
-    var container = NSPersistentContainer(name: Constants.coreDataContainerName)
-    
+    let container = NSPersistentContainer(name: "WidgetModel")
+    let coreDataContainerName = COREDATA_CONTAINER_NAME
+    let appGroupID = APP_GROUP_ID
+
     private init() {
 
-        let storeURL = URL.storeURL(for: Constants.appGroupID, databaseName: Constants.coreDataContainerName)
+        let storeURL = URL.storeURL(for: appGroupID, databaseName: coreDataContainerName)
         let storeDescription = NSPersistentStoreDescription(url: storeURL)
         container.persistentStoreDescriptions = [storeDescription]
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in

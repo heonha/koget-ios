@@ -68,7 +68,7 @@ struct SettingMenu: View, AppStoreReviewable {
             }
             .tint(.black)
             .sheet(isPresented: $viewModel.showUseLockscreen) {
-                LockscreenHelperView()
+                AddWidgetVideoView()
             }
             .sheet(isPresented: $viewModel.showPatchNote) {
                 PatchNoteList()
@@ -80,7 +80,7 @@ struct SettingMenu: View, AppStoreReviewable {
                 AssetRequestView()
             })
             .sheet(isPresented: $viewModel.showHowtoUseView, content: {
-                LockscreenHelperView()
+                AddWidgetVideoView()
             })
             .sheet(isPresented: $viewModel.showLicenseView, content: {
                 LicenseView()

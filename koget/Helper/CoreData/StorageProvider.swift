@@ -13,7 +13,9 @@ import CoreData
 
 // Enviroment를 통과하려면 ObservableObject를 준수해야 합니다.
 class StorageProvider: ObservableObject {
-    
+
+    let containerName = "WidgetModel"
+
     // DeepLink 목록
     @Published private(set) var linkWidgets: [DeepLink] = []
 
@@ -52,7 +54,7 @@ class StorageProvider: ObservableObject {
     init(inMemory: Bool = true) {
         
         // CoreData 모델 파일에 접근
-        persistentContainer = NSPersistentContainer(name: Constants.coreDataContainerName)
+        persistentContainer = NSPersistentContainer(name: WidgetCoreData.shared.coreDataContainerName)
         
         // 메모리에서 실행 중인 경우 나중에 사용할 정보를 저장하지 않음.
         if inMemory {

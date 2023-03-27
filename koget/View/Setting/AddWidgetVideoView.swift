@@ -8,7 +8,7 @@
 import SwiftUI
 import AVKit
 
-struct LockscreenHelperView: View {
+struct AddWidgetVideoView: View {
     
     @State var player = AVPlayer()
     
@@ -82,6 +82,6 @@ struct LockscreenHelperView: View {
 
 struct HowToUseMenu_Previews: PreviewProvider {
     static var previews: some View {
-        LockscreenHelperView()
+        AddWidgetVideoView()
     }
 }
