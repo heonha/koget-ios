@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftEntryKit
+import WidgetKit
 
 enum MakeWidgetErrorType {
     case emptyField
@@ -146,6 +147,7 @@ final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEdi
                 self.addWidget()
                 self.alertHandelr(type: .success)
                 completion(.success)
+                WidgetCenter.shared.reloadAllTimelines()
 
             }
         }

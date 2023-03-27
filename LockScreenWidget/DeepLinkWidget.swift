@@ -32,10 +32,11 @@ struct DeepLinkProvider: IntentTimelineProvider {
         completion(entry)
     }
     
-    func getWidgetData(app: AppDefinition, completion: @escaping (UIImage, DeepLink?, WidgetError?) -> Void) {
-        var appImage = UIImage()
+    func getWidgetData(app: AppDefinition, completion: @escaping (UIImage?, DeepLink?) -> Void) {
+        var appImage: UIImage?
         var deepLink: DeepLink?
-        WidgetCoreData.shared.linkWidgets.contains { appAsset in
+
+        WidgetCoreData.shared.linkWidgets.first { appAsset in
             if let appID = app.identifier {
                 if appAsset.id?.uuidString == appID {
                     appImage = UIImage(data: appAsset.image!)!
@@ -49,10 +50,10 @@ struct DeepLinkProvider: IntentTimelineProvider {
             }
         }
 
-        if appImage == UIImage() {
-            completion(appImage, nil, WidgetError.deleted)
+        if appImage == nil {
+            completion(nil, nil)
         } else {
-            completion(appImage, deepLink, nil)
+            completion(appImage, deepLink)
         }
     }
 
@@ -65,8 +66,18 @@ struct DeepLinkProvider: IntentTimelineProvider {
         if let app = selectedApp {
             
             // 위젯이 선택 된 경우.
-            getWidgetData(app: app) { image, deepLink, error in
-                if let error = error {
+            getWidgetData(app: app) { image, deepLink in
+                if let image = image {
+                    let entry = DeepLinkEntry(
+                        date: Date(),
+                        name: app.displayString,
+                        url: app.url!,
+                        image: image,
+                        id: app.identifier,
+                        opacity: deepLink?.opacity?.doubleValue ?? 1.0)
+                    let timeline = Timeline(entries: [entry], policy: .atEnd)
+                    completion(timeline)
+                } else {
                     let defaultImage = UIImage(systemSymbol: .plusCircle)
                     let entry = DeepLinkEntry(
                         date: Date(),
@@ -76,16 +87,6 @@ struct DeepLinkProvider: IntentTimelineProvider {
                         id: nil,
                         opacity: 1.0
                     )
-                    let timeline = Timeline(entries: [entry], policy: .atEnd)
-                    completion(timeline)
-                } else {
-                    let entry = DeepLinkEntry(
-                        date: Date(),
-                        name: app.displayString,
-                        url: app.url!,
-                        image: image,
-                        id: app.identifier,
-                        opacity: deepLink?.opacity?.doubleValue ?? 1.0)
                     let timeline = Timeline(entries: [entry], policy: .atEnd)
                     completion(timeline)
                 }
