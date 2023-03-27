@@ -19,8 +19,6 @@
 		<dict>
 			<key>INIntentCategory</key>
 			<string>start</string>
-			<key>INIntentDescription</key>
-			<string>Lockscreen DeepLink App Widget Configure</string>
 			<key>INIntentDescriptionID</key>
 			<string>iUQug8</string>
 			<key>INIntentEligibleForWidgets</key>

@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftEntryKit
 import CoreData
+import WidgetKit
 
 enum DetailWidgetErrorType: String {
     case emptyField
@@ -97,6 +98,7 @@ class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditPro
                     self.editWidgetData(widget: widget)
                     self.displayAlert()
                     self.isEditingMode = false
+                    WidgetCenter.shared.reloadAllTimelines()
                 }
             }
         } else {
