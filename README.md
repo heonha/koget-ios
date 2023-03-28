@@ -8,7 +8,9 @@
 
 
 ### **앱 미리보기 및 다운로드**
-<img src="readme/preview/1-2.png">
+<img src="readme/preview/1-2-1.png">
+<img src="readme/preview/1-2-2.png">
+
 
 <br>
 
@@ -20,10 +22,9 @@
 
 <br>
 
----
+
 
 ## **앱 소개**
----
 ### **📲 `코젯`은  iOS 잠금화면 바로가기 위젯입니다.**
 
 잠금화면에 **앱, 웹페이지용 위젯을 만들고** 잠금화면에서 바로 실행.   
