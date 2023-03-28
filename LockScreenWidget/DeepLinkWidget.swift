@@ -21,34 +21,42 @@ struct DeepLinkProvider: IntentTimelineProvider {
     typealias Intent = DeepLinkAppIntent
     typealias Entry = DeepLinkEntry
 
+    // MARK: PlaceHolder
+    func placeholder(in context: Context) -> DeepLinkEntry {
+        DeepLinkEntry(date: Date(),
+                      name: "플레이스 홀더",
+                      url: nil,
+                      image: UIImage(named: "test.icon.1")!,
+                      id: "")
+    }
+
+    // MARK: getSnapshot
     /// 위젯을 추가할 때와 같이 일시적인 상황에 데이터를 전달합니다.
     func getSnapshot(for configuration: DeepLinkAppIntent, in context: Context, completion: @escaping (DeepLinkEntry) -> Void) {
-        let entry = DeepLinkEntry(date: Date(), name: "", url: nil, image: nil, id: "Ssn2&}g3f`M-Fe.k")
-
+        let entry = DeepLinkEntry(date: Date(),
+                                  name: "",
+                                  url: nil,
+                                  image: nil,
+                                  id: "Ssn2&}g3f`M-Fe.k")
         completion(entry)
     }
 
+    // MARK: getWidgetData
     func getWidgetData(app: AppDefinition, completion: @escaping (UIImage, DeepLink?) -> Void) {
-        var appImage = UIImage(systemSymbol: .plusCircle)
-        var deepLink: DeepLink?
-        WidgetCoreData.shared.linkWidgets.first { appAsset in
-            if let appID = app.identifier {
-                if appAsset.id?.uuidString == appID {
-                    appImage = UIImage(data: appAsset.image!)!
-                    deepLink = appAsset
-
-                    return true
-                } else {
-                    return false
-                }
-            } else {
-                return false
-            }
+        let deepLink = WidgetCoreData.shared.linkWidgets.first {
+            $0.id?.uuidString == app.identifier ?? "Ssn2&}g3f`M-Fe.k"
         }
-        completion(appImage, deepLink)
+        guard let widget = deepLink else { return }
+        let image = UIImage(data: widget.image!) ?? UIImage(systemSymbol: .plus)
+        completion(image, widget)
     }
 
+    // MARK: getTimeline
     /// Widget이 업데이트 될 미래 시간을 전달합니다. (미래날짜가 포함된 타임라인 엔트리배열)
+    ///   /// 타임라인을 만들어서 Completion으로 넘깁니다.
+    /// > Parameters
+    /// - entries : 시간을 담은 배열
+    /// - policy : (TimelineReloadPolicy) 타임라인의 마지막 이후 새 타임라인을 요청하는 정책
     func getTimeline(for configuration: DeepLinkAppIntent,
                      in context: Context,
                      completion: @escaping (Timeline<DeepLinkEntry>) -> Void) {
@@ -56,10 +64,8 @@ struct DeepLinkProvider: IntentTimelineProvider {
         // ID가 같으면 그 이미지를 반환한다.
 
         if let app = selectedApp {
-
             // 위젯이 선택 된 경우.
             getWidgetData(app: app) { image, deepLink in
-
                 // 여기에 Simple Entry로 구성된 코드가 보여짐.
                 let entry = DeepLinkEntry(
                     date: Date(),
@@ -69,15 +75,10 @@ struct DeepLinkProvider: IntentTimelineProvider {
                     id: app.identifier,
                     opacity: deepLink?.opacity?.doubleValue ?? 1.0
                 )
-
                 let timeline = Timeline(entries: [entry], policy: .atEnd)
-
                 completion(timeline)
-
             }
-
         } else {
-
             // 위젯이 선택되지 않은 경우
             let defaultImage = UIImage(named: "KogetClear")!
             let entry = DeepLinkEntry(
@@ -91,25 +92,10 @@ struct DeepLinkProvider: IntentTimelineProvider {
 
             let timeline = Timeline(entries: [entry], policy: .atEnd)
             completion(timeline)
-
         }
 
-        /// 타임라인을 만들어서 Completion으로 넘깁니다.
-        /// > Parameters
-        /// - entries : 시간을 담은 배열
-        /// - policy : (TimelineReloadPolicy) 타임라인의 마지막 이후 새 타임라인을 요청하는 정책
     }
 
-    func placeholder(in context: Context) -> DeepLinkEntry {
-        DeepLinkEntry(date: Date(), name: "플레이스 홀더", url: nil, image: UIImage(named: "test.icon.1")!, id: "")
-    }
-
-    /// 위젯을 추가할 때 표시할 프리뷰를 구성합니다.
-    func getContext(context: Context) -> DeepLinkEntry {
-        let entry: DeepLinkEntry = DeepLinkEntry(date: Date(), name: "", url: nil, image: nil, id: nil)
-
-        return entry
-    }
 }
 
 // MARK: - Protocol : Entry
@@ -184,43 +170,6 @@ struct DeepLinkWidgetEntryView: View {
                     // make sure you don't call this too often
                     WidgetCenter.shared.reloadAllTimelines()
                 }
-
-            case .systemSmall:
-                ZStack {
-                    // entry에 id가 Set되어 있는경우
-                    if entry.id != nil {
-                        if entry.id == "Ssn2&}g3f`M-Fe.k" {
-                                VStack {
-                                    Text("바로가기")
-                                        .font(.system(size: 12))
-                                    Text("위젯추가")
-                                        .font(.system(size: 12))
-                                }
-                                .bold()
-                        } else {
-                            // 코어 데이터의 데이터
-                            // entry의 데이터
-                            // 코어데이터 바뀜 -> 코어데이터 업데이트 -> Entry 업데이트 -> 위젯 업데이트
-
-                            VStack(alignment: .center) {
-                                Image(uiImage: entry.image ?? UIImage(systemSymbol: .questionmarkCircle))
-                                .resizable()
-                                .scaledToFit()
-                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(idSeparator)\(entry.id!)"))
-                                .clipShape(Circle())
-                            }
-                            .opacity(1)
-                        }
-                    } else {
-                        ZStack {
-                            VStack {
-                                Text("눌러서")
-                                Text("위젯선택")
-                            }
-                            .bold()
-                        }
-                    }
-                }
             default:
                 VStack {
                     Text("위젯오류")
@@ -228,15 +177,6 @@ struct DeepLinkWidgetEntryView: View {
                 .widgetURL(URL(string: selectWidgetURL))
             }
         }
-    }
-}
-
-// MARK: - MAIN
-@main
-/// 다양한 종류의 위젯그룹을 만듭니다.
-struct Widgets: WidgetBundle {
-    var body: some Widget {
-        DeepLinkWidget()
     }
 }
 
