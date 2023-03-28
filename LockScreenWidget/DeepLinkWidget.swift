@@ -166,10 +166,6 @@ struct DeepLinkWidgetEntryView: View {
                 .onAppear {
                     self.placeholderOpacity = 0
                 }
-                .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
-                    // make sure you don't call this too often
-                    WidgetCenter.shared.reloadAllTimelines()
-                }
             default:
                 VStack {
                     Text("위젯오류")
