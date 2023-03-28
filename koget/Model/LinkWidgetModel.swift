@@ -70,6 +70,8 @@ final class LinkWidgetModel: ObservableObject {
             .init(name: "YouTube", nameKr: "유튜브", nameEn: "Youtube", url: "youtube://", imageName: "youtube"),
             .init(name: "chatGPT", nameKr: "chatGPT", nameEn: "chatGPT", url: "https://chat.openai.com/chat/", imageName: "chatgpt"),
             .init(name: "알뜰교통카드", nameKr: "알뜰교통카드", nameEn: "알뜰교통카드", url: "watc://", imageName: "watc"),
+            .init(name: "당근마켓", nameKr: "당근마켓", nameEn: "Karrot", url: "daangn://", imageName: "daangn"),
+
         ]
 
         for var app in apps {
