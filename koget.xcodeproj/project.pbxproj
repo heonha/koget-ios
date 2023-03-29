@@ -26,7 +26,6 @@
 		3930108A299E6AAC009B13ED /* WidgetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39301089299E6AAC009B13ED /* WidgetConstants.swift */; };
 		39504A8B29B39CB6008A7BA4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A8A29B39CB6008A7BA4 /* Lottie */; };
 		39504A9329B3A059008A7BA4 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A9229B3A059008A7BA4 /* SwiftEntryKit */; };
-		39504A9929B3A117008A7BA4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A9829B3A117008A7BA4 /* SnapKit */; };
 		39504A9D29B429AF008A7BA4 /* EKMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9C29B429AF008A7BA4 /* EKMaker.swift */; };
 		39504A9F29B4374F008A7BA4 /* CGRect+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9E29B4374F008A7BA4 /* CGRect+Utils.swift */; };
 		39504AA129B43796008A7BA4 /* UIScreen+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA029B43796008A7BA4 /* UIScreen+Utils.swift */; };
@@ -335,7 +334,6 @@
 				39822CFA29B367C800B687E4 /* QGrid in Frameworks */,
 				39822D0329B3682600B687E4 /* WelcomeSheet in Frameworks */,
 				39EE797829BA095800B8D519 /* SwiftDate in Frameworks */,
-				39504A9929B3A117008A7BA4 /* SnapKit in Frameworks */,
 				39822CF429B3677400B687E4 /* FloatingButton in Frameworks */,
 				39F8475529B3990B000B817E /* FirebaseFirestoreSwift in Frameworks */,
 				39F8475329B3990B000B817E /* FirebaseFirestore in Frameworks */,
@@ -803,7 +801,6 @@
 				39F8475629B3990B000B817E /* FirebaseStorage */,
 				39504A8A29B39CB6008A7BA4 /* Lottie */,
 				39504A9229B3A059008A7BA4 /* SwiftEntryKit */,
-				39504A9829B3A117008A7BA4 /* SnapKit */,
 				39ED274C29B98431001C368E /* SFSafeSymbols */,
 				39EE797729BA095800B8D519 /* SwiftDate */,
 				39EBEB4929BDF7A000B1FD54 /* Kingfisher */,
@@ -870,7 +867,6 @@
 				39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				39504A8929B39CB6008A7BA4 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				39504A9129B3A059008A7BA4 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
-				39504A9729B3A117008A7BA4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				39EE797629BA095800B8D519 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				39EBEB4829BDF7A000B1FD54 /* XCRemoteSwiftPackageReference "Kingfisher" */,
@@ -1514,14 +1510,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		39504A9729B3A117008A7BA4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 5.6.0;
-			};
-		};
 		39822CF229B3677400B687E4 /* XCRemoteSwiftPackageReference "FloatingButton" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/FloatingButton.git";
@@ -1590,11 +1578,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39504A9129B3A059008A7BA4 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
 			productName = SwiftEntryKit;
-		};
-		39504A9829B3A117008A7BA4 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 39504A9729B3A117008A7BA4 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
 		};
 		39822CF329B3677400B687E4 /* FloatingButton */ = {
 			isa = XCSwiftPackageProductDependency;
