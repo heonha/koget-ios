@@ -17,17 +17,15 @@ struct URLTestButton: View {
     var alertTitle: String = S.UrlTestButton.checkUrl
     var alertMessage: String = S.UrlTestButton.checkUrlSubtitleSpecific
     @State var isSchemeErrorAlertPresent: Bool = false
-    
-    var urlStringAlertTitle: String = S.UrlTestButton.checkUrl
-    var urlStringAlertMessage: String = S.UrlTestButton.checkUrlSubtitleNourl
-    var addWebScheme: String = "웹페이지"
-    var addAppScheme: String = "앱"
-
-    @State var isurlStringAlertPresent: Bool = false
 
     // OpenURL Alert
     var openURLAlertTitle: String = S.UrlTestButton.testUrl
     var openURLAlertMessage: String = S.UrlTestButton.checkRun
+
+    // Auto add scheme mark
+    let appSchemeLabel: String = S.Alert.Scheme.app
+    let webSchemeLabel: String = S.Alert.Scheme.web
+    let cancelLabel: String = S.Button.cancel
 
     @State var targetURL: URL?
     @State var isOpenURLAlertPresent: Bool = false
@@ -65,42 +63,30 @@ struct URLTestButton: View {
                 }
             }
             .frame(width: 80, height: 25)
+            // Scheme mark 추가 알럿
             .alert(alertTitle, isPresented: $isSchemeErrorAlertPresent) {
-                Button("앱 (주소://)") {
+                Button(appSchemeLabel) { // 앱
                     viewModel.url = viewModel.url + "://"
                 }
-                Button("웹페이지 (https://)") {
+                Button(webSchemeLabel) { // 웹페이지
                     viewModel.url = "https://" + viewModel.url
                 }
-                Button("취소") {
-
-                }
+                Button(cancelLabel) { } // 취소
             } message: {
                 Text(alertMessage)
             }
-            .alert(urlStringAlertTitle, isPresented: $isurlStringAlertPresent) {} message: {
-                Text(urlStringAlertMessage)
-
-                Button(S.UrlTestButton.runTest) {
-                    viewModel.openURL { result in
-                        // print(result)
-                        self.canOpenResult = result
-                    }
-                }
-            }
+            // 테스트진행 선택지 알럿
             .alert(openURLAlertTitle, isPresented: $isOpenURLAlertPresent) {
                 
-                Button(S.Button.cancel) {
-                    
-                }
-                Button(S.UrlTestButton.runTest) {
-                    previousURL = viewModel.url
+                Button(S.Button.cancel) { } // 취소
+                Button(S.UrlTestButton.runTest) { // 진행
+                    previousURL = viewModel.url // 테스트 URL 저장
                     viewModel.openURL { result in
                         self.canOpenResult = result
                     }
                 }
             } message: {
-                Text(openURLAlertMessage)
+                Text(openURLAlertMessage) 
             }
         }
         .padding(4)
