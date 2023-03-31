@@ -61,7 +61,6 @@ final class LinkWidgetModel: ObservableObject {
             .init(name: "Spotify", nameKr: "스포티파이", nameEn: "Spotify", url: "spotify://", imageName: "spotify"),
             .init(name: "스타벅스", nameKr: "스타벅스", nameEn: "Starbucks", url: "starbucks://", imageName: "starbucks"),
             .init(name: "Strava", nameKr: "스트라바", nameEn: "Strava", url: "strava://", imageName: "strava"),
-            .init(name: "텔레그램", nameKr: "텔레그램", nameEn: "Telegram", url: "telegram://", imageName: "telegram"),
             .init(name: "TMAP", nameKr: "티맵", nameEn: "TMAP", url: "tmap://", imageName: "tmap"),
             .init(name: "Twitter", nameKr: "트위터", nameEn: "Twitter", url: "twitter://", imageName: "twitter"),
             .init(name: "Uber", nameKr: "우버", nameEn: "Uber", url: "uber://", imageName: "uber"),
@@ -70,8 +69,23 @@ final class LinkWidgetModel: ObservableObject {
             .init(name: "YouTube", nameKr: "유튜브", nameEn: "Youtube", url: "youtube://", imageName: "youtube"),
             .init(name: "chatGPT", nameKr: "chatGPT", nameEn: "chatGPT", url: "https://chat.openai.com/chat/", imageName: "chatgpt"),
             .init(name: "알뜰교통카드", nameKr: "알뜰교통카드", nameEn: "알뜰교통카드", url: "watc://", imageName: "watc"),
+            // 23/03/31 추가
             .init(name: "당근마켓", nameKr: "당근마켓", nameEn: "Karrot", url: "daangn://", imageName: "daangn"),
-
+            .init(name: "Kakao T", nameKr: "카카오T", nameEn: "Kakao T", url: "kakaot://", imageName: "kakaot"),
+            .init(name: "Outlook", nameKr: "Outlook", nameEn: "Outlook", url: "ms-outlook://", imageName: "outlook"),
+            .init(name: "리디", nameKr: "리디", nameEn: "RIDI", url: "ridi://", imageName: "ridiapp"),
+            .init(name: "SNOW", nameKr: "SNOW", nameEn: "SNOW", url: "snowme://", imageName: "snowapp"),
+            .init(name: "SODA", nameKr: "SODA", nameEn: "SODA", url: "soda://", imageName: "sodaapp"),
+            .init(name: "후스콜", nameKr: "후스콜", nameEn: "Whoscall", url: "whoscall://", imageName: "whoscall"),
+            .init(name: "스위치", nameKr: "스위치", nameEn: "Switch", url: "switchapp://", imageName: "switchapp"),
+            .init(name: "현대카드", nameKr: "현대카드", nameEn: "Hyundai Card", url: "hyundaicardappcard://", imageName: "hyundaicard"),
+            .init(name: "T전화", nameKr: "T전화", nameEn: "T전화", url: "tphone://", imageName: "tphone"),
+            .init(name: "교보eBook", nameKr: "교보eBook", nameEn: "교보eBook", url: "kyoboebook://", imageName: "kyoboebook"),
+            .init(name: "미세미세", nameKr: "미세미세", nameEn: "MiseMise", url: "misemise://", imageName: "misemise"),
+            .init(name: "Raivo", nameKr: "Raivo", nameEn: "Raivo", url: "otpauth://", imageName: "raivo"),
+            .init(name: "YouTube Music", nameKr: "유튜브뮤직", nameEn: "YouTube Music", url: "youtubemusic://", imageName: "youtubemusic"),
+            .init(name: "토스", nameKr: "토스", nameEn: "Toss", url: "supertoss://", imageName: "toss"),
+            .init(name: "예스24 eBook", nameKr: "예스24 eBook", nameEn: "YES24 eBook", url: "YES24EBOOK://", imageName: "yes24ebook"),
         ]
 
         for var app in apps {

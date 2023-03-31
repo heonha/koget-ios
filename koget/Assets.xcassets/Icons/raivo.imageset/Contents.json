@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "raivo.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
