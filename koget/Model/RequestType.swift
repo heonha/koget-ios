@@ -17,3 +17,9 @@ enum ResultType {
     case success
     case error
 }
+
+enum MakeResultType {
+    case success
+    case emptyFieldError
+    case missingSchemeError
+}

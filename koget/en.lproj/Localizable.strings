@@ -33,7 +33,7 @@
 
 
 "url_test_button.check_url" = "Check URL";
-"url_test_button.check_url_subtitle_specific" = "The string :// must be included. \n (app name :// or https:// address)";
+"url_test_button.check_url_subtitle_specific" = "URL is missing the character ://\nType below to correct it automatically.";
 "url_test_button.check_url_subtitle_nourl" = "There are characters that cannot be entered in the URL.";
 "url_test_button.test_url" = "Test URL";
 "url_test_button.check_run" = "Are you sure you want to execute the URL you entered?\n On success, you will be redirected to the app or web browser.";
@@ -64,6 +64,9 @@
 
 
 // make
+"alert.scheme.app" = "App (AppScheme://)";
+"alert.scheme.web" = "Web Page (https://)";
+
 "make_widget_view.is_image_error.title" = "Make Image";
 "make_widget_view.is_image_error.message" = "There is no image icon yet. \nDo you want to create a default image?";
 "make_widget_view.navigation_title" = "Make Widget";

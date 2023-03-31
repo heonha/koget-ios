@@ -36,6 +36,12 @@ internal enum S {
       /// 이 위젯을 삭제 할까요?
       internal static let checkWidgetDelete = S.tr("Localizable", "alert.message.check_Widget_Delete", fallback: "이 위젯을 삭제 할까요?")
     }
+    internal enum Scheme {
+      /// 앱 (주소://)
+      internal static let app = S.tr("Localizable", "alert.scheme.app", fallback: "앱 (주소://)")
+      /// 웹페이지 (https://)
+      internal static let web = S.tr("Localizable", "alert.scheme.web", fallback: "웹페이지 (https://)")
+    }
   }
   internal enum AppRequest {
     /// 앱/웹 이름
@@ -267,9 +273,9 @@ internal enum S {
     internal static let checkUrl = S.tr("Localizable", "url_test_button.check_url", fallback: "URL 확인")
     /// URL에 들어갈 수 없는 글자가 있습니다.
     internal static let checkUrlSubtitleNourl = S.tr("Localizable", "url_test_button.check_url_subtitle_nourl", fallback: "URL에 들어갈 수 없는 글자가 있습니다.")
-    /// 문자열 :// 이 반드시 들어가야합니다. 
-    /// (앱이름:// 또는 https://주소)
-    internal static let checkUrlSubtitleSpecific = S.tr("Localizable", "url_test_button.check_url_subtitle_specific", fallback: "문자열 :// 이 반드시 들어가야합니다. \n(앱이름:// 또는 https://주소)")
+    /// URL에 문자 ://이 없습니다.
+    /// 아래 타입을 누르면 자동으로 교정됩니다.
+    internal static let checkUrlSubtitleSpecific = S.tr("Localizable", "url_test_button.check_url_subtitle_specific", fallback: "URL에 문자 ://이 없습니다.\n아래 타입을 누르면 자동으로 교정됩니다.")
     /// 테스트 진행
     internal static let runTest = S.tr("Localizable", "url_test_button.run_test", fallback: "테스트 진행")
     /// URL 테스트

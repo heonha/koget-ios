@@ -509,7 +509,6 @@
 				3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */,
 				3ABA6C2728C60440005AA8E4 /* Info.plist */,
 				395307F629C9CB5600225951 /* GoogleService-Info.plist */,
-				39737B8329D25A1500228A58 /* swiftgen.yml */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -530,9 +529,9 @@
 		39E0FAF329D149890081E169 /* Make */ = {
 			isa = PBXGroup;
 			children = (
+				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
 				3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */,
 				392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */,
-				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
 			);
 			path = Make;
 			sourceTree = "<group>";
@@ -690,6 +689,7 @@
 				39B5BC6529C6EB5D007AB072 /* .gitignore */,
 				3964E5EE29C9DFFA0010409B /* README.md */,
 				39438E2E29C6C8E3009BD1C7 /* LICENSE */,
+				39737B8329D25A1500228A58 /* swiftgen.yml */,
 				3964E5E929C9DFEE0010409B /* readme */,
 				3ABA6C1528C6043F005AA8E4 /* koget */,
 				3AF9F00728ED570D00F685E6 /* LockScreenWidget */,

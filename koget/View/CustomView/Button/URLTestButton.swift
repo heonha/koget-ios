@@ -16,10 +16,13 @@ struct URLTestButton: View {
     // Error Alert
     var alertTitle: String = S.UrlTestButton.checkUrl
     var alertMessage: String = S.UrlTestButton.checkUrlSubtitleSpecific
-    @State var isAlertPresent: Bool = false
+    @State var isSchemeErrorAlertPresent: Bool = false
     
     var urlStringAlertTitle: String = S.UrlTestButton.checkUrl
     var urlStringAlertMessage: String = S.UrlTestButton.checkUrlSubtitleNourl
+    var addWebScheme: String = "웹페이지"
+    var addAppScheme: String = "앱"
+
     @State var isurlStringAlertPresent: Bool = false
 
     // OpenURL Alert
@@ -56,11 +59,28 @@ struct URLTestButton: View {
                     .frame(width: 25, height: 25)
                 }
             }
-            .alert(alertTitle, isPresented: $isAlertPresent) {} message: {
+            .alert(alertTitle, isPresented: $isSchemeErrorAlertPresent) {
+                Button("앱 (주소://)") {
+                    viewModel.url = viewModel.url + "://"
+                }
+                Button("웹페이지 (https://)") {
+                    viewModel.url = "https://" + viewModel.url
+                }
+                Button("취소") {
+
+                }
+            } message: {
                 Text(alertMessage)
             }
             .alert(urlStringAlertTitle, isPresented: $isurlStringAlertPresent) {} message: {
                 Text(urlStringAlertMessage)
+
+                Button(S.UrlTestButton.runTest) {
+                    viewModel.openURL { result in
+                        // print(result)
+                        self.canOpenResult = result
+                    }
+                }
             }
             .alert(openURLAlertTitle, isPresented: $isOpenURLAlertPresent) {
                 
@@ -104,7 +124,7 @@ struct URLTestButton: View {
                 case .openError:
                     isOpenURLAlertPresent.toggle()
                 case .typeError:
-                    isAlertPresent.toggle()
+                    isSchemeErrorAlertPresent.toggle()
                 }
             } else {
                 isOpenURLAlertPresent.toggle()

@@ -22,7 +22,7 @@
 
 // url test button
 "url_test_button.check_url" = "URL 확인";
-"url_test_button.check_url_subtitle_specific" = "문자열 :// 이 반드시 들어가야합니다. \n(앱이름:// 또는 https://주소)";
+"url_test_button.check_url_subtitle_specific" = "URL에 문자 ://이 없습니다.\n아래 타입을 누르면 자동으로 교정됩니다.";
 "url_test_button.check_url_subtitle_nourl" = "URL에 들어갈 수 없는 글자가 있습니다.";
 "url_test_button.test_url" = "URL 테스트";
 "url_test_button.check_run" = "입력한 URL을 실행하시겠습니까?\n 성공 시 앱 또는 웹 브라우저로 연결됩니다.";
@@ -66,6 +66,9 @@
 
 
 // make
+"alert.scheme.app" = "앱 (앱주소://)";
+"alert.scheme.web" = "웹페이지 (https://)";
+
 "make_widget_view.is_image_error.title" = "이미지 확인";
 "make_widget_view.is_image_error.message" = "아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?";
 "make_widget_view.navigation_title" = "위젯 만들기";
@@ -81,6 +84,8 @@
 "widget_asset_list.searchApp" = "앱 검색하기";
 
 
+
+
 // photo edit menu
 "photo_edit_menu.selectWidget" = "이미지\n선택";
 
@@ -90,6 +95,8 @@
 
 "alert.edit_success_title" = "위젯 편집 성공";
 "alert.edit_success_subtitle" = "편집된 내용은 15분 내 반영됩니다.";
+
+
 
 
 

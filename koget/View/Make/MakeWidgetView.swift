@@ -26,6 +26,10 @@ struct MakeWidgetView: View {
     let namePlaceholder: String = S.Textfield.Placeholder.widgetName
     let urlPlaceholder: String = S.Textfield.Placeholder.url
 
+    var alertTitle: String = S.UrlTestButton.checkUrl
+    var alertMessage: String = S.UrlTestButton.checkUrlSubtitleSpecific
+    @State var isSchemeErrorAlertPresent: Bool = false
+
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var constant: Constants
 
@@ -92,11 +96,7 @@ struct MakeWidgetView: View {
                     // 만들기, 뒤로가기 버튼
                     makeAndBackButton
                         .padding(.horizontal, 16)
-                        .alert(S.MakeWidgetView.IsImageError.title, isPresented: $viewModel.isImageError) {
-                            defaultImageCheckAlertView
-                        } message: {
-                            Text(S.MakeWidgetView.IsImageError.message)
-                        }
+
                     Spacer()
                 }
                 .navigationTitle(S.MakeWidgetView.navigationTitle)
@@ -136,14 +136,41 @@ struct MakeWidgetView: View {
             // 위젯생성 버튼
             TextButton(title: S.Button.finish, titleColor: .white, backgroundColor: AppColor.kogetBlue) {
                 viewModel.makeWidgetAction { result in
-                    switch result {
-                    case .success:
+
+                    if let result = result {
+                        switch result {
+                        case .urlError:
+                            isSchemeErrorAlertPresent.toggle()
+                            return
+                        default:
+                            return
+                        }
+                    } else {
                         self.dismiss()
-                    case .error:
                         return
                     }
+
                 }
             }
+            .alert(alertTitle, isPresented: $isSchemeErrorAlertPresent) {
+                Button(S.Alert.Scheme.app) {
+                    viewModel.url = viewModel.url + "://"
+                }
+                Button(S.Alert.Scheme.web) {
+                    viewModel.url = "https://" + viewModel.url
+                }
+                Button(S.Button.cancel) {
+
+                }
+            } message: {
+                Text(alertMessage)
+            }
+            .alert(S.MakeWidgetView.IsImageError.title, isPresented: $viewModel.isImageError) {
+                defaultImageCheckAlertView
+            } message: {
+                Text(S.MakeWidgetView.IsImageError.message)
+            }
+
             // 돌아가기 버튼
             TextButton(title: S.Button.goBack,
                        titleColor: AppColor.Label.first,

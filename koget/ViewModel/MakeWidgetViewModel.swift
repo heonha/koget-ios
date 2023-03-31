@@ -128,25 +128,28 @@ final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEdi
         }
     }
 
-    func makeWidgetAction(completion: @escaping(ResultType) -> Void) {
+    func makeWidgetAction(completion: @escaping(MakeWidgetErrorType?) -> Void) {
         checkTheTextFields { [weak self] error in
             guard let self = self else { return }
 
             if let error = error {
-                if error == .emptyImage {
-                    self.isImageError.toggle()
-                    completion(.error)
-                } else {
-                    // 실패
+
+                switch error {
+                case .emptyField:
                     self.errorMessage = error.localizedDescription
                     self.alertHandelr(type: .userError)
-                    completion(.error)
+                    completion(error)
+                case .emptyImage:
+                    self.isImageError.toggle()
+                    completion(error)
+                case .urlError:
+                    completion(error)
                 }
             } else {
                 // 성공
                 self.addWidget()
                 self.alertHandelr(type: .success)
-                completion(.success)
+                completion(nil)
                 WidgetCenter.shared.reloadAllTimelines()
 
             }
