@@ -20,6 +20,7 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
     let systemSymbol: SFSymbol
     let placeHolder: String
     // let padding: CGFloat = 32
+    @State var trailingPadding: CGFloat?
     
     @StateObject var viewModel: V
     @ObservedObject var constant = Constants.shared
@@ -39,14 +40,27 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 5)
                             .fill(AppColor.Fill.second)
-                        TextField(placeHolder, text: $text)
-                            .font(.custom(CustomFont.NotoSansKR.light, size: 16))
-                            .frame(height: 35)
-                            .autocorrectionDisabled()
-                            .textInputAutocapitalization(.never)
-                            .textCase(.none)
-                            .padding(.horizontal, 4)
-                            .background(.clear)
+                        if trailingPadding != nil {
+                            TextField(placeHolder, text: $text)
+                                .font(.custom(CustomFont.NotoSansKR.light, size: 16))
+                                .frame(height: 35)
+                                .autocorrectionDisabled()
+                                .textInputAutocapitalization(.never)
+                                .textCase(.none)
+                                .padding(.horizontal, 4)
+                                .background(.clear)
+                                .padding(.trailing, trailingPadding)
+                        } else {
+                            TextField(placeHolder, text: $text)
+                                .font(.custom(CustomFont.NotoSansKR.light, size: 16))
+                                .frame(height: 35)
+                                .autocorrectionDisabled()
+                                .textInputAutocapitalization(.never)
+                                .textCase(.none)
+                                .padding(.horizontal, 4)
+                                .background(.clear)
+                        }
+
                     }
                 } else {
                     // 뷰어 모드

@@ -32,6 +32,7 @@ struct URLTestButton: View {
     @State var targetURL: URL?
     @State var isOpenURLAlertPresent: Bool = false
     @State var canOpenResult: Bool?
+    @State var previousURL: String?
     
     var body: some View {
         HStack {
@@ -50,15 +51,20 @@ struct URLTestButton: View {
                             .foregroundColor(AppColor.Label.first)
                             .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                     }
-                    .frame(width: 100, height: 25)
 
                 } else {
-                    HStack {
-                        resultTextView
+                    HStack(alignment: .center) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 5)
+                                .foregroundStyle(AppColor.Background.second)
+                                .opacity(0.95)
+                                .shadow(color: .black.opacity(0.2), radius: 0.5, x: 1, y: 1)
+                            resultTextView
+                        }
                     }
-                    .frame(width: 25, height: 25)
                 }
             }
+            .frame(width: 80, height: 25)
             .alert(alertTitle, isPresented: $isSchemeErrorAlertPresent) {
                 Button("앱 (주소://)") {
                     viewModel.url = viewModel.url + "://"
@@ -88,8 +94,8 @@ struct URLTestButton: View {
                     
                 }
                 Button(S.UrlTestButton.runTest) {
+                    previousURL = viewModel.url
                     viewModel.openURL { result in
-                        // print(result)
                         self.canOpenResult = result
                     }
                 }
@@ -102,15 +108,27 @@ struct URLTestButton: View {
 
     var resultTextView: some View {
         ZStack {
-            if let canOpen = canOpenResult {
-                if canOpen {
-                    Image(systemSymbol: .checkmarkCircleFill)
-                        .foregroundColor(.green)
-                        .font(.custom(CustomFont.NotoSansKR.medium, size: 20))
-                } else {
-                    Image(systemSymbol: .xmarkCircle)
-                        .foregroundColor(.red)
-                        .font(.custom(CustomFont.NotoSansKR.medium, size: 20))
+            if previousURL == viewModel.url {
+                if let canOpen = canOpenResult {
+                    if canOpen {
+                        Image(systemSymbol: .checkmarkCircleFill)
+                            .foregroundColor(.green)
+                            .font(.custom(CustomFont.NotoSansKR.medium, size: 20))
+                    } else {
+                        Image(systemSymbol: .xmarkCircle)
+                            .foregroundColor(.red)
+                            .font(.custom(CustomFont.NotoSansKR.medium, size: 20))
+                    }
+                }
+            } else {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .foregroundStyle(AppColor.Background.second)
+                        .opacity(0.95)
+                        .shadow(color: .black.opacity(0.2), radius: 0.5, x: 1, y: 1)
+                    Text(title)
+                        .foregroundColor(AppColor.Label.first)
+                        .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
                 }
             }
         }

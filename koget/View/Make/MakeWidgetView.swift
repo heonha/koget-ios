@@ -66,17 +66,19 @@ struct MakeWidgetView: View {
                     VStack(spacing: 8) {
                         EditTextField(systemSymbol: .tag, placeHolder: namePlaceholder, viewModel: viewModel, text: $viewModel.name)
 
-                        EditTextField(systemSymbol: .link, placeHolder: urlPlaceholder, viewModel: viewModel, text: $viewModel.url)
-                            .overlay {
-                                if viewModel.url != "" {
-                                    withAnimation {
-                                        HStack {
-                                            Spacer()
-                                            URLTestButton(viewModel: viewModel)
+                        HStack {
+                            EditTextField(systemSymbol: .link, placeHolder: urlPlaceholder, trailingPadding: viewModel.url.isEmpty ? 82 : nil, viewModel: viewModel, text: $viewModel.url)
+                                .overlay {
+                                    if !viewModel.url.isEmpty {
+                                        withAnimation {
+                                            HStack {
+                                                Spacer()
+                                                URLTestButton(viewModel: viewModel)
+                                            }
                                         }
                                     }
                                 }
-                            }
+                        }
                     }
                     .padding(.horizontal, 16)
 
