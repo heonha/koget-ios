@@ -74,7 +74,6 @@
 		39EBEB5029BE06E900B1FD54 /* PatchNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */; };
 		39EBEB5229BE0A7900B1FD54 /* PatchNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB5129BE0A7900B1FD54 /* PatchNoteModel.swift */; };
 		39EBEB5429BE2AF200B1FD54 /* WidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB5329BE2AF200B1FD54 /* WidgetViewModel.swift */; };
-		39EBEB5529BE2B5000B1FD54 /* DeepLinkWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */; };
 		39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274C29B98431001C368E /* SFSafeSymbols */; };
 		39ED274F29B98707001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274E29B98707001C368E /* SFSafeSymbols */; };
 		39ED275129B9871C001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275029B9871C001C368E /* SFSafeSymbols */; };
@@ -94,8 +93,6 @@
 		3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */; };
 		3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */; };
 		3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0C03412935131600868B70 /* PhotoEditMenu.swift */; };
-		3A1591712984FA40001924C3 /* DeepLinkWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */; };
-		3A1591722984FCF0001924C3 /* DeepLinkWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */; };
 		3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591732985194C001924C3 /* AppStoreReviewable.swift */; };
 		3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17026129727151001FB0E5 /* FloatingMenu.swift */; };
 		3A1F89082978F9DC00E1B4C4 /* AddWidgetVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F89072978F9DC00E1B4C4 /* AddWidgetVideoView.swift */; };
@@ -255,7 +252,6 @@
 		3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetView.swift; sourceTree = "<group>"; };
 		3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetList.swift; sourceTree = "<group>"; };
 		3A0C03412935131600868B70 /* PhotoEditMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditMenu.swift; sourceTree = "<group>"; };
-		3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkWidgetViewModel.swift; sourceTree = "<group>"; };
 		3A1591732985194C001924C3 /* AppStoreReviewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewable.swift; sourceTree = "<group>"; };
 		3A17026129727151001FB0E5 /* FloatingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenu.swift; sourceTree = "<group>"; };
 		3A1F89072978F9DC00E1B4C4 /* AddWidgetVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWidgetVideoView.swift; sourceTree = "<group>"; };
@@ -729,8 +725,8 @@
 			isa = PBXGroup;
 			children = (
 				3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */,
-				3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */,
 				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
+				3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -741,7 +737,6 @@
 				3A9BC0CE28E6C93A0041DA1B /* LockScreenWidgetExtension.entitlements */,
 				39BA5F2A29D2B1AF0020138E /* WidgetsBundle.swift */,
 				3AF9F00828ED570D00F685E6 /* DeepLinkWidget.swift */,
-				3A1591702984FA40001924C3 /* DeepLinkWidgetViewModel.swift */,
 				3976101929CB232500632313 /* WidgetConstant.swift */,
 				3979FA7029D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition */,
 				3AF9F00A28ED570E00F685E6 /* Assets.xcassets */,
@@ -971,7 +966,6 @@
 				3AE9DC0F28F8F891008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				3ACCB34E294C33C300A85E0F /* UIDevice+Utils.swift in Sources */,
 				3979FA6E29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */,
-				39EBEB5529BE2B5000B1FD54 /* DeepLinkWidgetViewModel.swift in Sources */,
 				39C1F3D829D181EA00C26919 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1011,7 +1005,6 @@
 				39737B8229D2517B00228A58 /* WidgetConstant.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* ViewControllerHolderHelper.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
-				3A1591712984FA40001924C3 /* DeepLinkWidgetViewModel.swift in Sources */,
 				39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */,
 				39504AA129B43796008A7BA4 /* UIScreen+Utils.swift in Sources */,
 				390853B629A24EB2006E8311 /* AssetRequestView.swift in Sources */,
@@ -1066,7 +1059,6 @@
 				39BA5F2C29D2B4730020138E /* WidgetsBundle.swift in Sources */,
 				3976101A29CB234200632313 /* WidgetConstant.swift in Sources */,
 				39C1F3E029D1C97400C26919 /* Strings+Generated.swift in Sources */,
-				3A1591722984FCF0001924C3 /* DeepLinkWidgetViewModel.swift in Sources */,
 				3979FA6D29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3AE9DC0E28F8F890008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				3979FA6B29D1D2E800900FBA /* IntentHandler.swift in Sources */,

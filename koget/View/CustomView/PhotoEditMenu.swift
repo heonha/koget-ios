@@ -10,7 +10,7 @@ import SFSafeSymbols
 
 protocol VMPhotoEditProtocol: ObservableObject {
     var image: UIImage? { get set }
-    var opacityValue: Double {get set}
+    var opacityValue: Double { get set}
     var isOpacitySliderEditing: Bool { get set }
 }
 
@@ -21,7 +21,7 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
     @StateObject var viewModel: V
     @ObservedObject var constant = Constants.shared
 
-    let selectImage = S.PhotoEditMenu.selectWidget
+    let selectImageLabel = S.PhotoEditMenu.selectWidget
     
     var body: some View {
 
@@ -45,6 +45,7 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFit()
+
                     } else {
                         ZStack {
                             Circle()
@@ -55,7 +56,7 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
                                 .scaledToFit()
                                 .clipShape(Circle())
                                 .opacity(constant.isDarkMode ? 0.3 : 0.5)
-                            Text(selectImage)
+                            Text(selectImageLabel)
                                 .foregroundColor(AppColor.Label.second)
                                 .shadow(radius: 1)
                                 .font(.system(size: 16, weight: .bold))
