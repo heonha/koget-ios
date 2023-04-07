@@ -98,7 +98,6 @@
 		3A1F89082978F9DC00E1B4C4 /* AddWidgetVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F89072978F9DC00E1B4C4 /* AddWidgetVideoView.swift */; };
 		3A1F890A297AB25700E1B4C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F8909297AB25700E1B4C4 /* ContentView.swift */; };
 		3A2E21FD290FF9F800E4F46A /* downArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2E21FC290FF9F800E4F46A /* downArrow.json */; };
-		3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
 		3A3C119428EDB4B800C9CCED /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A94E19D28EC1B950050EE80 /* Intents.framework */; };
 		3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C119628EDB4B800C9CCED /* IntentHandler.swift */; };
 		3A3C119B28EDB4B800C9CCED /* LockScreenIntentsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -118,7 +117,6 @@
 		3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C04FF292DB03C00442017 /* PhotoPicker.swift */; };
 		3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */; };
-		3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */; };
 		3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2228C60440005AA8E4 /* Assets.xcassets */; };
 		3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6C2428C60440005AA8E4 /* LaunchScreen.storyboard */; };
 		3ABD50FF292945EB00F878AE /* WidgetCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */; };
@@ -126,8 +124,6 @@
 		3ABFEFC1292F136B00455730 /* DetailWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC0292F136B00455730 /* DetailWidgetView.swift */; };
 		3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC4292F214200455730 /* MainWidgetView.swift */; };
 		3ABFEFCA292F4D1400455730 /* ViewControllerHolderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFEFC9292F4D1400455730 /* ViewControllerHolderHelper.swift */; };
-		3ACCB34D294C33C300A85E0F /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */; };
-		3ACCB34E294C33C300A85E0F /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */; };
 		3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB354294C3D3500A85E0F /* TextFieldView.swift */; };
 		3ACCB357294C54A500A85E0F /* NewFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB356294C54A500A85E0F /* NewFloatingButton.swift */; };
 		3ACD924228CDCADC00345E6C /* LoadingIndicatorGray.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD924128CDCADB00345E6C /* LoadingIndicatorGray.json */; };
@@ -257,7 +253,6 @@
 		3A1F89072978F9DC00E1B4C4 /* AddWidgetVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWidgetVideoView.swift; sourceTree = "<group>"; };
 		3A1F8909297AB25700E1B4C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3A2E21FC290FF9F800E4F46A /* downArrow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = downArrow.json; sourceTree = "<group>"; };
-		3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
 		3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenIntentsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3C119628EDB4B800C9CCED /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		3A3C119828EDB4B800C9CCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -280,7 +275,6 @@
 		3A9BC0D928E6E1AE0041DA1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A9C04FF292DB03C00442017 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetViewModel.swift; sourceTree = "<group>"; };
-		3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		3ABA6C1328C6043F005AA8E4 /* koget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = koget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABA6C2228C60440005AA8E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3ABA6C2728C60440005AA8E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -622,8 +616,6 @@
 		3A0F429E28C89742002F1CAD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3A9EABB528E5DA9300ED2BF2 /* UIColor+Utils.swift */,
-				3A2F307828F41F0E00404721 /* UIDevice+Utils.swift */,
 				39504A9E29B4374F008A7BA4 /* CGRect+Utils.swift */,
 				39504AA029B43796008A7BA4 /* UIScreen+Utils.swift */,
 			);
@@ -961,10 +953,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				39C1F3DA29D1822600C26919 /* WidgetCoreData.swift in Sources */,
-				3ACCB34D294C33C300A85E0F /* UIColor+Utils.swift in Sources */,
 				3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */,
 				3AE9DC0F28F8F891008A3316 /* WidgetModel.xcdatamodeld in Sources */,
-				3ACCB34E294C33C300A85E0F /* UIDevice+Utils.swift in Sources */,
 				3979FA6E29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				39C1F3D829D181EA00C26919 /* Constants.swift in Sources */,
 			);
@@ -981,7 +971,6 @@
 				39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */,
 				392EDF6529BD55CA000B1353 /* WidgetListCell.swift in Sources */,
 				390853B829A3949F006E8311 /* AssetRequestViewModel.swift in Sources */,
-				3A2F307928F41F0E00404721 /* UIDevice+Utils.swift in Sources */,
 				3A6D809C2974420100E62389 /* FloatingMenuButton.swift in Sources */,
 				39E456E329C7120C0017B1AB /* ContactType.swift in Sources */,
 				3ACCB357294C54A500A85E0F /* NewFloatingButton.swift in Sources */,
@@ -1028,7 +1017,6 @@
 				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,
 				39EBEB4729BDDC4500B1FD54 /* CheckmarkToggleStyle.swift in Sources */,
-				3A9EABB628E5DA9300ED2BF2 /* UIColor+Utils.swift in Sources */,
 				390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */,
 				39EBEB4C29BDF7F400B1FD54 /* PatchNoteContentView.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* WidgetListContainerView.swift in Sources */,
