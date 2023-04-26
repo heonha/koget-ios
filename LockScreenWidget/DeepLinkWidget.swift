@@ -10,8 +10,6 @@ import SwiftUI
 import Intents
 import CoreData
 
-// MARK: - Protocol : Widget
-/// Widget : Widget의 컨텐츠를 나타내는 configuration 프로토콜
 struct DeepLinkWidget: Widget {
 
     let kind: String = "LockScreenWidget"
@@ -20,7 +18,6 @@ struct DeepLinkWidget: Widget {
 
     @StateObject var coreData = WidgetCoreData.shared
 
-    /// 위젯의 Contents를 나타냅니다.
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: DeepLinkAppIntent.self,
                             provider: DeepLinkProvider(coreData: coreData) ) { entry in
@@ -32,4 +29,3 @@ struct DeepLinkWidget: Widget {
             .supportedFamilies([.accessoryCircular, .systemSmall])
     }
 }
-

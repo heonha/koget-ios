@@ -19,14 +19,34 @@
 		<dict>
 			<key>INIntentCategory</key>
 			<string>start</string>
+			<key>INIntentConfigurable</key>
+			<true/>
 			<key>INIntentDescriptionID</key>
 			<string>iUQug8</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
+			<key>INIntentInput</key>
+			<string>app</string>
+			<key>INIntentKeyParameter</key>
+			<string>app</string>
 			<key>INIntentLastParameterTag</key>
 			<integer>20</integer>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key>app</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Koget</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>8Dt2W2</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
 			<key>INIntentName</key>
 			<string>DeepLinkApp</string>
 			<key>INIntentParameters</key>
@@ -61,6 +81,8 @@
 							<string>Primary</string>
 						</dict>
 					</array>
+					<key>INIntentParameterSupportsDynamicEnumeration</key>
+					<true/>
 					<key>INIntentParameterTag</key>
 					<integer>20</integer>
 					<key>INIntentParameterType</key>
@@ -83,7 +105,28 @@
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>
-				<integer>6</integer>
+				<integer>8</integer>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>App</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>4CHdyO</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>app</string>
+						<key>INIntentResponseParameterObjectType</key>
+						<string>AppDefinition</string>
+						<key>INIntentResponseParameterObjectTypeNamespace</key>
+						<string>WPhMXz</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>8</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>Object</string>
+					</dict>
+				</array>
 			</dict>
 			<key>INIntentTitle</key>
 			<string>DeepLink App</string>
