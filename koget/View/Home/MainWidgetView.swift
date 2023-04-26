@@ -33,7 +33,7 @@ struct MainWidgetView: View {
                     WidgetListContainerView(viewModel: viewModel, coreData: _coreData)
                 }
                 .background(backgroundColor)
-                NewFloatingButton(isOpen: $isFloatingButtonOpen)
+                MainFloatingButton(isOpen: $isFloatingButtonOpen)
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

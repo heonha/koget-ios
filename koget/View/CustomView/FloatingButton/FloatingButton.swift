@@ -8,7 +8,7 @@
 import SwiftUI
 import SFSafeSymbols
 
-struct NewFloatingButton: View {
+struct MainFloatingButton: View {
     
     var size: CGFloat = 50
     @Binding var isOpen: Bool
@@ -32,6 +32,6 @@ struct NewFloatingButton: View {
 
 struct FloatingButton_Previews: PreviewProvider {
     static var previews: some View {
-        NewFloatingButton(isOpen: .constant(false))
+        MainFloatingButton(isOpen: .constant(false))
     }
 }

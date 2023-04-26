@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WelcomeSheet
 import SFSafeSymbols
 
 struct SettingMenu: View, AppStoreReviewable {
