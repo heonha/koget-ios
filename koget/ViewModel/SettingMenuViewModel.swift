@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class SettingMenuViewModel: ObservableObject {
+class SettingMenuViewModel: BaseViewModel {
 
     @Published var showPatchNote = false
     @Published var showUseLockscreen = false
@@ -18,7 +18,8 @@ class SettingMenuViewModel: ObservableObject {
 
     static let shared = SettingMenuViewModel()
 
-    private init() {
+    private override init() {
+        super.init()
     }
 
 }

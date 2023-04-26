@@ -27,7 +27,7 @@ enum DetailWidgetErrorType: String {
     }
 }
 
-class DetailWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
+class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
 
     var nameStringLimit: Int = 14
     @Published var alertView = UIView()

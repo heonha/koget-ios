@@ -7,13 +7,14 @@
 
 import Foundation
 
-final class WidgetAssetViewModel: ObservableObject {
+final class WidgetAssetViewModel: BaseViewModel {
     
     @Published var isOnlyInstalledApp: Bool = false
     @Published var data: [LinkWidget] = []
     @Published var searchResults: [LinkWidget] = []
     
-    init() {
+    override init() {
+        super.init()
         data = LinkWidgetModel.shared.builtInApps
     }
     

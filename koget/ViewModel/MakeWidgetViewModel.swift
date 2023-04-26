@@ -26,7 +26,7 @@ enum MakeWidgetErrorType {
     }
 }
 
-final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
+final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
 
     @Published var alertView = UIView()
 

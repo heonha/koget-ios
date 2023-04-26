@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftEntryKit
 
-final class MainWidgetViewModel: ObservableObject {
+final class MainWidgetViewModel: BaseViewModel {
     
     //MARK: Published Variables
     @Published var isEditingMode: Bool = false
@@ -21,7 +21,8 @@ final class MainWidgetViewModel: ObservableObject {
 
     static let shared = MainWidgetViewModel()
     
-    private init() {
+    private override init() {
+        super.init()
         alertView = setAlertView()
     }
 

@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-final class WidgetViewModel: ObservableObject {
+final class WidgetViewModel: BaseViewModel {
 
     @Published var size: Double = 1.0
 
     static let shared = WidgetViewModel()
 
-    private init() {
-
+    private override init() {
+        super.init()
     }
 }

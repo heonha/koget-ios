@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class PatchNoteViewModel: ObservableObject {
+final class PatchNoteViewModel: BaseViewModel {
 
     @Published var notes = [PatchNoteData]()
 
@@ -15,7 +15,8 @@ final class PatchNoteViewModel: ObservableObject {
 
     static let shared = PatchNoteViewModel()
 
-    private init() {
+    private override init() {
+        super.init()
         model.fetchDate { [weak self] patchnotes, error in
 
             guard let self = self else { return }
