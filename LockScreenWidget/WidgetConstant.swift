@@ -10,7 +10,8 @@ import Foundation
 enum WidgetConstant {
     static let mainURL = "link://"
     static let placeHolderID = "Ssn2&}g3f`M-Fe.k"
+    static let schemeToOpenLink = "koget://"
+    static let idSeparator = "Z8a~du!!"
 }
 
-let idSeparator = "Z8a~du!!"
-let schemeToOpenLink = "koget://"
+

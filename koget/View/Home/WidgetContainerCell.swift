@@ -50,7 +50,7 @@ struct WidgetContainerCell: View {
                         Menu {
                             Button {
                                 if let url = widget.url, let id = widget.id {
-                                    viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(idSeparator)\(id.uuidString)")
+                                    viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
                                 }
                             } label: {
                                 Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
@@ -96,7 +96,7 @@ struct WidgetContainerCell: View {
         .swipeActions(edge: .leading, allowsFullSwipe: false) {
             Button {
                 if let url = widget.url, let id = widget.id {
-                    viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(idSeparator)\(id.uuidString)")
+                    viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
                 }
             } label: {
                 Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)

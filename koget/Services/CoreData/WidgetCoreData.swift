@@ -44,8 +44,14 @@ class WidgetCoreData: ObservableObject {
         widget.updatedDate = Date()
         widget.opacity = (opacity) as NSNumber
 
-        saveData()
-        loadData()
+        saveData { error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+
+            loadData()
+        }
     }
 
     func compressPNGData(with image: UIImage?) -> Data {
@@ -76,7 +82,15 @@ class WidgetCoreData: ObservableObject {
         widget.url = url
         widget.updatedDate = Date()
         widget.opacity = NSNumber(floatLiteral: opacity)
-        saveData()
+        saveData { error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+
+            loadData()
+
+        }
     }
     
     func getStoredDataForDeepLink() -> [DeepLink]? {
@@ -88,18 +102,17 @@ class WidgetCoreData: ObservableObject {
             return deepLinks
             
         } catch {
-            // print("데이터 가져오기 에러 발생 : \(error)")
+
         }
         return nil
     }
     
-    func saveData() {
+    func saveData(completion: (Error?) -> ()) {
         do {
             try container.viewContext.save()
-            // print("저장완료")
-        } catch {
-            // print("context 저장중 에러 발생 : \(error)")
-            // fatalError("context 저장중 에러 발생")
+            completion(nil)
+        } catch let error {
+            completion(error)
         }
     }
     
@@ -119,13 +132,13 @@ class WidgetCoreData: ObservableObject {
         do {
             linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
             self.objectWillChange.send()
-            // print("로드완료")
+             print("로드완료")
         } catch {
-            // print("데이터 가져오기 에러 발생 : \(error)")
-            fatalError("데이터 가져오기 에러 발생")
+            print("데이터 가져오기 에러 발생 : \(error)")
+            return
         }
     }
-    
+
     //원하는 entity 타입의 데이터 불러오기(Read)
     func searchData(searchText: String, sortKey: String = "updatedDate", ascending: Bool = false) {
         
@@ -149,8 +162,13 @@ class WidgetCoreData: ObservableObject {
 
     func deleteData(data: DeepLink) {
         container.viewContext.delete(data)
-        saveData()
-        loadData()
+        saveData { error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            loadData()
+        }
     }
 }
 
@@ -160,7 +178,6 @@ public extension URL {
         guard let fileContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
             fatalError("공유 파일 컨테이너를 생성할 수 없습니다. : Shared file container could not be created.")
         }
-        
         return fileContainer.appendingPathComponent("\(databaseName).sqlite")
     }
 }

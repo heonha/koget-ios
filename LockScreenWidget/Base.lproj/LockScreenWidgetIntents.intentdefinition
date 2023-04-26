@@ -9,9 +9,9 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>WPhMXz</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>22D68</string>
+	<string>22E261</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>14E222a</string>
+	<string>14E222b</string>
 	<key>INIntentDefinitionToolsVersion</key>
 	<string>14.3</string>
 	<key>INIntents</key>
@@ -25,12 +25,8 @@
 			<true/>
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
-			<key>INIntentInput</key>
-			<string>app</string>
-			<key>INIntentKeyParameter</key>
-			<string>app</string>
 			<key>INIntentLastParameterTag</key>
-			<integer>18</integer>
+			<integer>20</integer>
 			<key>INIntentName</key>
 			<string>DeepLinkApp</string>
 			<key>INIntentParameters</key>
@@ -65,10 +61,8 @@
 							<string>Primary</string>
 						</dict>
 					</array>
-					<key>INIntentParameterSupportsDynamicEnumeration</key>
-					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>17</integer>
+					<integer>20</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
@@ -89,7 +83,7 @@
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>
-				<integer>1</integer>
+				<integer>6</integer>
 			</dict>
 			<key>INIntentTitle</key>
 			<string>DeepLink App</string>

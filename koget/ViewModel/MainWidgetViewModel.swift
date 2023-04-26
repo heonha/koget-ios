@@ -36,14 +36,21 @@ final class MainWidgetViewModel: ObservableObject {
 
     // 앱에서 url 실행
     func urlOpenedInApp(urlString: String) {
-        let separatedURL = urlString.split(separator: idSeparator, maxSplits: 1)
+        let separatedURL = urlString.split(separator: WidgetConstant.idSeparator, maxSplits: 1)
         let url = String(separatedURL[0]).deletingPrefix(WidgetConstant.mainURL)
         let id = String(separatedURL[1])
 
         if let deepLink = WidgetCoreData.shared.linkWidgets.first(where: { $0.id?.uuidString == id }) {
             deepLink.runCount += 1
-            WidgetCoreData.shared.saveData()
-            WidgetCoreData.shared.loadData()
+            WidgetCoreData.shared.saveData { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+
+                WidgetCoreData.shared.loadData()
+                
+            }
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
         } else {
             return

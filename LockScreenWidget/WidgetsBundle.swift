@@ -12,7 +12,9 @@ import SwiftUI
 @main
 /// 다양한 종류의 위젯그룹을 만듭니다.
 struct Widgets: WidgetBundle {
+
     var body: some Widget {
         DeepLinkWidget()
     }
+
 }

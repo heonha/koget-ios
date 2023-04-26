@@ -149,6 +149,7 @@ final class MakeWidgetViewModel: ObservableObject, VMOpacityProtocol, VMPhotoEdi
                 // 성공
                 self.addWidget()
                 self.alertHandelr(type: .success)
+                
                 completion(nil)
                 WidgetCenter.shared.reloadAllTimelines()
 

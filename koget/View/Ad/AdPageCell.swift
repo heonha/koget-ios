@@ -20,7 +20,6 @@ struct AdPageCell: View {
             PatchNoteList()
         } label: {
             ZStack {
-                // 배경 이미지(우측)
                 HStack {
                     Spacer()
                     Image(imageName)
@@ -30,7 +29,7 @@ struct AdPageCell: View {
                         .opacity(0.2)
                         .padding(.leading, 30)
                 }
-                // 내용
+
                 HStack(content: {
                     VStack(alignment: .leading) {
                         Text(title)
