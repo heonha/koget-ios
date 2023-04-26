@@ -382,6 +382,16 @@
 			path = readme;
 			sourceTree = SOURCE_ROOT;
 		};
+		39BBB53F29F973830071EBB5 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */,
+				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
+				3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		39C1F3DD29D1C2DB00C26919 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,7 +468,6 @@
 		39E0FAE829D133500081E169 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				3AE0F982294878CF008C9F5F /* CoreData */,
 				39BB37AE29C0B5DD00BD91EC /* Strings+Generated.swift */,
 				3A1591732985194C001924C3 /* AppStoreReviewService.swift */,
 				3AD4691C297D1FAE0090B2D3 /* GuestAuthService.swift */,
@@ -663,26 +672,17 @@
 			children = (
 				3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */,
 				3AE4B13D296D8A2D00DB219B /* KogetApp.swift */,
-				39C1F3DD29D1C2DB00C26919 /* Constant */,
-				3A0F429E28C89742002F1CAD /* Extensions */,
 				39E0FAE829D133500081E169 /* Services */,
 				39E0FAE329D132070081E169 /* View */,
 				39E0FAE429D1320E0081E169 /* ViewModel */,
 				39E0FAE529D132150081E169 /* Model */,
+				39BBB53F29F973830071EBB5 /* Repository */,
+				39C1F3DD29D1C2DB00C26919 /* Constant */,
+				3A0F429E28C89742002F1CAD /* Extensions */,
 				39E0FAEC29D134BE0081E169 /* Resources */,
 				39C1F3DE29D1C34D00C26919 /* Test */,
 			);
 			path = koget;
-			sourceTree = "<group>";
-		};
-		3AE0F982294878CF008C9F5F /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */,
-				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
-				3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		3AF9F00728ED570D00F685E6 /* LockScreenWidget */ = {
