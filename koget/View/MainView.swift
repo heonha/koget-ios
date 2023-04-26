@@ -10,7 +10,7 @@ import UIKit
 
 import SwiftEntryKit
 
-struct ContentView: View {
+struct MainView: View {
 
     @EnvironmentObject var constant: Constants
     @State var isDebugMode = false
@@ -24,6 +24,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }

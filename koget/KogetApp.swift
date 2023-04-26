@@ -34,7 +34,7 @@ struct KogetApp: App {
     var body: some Scene {
 
         WindowGroup {
-            ContentView()
+            MainView()
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }

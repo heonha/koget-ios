@@ -104,7 +104,7 @@
 		3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591732985194C001924C3 /* AppStoreReviewable.swift */; };
 		3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17026129727151001FB0E5 /* FloatingMenu.swift */; };
 		3A1F89082978F9DC00E1B4C4 /* AddWidgetVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F89072978F9DC00E1B4C4 /* AddWidgetVideoView.swift */; };
-		3A1F890A297AB25700E1B4C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F8909297AB25700E1B4C4 /* ContentView.swift */; };
+		3A1F890A297AB25700E1B4C4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F8909297AB25700E1B4C4 /* MainView.swift */; };
 		3A3C119428EDB4B800C9CCED /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A94E19D28EC1B950050EE80 /* Intents.framework */; };
 		3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C119628EDB4B800C9CCED /* IntentHandler.swift */; };
 		3A3C119B28EDB4B800C9CCED /* LockScreenIntentsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -251,7 +251,7 @@
 		3A1591732985194C001924C3 /* AppStoreReviewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewable.swift; sourceTree = "<group>"; };
 		3A17026129727151001FB0E5 /* FloatingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenu.swift; sourceTree = "<group>"; };
 		3A1F89072978F9DC00E1B4C4 /* AddWidgetVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWidgetVideoView.swift; sourceTree = "<group>"; };
-		3A1F8909297AB25700E1B4C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3A1F8909297AB25700E1B4C4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenIntentsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3C119628EDB4B800C9CCED /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		3A3C119828EDB4B800C9CCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 		39E0FAE329D132070081E169 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3A1F8909297AB25700E1B4C4 /* ContentView.swift */,
+				3A1F8909297AB25700E1B4C4 /* MainView.swift */,
 				390B5CBB29B1AED900B61E35 /* MainTabView.swift */,
 				39E0FAF529D149DD0081E169 /* Ad */,
 				39C1F3DF29D1C87C00C26919 /* PatchNote */,
@@ -932,7 +932,7 @@
 				39E456E329C7120C0017B1AB /* ContactType.swift in Sources */,
 				3ACCB357294C54A500A85E0F /* FloatingButton.swift in Sources */,
 				39504AA329B43F16008A7BA4 /* EKMakerTester.swift in Sources */,
-				3A1F890A297AB25700E1B4C4 /* ContentView.swift in Sources */,
+				3A1F890A297AB25700E1B4C4 /* MainView.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* LinkWidgetModel.swift in Sources */,
 				3AD4691B297D19190090B2D3 /* ContactViewModel.swift in Sources */,
 				39EBEB5229BE0A7900B1FD54 /* PatchNoteModel.swift in Sources */,
