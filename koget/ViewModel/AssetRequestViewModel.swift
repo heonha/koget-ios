@@ -10,7 +10,7 @@ import FirebaseFirestore
 import SwiftEntryKit
 
 final class AssetRequestViewModel: BaseViewModel {
-    @ObservedObject var authModel = GuestAuthModel()
+    @ObservedObject var authModel = GuestAuthService()
     @Published var contactType: ContectType = .addApp
     @Published var appName: String = ""
     @Published var body: String = ""

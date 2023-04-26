@@ -101,7 +101,7 @@
 		3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */; };
 		3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */; };
 		3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0C03412935131600868B70 /* PhotoEditMenu.swift */; };
-		3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591732985194C001924C3 /* AppStoreReviewable.swift */; };
+		3A1591742985194C001924C3 /* AppStoreReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1591732985194C001924C3 /* AppStoreReviewService.swift */; };
 		3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17026129727151001FB0E5 /* FloatingMenu.swift */; };
 		3A1F89082978F9DC00E1B4C4 /* AddWidgetVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F89072978F9DC00E1B4C4 /* AddWidgetVideoView.swift */; };
 		3A1F890A297AB25700E1B4C4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F8909297AB25700E1B4C4 /* MainView.swift */; };
@@ -131,7 +131,7 @@
 		3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB354294C3D3500A85E0F /* TextFieldView.swift */; };
 		3ACCB357294C54A500A85E0F /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCB356294C54A500A85E0F /* FloatingButton.swift */; };
 		3AD4691B297D19190090B2D3 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD4691A297D19190090B2D3 /* ContactViewModel.swift */; };
-		3AD4691D297D1FAE0090B2D3 /* GuestAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD4691C297D1FAE0090B2D3 /* GuestAuthModel.swift */; };
+		3AD4691D297D1FAE0090B2D3 /* GuestAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD4691C297D1FAE0090B2D3 /* GuestAuthService.swift */; };
 		3ADA2E97297FD779004AADEE /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2E96297FD779004AADEE /* SettingMenu.swift */; };
 		3ADA2E99297FD99C004AADEE /* lockscreenTutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3ADA2E98297FD975004AADEE /* lockscreenTutorial.mp4 */; };
 		3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE4B13D296D8A2D00DB219B /* KogetApp.swift */; };
@@ -248,7 +248,7 @@
 		3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetView.swift; sourceTree = "<group>"; };
 		3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetList.swift; sourceTree = "<group>"; };
 		3A0C03412935131600868B70 /* PhotoEditMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditMenu.swift; sourceTree = "<group>"; };
-		3A1591732985194C001924C3 /* AppStoreReviewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewable.swift; sourceTree = "<group>"; };
+		3A1591732985194C001924C3 /* AppStoreReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewService.swift; sourceTree = "<group>"; };
 		3A17026129727151001FB0E5 /* FloatingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenu.swift; sourceTree = "<group>"; };
 		3A1F89072978F9DC00E1B4C4 /* AddWidgetVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWidgetVideoView.swift; sourceTree = "<group>"; };
 		3A1F8909297AB25700E1B4C4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 		3ACCB354294C3D3500A85E0F /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		3ACCB356294C54A500A85E0F /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		3AD4691A297D19190090B2D3 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
-		3AD4691C297D1FAE0090B2D3 /* GuestAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestAuthModel.swift; sourceTree = "<group>"; };
+		3AD4691C297D1FAE0090B2D3 /* GuestAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestAuthService.swift; sourceTree = "<group>"; };
 		3ADA2E96297FD779004AADEE /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		3ADA2E98297FD975004AADEE /* lockscreenTutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = lockscreenTutorial.mp4; sourceTree = "<group>"; };
 		3AE4B13D296D8A2D00DB219B /* KogetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogetApp.swift; sourceTree = "<group>"; };
@@ -460,8 +460,8 @@
 			children = (
 				3AE0F982294878CF008C9F5F /* CoreData */,
 				39BB37AE29C0B5DD00BD91EC /* Strings+Generated.swift */,
-				3A1591732985194C001924C3 /* AppStoreReviewable.swift */,
-				3AD4691C297D1FAE0090B2D3 /* GuestAuthModel.swift */,
+				3A1591732985194C001924C3 /* AppStoreReviewService.swift */,
+				3AD4691C297D1FAE0090B2D3 /* GuestAuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -958,7 +958,7 @@
 				390853B629A24EB2006E8311 /* AssetRequestView.swift in Sources */,
 				392EDF6F29BDA3C4000B1353 /* WidgetAssetCell.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
-				3AD4691D297D1FAE0090B2D3 /* GuestAuthModel.swift in Sources */,
+				3AD4691D297D1FAE0090B2D3 /* GuestAuthService.swift in Sources */,
 				39504A9D29B429AF008A7BA4 /* EKMaker.swift in Sources */,
 				39E0FAE729D132940081E169 /* PatchNoteViewModel.swift in Sources */,
 				3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */,
@@ -967,7 +967,7 @@
 				39694FDE29E6825B00F2C75C /* IntentHandler.swift in Sources */,
 				390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
-				3A1591742985194C001924C3 /* AppStoreReviewable.swift in Sources */,
+				3A1591742985194C001924C3 /* AppStoreReviewService.swift in Sources */,
 				39EBEB4E29BE03C300B1FD54 /* PatchNoteListCell.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
 				39691F4829ACE9D8002BD874 /* OpacityPickerContainer.swift in Sources */,

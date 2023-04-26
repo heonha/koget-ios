@@ -10,7 +10,7 @@ import FirebaseFirestore
 import SwiftEntryKit
 
 final class ContactViewModel: BaseViewModel {
-    @ObservedObject var authModel = GuestAuthModel()
+    @ObservedObject var authModel = GuestAuthService()
     @Published var contactType: ContectType = .none
     @Published var title: String = ""
     @Published var body: String = ""

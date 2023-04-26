@@ -8,7 +8,7 @@
 import SwiftUI
 import SFSafeSymbols
 
-struct SettingMenu: View, AppStoreReviewable {
+struct SettingMenu: View, AppStoreReviewService {
     
     @ObservedObject var viewModel = SettingMenuViewModel.shared
     @EnvironmentObject var constant: Constants

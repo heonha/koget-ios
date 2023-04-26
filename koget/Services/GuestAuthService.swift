@@ -1,5 +1,5 @@
 //
-//  GuestAuthModel.swift
+//  GuestAuthService.swift
 //  koget
 //
 //  Created by HeonJin Ha on 2023/01/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import FirebaseAuth
 
-class GuestAuthModel: ObservableObject {
+class GuestAuthService: ObservableObject {
     
     @Published var guestSession: User?
     @Published var isAnonymous: Bool?
