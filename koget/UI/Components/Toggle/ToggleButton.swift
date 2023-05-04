@@ -11,7 +11,7 @@ import CoreData
 struct ToggleButton: View {
 
     @StateObject var viewModel: DetailWidgetViewModel
-    @StateObject var constant = Constants.shared
+    @EnvironmentObject var constant: AppStateConstant
 
     let editLabel = S.Button.edit
     let saveLabel = S.Button.save

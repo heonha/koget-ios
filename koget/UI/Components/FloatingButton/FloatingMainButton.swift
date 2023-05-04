@@ -10,7 +10,7 @@ import SFSafeSymbols
 
 struct FloatingMainButton: View {
 
-    @EnvironmentObject var constant: Constants
+    @EnvironmentObject var constant: AppStateConstant
 
     var buttonSize: CGFloat = 50
     var imageSize: CGFloat = 30

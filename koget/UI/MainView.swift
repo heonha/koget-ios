@@ -12,7 +12,7 @@ import SwiftEntryKit
 
 struct MainView: View {
 
-    @EnvironmentObject var constant: Constants
+    @EnvironmentObject var constant: AppStateConstant
     @StateObject var viewModel = MainWidgetViewModel()
 
     var body: some View {

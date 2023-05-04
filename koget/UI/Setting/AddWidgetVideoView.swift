@@ -11,6 +11,8 @@ import AVKit
 struct AddWidgetVideoView: View {
     
     @State var player = AVPlayer()
+
+    let deviceSize = Constants.deviceSize
     
     var body: some View {
         

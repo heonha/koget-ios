@@ -69,7 +69,7 @@ struct WidgetAssetList: View {
 
                     }
                     Rectangle()
-                        .frame(width: deviceSize.width, height: 12)
+                        .frame(width: Constants.deviceSize.width, height: 12)
                         .foregroundColor(.init(uiColor: .secondarySystemFill))
                 }
                 

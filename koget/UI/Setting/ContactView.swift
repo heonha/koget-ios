@@ -11,6 +11,7 @@ import SwiftEntryKit
 struct ContactView: View {
 
     let title = S.ContactView.contact
+    let deviceSize = Constants.deviceSize
 
     @State var titleText: String = ""
     @State var bodyText: String = ""

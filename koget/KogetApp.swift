@@ -29,7 +29,7 @@ struct KogetApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var coreData = WidgetCoreData.shared
-    @ObservedObject var constant = Constants.shared
+    @ObservedObject var appStateConstant = AppStateConstant.shared
 
     var body: some Scene {
 
@@ -37,7 +37,7 @@ struct KogetApp: App {
             MainView()
                 .tint(AppColor.Label.first)
                 .background(AppColor.Background.first)
-                .environmentObject(constant)
+                .environmentObject(appStateConstant)
                 .environmentObject(coreData)
                 .environment(\.managedObjectContext, coreData.container.viewContext)
                 .onOpenURL { url in

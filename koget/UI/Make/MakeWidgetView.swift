@@ -16,7 +16,7 @@ struct MakeWidgetView: View {
     let navigationBarColor = AppColor.Background.second
     
     @StateObject var viewModel = MakeWidgetViewModel()
-    @EnvironmentObject var constant: Constants
+    @EnvironmentObject var constant: AppStateConstant
     @EnvironmentObject var coreData: WidgetCoreData
     
     @Environment(\.dismiss) var dismiss
@@ -102,7 +102,7 @@ struct MakeWidgetView: View {
                     .shadow(color: .black.opacity(0.5), radius: 0.5, x: 1, y: 1)
             }
         }
-        .frame(width: deviceSize.width - 32, height: 40)
+        .frame(width: Constants.deviceSize.width - 32, height: 40)
         .padding(.vertical)
     }
 

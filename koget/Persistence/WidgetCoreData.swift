@@ -17,8 +17,8 @@ class WidgetCoreData: ObservableObject {
     @Published var lastUpdatedDate = Date()
     @Published var lastSelectedWidget: DeepLink?
     let container = NSPersistentContainer(name: "WidgetModel")
-    let coreDataContainerName = COREDATA_CONTAINER_NAME
-    let appGroupID = APP_GROUP_ID
+    let coreDataContainerName = Constants.COREDATA_CONTAINER_NAME
+    let appGroupID = Constants.APP_GROUP_ID
 
     private init() {
 

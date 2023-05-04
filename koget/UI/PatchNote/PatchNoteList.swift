@@ -36,7 +36,7 @@ struct PatchNoteList: View {
     }
 
     func appVersionLabel() -> some View {
-        Text("\(S.kogetVersion) \(appVersion)")
+        Text("\(S.kogetVersion) \(Constants.appVersion)")
             .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
             .foregroundColor(AppColor.Label.second)
     }

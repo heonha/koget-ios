@@ -80,7 +80,7 @@ struct WidgetListContainerView: View {
                     }
                     .padding(.bottom, 32)
                 }
-                .frame(width: deviceSize.width - 32)
+                .frame(width: Constants.deviceSize.width - 32)
 
             }
         }

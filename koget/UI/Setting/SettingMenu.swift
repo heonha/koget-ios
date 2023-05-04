@@ -56,7 +56,7 @@ struct SettingMenu: View, AppStoreReviewService {
                                 viewModel.showLicenseView.toggle()
                             }
 
-                            SettingMenuButton(title: S.kogetVersion, subtitle: appVersion, imageType: .asset, imageName: "Koget") {
+                            SettingMenuButton(title: S.kogetVersion, subtitle: Constants.appVersion, imageType: .asset, imageName: "Koget") {
                             }
                             .disabled(true)
                         }

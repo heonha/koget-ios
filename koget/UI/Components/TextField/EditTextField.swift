@@ -21,10 +21,10 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
     let placeHolder: String
     // let padding: CGFloat = 32
     @State var trailingPadding: CGFloat?
-    
     @StateObject var viewModel: V
-    @ObservedObject var constant = Constants.shared
     @Binding var text: String
+
+    @EnvironmentObject var constant: AppStateConstant
     
     var body: some View {
         VStack {

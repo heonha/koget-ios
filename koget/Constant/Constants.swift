@@ -9,11 +9,6 @@ import SwiftUI
 import SFSafeSymbols
 
 // App
-let deviceSize = UIScreen.main.bounds.size
-let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-let widgetCellWidthForGrid = deviceSize.width / 4.3
-let APP_GROUP_ID = "group.ZH5GA3W8UP.com.heon.koget"
-let COREDATA_CONTAINER_NAME = "WidgetModel"
 
 final class Constants: ObservableObject {
 
@@ -24,12 +19,30 @@ final class Constants: ObservableObject {
     static let unknownName = "알수없음"
     static let unknownImage = Image(systemSymbol: .questionmarkCircle)
     static let unknownUIImage = UIImage(systemSymbol: .questionmarkCircle)
+    static let deviceSize = UIScreen.main.bounds.size
+    static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+    static let widgetCellWidthForGrid = deviceSize.width / 4.3
+    static let APP_GROUP_ID = "group.ZH5GA3W8UP.com.heon.koget"
+    static let COREDATA_CONTAINER_NAME = "WidgetModel"
+
     
-    @AppStorage("isDarkMode") var isDarkMode = false
 
     static let shared = Constants()
 
     private init() {
 
     }
+}
+
+class AppStateConstant: ObservableObject {
+
+    @AppStorage("isDarkMode") var isDarkMode = false
+
+    static let shared = AppStateConstant()
+
+    private init() {
+
+    }
+
+
 }

@@ -18,7 +18,7 @@ struct PatchNoteListCell: View {
     @State private var forwards = false
 
     @State var isPresent: Bool = false
-    @EnvironmentObject var constant: Constants
+    @EnvironmentObject var constant: AppStateConstant
 
     var body: some View {
         VStack {
