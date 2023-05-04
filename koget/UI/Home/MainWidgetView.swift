@@ -83,7 +83,7 @@ struct MainWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         
         NavigationView {
-            MainWidgetView(viewModel: MainWidgetViewModel.shared)
+            MainWidgetView(viewModel: MainWidgetViewModel())
         }
         
     }

@@ -68,6 +68,6 @@ struct WidgetGridCell: View {
 
 struct WidgetButton_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetGridCell(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel.shared)
+        WidgetGridCell(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "navermap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel())
     }
 }

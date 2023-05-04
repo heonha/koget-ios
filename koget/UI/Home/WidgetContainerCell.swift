@@ -145,7 +145,7 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
                 .ignoresSafeArea()
             
             // 컨텐츠
-            WidgetContainerCell(widget: DeepLink.example, viewModel: MainWidgetViewModel.shared, type: .list)
+            WidgetContainerCell(widget: DeepLink.example, viewModel: MainWidgetViewModel(), type: .list)
                 .padding(.horizontal)
         }
         .environmentObject(StorageProvider())

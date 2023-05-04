@@ -9,18 +9,16 @@ import UIKit
 import CoreData
 import SwiftUI
 
-final class LinkWidgetModel: ObservableObject {
-    
-    static let shared = LinkWidgetModel()
-    
+final class BaseWidgetService: ObservableObject {
+
     /// 앱에 내장된 DeepLink의 목록입니다.
-    var builtInApps = [LinkWidget]()
-    
-    private init() {
-        setWidgetData()
+    init() {
+
     }
     
-    func setWidgetData() {
+    func getWidget() -> [LinkWidget] {
+
+        var builtInApps = [LinkWidget]()
 
         // 구분자 처리
 
@@ -103,6 +101,7 @@ final class LinkWidgetModel: ObservableObject {
 
         builtInApps.sort { $0.displayName > $1.displayName }
 
+        return builtInApps
     }
     
      func getImage(imageName: String) -> UIImage {

@@ -11,7 +11,6 @@ import FirebaseCore
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         
-        //MARK: - Firebase Configuration
         FirebaseApp.configure()
         
         return true
@@ -30,19 +29,20 @@ struct KogetApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var coreData = WidgetCoreData.shared
-    
+    @ObservedObject var constant = Constants.shared
+
     var body: some Scene {
 
         WindowGroup {
             MainView()
+                .tint(AppColor.Label.first)
+                .background(AppColor.Background.first)
+                .environmentObject(constant)
+                .environmentObject(coreData)
+                .environment(\.managedObjectContext, coreData.container.viewContext)
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }
-                .tint(AppColor.Label.first)
-                .background(AppColor.Background.first)
-                .environmentObject(Constants.shared)
-                .environmentObject(WidgetCoreData.shared)
-                .environment(\.managedObjectContext, coreData.container.viewContext)
         }
     }
 
@@ -65,9 +65,6 @@ struct KogetApp: App {
         }
         // print(id)
         UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
-        
-        return
-
     }
 }
 

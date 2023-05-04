@@ -9,9 +9,10 @@ import SwiftUI
 import SFSafeSymbols
 
 struct WidgetAssetList: View {
-    
+
     @StateObject var widgetAssets = WidgetAssetViewModel()
-    @State var viewModel: MakeWidgetViewModel
+    @ObservedObject var viewModel: MakeWidgetViewModel
+
     @State private var searchText: String = ""
     @State var searching: Bool = false
     @State var presentAssetRequestView: Bool = false

@@ -17,6 +17,7 @@ struct MakeWidgetView: View {
     
     @StateObject var viewModel = MakeWidgetViewModel()
     @EnvironmentObject var constant: Constants
+    @EnvironmentObject var coreData: WidgetCoreData
     
     @Environment(\.dismiss) var dismiss
 
@@ -45,9 +46,8 @@ struct MakeWidgetView: View {
                 VStack(spacing: 16) {
                     fetchAppListLabel
                         .sheet(isPresented: $isAppPickerPresent) {
-                            assetList
+                            WidgetAssetList(viewModel: viewModel)
                         }
-
                     Spacer()
 
                     PhotoEditMenu(isEditingMode: .constant(true), viewModel: viewModel)
@@ -78,9 +78,6 @@ struct MakeWidgetView: View {
                 hideKeyboard()
                 isPresentQustionmark = false
             }
-            .onAppear {
-                assetList = WidgetAssetList(viewModel: viewModel)
-            }
         }
     }
 
@@ -94,6 +91,7 @@ struct MakeWidgetView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .foregroundStyle(Constants.kogetGradient)
                     .shadow(color: .black.opacity(0.3), radius: 0.5, x: 1, y: 2)
+
                 RoundedRectangle(cornerRadius: 8)
                     .foregroundStyle(constant.isDarkMode ? Color.black : Color.gray)
                     .opacity(0.5)
@@ -222,6 +220,10 @@ struct MakeWidgetView: View {
                 .cornerRadius(5)
             }
         }
+    }
+
+    func addWidget() {
+        
     }
 }
 

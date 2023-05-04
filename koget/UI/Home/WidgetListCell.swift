@@ -96,6 +96,6 @@ struct WidgetListCell: View {
 
 struct WidgetListCell_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetListCell(name: "이름", url: "https://google.com", widgetImage: UIImage(named: "Koget")!, cellWidth: 40, runCount: 999, cellHeight: 40, viewModel: MainWidgetViewModel.shared)
+        WidgetListCell(name: "이름", url: "https://google.com", widgetImage: UIImage(named: "Koget")!, cellWidth: 40, runCount: 999, cellHeight: 40, viewModel: MainWidgetViewModel())
     }
 }

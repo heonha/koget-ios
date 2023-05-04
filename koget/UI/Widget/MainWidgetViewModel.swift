@@ -21,9 +21,7 @@ final class MainWidgetViewModel: BaseViewModel {
 
     @ObservedObject var coreData = WidgetCoreData.shared
 
-    static let shared = MainWidgetViewModel()
-    
-    private override init() {
+    override init() {
         super.init()
         alertView = setAlertView()
     }
@@ -43,7 +41,7 @@ final class MainWidgetViewModel: BaseViewModel {
         let url = String(separatedURL[0]).deletingPrefix(WidgetConstant.mainURL)
         let id = String(separatedURL[1])
 
-        if let deepLink = WidgetCoreData.shared.linkWidgets.first(where: { $0.id?.uuidString == id }) {
+        if let deepLink = coreData.linkWidgets.first(where: { $0.id?.uuidString == id }) {
             deepLink.runCount += 1
             coreData.saveData()
             coreData.loadData()
@@ -56,7 +54,7 @@ final class MainWidgetViewModel: BaseViewModel {
 
     func deleteItem(completion: @escaping() -> Void) {
         for widget in selection {
-            WidgetCoreData.shared.deleteData(data: widget)
+            coreData.deleteData(data: widget)
         }
         completion()
     }

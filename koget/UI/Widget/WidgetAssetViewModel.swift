@@ -8,14 +8,16 @@
 import Foundation
 
 final class WidgetAssetViewModel: BaseViewModel {
-    
+
+    let baseWidgetService = BaseWidgetService()
+
     @Published var isOnlyInstalledApp: Bool = false
     @Published var data: [LinkWidget] = []
     @Published var searchResults: [LinkWidget] = []
-    
+
     override init() {
         super.init()
-        data = LinkWidgetModel.shared.builtInApps
+        data = baseWidgetService.getWidget()
     }
     
     func canOpenApp(_ canOpen: Bool) -> Double {
@@ -32,7 +34,7 @@ final class WidgetAssetViewModel: BaseViewModel {
                 widget.canOpen == true
             })
         } else {
-            data = LinkWidgetModel.shared.builtInApps
+            data = baseWidgetService.getWidget()
         }
         
     }
@@ -53,4 +55,5 @@ final class WidgetAssetViewModel: BaseViewModel {
             widget.nameEn.lowercased().contains(searchText.lowercased())
         })
     }
+
 }

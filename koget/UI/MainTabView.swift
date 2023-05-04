@@ -9,7 +9,7 @@ import SwiftUI
 import SFSafeSymbols
 
 struct MainTabView: View {
-    @ObservedObject var viewModel = MainWidgetViewModel.shared
+    @ObservedObject var viewModel: MainWidgetViewModel
 
     var body: some View {
         TabView {
@@ -27,6 +27,6 @@ struct MainTabView: View {
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        MainTabView(viewModel: MainWidgetViewModel())
     }
 }
