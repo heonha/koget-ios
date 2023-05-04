@@ -15,7 +15,7 @@ protocol VMOpacityProtocol: ObservableObject {
 
 struct OpacitySlider<V: VMOpacityProtocol>: View {
 
-    @StateObject var viewModel: V
+    @ObservedObject var viewModel: V
 
     let opacityLabel = S.OpacitySlider.opacity
     let transparencyLabel = S.OpacitySlider.transparency

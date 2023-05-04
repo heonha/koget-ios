@@ -21,7 +21,7 @@ struct DetailWidgetView: View {
     @State var isDelete = false
     @State var isPresentQustionmark = false
 
-    @EnvironmentObject var constant: AppStateConstant
+    @ObservedObject var constant = AppStateConstant.shared
     @ObservedObject var coreData = WidgetCoreData.shared
     @StateObject var viewModel = DetailWidgetViewModel()
     @Environment(\.dismiss) var dismiss

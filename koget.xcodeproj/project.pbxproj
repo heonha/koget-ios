@@ -517,10 +517,9 @@
 		39E0FAF429D149C30081E169 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				3A8C1E772980DB7C004FAF89 /* SettingMenuViewModel.swift */,
 				3ADA2E96297FD779004AADEE /* SettingMenu.swift */,
 				392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */,
-				3A01E784296AD3470019CD2D /* ContactView.swift */,
+				3A8C1E772980DB7C004FAF89 /* SettingMenuViewModel.swift */,
 				3A1F89072978F9DC00E1B4C4 /* AddWidgetVideoView.swift */,
 				39E9410629C6CFD4008F8E9F /* LicenseView.swift */,
 			);
@@ -539,8 +538,9 @@
 		39E0FAF629D14A2C0081E169 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				390853B529A24EB2006E8311 /* AssetRequestView.swift */,
+				3A01E784296AD3470019CD2D /* ContactView.swift */,
 				3AD4691A297D19190090B2D3 /* ContactViewModel.swift */,
+				390853B529A24EB2006E8311 /* AssetRequestView.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -548,8 +548,8 @@
 		39E0FAF729D14A470081E169 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */,
 				3ABFEFC0292F136B00455730 /* DetailWidgetView.swift */,
+				39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */,
 				3ABFEFC9292F4D1400455730 /* ViewControllerHolderHelper.swift */,
 			);
 			path = Detail;

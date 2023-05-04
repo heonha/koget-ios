@@ -12,7 +12,7 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
     
     @StateObject var viewModel: V
     @Binding var isPresentQustionmark: Bool
-    @EnvironmentObject var constant: AppStateConstant
+    @ObservedObject var constant = AppStateConstant.shared
 
     let opacityDesctiption = S.OpacitySlider.description
 

@@ -18,8 +18,8 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
     
     @Binding var isEditingMode: Bool
     @State var isPhotoViewPresent: Bool = false
-    @StateObject var viewModel: V
-    @EnvironmentObject var constant: AppStateConstant
+    @ObservedObject var viewModel: V
+    @ObservedObject var constant = AppStateConstant.shared
 
     let selectImageLabel = S.PhotoEditMenu.selectWidget
     
