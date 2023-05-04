@@ -126,38 +126,24 @@ class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessag
 
 // MARK: ViewIcon Intent Handling
 extension IntentHandler: DeepLinkAppIntentHandling {
-    /// 위젯 데이터를 가져오고 배열로 만듭니다.
+
     func provideAppOptionsCollection(for intent: DeepLinkAppIntent, with completion: @escaping (INObjectCollection<AppDefinition>?, Error?) -> Void) {
 
-    // MARK: 데이터의 흐름
-    // AppInfo : 딥링크 할 앱의 데이터
-    // WidgetModel : AppInfo의 Array
-    // AppDefinition(Type, intentDefinition)
-    // AppInfo -> AppDefinition으로 데이터를 전달한다.
-    // 데이터의 전달은 DeepLinkAppIntentHandling 프로토콜의 provideAppOptionsCollection 메소드를 통해 전달한다.
-        
         let avaliableApps = WidgetCoreData.shared.linkWidgets
     
-        /// AppInfo Data를 AppDefinition에 mapping 하여 만든 배열
         let apps: [AppDefinition] = avaliableApps.map { deepLink in
-            /// 위젯에 필수적으로 전달해야할 데이터이다.
-            /// UUID와 위젯편집 시 리스트에 표현될 이름으로 구성된다.
             let item = AppDefinition(
-                identifier: deepLink.id?.uuidString, // 고유 식별자 지정
-                display: deepLink.name ?? "no Data" // 위젯 편집창에서 표현할 이름
-            )
-            // 아래는 위젯에 추가로 전달할 데이터이다.
+                identifier: deepLink.id?.uuidString,
+                display: deepLink.name ?? "no Data")
 
-            item.url = deepLink.url // 딥링크 주소
+            item.url = deepLink.url
             item.opacity = deepLink.opacity
             
             return item
         }
         
-        /// 위 apps 배열을 INObjectCollection의 아이템으로 정의해준다.
         let collection = INObjectCollection<AppDefinition>(items: apps)
-        
-        /// 위에서 정의한 위젯 INObjectCollection 컬렉션을 completion 으로 전달한다.
+
         completion(collection, nil)
     }
 }
