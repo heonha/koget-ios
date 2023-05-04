@@ -19,6 +19,8 @@ final class MainWidgetViewModel: BaseViewModel {
     @AppStorage("isGridView") var isGridView = false
     @AppStorage("FirstRun") var isFirstRun = true
 
+    @ObservedObject var coreData = WidgetCoreData.shared
+
     static let shared = MainWidgetViewModel()
     
     private override init() {
@@ -43,15 +45,9 @@ final class MainWidgetViewModel: BaseViewModel {
 
         if let deepLink = WidgetCoreData.shared.linkWidgets.first(where: { $0.id?.uuidString == id }) {
             deepLink.runCount += 1
-            WidgetCoreData.shared.saveData { error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-
-                WidgetCoreData.shared.loadData()
+            coreData.saveData()
+            coreData.loadData()
                 
-            }
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
         } else {
             return

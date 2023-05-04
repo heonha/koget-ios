@@ -16,15 +16,14 @@ struct DeepLinkWidgetEntryView: View {
 
     var entry: DeepLinkProvider.Entry
 
-    @Environment(\.widgetFamily) var family
+    @Environment(\.widgetFamily) var widgetFamily
 
-    @State var placeholderOpacity: CGFloat = 1
     @ObservedObject var coreData: WidgetCoreData
 
     @ViewBuilder
     var body: some View {
         ZStack {
-            switch family {
+            switch widgetFamily {
             case .accessoryCircular:
                 iconWidgetBase
             case .systemSmall:
@@ -32,9 +31,6 @@ struct DeepLinkWidgetEntryView: View {
             default:
                 errorView
             }
-        }
-        .onAppear {
-            self.placeholderOpacity = 0
         }
     }
 
@@ -55,11 +51,9 @@ struct DeepLinkWidgetEntryView: View {
     var snapShotView: some View {
         VStack {
             Text("바로가기")
-                .font(.system(size: 12))
             Text("위젯추가")
-                .font(.system(size: 12))
         }
-        .bold()
+        .font(.system(size: 12, weight: .bold))
     }
 
     func iconView(id: String, url: String) -> some View {
@@ -80,7 +74,6 @@ struct DeepLinkWidgetEntryView: View {
             Text("위젯선택")
         }
         .bold()
-
     }
 
     var errorView: some View {

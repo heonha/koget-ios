@@ -505,8 +505,8 @@
 		39E0FAF329D149890081E169 /* Make */ = {
 			isa = PBXGroup;
 			children = (
-				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
 				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
+				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
 				3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */,
 				390853B729A3949F006E8311 /* AssetRequestViewModel.swift */,
 				392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */,

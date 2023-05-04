@@ -28,5 +28,5 @@ struct DeepLinkWidget: Widget {
             .configurationDisplayName(title)
             .description(subtitle)
             .supportedFamilies([.accessoryCircular, .systemSmall])
-    }
+        }
 }

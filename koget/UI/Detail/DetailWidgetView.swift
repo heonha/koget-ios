@@ -114,15 +114,8 @@ struct DetailWidgetView: View {
         if selectedWidget.opacity == nil {
             selectedWidget.opacity = 1.0
             viewModel.opacityValue = 1.0
-            coreData.saveData { error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-
-                WidgetCoreData.shared.loadData()
-
-            }
+            coreData.saveData()
+            coreData.loadData()
         } else {
             viewModel.opacityValue = selectedWidget.opacity as? Double ?? 1.0
         }

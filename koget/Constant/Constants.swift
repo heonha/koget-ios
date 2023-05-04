@@ -17,8 +17,6 @@ let COREDATA_CONTAINER_NAME = "WidgetModel"
 
 final class Constants: ObservableObject {
 
-//    let coreDataContainerName = "WidgetModel"
-    // CoreData
     static let kogetGradient = LinearGradient(colors: [.blue, .red],
                                               startPoint: .topLeading,
                                               endPoint: .bottomTrailing)

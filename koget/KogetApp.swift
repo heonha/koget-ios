@@ -42,7 +42,7 @@ struct KogetApp: App {
                 .background(AppColor.Background.first)
                 .environmentObject(Constants.shared)
                 .environmentObject(WidgetCoreData.shared)
-                .environment(\.managedObjectContext, WidgetCoreData.shared.container.viewContext)
+                .environment(\.managedObjectContext, coreData.container.viewContext)
         }
     }
 
@@ -57,15 +57,9 @@ struct KogetApp: App {
         coreData.linkWidgets.forEach { deepLink in
             if deepLink.id?.uuidString == id {
                 deepLink.runCount += 1
-                coreData.saveData { error in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
+                coreData.saveData()
+                coreData.loadData()
 
-                    WidgetCoreData.shared.loadData()
-
-                }
                 return
             }
         }
