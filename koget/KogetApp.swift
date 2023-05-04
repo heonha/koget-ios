@@ -49,12 +49,12 @@ struct KogetApp: App {
     //MARK: Deeplink 처리
     /// 위젯 scheme을 확인하고 deepLink를 엽니다.
     func maybeOpenedFromWidget(urlString: String) {
-        // print("‼️위젯으로 앱을 열었습니다. ")
+         print("‼️위젯으로 앱을 열었습니다. ")
         let separatedURL = urlString.split(separator: WidgetConstant.idSeparator, maxSplits: 1)
         let url = String(separatedURL[0]).deletingPrefix(WidgetConstant.mainURL)
         let id = String(separatedURL[1])
         
-        coreData.linkWidgets.contains { deepLink in
+        coreData.linkWidgets.forEach { deepLink in
             if deepLink.id?.uuidString == id {
                 deepLink.runCount += 1
                 coreData.saveData { error in
@@ -66,9 +66,7 @@ struct KogetApp: App {
                     WidgetCoreData.shared.loadData()
 
                 }
-                return true
-            } else {
-                return false
+                return
             }
         }
         // print(id)
