@@ -12,6 +12,7 @@
 		390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CB929B1A70600B61E35 /* AdPageContainer.swift */; };
 		390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CBB29B1AED900B61E35 /* MainTabView.swift */; };
 		390B5CBE29B20B0A00B61E35 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */; };
+		392140A42A0BC1C400D0F527 /* Date+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392140A32A0BC1C400D0F527 /* Date+Extention.swift */; };
 		39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
 		39223B6229A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
 		39223B6329A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
@@ -84,7 +85,6 @@
 		39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274C29B98431001C368E /* SFSafeSymbols */; };
 		39ED274F29B98707001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274E29B98707001C368E /* SFSafeSymbols */; };
 		39ED275129B9871C001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275029B9871C001C368E /* SFSafeSymbols */; };
-		39EE797829BA095800B8D519 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 39EE797729BA095800B8D519 /* SwiftDate */; };
 		39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8474E29B3990B000B817E /* FirebaseAnalytics */; };
 		39F8475129B3990B000B817E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8475029B3990B000B817E /* FirebaseAuth */; };
 		39F8475329B3990B000B817E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8475229B3990B000B817E /* FirebaseFirestore */; };
@@ -182,6 +182,7 @@
 		390B5CB929B1A70600B61E35 /* AdPageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPageContainer.swift; sourceTree = "<group>"; };
 		390B5CBB29B1AED900B61E35 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		392140A32A0BC1C400D0F527 /* Date+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extention.swift"; sourceTree = "<group>"; };
 		39223B6429A5E12800F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39223B7C29A6325800F59F54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		392EDF6029BD508A000B1353 /* AdPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPageCell.swift; sourceTree = "<group>"; };
@@ -310,7 +311,6 @@
 				39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */,
 				39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */,
 				39822CFA29B367C800B687E4 /* QGrid in Frameworks */,
-				39EE797829BA095800B8D519 /* SwiftDate in Frameworks */,
 				39822CF429B3677400B687E4 /* FloatingButton in Frameworks */,
 				39F8475529B3990B000B817E /* FirebaseFirestoreSwift in Frameworks */,
 				39F8475329B3990B000B817E /* FirebaseFirestore in Frameworks */,
@@ -609,6 +609,7 @@
 			children = (
 				39504A9E29B4374F008A7BA4 /* CGRect+Extension.swift */,
 				39504AA029B43796008A7BA4 /* UIScreen+Extension.swift */,
+				392140A32A0BC1C400D0F527 /* Date+Extention.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -756,7 +757,6 @@
 				39F8475629B3990B000B817E /* FirebaseStorage */,
 				39504A9229B3A059008A7BA4 /* SwiftEntryKit */,
 				39ED274C29B98431001C368E /* SFSafeSymbols */,
-				39EE797729BA095800B8D519 /* SwiftDate */,
 				39EBEB4929BDF7A000B1FD54 /* Kingfisher */,
 			);
 			productName = BackgroundMaker;
@@ -820,7 +820,6 @@
 				39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				39504A9129B3A059008A7BA4 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 				39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
-				39EE797629BA095800B8D519 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				39EBEB4829BDF7A000B1FD54 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
@@ -962,6 +961,7 @@
 				39504AA129B43796008A7BA4 /* UIScreen+Extension.swift in Sources */,
 				390853B629A24EB2006E8311 /* AssetRequestView.swift in Sources */,
 				392EDF6F29BDA3C4000B1353 /* WidgetAssetCell.swift in Sources */,
+				392140A42A0BC1C400D0F527 /* Date+Extention.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthService.swift in Sources */,
 				39504A9D29B429AF008A7BA4 /* EKMaker.swift in Sources */,
@@ -1478,14 +1478,6 @@
 				minimumVersion = 4.1.1;
 			};
 		};
-		39EE797629BA095800B8D519 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
 		39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1531,11 +1523,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
-		};
-		39EE797729BA095800B8D519 /* SwiftDate */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 39EE797629BA095800B8D519 /* XCRemoteSwiftPackageReference "SwiftDate" */;
-			productName = SwiftDate;
 		};
 		39F8474E29B3990B000B817E /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
