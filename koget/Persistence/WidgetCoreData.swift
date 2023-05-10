@@ -44,6 +44,7 @@ class WidgetCoreData: ObservableObject {
         widget.updatedDate = Date()
         widget.opacity = (opacity) as NSNumber
 
+        linkWidgets.append(widget)
         saveData()
         loadData()
     }

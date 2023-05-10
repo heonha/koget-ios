@@ -24,9 +24,9 @@ struct DeepLinkProvider: IntentTimelineProvider {
     typealias Intent = DeepLinkAppIntent
     typealias Entry = DeepLinkEntry
 
-    @ObservedObject var coreData: WidgetCoreData
+    @ObservedObject var coreData = WidgetCoreData.shared
 
-    let placeHolderEntry = Entry(date: Date(), name: "Placeholder", url: nil, image: UIImage(systemSymbol: .plus), id: "")
+    let placeHolderEntry = Entry(date: Date(), name: "Placeholder", url: nil, image: nil, id: "")
     let snapshotEntry = Entry(date: Date(), name: "Widget Snapshot", url: nil, image: nil, id: WidgetConstant.snapshotID)
     let notSelectedWidgetEntry: Entry = {
         let defaultImage = UIImage(named: "KogetClear") ?? UIImage(systemSymbol: .questionmark)
@@ -37,25 +37,40 @@ struct DeepLinkProvider: IntentTimelineProvider {
         return self.placeHolderEntry
     }
 
-    func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> Void) {
+    func getSnapshot(for configuration: Intent,
+                     in context: Context,
+                     completion: @escaping (Entry) -> Void) {
         completion(self.snapshotEntry)
     }
 
-    func getTimeline(for configuration: Intent, in context: Context,
+    func getTimeline(for configuration: Intent,
+                     in context: Context,
                      completion: @escaping (Timeline<Entry>) -> Void) {
         if let app = configuration.app {
-            self.getWidgetData(app: app) { image, deepLink in
-                let entry = Entry(
+            let selectedLink = coreData.linkWidgets.first {
+                $0.id?.uuidString == app.identifier ?? WidgetConstant.snapshotID
+            }
+
+            var entry: Entry?
+
+            if let selectedLink = selectedLink {
+                let image = UIImage(data: selectedLink.image ?? Data()) ?? UIImage(systemSymbol: .plus)
+                entry = Entry(
                     date: Date(),
                     name: app.displayString,
-                    url: app.url ?? "https://www.google.com",
+                    url: app.url ?? "link://",
                     image: image,
                     id: app.identifier,
-                    opacity: deepLink?.opacity?.doubleValue ?? 1.0
+                    opacity: selectedLink.opacity?.doubleValue ?? 1.0
                 )
-                let timeline = Timeline(entries: [entry], policy: .never)
-                completion(timeline)
+            } else {
+                entry = self.notSelectedWidgetEntry
             }
+
+            guard let entry = entry else { return }
+
+            let timeline = Timeline(entries: [entry], policy: .never)
+            completion(timeline)
         } else {
             // 위젯이 선택되지 않은 경우
             let entry = self.notSelectedWidgetEntry
@@ -64,14 +79,4 @@ struct DeepLinkProvider: IntentTimelineProvider {
         }
     }
 
-    func getWidgetData(app: AppDefinition, completion: @escaping (UIImage, DeepLink?) -> Void) {
-        let deepLink = coreData.linkWidgets.first {
-            $0.id?.uuidString == app.identifier ?? WidgetConstant.snapshotID
-        }
-
-        guard let widget = deepLink else { return }
-
-        let image = UIImage(data: widget.image ?? Data()) ?? UIImage(systemSymbol: .plus)
-        completion(image, widget)
-    }
 }

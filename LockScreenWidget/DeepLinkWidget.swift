@@ -22,8 +22,8 @@ struct DeepLinkWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: DeepLinkAppIntent.self,
-            provider: DeepLinkProvider(coreData: coreData)) { entry in
-                DeepLinkWidgetEntryView(entry: entry, coreData: coreData)
+            provider: DeepLinkProvider()) { entry in
+                DeepLinkWidgetEntryView(entry: entry)
             }
             .configurationDisplayName(title)
             .description(subtitle)

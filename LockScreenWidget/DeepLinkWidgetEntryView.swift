@@ -18,7 +18,7 @@ struct DeepLinkWidgetEntryView: View {
 
     @Environment(\.widgetFamily) var widgetFamily
 
-    @ObservedObject var coreData: WidgetCoreData
+    @ObservedObject var coreData = WidgetCoreData.shared
 
     @ViewBuilder
     var body: some View {
@@ -40,7 +40,7 @@ struct DeepLinkWidgetEntryView: View {
                 if entry.id == WidgetConstant.snapshotID { // 스냅샷
                     snapShotView
                 } else {
-                    iconView(id: id, url: url)
+                    iconView(id: id, url: url, lastUpdate: coreData.lastSelectedWidget)
                 }
             } else {
                 placeHolderView
@@ -56,7 +56,7 @@ struct DeepLinkWidgetEntryView: View {
         .font(.system(size: 12, weight: .bold))
     }
 
-    func iconView(id: String, url: String) -> some View {
+    func iconView(id: String, url: String, lastUpdate: DeepLink?) -> some View {
         VStack(alignment: .center) {
             Image(uiImage: entry.image ?? UIImage(systemSymbol: .questionmarkCircle))
                 .resizable()
