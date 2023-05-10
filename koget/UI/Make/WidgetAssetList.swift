@@ -9,9 +9,10 @@ import SwiftUI
 import SFSafeSymbols
 
 struct WidgetAssetList: View {
-    
+
     @StateObject var widgetAssets = WidgetAssetViewModel()
-    @State var viewModel: MakeWidgetViewModel
+    @ObservedObject var viewModel: MakeWidgetViewModel
+
     @State private var searchText: String = ""
     @State var searching: Bool = false
     @State var presentAssetRequestView: Bool = false
@@ -68,7 +69,7 @@ struct WidgetAssetList: View {
 
                     }
                     Rectangle()
-                        .frame(width: deviceSize.width, height: 12)
+                        .frame(width: Constants.deviceSize.width, height: 12)
                         .foregroundColor(.init(uiColor: .secondarySystemFill))
                 }
                 

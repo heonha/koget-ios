@@ -36,7 +36,7 @@ struct WidgetContainerCell: View {
         self.widget = widget
         self.type = type
         self.viewModel = viewModel
-        self.cellSize = (grid: deviceSize.width / 4.3, list: 50)
+        self.cellSize = (grid: Constants.deviceSize.width / 4.3, list: 50)
         self.imageSize = CGSize(width: cellSize.grid * 0.63, height: cellSize.grid * 0.63)
         self.textSize = CGSize(width: cellSize.grid, height: cellSize.grid * 0.40)
     }
@@ -145,7 +145,7 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
                 .ignoresSafeArea()
             
             // 컨텐츠
-            WidgetContainerCell(widget: DeepLink.example, viewModel: MainWidgetViewModel.shared, type: .list)
+            WidgetContainerCell(widget: DeepLink.example, viewModel: MainWidgetViewModel(), type: .list)
                 .padding(.horizontal)
         }
         .environmentObject(StorageProvider())

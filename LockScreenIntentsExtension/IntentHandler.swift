@@ -18,6 +18,9 @@ import SwiftUI
 // "<myApp>에서 메시지 검색"
 
 class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessagesIntentHandling, INSetMessageAttributeIntentHandling {
+
+    @ObservedObject var coreData = WidgetCoreData.shared
+
     override func handler(for intent: INIntent) -> Any {
         // This is the default implementation.  If you want different objects to handle different intents,
         // you can override this and return the handler you want for that particular intent.
@@ -129,15 +132,13 @@ extension IntentHandler: DeepLinkAppIntentHandling {
 
     func provideAppOptionsCollection(for intent: DeepLinkAppIntent, with completion: @escaping (INObjectCollection<AppDefinition>?, Error?) -> Void) {
 
-        let avaliableApps = WidgetCoreData.shared.linkWidgets
-    
-        let apps: [AppDefinition] = avaliableApps.map { deepLink in
+        let apps: [AppDefinition] = $coreData.linkWidgets.map { deepLink in
             let item = AppDefinition(
                 identifier: deepLink.id?.uuidString,
-                display: deepLink.name ?? "no Data")
+                display: deepLink.name.wrappedValue ?? "no Data")
 
-            item.url = deepLink.url
-            item.opacity = deepLink.opacity
+            item.url = deepLink.url.wrappedValue ?? "link://"
+            item.opacity = deepLink.opacity.wrappedValue
             
             return item
         }

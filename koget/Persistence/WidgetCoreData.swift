@@ -17,8 +17,8 @@ class WidgetCoreData: ObservableObject {
     @Published var lastUpdatedDate = Date()
     @Published var lastSelectedWidget: DeepLink?
     let container = NSPersistentContainer(name: "WidgetModel")
-    let coreDataContainerName = COREDATA_CONTAINER_NAME
-    let appGroupID = APP_GROUP_ID
+    let coreDataContainerName = Constants.COREDATA_CONTAINER_NAME
+    let appGroupID = Constants.APP_GROUP_ID
 
     private init() {
 
@@ -44,14 +44,9 @@ class WidgetCoreData: ObservableObject {
         widget.updatedDate = Date()
         widget.opacity = (opacity) as NSNumber
 
-        saveData { error in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-
-            loadData()
-        }
+        linkWidgets.append(widget)
+        saveData()
+        loadData()
     }
 
     func compressPNGData(with image: UIImage?) -> Data {
@@ -82,15 +77,8 @@ class WidgetCoreData: ObservableObject {
         widget.url = url
         widget.updatedDate = Date()
         widget.opacity = NSNumber(floatLiteral: opacity)
-        saveData { error in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-
-            loadData()
-
-        }
+        saveData()
+        loadData()
     }
     
     func getStoredDataForDeepLink() -> [DeepLink]? {
@@ -107,12 +95,12 @@ class WidgetCoreData: ObservableObject {
         return nil
     }
     
-    func saveData(completion: (Error?) -> ()) {
+    func saveData() {
         do {
             try container.viewContext.save()
-            completion(nil)
         } catch let error {
-            completion(error)
+            print(error.localizedDescription)
+            return
         }
     }
     
@@ -131,8 +119,6 @@ class WidgetCoreData: ObservableObject {
         // 데이터 가져오기
         do {
             linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
-            self.objectWillChange.send()
-             print("로드완료")
         } catch {
             print("데이터 가져오기 에러 발생 : \(error)")
             return
@@ -162,13 +148,8 @@ class WidgetCoreData: ObservableObject {
 
     func deleteData(data: DeepLink) {
         container.viewContext.delete(data)
-        saveData { error in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            loadData()
-        }
+        saveData()
+        loadData()
     }
 }
 

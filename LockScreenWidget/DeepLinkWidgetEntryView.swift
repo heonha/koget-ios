@@ -16,103 +16,81 @@ struct DeepLinkWidgetEntryView: View {
 
     var entry: DeepLinkProvider.Entry
 
-    @Environment(\.widgetFamily) var family
+    @Environment(\.widgetFamily) var widgetFamily
 
-    let mainURL = "link://"
-    let selectWidgetURL = "open://"
-    @State var placeholderOpacity: CGFloat = 1
-    @StateObject var coreData = WidgetCoreData.shared
+    @ObservedObject var coreData = WidgetCoreData.shared
 
-    // 위젯 Family에 따라 분기가 가능함(switch)
     @ViewBuilder
     var body: some View {
         ZStack {
-            switch family {
+            switch widgetFamily {
             case .accessoryCircular:
-                ZStack {
-                    // entry에 id가 Set되어 있는경우
-                    if entry.id != nil && entry.url != nil {
-                        if entry.id == "Ssn2&}g3f`M-Fe.k" { // 스냅샷
-                            ZStack {
-                                VStack {
-                                    Text("바로가기")
-                                        .font(.system(size: 12))
-                                    Text("위젯추가")
-                                        .font(.system(size: 12))
-                                }
-                                .bold()
-                            }
-                        } else {
-                            VStack(alignment: .center) {
-                                Image(uiImage: entry.image ?? UIImage(systemSymbol: .questionmarkCircle))
-                                .resizable()
-                                .scaledToFit()
-                                .widgetURL(URL(string: "\(mainURL)\(entry.url!)\(WidgetConstant.idSeparator)\(entry.id!)"))
-                                .clipShape(Circle())
-                            }
-                            .opacity(entry.opacity ?? 1.0)
-                            .opacity(0.7)
-                        }
-                    } else {
-                        ZStack {
-                            VStack {
-                                Text("눌러서")
-                                Text("위젯선택")
-                            }
-                            .bold()
-                        }
-                    }
-                }
-                .onAppear {
-                    self.placeholderOpacity = 0
-                }
-
+                iconWidgetBase
             case .systemSmall:
-                ZStack {
-                    // entry에 id가 Set되어 있는경우
-                    if entry.id != nil {
-                        if entry.id == "Ssn2&}g3f`M-Fe.k" {
-                            ZStack {
-                                VStack {
-                                    Text("바로가기")
-                                        .font(.system(size: 12))
-                                    Text("위젯추가")
-                                        .font(.system(size: 12))
-                                }
-                                .bold()
-                            }
-                        } else {
-                            // 코어 데이터의 데이터
-                            // entry의 데이터
-                            // 코어데이터 바뀜 -> 코어데이터 업데이트 -> Entry 업데이트 -> 위젯 업데이트
-                            VStack(alignment: .center) {
-                                Image(uiImage: entry.image ?? UIImage(systemSymbol: .questionmarkCircle))
-                                .resizable()
-                                .scaledToFit()
-                                .widgetURL(URL(string: "\(mainURL)\(entry.url ?? "")\(WidgetConstant.idSeparator)\(entry.id ?? "")"))
-                                .clipShape(Circle())
-                            }
-                            .opacity(entry.opacity ?? 1.0)
-                            .opacity(0.7)
-                        }
-                    } else {
-                        ZStack {
-                            VStack {
-                                Text("눌러서")
-                                Text("위젯선택")
-                            }
-                            .bold()
-                        }
-                    }
-                }
+                iconWidgetBase
             default:
-                VStack {
-                    Text("위젯오류")
-                }
-                .widgetURL(URL(string: selectWidgetURL))
+                errorView
             }
         }
     }
+
+    var iconWidgetBase: some View {
+        ZStack {
+            if let id = entry.id, let url = entry.url {
+                if entry.id == WidgetConstant.snapshotID { // 스냅샷
+                    snapShotView
+                } else {
+                    iconView(id: id, url: url)
+                }
+            } else {
+                placeHolderView
+            }
+        }
+    }
+
+    var snapShotView: some View {
+        VStack {
+            Text("바로가기")
+            Text("위젯추가")
+        }
+        .font(.system(size: 12, weight: .bold))
+    }
+
+    func iconView(id: String, url: String) -> some View {
+        let image = fetchIcon(id: id)
+        return VStack(alignment: .center) {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .widgetURL(URL(string: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id)"))
+                .clipShape(Circle())
+                .opacity(0.7)
+        }
+        .opacity(entry.opacity ?? 1.0)
+    }
+
+    var placeHolderView: some View {
+        VStack {
+            Text("눌러서")
+            Text("위젯선택")
+        }
+        .bold()
+    }
+
+    var errorView: some View {
+        Text("위젯오류")
+    }
+
+    func fetchIcon(id: String) -> UIImage {
+        let widget = coreData.linkWidgets
+            .first(where: { $0.id?.uuidString == id })!
+        if let imageData = widget.image {
+            return UIImage(data: imageData)!
+        } else {
+            return UIImage(systemSymbol: .xmark)
+        }
+    }
+
 }
 
 // MARK: - Widget Preview
@@ -123,7 +101,7 @@ struct LockScreenWidget_Previews: PreviewProvider {
                       DeepLinkEntry(date: Date(), name: "카카오톡", url: "kakaotalk://", image: UIImage(named: "instagram")!, id: UUID().uuidString)
         ]
         ForEach(entrys, id: \.id) { entry in
-            DeepLinkWidgetEntryView(entry: entry)
+            DeepLinkWidgetEntryView(entry: entry, coreData: WidgetCoreData.shared)
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         }
     }

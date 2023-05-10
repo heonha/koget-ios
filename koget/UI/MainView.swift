@@ -12,11 +12,11 @@ import SwiftEntryKit
 
 struct MainView: View {
 
-    @EnvironmentObject var constant: Constants
-    @State var isDebugMode = false
-    
+    @EnvironmentObject var constant: AppStateConstant
+    @StateObject var viewModel = MainWidgetViewModel()
+
     var body: some View {
-        MainTabView()
+        MainTabView(viewModel: viewModel)
             .preferredColorScheme(constant.isDarkMode ? .dark : .light)
             .animation(.linear(duration: 0.2), value: constant.isDarkMode)
     }

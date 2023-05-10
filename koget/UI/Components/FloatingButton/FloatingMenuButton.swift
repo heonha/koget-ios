@@ -31,7 +31,7 @@ struct FloatingMenuButton: View {
     = (color: Color.init(uiColor: .label), fontSize: 15, weight: .medium)
     // view
     var borderColor = AppColor.Background.third
-    @EnvironmentObject var constant: Constants
+    @EnvironmentObject var constant: AppStateConstant
 
     @State var isPresent = false
     @Environment(\.viewController) var viewControllerHolder: UIViewController?

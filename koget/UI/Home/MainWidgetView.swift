@@ -21,7 +21,7 @@ struct MainWidgetView: View {
 
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
-    @EnvironmentObject var constant: Constants
+    @EnvironmentObject var constant: AppStateConstant
 
     var body: some View {
         NavigationView {
@@ -83,7 +83,7 @@ struct MainWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         
         NavigationView {
-            MainWidgetView(viewModel: MainWidgetViewModel.shared)
+            MainWidgetView(viewModel: MainWidgetViewModel())
         }
         
     }

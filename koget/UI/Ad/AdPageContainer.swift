@@ -13,7 +13,7 @@ struct AdPageContainer: View {
 
     var pageList = [AdPageCell(title: "UPDATED 1.2", imageName: "KogetClear")]
 
-    var height: CGFloat = deviceSize.height / 7.5
+    var height: CGFloat = Constants.deviceSize.height / 7.5
 
     var body: some View {
         TabView {

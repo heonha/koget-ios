@@ -50,10 +50,9 @@ final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditPr
     @Published var url: String = ""
     @Published var image: UIImage?
     @Published var opacityValue: Double = 1.0
-
     @Published var errorMessage = ""
-
     @Published var nameMaxCountError = false
+
     lazy var nameMaxCountErrorMessage = S.Error.nameLetterLimited(nameStringLimit)
 
     var targetURL: URL?
@@ -62,6 +61,15 @@ final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditPr
         self.name = selectedWidget.displayName
         self.url = selectedWidget.url
         self.image = selectedWidget.image!
+    }
+
+    // Web & App 구분
+    func checkLinkType(url: String) -> LinkType {
+        if url.lowercased().contains("http://") || url.lowercased().contains("https://") {
+            return LinkType.web
+        } else {
+            return LinkType.app
+        }
     }
 
     func addWidget() {

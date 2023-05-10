@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WidgetAssetCell: View {
 
-    @StateObject var viewModel: MakeWidgetViewModel
+    @ObservedObject var viewModel: MakeWidgetViewModel
 
     var widget: LinkWidget
     var imageSize: CGSize = .init(width: 40, height: 40)
@@ -47,7 +47,7 @@ struct WidgetAssetCell: View {
                                 .foregroundColor(installTextColor)
                         }
                     }
-                    Text(MainWidgetViewModel.shared.checkLinkType(url: widget.url).localizedString)
+                    Text(viewModel.checkLinkType(url: widget.url).localizedString)
                         .font(.custom(CustomFont.NotoSansKR.medium, size: 12))
                         .foregroundColor(installTextColor)
                         .padding(.leading, 1)

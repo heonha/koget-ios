@@ -19,9 +19,9 @@ final class MainWidgetViewModel: BaseViewModel {
     @AppStorage("isGridView") var isGridView = false
     @AppStorage("FirstRun") var isFirstRun = true
 
-    static let shared = MainWidgetViewModel()
-    
-    private override init() {
+    @ObservedObject var coreData = WidgetCoreData.shared
+
+    override init() {
         super.init()
         alertView = setAlertView()
     }
@@ -41,17 +41,11 @@ final class MainWidgetViewModel: BaseViewModel {
         let url = String(separatedURL[0]).deletingPrefix(WidgetConstant.mainURL)
         let id = String(separatedURL[1])
 
-        if let deepLink = WidgetCoreData.shared.linkWidgets.first(where: { $0.id?.uuidString == id }) {
+        if let deepLink = coreData.linkWidgets.first(where: { $0.id?.uuidString == id }) {
             deepLink.runCount += 1
-            WidgetCoreData.shared.saveData { error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-
-                WidgetCoreData.shared.loadData()
+            coreData.saveData()
+            coreData.loadData()
                 
-            }
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
         } else {
             return
@@ -60,7 +54,7 @@ final class MainWidgetViewModel: BaseViewModel {
 
     func deleteItem(completion: @escaping() -> Void) {
         for widget in selection {
-            WidgetCoreData.shared.deleteData(data: widget)
+            coreData.deleteData(data: widget)
         }
         completion()
     }

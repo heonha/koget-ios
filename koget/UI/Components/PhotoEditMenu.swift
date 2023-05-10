@@ -10,7 +10,7 @@ import SFSafeSymbols
 
 protocol VMPhotoEditProtocol: ObservableObject {
     var image: UIImage? { get set }
-    var opacityValue: Double { get set}
+    var opacityValue: Double { get set }
     var isOpacitySliderEditing: Bool { get set }
 }
 
@@ -18,8 +18,8 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
     
     @Binding var isEditingMode: Bool
     @State var isPhotoViewPresent: Bool = false
-    @StateObject var viewModel: V
-    @ObservedObject var constant = Constants.shared
+    @ObservedObject var viewModel: V
+    @ObservedObject var constant = AppStateConstant.shared
 
     let selectImageLabel = S.PhotoEditMenu.selectWidget
     

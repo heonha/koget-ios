@@ -60,8 +60,8 @@ struct WidgetGridLinkTypeIcon: View {
 struct WidgetLinkTypeIcon_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            WidgetGridCell(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "tmap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel.shared)
-            WidgetGridCell(name: "위젯이름", url: "fdsf://google.com", widgetImage: UIImage.init(named: "tmap")!, cellWidth: widgetCellWidthForGrid, viewModel: MainWidgetViewModel.shared)
+            WidgetGridCell(name: "위젯이름", url: "https://google.com", widgetImage: UIImage.init(named: "tmap")!, cellWidth: Constants.widgetCellWidthForGrid, viewModel: MainWidgetViewModel())
+            WidgetGridCell(name: "위젯이름", url: "fdsf://google.com", widgetImage: UIImage.init(named: "tmap")!, cellWidth: Constants.widgetCellWidthForGrid, viewModel: MainWidgetViewModel())
         }
  
     }

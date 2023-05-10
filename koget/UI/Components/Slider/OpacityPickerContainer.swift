@@ -12,7 +12,7 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
     
     @StateObject var viewModel: V
     @Binding var isPresentQustionmark: Bool
-    @StateObject var constant = Constants.shared
+    @ObservedObject var constant = AppStateConstant.shared
 
     let opacityDesctiption = S.OpacitySlider.description
 
@@ -64,7 +64,7 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
                         .font(.custom(CustomFont.NotoSansKR.light, size: 13))
                         .foregroundColor(AppColor.Label.first)
                 })
-                .frame(width: deviceSize.width * 0.5, height: 30)
+                .frame(width: Constants.deviceSize.width * 0.5, height: 30)
                 .offset(x: 80, y: -40)
                 .opacity( isPresentQustionmark ? 1.0 : 0.0 )
                 .animation(.linear(duration: 0.15), value: isPresentQustionmark)
