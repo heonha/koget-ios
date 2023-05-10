@@ -7,7 +7,6 @@
 
 import SwiftUI
 import FirebaseFirestore
-import SwiftDate
 
 struct PatchNoteData: Codable, Identifiable {
     var id: UUID = UUID()
@@ -45,7 +44,8 @@ struct PatchNoteModel {
                     let light = document["light"] as? String ?? "unknown"
                     let dark = document["dark"] as? String ?? "unknown"
 
-                    let date = document["date"] as? Date ?? Date()
+                    let timeStamp = document["date"] as? Timestamp ?? Timestamp()
+                    let date = timeStamp.dateValue()
                     let data = PatchNoteData(title: title, subtitle: subtitle, lightFileName: light, darkFileName: dark, date: date)
                     noteArray.append(data)
                 }

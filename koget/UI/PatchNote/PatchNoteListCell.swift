@@ -15,9 +15,10 @@ struct PatchNoteListCell: View {
     let date: String
     let lightFileName: String
     let darkFileName: String
-    @State private var forwards = false
 
+    @State private var forwards = false
     @State var isPresent: Bool = false
+
     @EnvironmentObject var constant: AppStateConstant
 
     var body: some View {
@@ -55,12 +56,15 @@ struct PatchNoteListCell: View {
         }
     }
 }
-// 
-// struct PatchNoteListCell_Previews: PreviewProvider {
-//     static var previews: some View {
-//         VStack(spacing: 4) {
+
+ struct PatchNoteListCell_Previews: PreviewProvider {
+     static var previews: some View {
+         VStack(spacing: 4) {
+
+             PatchNoteListCell(title: "Title", subtitle: "Subtitle", date: "Date", lightFileName: "lightFileName", darkFileName: "darkFileName")
+
 //             PatchNoteListCell(title: "업데이트 1.2", subtitle: "다크모드 등", date: "2023-00-00", url: "")
 //             PatchNoteListCell(title: "업데이트 1.1", subtitle: "리스트보기, 바로실행, 실행횟수 등", date: "2023-00-00", url: "")
-//         }
-//     }
-// }
+         }
+     }
+ }

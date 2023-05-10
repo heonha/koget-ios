@@ -5,7 +5,7 @@
  // Created by Heonjin Ha on 2023/03/12.
 
 import SwiftUI
-import SwiftDate
+
 
 struct PatchNoteList: View {
 
@@ -18,7 +18,7 @@ struct PatchNoteList: View {
                     ForEach(viewModel.notes.reversed()) { note in
                         PatchNoteListCell(title: note.title,
                                           subtitle: note.subtitle,
-                                          date: note.date.toFormat("yyyy-MM-dd"),
+                                          date: note.date.string,
                                           lightFileName: note.lightFileName,
                                           darkFileName: note.darkFileName)
                     }
