@@ -46,37 +46,23 @@ struct DeepLinkProvider: IntentTimelineProvider {
     func getTimeline(for configuration: Intent,
                      in context: Context,
                      completion: @escaping (Timeline<Entry>) -> Void) {
-        if let app = configuration.app {
-            let selectedLink = coreData.linkWidgets.first {
-                $0.id?.uuidString == app.identifier ?? WidgetConstant.snapshotID
-            }
 
-            var entry: Entry?
-
-            if let selectedLink = selectedLink {
-                let image = UIImage(data: selectedLink.image ?? Data()) ?? UIImage(systemSymbol: .plus)
-                entry = Entry(
-                    date: Date(),
-                    name: app.displayString,
-                    url: app.url ?? "link://",
-                    image: image,
-                    id: app.identifier,
-                    opacity: selectedLink.opacity?.doubleValue ?? 1.0
-                )
-            } else {
-                entry = self.notSelectedWidgetEntry
-            }
-
-            guard let entry = entry else { return }
-
-            let timeline = Timeline(entries: [entry], policy: .never)
-            completion(timeline)
-        } else {
-            // 위젯이 선택되지 않은 경우
-            let entry = self.notSelectedWidgetEntry
-            let timeline = Timeline(entries: [entry], policy: .atEnd)
-            completion(timeline)
+        let app = configuration.app
+        let selectedLink = coreData.linkWidgets.first {
+            $0.id?.uuidString == app?.identifier ?? WidgetConstant.snapshotID
         }
+
+        let image = UIImage(data: selectedLink?.image ?? Data()) ?? UIImage(systemSymbol: .plus)
+        let entry = Entry(
+            date: Date(),
+            name: app?.displayString ?? "Loading",
+            url: app?.url ?? "link://",
+            image: image,
+            id: app?.identifier,
+            opacity: selectedLink?.opacity?.doubleValue ?? 1.0
+        )
+
+        completion(Timeline(entries: [entry], policy: .never))
     }
 
 }

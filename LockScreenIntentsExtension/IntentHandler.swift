@@ -132,15 +132,13 @@ extension IntentHandler: DeepLinkAppIntentHandling {
 
     func provideAppOptionsCollection(for intent: DeepLinkAppIntent, with completion: @escaping (INObjectCollection<AppDefinition>?, Error?) -> Void) {
 
-        let avaliableApps = coreData.linkWidgets
-    
-        let apps: [AppDefinition] = avaliableApps.map { deepLink in
+        let apps: [AppDefinition] = $coreData.linkWidgets.map { deepLink in
             let item = AppDefinition(
                 identifier: deepLink.id?.uuidString,
-                display: deepLink.name ?? "no Data")
+                display: deepLink.name.wrappedValue ?? "no Data")
 
-            item.url = deepLink.url
-            item.opacity = deepLink.opacity
+            item.url = deepLink.url.wrappedValue ?? "link://"
+            item.opacity = deepLink.opacity.wrappedValue
             
             return item
         }

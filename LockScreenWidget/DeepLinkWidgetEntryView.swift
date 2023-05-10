@@ -40,7 +40,7 @@ struct DeepLinkWidgetEntryView: View {
                 if entry.id == WidgetConstant.snapshotID { // 스냅샷
                     snapShotView
                 } else {
-                    iconView(id: id, url: url, lastUpdate: coreData.lastSelectedWidget)
+                    iconView(id: id, url: url)
                 }
             } else {
                 placeHolderView
@@ -56,9 +56,10 @@ struct DeepLinkWidgetEntryView: View {
         .font(.system(size: 12, weight: .bold))
     }
 
-    func iconView(id: String, url: String, lastUpdate: DeepLink?) -> some View {
-        VStack(alignment: .center) {
-            Image(uiImage: entry.image ?? UIImage(systemSymbol: .questionmarkCircle))
+    func iconView(id: String, url: String) -> some View {
+        let image = fetchIcon(id: id)
+        return VStack(alignment: .center) {
+            Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
                 .widgetURL(URL(string: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id)"))
@@ -78,6 +79,16 @@ struct DeepLinkWidgetEntryView: View {
 
     var errorView: some View {
         Text("위젯오류")
+    }
+
+    func fetchIcon(id: String) -> UIImage {
+        let widget = coreData.linkWidgets
+            .first(where: { $0.id?.uuidString == id })!
+        if let imageData = widget.image {
+            return UIImage(data: imageData)!
+        } else {
+            return UIImage(systemSymbol: .xmark)
+        }
     }
 
 }
