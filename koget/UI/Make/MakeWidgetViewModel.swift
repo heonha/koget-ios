@@ -181,11 +181,11 @@ final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditPr
     }
 
     private func setSuccessAlert() -> UIView {
-        return EKMaker.setToastView(title: "위젯 생성 완료!", subtitle: "코젯앱을 잠금화면에 추가해 사용하세요.", named: "success")
+        return EKMaker.setToastView(title: S.Alert.Success.title, subtitle: S.Alert.Success.subtitle, named: "success")
     }
 
     private func setErrorAlertView(subtitle: String) -> UIView {
-        return EKMaker.setToastView(title: "확인 필요", subtitle: subtitle, named: "failed")
+        return EKMaker.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
     }
 
     private func displayToast() {

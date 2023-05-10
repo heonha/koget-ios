@@ -34,6 +34,8 @@
 "alert.delete_success_subtitle" = "삭제한 위젯은 잠금화면에서도 변경 또는 삭제 해주세요";
 "alert.message.check_Widget_Delete" = "이 위젯을 삭제 할까요?";
 "alert.need_check" = "확인 필요";
+"alert.success.title" = "위젯 생성 완료!";
+"alert.success.subtitle" = "코젯을 잠금화면 위젯에 추가하고 앱을 선택해 사용하세요!.";
 
 
 "error.empty_field" = "빈칸을 채워주세요.";
@@ -182,6 +184,7 @@
 "widget.check_widget" = "위젯확인";
 "widget.config.title" = "바로가기 위젯";
 "widget.config.subtitle"= "아이콘을 눌러 잠금화면에 놓으세요.\n그리고 코젯 앱에서 생성한 위젯을 선택하세요.";
+"widget.error" = "Error";
 
 // LICENSE
 "license.title" = "오픈소스 라이선스";

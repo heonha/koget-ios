@@ -13,8 +13,8 @@ import CoreData
 struct DeepLinkWidget: Widget {
 
     let kind: String = "LockScreenWidget"
-    let title: LocalizedStringKey = "잠금화면 위젯"
-    let subtitle: LocalizedStringKey = "아이콘을 눌러 잠금화면에 놓고, 위젯을 선택해주세요."
+    let title: String = S.Widget.Config.title
+    let subtitle: String = S.Widget.Config.subtitle
 
     @ObservedObject var coreData = WidgetCoreData.shared
 

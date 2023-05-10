@@ -16,6 +16,10 @@ struct DeepLinkWidgetEntryView: View {
 
     var entry: DeepLinkProvider.Entry
 
+    let addWidgetMessage = S.Widget.emptyPlaceholder
+    let selectWidgetMessage = S.Widget.selectWidget
+    let errorMessage = S.Widget.error
+
     @Environment(\.widgetFamily) var widgetFamily
 
     @ObservedObject var coreData = WidgetCoreData.shared
@@ -37,7 +41,7 @@ struct DeepLinkWidgetEntryView: View {
     var iconWidgetBase: some View {
         ZStack {
             if let id = entry.id, let url = entry.url {
-                if entry.id == WidgetConstant.snapshotID { // 스냅샷
+                if entry.id == WidgetConstant.snapshotID {
                     snapShotView
                 } else {
                     iconView(id: id, url: url)
@@ -50,8 +54,7 @@ struct DeepLinkWidgetEntryView: View {
 
     var snapShotView: some View {
         VStack {
-            Text("바로가기")
-            Text("위젯추가")
+            Text(addWidgetMessage)
         }
         .font(.system(size: 12, weight: .bold))
     }
@@ -71,14 +74,13 @@ struct DeepLinkWidgetEntryView: View {
 
     var placeHolderView: some View {
         VStack {
-            Text("눌러서")
-            Text("위젯선택")
+            Text(selectWidgetMessage)
         }
         .bold()
     }
 
     var errorView: some View {
-        Text("위젯오류")
+        Text(errorMessage)
     }
 
     func fetchIcon(id: String) -> UIImage {

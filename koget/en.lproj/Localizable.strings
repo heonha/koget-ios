@@ -24,6 +24,8 @@
 "alert.delete_success_subtitle" = "Please change or delete the deleted widget on the lock screen as well";
 "alert.message.check_Widget_Delete" = "Are you sure you want to delete this widget?";
 "alert.need_check" = "Needs confirmation";
+"alert.success.title" = "Success!";
+"alert.success.subtitle" = "Add Koget to the lock screen and select it.";
 
 
 "error.empty_field" = "Please fill in the blanks.";
@@ -175,6 +177,7 @@
 "widget.check_widget" = "Check\nWidget";
 "widget.config.title" = "Lockscreen Widget";
 "widget.config.subtitle"= "Tap the icon and place it on the Lockscreen.\nAnd select the widget created by Koget App.";
+"widget.error" = "Error";
 
 // LICENSE
 "license.title" = "Open Source License";
