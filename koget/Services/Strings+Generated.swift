@@ -37,10 +37,16 @@ internal enum S {
       internal static let checkWidgetDelete = S.tr("Localizable", "alert.message.check_Widget_Delete", fallback: "이 위젯을 삭제 할까요?")
     }
     internal enum Scheme {
-      /// 앱 (주소://)
-      internal static let app = S.tr("Localizable", "alert.scheme.app", fallback: "앱 (주소://)")
+      /// 앱 (앱주소://)
+      internal static let app = S.tr("Localizable", "alert.scheme.app", fallback: "앱 (앱주소://)")
       /// 웹페이지 (https://)
       internal static let web = S.tr("Localizable", "alert.scheme.web", fallback: "웹페이지 (https://)")
+    }
+    internal enum Success {
+      /// 코젯을 잠금화면 위젯에 추가하고 앱을 선택해 사용하세요!.
+      internal static let subtitle = S.tr("Localizable", "alert.success.subtitle", fallback: "코젯을 잠금화면 위젯에 추가하고 앱을 선택해 사용하세요!.")
+      /// 위젯 생성 완료!
+      internal static let title = S.tr("Localizable", "alert.success.title", fallback: "위젯 생성 완료!")
     }
   }
   internal enum AppRequest {
@@ -287,6 +293,8 @@ internal enum S {
     /// 바로가기
     /// 위젯추가
     internal static let emptyPlaceholder = S.tr("Localizable", "widget.empty_placeholder", fallback: "바로가기\n위젯추가")
+    /// Error
+    internal static let error = S.tr("Localizable", "widget.error", fallback: "Error")
     /// 눌러서
     /// 위젯선택
     internal static let selectWidget = S.tr("Localizable", "widget.select_widget", fallback: "눌러서\n위젯선택")

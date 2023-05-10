@@ -13,6 +13,7 @@
 		390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CBB29B1AED900B61E35 /* MainTabView.swift */; };
 		390B5CBE29B20B0A00B61E35 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */; };
 		392140A42A0BC1C400D0F527 /* Date+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392140A32A0BC1C400D0F527 /* Date+Extention.swift */; };
+		392140A52A0BC69800D0F527 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB37AE29C0B5DD00BD91EC /* Strings+Generated.swift */; };
 		39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
 		39223B6229A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
 		39223B6329A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
@@ -917,6 +918,7 @@
 				39694FE929E6AEEB00F2C75C /* DeepLinkWidgetEntryView.swift in Sources */,
 				3979FA6E29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				39C1F3D829D181EA00C26919 /* Constants.swift in Sources */,
+				392140A52A0BC69800D0F527 /* Strings+Generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

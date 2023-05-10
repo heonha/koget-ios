@@ -15,7 +15,7 @@
      - koget/ko.lproj/Localizable.strings
    outputs:
      - templateName: structured-swift5
-       output: koget/Helper/Strings+Generated.swift
+       output: koget/Services/Strings+Generated.swift
        params:
          enumName: S
 

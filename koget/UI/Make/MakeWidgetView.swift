@@ -29,11 +29,11 @@ struct MakeWidgetView: View {
     @State var errorAlert = UIView()
     @State var isSchemeErrorAlertPresent: Bool = false
 
-    let navigationTitle = "위젯 만들기"
-    let namePlaceholder: String = "위젯 이름"
-    let urlPlaceholder: String = "URL - (특수문자 :// 포함)"
-    var alertTitle: String = "URL 확인"
-    var alertMessage: String = "URL에 문자 ://이 없습니다.\n아래 타입을 누르면 자동으로 교정됩니다."
+    let navigationTitle = S.MakeWidgetView.navigationTitle
+    let namePlaceholder: String = S.Textfield.Placeholder.widgetName
+    let urlPlaceholder: String = S.Textfield.Placeholder.url
+    var alertTitle: String = S.UrlTestButton.checkUrl
+    var alertMessage: String = S.UrlTestButton.checkUrlSubtitleSpecific
 
     var body: some View {
         ScrollView {
@@ -164,25 +164,25 @@ struct MakeWidgetView: View {
             // 위젯생성 버튼
             doneButton
                 .alert(alertTitle, isPresented: $isSchemeErrorAlertPresent) {
-                    Button("앱 (주소://)") {
+                    Button(S.Alert.Scheme.app) {
                         viewModel.url = viewModel.url + "://"
                     }
-                    Button("웹페이지 (https://)") {
+                    Button(S.Alert.Scheme.web) {
                         viewModel.url = "https://" + viewModel.url
                     }
-                    Button("취소") {
+                    Button(S.Button.cancel) {
 
                     }
                 } message: {
                     Text(alertMessage)
                 }
-                .alert("이미지 확인", isPresented: $viewModel.isImageError) {
+                .alert(S.MakeWidgetView.IsImageError.title, isPresented: $viewModel.isImageError) {
                     defaultImageCheckAlertView
                 } message: {
-                    Text("아직 이미지 아이콘이 없어요. \n기본 이미지로 생성할까요?")
+                    Text(S.MakeWidgetView.IsImageError.message)
                 }
 
-            TextButton(title: "뒤로가기",
+            TextButton(title: S.Button.goBack,
                        titleColor: AppColor.Label.first,
                        backgroundColor: AppColor.Fill.first) {
                 self.dismiss()
@@ -192,7 +192,7 @@ struct MakeWidgetView: View {
 
     var defaultImageCheckAlertView: some View {
         Group {
-            Button("기본이미지로 생성") {
+            Button(S.MakeWidgetView.IsImageError.okButton) {
                 viewModel.image = UIImage(named: "KogetClear")
                 viewModel.addWidget()
                 dismiss()
@@ -211,7 +211,7 @@ struct MakeWidgetView: View {
                 viewModel.moreOptionOn.toggle()
             } label: {
                 ZStack {
-                    Text("투명도 조절")
+                    Text(S.Button.changeOpacity)
                         .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
                         .foregroundColor(AppColor.Label.second)
                         .padding(4)
