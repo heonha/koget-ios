@@ -15,6 +15,8 @@ final class ContactViewModel: BaseViewModel {
     @Published var title: String = ""
     @Published var body: String = ""
 
+    private let alertFactory = AlertFactory.shared
+
     var alertView = UIView()
 
     let success = S.ContactView.Alert.sendSuccess
@@ -60,20 +62,20 @@ final class ContactViewModel: BaseViewModel {
 
     // Alert Presenter
     private func presentSuccessAlert() {
-        SwiftEntryKit.display(entry: alertView, using: AlertFactory.makeBaseAlertAttribute())
+        SwiftEntryKit.display(entry: alertView, using: alertFactory.makeBaseAlertAttribute())
     }
 
     // Alert Initializer
     private func setAlertView() -> UIView {
-        return AlertFactory.setToastView(title: success, subtitle: successSubtitle, named: "success")
+        return alertFactory.setToastView(title: success, subtitle: successSubtitle, named: "success")
     }
 
     private func setServerErrorAlert() -> UIView {
-        return AlertFactory.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
+        return alertFactory.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
     }
 
     private func setErrorAlertView() -> UIView {
-        return AlertFactory.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
+        return alertFactory.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
     }
     
     func sendQuestion(type: ContectType, title: String, body: String, completion: @escaping(ResultType) -> Void) {

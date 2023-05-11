@@ -17,12 +17,14 @@ final class AssetRequestViewModel: BaseViewModel {
     @Published var alertView = UIView()
 
     //Label name
-    let success = S.AppRequest.Alert.success
-    let successSubtitle = S.AppRequest.Alert.successSubtitle
-    let requestError = S.AppRequest.Alert.requestError
-    let requestErrorSubtitle = S.AppRequest.Alert.requestErrorSubtitle
-    let needCheck = S.AppRequest.Alert.needCheck
-    let needCheckSubtitle = S.AppRequest.Alert.needCheckSubtitle
+    private let success = S.AppRequest.Alert.success
+    private let successSubtitle = S.AppRequest.Alert.successSubtitle
+    private let requestError = S.AppRequest.Alert.requestError
+    private let requestErrorSubtitle = S.AppRequest.Alert.requestErrorSubtitle
+    private let needCheck = S.AppRequest.Alert.needCheck
+    private let needCheckSubtitle = S.AppRequest.Alert.needCheckSubtitle
+
+    private let alertFactory = AlertFactory.shared
 
     var version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
@@ -85,18 +87,18 @@ final class AssetRequestViewModel: BaseViewModel {
     }
 
     private func setAlertView() -> UIView {
-        return AlertFactory.setToastView(title: success, subtitle: successSubtitle, named: "success")
+        return alertFactory.setToastView(title: success, subtitle: successSubtitle, named: "success")
     }
 
     private func setServerErrorAlert() -> UIView {
-        return AlertFactory.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
+        return alertFactory.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
     }
 
     private func presentSuccessAlert() {
-        SwiftEntryKit.display(entry: alertView, using: AlertFactory.makeBaseAlertAttribute())
+        SwiftEntryKit.display(entry: alertView, using: alertFactory.makeBaseAlertAttribute())
     }
 
     private func setErrorAlertView() -> UIView {
-        return AlertFactory.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
+        return alertFactory.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
     }
 }

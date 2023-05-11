@@ -31,7 +31,6 @@ class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtoc
 
     var nameStringLimit: Int = 14
     @Published var alertView = UIView()
-
     @Published var alertMessage: String = S.unknown
     @Published var name: String = "" {
         didSet {
@@ -52,6 +51,8 @@ class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtoc
     @Published var nameMaxCountError = false
 
     lazy var nameMaxCountErrorMessage: String = S.Error.nameLetterLimited(nameStringLimit)
+
+    private let alertFactory = AlertFactory.shared
 
     func editWidgetData(widget: DeepLink) {
         WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, opacity: opacityValue, widget: widget)
@@ -108,15 +109,15 @@ class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtoc
 
     // 위젯 편집 성공
     private func setAlertView() -> UIView {
-        return AlertFactory.setToastView(title: S.Alert.editSuccessTitle, subtitle: S.Alert.editSuccessSubtitle, named: "success")
+        return alertFactory.setToastView(title: S.Alert.editSuccessTitle, subtitle: S.Alert.editSuccessSubtitle, named: "success")
     }
 
     // 확인 필요
     private func setAlertView(subtitle: String) -> UIView {
-        return AlertFactory.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
+        return alertFactory.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
     }
 
     private func displayAlert() {
-        SwiftEntryKit.display(entry: alertView, using: AlertFactory.makeBaseAlertAttribute())
+        SwiftEntryKit.display(entry: alertView, using: alertFactory.makeBaseAlertAttribute())
     }
 }

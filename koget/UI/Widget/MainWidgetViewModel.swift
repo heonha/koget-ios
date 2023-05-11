@@ -21,6 +21,8 @@ final class MainWidgetViewModel: BaseViewModel {
 
     @ObservedObject var coreData = WidgetCoreData.shared
 
+    private let alertFactory = AlertFactory.shared
+
     override init() {
         super.init()
         alertView = setAlertView()
@@ -60,11 +62,11 @@ final class MainWidgetViewModel: BaseViewModel {
     }
 
     func setAlertView() -> UIView {
-        return AlertFactory.setToastView(title: S.Alert.deleteSuccessTitle, subtitle: S.Alert.deleteSuccessSubtitle, named: "success")
+        return alertFactory.setToastView(title: S.Alert.deleteSuccessTitle, subtitle: S.Alert.deleteSuccessSubtitle, named: "success")
     }
 
     func displayAlertView() {
-        SwiftEntryKit.display(entry: alertView, using: AlertFactory.makeBaseAlertAttribute())
+        SwiftEntryKit.display(entry: alertView, using: alertFactory.makeBaseAlertAttribute())
     }
 
 }

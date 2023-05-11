@@ -29,6 +29,7 @@ enum MakeWidgetErrorType {
 final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
 
     @Published var alertView = UIView()
+    private let alertFactory = AlertFactory.shared
 
     var nameStringLimit: Int = 14
     let defaultImage = UIImage(named: "KogetClear")!
@@ -181,15 +182,15 @@ final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditPr
     }
 
     private func setSuccessAlert() -> UIView {
-        return AlertFactory.setToastView(title: S.Alert.Success.title, subtitle: S.Alert.Success.subtitle, named: "success")
+        return alertFactory.setToastView(title: S.Alert.Success.title, subtitle: S.Alert.Success.subtitle, named: "success")
     }
 
     private func setErrorAlertView(subtitle: String) -> UIView {
-        return AlertFactory.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
+        return alertFactory.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
     }
 
     private func displayToast() {
-        SwiftEntryKit.display(entry: alertView, using: AlertFactory.makeBaseAlertAttribute())
+        SwiftEntryKit.display(entry: alertView, using: alertFactory.makeBaseAlertAttribute())
     }
 
 }

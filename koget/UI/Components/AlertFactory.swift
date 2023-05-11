@@ -11,46 +11,48 @@ import SFSafeSymbols
 
 struct AlertFactory {
 
+    static let shared = AlertFactory()
+
     enum AlertAttributeType {
         case topFloat, centerFloat, bottomFloat
     }
 
     // Attributes
-    typealias Attributes = EKAttributes
-    typealias Animation = EKAttributes.Animation
-    typealias BackgroundStyle = EKAttributes.BackgroundStyle
+    private typealias Attributes = EKAttributes
+    private typealias Animation = EKAttributes.Animation
+    private typealias BackgroundStyle = EKAttributes.BackgroundStyle
 
     // EKProperty
-    typealias ButtonContent = EKProperty.ButtonContent
-    typealias ImageContent = EKProperty.ImageContent
-    typealias LabelStyle = EKProperty.LabelStyle
-    typealias LabelContent = EKProperty.LabelContent
+    private typealias ButtonContent = EKProperty.ButtonContent
+    private typealias ImageContent = EKProperty.ImageContent
+    private typealias LabelStyle = EKProperty.LabelStyle
+    private typealias LabelContent = EKProperty.LabelContent
 
-    private static let entranceAnimation: Animation = {
+    private let entranceAnimation: Animation = {
         let translate = Animation.Translate(duration: 0.7,spring: .init(damping: 0.7, initialVelocity: 0))
         let scale = Animation.RangeAnimation(from: 0.7, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0))
         return Animation(translate: translate, scale: scale)
     }()
 
-    private static let exitAnimation = Animation(translate: .init(duration: 0.2))
-    private static let displayMode = EKAttributes.DisplayMode.inferred
+    private let exitAnimation = Animation(translate: .init(duration: 0.2))
+    private let displayMode = EKAttributes.DisplayMode.inferred
 
 }
 
 extension AlertFactory {
 
-    static func makeBaseAlertAttribute(type: AlertAttributeType = .topFloat) -> Attributes {
+    func makeBaseAlertAttribute(type: AlertAttributeType = .topFloat) -> EKAttributes {
         return baseAttribute(type: type)
     }
 
-    static func voidAction() -> Void { }
+    func voidAction() -> Void { }
 
 }
 
 extension AlertFactory {
 
     // MARK: - Attributes
-    private static func defineAttribute(type: AlertAttributeType) -> Attributes {
+    private func defineAttribute(type: AlertAttributeType) -> Attributes {
         switch type {
         case .topFloat:
             return Attributes.topFloat
@@ -61,7 +63,7 @@ extension AlertFactory {
         }
     }
 
-    private static func baseAttribute(type: AlertAttributeType = .topFloat) -> Attributes {
+    private func baseAttribute(type: AlertAttributeType = .topFloat) -> Attributes {
 
         // Base (Root)
         var attribute = defineAttribute(type: type)
@@ -101,7 +103,7 @@ extension AlertFactory {
 // MARK: - MessageView
 extension AlertFactory {
 
-    static func setToastView(title: String,
+    func setToastView(title: String,
                              subtitle: String,
                              named: String) -> EKNotificationMessageView {
         // Contents
@@ -118,7 +120,7 @@ extension AlertFactory {
         return EKNotificationMessageView(with: notificationMessage)
     }
 
-    static func setPopupView(title: String, subtitle: String, named: String) -> EKPopUpMessageView {
+    func setPopupView(title: String, subtitle: String, named: String) -> EKPopUpMessageView {
         // ButtonContent
         let bottomPopupBtn: ButtonContent = {
             // Label style
@@ -165,7 +167,6 @@ extension AlertFactory {
 
         return EKPopUpMessageView(with: popupMessage)
     }
-
 }
 
 #if DEBUG
