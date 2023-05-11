@@ -65,7 +65,7 @@ final class MainWidgetViewModel: BaseViewModel {
     }
 
     func displayAlertView() {
-        alertFactory.displayToast()
+        alertFactory.showAlert()
     }
 
 }

@@ -82,7 +82,7 @@ final class AssetRequestViewModel: BaseViewModel {
         case .serverError:
             setServerErrorAlert()
         }
-        alertFactory.displayToast()
+        alertFactory.showAlert()
     }
 
     private func setAlertView() {

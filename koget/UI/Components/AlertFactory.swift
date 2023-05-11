@@ -37,7 +37,8 @@ class AlertFactory {
     private let exitAnimation = Animation(translate: .init(duration: 0.2))
     private let displayMode = EKAttributes.DisplayMode.inferred
 
-    var alertView = UIView()
+    private func voidAction() -> Void { }
+    private var alertView = UIView()
 
 }
 
@@ -46,8 +47,6 @@ extension AlertFactory {
     func makeBaseAlertAttribute(type: AlertAttributeType = .topFloat) -> EKAttributes {
         return baseAttribute(type: type)
     }
-
-    func voidAction() -> Void { }
 
 }
 
@@ -105,7 +104,7 @@ extension AlertFactory {
 // MARK: - MessageView
 extension AlertFactory {
 
-    func displayToast() {
+    func showAlert() {
         SwiftEntryKit.display(entry: alertView, using: makeBaseAlertAttribute())
     }
 

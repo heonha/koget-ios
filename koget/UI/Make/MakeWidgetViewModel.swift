@@ -171,10 +171,10 @@ final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditPr
         switch type {
         case .success:
             setSuccessAlert()
-            alertFactory.displayToast()
+            alertFactory.showAlert()
         case .userError:
             setErrorAlertView(subtitle: errorMessage)
-            alertFactory.displayToast()
+            alertFactory.showAlert()
         case .serverError:
             return
         }

@@ -91,12 +91,12 @@ class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtoc
 
                 if let error = error {
                     self.setAlertView(subtitle: error.localizedDescription)
-                    alertFactory.displayToast()
+                    alertFactory.showAlert()
                     return
                 } else {
                     self.setAlertView()
                     self.editWidgetData(widget: widget)
-                    alertFactory.displayToast()
+                    alertFactory.showAlert()
                     self.isEditingMode = false
                     WidgetCenter.shared.reloadAllTimelines()
                 }

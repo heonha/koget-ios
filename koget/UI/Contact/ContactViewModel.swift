@@ -55,7 +55,7 @@ final class ContactViewModel: BaseViewModel {
         case .serverError:
             setServerErrorAlert()
         }
-        alertFactory.displayToast()
+        alertFactory.showAlert()
     }
 
     // Alert Initializer
