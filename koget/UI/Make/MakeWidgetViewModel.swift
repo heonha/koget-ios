@@ -189,7 +189,7 @@ final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditPr
     }
 
     private func displayToast() {
-        SwiftEntryKit.display(entry: alertView, using: AlertFactory.whiteAlertAttribute)
+        SwiftEntryKit.display(entry: alertView, using: AlertFactory.makeBaseAlertAttribute())
     }
 
 }

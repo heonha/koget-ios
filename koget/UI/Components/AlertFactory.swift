@@ -24,91 +24,73 @@ struct AlertFactory {
     typealias LabelStyle = EKProperty.LabelStyle
     typealias LabelContent = EKProperty.LabelContent
 
+    private static let entranceAnimation: Animation = {
+        let translate = Animation.Translate(duration: 0.7,spring: .init(damping: 0.7, initialVelocity: 0))
+        let scale = Animation.RangeAnimation(from: 0.7, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0))
+        return Animation(translate: translate, scale: scale)
+    }()
+
+    private static let exitAnimation = Animation(translate: .init(duration: 0.2))
 
     // MARK: - Attributes
     // EK Attribute (기본)
-    static let bottomAlertAttributes: Attributes = {
+
+    enum AlertAttributeType {
+        case topFloat, centerFloat, bottomFloat
+    }
+
+    private static func defineAttribute(type: AlertAttributeType) -> Attributes {
+
+        switch type {
+        case .topFloat:
+            return Attributes.topFloat
+        case .bottomFloat:
+            return Attributes.bottomFloat
+        case .centerFloat:
+            return Attributes.centerFloat
+        }
+
+    }
+
+    static func baseAttribute(type: AlertAttributeType = .topFloat) -> Attributes {
 
         // Base (Root)
-        var topFloat = Attributes.topFloat
-        topFloat.hapticFeedbackType = .success
-        topFloat.displayDuration = .infinity
-        topFloat.statusBar = .inferred
+        var attribute = defineAttribute(type: type)
+        attribute.hapticFeedbackType = .success
+        attribute.displayDuration = .infinity
+        attribute.statusBar = .inferred
 
-        // backgrounds
-        topFloat.entryBackground = .color(color: EKColor.standardBackground)
-        topFloat.screenBackground = .color(color: .clear)
-        topFloat.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 8))
-
-        // interections
-        topFloat.screenInteraction = .dismiss
-        topFloat.entryInteraction = .absorbTouches
-        topFloat.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
-
-        //Animation
-
-        let entranceAnimation = Animation(translate: Animation.Translate.init(duration: 0.7, spring: .init(damping: 1, initialVelocity: 0)),
-                                          scale: .init(from: 1.05, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0)))
-
-        topFloat.roundCorners = .all(radius: 25)
-        topFloat.entranceAnimation = entranceAnimation
-        topFloat.exitAnimation = .init(translate: .init(duration: 0.2))
-        topFloat.popBehavior = .animated(animation: Animation(translate: .init(duration: 0.2)))
+        // Display
+        attribute.displayMode = displayMode
+        attribute.displayDuration = 1.5
 
         //Position
-        topFloat.positionConstraints.verticalOffset = 10
-        topFloat.positionConstraints.size = .init(width: .offset(value: 20), height: .intrinsic)
-        topFloat.positionConstraints.maxSize = .init( width: .constant(value: UIScreen.main.minEdge), height: .intrinsic)
+        attribute.positionConstraints.verticalOffset = 10
+        attribute.positionConstraints.size = .init(width: .offset(value: 20), height: .intrinsic)
+        attribute.positionConstraints.maxSize = .init( width: .constant(value: UIScreen.main.minEdge), height: .intrinsic)
 
-        return topFloat
-    }()
+        // backgrounds
+        attribute.entryBackground = .color(color: EKColor.standardBackground)
+        attribute.screenBackground = .color(color: .clear)
+        attribute.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 8))
 
-    /// EKAttributes
-    static let whiteAlertAttribute: Attributes = {
-        var attributes = Attributes()
+        // interections
+        attribute.screenInteraction = .dismiss
+        attribute.entryInteraction = .absorbTouches
+        attribute.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
 
-        attributes = bottomAlertAttributes
-        attributes.displayMode = displayMode
-        attributes.entryBackground = .color(color: .init(UIColor(AppColor.Background.second)))
-        attributes.popBehavior = .overridden
-        attributes.entranceAnimation = .init(translate: .init(duration: 0.7, spring: .init(damping: 0.7, initialVelocity: 0)),
-                                             scale: .init(from: 0.7, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0)))
-        attributes.exitAnimation = .init(translate: .init(duration: 0.2))
-        attributes.displayDuration = 1.5
+        //Animation
+        attribute.entranceAnimation = entranceAnimation
+        attribute.exitAnimation = exitAnimation
+        attribute.roundCorners = .all(radius: 25)
+        attribute.popBehavior = .animated(animation: Animation(translate: .init(duration: 0.2)))
 
-        return attributes
-    }()
+        return attribute
+    }
 
-    /// EKAttributes
-    static let redAlertAttribute: Attributes = {
-        var attributes = Attributes()
-
-        let entryBackground: BackgroundStyle = {
-            let color = EKColor(UIColor(AppColor.Behavior.errorRed))
-            return BackgroundStyle.color(color: color)
-        }()
-
-        attributes = bottomAlertAttributes
-        attributes.displayMode = displayMode
-        attributes.popBehavior = .overridden
-
-        // Styles
-        attributes.entryBackground = entryBackground
-
-        // Animations
-        let entranceAnimation: Animation = {
-            let translate = Animation.Translate(duration: 0.7,spring: .init(damping: 0.7, initialVelocity: 0))
-            let scale = Animation.RangeAnimation(from: 0.7, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0))
-            return Animation(translate: translate, scale: scale)
-        }()
-
-        let exitAnimation = Animation(translate: .init(duration: 0.2))
-        attributes.entranceAnimation = entranceAnimation
-        attributes.exitAnimation = exitAnimation
-        attributes.displayDuration = 2
-
-        return attributes
-    }()
+    static func makeBaseAlertAttribute(type: AlertAttributeType = .topFloat) -> Attributes {
+        return baseAttribute(type: type)
+    }
 
     // MARK: - EKNotificationMessageView
     static func setToastView(title: String,
@@ -129,7 +111,6 @@ struct AlertFactory {
                              subtitle: String,
                              named: String,
                              size: CGSize = CGSize(width: 50, height: 50)) -> EKNotificationMessageView {
-
 
         let title = EKProperty.LabelContent(text: title, style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .white))
         let description = EKProperty.LabelContent(text: subtitle,
@@ -203,6 +184,7 @@ struct AlertFactory {
 
     // MARK: - ETC
     static func voidAction() -> Void { }
+    
 }
 
 struct EKMaker_Previews: PreviewProvider {

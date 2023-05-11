@@ -64,7 +64,7 @@ final class MainWidgetViewModel: BaseViewModel {
     }
 
     func displayAlertView() {
-        SwiftEntryKit.display(entry: alertView, using: AlertFactory.whiteAlertAttribute)
+        SwiftEntryKit.display(entry: alertView, using: AlertFactory.makeBaseAlertAttribute())
     }
 
 }

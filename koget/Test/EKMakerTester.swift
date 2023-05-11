@@ -47,6 +47,6 @@ struct EKMakerTester: View {
     }
 
     func displayToast() {
-        SwiftEntryKit.display(entry: toastUIView, using: AlertFactory.whiteAlertAttribute)
+        SwiftEntryKit.display(entry: toastUIView, using: AlertFactory.makeBaseAlertAttribute())
     }
 }

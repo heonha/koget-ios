@@ -93,13 +93,10 @@ final class AssetRequestViewModel: BaseViewModel {
     }
 
     private func presentSuccessAlert() {
-        SwiftEntryKit.display(entry: alertView, using: AlertFactory.whiteAlertAttribute)
+        SwiftEntryKit.display(entry: alertView, using: AlertFactory.makeBaseAlertAttribute())
     }
 
     private func setErrorAlertView() -> UIView {
         return AlertFactory.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
     }
 }
-
-
-

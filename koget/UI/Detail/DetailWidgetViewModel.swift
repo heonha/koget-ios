@@ -117,6 +117,6 @@ class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtoc
     }
 
     private func displayAlert() {
-        SwiftEntryKit.display(entry: alertView, using: AlertFactory.whiteAlertAttribute)
+        SwiftEntryKit.display(entry: alertView, using: AlertFactory.makeBaseAlertAttribute())
     }
 }

@@ -60,7 +60,7 @@ final class ContactViewModel: BaseViewModel {
 
     // Alert Presenter
     private func presentSuccessAlert() {
-        SwiftEntryKit.display(entry: alertView, using: AlertFactory.whiteAlertAttribute)
+        SwiftEntryKit.display(entry: alertView, using: AlertFactory.makeBaseAlertAttribute())
     }
 
     // Alert Initializer
