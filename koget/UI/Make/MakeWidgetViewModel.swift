@@ -28,7 +28,6 @@ enum MakeWidgetErrorType {
 
 final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
 
-    @Published var alertView = UIView()
     private let alertFactory = AlertFactory.shared
 
     var nameStringLimit: Int = 14
@@ -171,26 +170,22 @@ final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditPr
     func alertHandelr(type: RequestReturnType) {
         switch type {
         case .success:
-            alertView = setSuccessAlert()
-            displayToast()
+            setSuccessAlert()
+            alertFactory.displayToast()
         case .userError:
-            alertView = setErrorAlertView(subtitle: errorMessage)
-            displayToast()
+            setErrorAlertView(subtitle: errorMessage)
+            alertFactory.displayToast()
         case .serverError:
             return
         }
     }
 
-    private func setSuccessAlert() -> UIView {
-        return alertFactory.setToastView(title: S.Alert.Success.title, subtitle: S.Alert.Success.subtitle, named: "success")
+    private func setSuccessAlert() {
+        alertFactory.setToastView(title: S.Alert.Success.title, subtitle: S.Alert.Success.subtitle, named: "success")
     }
 
-    private func setErrorAlertView(subtitle: String) -> UIView {
-        return alertFactory.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
-    }
-
-    private func displayToast() {
-        SwiftEntryKit.display(entry: alertView, using: alertFactory.makeBaseAlertAttribute())
+    private func setErrorAlertView(subtitle: String) {
+        alertFactory.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
     }
 
 }

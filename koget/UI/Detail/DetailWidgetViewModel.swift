@@ -30,7 +30,6 @@ enum DetailWidgetErrorType: String {
 class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtocol, VMTextFieldProtocol {
 
     var nameStringLimit: Int = 14
-    @Published var alertView = UIView()
     @Published var alertMessage: String = S.unknown
     @Published var name: String = "" {
         didSet {
@@ -91,13 +90,13 @@ class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtoc
                 guard let self = self else { return }
 
                 if let error = error {
-                    self.alertView = self.setAlertView(subtitle: error.localizedDescription)
-                    self.displayAlert()
+                    self.setAlertView(subtitle: error.localizedDescription)
+                    alertFactory.displayToast()
                     return
                 } else {
-                    self.alertView = self.setAlertView()
+                    self.setAlertView()
                     self.editWidgetData(widget: widget)
-                    self.displayAlert()
+                    alertFactory.displayToast()
                     self.isEditingMode = false
                     WidgetCenter.shared.reloadAllTimelines()
                 }
@@ -108,16 +107,12 @@ class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtoc
     }
 
     // 위젯 편집 성공
-    private func setAlertView() -> UIView {
+    private func setAlertView() {
         return alertFactory.setToastView(title: S.Alert.editSuccessTitle, subtitle: S.Alert.editSuccessSubtitle, named: "success")
     }
 
     // 확인 필요
-    private func setAlertView(subtitle: String) -> UIView {
+    private func setAlertView(subtitle: String) {
         return alertFactory.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
-    }
-
-    private func displayAlert() {
-        SwiftEntryKit.display(entry: alertView, using: alertFactory.makeBaseAlertAttribute())
     }
 }

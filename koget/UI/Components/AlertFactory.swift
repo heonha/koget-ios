@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftEntryKit
 import SFSafeSymbols
 
-struct AlertFactory {
+class AlertFactory {
 
     static let shared = AlertFactory()
 
@@ -36,6 +36,8 @@ struct AlertFactory {
 
     private let exitAnimation = Animation(translate: .init(duration: 0.2))
     private let displayMode = EKAttributes.DisplayMode.inferred
+
+    var alertView = UIView()
 
 }
 
@@ -103,9 +105,13 @@ extension AlertFactory {
 // MARK: - MessageView
 extension AlertFactory {
 
+    func displayToast() {
+        SwiftEntryKit.display(entry: alertView, using: makeBaseAlertAttribute())
+    }
+
     func setToastView(title: String,
                              subtitle: String,
-                             named: String) -> EKNotificationMessageView {
+                             named: String) {
         // Contents
         let imageSize = CGSize(width: 50, height: 50)
         let image = ImageContent(image: UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle),
@@ -117,10 +123,10 @@ extension AlertFactory {
         let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
 
-        return EKNotificationMessageView(with: notificationMessage)
+        self.alertView = EKNotificationMessageView(with: notificationMessage)
     }
 
-    func setPopupView(title: String, subtitle: String, named: String) -> EKPopUpMessageView {
+    func setPopupView(title: String, subtitle: String, named: String) {
         // ButtonContent
         let bottomPopupBtn: ButtonContent = {
             // Label style
@@ -165,7 +171,7 @@ extension AlertFactory {
         let popupMessage = EKPopUpMessage(themeImage: themes, title: title, description: description,
                                           button: bottomPopupBtn, action: voidAction)
 
-        return EKPopUpMessageView(with: popupMessage)
+        self.alertView = EKPopUpMessageView(with: popupMessage)
     }
 }
 

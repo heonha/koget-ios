@@ -14,7 +14,6 @@ final class AssetRequestViewModel: BaseViewModel {
     @Published var contactType: ContectType = .addApp
     @Published var appName: String = ""
     @Published var body: String = ""
-    @Published var alertView = UIView()
 
     //Label name
     private let success = S.AppRequest.Alert.success
@@ -77,28 +76,24 @@ final class AssetRequestViewModel: BaseViewModel {
     func alertHandelr(type: RequestReturnType) {
         switch type {
         case .success:
-            alertView = setAlertView()
+            setAlertView()
         case .userError:
-            alertView = setErrorAlertView()
+            setErrorAlertView()
         case .serverError:
-            alertView = setServerErrorAlert()
+            setServerErrorAlert()
         }
-        presentSuccessAlert()
+        alertFactory.displayToast()
     }
 
-    private func setAlertView() -> UIView {
-        return alertFactory.setToastView(title: success, subtitle: successSubtitle, named: "success")
+    private func setAlertView() {
+        alertFactory.setToastView(title: success, subtitle: successSubtitle, named: "success")
     }
 
-    private func setServerErrorAlert() -> UIView {
-        return alertFactory.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
+    private func setServerErrorAlert() {
+        alertFactory.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
     }
 
-    private func presentSuccessAlert() {
-        SwiftEntryKit.display(entry: alertView, using: alertFactory.makeBaseAlertAttribute())
-    }
-
-    private func setErrorAlertView() -> UIView {
-        return alertFactory.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
+    private func setErrorAlertView() {
+        alertFactory.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
     }
 }
