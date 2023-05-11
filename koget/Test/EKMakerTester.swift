@@ -36,7 +36,7 @@ struct EKMakerTester: View {
                 }
             }
             .onAppear {
-                toastUIView = EKMaker.setPopupView(title: "타이틀", subtitle: "서브타이틀", named: "success")
+                toastUIView = AlertFactory.setPopupView(title: "타이틀", subtitle: "서브타이틀", named: "success")
             }
         }
     }
@@ -47,6 +47,6 @@ struct EKMakerTester: View {
     }
 
     func displayToast() {
-        SwiftEntryKit.display(entry: toastUIView, using: EKMaker.whiteAlertAttribute)
+        SwiftEntryKit.display(entry: toastUIView, using: AlertFactory.whiteAlertAttribute)
     }
 }

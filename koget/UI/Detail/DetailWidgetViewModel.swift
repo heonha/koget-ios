@@ -108,15 +108,15 @@ class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtoc
 
     // 위젯 편집 성공
     private func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: S.Alert.editSuccessTitle, subtitle: S.Alert.editSuccessSubtitle, named: "success")
+        return AlertFactory.setToastView(title: S.Alert.editSuccessTitle, subtitle: S.Alert.editSuccessSubtitle, named: "success")
     }
 
     // 확인 필요
     private func setAlertView(subtitle: String) -> UIView {
-        return EKMaker.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
+        return AlertFactory.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
     }
 
     private func displayAlert() {
-        SwiftEntryKit.display(entry: alertView, using: EKMaker.whiteAlertAttribute)
+        SwiftEntryKit.display(entry: alertView, using: AlertFactory.whiteAlertAttribute)
     }
 }

@@ -60,11 +60,11 @@ final class MainWidgetViewModel: BaseViewModel {
     }
 
     func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: S.Alert.deleteSuccessTitle, subtitle: S.Alert.deleteSuccessSubtitle, named: "success")
+        return AlertFactory.setToastView(title: S.Alert.deleteSuccessTitle, subtitle: S.Alert.deleteSuccessSubtitle, named: "success")
     }
 
     func displayAlertView() {
-        SwiftEntryKit.display(entry: alertView, using: EKMaker.whiteAlertAttribute)
+        SwiftEntryKit.display(entry: alertView, using: AlertFactory.whiteAlertAttribute)
     }
 
 }

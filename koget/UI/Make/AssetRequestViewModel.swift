@@ -85,19 +85,19 @@ final class AssetRequestViewModel: BaseViewModel {
     }
 
     private func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: success, subtitle: successSubtitle, named: "success")
+        return AlertFactory.setToastView(title: success, subtitle: successSubtitle, named: "success")
     }
 
     private func setServerErrorAlert() -> UIView {
-        return EKMaker.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
+        return AlertFactory.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
     }
 
     private func presentSuccessAlert() {
-        SwiftEntryKit.display(entry: alertView, using: EKMaker.whiteAlertAttribute)
+        SwiftEntryKit.display(entry: alertView, using: AlertFactory.whiteAlertAttribute)
     }
 
     private func setErrorAlertView() -> UIView {
-        return EKMaker.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
+        return AlertFactory.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
     }
 }
 
