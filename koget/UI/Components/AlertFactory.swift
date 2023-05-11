@@ -11,7 +11,9 @@ import SFSafeSymbols
 
 struct AlertFactory {
 
-    static var displayMode = EKAttributes.DisplayMode.inferred
+    enum AlertAttributeType {
+        case topFloat, centerFloat, bottomFloat
+    }
 
     // Attributes
     typealias Attributes = EKAttributes
@@ -31,16 +33,24 @@ struct AlertFactory {
     }()
 
     private static let exitAnimation = Animation(translate: .init(duration: 0.2))
+    private static let displayMode = EKAttributes.DisplayMode.inferred
 
-    // MARK: - Attributes
-    // EK Attribute (기본)
+}
 
-    enum AlertAttributeType {
-        case topFloat, centerFloat, bottomFloat
+extension AlertFactory {
+
+    static func makeBaseAlertAttribute(type: AlertAttributeType = .topFloat) -> Attributes {
+        return baseAttribute(type: type)
     }
 
-    private static func defineAttribute(type: AlertAttributeType) -> Attributes {
+    static func voidAction() -> Void { }
 
+}
+
+extension AlertFactory {
+
+    // MARK: - Attributes
+    private static func defineAttribute(type: AlertAttributeType) -> Attributes {
         switch type {
         case .topFloat:
             return Attributes.topFloat
@@ -49,10 +59,9 @@ struct AlertFactory {
         case .centerFloat:
             return Attributes.centerFloat
         }
-
     }
 
-    static func baseAttribute(type: AlertAttributeType = .topFloat) -> Attributes {
+    private static func baseAttribute(type: AlertAttributeType = .topFloat) -> Attributes {
 
         // Base (Root)
         var attribute = defineAttribute(type: type)
@@ -87,78 +96,53 @@ struct AlertFactory {
 
         return attribute
     }
+}
 
-    static func makeBaseAlertAttribute(type: AlertAttributeType = .topFloat) -> Attributes {
-        return baseAttribute(type: type)
-    }
+// MARK: - MessageView
+extension AlertFactory {
 
-    // MARK: - EKNotificationMessageView
     static func setToastView(title: String,
                              subtitle: String,
-                             named: String,
-                             size: CGSize = CGSize(width: 50, height: 50)) -> EKNotificationMessageView {
-
+                             named: String) -> EKNotificationMessageView {
+        // Contents
+        let imageSize = CGSize(width: 50, height: 50)
+        let image = ImageContent(image: UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle),
+                                 size: imageSize)
         let title = LabelContent(text: title, style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .black))
         let description = LabelContent(text: subtitle, style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray)))
-        let image = ImageContent(image: UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle), size: size)
+
+        // Containers
         let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
 
         return EKNotificationMessageView(with: notificationMessage)
     }
 
-    static func redAlertView(title: String,
-                             subtitle: String,
-                             named: String,
-                             size: CGSize = CGSize(width: 50, height: 50)) -> EKNotificationMessageView {
+    static func setPopupView(title: String, subtitle: String, named: String) -> EKPopUpMessageView {
+        // ButtonContent
+        let bottomPopupBtn: ButtonContent = {
+            // Label style
+            let style: LabelStyle = {
+                let font = UIFont(name: CustomFont.NotoSansKR.light, size: 16)!
+                let color = EKColor.init(UIColor(AppColor.Label.first))
 
-        let title = EKProperty.LabelContent(text: title, style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .white))
-        let description = EKProperty.LabelContent(text: subtitle,
-                                                  style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.white)))
-        let simpleMessage: EKSimpleMessage = {
-            let image = UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle)
-            let imageContent = ImageContent(image: image, size: size)
-            return EKSimpleMessage(image: imageContent, title: title, description: description)
+                return LabelStyle(font: font, color: color, displayMode: displayMode)
+            }()
+
+            let label = LabelContent(text: "", style: style)
+
+            // Background
+            let backgroundColor = EKColor(.clear)
+            let highlightedBackgroundColor = EKColor.black.with(alpha: 0)
+
+            // id
+            let accessibilityIdentifier = "bottomPopupBtn"
+
+            return ButtonContent(label: label,
+                                 backgroundColor: backgroundColor,
+                                 highlightedBackgroundColor: highlightedBackgroundColor,
+                                 accessibilityIdentifier: accessibilityIdentifier)
         }()
-
-        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
-
-        let view = EKNotificationMessageView(with: notificationMessage)
-
-        return view
-    }
-
-    // MARK: - Button Contents
-
-    // ButtonContent
-    static let bottomPopupBtn: ButtonContent = {
-        // Label style
-        let style: LabelStyle = {
-            let font = UIFont(name: CustomFont.NotoSansKR.light, size: 16)!
-            let color = EKColor.init(UIColor(AppColor.Label.first))
-
-            return LabelStyle(font: font, color: color, displayMode: displayMode)
-        }()
-
-        let label = LabelContent(text: "", style: style)
-
-        // Background
-        let backgroundColor = EKColor(.clear)
-        let highlightedBackgroundColor = EKColor.black.with(alpha: 0)
-
-        // id
-        let accessibilityIdentifier = "bottomPopupBtn"
-
-        return ButtonContent(label: label,
-                             backgroundColor: backgroundColor,
-                             highlightedBackgroundColor: highlightedBackgroundColor,
-                             accessibilityIdentifier: accessibilityIdentifier)
-    }()
-
-    // MARK: - EKPopUpMessageView
-    static func setPopupView(title: String, subtitle: String, named: String, size: CGSize = .init(width: 35, height: 35)) -> EKPopUpMessageView {
-
-        typealias ImageContent = EKProperty.ImageContent
 
         let title: LabelContent = {
             let style = LabelStyle(font: .systemFont(ofSize: 18, weight: .bold), color: .black)
@@ -182,11 +166,9 @@ struct AlertFactory {
         return EKPopUpMessageView(with: popupMessage)
     }
 
-    // MARK: - ETC
-    static func voidAction() -> Void { }
-    
 }
 
+#if DEBUG
 struct EKMaker_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -194,3 +176,4 @@ struct EKMaker_Previews: PreviewProvider {
         }
     }
 }
+#endif
