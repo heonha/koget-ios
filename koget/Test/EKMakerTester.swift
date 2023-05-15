@@ -26,7 +26,6 @@ struct EKMakerTester: View {
 
             Button {
                 displayToast()
-                // isAppPickerPresent.toggle()
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
@@ -38,7 +37,7 @@ struct EKMakerTester: View {
                 }
             }
             .onAppear {
-                alertFactory.setPopupView(title: "타이틀", subtitle: "서브타이틀", named: "success")
+                alertFactory.setAlertView(title: "타이틀", subtitle: "서브타이틀", imageName: "success")
             }
         }
     }

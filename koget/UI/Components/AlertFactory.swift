@@ -108,70 +108,19 @@ extension AlertFactory {
         SwiftEntryKit.display(entry: alertView, using: makeBaseAlertAttribute())
     }
 
-    func setToastView(title: String,
-                             subtitle: String,
-                             named: String) {
+    func setAlertView(title: String, subtitle: String, imageName: String) {
         // Contents
         let imageSize = CGSize(width: 50, height: 50)
-        let image = ImageContent(image: UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle),
-                                 size: imageSize)
+        let image = ImageContent(image: UIImage(named: imageName) ?? UIImage(), size: imageSize)
         let title = LabelContent(text: title, style: .init(font: .systemFont(ofSize: 18, weight: .bold), color: .black))
         let description = LabelContent(text: subtitle, style: .init(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray)))
 
         // Containers
         let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
-
         self.alertView = EKNotificationMessageView(with: notificationMessage)
     }
 
-    func setPopupView(title: String, subtitle: String, named: String) {
-        // ButtonContent
-        let bottomPopupBtn: ButtonContent = {
-            // Label style
-            let style: LabelStyle = {
-                let font = UIFont(name: CustomFont.NotoSansKR.light, size: 16)!
-                let color = EKColor.init(UIColor(AppColor.Label.first))
-
-                return LabelStyle(font: font, color: color, displayMode: displayMode)
-            }()
-
-            let label = LabelContent(text: "", style: style)
-
-            // Background
-            let backgroundColor = EKColor(.clear)
-            let highlightedBackgroundColor = EKColor.black.with(alpha: 0)
-
-            // id
-            let accessibilityIdentifier = "bottomPopupBtn"
-
-            return ButtonContent(label: label,
-                                 backgroundColor: backgroundColor,
-                                 highlightedBackgroundColor: highlightedBackgroundColor,
-                                 accessibilityIdentifier: accessibilityIdentifier)
-        }()
-
-        let title: LabelContent = {
-            let style = LabelStyle(font: .systemFont(ofSize: 18, weight: .bold), color: .black)
-            return LabelContent(text: title, style: style)
-        }()
-
-        let description: LabelContent = {
-            let style = LabelStyle(font: .systemFont(ofSize: 14, weight: .medium), color: .init(.gray))
-            return LabelContent(text: subtitle, style: style)
-        }()
-
-        let themes: EKPopUpMessage.ThemeImage = {
-            let image = UIImage(named: named) ?? UIImage(systemSymbol: .questionmarkCircle)
-            let imageContent = ImageContent.thumb(with: image, edgeSize: 100)
-            return EKPopUpMessage.ThemeImage(image: imageContent)
-        }()
-
-        let popupMessage = EKPopUpMessage(themeImage: themes, title: title, description: description,
-                                          button: bottomPopupBtn, action: voidAction)
-
-        self.alertView = EKPopUpMessageView(with: popupMessage)
-    }
 }
 
 #if DEBUG

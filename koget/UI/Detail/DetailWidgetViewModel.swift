@@ -108,11 +108,11 @@ class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtoc
 
     // 위젯 편집 성공
     private func setAlertView() {
-        return alertFactory.setToastView(title: S.Alert.editSuccessTitle, subtitle: S.Alert.editSuccessSubtitle, named: "success")
+        return alertFactory.setAlertView(title: S.Alert.editSuccessTitle, subtitle: S.Alert.editSuccessSubtitle, imageName: "success")
     }
 
     // 확인 필요
     private func setAlertView(subtitle: String) {
-        return alertFactory.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
+        return alertFactory.setAlertView(title: S.Alert.needCheck, subtitle: subtitle, imageName: "failed")
     }
 }

@@ -41,11 +41,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
             if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
 
                 photoPicker.viewModel.image = image
-                // if photoPicker.makeModel != nil {
-                //     photoPicker.makeModel?.image = image
-                // } else {
-                //     photoPicker.detailModel?.image = image
-                // }
+
             } else {
                 return
             }

@@ -60,15 +60,15 @@ final class ContactViewModel: BaseViewModel {
 
     // Alert Initializer
     private func setSuccessAlertView() {
-        alertFactory.setToastView(title: success, subtitle: successSubtitle, named: "success")
+        alertFactory.setAlertView(title: success, subtitle: successSubtitle, imageName: "success")
     }
 
     private func setServerErrorAlert() {
-        alertFactory.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
+        alertFactory.setAlertView(title: requestError, subtitle: requestErrorSubtitle, imageName: "failed")
     }
 
     private func setErrorAlertView() {
-        alertFactory.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
+        alertFactory.setAlertView(title: needCheck, subtitle: needCheckSubtitle, imageName: "failed")
     }
     
     func sendQuestion(type: ContectType, title: String, body: String, completion: @escaping(ResultType) -> Void) {

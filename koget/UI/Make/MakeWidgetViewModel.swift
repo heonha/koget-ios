@@ -181,11 +181,11 @@ final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditPr
     }
 
     private func setSuccessAlert() {
-        alertFactory.setToastView(title: S.Alert.Success.title, subtitle: S.Alert.Success.subtitle, named: "success")
+        alertFactory.setAlertView(title: S.Alert.Success.title, subtitle: S.Alert.Success.subtitle, imageName: "success")
     }
 
     private func setErrorAlertView(subtitle: String) {
-        alertFactory.setToastView(title: S.Alert.needCheck, subtitle: subtitle, named: "failed")
+        alertFactory.setAlertView(title: S.Alert.needCheck, subtitle: subtitle, imageName: "failed")
     }
 
 }

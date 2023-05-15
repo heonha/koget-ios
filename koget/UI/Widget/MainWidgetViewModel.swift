@@ -61,7 +61,7 @@ final class MainWidgetViewModel: BaseViewModel {
     }
 
     func setAlertView() {
-        alertFactory.setToastView(title: S.Alert.deleteSuccessTitle, subtitle: S.Alert.deleteSuccessSubtitle, named: "success")
+        alertFactory.setAlertView(title: S.Alert.deleteSuccessTitle, subtitle: S.Alert.deleteSuccessSubtitle, imageName: "success")
     }
 
     func displayAlertView() {
