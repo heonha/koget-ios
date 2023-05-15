@@ -44,15 +44,7 @@ class AlertFactory {
 
 extension AlertFactory {
 
-    func makeBaseAlertAttribute(type: AlertAttributeType = .topFloat) -> EKAttributes {
-        return baseAttribute(type: type)
-    }
-
-}
-
-extension AlertFactory {
-
-    // MARK: - Attributes
+    // MARK: - Attributes Factory (Private)
     private func defineAttribute(type: AlertAttributeType) -> Attributes {
         switch type {
         case .topFloat:
@@ -101,8 +93,12 @@ extension AlertFactory {
     }
 }
 
-// MARK: - MessageView
+// MARK: - Create Alerts
 extension AlertFactory {
+
+    func makeBaseAlertAttribute(type: AlertAttributeType = .topFloat) -> EKAttributes {
+        return baseAttribute(type: type)
+    }
 
     func showAlert() {
         SwiftEntryKit.display(entry: alertView, using: makeBaseAlertAttribute())
