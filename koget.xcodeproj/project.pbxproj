@@ -26,7 +26,7 @@
 		392EDF6B29BD8E54000B1353 /* SettingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */; };
 		392EDF6F29BDA3C4000B1353 /* WidgetAssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */; };
 		39504A9329B3A059008A7BA4 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A9229B3A059008A7BA4 /* SwiftEntryKit */; };
-		39504A9D29B429AF008A7BA4 /* EKMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9C29B429AF008A7BA4 /* EKMaker.swift */; };
+		39504A9D29B429AF008A7BA4 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9C29B429AF008A7BA4 /* AlertFactory.swift */; };
 		39504A9F29B4374F008A7BA4 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9E29B4374F008A7BA4 /* CGRect+Extension.swift */; };
 		39504AA129B43796008A7BA4 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA029B43796008A7BA4 /* UIScreen+Extension.swift */; };
 		39504AA329B43F16008A7BA4 /* EKMakerTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA229B43F16008A7BA4 /* EKMakerTester.swift */; };
@@ -192,7 +192,7 @@
 		392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuButton.swift; sourceTree = "<group>"; };
 		392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetCell.swift; sourceTree = "<group>"; };
 		39438E2E29C6C8E3009BD1C7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		39504A9C29B429AF008A7BA4 /* EKMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMaker.swift; sourceTree = "<group>"; };
+		39504A9C29B429AF008A7BA4 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		39504A9E29B4374F008A7BA4 /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		39504AA029B43796008A7BA4 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		39504AA229B43F16008A7BA4 /* EKMakerTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMakerTester.swift; sourceTree = "<group>"; };
@@ -381,7 +381,7 @@
 				39E0FAFA29D14AB70081E169 /* TextField */,
 				39E0FAF929D14AA80081E169 /* Slider */,
 				39E0FAF829D14A980081E169 /* Button */,
-				39504A9C29B429AF008A7BA4 /* EKMaker.swift */,
+				39504A9C29B429AF008A7BA4 /* AlertFactory.swift */,
 				3A9C04FF292DB03C00442017 /* PhotoPicker.swift */,
 				3A0C03412935131600868B70 /* PhotoEditMenu.swift */,
 			);
@@ -966,7 +966,7 @@
 				392140A42A0BC1C400D0F527 /* Date+Extention.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthService.swift in Sources */,
-				39504A9D29B429AF008A7BA4 /* EKMaker.swift in Sources */,
+				39504A9D29B429AF008A7BA4 /* AlertFactory.swift in Sources */,
 				39E0FAE729D132940081E169 /* PatchNoteViewModel.swift in Sources */,
 				3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */,
 				3A8C1E782980DB7C004FAF89 /* SettingMenuViewModel.swift in Sources */,

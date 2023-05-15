@@ -13,7 +13,6 @@ final class MainWidgetViewModel: BaseViewModel {
     //MARK: Published Variables
     @Published var isEditingMode: Bool = false
     @Published var selection = [DeepLink]()
-    @Published var alertView = UIView()
 
     //MARK: User Defaults
     @AppStorage("isGridView") var isGridView = false
@@ -21,9 +20,11 @@ final class MainWidgetViewModel: BaseViewModel {
 
     @ObservedObject var coreData = WidgetCoreData.shared
 
+    private let alertFactory = AlertFactory.shared
+
     override init() {
         super.init()
-        alertView = setAlertView()
+        setAlertView()
     }
 
     // Web & App 구분
@@ -59,12 +60,12 @@ final class MainWidgetViewModel: BaseViewModel {
         completion()
     }
 
-    func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: S.Alert.deleteSuccessTitle, subtitle: S.Alert.deleteSuccessSubtitle, named: "success")
+    func setAlertView() {
+        alertFactory.setAlertView(title: S.Alert.deleteSuccessTitle, subtitle: S.Alert.deleteSuccessSubtitle, imageName: "success")
     }
 
     func displayAlertView() {
-        SwiftEntryKit.display(entry: alertView, using: EKMaker.whiteAlertAttribute)
+        alertFactory.showAlert()
     }
 
 }

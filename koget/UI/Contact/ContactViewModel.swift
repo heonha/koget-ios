@@ -15,7 +15,7 @@ final class ContactViewModel: BaseViewModel {
     @Published var title: String = ""
     @Published var body: String = ""
 
-    var alertView = UIView()
+    private let alertFactory = AlertFactory.shared
 
     let success = S.ContactView.Alert.sendSuccess
     let successSubtitle = S.ContactView.Alert.sendSuccessSubtitle
@@ -49,31 +49,26 @@ final class ContactViewModel: BaseViewModel {
     func alertHandelr(type: RequestReturnType) {
         switch type {
         case .success:
-            alertView = setAlertView()
+            setSuccessAlertView()
         case .userError:
-            alertView = setErrorAlertView()
+            setErrorAlertView()
         case .serverError:
-            alertView = setServerErrorAlert()
+            setServerErrorAlert()
         }
-        presentSuccessAlert()
-    }
-
-    // Alert Presenter
-    private func presentSuccessAlert() {
-        SwiftEntryKit.display(entry: alertView, using: EKMaker.whiteAlertAttribute)
+        alertFactory.showAlert()
     }
 
     // Alert Initializer
-    private func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: success, subtitle: successSubtitle, named: "success")
+    private func setSuccessAlertView() {
+        alertFactory.setAlertView(title: success, subtitle: successSubtitle, imageName: "success")
     }
 
-    private func setServerErrorAlert() -> UIView {
-        return EKMaker.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
+    private func setServerErrorAlert() {
+        alertFactory.setAlertView(title: requestError, subtitle: requestErrorSubtitle, imageName: "failed")
     }
 
-    private func setErrorAlertView() -> UIView {
-        return EKMaker.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
+    private func setErrorAlertView() {
+        alertFactory.setAlertView(title: needCheck, subtitle: needCheckSubtitle, imageName: "failed")
     }
     
     func sendQuestion(type: ContectType, title: String, body: String, completion: @escaping(ResultType) -> Void) {

@@ -14,15 +14,16 @@ final class AssetRequestViewModel: BaseViewModel {
     @Published var contactType: ContectType = .addApp
     @Published var appName: String = ""
     @Published var body: String = ""
-    @Published var alertView = UIView()
 
     //Label name
-    let success = S.AppRequest.Alert.success
-    let successSubtitle = S.AppRequest.Alert.successSubtitle
-    let requestError = S.AppRequest.Alert.requestError
-    let requestErrorSubtitle = S.AppRequest.Alert.requestErrorSubtitle
-    let needCheck = S.AppRequest.Alert.needCheck
-    let needCheckSubtitle = S.AppRequest.Alert.needCheckSubtitle
+    private let success = S.AppRequest.Alert.success
+    private let successSubtitle = S.AppRequest.Alert.successSubtitle
+    private let requestError = S.AppRequest.Alert.requestError
+    private let requestErrorSubtitle = S.AppRequest.Alert.requestErrorSubtitle
+    private let needCheck = S.AppRequest.Alert.needCheck
+    private let needCheckSubtitle = S.AppRequest.Alert.needCheckSubtitle
+
+    private let alertFactory = AlertFactory.shared
 
     var version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
@@ -75,31 +76,24 @@ final class AssetRequestViewModel: BaseViewModel {
     func alertHandelr(type: RequestReturnType) {
         switch type {
         case .success:
-            alertView = setAlertView()
+            setAlertView()
         case .userError:
-            alertView = setErrorAlertView()
+            setErrorAlertView()
         case .serverError:
-            alertView = setServerErrorAlert()
+            setServerErrorAlert()
         }
-        presentSuccessAlert()
+        alertFactory.showAlert()
     }
 
-    private func setAlertView() -> UIView {
-        return EKMaker.setToastView(title: success, subtitle: successSubtitle, named: "success")
+    private func setAlertView() {
+        alertFactory.setAlertView(title: success, subtitle: successSubtitle, imageName: "success")
     }
 
-    private func setServerErrorAlert() -> UIView {
-        return EKMaker.setToastView(title: requestError, subtitle: requestErrorSubtitle, named: "failed")
+    private func setServerErrorAlert() {
+        alertFactory.setAlertView(title: requestError, subtitle: requestErrorSubtitle, imageName: "failed")
     }
 
-    private func presentSuccessAlert() {
-        SwiftEntryKit.display(entry: alertView, using: EKMaker.whiteAlertAttribute)
-    }
-
-    private func setErrorAlertView() -> UIView {
-        return EKMaker.setToastView(title: needCheck, subtitle: needCheckSubtitle, named: "failed")
+    private func setErrorAlertView() {
+        alertFactory.setAlertView(title: needCheck, subtitle: needCheckSubtitle, imageName: "failed")
     }
 }
-
-
-

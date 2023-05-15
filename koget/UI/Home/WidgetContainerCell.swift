@@ -126,6 +126,7 @@ struct WidgetContainerCell: View {
         .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
             Button(S.Button.delete, role: .destructive) {
                 coreData.deleteData(data: widget)
+                viewModel.setAlertView()
                 viewModel.displayAlertView()
                 isDelete = false
             }
@@ -133,7 +134,6 @@ struct WidgetContainerCell: View {
                 isDelete = false
             }
         }, message: {Text(S.Alert.Message.checkWidgetDelete)})
-        
     }
 }
 
