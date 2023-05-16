@@ -47,33 +47,6 @@ extension WidgetListCell {
         .frame(height: cellHeight)
     }
 
-    // 실행 횟수 카운터
-    var runCountView: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(AppColor.Fill.third)
-                .frame(width: 70, height: 30)
-
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(lineWidth: 0.3)
-                .fill(AppColor.Fill.third)
-                .frame(width: 70, height: 30)
-                .shadow(color: .black.opacity(0.2), radius: 2, x: -0.4, y: -0.5)
-                .shadow(color: .black.opacity(0.2), radius: 2, x: 0.4, y: 0.5)
-
-                HStack(spacing: 6) {
-                    Image(systemSymbol: .boltHorizontalFill)
-                        .font(.system(size: 11, weight: .semibold))
-                        .shadow(color: .black.opacity(0.7), radius: 0.5, x: 0.5, y: 0.5)
-                        .foregroundColor(.yellow)
-                    Text("\(Int(runCount))")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(AppColor.Background.first)
-                        .shadow(color: .black.opacity(0.8), radius: 0.5, x: 0.3, y: 0.5)
-            }
-        }
-    }
-
     var imageView: some View {
         ZStack {
             Circle()
@@ -110,9 +83,28 @@ extension WidgetListCell {
                     .foregroundColor(Color.init(uiColor: .secondaryLabel))
                     .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
             }
-
         }
+    }
 
+    // 실행 횟수 카운터
+    var runCountView: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(AppColor.Fill.third.opacity(0.7))
+                .frame(width: 70, height: 30)
+                .overlay {
+                    HStack(spacing: 6) {
+                        Image(systemSymbol: .boltHorizontalFill)
+                            .font(.system(size: 11, weight: .semibold))
+                            .shadow(color: .black.opacity(0.7), radius: 0.5, x: 0.5, y: 0.5)
+                            .foregroundColor(.yellow)
+                        Text("\(Int(runCount))")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(.white)
+                            .shadow(color: .black.opacity(0.8), radius: 0.3, x: 0.3, y: 0.5)
+                    }
+                }
+        }
     }
 
 }

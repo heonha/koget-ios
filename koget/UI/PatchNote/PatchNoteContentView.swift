@@ -20,7 +20,7 @@ struct PatchNoteContentView: View {
             Color.white
                 .ignoresSafeArea(edges: .top)
             VStack {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     KFImage(URL(string: baseURL + fileName)!)
                         .placeholder({ progress in
                             ProgressView()

@@ -22,7 +22,7 @@ struct AdPageCell: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(lineWidth: 0.5)
-                    .fill(.background)
+                    .fill(AppColor.Background.second)
                     .shadow(color: .black.opacity(0.23), radius: 1, x: -0.4, y: -0.4)
                     .shadow(color: .black.opacity(0.28), radius: 1, x: 0.4, y: 0.4)
 
@@ -50,7 +50,7 @@ struct AdPageCell: View {
                     Spacer()
                 })
             }
-            .background(.clear)
+            .background(AppColor.Background.second.opacity(0.4))
             .cornerRadius(10)
             .padding(.horizontal)
         }

@@ -21,6 +21,9 @@ struct MainWidgetView: View {
     @EnvironmentObject var coreData: WidgetCoreData
     @EnvironmentObject var constant: AppStateConstant
 
+    let onBGColor = AppColor.Fill.first
+    let OffBGColor = AppColor.Background.second
+
     var body: some View {
         NavigationView {
             mainBody()
@@ -43,6 +46,7 @@ struct MainWidgetView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(Color.init(uiColor: .secondarySystemBackground), for: .navigationBar)
+
                 .onDisappear {
                     isFloatingButtonOpen = false
                 }
@@ -67,11 +71,20 @@ struct MainWidgetView: View {
         Button {
             viewModel.isGridView.toggle()
         } label: {
-            Image(systemSymbol: viewModel.isGridView
-                  ? SFSymbol.listBullet
-                  : SFSymbol.squareGrid3x3)
-            .foregroundColor(AppColor.Label.first)
-            .opacity(0.56)
+            ZStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundColor(AppStateConstant.shared.isDarkMode ? onBGColor : OffBGColor)
+                    .frame(width: 32, height: 32)
+                    .shadow(color: .black.opacity(0.3), radius: 1, x: 0.7, y: 0.7)
+                    .overlay {
+                        Image(systemSymbol: viewModel.isGridView
+                              ? SFSymbol.listBullet
+                              : SFSymbol.squareGrid3x3)
+                            .foregroundColor(AppColor.Label.first)
+                            .font(.system(size: 14))
+                            .padding(4)
+                    }
+            }
             .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
         }
     }

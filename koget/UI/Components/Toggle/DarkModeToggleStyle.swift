@@ -10,9 +10,9 @@ import SFSafeSymbols
 
 struct DarkModeToggleStyle: ToggleStyle {
 
-    let toggleSize = CGSize(width: 28, height: 28)
+    let toggleSize = CGSize(width: 32, height: 32)
     let onBGColor = AppColor.Fill.first
-    let OffBGColor = AppColor.Background.first
+    let OffBGColor = AppColor.Background.second
     let onImage: SFSymbol = .moonFill
     let offImage: SFSymbol = .sunMaxFill
 
@@ -27,13 +27,11 @@ struct DarkModeToggleStyle: ToggleStyle {
                         Image(systemSymbol: configuration.isOn ? onImage : offImage)
                             .font(.system(size: 14, weight: .heavy))
                             .foregroundColor(.yellow)
-                            .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.35), radius: 0.5, x: 0.5, y: 1)
+                            .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.35), radius: 0.3, x: 0.2, y: 0.3)
                             .padding(2)
                     })
                 )
-                .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.2), radius: 0.3, x: 0.6, y: 0.6)
-                .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.15), radius: 0.3, x: -1, y: -1)
-
+                .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.3), radius: 1, x: 0.7, y: 0.7)
                 .animation(.linear(duration: 0.2), value: configuration.isOn)
                 .onTapGesture { configuration.isOn.toggle() }
         }

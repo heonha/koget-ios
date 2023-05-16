@@ -22,23 +22,29 @@ struct PatchNoteListCell: View {
     @EnvironmentObject var constant: AppStateConstant
 
     var body: some View {
-        VStack {
-            HStack {
-                textView(title: title, subtitle: subtitle)
-                    .padding(8)
-                Spacer()
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(AppColor.Background.second)
 
-                Text(date)
-                    .font(.custom(CustomFont.NotoSansKR.light, size: 14))
-                    .foregroundColor(AppColor.Label.second)
-                    .padding(.trailing)
-            }
-            .background(AppColor.Background.second)
+            VStack {
+                HStack {
+                    textView(title: title, subtitle: subtitle)
+                        .padding(8)
+                    Spacer()
 
-            if isPresent {
-                PatchNoteContentView(fileName: constant.isDarkMode ? darkFileName : lightFileName)
+                    Text(date)
+                        .font(.custom(CustomFont.NotoSansKR.light, size: 14))
+                        .foregroundColor(AppColor.Label.second)
+                        .padding(.trailing)
+                }
+
+                if isPresent {
+                    PatchNoteContentView(fileName: constant.isDarkMode ? darkFileName : lightFileName)
+                }
             }
         }
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .padding(.horizontal, 8)
         .onTapGesture {
             isPresent.toggle()
         }
@@ -57,14 +63,14 @@ struct PatchNoteListCell: View {
     }
 }
 
- struct PatchNoteListCell_Previews: PreviewProvider {
-     static var previews: some View {
-         VStack(spacing: 4) {
+struct PatchNoteListCell_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: 4) {
 
-             PatchNoteListCell(title: "Title", subtitle: "Subtitle", date: "Date", lightFileName: "lightFileName", darkFileName: "darkFileName")
+            PatchNoteListCell(title: "Title", subtitle: "Subtitle", date: "Date", lightFileName: "lightFileName", darkFileName: "darkFileName")
 
-//             PatchNoteListCell(title: "업데이트 1.2", subtitle: "다크모드 등", date: "2023-00-00", url: "")
-//             PatchNoteListCell(title: "업데이트 1.1", subtitle: "리스트보기, 바로실행, 실행횟수 등", date: "2023-00-00", url: "")
-         }
-     }
- }
+            //             PatchNoteListCell(title: "업데이트 1.2", subtitle: "다크모드 등", date: "2023-00-00", url: "")
+            //             PatchNoteListCell(title: "업데이트 1.1", subtitle: "리스트보기, 바로실행, 실행횟수 등", date: "2023-00-00", url: "")
+        }
+    }
+}
