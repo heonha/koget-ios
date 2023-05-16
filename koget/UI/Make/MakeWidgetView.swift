@@ -139,7 +139,7 @@ struct MakeWidgetView: View {
     }
 
     var doneButton: some View {
-        TextButton(title: S.Button.finish, titleColor: .white, backgroundColor: AppColor.kogetBlue) {
+        TextButton(title: S.Button.finish, titleColor: .white, backgroundColor: AppColor.Accent.primary) {
             viewModel.makeWidgetAction { result in
 
                 if let result = result {

@@ -421,6 +421,16 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
+		39BD3EE22A13CB9500E14DCA /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */,
+				392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */,
+				390853B729A3949F006E8311 /* AssetRequestViewModel.swift */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
 		39C1F3DD29D1C2DB00C26919 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,9 +528,7 @@
 			children = (
 				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
 				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
-				3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */,
-				392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */,
-				390853B729A3949F006E8311 /* AssetRequestViewModel.swift */,
+				39BD3EE22A13CB9500E14DCA /* Asset */,
 			);
 			path = Make;
 			sourceTree = "<group>";

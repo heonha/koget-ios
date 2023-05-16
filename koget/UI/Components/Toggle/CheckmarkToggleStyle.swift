@@ -27,7 +27,7 @@ struct CheckmarkToggleStyle: ToggleStyle {
                     ZStack(content: {
                         Image(systemSymbol: configuration.isOn ? onImage : offImage)
                             .font(.system(size: 20, weight: .heavy))
-                            .foregroundColor(configuration.isOn ? .init(uiColor: .secondaryLabel) : .init(uiColor: .tertiaryLabel))
+                            .foregroundColor(configuration.isOn ? AppColor.Accent.primary : .init(uiColor: .tertiaryLabel))
                     })
                 )
                 .animation(.spring(response: 0.25, dampingFraction: 0.54, blendDuration: 0.1), value: configuration.isOn)

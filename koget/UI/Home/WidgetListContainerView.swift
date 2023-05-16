@@ -45,6 +45,7 @@ struct WidgetListContainerView: View {
         QGrid($coreData.linkWidgets.wrappedValue, columns: 3) { widget in
             WidgetContainerCell(widget: widget, viewModel: viewModel, type: .grid)
         }
+
     }
 
     // List
