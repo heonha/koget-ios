@@ -38,7 +38,7 @@ struct KogetApp: App {
                 .environmentObject(appStateConstant)
                 .environmentObject(coreData)
                 .environment(\.managedObjectContext, coreData.container.viewContext)
-                .tint(Color.black.opacity(0.9))
+                .tint(AppColor.Label.first.opacity(0.9))
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }

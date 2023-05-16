@@ -84,15 +84,7 @@ struct SettingMenu: View {
             .sheet(isPresented: $viewModel.showLicenseView, content: {
                 LicenseView()
             })
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Image("KogetClear")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                }
-            }
+            .navigationBarTitleDisplayMode(.large)
         }
     }
 }
