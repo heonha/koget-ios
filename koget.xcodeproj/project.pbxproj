@@ -398,6 +398,17 @@
 			path = readme;
 			sourceTree = SOURCE_ROOT;
 		};
+		397FEB202A131B0A007319DD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */,
+				392EDF6429BD55CA000B1353 /* WidgetListCell.swift */,
+				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
+				39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		39BBB53F29F973830071EBB5 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,12 +504,9 @@
 		39E0FAF229D149650081E169 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */,
+				397FEB202A131B0A007319DD /* Cell */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
 				3A0566D22931E9A0007B0A7A /* WidgetListContainerView.swift */,
-				392EDF6429BD55CA000B1353 /* WidgetListCell.swift */,
-				3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */,
-				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

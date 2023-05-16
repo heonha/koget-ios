@@ -14,7 +14,7 @@ import SFSafeSymbols
 // 메인 뷰
 struct MainWidgetView: View {
     
-    let backgroundColor = AppColor.Background.first
+    let backgroundColor = AppColor.Background.second
 
     @State var isPresentHelper = true
     @State var isFloatingButtonOpen = false

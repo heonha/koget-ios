@@ -44,7 +44,7 @@ struct AdPageCell: View {
                     Spacer()
                 })
             }
-            .background(AppColor.Background.second)
+            .background(AppColor.Background.first)
             .cornerRadius(10)
             .shadow(radius: 2)
             .padding(.horizontal)

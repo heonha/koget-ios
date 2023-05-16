@@ -22,10 +22,13 @@ struct WidgetListCell: View {
     var imageSize = CGSize(width: 40, height: 40)
     let titleColor: Color = AppColor.Label.first
 
-    @StateObject var viewModel: MainWidgetViewModel
+    @ObservedObject var viewModel: MainWidgetViewModel
 
     // 리스트 셀
     var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(AppColor.Background.first)
             HStack {
                 ZStack {
                     Circle()
@@ -56,7 +59,6 @@ struct WidgetListCell: View {
                             .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
                             .foregroundColor(Color.init(uiColor: .secondaryLabel))
                             .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
-
                     }
                 }
                 Spacer()
@@ -65,8 +67,10 @@ struct WidgetListCell: View {
                     runCountView
                 }
             }
-            .frame(height: cellHeight)
-
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+        }
+        .frame(height: cellHeight)
     }
 
     // 실행 횟수 카운터
@@ -94,8 +98,8 @@ struct WidgetListCell: View {
 
 }
 
-struct WidgetListCell_Previews: PreviewProvider {
-    static var previews: some View {
-        WidgetListCell(name: "이름", url: "https://google.com", widgetImage: UIImage(named: "Koget")!, cellWidth: 40, runCount: 999, cellHeight: 40, viewModel: MainWidgetViewModel())
-    }
-}
+//struct WidgetListCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WidgetListCell(name: "이름", url: "https://google.com", widgetImage: UIImage(named: "Koget")!, cellWidth: 40, runCount: 999, cellHeight: 40, viewModel: MainWidgetViewModel())
+//    }
+//}

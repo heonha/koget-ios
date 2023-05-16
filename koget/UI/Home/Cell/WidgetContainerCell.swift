@@ -43,7 +43,7 @@ struct WidgetContainerCell: View {
     
     var body: some View {
         
-        Group {
+        ZStack {
             if let data = widget.image, let name = widget.name, let url = widget.url {
                 if let widgetImage = UIImage(data: data) {
                     if type == .grid {
@@ -89,6 +89,7 @@ struct WidgetContainerCell: View {
                         
                     } else {
                         WidgetListCell(name: name, url: url, widgetImage: widgetImage, cellWidth: cellSize.list, runCount: Int(widget.runCount), cellHeight: cellSize.list, viewModel: viewModel)
+
                     }
                 }
             }

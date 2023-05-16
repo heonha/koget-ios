@@ -12,7 +12,7 @@ import SFSafeSymbols
 // 위젯 Grid 및 List를 표현하는 컨테이너
 struct WidgetListContainerView: View {
     
-    let backgroundColor: Color = AppColor.Background.first
+    let backgroundColor: Color = .clear
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
     @State var isDelete: Bool = false
@@ -23,8 +23,7 @@ struct WidgetListContainerView: View {
     @State var currentUserInteractionCellID: String?
 
     var body: some View {
-        ZStack {
-            backgroundColor
+        Group {
             if !$coreData.linkWidgets.wrappedValue.isEmpty {
                 if viewModel.isGridView {
                     gridView
@@ -38,6 +37,7 @@ struct WidgetListContainerView: View {
         }
         .animation(.easeInOut(duration: 0.25), value: viewModel.isGridView)
         .cornerRadius(5)
+
     }
     // MARK: - Widget Views
     // Grid
@@ -52,12 +52,11 @@ struct WidgetListContainerView: View {
         List {
             ForEach(coreData.linkWidgets) { widget in
                 WidgetContainerCell(widget: widget, viewModel: viewModel, type: .list)
-                    
+                    .listRowBackground(Color.clear)
             }
-
         }
-        .listRowSeparator(.visible)
         .listStyle(.plain)
+        .background(Color.clear)
     }
 
     // Placeholder (위젯 없을 때.)
@@ -95,3 +94,4 @@ struct WidgetListContainerView: View {
 //         .environmentObject(StorageProvider(inMemory: true))
 //     }
 // }
+

@@ -24,7 +24,6 @@ struct AdPageContainer: View {
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(height: height)
-        .background(AppColor.Background.first)
     }
 }
 

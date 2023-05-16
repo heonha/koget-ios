@@ -12,14 +12,14 @@ struct DarkModeToggleStyle: ToggleStyle {
 
     let toggleSize = CGSize(width: 28, height: 28)
     let onBGColor = AppColor.Fill.first
-    let OffBGColor = AppColor.Fill.first
+    let OffBGColor = AppColor.Background.first
     let onImage: SFSymbol = .moonFill
     let offImage: SFSymbol = .sunMaxFill
 
     func makeBody(configuration: Configuration) -> some View {
-        HStack {
+        ZStack {
             configuration.label
-            Circle()
+            RoundedRectangle(cornerRadius: 8)
                 .foregroundColor(configuration.isOn ? onBGColor : OffBGColor )
                 .frame(width: toggleSize.width, height: toggleSize.height, alignment: .center)
                 .overlay(
@@ -31,28 +31,11 @@ struct DarkModeToggleStyle: ToggleStyle {
                             .padding(2)
                     })
                 )
-                .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.1), radius: 0.5, x: 0, y: 0)
+                .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.2), radius: 0.3, x: 0.6, y: 0.6)
+                .shadow(color: .black.opacity(configuration.isOn ? 0 : 0.15), radius: 0.3, x: -1, y: -1)
+
                 .animation(.linear(duration: 0.2), value: configuration.isOn)
                 .onTapGesture { configuration.isOn.toggle() }
         }
     }
 }
-//
-// struct ToggleTester: View {
-//     @StateObject var constatnt = Constants.shared
-//     var body: some View {
-//         HStack {
-//             Toggle(isOn: $constatnt.isDarkMode) {
-//             }
-//             .toggleStyle(CheckMarkToggleStyle())
-//             Spacer()
-//         }
-//     }
-// }
-//
-// struct DarkModeToggleStyle_Previews: PreviewProvider {
-//
-//     static var previews: some View {
-//         ToggleTester()
-//     }
-// }
