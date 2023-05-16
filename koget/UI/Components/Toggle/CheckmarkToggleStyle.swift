@@ -12,8 +12,8 @@ struct CheckmarkToggleStyle: ToggleStyle {
 
     let toggleSize = CGSize(width: 20, height: 20)
 
-    let onBGColor = AppColor.Background.third
-    let OffBGColor = AppColor.Background.third
+    let onBGColor = AppColor.Background.first
+    let OffBGColor = AppColor.Background.first
     let onImage: SFSymbol = .checkmarkCircleFill
     let offImage: SFSymbol = .circleFill
 
