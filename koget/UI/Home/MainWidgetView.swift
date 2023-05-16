@@ -14,64 +14,69 @@ import SFSafeSymbols
 // 메인 뷰
 struct MainWidgetView: View {
     
-    let backgroundColor = AppColor.Background.second
-
     @State var isPresentHelper = true
     @State var isFloatingButtonOpen = false
-
+    
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
     @EnvironmentObject var constant: AppStateConstant
-
+    
     var body: some View {
         NavigationView {
-            ZStack {
-                VStack {
-                    AdPageContainer()
-                        .padding(.vertical, 4)
-                    // 링크위젯
-                    WidgetListContainerView(viewModel: viewModel, coreData: _coreData)
-                }
-                .background(backgroundColor)
-                MainFloatingButton(isOpen: $isFloatingButtonOpen)
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    // 중앙 이미지
-                    navigationBarCenterImage()
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    // 다크모드 버튼
-                    Toggle(isOn: $constant.isDarkMode) {
+            mainBody()
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    // Center
+                    ToolbarItem(placement: .principal) {
+                        navigationBarCenterImage()
                     }
-                    .toggleStyle(DarkModeToggleStyle())
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-
-                    // 뷰 전환 토글
-                    if !$coreData.linkWidgets.wrappedValue.isEmpty {
-                        Button {
-                            viewModel.isGridView.toggle()
-                        } label: {
-                            Image(systemSymbol: viewModel.isGridView
-                                  ? SFSymbol.listBullet
-                                  : SFSymbol.squareGrid3x3)
-                            .foregroundColor(AppColor.Label.first)
-                            .opacity(0.9)
-                            .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
+                    // leading
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Toggle(isOn: $constant.isDarkMode) { }
+                            .toggleStyle(DarkModeToggleStyle())
+                    }
+                    
+                    // trailing
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if !$coreData.linkWidgets.wrappedValue.isEmpty {
+                            changeAppearanceButton
                         }
                     }
                 }
-            }
-            .onDisappear {
-                isFloatingButtonOpen = false
-            }
+                .onDisappear {
+                    isFloatingButtonOpen = false
+                }
         }
-        
     }
-
-    func navigationBarCenterImage() -> some View {
+    
+    private func mainBody() -> some View {
+        ZStack {
+            AppColor.Background.second
+            VStack {
+                AdPageContainer()
+                    .padding(.vertical, 4)
+                // 링크위젯
+                WidgetListContainerView(viewModel: viewModel, coreData: _coreData)
+            }
+            MainFloatingButton(isOpen: $isFloatingButtonOpen)
+        }
+    }
+    
+    // 뷰 전환 토글
+    private var changeAppearanceButton: some View {
+        Button {
+            viewModel.isGridView.toggle()
+        } label: {
+            Image(systemSymbol: viewModel.isGridView
+                  ? SFSymbol.listBullet
+                  : SFSymbol.squareGrid3x3)
+            .foregroundColor(AppColor.Label.first)
+            .opacity(0.9)
+            .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
+        }
+    }
+    
+    private func navigationBarCenterImage() -> some View {
         Image("KogetClear")
             .resizable()
             .scaledToFit()

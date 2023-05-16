@@ -42,59 +42,84 @@ struct WidgetContainerCell: View {
     }
     
     var body: some View {
-        
-        ZStack {
-            if let data = widget.image, let name = widget.name, let url = widget.url {
-                if let widgetImage = UIImage(data: data) {
-                    if type == .grid {
-                        Menu {
-                            Button {
-                                if let url = widget.url, let id = widget.id {
-                                    viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
-                                }
-                            } label: {
-                                Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
-                            }
-                            Button {
-                                self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
-                                    DetailWidgetView(selectedWidget: widget)
-                                })
-                            } label: {
-                                Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
-                            }
-                            Button(role: .destructive) {
-                                isDelete.toggle()
-                            } label: {
-                                Label(S.Button.delete, systemSymbol: .trashFill)
-                            }
-                        } label: {
-                            WidgetGridCell(name: name, url: url, widgetImage: widgetImage,
-                                           cellWidth: cellSize.grid, viewModel: viewModel)
-                            
-                        }
-                        .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
-                            Button(S.Button.delete, role: .destructive) {
-                                coreData.deleteData(data: widget)
-                                dismiss()
-                                viewModel.displayAlertView()
-                                isDelete = false
-                            }
-                            Button(S.Button.cancel, role: .cancel) {
-                                isDelete = false
-                            }
-                        }, message: {Text(S.Alert.Message.checkWidgetDelete)})
-                        .sheet(isPresented: $isPresentDetailView, content: {
-                            DetailWidgetView(selectedWidget: widget)
-                        })
-                        
-                    } else {
-                        WidgetListCell(name: name, url: url, widgetImage: widgetImage, cellWidth: cellSize.list, runCount: Int(widget.runCount), cellHeight: cellSize.list, viewModel: viewModel)
+        if let imageData = widget.image,
+           let widgetImage = UIImage(data: imageData),
+           let name = widget.name,
+           let url = widget.url {
 
-                    }
+            ZStack {
+                switch type {
+                case .grid:
+                    gridMenu(name: name,
+                             url: url,
+                             widgetImage: widgetImage,
+                             cellWidth: cellSize.grid,
+                             viewModel: viewModel)
+                case .list:
+                    WidgetListCell(name: name,
+                                   url: url,
+                                   widgetImage: widgetImage,
+                                   cellWidth: cellSize.list,
+                                   runCount: Int(widget.runCount),
+                                   cellHeight: cellSize.list, viewModel: viewModel)
                 }
             }
+            .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                swipeRunButton
+            }
+            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                swipeDeleteButton
+
+                swipeEditButton
+            }
+            .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
+                Button(S.Button.delete, role: .destructive) {
+                    coreData.deleteData(data: widget)
+                    viewModel.setAlertView()
+                    viewModel.displayAlertView()
+                    isDelete = false
+                }
+                Button(S.Button.cancel, role: .cancel) {
+                    isDelete = false
+                }
+            }, message: {Text(S.Alert.Message.checkWidgetDelete)})
         }
-        .swipeActions(edge: .leading, allowsFullSwipe: false) {
+    }
+
+    var swipeRunButton: some View {
+        Button {
+            if let url = widget.url, let id = widget.id {
+                viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
+            }
+        } label: {
+            Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
+        }
+        .tint(Color.init(uiColor: .systemGreen))
+    }
+
+    var swipeDeleteButton: some View {
+        Button {
+            isDelete.toggle()
+        } label: {
+            Label(S.Button.delete, systemSymbol: .trashFill)
+        }
+        .tint(Color.init(uiColor: .systemRed))
+    }
+
+    var swipeEditButton: some View {
+        Button {
+            self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                DetailWidgetView(selectedWidget: widget)
+            })
+        } label: {
+            Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
+        }
+        .tint(AppColor.kogetBlue)
+    }
+
+    private func gridMenu(name: String, url: String, widgetImage: UIImage,
+                          cellWidth: CGFloat, viewModel: MainWidgetViewModel) -> some View {
+        Menu {
             Button {
                 if let url = widget.url, let id = widget.id {
                     viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
@@ -102,18 +127,6 @@ struct WidgetContainerCell: View {
             } label: {
                 Label(S.Button.run, systemSymbol: .arrowUpLeftSquareFill)
             }
-            .tint(Color.init(uiColor: .systemGreen))
-            
-        }
-        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-            
-            Button {
-                isDelete.toggle()
-            } label: {
-                Label(S.Button.delete, systemSymbol: .trashFill)
-            }
-            .tint(Color.init(uiColor: .systemRed))
-            
             Button {
                 self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
                     DetailWidgetView(selectedWidget: widget)
@@ -121,21 +134,34 @@ struct WidgetContainerCell: View {
             } label: {
                 Label(S.Button.edit, systemSymbol: .sliderHorizontal3)
             }
-            .tint(AppColor.kogetBlue)
-            
+            Button(role: .destructive) {
+                isDelete.toggle()
+            } label: {
+                Label(S.Button.delete, systemSymbol: .trashFill)
+            }
+        } label: {
+            WidgetGridCell(name: name, url: url, widgetImage: widgetImage,
+                           cellWidth: cellSize.grid, viewModel: viewModel)
+
         }
         .alert("\(widget.name ?? S.unknown)", isPresented: $isDelete, actions: {
             Button(S.Button.delete, role: .destructive) {
                 coreData.deleteData(data: widget)
-                viewModel.setAlertView()
+                dismiss()
                 viewModel.displayAlertView()
                 isDelete = false
             }
             Button(S.Button.cancel, role: .cancel) {
                 isDelete = false
             }
-        }, message: {Text(S.Alert.Message.checkWidgetDelete)})
+        }, message: {
+            Text(S.Alert.Message.checkWidgetDelete)
+        })
+        .sheet(isPresented: $isPresentDetailView, content: {
+            DetailWidgetView(selectedWidget: widget)
+        })
     }
+
 }
 
 struct DeepLinkWidgetIconView_Previews: PreviewProvider {
