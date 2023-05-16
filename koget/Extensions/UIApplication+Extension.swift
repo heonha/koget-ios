@@ -1,27 +1,11 @@
 //
-//  AppStoreReviewable.swift
+//  UIApplication+Extension.swift
 //  koget
 //
-//  Created by HeonJin Ha on 2023/01/28.
+//  Created by Heonjin Ha on 2023/05/16.
 //
 
-import Foundation
-import StoreKit
-
-protocol AppStoreReviewService {
-    func requestReview()
-}
-
-extension AppStoreReviewService {
-    func requestReview() {
-        let scenes = UIApplication.shared.connectedScenes
-        let windowScene = scenes.first as? UIWindowScene
-        
-        if let windowScene = windowScene {
-            SKStoreReviewController.requestReview(in: windowScene)
-        }
-    }
-}
+import SwiftUI
 
 extension UIApplication {
     var keyWindow: UIWindow? {

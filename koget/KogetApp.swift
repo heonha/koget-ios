@@ -11,7 +11,8 @@ import FirebaseCore
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        
+        UITableView.appearance().backgroundColor = .systemBackground
+
         return true
     }
 }
@@ -37,6 +38,7 @@ struct KogetApp: App {
                 .environmentObject(appStateConstant)
                 .environmentObject(coreData)
                 .environment(\.managedObjectContext, coreData.container.viewContext)
+                .tint(Color.black.opacity(0.9))
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
                 }

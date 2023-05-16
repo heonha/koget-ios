@@ -8,7 +8,7 @@
 import SwiftUI
 import SFSafeSymbols
 
-struct SettingMenu: View, AppStoreReviewService {
+struct SettingMenu: View {
     
     @ObservedObject var viewModel = SettingMenuViewModel.shared
     @EnvironmentObject var constant: Constants
@@ -49,7 +49,7 @@ struct SettingMenu: View, AppStoreReviewService {
                         Section(S.SettingMenu.Section.AboutApp.title) {
 
                             SettingMenuButton(title: S.SettingMenu.Section.AboutApp.voteRate, imageType: .symbol, systemSymbol: .starFill, imageColor: .yellow) {
-                                requestReview()
+                                AppStoreService().requestReview()
                             }
 
                             SettingMenuButton(title: S.License.title, imageType: .symbol, systemSymbol: .listBulletClipboard, imageColor: .gray) {

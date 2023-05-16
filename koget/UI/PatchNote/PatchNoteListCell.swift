@@ -40,15 +40,15 @@ struct PatchNoteListCell: View {
 
                 if isPresent {
                     PatchNoteContentView(fileName: constant.isDarkMode ? darkFileName : lightFileName)
+                        .opacity(isPresent ? 1 : 0)
                 }
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: 8))
-        .padding(.horizontal, 8)
+        .animation(.interactiveSpring(response: 0.4, dampingFraction: 1.0, blendDuration: 0.5), value: isPresent)
         .onTapGesture {
             isPresent.toggle()
         }
-        .animation(.interactiveSpring(), value: isPresent) // 애니메이션 적용
     }
 
     func textView(title: String, subtitle: String) -> some View {
