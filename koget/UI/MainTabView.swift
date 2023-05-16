@@ -22,6 +22,8 @@ struct MainTabView: View {
                     Image(systemSymbol: SFSymbol.gearshape)
                 }
         }
+
+
     }
 }
 

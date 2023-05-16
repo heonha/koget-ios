@@ -13,29 +13,27 @@ import SFSafeSymbols
 
 // 메인 뷰
 struct MainWidgetView: View {
-    
+
     @State var isPresentHelper = true
     @State var isFloatingButtonOpen = false
-    
+
     @StateObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
     @EnvironmentObject var constant: AppStateConstant
-    
+
     var body: some View {
         NavigationView {
             mainBody()
-                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     // Center
-                    ToolbarItem(placement: .principal) {
+                    ToolbarItem(placement: .navigationBarLeading) {
                         navigationBarCenterImage()
                     }
                     // leading
-                    ToolbarItem(placement: .navigationBarLeading) {
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Toggle(isOn: $constant.isDarkMode) { }
                             .toggleStyle(DarkModeToggleStyle())
                     }
-                    
                     // trailing
                     ToolbarItem(placement: .navigationBarTrailing) {
                         if !$coreData.linkWidgets.wrappedValue.isEmpty {
@@ -43,15 +41,17 @@ struct MainWidgetView: View {
                         }
                     }
                 }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbarBackground(Color.init(uiColor: .secondarySystemBackground), for: .navigationBar)
                 .onDisappear {
                     isFloatingButtonOpen = false
                 }
         }
     }
-    
+
     private func mainBody() -> some View {
         ZStack {
-            AppColor.Background.second
+            AppColor.Background.first
             VStack {
                 AdPageContainer()
                     .padding(.vertical, 4)
@@ -61,7 +61,7 @@ struct MainWidgetView: View {
             MainFloatingButton(isOpen: $isFloatingButtonOpen)
         }
     }
-    
+
     // 뷰 전환 토글
     private var changeAppearanceButton: some View {
         Button {
@@ -71,11 +71,11 @@ struct MainWidgetView: View {
                   ? SFSymbol.listBullet
                   : SFSymbol.squareGrid3x3)
             .foregroundColor(AppColor.Label.first)
-            .opacity(0.9)
+            .opacity(0.56)
             .animation(.easeInOut(duration: 0.2), value: viewModel.isGridView)
         }
     }
-    
+
     private func navigationBarCenterImage() -> some View {
         Image("KogetClear")
             .resizable()

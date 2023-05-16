@@ -20,6 +20,12 @@ struct AdPageCell: View {
             PatchNoteList()
         } label: {
             ZStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(lineWidth: 0.5)
+                    .fill(.background)
+                    .shadow(color: .black.opacity(0.23), radius: 1, x: -0.4, y: -0.4)
+                    .shadow(color: .black.opacity(0.28), radius: 1, x: 0.4, y: 0.4)
+
                 HStack {
                     Spacer()
                     Image(imageName)
@@ -44,9 +50,8 @@ struct AdPageCell: View {
                     Spacer()
                 })
             }
-            .background(AppColor.Background.first)
+            .background(.clear)
             .cornerRadius(10)
-            .shadow(radius: 2)
             .padding(.horizontal)
         }
     }

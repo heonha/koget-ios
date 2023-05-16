@@ -34,8 +34,6 @@ struct KogetApp: App {
 
         WindowGroup {
             MainView()
-                .tint(AppColor.Label.first)
-                .background(AppColor.Background.first)
                 .environmentObject(appStateConstant)
                 .environmentObject(coreData)
                 .environment(\.managedObjectContext, coreData.container.viewContext)

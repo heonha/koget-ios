@@ -82,11 +82,13 @@ struct WidgetContainerCell: View {
                 Button(S.Button.cancel, role: .cancel) {
                     isDelete = false
                 }
-            }, message: {Text(S.Alert.Message.checkWidgetDelete)})
+            }, message: {
+                Text(S.Alert.Message.checkWidgetDelete)
+            })
         }
     }
 
-    var swipeRunButton: some View {
+    private var swipeRunButton: some View {
         Button {
             if let url = widget.url, let id = widget.id {
                 viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
@@ -97,7 +99,7 @@ struct WidgetContainerCell: View {
         .tint(Color.init(uiColor: .systemGreen))
     }
 
-    var swipeDeleteButton: some View {
+    private var swipeDeleteButton: some View {
         Button {
             isDelete.toggle()
         } label: {
@@ -106,7 +108,7 @@ struct WidgetContainerCell: View {
         .tint(Color.init(uiColor: .systemRed))
     }
 
-    var swipeEditButton: some View {
+    private var swipeEditButton: some View {
         Button {
             self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
                 DetailWidgetView(selectedWidget: widget)
@@ -164,6 +166,7 @@ struct WidgetContainerCell: View {
 
 }
 
+#if DEBUG
 struct DeepLinkWidgetIconView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
@@ -178,3 +181,4 @@ struct DeepLinkWidgetIconView_Previews: PreviewProvider {
         .environmentObject(StorageProvider())
     }
 }
+#endif

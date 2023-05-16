@@ -20,7 +20,6 @@ struct AdPageContainer: View {
             ForEach(pageList, id: \.id) { list in
                 list
             }
-            .padding(.vertical, 8)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(height: height)
