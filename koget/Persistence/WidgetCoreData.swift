@@ -107,16 +107,30 @@ class WidgetCoreData: ObservableObject {
     enum WidgetSortKeys: String {
         case updatedDate = "updatedDate"
         case runCount = "runCount"
+        case index = "index"
     }
     
-    func loadData(sortKey: WidgetSortKeys = .runCount, ascending: Bool = false) {
-        
+    func loadData(sortKey: WidgetSortKeys = .index) {
         let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
-        // 정렬방식 설정
+
+        let sortDescriptor = NSSortDescriptor(key: "index", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+
+        do {
+            linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
+        } catch {
+            print("데이터 가져오기 에러 발생 : \(error)")
+            return
+        }
+    }
+
+    func loadData(sortKey: WidgetSortKeys, ascending: Bool = false) {
+
+        let request: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
+
         let sortDescriptor = NSSortDescriptor(key: sortKey.rawValue, ascending: ascending)
         request.sortDescriptors = [sortDescriptor]
-        
-        // 데이터 가져오기
+
         do {
             linkWidgets = try container.viewContext.fetch(request) // 데이터 가져오기
         } catch {
@@ -150,15 +164,5 @@ class WidgetCoreData: ObservableObject {
         container.viewContext.delete(data)
         saveData()
         loadData()
-    }
-}
-
-public extension URL {
-    /// sqlite 데이터베이스를 가리키는 지정된 앱 그룹 및 데이터베이스의 URL을 반환합니다.
-    static func storeURL(for appGroup: String, databaseName: String) -> URL {
-        guard let fileContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
-            fatalError("공유 파일 컨테이너를 생성할 수 없습니다. : Shared file container could not be created.")
-        }
-        return fileContainer.appendingPathComponent("\(databaseName).sqlite")
     }
 }

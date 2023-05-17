@@ -64,6 +64,10 @@
 		39BB37AF29C0B5DD00BD91EC /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB37AE29C0B5DD00BD91EC /* Strings+Generated.swift */; };
 		39BBB53E29F96BBD0071EBB5 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BBB53D29F96BBD0071EBB5 /* BaseViewModel.swift */; };
 		39BD3EE12A13766000E14DCA /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BD3EE02A13766000E14DCA /* UIApplication+Extension.swift */; };
+		39BD3EE42A13D1EC00E14DCA /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */; };
+		39BD3EE52A13D1FB00E14DCA /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */; };
+		39BD3EE62A13D1FB00E14DCA /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */; };
+		39BD3EE82A14752800E14DCA /* DragRelocateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BD3EE72A14752700E14DCA /* DragRelocateDelegate.swift */; };
 		39C1F3D529D181B300C26919 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1F3D429D181B300C26919 /* CustomFont.swift */; };
 		39C1F3D629D181D700C26919 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		39C1F3D829D181EA00C26919 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
@@ -223,6 +227,8 @@
 		39BB37B029C0BE7600BD91EC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39BBB53D29F96BBD0071EBB5 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		39BD3EE02A13766000E14DCA /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		39BD3EE72A14752700E14DCA /* DragRelocateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragRelocateDelegate.swift; sourceTree = "<group>"; };
 		39C1F3D429D181B300C26919 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		39CD9F2829B215A100C28534 /* SDSwagger.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDSwagger.otf; sourceTree = "<group>"; };
 		39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
@@ -403,10 +409,12 @@
 		397FEB202A131B0A007319DD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				3A0566D22931E9A0007B0A7A /* WidgetListContainerView.swift */,
 				3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */,
 				392EDF6429BD55CA000B1353 /* WidgetListCell.swift */,
 				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
 				39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */,
+				39BD3EE72A14752700E14DCA /* DragRelocateDelegate.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -516,9 +524,8 @@
 		39E0FAF229D149650081E169 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				397FEB202A131B0A007319DD /* Cell */,
 				3ABFEFC4292F214200455730 /* MainWidgetView.swift */,
-				3A0566D22931E9A0007B0A7A /* WidgetListContainerView.swift */,
+				397FEB202A131B0A007319DD /* Cell */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -630,6 +637,7 @@
 				39504AA029B43796008A7BA4 /* UIScreen+Extension.swift */,
 				392140A32A0BC1C400D0F527 /* Date+Extention.swift */,
 				39BD3EE02A13766000E14DCA /* UIApplication+Extension.swift */,
+				39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -932,6 +940,7 @@
 				3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */,
 				3AE9DC0F28F8F891008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				39694FDF29E6984D00F2C75C /* WidgetsBundle.swift in Sources */,
+				39BD3EE62A13D1FB00E14DCA /* URL+Extension.swift in Sources */,
 				39694FE629E6AE8B00F2C75C /* DeepLinkProvider.swift in Sources */,
 				39694FE229E69B3D00F2C75C /* WidgetConstant.swift in Sources */,
 				39694FE929E6AEEB00F2C75C /* DeepLinkWidgetEntryView.swift in Sources */,
@@ -960,6 +969,7 @@
 				3A1F890A297AB25700E1B4C4 /* MainView.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* BaseWidgetService.swift in Sources */,
 				3AD4691B297D19190090B2D3 /* ContactViewModel.swift in Sources */,
+				39BD3EE82A14752800E14DCA /* DragRelocateDelegate.swift in Sources */,
 				39EBEB5229BE0A7900B1FD54 /* PatchNoteModel.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				39694FE529E6AE8900F2C75C /* DeepLinkProvider.swift in Sources */,
@@ -992,6 +1002,7 @@
 				3ABFEFC5292F214200455730 /* MainWidgetView.swift in Sources */,
 				39694FDE29E6825B00F2C75C /* IntentHandler.swift in Sources */,
 				390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */,
+				39BD3EE42A13D1EC00E14DCA /* URL+Extension.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				3A1591742985194C001924C3 /* AppStoreService.swift in Sources */,
 				39EBEB4E29BE03C300B1FD54 /* PatchNoteListCell.swift in Sources */,
@@ -1033,6 +1044,7 @@
 				3976101A29CB234200632313 /* WidgetConstant.swift in Sources */,
 				39C1F3E029D1C97400C26919 /* Strings+Generated.swift in Sources */,
 				3979FA6D29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */,
+				39BD3EE52A13D1FB00E14DCA /* URL+Extension.swift in Sources */,
 				3AE9DC0E28F8F890008A3316 /* WidgetModel.xcdatamodeld in Sources */,
 				39694FE429E6AE8100F2C75C /* DeepLinkProvider.swift in Sources */,
 				3979FA6B29D1D2E800900FBA /* IntentHandler.swift in Sources */,
