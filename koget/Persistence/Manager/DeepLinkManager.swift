@@ -17,9 +17,11 @@ class DeepLinkManager: ObservableObject {
     static let shared = DeepLinkManager()
 
     let appGroupID = Constants.APP_GROUP_ID
+    lazy var context = coreDataStore.viewContext
+
 
     @Published var linkWidgets = [DeepLink]()
-    @AppStorage("widgetPadding") var widgetPadding = 1.0
+    @AppStorage("sortKey") var sortKey: WidgetSortKeys = .runCount
 
     let coreDataStore: CoreDataStoring
 
@@ -36,61 +38,47 @@ extension DeepLinkManager {
         coreDataStore.save()
     }
 
-    func loadData(sortKey: WidgetSortKeys = .index) {
-        let context = coreDataStore.viewContext
-        let fetchRequest: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
+    func loadData(sortKey: WidgetSortKeys? = nil,
+                  ascending: Bool = false) {
 
-        do {
-            linkWidgets = try context.fetch(fetchRequest)
-        } catch {
-            print("Error fetching DeepLinks: \(error)")
-        }
-    }
+        var sortKey: WidgetSortKeys?
 
-    func loadData(sortKey: WidgetSortKeys, ascending: Bool = false) {
-        let context = coreDataStore.viewContext
-        let sortedRequest = sortedRequest(sortKey: sortKey, ascending: ascending)
-
-        do {
-            linkWidgets = try context.fetch(sortedRequest) // 데이터 가져오기
-        } catch {
-            print("데이터 가져오기 에러 발생 : \(error)")
-            return
+        if sortKey == nil {
+            sortKey = self.sortKey
         }
 
+        linkWidgets = sortedRequest(sortKey: sortKey, ascending: ascending)
     }
 
     func searchData(searchText: String, sortKey: WidgetSortKeys = .updatedDate, ascending: Bool = false) {
-        let context = coreDataStore.viewContext
 
-        let sortedRequest = sortedRequest(searchText: searchText, sortKey: sortKey)
+        linkWidgets = sortedRequest(searchText: searchText, format: "name CONTAINS[cd] %@", sortKey: sortKey)
 
-        do {
-            linkWidgets = try context.fetch(sortedRequest) // 데이터 가져오기
-        } catch {
-             print("데이터 가져오기 에러 발생 : \(error)")
-            return
-        }
-    }
-
-    private func sortedRequest(searchText: String = "", format: String = "name CONTAINS[cd] %@" , sortKey: WidgetSortKeys, ascending: Bool = false) -> FetchRequest<DeepLink> {
-
-        let request: FetchRequest<DeepLink> = DeepLink.fetchRequest()
-
-        let predicate = NSPredicate(format: format, searchText)
-
-        let sortDescriptor = NSSortDescriptor(key: sortKey.rawValue, ascending: ascending)
-        request.predicate = predicate
-        request.sortDescriptors = [sortDescriptor]
-
-        return request
     }
 
     func deleteData(data: DeepLink) {
-        let context = coreDataStore.viewContext
-        context.delete(data)
+        coreDataStore.viewContext.delete(data)
         saveData()
         loadData()
+    }
+
+    private func sortedRequest(searchText: String = "",
+                               format: String? = nil,
+                               sortKey: WidgetSortKeys?,
+                               ascending: Bool = false) -> [DeepLink] {
+
+        var predicate: NSPredicate?
+
+        if let format = format {
+            predicate = NSPredicate(format: format, searchText)
+        }
+
+        let sortDescriptor = NSSortDescriptor(key: sortKey?.rawValue, ascending: ascending)
+
+        return coreDataStore.fetch(predicate: predicate,
+                                   sortDescriptors: [sortDescriptor],
+                                   limit: nil,
+                                   batchSize: nil)
     }
 
 }
