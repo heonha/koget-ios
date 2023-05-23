@@ -16,63 +16,43 @@ class DeepLinkManager: ObservableObject {
 
     static let shared = DeepLinkManager()
 
-    let container = NSPContainer(name: "WidgetModel")
-    let coreDataContainerName = Constants.COREDATA_CONTAINER_NAME
     let appGroupID = Constants.APP_GROUP_ID
 
     @Published var linkWidgets = [DeepLink]()
     @AppStorage("widgetPadding") var widgetPadding = 1.0
 
-    private init() {
-        loadStore()
-        loadData()
+    let coreDataStore: CoreDataStoring
+
+    init(coreDataStore: CoreDataStoring = CoreDataStore(name: "WidgetModel", in: .persistent)) {
+        self.coreDataStore = coreDataStore
+        self.loadData()
     }
 
-    private func loadStore() {
-        let storeURL = URL.storeURL(for: appGroupID, databaseName: coreDataContainerName)
-        let storeDescription = NSPStoreDescription(url: storeURL)
-        container.persistentStoreDescriptions = [storeDescription]
-        container.loadPersistentStores(completionHandler: { (storeDesc, error) in
-            if let error = error as NSError? {
-                debugPrint("PersistentStore Load Error: \(error.localizedDescription)")
-                return
-            }
-        })
-    }
+}
+
+extension DeepLinkManager {
 
     func saveData() {
-        do {
-            try container.viewContext.save()
-        } catch let error {
-            print(error.localizedDescription)
-            return
-        }
-    }
-
-    enum WidgetSortKeys: String {
-        case updatedDate = "updatedDate"
-        case runCount = "runCount"
-        case index = "index"
+        coreDataStore.save()
     }
 
     func loadData(sortKey: WidgetSortKeys = .index) {
-
-        let sortedRequest = sortedRequest(sortKey: sortKey)
+        let context = coreDataStore.viewContext
+        let fetchRequest: NSFetchRequest<DeepLink> = DeepLink.fetchRequest()
 
         do {
-            linkWidgets = try container.viewContext.fetch(sortedRequest) // 데이터 가져오기
+            linkWidgets = try context.fetch(fetchRequest)
         } catch {
-            print("데이터 가져오기 에러 발생 : \(error)")
-            return
+            print("Error fetching DeepLinks: \(error)")
         }
     }
 
     func loadData(sortKey: WidgetSortKeys, ascending: Bool = false) {
-
+        let context = coreDataStore.viewContext
         let sortedRequest = sortedRequest(sortKey: sortKey, ascending: ascending)
 
         do {
-            linkWidgets = try container.viewContext.fetch(sortedRequest) // 데이터 가져오기
+            linkWidgets = try context.fetch(sortedRequest) // 데이터 가져오기
         } catch {
             print("데이터 가져오기 에러 발생 : \(error)")
             return
@@ -82,12 +62,13 @@ class DeepLinkManager: ObservableObject {
 
     //원하는 entity 타입의 데이터 불러오기(Read)
     func searchData(searchText: String, sortKey: WidgetSortKeys = .updatedDate, ascending: Bool = false) {
+        let context = coreDataStore.viewContext
 
         let sortedRequest = sortedRequest(searchText: searchText, sortKey: sortKey)
 
         // 데이터 가져오기
         do {
-            linkWidgets = try container.viewContext.fetch(sortedRequest) // 데이터 가져오기
+            linkWidgets = try context.fetch(sortedRequest) // 데이터 가져오기
         } catch {
              print("데이터 가져오기 에러 발생 : \(error)")
             return
@@ -108,7 +89,8 @@ class DeepLinkManager: ObservableObject {
     }
 
     func deleteData(data: DeepLink) {
-        container.viewContext.delete(data)
+        let context = coreDataStore.viewContext
+        context.delete(data)
         saveData()
         loadData()
     }

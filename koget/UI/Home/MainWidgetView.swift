@@ -59,8 +59,10 @@ struct MainWidgetView: View {
             VStack {
                 AdPageContainer()
                     .padding(.vertical, 4)
-                // 링크위젯
+
+                Spacer()
                 WidgetListContainerView(viewModel: viewModel, coreData: _coreData)
+                Spacer()
             }
             MainFloatingButton(isOpen: $isFloatingButtonOpen)
         }

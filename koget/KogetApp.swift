@@ -32,12 +32,10 @@ struct KogetApp: App {
     @ObservedObject var appStateConstant = AppStateConstant.shared
 
     var body: some Scene {
-
         WindowGroup {
             MainView()
                 .environmentObject(appStateConstant)
                 .environmentObject(coreData)
-                .environment(\.managedObjectContext, coreData.container.viewContext)
                 .tint(AppColor.Label.first.opacity(0.75))
                 .onOpenURL { url in
                     maybeOpenedFromWidget(urlString: url.absoluteString)
