@@ -31,6 +31,11 @@
 		39504AA129B43796008A7BA4 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA029B43796008A7BA4 /* UIScreen+Extension.swift */; };
 		39504AA329B43F16008A7BA4 /* EKMakerTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504AA229B43F16008A7BA4 /* EKMakerTester.swift */; };
 		395307F729C9CB5600225951 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 395307F629C9CB5600225951 /* GoogleService-Info.plist */; };
+		395DC33A2A1CC08C00EA310E /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395DC3392A1CC08C00EA310E /* CoreDataStore.swift */; };
+		395DC33C2A1CC18300EA310E /* NSManagedObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395DC33B2A1CC18300EA310E /* NSManagedObject+Extension.swift */; };
+		395DC33E2A1CC1A500EA310E /* EntityCreating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395DC33D2A1CC1A500EA310E /* EntityCreating.swift */; };
+		395DC3402A1CC1EA00EA310E /* EntitySaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395DC33F2A1CC1EA00EA310E /* EntitySaving.swift */; };
+		395DC3422A1CC22700EA310E /* EntityFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395DC3412A1CC22700EA310E /* EntityFetching.swift */; };
 		3964E5EC29C9DFEE0010409B /* KogetClear.png in Resources */ = {isa = PBXBuildFile; fileRef = 3964E5EA29C9DFEE0010409B /* KogetClear.png */; };
 		3964E5ED29C9DFEE0010409B /* downloadToAppStoreKr.svg in Resources */ = {isa = PBXBuildFile; fileRef = 3964E5EB29C9DFEE0010409B /* downloadToAppStoreKr.svg */; };
 		3964E5EF29C9DFFA0010409B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3964E5EE29C9DFFA0010409B /* README.md */; };
@@ -81,6 +86,12 @@
 		39E0FAE729D132940081E169 /* PatchNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E0FAE629D132940081E169 /* PatchNoteViewModel.swift */; };
 		39E456E329C7120C0017B1AB /* ContactType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E456E229C7120C0017B1AB /* ContactType.swift */; };
 		39E456E529C7122F0017B1AB /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E456E429C7122F0017B1AB /* RequestType.swift */; };
+		39E7AA1E2A1BC6290012616D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7AA1D2A1BC6290012616D /* UIImage+Extension.swift */; };
+		39E7AA1F2A1BC7770012616D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7AA1D2A1BC6290012616D /* UIImage+Extension.swift */; };
+		39E7AA202A1BC7770012616D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7AA1D2A1BC6290012616D /* UIImage+Extension.swift */; };
+		39E7AA222A1BC8D80012616D /* WidgetCoreData+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7AA212A1BC8D80012616D /* WidgetCoreData+Extestion.swift */; };
+		39E7AA232A1BC8F10012616D /* WidgetCoreData+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7AA212A1BC8D80012616D /* WidgetCoreData+Extestion.swift */; };
+		39E7AA242A1BC8F10012616D /* WidgetCoreData+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7AA212A1BC8D80012616D /* WidgetCoreData+Extestion.swift */; };
 		39E9410729C6CFD4008F8E9F /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9410629C6CFD4008F8E9F /* LicenseView.swift */; };
 		39EBEB4729BDDC4500B1FD54 /* CheckmarkToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4629BDDC4500B1FD54 /* CheckmarkToggleStyle.swift */; };
 		39EBEB4A29BDF7A000B1FD54 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 39EBEB4929BDF7A000B1FD54 /* Kingfisher */; };
@@ -202,6 +213,11 @@
 		39504AA029B43796008A7BA4 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		39504AA229B43F16008A7BA4 /* EKMakerTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMakerTester.swift; sourceTree = "<group>"; };
 		395307F629C9CB5600225951 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		395DC3392A1CC08C00EA310E /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		395DC33B2A1CC18300EA310E /* NSManagedObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extension.swift"; sourceTree = "<group>"; };
+		395DC33D2A1CC1A500EA310E /* EntityCreating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCreating.swift; sourceTree = "<group>"; };
+		395DC33F2A1CC1EA00EA310E /* EntitySaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitySaving.swift; sourceTree = "<group>"; };
+		395DC3412A1CC22700EA310E /* EntityFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityFetching.swift; sourceTree = "<group>"; };
 		3964E5EA29C9DFEE0010409B /* KogetClear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KogetClear.png; sourceTree = "<group>"; };
 		3964E5EB29C9DFEE0010409B /* downloadToAppStoreKr.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = downloadToAppStoreKr.svg; sourceTree = "<group>"; };
 		3964E5EE29C9DFFA0010409B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -237,6 +253,8 @@
 		39E0FAE629D132940081E169 /* PatchNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteViewModel.swift; sourceTree = "<group>"; };
 		39E456E229C7120C0017B1AB /* ContactType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactType.swift; sourceTree = "<group>"; };
 		39E456E429C7122F0017B1AB /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		39E7AA1D2A1BC6290012616D /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		39E7AA212A1BC8D80012616D /* WidgetCoreData+Extestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WidgetCoreData+Extestion.swift"; sourceTree = "<group>"; };
 		39E9410629C6CFD4008F8E9F /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		39EBEB4629BDDC4500B1FD54 /* CheckmarkToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkToggleStyle.swift; sourceTree = "<group>"; };
 		39EBEB4B29BDF7F400B1FD54 /* PatchNoteContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteContentView.swift; sourceTree = "<group>"; };
@@ -396,6 +414,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		395DC3432A1CC23B00EA310E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				395DC33D2A1CC1A500EA310E /* EntityCreating.swift */,
+				395DC33F2A1CC1EA00EA310E /* EntitySaving.swift */,
+				395DC3412A1CC22700EA310E /* EntityFetching.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		3964E5E929C9DFEE0010409B /* readme */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,8 +451,12 @@
 			isa = PBXGroup;
 			children = (
 				3ABD50FE292945EB00F878AE /* WidgetCoreData.swift */,
+				39E7AA212A1BC8D80012616D /* WidgetCoreData+Extestion.swift */,
 				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
 				3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */,
+				395DC3392A1CC08C00EA310E /* CoreDataStore.swift */,
+				395DC33B2A1CC18300EA310E /* NSManagedObject+Extension.swift */,
+				395DC3432A1CC23B00EA310E /* Protocols */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -638,6 +670,7 @@
 				392140A32A0BC1C400D0F527 /* Date+Extention.swift */,
 				39BD3EE02A13766000E14DCA /* UIApplication+Extension.swift */,
 				39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */,
+				39E7AA1D2A1BC6290012616D /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -935,6 +968,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39E7AA242A1BC8F10012616D /* WidgetCoreData+Extestion.swift in Sources */,
+				39E7AA202A1BC7770012616D /* UIImage+Extension.swift in Sources */,
 				39694FE029E69B2300F2C75C /* DeepLinkWidget.swift in Sources */,
 				39C1F3DA29D1822600C26919 /* WidgetCoreData.swift in Sources */,
 				3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */,
@@ -972,10 +1007,12 @@
 				39BD3EE82A14752800E14DCA /* DragRelocateDelegate.swift in Sources */,
 				39EBEB5229BE0A7900B1FD54 /* PatchNoteModel.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
+				395DC33A2A1CC08C00EA310E /* CoreDataStore.swift in Sources */,
 				39694FE529E6AE8900F2C75C /* DeepLinkProvider.swift in Sources */,
 				3A0566CE2931E87D007B0A7A /* WidgetContainerCell.swift in Sources */,
 				3A559C7028EB1D4900D5D9E4 /* AppColor.swift in Sources */,
 				3A8339D92932167500DC9527 /* TextButton.swift in Sources */,
+				395DC33C2A1CC18300EA310E /* NSManagedObject+Extension.swift in Sources */,
 				3ABFEFC1292F136B00455730 /* DetailWidgetView.swift in Sources */,
 				3ABFEFBD292E70A900455730 /* WidgetAssetViewModel.swift in Sources */,
 				3ADA2E97297FD779004AADEE /* SettingMenu.swift in Sources */,
@@ -995,6 +1032,7 @@
 				392140A42A0BC1C400D0F527 /* Date+Extention.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthService.swift in Sources */,
+				395DC33E2A1CC1A500EA310E /* EntityCreating.swift in Sources */,
 				39504A9D29B429AF008A7BA4 /* AlertFactory.swift in Sources */,
 				39E0FAE729D132940081E169 /* PatchNoteViewModel.swift in Sources */,
 				3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */,
@@ -1004,6 +1042,7 @@
 				390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */,
 				39BD3EE42A13D1EC00E14DCA /* URL+Extension.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
+				39E7AA1E2A1BC6290012616D /* UIImage+Extension.swift in Sources */,
 				3A1591742985194C001924C3 /* AppStoreService.swift in Sources */,
 				39EBEB4E29BE03C300B1FD54 /* PatchNoteListCell.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
@@ -1015,6 +1054,7 @@
 				390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */,
 				39EBEB4C29BDF7F400B1FD54 /* PatchNoteContentView.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* WidgetListContainerView.swift in Sources */,
+				39E7AA222A1BC8D80012616D /* WidgetCoreData+Extestion.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
 				3A1F89082978F9DC00E1B4C4 /* AddWidgetVideoView.swift in Sources */,
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,
@@ -1031,6 +1071,8 @@
 				392EDF6129BD508A000B1353 /* AdPageCell.swift in Sources */,
 				3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */,
 				39504A9F29B4374F008A7BA4 /* CGRect+Extension.swift in Sources */,
+				395DC3422A1CC22700EA310E /* EntityFetching.swift in Sources */,
+				395DC3402A1CC1EA00EA310E /* EntitySaving.swift in Sources */,
 				3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1039,6 +1081,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39E7AA232A1BC8F10012616D /* WidgetCoreData+Extestion.swift in Sources */,
+				39E7AA1F2A1BC7770012616D /* UIImage+Extension.swift in Sources */,
 				3AF9F00928ED570D00F685E6 /* DeepLinkWidget.swift in Sources */,
 				39BA5F2C29D2B4730020138E /* WidgetsBundle.swift in Sources */,
 				3976101A29CB234200632313 /* WidgetConstant.swift in Sources */,
