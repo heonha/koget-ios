@@ -16,7 +16,7 @@ struct DeepLinkWidget: Widget {
     let title: String = S.Widget.Config.title
     let subtitle: String = S.Widget.Config.subtitle
 
-    @ObservedObject var coreData = WidgetCoreData.shared
+    @ObservedObject var coreData = DeepLinkManager.shared
 
     var body: some WidgetConfiguration {
         IntentConfiguration(

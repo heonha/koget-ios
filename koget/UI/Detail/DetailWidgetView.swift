@@ -22,7 +22,7 @@ struct DetailWidgetView: View {
     @State var isPresentQustionmark = false
 
     @ObservedObject var constant = AppStateConstant.shared
-    @ObservedObject var coreData = WidgetCoreData.shared
+    @ObservedObject var coreData = DeepLinkManager.shared
     @StateObject var viewModel = DetailWidgetViewModel()
     @Environment(\.dismiss) var dismiss
 
@@ -147,7 +147,7 @@ struct DetailWidgetView: View {
                 }
                 .alert(S.Alert.checkDelete, isPresented: $isDeleteAlertPresent, actions: {
                     Button(S.Button.delete, role: .destructive) {
-                        WidgetCoreData.shared.deleteData(data: selectedWidget)
+                        DeepLinkManager.shared.deleteData(data: selectedWidget)
                         self.dismiss()
                     }
                     Button(S.Button.cancel, role: .cancel) {}

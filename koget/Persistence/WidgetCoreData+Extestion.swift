@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension WidgetCoreData {
+extension DeepLinkManager {
 
     func addLinkWidget(name: String, image: UIImage?, url: String, opacity: Double = 0.7) {
         let widget = DeepLink(context: container.viewContext)

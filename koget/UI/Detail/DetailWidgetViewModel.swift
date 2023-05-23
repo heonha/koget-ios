@@ -54,7 +54,7 @@ class DetailWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditProtoc
     private let alertFactory = AlertFactory.shared
 
     func editWidgetData(widget: DeepLink) {
-        WidgetCoreData.shared.editLinkWidget(name: name, image: image, url: url, opacity: opacityValue, widget: widget)
+        DeepLinkManager.shared.editLinkWidget(name: name, image: image, url: url, opacity: opacityValue, widget: widget)
     }
 
     func checkURLSyntex() -> Bool {

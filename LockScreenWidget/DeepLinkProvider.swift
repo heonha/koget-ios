@@ -24,7 +24,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
     typealias Intent = DeepLinkAppIntent
     typealias Entry = DeepLinkEntry
 
-    @ObservedObject var coreData = WidgetCoreData.shared
+    @ObservedObject var coreData = DeepLinkManager.shared
 
     let placeHolderEntry = Entry(date: Date(), name: "Placeholder", url: nil, image: nil, id: "")
     let snapshotEntry = Entry(date: Date(), name: "Widget Snapshot", url: nil, image: nil, id: WidgetConstant.snapshotID)

@@ -17,7 +17,7 @@ struct MakeWidgetView: View {
     
     @StateObject var viewModel = MakeWidgetViewModel()
     @EnvironmentObject var constant: AppStateConstant
-    @EnvironmentObject var coreData: WidgetCoreData
+    @EnvironmentObject var coreData: DeepLinkManager
     
     @Environment(\.dismiss) var dismiss
 

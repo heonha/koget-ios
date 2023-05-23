@@ -18,7 +18,7 @@ struct MainWidgetView: View {
     @State var isFloatingButtonOpen = false
 
     @StateObject var viewModel: MainWidgetViewModel
-    @EnvironmentObject var coreData: WidgetCoreData
+    @EnvironmentObject var coreData: DeepLinkManager
     @EnvironmentObject var constant: AppStateConstant
 
     let onBGColor = AppColor.Fill.first

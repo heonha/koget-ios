@@ -22,7 +22,7 @@ struct DeepLinkWidgetEntryView: View {
 
     @Environment(\.widgetFamily) var widgetFamily
 
-    @ObservedObject var coreData = WidgetCoreData.shared
+    @ObservedObject var coreData = DeepLinkManager.shared
 
     @ViewBuilder
     var body: some View {
@@ -103,7 +103,7 @@ struct LockScreenWidget_Previews: PreviewProvider {
                       DeepLinkEntry(date: Date(), name: "카카오톡", url: "kakaotalk://", image: UIImage(named: "instagram")!, id: UUID().uuidString)
         ]
         ForEach(entrys, id: \.id) { entry in
-            DeepLinkWidgetEntryView(entry: entry, coreData: WidgetCoreData.shared)
+            DeepLinkWidgetEntryView(entry: entry, coreData: DeepLinkManager.shared)
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         }
     }

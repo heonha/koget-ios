@@ -36,7 +36,6 @@ class DragRelocateDelegate: DropDelegate {
         return true
     }
 
-
     func dropEntered(info: DropInfo) {
         if let currentIndex = widgets.firstIndex(of: currentWidget) {
             targetIndexSet = IndexSet(integer: currentIndex)

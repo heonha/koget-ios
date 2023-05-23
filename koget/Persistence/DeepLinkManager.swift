@@ -1,5 +1,5 @@
 //
-//  WidgetCoreData.swift
+//  DeepLinkManager.swift
 //  BackgroundMaker
 //
 //  Created by HeonJin Ha on 2022/11/20.
@@ -8,13 +8,13 @@
 import SwiftUI
 import CoreData
 
-class WidgetCoreData: ObservableObject {
+class DeepLinkManager: ObservableObject {
 
     typealias NSPContainer = NSPersistentContainer
     typealias NSPStoreDescription = NSPersistentStoreDescription
     typealias FetchRequest = NSFetchRequest
 
-    static let shared = WidgetCoreData()
+    static let shared = DeepLinkManager()
 
     let container = NSPContainer(name: "WidgetModel")
     let coreDataContainerName = Constants.COREDATA_CONTAINER_NAME

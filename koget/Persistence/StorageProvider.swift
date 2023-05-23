@@ -54,7 +54,7 @@ class StorageProvider: ObservableObject {
     init(inMemory: Bool = true) {
         
         // CoreData 모델 파일에 접근
-        persistentContainer = NSPersistentContainer(name: WidgetCoreData.shared.coreDataContainerName)
+        persistentContainer = NSPersistentContainer(name: DeepLinkManager.shared.coreDataContainerName)
         
         // 메모리에서 실행 중인 경우 나중에 사용할 정보를 저장하지 않음.
         if inMemory {

@@ -27,7 +27,7 @@ struct WidgetContainerCell: View {
     @State var textSize: CGSize = .zero
     
     @ObservedObject var viewModel: MainWidgetViewModel
-    @EnvironmentObject var coreData: WidgetCoreData
+    @EnvironmentObject var coreData: DeepLinkManager
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
