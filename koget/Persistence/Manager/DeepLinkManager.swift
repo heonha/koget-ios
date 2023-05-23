@@ -60,13 +60,11 @@ extension DeepLinkManager {
 
     }
 
-    //원하는 entity 타입의 데이터 불러오기(Read)
     func searchData(searchText: String, sortKey: WidgetSortKeys = .updatedDate, ascending: Bool = false) {
         let context = coreDataStore.viewContext
 
         let sortedRequest = sortedRequest(searchText: searchText, sortKey: sortKey)
 
-        // 데이터 가져오기
         do {
             linkWidgets = try context.fetch(sortedRequest) // 데이터 가져오기
         } catch {

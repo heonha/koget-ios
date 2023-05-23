@@ -92,6 +92,10 @@
 		39C307F52A1CDC5A00172DA2 /* WidgetSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */; };
 		39C307F62A1CDC6900172DA2 /* WidgetSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */; };
 		39C307F72A1CDC6C00172DA2 /* WidgetSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */; };
+		39C308002A1CDF5700172DA2 /* kogetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C307FF2A1CDF5700172DA2 /* kogetTests.swift */; };
+		39C308072A1CDF7400172DA2 /* KogetTestsCoredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C308062A1CDF7400172DA2 /* KogetTestsCoredata.swift */; };
+		39C308092A1CDFBA00172DA2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 39C308082A1CDFBA00172DA2 /* FirebaseAuth */; };
+		39C3080B2A1CDFC400172DA2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 39C3080A2A1CDFC400172DA2 /* FirebaseFirestore */; };
 		39CD9F2929B215A100C28534 /* SDSwagger.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2829B215A100C28534 /* SDSwagger.otf */; };
 		39CD9F3029B215D000C28534 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */; };
 		39CD9F3129B215D000C28534 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */; };
@@ -175,6 +179,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		39C308012A1CDF5700172DA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3ABA6C0B28C6043F005AA8E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3ABA6C1228C6043F005AA8E4;
+			remoteInfo = koget;
+		};
 		3A3C119928EDB4B800C9CCED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3ABA6C0B28C6043F005AA8E4 /* Project object */;
@@ -260,6 +271,9 @@
 		39BD3EE72A14752700E14DCA /* DragRelocateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragRelocateDelegate.swift; sourceTree = "<group>"; };
 		39C1F3D429D181B300C26919 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSortKeys.swift; sourceTree = "<group>"; };
+		39C307FD2A1CDF5700172DA2 /* kogetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kogetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39C307FF2A1CDF5700172DA2 /* kogetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kogetTests.swift; sourceTree = "<group>"; };
+		39C308062A1CDF7400172DA2 /* KogetTestsCoredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogetTestsCoredata.swift; sourceTree = "<group>"; };
 		39CD9F2829B215A100C28534 /* SDSwagger.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDSwagger.otf; sourceTree = "<group>"; };
 		39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
@@ -336,6 +350,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		39C307FA2A1CDF5700172DA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39C308092A1CDFBA00172DA2 /* FirebaseAuth in Frameworks */,
+				39C3080B2A1CDFC400172DA2 /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3A3C119028EDB4B800C9CCED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -521,6 +544,15 @@
 				39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		39C307FE2A1CDF5700172DA2 /* kogetTests */ = {
+			isa = PBXGroup;
+			children = (
+				39C307FF2A1CDF5700172DA2 /* kogetTests.swift */,
+				39C308062A1CDF7400172DA2 /* KogetTestsCoredata.swift */,
+			);
+			path = kogetTests;
 			sourceTree = "<group>";
 		};
 		39E0FAE329D132070081E169 /* UI */ = {
@@ -742,6 +774,7 @@
 				3ABA6C1528C6043F005AA8E4 /* koget */,
 				3AF9F00728ED570D00F685E6 /* LockScreenWidget */,
 				3A3C119528EDB4B800C9CCED /* LockScreenIntentsExtension */,
+				39C307FE2A1CDF5700172DA2 /* kogetTests */,
 				3ABA6C1428C6043F005AA8E4 /* Products */,
 				3A8E3A2F28E3E99500390F8A /* Frameworks */,
 			);
@@ -753,6 +786,7 @@
 				3ABA6C1328C6043F005AA8E4 /* koget.app */,
 				3AF9F00428ED570D00F685E6 /* LockScreenWidgetExtension.appex */,
 				3A3C119328EDB4B800C9CCED /* LockScreenIntentsExtension.appex */,
+				39C307FD2A1CDF5700172DA2 /* kogetTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -794,6 +828,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		39C307FC2A1CDF5700172DA2 /* kogetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39C308032A1CDF5700172DA2 /* Build configuration list for PBXNativeTarget "kogetTests" */;
+			buildPhases = (
+				39C307F92A1CDF5700172DA2 /* Sources */,
+				39C307FA2A1CDF5700172DA2 /* Frameworks */,
+				39C307FB2A1CDF5700172DA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39C308022A1CDF5700172DA2 /* PBXTargetDependency */,
+			);
+			name = kogetTests;
+			packageProductDependencies = (
+				39C308082A1CDFBA00172DA2 /* FirebaseAuth */,
+				39C3080A2A1CDFC400172DA2 /* FirebaseFirestore */,
+			);
+			productName = kogetTests;
+			productReference = 39C307FD2A1CDF5700172DA2 /* kogetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3A3C119228EDB4B800C9CCED /* LockScreenIntentsExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A3C119C28EDB4B800C9CCED /* Build configuration list for PBXNativeTarget "LockScreenIntentsExtension" */;
@@ -877,6 +933,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					39C307FC2A1CDF5700172DA2 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 3ABA6C1228C6043F005AA8E4;
+					};
 					3A3C119228EDB4B800C9CCED = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -913,11 +973,19 @@
 				3ABA6C1228C6043F005AA8E4 /* koget */,
 				3AF9F00328ED570D00F685E6 /* LockScreenWidgetExtension */,
 				3A3C119228EDB4B800C9CCED /* LockScreenIntentsExtension */,
+				39C307FC2A1CDF5700172DA2 /* kogetTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		39C307FB2A1CDF5700172DA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3A3C119128EDB4B800C9CCED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -987,6 +1055,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		39C307F92A1CDF5700172DA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39C308002A1CDF5700172DA2 /* kogetTests.swift in Sources */,
+				39C308072A1CDF7400172DA2 /* KogetTestsCoredata.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3A3C118F28EDB4B800C9CCED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1137,6 +1214,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		39C308022A1CDF5700172DA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3ABA6C1228C6043F005AA8E4 /* koget */;
+			targetProxy = 39C308012A1CDF5700172DA2 /* PBXContainerItemProxy */;
+		};
 		3A3C119A28EDB4B800C9CCED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3A3C119228EDB4B800C9CCED /* LockScreenIntentsExtension */;
@@ -1189,6 +1271,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		39C308042A1CDF5700172DA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZH5GA3W8UP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.heon.kogetTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/koget.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/koget";
+			};
+			name = Debug;
+		};
+		39C308052A1CDF5700172DA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZH5GA3W8UP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.heon.kogetTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/koget.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/koget";
+			};
+			name = Release;
+		};
 		3A3C119D28EDB4B800C9CCED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1513,6 +1633,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		39C308032A1CDF5700172DA2 /* Build configuration list for PBXNativeTarget "kogetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39C308042A1CDF5700172DA2 /* Debug */,
+				39C308052A1CDF5700172DA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3A3C119C28EDB4B800C9CCED /* Build configuration list for PBXNativeTarget "LockScreenIntentsExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1617,6 +1746,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39822CF829B367C800B687E4 /* XCRemoteSwiftPackageReference "QGrid" */;
 			productName = QGrid;
+		};
+		39C308082A1CDFBA00172DA2 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		39C3080A2A1CDFC400172DA2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		39EBEB4929BDF7A000B1FD54 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
