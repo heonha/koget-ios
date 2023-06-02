@@ -58,38 +58,10 @@ struct WidgetListContainerView: View {
                 let widget = coreData.linkWidgets[index]
                 WidgetContainerCell(widget: widget, viewModel: viewModel, type: .list)
                     .listRowBackground(Color.clear)
-                    .onDrag {
-                        self.draggingIndexSet = IndexSet(integer: index)
-                        print("storedIndex \(widget.index)")
-                        print("appeardIndex \(index)")
-                        lastSelectedWidget = widget
-                        return NSItemProvider(object: NSString(string: "\(index)"))
-                    }
-                    .onDrop(of: [.text], delegate: DragRelocateDelegate(currentWidget: widget, targetIndexSet: $draggingIndexSet, widgets: $coreData.linkWidgets))
-            }
-            .onMove { indices, newOffset in
-                coreData.linkWidgets.move(fromOffsets: indices, toOffset: newOffset)
-                lastSelectedWidget?.index = Int64(newOffset)
-                coreData.saveData()
-                coreData.loadData()
             }
         }
         .listStyle(.plain)
         .background(Color.clear)
-        .onAppear {
-            let maxIndex = coreData.linkWidgets.count
-            for index in 0..<maxIndex {
-                coreData.linkWidgets[index].index = Int64(index)
-                coreData.saveData()
-            }
-        }
-        .onDisappear {
-            let maxIndex = coreData.linkWidgets.count
-            for index in 0..<maxIndex {
-                coreData.linkWidgets[index].index = Int64(index)
-                coreData.saveData()
-            }
-        }
     }
 
     // Placeholder (위젯 없을 때.)

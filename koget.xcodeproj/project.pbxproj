@@ -82,7 +82,6 @@
 		39BD3EE42A13D1EC00E14DCA /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */; };
 		39BD3EE52A13D1FB00E14DCA /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */; };
 		39BD3EE62A13D1FB00E14DCA /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */; };
-		39BD3EE82A14752800E14DCA /* DragRelocateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BD3EE72A14752700E14DCA /* DragRelocateDelegate.swift */; };
 		39C1F3D529D181B300C26919 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1F3D429D181B300C26919 /* CustomFont.swift */; };
 		39C1F3D629D181D700C26919 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
 		39C1F3D829D181EA00C26919 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BC0D928E6E1AE0041DA1B /* Constants.swift */; };
@@ -268,7 +267,6 @@
 		39BBB53D29F96BBD0071EBB5 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		39BD3EE02A13766000E14DCA /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
-		39BD3EE72A14752700E14DCA /* DragRelocateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragRelocateDelegate.swift; sourceTree = "<group>"; };
 		39C1F3D429D181B300C26919 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSortKeys.swift; sourceTree = "<group>"; };
 		39C307FD2A1CDF5700172DA2 /* kogetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kogetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -479,7 +477,6 @@
 				392EDF6429BD55CA000B1353 /* WidgetListCell.swift */,
 				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
 				39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */,
-				39BD3EE72A14752700E14DCA /* DragRelocateDelegate.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1110,7 +1107,6 @@
 				3A1F890A297AB25700E1B4C4 /* MainView.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* BaseWidgetService.swift in Sources */,
 				3AD4691B297D19190090B2D3 /* ContactViewModel.swift in Sources */,
-				39BD3EE82A14752800E14DCA /* DragRelocateDelegate.swift in Sources */,
 				39EBEB5229BE0A7900B1FD54 /* PatchNoteModel.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				395DC33A2A1CC08C00EA310E /* CoreDataStore.swift in Sources */,

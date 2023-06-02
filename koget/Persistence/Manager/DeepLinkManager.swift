@@ -19,7 +19,6 @@ class DeepLinkManager: ObservableObject {
     let appGroupID = Constants.APP_GROUP_ID
     lazy var context = coreDataStore.viewContext
 
-
     @Published var linkWidgets = [DeepLink]()
     @AppStorage("sortKey") var sortKey: WidgetSortKeys = .runCount
 
@@ -38,7 +37,7 @@ extension DeepLinkManager {
         coreDataStore.save()
     }
 
-    func loadData(sortKey: WidgetSortKeys? = nil,
+    func loadData(sortKey: WidgetSortKeys? = .runCount,
                   ascending: Bool = false) {
 
         var sortKey: WidgetSortKeys?
