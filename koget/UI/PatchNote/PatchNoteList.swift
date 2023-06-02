@@ -20,11 +20,11 @@ struct PatchNoteList: View {
                     .overlay {
                         appVersionLabel()
                     }
-                    .padding(.vertical, 8)
+                    .padding(.bottom, 12)
 
                 ScrollView {
                     VStack(spacing: 6) {
-                        ForEach(viewModel.notes.reversed()) { note in
+                        ForEach(viewModel.notes) { note in
                             PatchNoteListCell(title: note.title,
                                               subtitle: note.subtitle,
                                               date: note.date.string,
@@ -36,9 +36,11 @@ struct PatchNoteList: View {
                     .navigationTitle(S.PatchnoteList.navigationTitle)
                 }
                 .background(Color.init(uiColor: .systemBackground))
-            .padding(.horizontal, 8)
-            .navigationBarTitleDisplayMode(.large)
+                .navigationBarTitleDisplayMode(.large)
+
         }
+        .padding(.horizontal, 8)
+
     }
 
     func appVersionLabel() -> some View {

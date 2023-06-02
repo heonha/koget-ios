@@ -20,6 +20,7 @@
 		39223B6E29A5E34600F59F54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B7229A5E34600F59F54 /* Localizable.strings */; };
 		39223B6F29A5E34600F59F54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B7229A5E34600F59F54 /* Localizable.strings */; };
 		39223B7029A5E34600F59F54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B7229A5E34600F59F54 /* Localizable.strings */; };
+		392C7FC62A2AB71000C516DD /* PatchNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C7FC52A2AB71000C516DD /* PatchNote.swift */; };
 		392EDF6129BD508A000B1353 /* AdPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6029BD508A000B1353 /* AdPageCell.swift */; };
 		392EDF6529BD55CA000B1353 /* WidgetListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6429BD55CA000B1353 /* WidgetListCell.swift */; };
 		392EDF6929BD5FAC000B1353 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6829BD5FAC000B1353 /* ToggleButton.swift */; };
@@ -114,7 +115,7 @@
 		39EBEB4C29BDF7F400B1FD54 /* PatchNoteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4B29BDF7F400B1FD54 /* PatchNoteContentView.swift */; };
 		39EBEB4E29BE03C300B1FD54 /* PatchNoteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4D29BE03C300B1FD54 /* PatchNoteListCell.swift */; };
 		39EBEB5029BE06E900B1FD54 /* PatchNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */; };
-		39EBEB5229BE0A7900B1FD54 /* PatchNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB5129BE0A7900B1FD54 /* PatchNoteModel.swift */; };
+		39EBEB5229BE0A7900B1FD54 /* PatchNoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBEB5129BE0A7900B1FD54 /* PatchNoteManager.swift */; };
 		39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274C29B98431001C368E /* SFSafeSymbols */; };
 		39ED274F29B98707001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274E29B98707001C368E /* SFSafeSymbols */; };
 		39ED275129B9871C001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275029B9871C001C368E /* SFSafeSymbols */; };
@@ -225,6 +226,7 @@
 		392140A32A0BC1C400D0F527 /* Date+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extention.swift"; sourceTree = "<group>"; };
 		39223B6429A5E12800F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39223B7C29A6325800F59F54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		392C7FC52A2AB71000C516DD /* PatchNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNote.swift; sourceTree = "<group>"; };
 		392EDF6029BD508A000B1353 /* AdPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPageCell.swift; sourceTree = "<group>"; };
 		392EDF6429BD55CA000B1353 /* WidgetListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListCell.swift; sourceTree = "<group>"; };
 		392EDF6829BD5FAC000B1353 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
@@ -286,7 +288,7 @@
 		39EBEB4B29BDF7F400B1FD54 /* PatchNoteContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteContentView.swift; sourceTree = "<group>"; };
 		39EBEB4D29BE03C300B1FD54 /* PatchNoteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteListCell.swift; sourceTree = "<group>"; };
 		39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteList.swift; sourceTree = "<group>"; };
-		39EBEB5129BE0A7900B1FD54 /* PatchNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteModel.swift; sourceTree = "<group>"; };
+		39EBEB5129BE0A7900B1FD54 /* PatchNoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteManager.swift; sourceTree = "<group>"; };
 		39F0455F29D3AC6A00F4323F /* 1-2-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-2-1.png"; sourceTree = "<group>"; };
 		39F0456029D3AC6B00F4323F /* 1-2-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-2-2.png"; sourceTree = "<group>"; };
 		39FADE5A29CBC67F00E7A3FF /* 1-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-2.png"; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */,
 				39EBEB4D29BE03C300B1FD54 /* PatchNoteListCell.swift */,
 				39E0FAE629D132940081E169 /* PatchNoteViewModel.swift */,
+				392C7FC52A2AB71000C516DD /* PatchNote.swift */,
 			);
 			path = PatchNote;
 			sourceTree = "<group>";
@@ -574,7 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				3A3C11A228EDC14700C9CCED /* BaseWidgetService.swift */,
-				39EBEB5129BE0A7900B1FD54 /* PatchNoteModel.swift */,
+				39EBEB5129BE0A7900B1FD54 /* PatchNoteManager.swift */,
 				39E456E229C7120C0017B1AB /* ContactType.swift */,
 				39E456E429C7122F0017B1AB /* RequestType.swift */,
 			);
@@ -1104,10 +1107,11 @@
 				39E456E329C7120C0017B1AB /* ContactType.swift in Sources */,
 				3ACCB357294C54A500A85E0F /* FloatingButton.swift in Sources */,
 				39504AA329B43F16008A7BA4 /* EKMakerTester.swift in Sources */,
+				392C7FC62A2AB71000C516DD /* PatchNote.swift in Sources */,
 				3A1F890A297AB25700E1B4C4 /* MainView.swift in Sources */,
 				3A3C11A328EDC14700C9CCED /* BaseWidgetService.swift in Sources */,
 				3AD4691B297D19190090B2D3 /* ContactViewModel.swift in Sources */,
-				39EBEB5229BE0A7900B1FD54 /* PatchNoteModel.swift in Sources */,
+				39EBEB5229BE0A7900B1FD54 /* PatchNoteManager.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				395DC33A2A1CC08C00EA310E /* CoreDataStore.swift in Sources */,
 				39694FE529E6AE8900F2C75C /* DeepLinkProvider.swift in Sources */,

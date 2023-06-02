@@ -1,5 +1,5 @@
 //
-//  PatchNoteModel.swift
+//  PatchNoteManager.swift
 //  koget
 //
 //  Created by Heonjin Ha on 2023/03/12.
@@ -8,20 +8,11 @@
 import SwiftUI
 import FirebaseFirestore
 
-struct PatchNoteData: Codable, Identifiable {
-    var id: UUID = UUID()
-    let title: String
-    let subtitle: String
-    let lightFileName: String
-    let darkFileName: String
-    let date: Date
-}
+struct PatchNoteManager {
 
-struct PatchNoteModel {
+    private let language = Locale.current.language.languageCode?.identifier
 
-    let language = Locale.current.language.languageCode?.identifier
-
-    let dbref: CollectionReference
+    private let dbref: CollectionReference
 
     init() {
         if self.language == "ko" {
@@ -31,10 +22,10 @@ struct PatchNoteModel {
         }
     }
 
-    func fetchDate(completion: @escaping([PatchNoteData]? , Error?) -> Void) {
+    func getData(completion: @escaping([PatchNote]? , Error?) -> Void) {
         dbref.getDocuments { snapshot, error in
 
-            var noteArray = [PatchNoteData]()
+            var noteArray = [PatchNote]()
             if let error = error {
                 completion(nil, error)
             } else if let documents = snapshot?.documents {
@@ -46,9 +37,10 @@ struct PatchNoteModel {
 
                     let timeStamp = document["date"] as? Timestamp ?? Timestamp()
                     let date = timeStamp.dateValue()
-                    let data = PatchNoteData(title: title, subtitle: subtitle, lightFileName: light, darkFileName: dark, date: date)
+                    let data = PatchNote(title: title, subtitle: subtitle, lightFileName: light, darkFileName: dark, date: date)
                     noteArray.append(data)
                 }
+                noteArray.reverse()
                 completion(noteArray, nil)
             }
         }
