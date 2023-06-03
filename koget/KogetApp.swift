@@ -33,7 +33,7 @@ struct KogetApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            IconGridView()
                 .environmentObject(appStateConstant)
                 .environmentObject(coreData)
                 .tint(AppColor.Label.first.opacity(0.75))

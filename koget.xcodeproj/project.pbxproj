@@ -21,6 +21,8 @@
 		39223B6F29A5E34600F59F54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B7229A5E34600F59F54 /* Localizable.strings */; };
 		39223B7029A5E34600F59F54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B7229A5E34600F59F54 /* Localizable.strings */; };
 		392C7FC62A2AB71000C516DD /* PatchNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C7FC52A2AB71000C516DD /* PatchNote.swift */; };
+		392C7FC92A2ABE5A00C516DD /* IconGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C7FC82A2ABE5A00C516DD /* IconGridView.swift */; };
+		392C81CF2A2AFCEB00C516DD /* IconGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C81CE2A2AFCEB00C516DD /* IconGridViewModel.swift */; };
 		392EDF6129BD508A000B1353 /* AdPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6029BD508A000B1353 /* AdPageCell.swift */; };
 		392EDF6529BD55CA000B1353 /* WidgetListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6429BD55CA000B1353 /* WidgetListCell.swift */; };
 		392EDF6929BD5FAC000B1353 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6829BD5FAC000B1353 /* ToggleButton.swift */; };
@@ -227,6 +229,8 @@
 		39223B6429A5E12800F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39223B7C29A6325800F59F54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		392C7FC52A2AB71000C516DD /* PatchNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNote.swift; sourceTree = "<group>"; };
+		392C7FC82A2ABE5A00C516DD /* IconGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGridView.swift; sourceTree = "<group>"; };
+		392C81CE2A2AFCEB00C516DD /* IconGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGridViewModel.swift; sourceTree = "<group>"; };
 		392EDF6029BD508A000B1353 /* AdPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPageCell.swift; sourceTree = "<group>"; };
 		392EDF6429BD55CA000B1353 /* WidgetListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListCell.swift; sourceTree = "<group>"; };
 		392EDF6829BD5FAC000B1353 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
@@ -417,6 +421,15 @@
 				3ABA6C2228C60440005AA8E4 /* Assets.xcassets */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		392C7FC72A2ABE3200C516DD /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				392C7FC82A2ABE5A00C516DD /* IconGridView.swift */,
+				392C81CE2A2AFCEB00C516DD /* IconGridViewModel.swift */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 		393AF0F62A034EBD00F913CF /* Injectors */ = {
@@ -620,6 +633,7 @@
 		39E0FAF329D149890081E169 /* Make */ = {
 			isa = PBXGroup;
 			children = (
+				392C7FC72A2ABE3200C516DD /* Icons */,
 				3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */,
 				3A9C0504292DDB6D00442017 /* MakeWidgetViewModel.swift */,
 				39BD3EE22A13CB9500E14DCA /* Asset */,
@@ -1115,6 +1129,7 @@
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
 				395DC33A2A1CC08C00EA310E /* CoreDataStore.swift in Sources */,
 				39694FE529E6AE8900F2C75C /* DeepLinkProvider.swift in Sources */,
+				392C7FC92A2ABE5A00C516DD /* IconGridView.swift in Sources */,
 				3A0566CE2931E87D007B0A7A /* WidgetContainerCell.swift in Sources */,
 				3A559C7028EB1D4900D5D9E4 /* AppColor.swift in Sources */,
 				3A8339D92932167500DC9527 /* TextButton.swift in Sources */,
@@ -1163,6 +1178,7 @@
 				39E7AA222A1BC8D80012616D /* DeepLinkManager+Extestion.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
 				3A1F89082978F9DC00E1B4C4 /* AddWidgetVideoView.swift in Sources */,
+				392C81CF2A2AFCEB00C516DD /* IconGridViewModel.swift in Sources */,
 				3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */,
 				3ABD50FF292945EB00F878AE /* DeepLinkManager.swift in Sources */,
 				39E9410729C6CFD4008F8E9F /* LicenseView.swift in Sources */,

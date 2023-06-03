@@ -55,7 +55,7 @@ final class BaseWidgetService: ObservableObject {
             .init(name: "PAYCO", nameKr: "페이코", nameEn: "PAYCO", url: "payco://", imageName: "payco"),
             .init(name: "Raddit", nameKr: "레딧", nameEn: "Raddit", url: "reddit://", imageName: "reddit"),
             .init(name: "신한플레이", nameKr: "신한플레이", nameEn: "shinhan play", url: "shpayfan-touchpay://", imageName: "shinhanplay"),
-            .init(name: "신한터치페이", nameKr: "신한터치페이", nameEn: "Shinhan TouchPay", url: "shpayfan-touchpay://touch", imageName: "shinhanplay"),
+            .init(name: "신한터치페이", nameKr: "신한터치페이", nameEn: "Shinhan TouchPay", url: "shpayfan-touchpay://touch", imageName: "pay"),
             .init(name: "Spotify", nameKr: "스포티파이", nameEn: "Spotify", url: "spotify://", imageName: "spotify"),
             .init(name: "스타벅스", nameKr: "스타벅스", nameEn: "Starbucks", url: "starbucks://", imageName: "starbucks"),
             .init(name: "Strava", nameKr: "스트라바", nameEn: "Strava", url: "strava://", imageName: "strava"),
