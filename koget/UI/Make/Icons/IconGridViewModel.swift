@@ -10,6 +10,8 @@ import SFSafeSymbols
 
 final class IconGridViewModel: BaseViewModel {
 
+    // TODO: Simple Icon 지원 추가.
+    // TODO: Combine으로 선택한 이미지 데이터 전달.
     @Published var icons = [(imgName: String, name: [String])]()
 
     private let aliasTuple: [(imgName: String, name: [String])] = {

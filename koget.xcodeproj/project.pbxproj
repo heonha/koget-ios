@@ -23,6 +23,9 @@
 		392C7FC62A2AB71000C516DD /* PatchNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C7FC52A2AB71000C516DD /* PatchNote.swift */; };
 		392C7FC92A2ABE5A00C516DD /* IconGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C7FC82A2ABE5A00C516DD /* IconGridView.swift */; };
 		392C81CF2A2AFCEB00C516DD /* IconGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C81CE2A2AFCEB00C516DD /* IconGridViewModel.swift */; };
+		392C81D32A2B593100C516DD /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 392C81D22A2B593000C516DD /* swiftlint.yml */; };
+		392C81D42A2B593100C516DD /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 392C81D22A2B593000C516DD /* swiftlint.yml */; };
+		392C81D52A2B593100C516DD /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 392C81D22A2B593000C516DD /* swiftlint.yml */; };
 		392EDF6129BD508A000B1353 /* AdPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6029BD508A000B1353 /* AdPageCell.swift */; };
 		392EDF6529BD55CA000B1353 /* WidgetListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6429BD55CA000B1353 /* WidgetListCell.swift */; };
 		392EDF6929BD5FAC000B1353 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6829BD5FAC000B1353 /* ToggleButton.swift */; };
@@ -231,6 +234,7 @@
 		392C7FC52A2AB71000C516DD /* PatchNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNote.swift; sourceTree = "<group>"; };
 		392C7FC82A2ABE5A00C516DD /* IconGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGridView.swift; sourceTree = "<group>"; };
 		392C81CE2A2AFCEB00C516DD /* IconGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGridViewModel.swift; sourceTree = "<group>"; };
+		392C81D22A2B593000C516DD /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		392EDF6029BD508A000B1353 /* AdPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPageCell.swift; sourceTree = "<group>"; };
 		392EDF6429BD55CA000B1353 /* WidgetListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListCell.swift; sourceTree = "<group>"; };
 		392EDF6829BD5FAC000B1353 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
@@ -783,6 +787,7 @@
 				39B5BC6529C6EB5D007AB072 /* .gitignore */,
 				3964E5EE29C9DFFA0010409B /* README.md */,
 				39438E2E29C6C8E3009BD1C7 /* LICENSE */,
+				392C81D22A2B593000C516DD /* swiftlint.yml */,
 				39737B8329D25A1500228A58 /* swiftgen.yml */,
 				3964E5E929C9DFEE0010409B /* readme */,
 				3ABA6C1528C6043F005AA8E4 /* koget */,
@@ -892,7 +897,7 @@
 				3ABA6C1028C6043F005AA8E4 /* Frameworks */,
 				3ABA6C1128C6043F005AA8E4 /* Resources */,
 				3AC3E1FB28E690BA00BFF455 /* Embed Foundation Extensions */,
-				39FD1C3C29B0DE6100B442F5 /* Run Script */,
+				39FD1C3C29B0DE6100B442F5 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -1004,6 +1009,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				392C81D52A2B593100C516DD /* swiftlint.yml in Resources */,
 				3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */,
 				39223B7029A5E34600F59F54 /* Localizable.strings in Resources */,
 				39223B6329A5E12800F59F54 /* InfoPlist.strings in Resources */,
@@ -1018,6 +1024,7 @@
 				3ADA2E99297FD99C004AADEE /* lockscreenTutorial.mp4 in Resources */,
 				390B5CBE29B20B0A00B61E35 /* NotoSansKR-Bold.otf in Resources */,
 				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
+				392C81D32A2B593100C516DD /* swiftlint.yml in Resources */,
 				3964E5ED29C9DFEE0010409B /* downloadToAppStoreKr.svg in Resources */,
 				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
 				39CD9F3029B215D000C28534 /* NotoSansKR-Light.otf in Resources */,
@@ -1036,6 +1043,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				392C81D42A2B593100C516DD /* swiftlint.yml in Resources */,
 				3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */,
 				39223B6F29A5E34600F59F54 /* Localizable.strings in Resources */,
 				39223B6229A5E12800F59F54 /* InfoPlist.strings in Resources */,
@@ -1046,7 +1054,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		39FD1C3C29B0DE6100B442F5 /* Run Script */ = {
+		39FD1C3C29B0DE6100B442F5 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 12;
@@ -1056,14 +1064,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = Swiftlint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/airbnb.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/airbnb.swiftlint.yml\n  fi\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint --config \"$SRCROOT/swiftlint.yml\"\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

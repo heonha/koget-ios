@@ -40,6 +40,7 @@ struct MakeWidgetView: View {
             ZStack {
                 AppColor.Background.second
                     .ignoresSafeArea(edges: .bottom)
+
                 Rectangle()
                     .foregroundColor(AppColor.Background.first)
 
@@ -221,17 +222,16 @@ struct MakeWidgetView: View {
             }
         }
     }
-
-    func addWidget() {
-        
-    }
 }
 
+#if DEBUG
 struct AddWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             MakeWidgetView(assetList: WidgetAssetList(viewModel: MakeWidgetViewModel()))
-                .environmentObject(Constants.shared)
+                .environmentObject(AppStateConstant.shared)
+                .environmentObject(DeepLinkManager.shared)
         }
     }
 }
+#endif

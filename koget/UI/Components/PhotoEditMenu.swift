@@ -18,6 +18,8 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
     
     @Binding var isEditingMode: Bool
     @State var isPhotoViewPresent: Bool = false
+    @State var isIconViewPresent: Bool = false
+
     @ObservedObject var viewModel: V
     @ObservedObject var constant = AppStateConstant.shared
 
@@ -28,51 +30,39 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
         HStack(spacing: 16) {
 
             Menu {
-                Button(action: {
+
+                Button {
+                    isIconViewPresent.toggle()
+                } label: {
+                    Label("아이콘 선택", systemImage: "square.grid.3x3.topleft.filled")
+                }
+
+                Button {
                     isPhotoViewPresent.toggle()
-                }) {
-                    Label("이미지 선택", systemSymbol: .photo)
+                } label: {
+                    Label("앨범에서 가져오기", systemImage: "photo")
                 }
+
             } label: {
-                ZStack {
-                    if viewModel.isOpacitySliderEditing {
-                        Color.clear
-                    } else {
-                        Color.white
-                    }
-
-                    if let image = viewModel.image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-
-                    } else {
-                        ZStack {
-                            Circle()
-                                .fill(constant.isDarkMode ? .black : .white)
-                                .opacity(constant.isDarkMode ? 0.3 : 1.0)
-                            Image("KogetClear")
-                                .resizable()
-                                .scaledToFit()
-                                .clipShape(Circle())
-                                .opacity(constant.isDarkMode ? 0.3 : 0.5)
-                            Text(selectImageLabel)
-                                .foregroundColor(AppColor.Label.second)
-                                .shadow(radius: 1)
-                                .font(.system(size: 16, weight: .bold))
-                        }
-                    }
-
-                }
-                .clipShape(Circle())
-                .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
-                .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
+                imageLabel()
             }
             .frame(width: 90, height: 90)
             .sheet(isPresented: $isPhotoViewPresent) {
                 PhotoPicker(viewModel: viewModel)
             }
+            .sheet(isPresented: $isIconViewPresent) {
+                IconGridView(parentViewModel: viewModel)
+            }
             .disabled(!isEditingMode)
+
+            opacityPreview
+        }
+        .animation(.linear(duration: 0.2), value: viewModel.isOpacitySliderEditing)
+
+    }
+
+    private var opacityPreview: some View {
+        Group {
             if viewModel.isOpacitySliderEditing {
                 if let image = viewModel.image {
                     ZStack {
@@ -82,13 +72,11 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
                             .grayscale(0.99)
                     }
                     .frame(width: 90, height: 90)
-                    .opacity(viewModel.opacityValue * 0.7)
                     .clipShape(Circle())
+                    .opacity(viewModel.opacityValue * 0.7)
                 }
             }
         }
-        .animation(.linear(duration: 0.2), value: viewModel.isOpacitySliderEditing)
-
     }
 
     func whiteRender(image: UIImage) -> UIImage {
@@ -108,15 +96,48 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
             return UIImage()
         }
     }
+
+    private func imageLabel() -> some View {
+        ZStack {
+            if viewModel.isOpacitySliderEditing {
+                Color.clear
+            } else {
+                Color.white
+            }
+
+            if let image = viewModel.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+
+            } else {
+                ZStack {
+                    Circle()
+                        .fill(constant.isDarkMode ? .black : .white)
+                        .opacity(constant.isDarkMode ? 0.3 : 1.0)
+                    Image("KogetClear")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .opacity(constant.isDarkMode ? 0.3 : 0.5)
+                    Text(selectImageLabel)
+                        .foregroundColor(AppColor.Label.second)
+                        .shadow(radius: 1)
+                        .font(.system(size: 16, weight: .bold))
+                }
+            }
+
+        }
+        .clipShape(Circle())
+        .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.3, y: 0.3)
+        .shadow(color: .black.opacity(0.1), radius: 0.5, x: -0.3, y: -0.3)
+    }
 }
-// 
-// struct PhotoEditMenu_Previews: PreviewProvider {
-//     static var previews: some View {
-//         PhotoEditMenu(isEditingMode: .constant(false), isPhotoViewPresent: .constant(false), viewModel: DetailWidgetViewModel())
-//     }
-// // }
-// extension Image {
-//     func whitescale(_ amount: Double) -> some View {
-//         self.color(Color.white.opacity(amount))
-//     }
-// }
+
+#if DEBUG
+struct PhotoEditMenu_Previews: PreviewProvider {
+    static var previews: some View {
+        PhotoEditMenu(isEditingMode: .constant(true), viewModel: MakeWidgetViewModel())
+    }
+}
+#endif

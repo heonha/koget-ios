@@ -8,16 +8,26 @@
 import SwiftUI
 import SFSafeSymbols
 
-struct IconGridView: View {
+struct IconGridView<V: VMPhotoEditProtocol>: View {
 
     @State var text = ""
-    @State var selectedImageName: String = ""
 
-    @StateObject var viewModel = IconGridViewModel()
+    @StateObject private var viewModel = IconGridViewModel()
+    @ObservedObject var parentViewModel: V
+
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
 
         VStack {
+            Rectangle()
+                .fill(Color.init(uiColor: .systemBackground))
+                .frame(height: 16)
+
+            titleView()
+
+            Divider()
+                .padding(.horizontal)
             searchView()
 
             ScrollView {
@@ -30,11 +40,31 @@ struct IconGridView: View {
 
 extension IconGridView {
 
+    private func titleView() -> some View {
+        ZStack {
+            Rectangle()
+                .fill(Color.init(uiColor: .systemBackground))
+                .frame(height: 24)
+
+            HStack {
+                Spacer()
+
+                Text("아이콘 선택")
+                    .bold()
+
+                Spacer()
+            }
+
+        }
+    }
+
     private func searchView() -> some View {
         ZStack {
             Rectangle()
                 .fill(Color.init(uiColor: .systemBackground))
-                .frame(height: 56)
+                .frame(height: 48)
+
+            VStack {
             RoundedRectangle(cornerRadius: 8)
                 .fill(Color.init(uiColor: .systemFill))
                 .frame(height: 36)
@@ -55,12 +85,10 @@ extension IconGridView {
                     }
                 }
                 .padding(.horizontal, 16)
-                .padding(.top, 4)
-
+            }
         }
     }
 
-    // TODO: 스크롤 뷰 만들기
     private func scrollView() -> some View {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4), spacing: 12) {
                 ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
@@ -73,8 +101,8 @@ extension IconGridView {
                             .clipShape(Circle())
                     }
                     .onTapGesture {
-                        self.selectedImageName = image
-                        print(selectedImageName)
+                        parentViewModel.image = UIImage(named: image)
+                        self.dismiss()
                     }
                     .frame(width: 64, height: 64)
                     .cornerRadius(8)
@@ -86,8 +114,11 @@ extension IconGridView {
 
 }
 
+#if DEBUG
 struct IconGridView_Previews: PreviewProvider {
     static var previews: some View {
-        IconGridView()
+        PhotoEditMenu(isEditingMode: .constant(true), viewModel: MakeWidgetViewModel())
+        IconGridView(parentViewModel: MakeWidgetViewModel())
     }
 }
+#endif

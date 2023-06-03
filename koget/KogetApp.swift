@@ -17,12 +17,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
-class SceneDelegate: NSObject, UIWindowSceneDelegate {
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Add your custom code here
-    }
-}
-
 @main
 struct KogetApp: App {
     // register app delegate for Firebase setup
@@ -33,7 +27,7 @@ struct KogetApp: App {
 
     var body: some Scene {
         WindowGroup {
-            IconGridView()
+            MainView()
                 .environmentObject(appStateConstant)
                 .environmentObject(coreData)
                 .tint(AppColor.Label.first.opacity(0.75))

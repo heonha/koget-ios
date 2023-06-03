@@ -31,11 +31,13 @@ final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditPr
     private let alertFactory = AlertFactory.shared
 
     var nameStringLimit: Int = 14
-    let defaultImage = UIImage(named: "KogetClear")!
+    let defaultImage = UIImage(named: "KogetClear") ?? UIImage(systemSymbol: .circle)
+
     @Published var isImageError = false
     @Published var isOpacitySliderEditing = false
-    @Published var moreOptionOn = false
     @Published var isEditingMode = true
+
+    @Published var moreOptionOn = false
     @Published var name: String = "" {
         didSet {
             if name.count > nameStringLimit {
