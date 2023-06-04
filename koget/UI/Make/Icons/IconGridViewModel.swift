@@ -75,15 +75,27 @@ extension IconGridViewModel {
         }
     }
 
+    func filterSimpleIcons(text: String) {
+        if text.isEmpty {
+            manager.updateIcons()
+        } else {
+            manager.searchIcon(name: text) { image in
+                if let image = image {
+                    self.simpleIcons = [image]
+                }
+            }
+        }
+    }
+
     func fetchSimpleIcon() {
         print("아이콘 가져오기")
         manager.updateIcons()
         print(self.simpleIcons.count)
     }
 
-    func simpleIconCancel() {
+    func disposeServices() {
         manager.cancel()
-        self.cancellables = nil
+        cancellables = nil
     }
 }
 

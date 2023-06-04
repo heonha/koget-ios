@@ -21,7 +21,6 @@ extension UIImage {
         return newImage?.pngData()
     }
 
-
     private struct AssociatedKeys {
         static var metadataKey = "metadata"
     }

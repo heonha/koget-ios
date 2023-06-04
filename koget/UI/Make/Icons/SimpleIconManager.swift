@@ -30,7 +30,7 @@ struct SimpleIconAKA: Codable {
 class SimpleIconService: ObservableObject {
 
     // TODO: 검색 기능 추가하시오
-    // TODO: Combine Subject - Publisher - Subscriber 구조로 변경 하시오
+    // TODO: Infinity ScrollView로 로드하기 구현
     @Published var simpleIcon: [UIImage] = []
     private var simpleIconSubject: PassthroughSubject<[UIImage], Never> = .init()
     var simpleIconPublisher: AnyPublisher<[UIImage], Never> {
@@ -57,6 +57,12 @@ class SimpleIconService: ObservableObject {
 
     func cancel() {
         self.cancellables = nil
+    }
+
+    func searchIcon(name: String, completion: @escaping (UIImage?)->Void) {
+        convertIcon(name: name) { image in
+            completion(image)
+        }
     }
 
     private func fetchSimpleIcon(of batchSize: Int = 20) {

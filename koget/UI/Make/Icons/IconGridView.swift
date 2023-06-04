@@ -58,7 +58,7 @@ extension IconGridView {
 
         }
         .onDisappear {
-            viewModel.simpleIconCancel()
+            viewModel.disposeServices()
         }
     }
 
@@ -106,7 +106,14 @@ extension IconGridView {
                             .textInputAutocapitalization(.never)
                             .textCase(.none)
                             .onChange(of: viewModel.searchText) { newValue in
-                                viewModel.filterIcons(text: newValue.lowercased())
+                                if viewModel.selectedSource == 0 {
+                                    viewModel.filterIcons(text: newValue.lowercased())
+                                } else {
+                                    viewModel.filterSimpleIcons(text: newValue.lowercased())
+
+                                }
+
+                                
                             }
                     }
                 }
