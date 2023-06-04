@@ -59,7 +59,8 @@ class SimpleIconService: ObservableObject {
         self.cancellables = nil
     }
 
-    func searchIcon(name: String, completion: @escaping (UIImage?)->Void) {
+    func searchIcon(name: String,
+                    completion: @escaping (UIImage?) -> Void) {
         convertIcon(name: name) { image in
             completion(image)
         }
@@ -79,24 +80,25 @@ class SimpleIconService: ObservableObject {
         startIndex += batchSize
     }
 
-    func convertIcon(name: String, completion: @escaping (UIImage?) -> Void) {
+    func convertIcon(name: String,
+                     completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: "\(baseUrl)\(name)") else { return }
 
         self.getSVGImage(url: url) { result in
-                switch result {
-                case .success(let image):
-                    print("Success!")
-                    if let image = image {
-                        completion(image)
-                    }
-                case .failure(let error):
-                    print("Error")
-                    print("SVG File Get Error : \(error.localizedDescription)")
-                    completion(nil)
+            switch result {
+            case .success(let image):
+                print("Success!")
+                if let image = image {
+                    completion(image)
                 }
+            case .failure(let error):
+                print("Error")
+                print("SVG File Get Error : \(error.localizedDescription)")
+                completion(nil)
             }
+        }
     }
- 
+
     private func getIconNames() {
         let urlString = "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/_data/simple-icons.json"
 
@@ -126,7 +128,8 @@ class SimpleIconService: ObservableObject {
             .store(in: &cancellables)
     }
 
-    private func getSVGImage(url: URL, name: String = "", size: CGSize = CGSize(width: 256, height: 256),
+    private func getSVGImage(url: URL, name: String = "",
+                             size: CGSize = CGSize(width: 256, height: 256),
                              completion: @escaping (Result<UIImage?, Error>) -> Void) {
         URLSession.shared
             .dataTaskPublisher(for: url)

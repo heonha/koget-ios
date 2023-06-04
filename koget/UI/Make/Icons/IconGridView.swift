@@ -91,51 +91,50 @@ extension IconGridView {
                 .frame(height: 48)
 
             VStack {
-            RoundedRectangle(cornerRadius: 8)
-                .fill(Color.init(uiColor: .systemFill))
-                .frame(height: 36)
-                .overlay {
-                    HStack(spacing: 6) {
-                        Image(systemSymbol: .magnifyingglass)
-                            .font(.system(size: 16))
-                            .foregroundColor(Color.init(uiColor: .secondaryLabel))
-                            .padding(.leading, 8)
-                        TextField(" 아이콘 이름", text: $viewModel.searchText)
-                            .frame(height: 22)
-                            .autocorrectionDisabled()
-                            .textInputAutocapitalization(.never)
-                            .textCase(.none)
-                            .onChange(of: viewModel.searchText) { newValue in
-                                if viewModel.selectedSource == 0 {
-                                    viewModel.filterIcons(text: newValue.lowercased())
-                                } else {
-                                    viewModel.filterSimpleIcons(text: newValue.lowercased())
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.init(uiColor: .systemFill))
+                    .frame(height: 36)
+                    .overlay {
+                        HStack(spacing: 6) {
+                            Image(systemSymbol: .magnifyingglass)
+                                .font(.system(size: 16))
+                                .foregroundColor(Color.init(uiColor: .secondaryLabel))
+                                .padding(.leading, 8)
+                            TextField(" 아이콘 이름", text: $viewModel.searchText)
+                                .frame(height: 22)
+                                .autocorrectionDisabled()
+                                .textInputAutocapitalization(.never)
+                                .textCase(.none)
+                                .onChange(of: viewModel.searchText) { newValue in
+                                    if viewModel.selectedSource == 0 {
+                                        viewModel.filterIcons(text: newValue.lowercased())
+                                    } else {
+                                        viewModel.filterSimpleIcons(text: newValue.lowercased())
+
+                                    }
 
                                 }
-
-                                
-                            }
+                        }
                     }
-                }
-                .padding(.horizontal, 16)
+                    .padding(.horizontal, 16)
             }
         }
     }
 
     private func scrollView() -> some View {
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4), spacing: 12) {
+        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4), spacing: 12) {
 
-                if viewModel.selectedSource == 0 {
-                    ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
-                        imageCell(image: image)
-                    }
-                } else {
-                    ForEach(viewModel.simpleIcons, id: \.self) { image in
-                        imageCell(image: image)
-                    }
+            if viewModel.selectedSource == 0 {
+                ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
+                    imageCell(image: image)
+                }
+            } else {
+                ForEach(viewModel.simpleIcons, id: \.self) { image in
+                    imageCell(image: image)
                 }
             }
-            .padding()
+        }
+        .padding()
 
     }
 
