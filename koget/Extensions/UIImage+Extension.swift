@@ -21,4 +21,18 @@ extension UIImage {
         return newImage?.pngData()
     }
 
+
+    private struct AssociatedKeys {
+        static var metadataKey = "metadata"
+    }
+
+    var metadata: String {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.metadataKey) as? String ?? ""
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.metadataKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
 }

@@ -25,8 +25,6 @@ final class Constants: ObservableObject {
     static let APP_GROUP_ID = "group.ZH5GA3W8UP.com.heon.koget"
     static let COREDATA_CONTAINER_NAME = "WidgetModel"
 
-    
-
     static let shared = Constants()
 
     private init() {
@@ -43,6 +41,5 @@ class AppStateConstant: ObservableObject {
     private init() {
 
     }
-
 
 }

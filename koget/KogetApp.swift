@@ -17,6 +17,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
+class SceneDelegate: NSObject, UIWindowSceneDelegate {
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    }
+}
+
 @main
 struct KogetApp: App {
     // register app delegate for Firebase setup

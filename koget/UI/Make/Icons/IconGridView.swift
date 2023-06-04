@@ -10,8 +10,6 @@ import SFSafeSymbols
 
 struct IconGridView<V: VMPhotoEditProtocol>: View {
 
-    @State var text = ""
-
     @StateObject private var viewModel = IconGridViewModel()
     @ObservedObject var parentViewModel: V
 
@@ -28,7 +26,10 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
 
             Divider()
                 .padding(.horizontal)
+
             searchView()
+
+            segmentView()
 
             ScrollView {
                 scrollView()
@@ -58,6 +59,28 @@ extension IconGridView {
         }
     }
 
+    private func segmentView() -> some View {
+        HStack {
+            Spacer()
+            Button {
+                viewModel.selectedSource = 0
+            } label: {
+                Text("AppIcons")
+            }
+
+            Spacer()
+
+            Button {
+                viewModel.selectedSource = 1
+            } label: {
+                Text("SimpleIcons")
+            }
+
+            Spacer()
+
+        }.frame(height: 50)
+    }
+
     private func searchView() -> some View {
         ZStack {
             Rectangle()
@@ -74,12 +97,12 @@ extension IconGridView {
                             .font(.system(size: 16))
                             .foregroundColor(Color.init(uiColor: .secondaryLabel))
                             .padding(.leading, 8)
-                        TextField(" 아이콘 이름", text: $text)
+                        TextField(" 아이콘 이름", text: $viewModel.searchText)
                             .frame(height: 22)
                             .autocorrectionDisabled()
                             .textInputAutocapitalization(.never)
                             .textCase(.none)
-                            .onChange(of: text) { newValue in
+                            .onChange(of: viewModel.searchText) { newValue in
                                 viewModel.filterIcons(text: newValue.lowercased())
                             }
                     }
@@ -91,25 +114,56 @@ extension IconGridView {
 
     private func scrollView() -> some View {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4), spacing: 12) {
-                ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
-                    ZStack {
-                        Color.init(uiColor: .systemBackground)
-                        Image(image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 32, height: 32)
-                            .clipShape(Circle())
+
+                if viewModel.selectedSource == 0 {
+                    ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
+                        imageCell(image: image)
                     }
-                    .onTapGesture {
-                        parentViewModel.image = UIImage(named: image)
-                        self.dismiss()
+                } else {
+                    ForEach(viewModel.simpleIcons, id: \.self) { image in
+                        imageCell(image: image)
                     }
-                    .frame(width: 64, height: 64)
-                    .cornerRadius(8)
-                    .shadow(color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
                 }
+
             }
             .padding()
+    }
+
+    private func imageCell(image: String) -> some View {
+        ZStack {
+            Color.init(uiColor: .systemBackground)
+            Image(image)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 32, height: 32)
+                .clipShape(Circle())
+        }
+        .onTapGesture {
+            parentViewModel.image = UIImage(named: image)
+            self.dismiss()
+        }
+        .frame(width: 64, height: 64)
+        .cornerRadius(8)
+        .shadow(color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
+    }
+
+    private func imageCell(image: UIImage) -> some View {
+        ZStack {
+            Color.init(uiColor: .systemBackground)
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 32, height: 32)
+                .clipShape(Circle())
+        }
+        .onTapGesture {
+            parentViewModel.image = image
+//            print(image.metadata)
+            self.dismiss()
+        }
+        .frame(width: 64, height: 64)
+        .cornerRadius(8)
+        .shadow(color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
     }
 
 }

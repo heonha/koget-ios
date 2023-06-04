@@ -18,6 +18,7 @@ only_rules:
 excluded:
   - Carthage
   - Pods
+  - Tests
 
 colon:
   apply_to_dictionaries: false
