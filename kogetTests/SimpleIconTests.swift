@@ -13,7 +13,7 @@ import XCTest
 
 final class SimpleIconTests: XCTestCase {
 
-    var sut: SimpleIconManager!
+    var sut: SimpleIconService!
 
     override func setUp() {
         super.setUp()
@@ -27,12 +27,13 @@ final class SimpleIconTests: XCTestCase {
 
     func testGetData() {
 
-        let iconName = "swift"
+        // given
+        sut.fetchSimpleIcon()
 
-        sut.searchIcon(name: iconName)
-
+        //when
         let ex = XCTestExpectation(description: "가져온 아이콘이 있어야 합니다.")
 
+        //then
         if sut.simpleIcon.isEmpty {
             XCTFail("가져온 아이콘이 없습니다.")
         } else {

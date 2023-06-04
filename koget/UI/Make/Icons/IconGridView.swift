@@ -10,7 +10,7 @@ import SFSafeSymbols
 
 struct IconGridView<V: VMPhotoEditProtocol>: View {
 
-    @StateObject private var viewModel = IconGridViewModel()
+    @ObservedObject private var viewModel = IconGridViewModel()
     @ObservedObject var parentViewModel: V
 
     @Environment(\.dismiss) var dismiss
@@ -56,6 +56,9 @@ extension IconGridView {
                 Spacer()
             }
 
+        }
+        .onDisappear {
+            viewModel.simpleIconCancel()
         }
     }
 
@@ -124,9 +127,9 @@ extension IconGridView {
                         imageCell(image: image)
                     }
                 }
-
             }
             .padding()
+
     }
 
     private func imageCell(image: String) -> some View {
@@ -158,7 +161,7 @@ extension IconGridView {
         }
         .onTapGesture {
             parentViewModel.image = image
-//            print(image.metadata)
+            print(image.metadata)
             self.dismiss()
         }
         .frame(width: 64, height: 64)

@@ -28,10 +28,9 @@
 		392C81DB2A2B8F8C00C516DD /* SimpleIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C81DA2A2B8F8B00C516DD /* SimpleIconTests.swift */; };
 		392C81DC2A2B8FEE00C516DD /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 392C81D22A2B593000C516DD /* swiftlint.yml */; };
 		392C81DD2A2B8FEE00C516DD /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 392C81D22A2B593000C516DD /* swiftlint.yml */; };
-		392C81E32A2C32A100C516DD /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C81E22A2C32A100C516DD /* NetworkServiceTests.swift */; };
 		392C81E62A2C3B4E00C516DD /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 392C81E52A2C3B4E00C516DD /* SVGKit */; };
 		392C81EA2A2C41C900C516DD /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 392C81E92A2C41C900C516DD /* SVGKit */; };
-		392C81EC2A2C808000C516DD /* SVGManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C81EB2A2C808000C516DD /* SVGManager.swift */; };
+		392C81F12A2C913000C516DD /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 392C81F02A2C913000C516DD /* SVGKitSwift */; };
 		392EDF6129BD508A000B1353 /* AdPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6029BD508A000B1353 /* AdPageCell.swift */; };
 		392EDF6529BD55CA000B1353 /* WidgetListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6429BD55CA000B1353 /* WidgetListCell.swift */; };
 		392EDF6929BD5FAC000B1353 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6829BD5FAC000B1353 /* ToggleButton.swift */; };
@@ -103,7 +102,6 @@
 		39C307F52A1CDC5A00172DA2 /* WidgetSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */; };
 		39C307F62A1CDC6900172DA2 /* WidgetSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */; };
 		39C307F72A1CDC6C00172DA2 /* WidgetSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */; };
-		39C308002A1CDF5700172DA2 /* kogetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C307FF2A1CDF5700172DA2 /* kogetTests.swift */; };
 		39C308072A1CDF7400172DA2 /* KogetTestsCoredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C308062A1CDF7400172DA2 /* KogetTestsCoredata.swift */; };
 		39C308092A1CDFBA00172DA2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 39C308082A1CDFBA00172DA2 /* FirebaseAuth */; };
 		39C3080B2A1CDFC400172DA2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 39C3080A2A1CDFC400172DA2 /* FirebaseFirestore */; };
@@ -241,8 +239,6 @@
 		392C81D22A2B593000C516DD /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		392C81D82A2B8DA600C516DD /* SimpleIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleIconManager.swift; sourceTree = "<group>"; };
 		392C81DA2A2B8F8B00C516DD /* SimpleIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleIconTests.swift; sourceTree = "<group>"; };
-		392C81E22A2C32A100C516DD /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
-		392C81EB2A2C808000C516DD /* SVGManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGManager.swift; sourceTree = "<group>"; };
 		392EDF6029BD508A000B1353 /* AdPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPageCell.swift; sourceTree = "<group>"; };
 		392EDF6429BD55CA000B1353 /* WidgetListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListCell.swift; sourceTree = "<group>"; };
 		392EDF6829BD5FAC000B1353 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
@@ -288,7 +284,6 @@
 		39C1F3D429D181B300C26919 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSortKeys.swift; sourceTree = "<group>"; };
 		39C307FD2A1CDF5700172DA2 /* kogetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kogetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		39C307FF2A1CDF5700172DA2 /* kogetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kogetTests.swift; sourceTree = "<group>"; };
 		39C308062A1CDF7400172DA2 /* KogetTestsCoredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogetTestsCoredata.swift; sourceTree = "<group>"; };
 		39CD9F2829B215A100C28534 /* SDSwagger.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDSwagger.otf; sourceTree = "<group>"; };
 		39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
@@ -398,6 +393,7 @@
 				39504A9329B3A059008A7BA4 /* SwiftEntryKit in Frameworks */,
 				39EBEB4A29BDF7A000B1FD54 /* Kingfisher in Frameworks */,
 				39F8475729B3990B000B817E /* FirebaseStorage in Frameworks */,
+				392C81F12A2C913000C516DD /* SVGKitSwift in Frameworks */,
 				392C81E62A2C3B4E00C516DD /* SVGKit in Frameworks */,
 				39F8475129B3990B000B817E /* FirebaseAuth in Frameworks */,
 			);
@@ -443,7 +439,6 @@
 				392C7FC82A2ABE5A00C516DD /* IconGridView.swift */,
 				392C81CE2A2AFCEB00C516DD /* IconGridViewModel.swift */,
 				392C81D82A2B8DA600C516DD /* SimpleIconManager.swift */,
-				392C81EB2A2C808000C516DD /* SVGManager.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -578,10 +573,8 @@
 		39C307FE2A1CDF5700172DA2 /* kogetTests */ = {
 			isa = PBXGroup;
 			children = (
-				39C307FF2A1CDF5700172DA2 /* kogetTests.swift */,
 				39C308062A1CDF7400172DA2 /* KogetTestsCoredata.swift */,
 				392C81DA2A2B8F8B00C516DD /* SimpleIconTests.swift */,
-				392C81E22A2C32A100C516DD /* NetworkServiceTests.swift */,
 			);
 			path = kogetTests;
 			sourceTree = "<group>";
@@ -933,6 +926,7 @@
 				39ED274C29B98431001C368E /* SFSafeSymbols */,
 				39EBEB4929BDF7A000B1FD54 /* Kingfisher */,
 				392C81E52A2C3B4E00C516DD /* SVGKit */,
+				392C81F02A2C913000C516DD /* SVGKitSwift */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -1098,9 +1092,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39C308002A1CDF5700172DA2 /* kogetTests.swift in Sources */,
 				392C81DB2A2B8F8C00C516DD /* SimpleIconTests.swift in Sources */,
-				392C81E32A2C32A100C516DD /* NetworkServiceTests.swift in Sources */,
 				39C308072A1CDF7400172DA2 /* KogetTestsCoredata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1179,7 +1171,6 @@
 				392EDF6F29BDA3C4000B1353 /* WidgetAssetCell.swift in Sources */,
 				392140A42A0BC1C400D0F527 /* Date+Extention.swift in Sources */,
 				3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */,
-				392C81EC2A2C808000C516DD /* SVGManager.swift in Sources */,
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthService.swift in Sources */,
 				395DC33E2A1CC1A500EA310E /* EntityCreating.swift in Sources */,
 				39504A9D29B429AF008A7BA4 /* AlertFactory.swift in Sources */,
@@ -1734,8 +1725,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SVGKit/SVGKit.git";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 3.0.0;
+				kind = revision;
+				revision = 87fcc6384bee87a7eba12eb367abcad315433478;
 			};
 		};
 		39504A9129B3A059008A7BA4 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
@@ -1798,6 +1789,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 392C81E42A2C3B4E00C516DD /* XCRemoteSwiftPackageReference "SVGKit" */;
 			productName = SVGKit;
+		};
+		392C81F02A2C913000C516DD /* SVGKitSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 392C81E42A2C3B4E00C516DD /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKitSwift;
 		};
 		39504A9229B3A059008A7BA4 /* SwiftEntryKit */ = {
 			isa = XCSwiftPackageProductDependency;

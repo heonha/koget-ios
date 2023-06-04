@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Combine
 import SFSafeSymbols
 
 final class IconGridViewModel: BaseViewModel {
 
+    @ObservedObject var manager = SimpleIconService()
+    private var cancellables: Set<AnyCancellable>!
     @Published var searchText = ""
     @Published var icons = [(imgName: String, name: [String])]()
     @Published var simpleIcons = [UIImage]()
@@ -25,8 +28,6 @@ final class IconGridViewModel: BaseViewModel {
         }
     }
 
-    @ObservedObject var manager = SimpleIconService()
-
     private let aliasTuple: [(imgName: String, name: [String])] = {
         let alias = WidgetAssetViewModel().data
             .compactMap{ (imgName: $0.imageName, name: [$0.name, $0.nameEn, $0.nameEn]) }
@@ -36,7 +37,21 @@ final class IconGridViewModel: BaseViewModel {
     override init() {
         selectedSource = 0
         super.init()
+        cancellables = .init()
         fetchAllIcon()
+        subscribing()
+    }
+
+    deinit {
+        print("deinit: IconGridVeiwModel")
+    }
+
+    func subscribing() {
+        manager.simpleIconPublisher
+            .sink { icons in
+            print("전달받은 아이콘")
+            self.simpleIcons = icons
+        }.store(in: &cancellables)
     }
 
 }
@@ -45,8 +60,6 @@ extension IconGridViewModel {
 
     private func fetchAllIcon() {
         icons = aliasTuple
-        manager.fetchSimpleIcon(of: 50)
-        simpleIcons = manager.simpleIcon
     }
 
     func filterIcons(text: String) {
@@ -62,12 +75,16 @@ extension IconGridViewModel {
         }
     }
 
-    private func fetchSimpleIcon() {
+    func fetchSimpleIcon() {
         print("아이콘 가져오기")
-        manager.fetchSimpleIcon()
-        simpleIcons = manager.simpleIcon
+        manager.updateIcons()
+        print(self.simpleIcons.count)
     }
 
+    func simpleIconCancel() {
+        manager.cancel()
+        self.cancellables = nil
+    }
 }
 
 #if DEBUG
