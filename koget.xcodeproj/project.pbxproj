@@ -12,6 +12,7 @@
 		390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CB929B1A70600B61E35 /* AdPageContainer.swift */; };
 		390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CBB29B1AED900B61E35 /* MainTabView.swift */; };
 		390B5CBE29B20B0A00B61E35 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */; };
+		391EB1202A2E18D900F87B52 /* SimpleIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391EB11F2A2E18D900F87B52 /* SimpleIcons.swift */; };
 		392140A42A0BC1C400D0F527 /* Date+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392140A32A0BC1C400D0F527 /* Date+Extention.swift */; };
 		392140A52A0BC69800D0F527 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB37AE29C0B5DD00BD91EC /* Strings+Generated.swift */; };
 		39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39223B6529A5E12800F59F54 /* InfoPlist.strings */; };
@@ -24,7 +25,6 @@
 		392C7FC92A2ABE5A00C516DD /* IconGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C7FC82A2ABE5A00C516DD /* IconGridView.swift */; };
 		392C81CF2A2AFCEB00C516DD /* IconGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C81CE2A2AFCEB00C516DD /* IconGridViewModel.swift */; };
 		392C81D32A2B593100C516DD /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 392C81D22A2B593000C516DD /* swiftlint.yml */; };
-		392C81D92A2B8DA600C516DD /* SimpleIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C81D82A2B8DA600C516DD /* SimpleIconManager.swift */; };
 		392C81DB2A2B8F8C00C516DD /* SimpleIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C81DA2A2B8F8B00C516DD /* SimpleIconTests.swift */; };
 		392C81DC2A2B8FEE00C516DD /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 392C81D22A2B593000C516DD /* swiftlint.yml */; };
 		392C81DD2A2B8FEE00C516DD /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 392C81D22A2B593000C516DD /* swiftlint.yml */; };
@@ -230,6 +230,7 @@
 		390B5CB929B1A70600B61E35 /* AdPageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPageContainer.swift; sourceTree = "<group>"; };
 		390B5CBB29B1AED900B61E35 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		391EB11F2A2E18D900F87B52 /* SimpleIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleIcons.swift; sourceTree = "<group>"; };
 		392140A32A0BC1C400D0F527 /* Date+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extention.swift"; sourceTree = "<group>"; };
 		39223B6429A5E12800F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39223B7C29A6325800F59F54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -237,7 +238,6 @@
 		392C7FC82A2ABE5A00C516DD /* IconGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGridView.swift; sourceTree = "<group>"; };
 		392C81CE2A2AFCEB00C516DD /* IconGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGridViewModel.swift; sourceTree = "<group>"; };
 		392C81D22A2B593000C516DD /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
-		392C81D82A2B8DA600C516DD /* SimpleIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleIconManager.swift; sourceTree = "<group>"; };
 		392C81DA2A2B8F8B00C516DD /* SimpleIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleIconTests.swift; sourceTree = "<group>"; };
 		392EDF6029BD508A000B1353 /* AdPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPageCell.swift; sourceTree = "<group>"; };
 		392EDF6429BD55CA000B1353 /* WidgetListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListCell.swift; sourceTree = "<group>"; };
@@ -438,7 +438,7 @@
 			children = (
 				392C7FC82A2ABE5A00C516DD /* IconGridView.swift */,
 				392C81CE2A2AFCEB00C516DD /* IconGridViewModel.swift */,
-				392C81D82A2B8DA600C516DD /* SimpleIconManager.swift */,
+				391EB11F2A2E18D900F87B52 /* SimpleIcons.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -1145,7 +1145,6 @@
 				3AD4691B297D19190090B2D3 /* ContactViewModel.swift in Sources */,
 				39EBEB5229BE0A7900B1FD54 /* PatchNoteManager.swift in Sources */,
 				3A00CA662931EFBE004FBF80 /* EditTextField.swift in Sources */,
-				392C81D92A2B8DA600C516DD /* SimpleIconManager.swift in Sources */,
 				395DC33A2A1CC08C00EA310E /* CoreDataStore.swift in Sources */,
 				39694FE529E6AE8900F2C75C /* DeepLinkProvider.swift in Sources */,
 				392C7FC92A2ABE5A00C516DD /* IconGridView.swift in Sources */,
@@ -1212,6 +1211,7 @@
 				392EDF6129BD508A000B1353 /* AdPageCell.swift in Sources */,
 				3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */,
 				39504A9F29B4374F008A7BA4 /* CGRect+Extension.swift in Sources */,
+				391EB1202A2E18D900F87B52 /* SimpleIcons.swift in Sources */,
 				395DC3422A1CC22700EA310E /* EntityFetching.swift in Sources */,
 				39C307F52A1CDC5A00172DA2 /* WidgetSortKeys.swift in Sources */,
 				395DC3402A1CC1EA00EA310E /* EntitySaving.swift in Sources */,

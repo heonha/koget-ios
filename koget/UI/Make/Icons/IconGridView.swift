@@ -11,9 +11,11 @@ import SFSafeSymbols
 struct IconGridView<V: VMPhotoEditProtocol>: View {
 
     @ObservedObject private var viewModel = IconGridViewModel()
-    @ObservedObject var parentViewModel: V
+    var parentViewModel: V
 
     @Environment(\.dismiss) var dismiss
+
+    @State var index = 0
 
     var body: some View {
 
@@ -31,11 +33,8 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
 
             segmentView()
 
-            ScrollView {
-                scrollView()
-            }
+            scrollView()
         }
-
     }
 }
 
@@ -57,9 +56,7 @@ extension IconGridView {
             }
 
         }
-        .onDisappear {
-            viewModel.disposeServices()
-        }
+
     }
 
     private func segmentView() -> some View {
@@ -110,7 +107,6 @@ extension IconGridView {
                                         viewModel.filterIcons(text: newValue.lowercased())
                                     } else {
                                         viewModel.filterSimpleIcons(text: newValue.lowercased())
-
                                     }
 
                                 }
@@ -122,33 +118,48 @@ extension IconGridView {
     }
 
     private func scrollView() -> some View {
-        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4), spacing: 12) {
+        ScrollView {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4), spacing: 12) {
 
-            if viewModel.selectedSource == 0 {
-                ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
-                    imageCell(image: image)
-                }
-            } else {
-                ForEach(viewModel.simpleIcons, id: \.self) { image in
-                    imageCell(image: image)
+                if viewModel.selectedSource == 0 {
+                    ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
+                        imageCell(imageName: image)
+                    }
+                } else {
+                    ForEach(viewModel.simpleIcons, id: \.self) { image in
+                        imageCell(image: image)
+                            .onAppear {
+                                if image == viewModel.simpleIcons.last {
+                                    print("Last!")
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        viewModel.fetchSimpleIcon()
+                                    }
+                                }
+                            }
+                    }
                 }
             }
+            .padding()
         }
-        .padding()
 
     }
 
-    private func imageCell(image: String) -> some View {
+    private func scrollToBottom(scrollViewProxy: ScrollViewProxy) {
+        // 스크롤뷰를 맨 아래로 스크롤합니다.
+        scrollViewProxy.scrollTo(viewModel.simpleIcons.indices.last, anchor: .bottom)
+    }
+
+    private func imageCell(imageName: String) -> some View {
         ZStack {
             Color.init(uiColor: .systemBackground)
-            Image(image)
+            Image(imageName)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 32, height: 32)
                 .clipShape(Circle())
         }
         .onTapGesture {
-            parentViewModel.image = UIImage(named: image)
+            parentViewModel.image = UIImage(named: imageName)
             self.dismiss()
         }
         .frame(width: 64, height: 64)

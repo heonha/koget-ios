@@ -115,7 +115,7 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
                     Circle()
                         .fill(constant.isDarkMode ? .black : .white)
                         .opacity(constant.isDarkMode ? 0.3 : 1.0)
-                    Image("KogetClear")
+                    Image("plus.circle")
                         .resizable()
                         .scaledToFit()
                         .clipShape(Circle())
