@@ -42,7 +42,7 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                             .fill(AppColor.Fill.second)
                         if trailingPadding != nil {
                             TextField(placeHolder, text: $text)
-                                .font(.custom(CustomFont.NotoSansKR.light, size: 16))
+                                .font(.custom(.robotoLight, size: 16))
                                 .frame(height: 35)
                                 .autocorrectionDisabled()
                                 .textInputAutocapitalization(.never)
@@ -52,7 +52,7 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                                 .padding(.trailing, trailingPadding)
                         } else {
                             TextField(placeHolder, text: $text)
-                                .font(.custom(CustomFont.NotoSansKR.light, size: 16))
+                                .font(.custom(.robotoLight, size: 16))
                                 .frame(height: 35)
                                 .autocorrectionDisabled()
                                 .textInputAutocapitalization(.never)
@@ -68,7 +68,7 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                         RoundedRectangle(cornerRadius: 5)
                             .fill(constant.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
                         TextField(placeHolder, text: $text)
-                            .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                            .font(.custom(.robotoMedium, size: 16))
                             .frame(height: 35)
                             .background(.clear)
                             .padding(.horizontal, 4)
@@ -82,7 +82,7 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                     withAnimation {
                         Text(viewModel.nameMaxCountErrorMessage)
                             .foregroundColor(.red)
-                            .font(.custom(CustomFont.NotoSansKR.light, size: 12))
+                            .font(.custom(.robotoLight, size: 12))
                     }
             }
         }

@@ -47,23 +47,23 @@ struct PatchNoteList: View {
         VStack(spacing: 4) {
             HStack {
                 Text("\("현재 버전  ")")
-                    .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
+                    .font(.custom(.robotoMedium, size: 14))
                     .foregroundColor(AppColor.Label.second)
                 + Text("\(Constants.appVersion)")
-                    .font(.custom(CustomFont.NotoSansKR.bold, size: 14))
+                    .font(.custom(.robotoBold, size: 14))
                     .foregroundColor(AppColor.Label.second)
                 Text("\("최신 버전  ")")
-                    .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
+                    .font(.custom(.robotoMedium, size: 14))
                     .foregroundColor(AppColor.Label.second)
                 + Text("\(appStoreVersion)")
-                    .font(.custom(CustomFont.NotoSansKR.bold, size: 14))
+                    .font(.custom(.robotoBold, size: 14))
                     .foregroundColor(AppColor.Label.second)
 
             }
 
             if Constants.appVersion == appStoreVersion {
                 Text("현재 최신버전을 사용 중입니다.")
-                    .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
+                    .font(.custom(.robotoMedium, size: 14))
                     .foregroundColor(.init(uiColor: .systemGreen))
             }
 

@@ -51,7 +51,7 @@ struct WidgetGridCell: View {
 
             //MARK: 위젯 이름
             Text(name)
-                .font(.custom(CustomFont.NotoSansKR.medium, size: 12))
+                .font(.custom(.robotoMedium, size: 12))
                 .foregroundColor(titleColor)
                 .shadow(radius: 0.5, x: 0.5, y: 0.5)
                 .frame(width: textSize.width, height: textSize.height)

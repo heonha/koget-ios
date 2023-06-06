@@ -27,7 +27,7 @@ struct WidgetGridLinkTypeIcon: View {
                                 .frame(width: 13, height: 13)
                             Image(systemSymbol: .arrowUpLeftCircleFill)
                                 .foregroundStyle(AppColor.kogetRed)
-                                .font(.system(size: 18, weight: .semibold))
+                                .font(.custom(.robotoMedium, size: 18))
                                 .shadow(color: .black.opacity(0.2) ,radius: 0.3, x: 0.5, y: 0.5)
                                 .opacity(0.8)
                         }
@@ -44,7 +44,7 @@ struct WidgetGridLinkTypeIcon: View {
                                 .foregroundStyle(AppColor.Background.first)
                                 .frame(width: 13, height: 13)
                             Image(systemSymbol: .network)
-                                .font(.system(size: 18, weight: .semibold))
+                                .font(.custom(.robotoMedium, size: 18))
                                 .foregroundStyle(.blue)
                                 .clipShape(Circle())
                                 .shadow(color: .black.opacity(0.2) ,radius: 0.3, x: 0.5, y: 0.5)

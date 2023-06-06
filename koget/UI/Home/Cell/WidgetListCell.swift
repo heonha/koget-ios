@@ -66,7 +66,7 @@ extension WidgetListCell {
         VStack(alignment: .leading) {
             // title
             Text(name)
-                .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                .font(.custom(.robotoMedium, size: 16))
                 .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
                 .foregroundColor(AppColor.Label.first)
 
@@ -74,12 +74,12 @@ extension WidgetListCell {
             switch viewModel.checkLinkType(url: url) {
             case .app:
                 Text(app)
-                    .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
+                    .font(.custom(.robotoRegular ,size: 13))
                     .foregroundColor(Color.init(uiColor: .secondaryLabel))
                     .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
             case .web:
                 Text(web)
-                    .font(.custom(CustomFont.NotoSansKR.regular ,size: 13))
+                    .font(.custom(.robotoRegular ,size: 13))
                     .foregroundColor(Color.init(uiColor: .secondaryLabel))
                     .shadow(color: .black.opacity(0.1), radius: 0.5, x: 0.2, y: 0.5)
             }
@@ -95,11 +95,11 @@ extension WidgetListCell {
                 .overlay {
                     HStack(spacing: 6) {
                         Image(systemSymbol: .boltHorizontalFill)
-                            .font(.system(size: 11, weight: .semibold))
+                            .font(.custom(.robotoMedium, size: 11))
                             .shadow(color: .black.opacity(0.7), radius: 0.5, x: 0.5, y: 0.5)
                             .foregroundColor(.yellow)
                         Text("\(Int(runCount))")
-                            .font(.system(size: 14, weight: .semibold))
+                            .font(.custom(.robotoMedium, size: 14))
                             .foregroundColor(.white)
                             .shadow(color: .black.opacity(0.8), radius: 0.3, x: 0.3, y: 0.5)
                     }

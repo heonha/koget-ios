@@ -43,12 +43,12 @@ struct WidgetAssetCell: View {
                         .foregroundColor(textColor)
                         if !widget.canOpen {
                             Text(S.WidgetAssetList.notInstalled)
-                                .font(.custom(CustomFont.NotoSansKR.bold, size: 14))
+                                .font(.custom(.robotoBold, size: 14))
                                 .foregroundColor(installTextColor)
                         }
                     }
                     Text(viewModel.checkLinkType(url: widget.url).localizedString)
-                        .font(.custom(CustomFont.NotoSansKR.medium, size: 12))
+                        .font(.custom(.robotoMedium, size: 12))
                         .foregroundColor(installTextColor)
                         .padding(.leading, 1)
                 }

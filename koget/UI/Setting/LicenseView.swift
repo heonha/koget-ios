@@ -38,7 +38,7 @@ struct LicenseView: View {
     var body: some View {
         VStack {
             Text(title)
-                .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
+                .font(.custom(.robotoBold, size: 18))
                 .padding(.bottom, 4)
 
             ScrollView {
@@ -46,7 +46,7 @@ struct LicenseView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(AppColor.Fill.third)
                     Text(license)
-                        .font(.custom(CustomFont.NotoSansKR.light, size: 14))
+                        .font(.custom(.robotoRegular, size: 14))
                         .padding(8)
                 }
             }

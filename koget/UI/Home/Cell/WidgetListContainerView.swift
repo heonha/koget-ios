@@ -73,12 +73,12 @@ struct WidgetListContainerView: View {
                 } label: {
                     VStack(spacing: 8) {
                         Text(S.MainWidgetView.EmptyGrid.messageLine1)
-                            .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
+                            .font(.custom(.robotoBold, size: 18))
                             .foregroundColor(Color(uiColor: .tertiaryLabel))
                             .shadow(color: .black.opacity(0.25), radius: 0.6, x: 1, y: 1)
 
                         Text(S.MainWidgetView.EmptyGrid.messageLine2)
-                            .font(.custom(CustomFont.NotoSansKR.bold, size: 20))
+                            .font(.custom(.robotoBold, size: 20))
                             .foregroundColor(Color(uiColor: .secondaryLabel))
                             .shadow(color: .black.opacity(0.25), radius: 0.6, x: 1, y: 1)
                     }

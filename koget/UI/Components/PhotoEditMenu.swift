@@ -124,7 +124,7 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
                         .opacity(constant.isDarkMode ? 0.4 : 0.7)
                     Text(selectImageLabel)
                         .foregroundColor(AppColor.Label.second)
-                        .font(.system(size: 16, weight: .bold))
+                        .font(.custom(.robotoBold, size: 16))
                 }
             }
 

@@ -38,8 +38,8 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
             ZStack {
                 Text("\(Int(viewModel.opacityValue * 100))%")
                     .font(.custom(viewModel.isOpacitySliderEditing
-                                  ? CustomFont.NotoSansKR.bold
-                                  : CustomFont.NotoSansKR.medium,
+                                  ? .robotoBold
+                                  : .robotoMedium,
                                   size: 18))
                     .padding(.horizontal, 4)
                     .foregroundColor(viewModel.isOpacitySliderEditing
@@ -61,7 +61,7 @@ struct OpacityPickerContainer<V: VMOpacityProtocol>: View {
                         .opacity(0.95)
                         .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
                     Text(opacityDesctiption)
-                        .font(.custom(CustomFont.NotoSansKR.light, size: 13))
+                        .font(.custom(.robotoLight, size: 13))
                         .foregroundColor(AppColor.Label.first)
                 })
                 .frame(width: Constants.deviceSize.width * 0.5, height: 30)

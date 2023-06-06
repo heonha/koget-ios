@@ -33,7 +33,7 @@ struct PatchNoteListCell: View {
                     Spacer()
 
                     Text(date)
-                        .font(.custom(CustomFont.NotoSansKR.light, size: 14))
+                        .font(.custom(.robotoLight, size: 14))
                         .foregroundColor(AppColor.Label.second)
                         .padding(.trailing)
                 }
@@ -54,9 +54,9 @@ struct PatchNoteListCell: View {
     func textView(title: String, subtitle: String) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
-                .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
+                .font(.custom(.robotoBold, size: 18))
             Text(subtitle)
-                .font(.custom(CustomFont.NotoSansKR.light, size: 14))
+                .font(.custom(.robotoLight, size: 14))
                 .foregroundColor(AppColor.Label.second)
                 .padding(.leading, 4)
         }

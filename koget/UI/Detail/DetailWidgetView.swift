@@ -78,7 +78,7 @@ struct DetailWidgetView: View {
 
                 // 하단 텍스트: 반영까지 15분 걸립니다.
                 Text(S.DetailWidgetView.bottomText)
-                    .font(.custom(CustomFont.NotoSansKR.regular, size: 14))
+                    .font(.custom(.robotoRegular, size: 14))
                     .foregroundColor(.gray)
                     .lineLimit(3)
                     .padding(.horizontal)
@@ -129,7 +129,7 @@ struct DetailWidgetView: View {
             HStack(alignment: .center) {
                 Text(viewModel.name)
                     .frame(maxWidth: .infinity, maxHeight: 45, alignment: .center)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.custom(.robotoBold, size: 20))
                     .foregroundColor(AppColor.Label.first)
                     .padding(.horizontal, 35)
             }
@@ -141,7 +141,7 @@ struct DetailWidgetView: View {
                     isDeleteAlertPresent.toggle()
                 } label: {
                     Image(systemSymbol: .trash)
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.custom(.robotoMedium, size: 18))
                         .foregroundColor(AppColor.kogetRed)
                         .fontWeight(.bold)
                 }
@@ -158,7 +158,7 @@ struct DetailWidgetView: View {
                     dismiss()
                 } label: {
                     Image(systemSymbol: .xmark)
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.custom(.robotoMedium, size: 18))
                         .foregroundColor(AppColor.Label.second)
 
                 }

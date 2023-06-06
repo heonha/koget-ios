@@ -56,7 +56,7 @@ struct DeepLinkWidgetEntryView: View {
         VStack {
             Text(addWidgetMessage)
         }
-        .font(.system(size: 12, weight: .bold))
+        .font(.custom(.robotoRegular, size: 12))
     }
 
     func iconView(id: String, url: String) -> some View {

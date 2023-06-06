@@ -39,10 +39,10 @@ struct AdPageCell: View {
                 HStack(content: {
                     VStack(alignment: .leading) {
                         Text(title)
-                            .font(Font.custom(CustomFont.NotoSansKR.bold, size: 18))
+                            .font(Font.custom(.robotoBold, size: 18))
                             .foregroundColor(AppColor.Label.first)
                         Text(S.adCell)
-                            .font(Font.custom(CustomFont.NotoSansKR.light, size: 16))
+                            .font(Font.custom(.robotoLight, size: 16))
                             .foregroundColor(.init(uiColor: .secondaryLabel))
 
                     }

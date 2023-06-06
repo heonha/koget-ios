@@ -17,7 +17,7 @@ struct ToggleButton: View {
     let saveLabel = S.Button.save
 
     var widget: DeepLink
-    let font: Font = .custom(CustomFont.NotoSansKR.medium, size: 18)
+    let font: Font = .custom(.robotoMedium, size: 18)
 
     var body: some View {
         Button {

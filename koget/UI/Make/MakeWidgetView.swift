@@ -98,7 +98,7 @@ struct MakeWidgetView: View {
                     .opacity(0.5)
 
                 Text(S.MakeWidgetView.fetchAppListLabel)
-                    .font(.custom(CustomFont.NotoSansKR.medium, size: 18))
+                    .font(.custom(.robotoBold, size: 18))
                     .foregroundColor(.white)
                     .shadow(color: .black.opacity(0.5), radius: 0.5, x: 1, y: 1)
             }
@@ -213,7 +213,7 @@ struct MakeWidgetView: View {
             } label: {
                 ZStack {
                     Text(S.Button.changeOpacity)
-                        .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
+                        .font(.custom(.robotoMedium, size: 14))
                         .foregroundColor(AppColor.Label.second)
                         .padding(4)
                 }

@@ -44,13 +44,13 @@ struct FloatingMenuButton: View {
                 } label: {
                     HStack {
                         Image(systemSymbol: systemName)
-                            .font(.system(size: textInfo.fontSize))
+                            .font(.custom(.robotoRegular ,size: textInfo.fontSize))
                             .foregroundStyle(symbolColor)
                         
                         Spacer()
                         Text(text)
                             .lineLimit(1)
-                            .font(.system(size: textInfo.fontSize, weight: textInfo.weight))
+                            .font(.custom(.robotoRegular ,size: textInfo.fontSize))
                             .lineLimit(2, reservesSpace: false)
                             .multilineTextAlignment(.center)
                             .foregroundStyle(textInfo.color)
@@ -80,7 +80,7 @@ struct FloatingMenuButton: View {
                         Spacer()
                         Text(text)
                             .lineLimit(1)
-                            .font(.system(size: textInfo.fontSize, weight: textInfo.weight))
+                            .font(.custom(.robotoRegular, size: textInfo.fontSize))
                         Spacer()
                     }
                     .padding(8)

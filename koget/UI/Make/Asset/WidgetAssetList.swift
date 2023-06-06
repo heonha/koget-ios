@@ -31,7 +31,7 @@ struct WidgetAssetList: View {
             VStack {
                 
                 Text(appList)
-                    .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
+                    .font(.custom(.robotoBold, size: 18))
                     .padding(.vertical, 12)
                 
                 VStack(alignment: .leading) {
@@ -67,7 +67,7 @@ struct WidgetAssetList: View {
                 presentAssetRequestView.toggle()
             } label: {
                 Text(requestApp)
-                    .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
+                    .font(.custom(.robotoMedium, size: 14))
                     .foregroundColor(AppColor.Label.second)
                     .padding(.leading, 16)
             }
@@ -78,7 +78,7 @@ struct WidgetAssetList: View {
             Spacer()
 
             Text(excutableToggleLabel)
-                .font(.custom(CustomFont.NotoSansKR.medium, size: 14))
+                .font(.custom(.robotoMedium, size: 14))
                 .foregroundColor(AppColor.Label.second)
                 .padding(.leading)
 

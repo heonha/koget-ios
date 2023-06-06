@@ -47,7 +47,7 @@ struct URLTestButton: View {
                             .shadow(color: .black.opacity(0.2), radius: 0.5, x: 1, y: 1)
                         Text(title)
                             .foregroundColor(AppColor.Label.first)
-                            .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                            .font(.custom(.robotoMedium, size: 16))
                     }
 
                 } else {
@@ -99,11 +99,11 @@ struct URLTestButton: View {
                     if canOpen {
                         Image(systemSymbol: .checkmarkCircleFill)
                             .foregroundColor(.green)
-                            .font(.custom(CustomFont.NotoSansKR.medium, size: 20))
+                            .font(.custom(.robotoMedium, size: 20))
                     } else {
                         Image(systemSymbol: .xmarkCircle)
                             .foregroundColor(.red)
-                            .font(.custom(CustomFont.NotoSansKR.medium, size: 20))
+                            .font(.custom(.robotoMedium, size: 20))
                     }
                 }
             } else {
@@ -114,7 +114,7 @@ struct URLTestButton: View {
                         .shadow(color: .black.opacity(0.2), radius: 0.5, x: 1, y: 1)
                     Text(title)
                         .foregroundColor(AppColor.Label.first)
-                        .font(.custom(CustomFont.NotoSansKR.medium, size: 16))
+                        .font(.custom(.robotoMedium, size: 16))
                 }
             }
         }

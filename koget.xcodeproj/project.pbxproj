@@ -11,13 +11,29 @@
 		390853B829A3949F006E8311 /* AssetRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390853B729A3949F006E8311 /* AssetRequestViewModel.swift */; };
 		390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CB929B1A70600B61E35 /* AdPageContainer.swift */; };
 		390B5CBC29B1AED900B61E35 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390B5CBB29B1AED900B61E35 /* MainTabView.swift */; };
-		390B5CBE29B20B0A00B61E35 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */; };
 		391510692A2EFBBD000BDC14 /* WidgetCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391510682A2EFBBD000BDC14 /* WidgetCoreData.swift */; };
 		3915106A2A2EFC49000BDC14 /* WidgetCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391510682A2EFBBD000BDC14 /* WidgetCoreData.swift */; };
 		3915106B2A2EFC4A000BDC14 /* WidgetCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391510682A2EFBBD000BDC14 /* WidgetCoreData.swift */; };
 		3915106C2A2EFD1F000BDC14 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA682931F3F1004FBF80 /* StorageProvider.swift */; };
 		3915106D2A2EFD1F000BDC14 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00CA682931F3F1004FBF80 /* StorageProvider.swift */; };
 		391510702A2F545E000BDC14 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3915106F2A2F545E000BDC14 /* Color+Extension.swift */; };
+		391510722A2F5A67000BDC14 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391510712A2F5A67000BDC14 /* Font+Extension.swift */; };
+		391510872A2F5D58000BDC14 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510832A2F5D58000BDC14 /* Roboto-Bold.ttf */; };
+		391510882A2F5D58000BDC14 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510832A2F5D58000BDC14 /* Roboto-Bold.ttf */; };
+		391510892A2F5D58000BDC14 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510832A2F5D58000BDC14 /* Roboto-Bold.ttf */; };
+		3915108A2A2F5D58000BDC14 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510842A2F5D58000BDC14 /* Roboto-Light.ttf */; };
+		3915108B2A2F5D58000BDC14 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510842A2F5D58000BDC14 /* Roboto-Light.ttf */; };
+		3915108C2A2F5D58000BDC14 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510842A2F5D58000BDC14 /* Roboto-Light.ttf */; };
+		3915108D2A2F5D58000BDC14 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510852A2F5D58000BDC14 /* Roboto-Regular.ttf */; };
+		3915108E2A2F5D58000BDC14 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510852A2F5D58000BDC14 /* Roboto-Regular.ttf */; };
+		3915108F2A2F5D58000BDC14 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510852A2F5D58000BDC14 /* Roboto-Regular.ttf */; };
+		391510902A2F5D58000BDC14 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510862A2F5D58000BDC14 /* Roboto-Medium.ttf */; };
+		391510912A2F5D58000BDC14 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510862A2F5D58000BDC14 /* Roboto-Medium.ttf */; };
+		391510922A2F5D58000BDC14 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 391510862A2F5D58000BDC14 /* Roboto-Medium.ttf */; };
+		391510932A2F60A4000BDC14 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1F3D429D181B300C26919 /* CustomFont.swift */; };
+		391510942A2F60A4000BDC14 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1F3D429D181B300C26919 /* CustomFont.swift */; };
+		391510952A2F60A9000BDC14 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391510712A2F5A67000BDC14 /* Font+Extension.swift */; };
+		391510962A2F60A9000BDC14 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391510712A2F5A67000BDC14 /* Font+Extension.swift */; };
 		391EB1202A2E18D900F87B52 /* SimpleIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391EB11F2A2E18D900F87B52 /* SimpleIcons.swift */; };
 		392140A42A0BC1C400D0F527 /* Date+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392140A32A0BC1C400D0F527 /* Date+Extention.swift */; };
 		392140A52A0BC69800D0F527 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB37AE29C0B5DD00BD91EC /* Strings+Generated.swift */; };
@@ -106,10 +122,6 @@
 		39C308072A1CDF7400172DA2 /* KogetTestsCoredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C308062A1CDF7400172DA2 /* KogetTestsCoredata.swift */; };
 		39C308092A1CDFBA00172DA2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 39C308082A1CDFBA00172DA2 /* FirebaseAuth */; };
 		39C3080B2A1CDFC400172DA2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 39C3080A2A1CDFC400172DA2 /* FirebaseFirestore */; };
-		39CD9F2929B215A100C28534 /* SDSwagger.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2829B215A100C28534 /* SDSwagger.otf */; };
-		39CD9F3029B215D000C28534 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */; };
-		39CD9F3129B215D000C28534 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */; };
-		39CD9F3329B2312600C28534 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD9F3229B2312600C28534 /* NotoSansKR-Regular.otf */; };
 		39E0FAE729D132940081E169 /* PatchNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E0FAE629D132940081E169 /* PatchNoteViewModel.swift */; };
 		39E456E329C7120C0017B1AB /* ContactType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E456E229C7120C0017B1AB /* ContactType.swift */; };
 		39E456E529C7122F0017B1AB /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E456E429C7122F0017B1AB /* RequestType.swift */; };
@@ -226,9 +238,13 @@
 		390853B729A3949F006E8311 /* AssetRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetRequestViewModel.swift; sourceTree = "<group>"; };
 		390B5CB929B1A70600B61E35 /* AdPageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPageContainer.swift; sourceTree = "<group>"; };
 		390B5CBB29B1AED900B61E35 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		391510682A2EFBBD000BDC14 /* WidgetCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCoreData.swift; sourceTree = "<group>"; };
 		3915106F2A2F545E000BDC14 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		391510712A2F5A67000BDC14 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		391510832A2F5D58000BDC14 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		391510842A2F5D58000BDC14 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		391510852A2F5D58000BDC14 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		391510862A2F5D58000BDC14 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		391EB11F2A2E18D900F87B52 /* SimpleIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleIcons.swift; sourceTree = "<group>"; };
 		392140A32A0BC1C400D0F527 /* Date+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extention.swift"; sourceTree = "<group>"; };
 		39223B6429A5E12800F59F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -283,10 +299,6 @@
 		39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSortKeys.swift; sourceTree = "<group>"; };
 		39C307FD2A1CDF5700172DA2 /* kogetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kogetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C308062A1CDF7400172DA2 /* KogetTestsCoredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogetTestsCoredata.swift; sourceTree = "<group>"; };
-		39CD9F2829B215A100C28534 /* SDSwagger.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDSwagger.otf; sourceTree = "<group>"; };
-		39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
-		39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
-		39CD9F3229B2312600C28534 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		39E0FAE629D132940081E169 /* PatchNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteViewModel.swift; sourceTree = "<group>"; };
 		39E456E229C7120C0017B1AB /* ContactType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactType.swift; sourceTree = "<group>"; };
 		39E456E429C7122F0017B1AB /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
@@ -411,11 +423,10 @@
 		390B5CC029B20BEC00B61E35 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				39CD9F2829B215A100C28534 /* SDSwagger.otf */,
-				39CD9F3229B2312600C28534 /* NotoSansKR-Regular.otf */,
-				39CD9F2E29B215CF00C28534 /* NotoSansKR-Light.otf */,
-				39CD9F2F29B215D000C28534 /* NotoSansKR-Medium.otf */,
-				390B5CBD29B20B0A00B61E35 /* NotoSansKR-Bold.otf */,
+				391510832A2F5D58000BDC14 /* Roboto-Bold.ttf */,
+				391510842A2F5D58000BDC14 /* Roboto-Light.ttf */,
+				391510862A2F5D58000BDC14 /* Roboto-Medium.ttf */,
+				391510852A2F5D58000BDC14 /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -731,6 +742,7 @@
 				39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */,
 				39E7AA1D2A1BC6290012616D /* UIImage+Extension.swift */,
 				3915106F2A2F545E000BDC14 /* Color+Extension.swift */,
+				391510712A2F5A67000BDC14 /* Font+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -999,9 +1011,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3915108F2A2F5D58000BDC14 /* Roboto-Regular.ttf in Resources */,
+				3915108C2A2F5D58000BDC14 /* Roboto-Light.ttf in Resources */,
 				3A40E1AF28EED35E00A646FA /* Assets.xcassets in Resources */,
 				392C81DD2A2B8FEE00C516DD /* swiftlint.yml in Resources */,
 				39223B7029A5E34600F59F54 /* Localizable.strings in Resources */,
+				391510892A2F5D58000BDC14 /* Roboto-Bold.ttf in Resources */,
+				391510922A2F5D58000BDC14 /* Roboto-Medium.ttf in Resources */,
 				39223B6329A5E12800F59F54 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1012,17 +1028,16 @@
 			files = (
 				3964E5EC29C9DFEE0010409B /* KogetClear.png in Resources */,
 				3ADA2E99297FD99C004AADEE /* lockscreenTutorial.mp4 in Resources */,
-				390B5CBE29B20B0A00B61E35 /* NotoSansKR-Bold.otf in Resources */,
 				3ABA6C2328C60440005AA8E4 /* Assets.xcassets in Resources */,
 				392C81D32A2B593100C516DD /* swiftlint.yml in Resources */,
+				391510902A2F5D58000BDC14 /* Roboto-Medium.ttf in Resources */,
 				3964E5ED29C9DFEE0010409B /* downloadToAppStoreKr.svg in Resources */,
 				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
-				39CD9F3029B215D000C28534 /* NotoSansKR-Light.otf in Resources */,
 				3964E5EF29C9DFFA0010409B /* README.md in Resources */,
 				39737B8429D25A1500228A58 /* swiftgen.yml in Resources */,
-				39CD9F2929B215A100C28534 /* SDSwagger.otf in Resources */,
-				39CD9F3129B215D000C28534 /* NotoSansKR-Medium.otf in Resources */,
-				39CD9F3329B2312600C28534 /* NotoSansKR-Regular.otf in Resources */,
+				3915108A2A2F5D58000BDC14 /* Roboto-Light.ttf in Resources */,
+				391510872A2F5D58000BDC14 /* Roboto-Bold.ttf in Resources */,
+				3915108D2A2F5D58000BDC14 /* Roboto-Regular.ttf in Resources */,
 				395307F729C9CB5600225951 /* GoogleService-Info.plist in Resources */,
 				39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */,
 				39223B6E29A5E34600F59F54 /* Localizable.strings in Resources */,
@@ -1033,8 +1048,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				391510912A2F5D58000BDC14 /* Roboto-Medium.ttf in Resources */,
 				3A40E1AE28EED35D00A646FA /* Assets.xcassets in Resources */,
+				391510882A2F5D58000BDC14 /* Roboto-Bold.ttf in Resources */,
+				3915108B2A2F5D58000BDC14 /* Roboto-Light.ttf in Resources */,
 				392C81DC2A2B8FEE00C516DD /* swiftlint.yml in Resources */,
+				3915108E2A2F5D58000BDC14 /* Roboto-Regular.ttf in Resources */,
 				39223B6F29A5E34600F59F54 /* Localizable.strings in Resources */,
 				39223B6229A5E12800F59F54 /* InfoPlist.strings in Resources */,
 				3AF9F00B28ED570E00F685E6 /* Assets.xcassets in Resources */,
@@ -1084,7 +1103,9 @@
 				395DC3492A1CC61600EA310E /* EntitySaving.swift in Sources */,
 				3A3C119728EDB4B800C9CCED /* IntentHandler.swift in Sources */,
 				3AE9DC0F28F8F891008A3316 /* WidgetModel.xcdatamodeld in Sources */,
+				391510942A2F60A4000BDC14 /* CustomFont.swift in Sources */,
 				395DC34D2A1CC65700EA310E /* NSManagedObject+Extension.swift in Sources */,
+				391510962A2F60A9000BDC14 /* Font+Extension.swift in Sources */,
 				39694FDF29E6984D00F2C75C /* WidgetsBundle.swift in Sources */,
 				39BD3EE62A13D1FB00E14DCA /* URL+Extension.swift in Sources */,
 				39694FE629E6AE8B00F2C75C /* DeepLinkProvider.swift in Sources */,
@@ -1171,6 +1192,7 @@
 				39EBEB4729BDDC4500B1FD54 /* CheckmarkToggleStyle.swift in Sources */,
 				390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */,
 				39EBEB4C29BDF7F400B1FD54 /* PatchNoteContentView.swift in Sources */,
+				391510722A2F5A67000BDC14 /* Font+Extension.swift in Sources */,
 				3A0566D32931E9A0007B0A7A /* WidgetListContainerView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
 				3A1F89082978F9DC00E1B4C4 /* AddWidgetVideoView.swift in Sources */,
@@ -1204,7 +1226,9 @@
 				39BA5F2C29D2B4730020138E /* WidgetsBundle.swift in Sources */,
 				395DC3482A1CC61500EA310E /* EntitySaving.swift in Sources */,
 				3976101A29CB234200632313 /* WidgetConstant.swift in Sources */,
+				391510932A2F60A4000BDC14 /* CustomFont.swift in Sources */,
 				39C1F3E029D1C97400C26919 /* Strings+Generated.swift in Sources */,
+				391510952A2F60A9000BDC14 /* Font+Extension.swift in Sources */,
 				395DC34C2A1CC65700EA310E /* NSManagedObject+Extension.swift in Sources */,
 				3979FA6D29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				39BD3EE52A13D1FB00E14DCA /* URL+Extension.swift in Sources */,

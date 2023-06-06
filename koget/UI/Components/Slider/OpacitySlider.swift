@@ -31,11 +31,11 @@ struct OpacitySlider<V: VMOpacityProtocol>: View {
 
             } minimumValueLabel: {
                 Text(transparencyLabel)
-                    .font(.system(size: 12))
+                    .font(.custom(.robotoRegular, size: 12))
                     .foregroundColor(AppColor.Label.second)
             } maximumValueLabel: {
                 Text(opacityLabel)
-                    .font(.system(size: 12))
+                    .font(.custom(.robotoRegular, size: 12))
                     .foregroundColor(AppColor.Label.second)
             } onEditingChanged: { editing in
                 viewModel.isOpacitySliderEditing = editing

@@ -97,7 +97,7 @@ extension IconGridView {
                     .overlay {
                         HStack(spacing: 6) {
                             Image(systemSymbol: .magnifyingglass)
-                                .font(.system(size: 16))
+                                .font(.custom(.robotoRegular, size: 11))
                                 .foregroundColor(AppColor.Label.second)
                                 .padding(.leading, 8)
                             TextField(" 아이콘 이름", text: $viewModel.searchText)

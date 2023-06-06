@@ -13,7 +13,7 @@ struct TextButton: View {
     var titleColor: Color = AppColor.Label.first
     var backgroundColor: Color
     var size: (width: CGFloat?, height: CGFloat?) = (width: nil, height: 40)
-    let font: Font = .custom(CustomFont.NotoSansKR.medium, size: 18)
+    let font: Font = .custom(.robotoMedium, size: 18)
     var action: () -> Void
     
     var body: some View {

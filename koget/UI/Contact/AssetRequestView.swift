@@ -24,7 +24,7 @@ struct AssetRequestView: View {
     var body: some View {
         VStack {
             Text(title)
-                .font(.custom(CustomFont.NotoSansKR.light, size: 20))
+                .font(.custom(.robotoLight, size: 20))
                 .fontWeight(.bold)
             Divider()
             // MARK: 앱 이름
@@ -40,7 +40,7 @@ struct AssetRequestView: View {
                         .fill(Color.init(uiColor: .secondarySystemFill))
                         .opacity(0.8)
                     TextField(appNamePlaceholder, text: $viewModel.appName)
-                        .font(.custom(CustomFont.NotoSansKR.light, size: 16))
+                        .font(.custom(.robotoLight, size: 16))
                         .padding(.horizontal, 4)
                         .background(Color.clear)
                         .autocorrectionDisabled()
@@ -57,7 +57,7 @@ struct AssetRequestView: View {
                 Spacer()
                 
                 Text(textBody)
-                    .font(.custom(CustomFont.NotoSansKR.bold, size: 16))
+                    .font(.custom(.robotoBold, size: 16))
                     .frame(width: 100)
                 Spacer()
                 
@@ -66,7 +66,7 @@ struct AssetRequestView: View {
                         .fill(Color.init(uiColor: .secondarySystemFill))
                         .opacity(0.8)
                     TextField(textBodyPlaceholder, text: $viewModel.body)
-                        .font(.custom(CustomFont.NotoSansKR.light, size: 16))
+                        .font(.custom(.robotoLight, size: 16))
                         .padding(.horizontal, 4)
                         .background(Color.clear)
                         .autocorrectionDisabled()
@@ -79,7 +79,7 @@ struct AssetRequestView: View {
             .frame(height: 50)
 
             Text(description)
-                .font(.custom(CustomFont.NotoSansKR.medium, size: 13))
+                .font(.custom(.robotoMedium, size: 13))
                 .padding()
 
             TextButton(title: send, titleColor: .white, backgroundColor: AppColor.kogetBlue) {

@@ -32,7 +32,7 @@ struct EKMakerTester: View {
                         .stroke(lineWidth: 1)
                         .foregroundStyle(Constants.kogetGradient)
                     Text("앱 리스트에서 가져오기")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.custom(.robotoMedium, size: 18))
                         .foregroundColor(.black)
                 }
             }

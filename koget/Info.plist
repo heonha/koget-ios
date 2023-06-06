@@ -96,11 +96,10 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>NotoSansKR-Light.otf</string>
-		<string>NotoSansKR-Medium.otf</string>
-		<string>NotoSansKR-Bold.otf</string>
-		<string>NotoSansKR-Regular.otf</string>
-		<string>SDSwagger.otf</string>
+		<string>Roboto-Light.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

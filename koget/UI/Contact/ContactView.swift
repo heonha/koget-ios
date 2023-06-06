@@ -27,7 +27,7 @@ struct ContactView: View {
             ZStack {
                 VStack {
                     Text(title)
-                        .font(.custom(CustomFont.NotoSansKR.bold, size: 18))
+                        .font(.custom(.robotoBold, size: 18))
                         .padding(.vertical)
                     Divider()
                     ScrollView(showsIndicators: false) {
@@ -79,7 +79,7 @@ struct ContactView: View {
                         Text("\(viewModel.version ?? "-")")
                             .bold()
                     }
-                    .font(.system(size: 14))
+                    .font(.custom(.robotoRegular, size: 14))
                     .foregroundColor(.gray)
                     
                 }
@@ -129,7 +129,7 @@ struct ContactView: View {
                 Text(S.ContactView.description3)
                 Text(S.ContactView.description4)
             }
-            .font(.system(size: 15))
+            .font(.custom(.robotoRegular, size: 15))
         }
         .foregroundColor(.gray)
         
