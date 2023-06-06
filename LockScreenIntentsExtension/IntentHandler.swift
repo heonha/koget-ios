@@ -19,7 +19,7 @@ import SwiftUI
 
 class IntentHandler: INExtension, INSendMessageIntentHandling, INSearchForMessagesIntentHandling, INSetMessageAttributeIntentHandling {
 
-    @ObservedObject var coreData = DeepLinkManager.shared
+    @ObservedObject var coreData = WidgetCoreData.shared
 
     override func handler(for intent: INIntent) -> Any {
         // This is the default implementation.  If you want different objects to handle different intents,

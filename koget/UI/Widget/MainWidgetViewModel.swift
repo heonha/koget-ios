@@ -18,7 +18,7 @@ final class MainWidgetViewModel: BaseViewModel {
     @AppStorage("isGridView") var isGridView = false
     @AppStorage("FirstRun") var isFirstRun = true
 
-    @ObservedObject var coreData = DeepLinkManager.shared
+    @ObservedObject var coreData = WidgetCoreData.shared
 
     private let alertFactory = AlertFactory.shared
 

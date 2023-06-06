@@ -75,7 +75,7 @@ final class MakeWidgetViewModel: BaseViewModel, VMOpacityProtocol, VMPhotoEditPr
     }
 
     func addWidget() {
-        DeepLinkManager.shared.addLinkWidget(name: name, image: image, url: url, opacity: opacityValue)
+        WidgetCoreData.shared.addLinkWidget(name: name, image: image, url: url, opacity: opacityValue)
     }
 
     func checkURLSyntex() -> Bool {

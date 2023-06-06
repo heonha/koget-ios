@@ -43,6 +43,6 @@ struct ToggleButton: View {
 struct ToggleButton_Previews: PreviewProvider {
     static var previews: some View {
         ToggleButton(viewModel: DetailWidgetViewModel(), widget: DeepLink.example)
-            .environmentObject(DeepLinkManager.shared)
+            .environmentObject(WidgetCoreData.shared)
     }
 }

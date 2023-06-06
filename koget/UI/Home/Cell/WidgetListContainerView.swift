@@ -14,7 +14,7 @@ struct WidgetListContainerView: View {
     
     let backgroundColor: Color = .clear
     @StateObject var viewModel: MainWidgetViewModel
-    @EnvironmentObject var coreData: DeepLinkManager
+    @EnvironmentObject var coreData: WidgetCoreData
     @State var isDelete: Bool = false
     @Environment(\.viewController) var viewControllerHolder: UIViewController?
 

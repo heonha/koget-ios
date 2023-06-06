@@ -17,7 +17,7 @@ struct MakeWidgetView: View {
     
     @StateObject var viewModel = MakeWidgetViewModel()
     @EnvironmentObject var constant: AppStateConstant
-    @EnvironmentObject var coreData: DeepLinkManager
+    @EnvironmentObject var coreData: WidgetCoreData
     
     @Environment(\.dismiss) var dismiss
 
@@ -230,7 +230,7 @@ struct AddWidgetView_Previews: PreviewProvider {
         NavigationView {
             MakeWidgetView(assetList: WidgetAssetList(viewModel: MakeWidgetViewModel()))
                 .environmentObject(AppStateConstant.shared)
-                .environmentObject(DeepLinkManager.shared)
+                .environmentObject(WidgetCoreData.shared)
         }
     }
 }
