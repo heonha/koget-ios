@@ -108,7 +108,6 @@ extension IconGridView {
                                     } else {
                                         viewModel.filterSimpleIcons(text: newValue.lowercased())
                                     }
-
                                 }
                         }
                     }
@@ -177,7 +176,17 @@ extension IconGridView {
                 .clipShape(Circle())
         }
         .onTapGesture {
-            parentViewModel.image = image
+            print(image.metadata)
+            viewModel.convertIcon(name: image.metadata,
+                                  size: .init(width: 192, height: 192),
+                                  completion: { image in
+                if let image = image {
+                    parentViewModel.image = image
+                    print(image.size)
+                } else {
+                    parentViewModel.image = UIImage(systemName: "autostartstop.trianglebadge.exclamationmark")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+                }
+            })
             print(image.metadata)
             self.dismiss()
         }

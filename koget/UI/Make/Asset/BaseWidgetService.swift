@@ -11,18 +11,9 @@ import SwiftUI
 
 final class BaseWidgetService: ObservableObject {
 
-    /// 앱에 내장된 DeepLink의 목록입니다.
-    init() {
 
-    }
-    
-    func getWidget() -> [LinkWidget] {
-
-        var builtInApps = [LinkWidget]()
-
-        // 구분자 처리
-
-        let apps: [LinkWidget] = [
+    let apps: [LinkWidget] =
+         [
             .init(name: "Apple TV", nameKr: "애플TV", nameEn: "Apple TV", url: "videos://", imageName: "appletv"),
             .init(name: "Google Assistant", nameKr: "구글 어시스턴트", nameEn: "Assistant", url: "googleassistant://", imageName: "googleassistant"),
             .init(name: "Authenticator", nameKr: "구글OTP", nameEn: "Authenticator", url: "googleauthenticator://", imageName: "authenticator"),
@@ -86,7 +77,17 @@ final class BaseWidgetService: ObservableObject {
             .init(name: "예스24 eBook", nameKr: "예스24 eBook", nameEn: "YES24 eBook", url: "YES24EBOOK://", imageName: "yes24ebook"),
         ]
 
-        for var app in apps {
+    /// 앱에 내장된 DeepLink의 목록입니다.
+    init() {
+
+    }
+    
+    func getWidget() -> [LinkWidget] {
+
+        var builtInApps = [LinkWidget]()
+
+        // 구분자 처리
+        for var app in self.apps {
 
             let displayName = getLocalName(appName: app.name, appNameEn: app.nameEn)
             let canOpen = canOpenURL(url: app.url)
@@ -103,7 +104,7 @@ final class BaseWidgetService: ObservableObject {
 
         return builtInApps
     }
-    
+
      func getImage(imageName: String) -> UIImage {
         return UIImage(named: imageName) ?? UIImage(named: "questionmark.circle")!
     }

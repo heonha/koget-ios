@@ -33,7 +33,7 @@ final class IconGridViewModel: ObservableObject {
     }
     
     private let aliasTuple: [(imgName: String, name: [String])] = {
-        let alias = WidgetAssetViewModel().data
+        let alias = BaseWidgetService().apps
             .compactMap{ (imgName: $0.imageName, name: [$0.name, $0.nameEn, $0.nameEn]) }
         return alias
     }()
@@ -53,13 +53,12 @@ final class IconGridViewModel: ObservableObject {
 
 extension IconGridViewModel {
     
-    private func fetchAllIcon() {
+    func fetchAllIcon() {
         icons = aliasTuple
     }
     
     func filterIcons(text: String) {
         if text.isEmpty {
-            fetchAllIcon()
             return
         }
         
@@ -72,7 +71,7 @@ extension IconGridViewModel {
     
     func filterSimpleIcons(text: String) {
         if text.isEmpty {
-            fetchSimpleIcon()
+            return
         } else {
             searchIcon(name: text) { image in
                 if let image = image {
@@ -111,11 +110,11 @@ extension IconGridViewModel {
         startIndex += batchSize
     }
 
-    func convertIcon(name: String,
+    func convertIcon(name: String, size: CGSize = CGSize(width: 64, height: 64),
                      completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: "\(baseUrl)\(name)") else { return }
 
-        self.getSVGImage(url: url) { result in
+        self.getSVGImage(url: url, name: name, size: size) { result in
             switch result {
             case .success(let image):
                 if let image = image {
@@ -161,7 +160,7 @@ extension IconGridViewModel {
     }
 
     private func getSVGImage(url: URL, name: String = "",
-                             size: CGSize = CGSize(width: 256, height: 256),
+                             size: CGSize,
                              completion: @escaping (Result<UIImage?, Error>) -> Void) {
         URLSession.shared
             .dataTaskPublisher(for: url)

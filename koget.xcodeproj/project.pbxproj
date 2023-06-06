@@ -517,6 +517,7 @@
 		39BD3EE22A13CB9500E14DCA /* Asset */ = {
 			isa = PBXGroup;
 			children = (
+				3A3C11A228EDC14700C9CCED /* BaseWidgetService.swift */,
 				3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */,
 				392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */,
 				390853B729A3949F006E8311 /* AssetRequestViewModel.swift */,
@@ -545,6 +546,7 @@
 		39C1F3DF29D1C87C00C26919 /* PatchNote */ = {
 			isa = PBXGroup;
 			children = (
+				39EBEB5129BE0A7900B1FD54 /* PatchNoteManager.swift */,
 				39EBEB4B29BDF7F400B1FD54 /* PatchNoteContentView.swift */,
 				39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */,
 				39EBEB4D29BE03C300B1FD54 /* PatchNoteListCell.swift */,
@@ -579,17 +581,6 @@
 				39504A9429B3A09C008A7BA4 /* Components */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		39E0FAE529D132150081E169 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3A3C11A228EDC14700C9CCED /* BaseWidgetService.swift */,
-				39EBEB5129BE0A7900B1FD54 /* PatchNoteManager.swift */,
-				39E456E229C7120C0017B1AB /* ContactType.swift */,
-				39E456E429C7122F0017B1AB /* RequestType.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		39E0FAE829D133500081E169 /* Services */ = {
@@ -661,7 +652,9 @@
 			isa = PBXGroup;
 			children = (
 				3A01E784296AD3470019CD2D /* ContactView.swift */,
+				39E456E229C7120C0017B1AB /* ContactType.swift */,
 				3AD4691A297D19190090B2D3 /* ContactViewModel.swift */,
+				39E456E429C7122F0017B1AB /* RequestType.swift */,
 				390853B529A24EB2006E8311 /* AssetRequestView.swift */,
 			);
 			path = Contact;
@@ -810,7 +803,6 @@
 				39E0FAE329D132070081E169 /* UI */,
 				39E0FAE829D133500081E169 /* Services */,
 				39BBB53F29F973830071EBB5 /* Persistence */,
-				39E0FAE529D132150081E169 /* Models */,
 				39C1F3DD29D1C2DB00C26919 /* Constant */,
 				3A0F429E28C89742002F1CAD /* Extensions */,
 				39E0FAEC29D134BE0081E169 /* Resources */,

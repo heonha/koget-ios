@@ -65,6 +65,7 @@ struct DeepLinkWidgetEntryView: View {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
+                .scaleEffect(0.8)
                 .widgetURL(URL(string: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id)"))
                 .clipShape(Circle())
                 .opacity(0.7)
