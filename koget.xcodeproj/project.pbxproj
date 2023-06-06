@@ -427,6 +427,16 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
+		3915106E2A2EFDEE000BDC14 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				395DC33D2A1CC1A500EA310E /* EntityCreating.swift */,
+				395DC33F2A1CC1EA00EA310E /* EntitySaving.swift */,
+				395DC3412A1CC22700EA310E /* EntityFetching.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		392C7FC72A2ABE3200C516DD /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,19 +479,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		395DC3432A1CC23B00EA310E /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */,
-				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
-				391510682A2EFBBD000BDC14 /* WidgetCoreData.swift */,
-				395DC33D2A1CC1A500EA310E /* EntityCreating.swift */,
-				395DC33F2A1CC1EA00EA310E /* EntitySaving.swift */,
-				395DC3412A1CC22700EA310E /* EntityFetching.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		3964E5E929C9DFEE0010409B /* readme */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,7 +504,10 @@
 		39BBB53F29F973830071EBB5 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				395DC3432A1CC23B00EA310E /* Protocols */,
+				3915106E2A2EFDEE000BDC14 /* Protocols */,
+				39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */,
+				3A00CA682931F3F1004FBF80 /* StorageProvider.swift */,
+				391510682A2EFBBD000BDC14 /* WidgetCoreData.swift */,
 				395DC33B2A1CC18300EA310E /* NSManagedObject+Extension.swift */,
 				3AE9DC0B28F8F87B008A3316 /* WidgetModel.xcdatamodeld */,
 			);
