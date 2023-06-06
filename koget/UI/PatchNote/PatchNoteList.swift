@@ -35,7 +35,7 @@ struct PatchNoteList: View {
                     }
                     .navigationTitle(S.PatchnoteList.navigationTitle)
                 }
-                .background(Color.init(uiColor: .systemBackground))
+                .background(AppColor.Background.first)
                 .navigationBarTitleDisplayMode(.large)
 
         }

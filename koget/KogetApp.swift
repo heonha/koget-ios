@@ -11,7 +11,7 @@ import FirebaseCore
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        UITableView.appearance().backgroundColor = .systemBackground
+        UITableView.appearance().backgroundColor = UIColor(AppColor.Background.first)
 
         return true
     }

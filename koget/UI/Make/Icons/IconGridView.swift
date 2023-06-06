@@ -11,6 +11,7 @@ import SFSafeSymbols
 struct IconGridView<V: VMPhotoEditProtocol>: View {
 
     @ObservedObject private var viewModel = IconGridViewModel()
+    @EnvironmentObject var appConstant: AppStateConstant
     var parentViewModel: V
 
     @Environment(\.dismiss) var dismiss
@@ -21,7 +22,7 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
 
         VStack {
             Rectangle()
-                .fill(Color.init(uiColor: .systemBackground))
+                .fill(.clear)
                 .frame(height: 16)
 
             titleView()
@@ -35,6 +36,8 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
 
             scrollView()
         }
+        .tint(AppColor.Label.second)
+        .background(AppColor.Background.first)
     }
 }
 
@@ -43,7 +46,7 @@ extension IconGridView {
     private func titleView() -> some View {
         ZStack {
             Rectangle()
-                .fill(Color.init(uiColor: .systemBackground))
+                .fill(.clear)
                 .frame(height: 24)
 
             HStack {
@@ -84,18 +87,18 @@ extension IconGridView {
     private func searchView() -> some View {
         ZStack {
             Rectangle()
-                .fill(Color.init(uiColor: .systemBackground))
+                .fill(.clear)
                 .frame(height: 48)
 
             VStack {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.init(uiColor: .systemFill))
+                    .fill(AppColor.Fill.first)
                     .frame(height: 36)
                     .overlay {
                         HStack(spacing: 6) {
                             Image(systemSymbol: .magnifyingglass)
                                 .font(.system(size: 16))
-                                .foregroundColor(Color.init(uiColor: .secondaryLabel))
+                                .foregroundColor(AppColor.Label.second)
                                 .padding(.leading, 8)
                             TextField(" 아이콘 이름", text: $viewModel.searchText)
                                 .frame(height: 22)
@@ -103,11 +106,14 @@ extension IconGridView {
                                 .textInputAutocapitalization(.never)
                                 .textCase(.none)
                                 .onChange(of: viewModel.searchText) { newValue in
-                                    if viewModel.selectedSource == 0 {
-                                        viewModel.filterIcons(text: newValue.lowercased())
-                                    } else {
-                                        viewModel.filterSimpleIcons(text: newValue.lowercased())
+                                    if !newValue.isEmpty {
+                                        if viewModel.selectedSource == 0 {
+                                            viewModel.filterIcons(text: newValue.lowercased())
+                                        } else {
+                                            viewModel.filterSimpleIcons(text: newValue.lowercased())
+                                        }
                                     }
+
                                 }
                         }
                     }
@@ -129,9 +135,11 @@ extension IconGridView {
                         imageCell(image: image)
                             .onAppear {
                                 if image == viewModel.simpleIcons.last {
-                                    print("Last!")
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        viewModel.fetchSimpleIcon()
+                                    if viewModel.searchText.isEmpty {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                            print("Last!")
+                                            viewModel.fetchSimpleIcon()
+                                        }
                                     }
                                 }
                             }
@@ -150,7 +158,10 @@ extension IconGridView {
 
     private func imageCell(imageName: String) -> some View {
         ZStack {
-            Color.init(uiColor: .systemBackground)
+            RoundedRectangle(cornerRadius: 8)
+                .fill(appConstant.isDarkMode ? Color.white.opacity(0.27) : AppColor.Background.second)
+                .shadow(color: Color.init(uiColor: .label).opacity(0.2), radius: 2, x: 1, y: 1)
+
             Image(imageName)
                 .resizable()
                 .scaledToFit()
@@ -162,13 +173,14 @@ extension IconGridView {
             self.dismiss()
         }
         .frame(width: 64, height: 64)
-        .cornerRadius(8)
-        .shadow(color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
     }
 
     private func imageCell(image: UIImage) -> some View {
         ZStack {
-            Color.init(uiColor: .systemBackground)
+            RoundedRectangle(cornerRadius: 8)
+                .fill(appConstant.isDarkMode ? Color.white.opacity(0.27) : AppColor.Background.second)
+                .shadow(color: Color.init(uiColor: .label).opacity(0.2), radius: 2, x: 1, y: 1)
+
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
@@ -177,22 +189,10 @@ extension IconGridView {
         }
         .onTapGesture {
             print(image.metadata)
-            viewModel.convertIcon(name: image.metadata,
-                                  size: .init(width: 192, height: 192),
-                                  completion: { image in
-                if let image = image {
-                    parentViewModel.image = image
-                    print(image.size)
-                } else {
-                    parentViewModel.image = UIImage(systemName: "autostartstop.trianglebadge.exclamationmark")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
-                }
-            })
-            print(image.metadata)
+            viewModel.getSelectedImage(name: image.metadata, target: parentViewModel)
             self.dismiss()
         }
         .frame(width: 64, height: 64)
-        .cornerRadius(8)
-        .shadow(color: Color.black.opacity(0.2), radius: 2, x: 1, y: 1)
     }
 
 }
@@ -202,6 +202,7 @@ struct IconGridView_Previews: PreviewProvider {
     static var previews: some View {
         PhotoEditMenu(isEditingMode: .constant(true), viewModel: MakeWidgetViewModel())
         IconGridView(parentViewModel: MakeWidgetViewModel())
+            .environmentObject(AppStateConstant.shared)
     }
 }
 #endif

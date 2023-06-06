@@ -36,6 +36,7 @@ extension UIViewController {
         toPresent.rootView = AnyView(
             builder()
                 .environment(\.viewController, toPresent)
+                .environmentObject(AppStateConstant.shared)
         )
         self.present(toPresent, animated: true, completion: nil)
     }

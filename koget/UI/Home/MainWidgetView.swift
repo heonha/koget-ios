@@ -45,7 +45,7 @@ struct MainWidgetView: View {
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbarBackground(Color.init(uiColor: .secondarySystemBackground), for: .navigationBar)
+                .toolbarBackground(AppColor.Background.second, for: .navigationBar)
 
                 .onDisappear {
                     isFloatingButtonOpen = false

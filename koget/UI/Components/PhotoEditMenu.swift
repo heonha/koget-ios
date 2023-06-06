@@ -118,11 +118,12 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
                     Image("plus.circle")
                         .resizable()
                         .scaledToFit()
+                        .foregroundColor(.init(uiColor: .secondaryLabel))
+                        .shadow(radius: 1)
                         .clipShape(Circle())
-                        .opacity(constant.isDarkMode ? 0.3 : 0.5)
+                        .opacity(constant.isDarkMode ? 0.4 : 0.7)
                     Text(selectImageLabel)
                         .foregroundColor(AppColor.Label.second)
-                        .shadow(radius: 1)
                         .font(.system(size: 16, weight: .bold))
                 }
             }
