@@ -15,3 +15,8 @@ struct SimpleIcons: Decodable, Identifiable {
 struct SimpleIcon: Decodable {
     let title: String
 }
+
+enum IconGridType {
+    case simpleIcons
+    case appIcons
+}

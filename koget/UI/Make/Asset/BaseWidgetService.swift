@@ -11,7 +11,6 @@ import SwiftUI
 
 final class BaseWidgetService: ObservableObject {
 
-
     let apps: [LinkWidget] =
          [
             .init(name: "Apple TV", nameKr: "애플TV", nameEn: "Apple TV", url: "videos://", imageName: "appletv"),

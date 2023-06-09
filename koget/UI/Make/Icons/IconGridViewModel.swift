@@ -12,24 +12,36 @@ import SVGKit
 
 final class IconGridViewModel: ObservableObject {
 
-    // Simple Icons
+    // 스크롤 맨아래 감지
+    // view의 특정 조건 일치하면 viewModel에 알린다 -> viewModel에서 특정 메소드 실행 (3초 내 동시 요청 무시한다.)
+    @Published var excuteLoadImage = false
     private var cancellables: Set<AnyCancellable>!
-    @Published var simpleIcons = [UIImage]()
-    private var iconNames: [String] = []
+
+    // -> 메소드 실행 -> 데이터 Array에 UIImage로 저장
+
+    // Simple Icons
+    @Published var simpleIcons = [UIImage?]()
+    private var iconNames = [String]()
     private var startIndex = 0
     private let baseUrl = "https://cdn.simpleicons.org/"
-
+    @Published var isLoading = false
     @Published var searchText = ""
     @Published var icons = [(imgName: String, name: [String])]()
-    @Published var selectedSource: CGFloat = 0 {
+    @Published var selectedSource: IconGridType = .simpleIcons{
         willSet {
-            if newValue == 0 {
+            switch newValue {
+            case .simpleIcons:
                 self.searchText = ""
-                self.fetchAllIcon()
-            } else {
+            case .appIcons:
                 self.searchText = ""
+                self.fetchAssetsIcon()
             }
         }
+    }
+
+    private var resultSubject: PassthroughSubject<CGFloat, Never> = .init()
+    var resultPublisher: AnyPublisher<CGFloat, Never> {
+        return resultSubject.eraseToAnyPublisher()
     }
     
     private let aliasTuple: [(imgName: String, name: [String])] = {
@@ -41,8 +53,20 @@ final class IconGridViewModel: ObservableObject {
     init() {
         print("init")
         cancellables = .init()
+
+        $excuteLoadImage
+            .debounce(for: .seconds(3), scheduler: DispatchQueue.main)
+            .sink { [weak self] shouldExecute in
+                if shouldExecute {
+                    self?.fetchSimpleIcon()
+                }
+            }
+            .store(in: &cancellables)
+
         getIconNames()
-        fetchAllIcon()
+        fetchAssetsIcon()
+        fetchSimpleIcon()
+
     }
     
     deinit {
@@ -53,7 +77,7 @@ final class IconGridViewModel: ObservableObject {
 
 extension IconGridViewModel {
     
-    func fetchAllIcon() {
+    func fetchAssetsIcon() {
         icons = aliasTuple
     }
     
@@ -71,8 +95,13 @@ extension IconGridViewModel {
     
     func filterSimpleIcons(text: String) {
         if text.isEmpty {
+            print("EMPTY")
+            if simpleIcons.count == 1 {
+                fetchSimpleIcon()
+            }
             return
         } else {
+            print("NOT EMPTY")
             searchIcon(name: text) { image in
                 if let image = image {
                     self.simpleIcons = [image]
@@ -88,6 +117,39 @@ extension IconGridViewModel {
 }
 
 extension IconGridViewModel {
+
+    func isScrollBottom(currentY: CGFloat, maxY: CGFloat) -> Bool {
+        print("isScrollBottom: \((-(currentY) / maxY - 1.0))")
+        let result = abs(-(currentY) / maxY - 1.0) <= 0.05
+        return result
+    }
+
+    // Calculate Scoll Y Position
+    func calculateScrollMinYPosition(cellCount: CGFloat,
+                                     spacing: CGFloat = 12,
+                                     scrollViewHeight: CGFloat = 534.257,
+                                     cellHeight: CGFloat = 64) -> CGFloat {
+
+        // TODO: 공식 : (12*16) - 12 + (64*16) - 534.257 = 669.743
+        // 최대 아래 스크롤 = 669.666667
+        // 16 = 현재 Cell 수 / 4
+        // (12*16) - 12 = spacer - 12
+        // (64*16) = Cell 크기 * 라인 수
+        // 534.257 = ScrollView 크기
+
+        // Cell 높이 = 64
+        // spacing = 12
+        // ScrollView 높이 = 534.257
+        // Cell 갯수 =
+        let numberOfCellsPerRow = CGFloat(Int(ceil(Double(cellCount) / 4.0))) // 한 행에 표시될 셀의 수
+        let a = (spacing * numberOfCellsPerRow) - spacing
+        let b = (cellHeight * numberOfCellsPerRow)
+        let scrollViewHeight = Constants.deviceSize.height * 0.63
+        print("DEBUG: \(scrollViewHeight)")
+
+        return (a + b - scrollViewHeight)
+
+    }
 
     // TODO: Infinity ScrollView로 로드하기 구현
     func searchIcon(name: String,
@@ -107,6 +169,8 @@ extension IconGridViewModel {
                 }
             }
         }
+        isLoading = false
+        excuteLoadImage = false
         startIndex += batchSize
     }
 
@@ -216,8 +280,8 @@ extension IconGridViewModel {
             .store(in: &cancellables)
     }
 
-    private func createTransparentImage(size: CGSize) -> UIImage? {
-        print("배경이미지 생성")
+    // 배경이미지 생성
+    private func createBackgroundAlphaImage(size: CGSize) -> UIImage? {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(origin: .zero, size: size)
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor]
@@ -229,29 +293,21 @@ extension IconGridViewModel {
         let transparentImage = UIGraphicsGetImageFromCurrentImageContext()
 
         UIGraphicsEndImageContext()
-        print("배경이미지 생성완료")
 
         return transparentImage
     }
 
+    // 이미지 병합
     private func combineImages(with image: UIImage) -> UIImage? {
-        print("이미지 병합시작")
 
         let size = CGSize(width: 256, height: 256)
         let rectB = CGRect(x: 32, y: 32, width: 192, height: 192)  // 256 - 192 = 64, 64 / 2 = 28 (to center)
 
         UIGraphicsBeginImageContext(size)
-
-        let imageA = createTransparentImage(size: size)
+        let imageA = createBackgroundAlphaImage(size: size)
         imageA?.draw(in: CGRect(origin: .zero, size: size))
-
-        print("이미지 병합중1 : true아니어야함 -> \(imageA == nil)")
-
         image.draw(in: rectB)
-
         let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
-        print("이미지 병합완료 : true아니어야함 -> \(combinedImage == nil)")
-
         UIGraphicsEndImageContext()
 
         return combinedImage
