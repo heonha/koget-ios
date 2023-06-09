@@ -151,7 +151,6 @@ extension IconGridViewModel {
 
     }
 
-    // TODO: Infinity ScrollView로 로드하기 구현
     func searchIcon(name: String,
                     completion: @escaping (UIImage?) -> Void) {
         getSvgImageToUIImage(name: name) { image in
@@ -208,7 +207,7 @@ extension IconGridViewModel {
                                 imageName: String? = "") -> UIImage? {
 
         if let uiImage = svgImage.uiImage {
-            if let resizedImage = self.combineImages(with: uiImage) {
+            if let resizedImage = uiImage.addClearBackground(backgroundSize: CGSize(width: 256, height: 256)) {
                 resizedImage.metadata = imageName!
                 return resizedImage
             } else {
@@ -272,45 +271,12 @@ extension IconGridViewModel {
                     break
                 }
             }, receiveValue: { uiImage in
-                if let resizedImage = self.combineImages(with: uiImage) {
+                if let resizedImage = uiImage.addClearBackground(backgroundSize: CGSize(width: 256, height: 256)) {
                     resizedImage.metadata = name
                     completion(.success(resizedImage))
                 } 
             })
             .store(in: &cancellables)
-    }
-
-    // 배경이미지 생성
-    private func createBackgroundAlphaImage(size: CGSize) -> UIImage? {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(origin: .zero, size: size)
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor]
-
-        UIGraphicsBeginImageContext(size)
-
-        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
-
-        let transparentImage = UIGraphicsGetImageFromCurrentImageContext()
-
-        UIGraphicsEndImageContext()
-
-        return transparentImage
-    }
-
-    // 이미지 병합
-    private func combineImages(with image: UIImage) -> UIImage? {
-
-        let size = CGSize(width: 256, height: 256)
-        let rectB = CGRect(x: 32, y: 32, width: 192, height: 192)  // 256 - 192 = 64, 64 / 2 = 28 (to center)
-
-        UIGraphicsBeginImageContext(size)
-        let imageA = createBackgroundAlphaImage(size: size)
-        imageA?.draw(in: CGRect(origin: .zero, size: size))
-        image.draw(in: rectB)
-        let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return combinedImage
     }
 
 }

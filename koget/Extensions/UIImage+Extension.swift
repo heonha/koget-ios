@@ -9,18 +9,6 @@ import SwiftUI
 
 extension UIImage {
 
-    func compressPNGData(newSize: CGSize = CGSize(width: 128, height: 128)) -> Data? {
-
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        // PNG 데이터 생성
-        return newImage?.pngData()
-    }
-
     private struct AssociatedKeys {
         static var metadataKey = "metadata"
     }
@@ -32,6 +20,42 @@ extension UIImage {
         set {
             objc_setAssociatedObject(self, &AssociatedKeys.metadataKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
+    }
+
+    static func drawClearBackground(size: CGSize) -> UIImage? {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(origin: .zero, size: size)
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor]
+
+        UIGraphicsBeginImageContext(size)
+
+        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
+
+        let transparentImage = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+
+        return transparentImage
+    }
+
+    func addClearBackground(backgroundSize: CGSize,
+                            sourceResizeRatio: CGFloat = 0.75) -> UIImage? {
+
+        let width = backgroundSize.width * sourceResizeRatio
+        let height = backgroundSize.height * sourceResizeRatio
+        let centerX = (backgroundSize.width - width) / 2
+        let centerY = (backgroundSize.height - height) / 2
+
+        let replaceCenterSourceImage = CGRect(x: centerX, y: centerY, width: width, height: height)
+
+        UIGraphicsBeginImageContext(backgroundSize)
+        let backgroundImage = UIImage.drawClearBackground(size: backgroundSize)
+        backgroundImage?.draw(in: CGRect(origin: .zero, size: backgroundSize))
+        self.draw(in: replaceCenterSourceImage)
+        let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return combinedImage
     }
 
 }
