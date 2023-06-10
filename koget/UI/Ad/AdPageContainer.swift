@@ -11,7 +11,7 @@ import SFSafeSymbols
 // 메인화면 공지 Cell
 struct AdPageContainer: View {
 
-    var pageList = [AdPageCell(title: "UPDATED 1.2", imageName: "KogetClear")]
+    var pageList = [AdPageCell(title: "UPDATED 1.2", image: CommonImages.koget.toImage)]
 
     var height: CGFloat = Constants.deviceSize.height / 7.5
 

@@ -58,6 +58,9 @@
 		392EDF6929BD5FAC000B1353 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6829BD5FAC000B1353 /* ToggleButton.swift */; };
 		392EDF6B29BD8E54000B1353 /* SettingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */; };
 		392EDF6F29BDA3C4000B1353 /* WidgetAssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */; };
+		394D69ED2A342CDA00EC0A02 /* CommonImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69EC2A342CDA00EC0A02 /* CommonImages.swift */; };
+		394D69EE2A342F5500EC0A02 /* CommonImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69EC2A342CDA00EC0A02 /* CommonImages.swift */; };
+		394D69EF2A342F5600EC0A02 /* CommonImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69EC2A342CDA00EC0A02 /* CommonImages.swift */; };
 		39504A9329B3A059008A7BA4 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A9229B3A059008A7BA4 /* SwiftEntryKit */; };
 		39504A9D29B429AF008A7BA4 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9C29B429AF008A7BA4 /* AlertFactory.swift */; };
 		39504A9F29B4374F008A7BA4 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9E29B4374F008A7BA4 /* CGRect+Extension.swift */; };
@@ -260,6 +263,7 @@
 		392EDF6A29BD8E54000B1353 /* SettingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuButton.swift; sourceTree = "<group>"; };
 		392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetCell.swift; sourceTree = "<group>"; };
 		39438E2E29C6C8E3009BD1C7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		394D69EC2A342CDA00EC0A02 /* CommonImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonImages.swift; sourceTree = "<group>"; };
 		39504A9C29B429AF008A7BA4 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		39504A9E29B4374F008A7BA4 /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		39504AA029B43796008A7BA4 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
@@ -544,6 +548,7 @@
 				3A9BC0D928E6E1AE0041DA1B /* Constants.swift */,
 				3A559C6F28EB1D4900D5D9E4 /* AppColor.swift */,
 				39C1F3D429D181B300C26919 /* CustomFont.swift */,
+				394D69EC2A342CDA00EC0A02 /* CommonImages.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1114,6 +1119,7 @@
 				39694FE229E69B3D00F2C75C /* WidgetConstant.swift in Sources */,
 				39694FE929E6AEEB00F2C75C /* DeepLinkWidgetEntryView.swift in Sources */,
 				395DC34B2A1CC61800EA310E /* EntityFetching.swift in Sources */,
+				394D69EF2A342F5600EC0A02 /* CommonImages.swift in Sources */,
 				3915106C2A2EFD1F000BDC14 /* StorageProvider.swift in Sources */,
 				3979FA6E29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				39C1F3D829D181EA00C26919 /* Constants.swift in Sources */,
@@ -1162,6 +1168,7 @@
 				39737B8229D2517B00228A58 /* WidgetConstant.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* ViewControllerHolderHelper.swift in Sources */,
 				3AE4B13E296D8A2D00DB219B /* KogetApp.swift in Sources */,
+				394D69ED2A342CDA00EC0A02 /* CommonImages.swift in Sources */,
 				39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */,
 				39694FE129E69B2400F2C75C /* DeepLinkWidget.swift in Sources */,
 				39BBB53E29F96BBD0071EBB5 /* BaseViewModel.swift in Sources */,
@@ -1237,6 +1244,7 @@
 				3915106A2A2EFC49000BDC14 /* WidgetCoreData.swift in Sources */,
 				39694FE429E6AE8100F2C75C /* DeepLinkProvider.swift in Sources */,
 				3979FA6B29D1D2E800900FBA /* IntentHandler.swift in Sources */,
+				394D69EE2A342F5500EC0A02 /* CommonImages.swift in Sources */,
 				3915106D2A2EFD1F000BDC14 /* StorageProvider.swift in Sources */,
 				395DC34A2A1CC61800EA310E /* EntityFetching.swift in Sources */,
 				39694FE829E6AEEA00F2C75C /* DeepLinkWidgetEntryView.swift in Sources */,

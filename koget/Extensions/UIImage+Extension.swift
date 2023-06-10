@@ -9,6 +9,10 @@ import SwiftUI
 
 extension UIImage {
 
+    var toImage: Image {
+        return Image(uiImage: self)
+    }
+
     private struct AssociatedKeys {
         static var metadataKey = "metadata"
     }
@@ -28,11 +32,9 @@ extension UIImage {
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor]
 
         UIGraphicsBeginImageContext(size)
-
         gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
 
         let transparentImage = UIGraphicsGetImageFromCurrentImageContext()
-
         UIGraphicsEndImageContext()
 
         return transparentImage

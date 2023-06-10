@@ -194,7 +194,7 @@ struct MakeWidgetView: View {
     var defaultImageCheckAlertView: some View {
         Group {
             Button(S.MakeWidgetView.IsImageError.okButton) {
-                viewModel.image = UIImage(named: "KogetClear")
+                viewModel.image = UIImage(named: "emptyIcon")
                 viewModel.addWidget()
                 dismiss()
             }

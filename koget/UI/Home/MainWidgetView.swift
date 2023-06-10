@@ -92,7 +92,7 @@ struct MainWidgetView: View {
     }
 
     private func navigationBarCenterImage() -> some View {
-        Image("KogetClear")
+        Image(uiImage: CommonImages.koget)
             .resizable()
             .scaledToFit()
             .frame(width: 50, height: 50)

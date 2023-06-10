@@ -12,7 +12,7 @@ struct AdPageCell: View {
 
     var id = UUID()
     var title: String
-    var imageName = ""
+    var image: Image
     var systemName: SFSymbol?
 
     var body: some View {
@@ -28,7 +28,7 @@ struct AdPageCell: View {
 
                 HStack {
                     Spacer()
-                    Image(imageName)
+                    image
                         .resizable()
                         .scaledToFit()
                         .scaleEffect(3)
@@ -59,6 +59,6 @@ struct AdPageCell: View {
 
 struct NoticePageCell_Previews: PreviewProvider {
     static var previews: some View {
-        AdPageCell(title: "타이틀")
+        AdPageCell(title: "타이틀", image: CommonImages.koget.toImage)
     }
 }

@@ -29,7 +29,7 @@ struct DeepLinkProvider: IntentTimelineProvider {
     let placeHolderEntry = Entry(date: Date(), name: "Placeholder", url: nil, image: nil, id: "")
     let snapshotEntry = Entry(date: Date(), name: "Widget Snapshot", url: nil, image: nil, id: WidgetConstant.snapshotID)
     let notSelectedWidgetEntry: Entry = {
-        let defaultImage = UIImage(named: "KogetClear") ?? UIImage(systemSymbol: .questionmark)
+        let defaultImage = CommonImages.koget
         return  Entry(date: Date(), name: "선택되지 않음", url: "", image: defaultImage, id: nil, opacity: 1.0)
     }()
 
