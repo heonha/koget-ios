@@ -61,6 +61,9 @@
 		394D69ED2A342CDA00EC0A02 /* CommonImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69EC2A342CDA00EC0A02 /* CommonImages.swift */; };
 		394D69EE2A342F5500EC0A02 /* CommonImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69EC2A342CDA00EC0A02 /* CommonImages.swift */; };
 		394D69EF2A342F5600EC0A02 /* CommonImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69EC2A342CDA00EC0A02 /* CommonImages.swift */; };
+		394D69F12A3430CF00EC0A02 /* Image+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69F02A3430CF00EC0A02 /* Image+Extestion.swift */; };
+		394D69F22A34319300EC0A02 /* Image+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69F02A3430CF00EC0A02 /* Image+Extestion.swift */; };
+		394D69F32A34319400EC0A02 /* Image+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69F02A3430CF00EC0A02 /* Image+Extestion.swift */; };
 		39504A9329B3A059008A7BA4 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A9229B3A059008A7BA4 /* SwiftEntryKit */; };
 		39504A9D29B429AF008A7BA4 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9C29B429AF008A7BA4 /* AlertFactory.swift */; };
 		39504A9F29B4374F008A7BA4 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9E29B4374F008A7BA4 /* CGRect+Extension.swift */; };
@@ -264,6 +267,7 @@
 		392EDF6E29BDA3C4000B1353 /* WidgetAssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetCell.swift; sourceTree = "<group>"; };
 		39438E2E29C6C8E3009BD1C7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		394D69EC2A342CDA00EC0A02 /* CommonImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonImages.swift; sourceTree = "<group>"; };
+		394D69F02A3430CF00EC0A02 /* Image+Extestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extestion.swift"; sourceTree = "<group>"; };
 		39504A9C29B429AF008A7BA4 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		39504A9E29B4374F008A7BA4 /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		39504AA029B43796008A7BA4 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
@@ -748,6 +752,7 @@
 				39E7AA1D2A1BC6290012616D /* UIImage+Extension.swift */,
 				3915106F2A2F545E000BDC14 /* Color+Extension.swift */,
 				391510712A2F5A67000BDC14 /* Font+Extension.swift */,
+				394D69F02A3430CF00EC0A02 /* Image+Extestion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1119,6 +1124,7 @@
 				39694FE229E69B3D00F2C75C /* WidgetConstant.swift in Sources */,
 				39694FE929E6AEEB00F2C75C /* DeepLinkWidgetEntryView.swift in Sources */,
 				395DC34B2A1CC61800EA310E /* EntityFetching.swift in Sources */,
+				394D69F32A34319400EC0A02 /* Image+Extestion.swift in Sources */,
 				394D69EF2A342F5600EC0A02 /* CommonImages.swift in Sources */,
 				3915106C2A2EFD1F000BDC14 /* StorageProvider.swift in Sources */,
 				3979FA6E29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */,
@@ -1214,6 +1220,7 @@
 				3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */,
 				39BD3EE12A13766000E14DCA /* UIApplication+Extension.swift in Sources */,
 				39E456E529C7122F0017B1AB /* RequestType.swift in Sources */,
+				394D69F12A3430CF00EC0A02 /* Image+Extestion.swift in Sources */,
 				392EDF6129BD508A000B1353 /* AdPageCell.swift in Sources */,
 				3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */,
 				39504A9F29B4374F008A7BA4 /* CGRect+Extension.swift in Sources */,
@@ -1244,6 +1251,7 @@
 				3915106A2A2EFC49000BDC14 /* WidgetCoreData.swift in Sources */,
 				39694FE429E6AE8100F2C75C /* DeepLinkProvider.swift in Sources */,
 				3979FA6B29D1D2E800900FBA /* IntentHandler.swift in Sources */,
+				394D69F22A34319300EC0A02 /* Image+Extestion.swift in Sources */,
 				394D69EE2A342F5500EC0A02 /* CommonImages.swift in Sources */,
 				3915106D2A2EFD1F000BDC14 /* StorageProvider.swift in Sources */,
 				395DC34A2A1CC61800EA310E /* EntityFetching.swift in Sources */,

@@ -9,7 +9,7 @@ import SwiftUI
 
 extension UIImage {
 
-    var toImage: Image {
+    func toImage() -> Image {
         return Image(uiImage: self)
     }
 
@@ -61,3 +61,4 @@ extension UIImage {
     }
 
 }
+

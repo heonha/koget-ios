@@ -26,7 +26,8 @@ struct WidgetAssetCell: View {
             LazyHStack {
                 ZStack {
                     Color.white
-                    Image(uiImage: widget.image ?? UIImage(named: "questionmark.circle")!)
+                    Image
+                        .uiImage(widget.image ?? CommonImages.unknownError)
                         .resizable()
                         .scaledToFill()
                         .frame(width: imageSize.width, height: imageSize.height)

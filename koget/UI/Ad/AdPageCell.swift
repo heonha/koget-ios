@@ -59,6 +59,6 @@ struct AdPageCell: View {
 
 struct NoticePageCell_Previews: PreviewProvider {
     static var previews: some View {
-        AdPageCell(title: "타이틀", image: CommonImages.koget.toImage)
+        AdPageCell(title: "타이틀", image: CommonImages.koget.toImage())
     }
 }

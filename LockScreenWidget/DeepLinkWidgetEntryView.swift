@@ -62,7 +62,8 @@ struct DeepLinkWidgetEntryView: View {
     func iconView(id: String, url: String) -> some View {
         let image = fetchIcon(id: id)
         return VStack(alignment: .center) {
-            Image(uiImage: image)
+            Image
+                .uiImage(image)
                 .resizable()
                 .scaledToFit()
                 .scaleEffect(0.8)

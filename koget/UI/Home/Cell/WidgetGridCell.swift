@@ -38,8 +38,9 @@ struct WidgetGridCell: View {
                 AppColor.Background.first
                     .clipShape(Circle())
                     // .shadow(radius: 1, x: 2, y: 2)
-
-                Image(uiImage: widgetImage)
+                
+                Image
+                    .uiImage(widgetImage)
                     .resizable()
                     .scaledToFill()
                     .clipShape(Circle())

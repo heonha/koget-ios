@@ -230,7 +230,8 @@ extension IconGridView {
                 .fill(appConstant.isDarkMode ? Color.white.opacity(0.27) : AppColor.Background.second)
                 .shadow(color: Color.init(uiColor: .label).opacity(0.2), radius: 2, x: 1, y: 1)
 
-            Image(uiImage: image)
+            Image
+                .uiImage(image)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 32, height: 32)

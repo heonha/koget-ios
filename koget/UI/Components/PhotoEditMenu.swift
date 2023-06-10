@@ -66,7 +66,8 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
             if viewModel.isOpacitySliderEditing {
                 if let image = viewModel.image {
                     ZStack {
-                        Image(uiImage: image)
+                        Image
+                            .uiImage(image)
                             .resizable()
                             .scaledToFit()
                             .grayscale(0.99)
@@ -106,7 +107,8 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
             }
 
             if let image = viewModel.image {
-                Image(uiImage: image)
+                Image
+                    .uiImage(image)
                     .resizable()
                     .scaledToFit()
 

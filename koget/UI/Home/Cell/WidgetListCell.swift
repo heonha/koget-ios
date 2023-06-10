@@ -53,8 +53,9 @@ extension WidgetListCell {
                 .fill(.white)
                 .shadow(color: .black.opacity(0.1), radius: 1.5, x: -0.3, y: -0.5)
                 .shadow(color: .black.opacity(0.2), radius: 1.5, x: 0.3, y: 0.5)
-
-            Image(uiImage: widgetImage)
+            
+            Image
+                .uiImage(widgetImage)
                 .resizable()
                 .clipShape(Circle())
         }
