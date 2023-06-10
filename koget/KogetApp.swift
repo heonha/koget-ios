@@ -12,13 +12,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
         UITableView.appearance().backgroundColor = UIColor(AppColor.Background.first)
-#if DEBUG
-        for fontFamilyName in UIFont.familyNames{
-            for fontName in UIFont.fontNames(forFamilyName: fontFamilyName){
-                print("Family: \(fontFamilyName)     Font: \(fontName)")
-            }
-        }
-#endif
+
         return true
     }
 }

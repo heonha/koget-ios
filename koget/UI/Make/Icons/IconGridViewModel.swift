@@ -121,7 +121,7 @@ extension IconGridViewModel {
     func isScrollBottom(currentY: CGFloat, maxY: CGFloat) -> Bool {
         print("isScrollBottom: \((-(currentY) / maxY - 1.0))")
         let result = -(currentY) / maxY - 1.0
-        if result <= 0.1 {
+        if result >= 0.10 { // 일반적인 당김 0.10 ~ 0.25정도
             return true
         } else {
             return false
@@ -139,15 +139,10 @@ extension IconGridViewModel {
         // (12*16) - 12 = (spacer - 맨아래 Spacer 제거)
         // (64*16) = (Cell 크기 * 라인 수)
         // 534.257 = ScrollView 크기
-
-        // Cell 높이 = 64
-        // spacing = 12
-        // ScrollView 높이 = 534.257
-        // Cell 갯수 =
         let numberOfCellsPerRow = CGFloat(Int(ceil(Double(cellCount) / 4.0))) // 한 행에 표시될 셀의 수
         let a = (spacing * numberOfCellsPerRow) - spacing
         let b = (cellHeight * numberOfCellsPerRow)
-        let scrollViewHeight = Constants.deviceSize.height * 0.70
+        let scrollViewHeight = Constants.deviceSize.height * 0.67// 약 0.67이 스크롤 맨 아래.
         print("DEBUG: \(scrollViewHeight)")
 
         return (a + b - scrollViewHeight)
@@ -162,8 +157,11 @@ extension IconGridViewModel {
     }
 
     func fetchSimpleIcon(of batchSize: Int = 50) {
+        
         let endIndex = min(startIndex + batchSize, iconNames.count)
+        if endIndex >= iconNames.endIndex { return }
         let itemsToFetch = Array(iconNames[startIndex..<endIndex])
+
         for name in itemsToFetch {
             getSvgImageToUIImage(name: name) { image in
                 if let image = image {
@@ -171,6 +169,7 @@ extension IconGridViewModel {
                 }
             }
         }
+
         isLoading = false
         excuteLoadImage = false
         startIndex += batchSize

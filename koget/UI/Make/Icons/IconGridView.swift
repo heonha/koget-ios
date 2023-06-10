@@ -192,8 +192,8 @@ extension IconGridView {
                 print("결과: true면 업데이트 ->\(result)")
                 if result {
                     if viewModel.isLoading == false {
-                        print("맨아래에 닿음!")
                         viewModel.isLoading = true
+                        HapticManager.shared.triggerHapticFeedback(style: .heavy)
                         viewModel.excuteLoadImage.toggle()
                     }
                 }
