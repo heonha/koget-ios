@@ -8,8 +8,6 @@
 import SwiftUI
 import UIKit
 
-import SwiftEntryKit
-
 struct MainView: View {
 
     @EnvironmentObject var constant: AppStateConstant

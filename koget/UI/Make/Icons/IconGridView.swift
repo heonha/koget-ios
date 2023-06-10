@@ -12,10 +12,10 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
 
     @ObservedObject private var viewModel = IconGridViewModel()
     @EnvironmentObject var appConstant: AppStateConstant
-    var parentViewModel: V
     @State private var cellCount: CGFloat = .zero
-
     @State private var scrollPosition: CGFloat = .zero
+    private let placeHolderImage = UIImage(named: "success")!
+    var parentViewModel: V
 
     @Environment(\.dismiss) var dismiss
 
@@ -36,13 +36,30 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
             segmentView()
 
             scrollView()
+                .overlay(content: {
+                    if viewModel.isLoading {
+                        VStack {
+                            Spacer()
 
+                            loadingView()
+                                .padding(.bottom, -12)
+                                .frame(width: 96, height: 96)
+                        }
+                        .background(.clear)
+                        .ignoresSafeArea(edges: .bottom)
+                    }
+                })
+            Rectangle()
+                .fill(AppColor.Background.first)
+                .frame(height: 24)
         }
+        .ignoresSafeArea(edges: .bottom)
         .tint(AppColor.Label.second)
         .background(AppColor.Background.first)
     }
 }
 
+// MARK: MainViews
 extension IconGridView {
 
     private func titleView() -> some View {
@@ -92,14 +109,13 @@ extension IconGridView {
                         .frame(height: 32)
                     Text("앱 아이콘")
                         .foregroundColor(viewModel.selectedSource == .appIcons ? .white : AppColor.Label.second )
-
                 }
             }
 
             Spacer()
 
         }
-        .frame(height: 50)
+        .frame(height: 40)
         .padding(.horizontal)
     }
 
@@ -126,10 +142,10 @@ extension IconGridView {
                                 .textCase(.none)
                                 .onChange(of: viewModel.searchText) { newValue in
                                     if viewModel.selectedSource == .appIcons {
-                                            viewModel.filterIcons(text: newValue.lowercased())
-                                        } else {
-                                            viewModel.filterSimpleIcons(text: newValue.lowercased())
-                                        }
+                                        viewModel.filterIcons(text: newValue.lowercased())
+                                    } else {
+                                        viewModel.filterSimpleIcons(text: newValue.lowercased())
+                                    }
                                 }
                         }
                     }
@@ -139,70 +155,77 @@ extension IconGridView {
     }
 
     private func scrollView() -> some View {
-            VStack {
-                Group {
-                    ScrollView {
-                        let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
-                        LazyVGrid(columns: columns, spacing: 12) {
+        Group {
+            ScrollView {
+                let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
+                LazyVGrid(columns: columns, spacing: 12) {
 
-                            switch viewModel.selectedSource {
-                            case .appIcons:
-                                ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
-                                    imageCell(imageName: image)
-                                }
-                            case .simpleIcons:
-                                ForEach(viewModel.simpleIcons.indices, id: \.self) { index in
-
-                                    if let image = viewModel.simpleIcons[index] {
-                                        imageCell(image: viewModel.simpleIcons[index] ?? UIImage(named: "success")!)
-                                            .onAppear {
-                                                print("\(self.cellCount = CGFloat(viewModel.simpleIcons.count))")
-                                            }
-                                    } else {
-                                        imageCell(image: UIImage(named: "success.red")!)
+                    switch viewModel.selectedSource {
+                    case .appIcons:
+                        ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
+                            imageCell(imageName: image)
+                        }
+                    case .simpleIcons:
+                        ForEach(viewModel.simpleIcons.indices, id: \.self) { index in
+                            if let image = viewModel.simpleIcons[index] {
+                                imageCell(image: viewModel.simpleIcons[index] ?? placeHolderImage)
+                                    .onAppear {
+                                        print("\(self.cellCount = CGFloat(viewModel.simpleIcons.count))")
                                     }
-                                }
+                            } else {
+                                imageCell(image: UIImage(named: "success.red")!)
                             }
                         }
-                        .background(
-                            GeometryReader { geometry in
-                                Color.blue
-                                    .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin.y)
-                            })
                     }
-                    .coordinateSpace(name: "scroll")
-                    .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                        let maxY = viewModel.calculateScrollMinYPosition(cellCount: cellCount)
-
-                        let result = viewModel.isScrollBottom(currentY: value, maxY: maxY)
-                        print("결과: true면 업데이트 ->\(result)")
-                        if result {
-                            if viewModel.isLoading == false {
-                                print("맨아래에 닿음!")
-                                viewModel.isLoading = true
-                                viewModel.excuteLoadImage.toggle()
-                            }
-                        }
-
-                        self.scrollPosition = value
-                    }
-                    .padding()
-                .animation(.interactiveSpring(response: 0.4, dampingFraction: 1.0, blendDuration: 0.5), value: viewModel.selectedSource)
                 }
                 .background(
                     GeometryReader { geometry in
                         Color.clear
-                            .padding()
-                            .onAppear {
-                                DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                                    print("높이: \(geometry.size.height)")
-                                }
-                            }
+                            .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin.y)
                     })
-                if viewModel.isLoading {
-                    Text("로딩중")
-                }
             }
+            .coordinateSpace(name: "scroll")
+            .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                let maxY = viewModel.calculateScrollMinYPosition(cellCount: cellCount)
+
+                let result = viewModel.isScrollBottom(currentY: value, maxY: maxY)
+                print("결과: true면 업데이트 ->\(result)")
+                if result {
+                    if viewModel.isLoading == false {
+                        print("맨아래에 닿음!")
+                        viewModel.isLoading = true
+                        viewModel.excuteLoadImage.toggle()
+                    }
+                }
+                self.scrollPosition = value
+            }
+            .padding(.horizontal, 8)
+            .animation(.interactiveSpring(response: 0.4,
+                                          dampingFraction: 1.0,
+                                          blendDuration: 0.5),
+                                          value: viewModel.selectedSource)
+        }
+        .background(
+            GeometryReader { geometry in
+                Color.clear
+                    .padding()
+                    .onAppear {
+                        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                            print("높이: \(geometry.size.height)")
+                        }
+                    }
+            })
+    }
+
+}
+
+// MARK: Subviews
+extension IconGridView {
+
+    private func loadingView() -> some View {
+        let lottieView = LottieFactory.create(type: .loading)
+            lottieView.play()
+        return LottieContainerView(animationView: lottieView)
     }
 
     private func imageCell(imageName: String) -> some View {
@@ -256,10 +279,3 @@ struct IconGridView_Previews: PreviewProvider {
     }
 }
 #endif
-
-struct ScrollOffsetPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = .zero
-
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-    }
-}

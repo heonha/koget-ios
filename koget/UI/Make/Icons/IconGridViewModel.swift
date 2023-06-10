@@ -120,21 +120,24 @@ extension IconGridViewModel {
 
     func isScrollBottom(currentY: CGFloat, maxY: CGFloat) -> Bool {
         print("isScrollBottom: \((-(currentY) / maxY - 1.0))")
-        let result = abs(-(currentY) / maxY - 1.0) <= 0.05
-        return result
+        let result = -(currentY) / maxY - 1.0
+        if result <= 0.1 {
+            return true
+        } else {
+            return false
+        }
     }
 
     // Calculate Scoll Y Position
     func calculateScrollMinYPosition(cellCount: CGFloat,
                                      spacing: CGFloat = 12,
-                                     scrollViewHeight: CGFloat = 534.257,
                                      cellHeight: CGFloat = 64) -> CGFloat {
 
         // TODO: 공식 : (12*16) - 12 + (64*16) - 534.257 = 669.743
         // 최대 아래 스크롤 = 669.666667
         // 16 = 현재 Cell 수 / 4
-        // (12*16) - 12 = spacer - 12
-        // (64*16) = Cell 크기 * 라인 수
+        // (12*16) - 12 = (spacer - 맨아래 Spacer 제거)
+        // (64*16) = (Cell 크기 * 라인 수)
         // 534.257 = ScrollView 크기
 
         // Cell 높이 = 64
@@ -144,7 +147,7 @@ extension IconGridViewModel {
         let numberOfCellsPerRow = CGFloat(Int(ceil(Double(cellCount) / 4.0))) // 한 행에 표시될 셀의 수
         let a = (spacing * numberOfCellsPerRow) - spacing
         let b = (cellHeight * numberOfCellsPerRow)
-        let scrollViewHeight = Constants.deviceSize.height * 0.63
+        let scrollViewHeight = Constants.deviceSize.height * 0.70
         print("DEBUG: \(scrollViewHeight)")
 
         return (a + b - scrollViewHeight)

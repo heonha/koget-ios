@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftEntryKit
 import SFSafeSymbols
 
 enum WidgetCellType {

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftEntryKit
 import CoreData
 import WidgetKit
 

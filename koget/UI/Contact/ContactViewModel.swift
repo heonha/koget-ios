@@ -7,7 +7,6 @@
 
 import SwiftUI
 import FirebaseFirestore
-import SwiftEntryKit
 
 final class ContactViewModel: BaseViewModel {
     @ObservedObject var authModel = GuestAuthService()

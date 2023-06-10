@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftEntryKit
 
 struct AssetRequestView: View {
     @StateObject var viewModel = AssetRequestViewModel()

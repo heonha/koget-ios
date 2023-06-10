@@ -8,7 +8,6 @@
 import SwiftUI
 import CoreData
 import FloatingButton
-import SwiftEntryKit
 import SFSafeSymbols
 
 // 메인 뷰

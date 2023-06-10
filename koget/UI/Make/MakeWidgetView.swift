@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftEntryKit
 
 enum WidgetType {
     case image

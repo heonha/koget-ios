@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftEntryKit
 
 final class MainWidgetViewModel: BaseViewModel {
     

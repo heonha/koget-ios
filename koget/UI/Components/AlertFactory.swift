@@ -118,13 +118,13 @@ extension AlertFactory {
     }
 
 }
-//
-//#if DEBUG
-//struct EKMaker_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            MakeWidgetView(assetList: WidgetAssetList(viewModel: MakeWidgetViewModel()))
-//        }
-//    }
-//}
-//#endif
+
+#if DEBUG
+struct EKMaker_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            MakeWidgetView(assetList: WidgetAssetList(viewModel: MakeWidgetViewModel()))
+        }
+    }
+}
+#endif
