@@ -9,14 +9,6 @@ import SwiftUI
 import SFSafeSymbols
 import SVGKit
 
-extension Array {
-    func chunked(into size: Int) -> [[Element]] {
-        return stride(from: 0, to: count, by: size).map {
-            Array(self[$0 ..< Swift.min($0 + size, count)])
-        }
-    }
-}
-
 struct IconGridView<V: VMPhotoEditProtocol>: View {
 
     @ObservedObject private var viewModel = IconGridViewModel()
@@ -154,22 +146,6 @@ extension IconGridView {
 
     private func scrollView() -> some View {
         Group {
-            ZStack {
-
-                if viewModel.selectedSource == .simpleIcons {
-                    if viewModel.isLoading == false {
-                        VStack {
-                            Spacer()
-                            Image(systemName: "arrow.up")
-                                .font(.custom(.robotoMedium, size: 16))
-                            Button("당겨서 더 보기") {
-                                    viewModel.fetchIconNames()
-                            }
-                                .font(.custom(.robotoMedium, size: 16))
-                        }
-                    }
-                }
-
                 ScrollView {
                     let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
                     VStack {
@@ -227,7 +203,6 @@ extension IconGridView {
                                               dampingFraction: 1.0,
                                               blendDuration: 0.5),
                            value: viewModel.selectedSource)
-            }
 
         }
         .background(

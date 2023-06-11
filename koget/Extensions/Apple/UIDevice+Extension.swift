@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import UIKit
-
 extension UIDevice {
 
     static var screenSize: CGSize {
