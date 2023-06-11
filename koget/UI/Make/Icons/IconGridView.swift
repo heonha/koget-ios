@@ -8,8 +8,6 @@
 import SwiftUI
 import SFSafeSymbols
 import SVGKit
-import SDWebImageSwiftUI
-import SDWebImageSVGNativeCoder
 
 extension Array {
     func chunked(into size: Int) -> [[Element]] {
@@ -26,8 +24,6 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
     @State private var cellCount: CGFloat = .zero
     @State private var scrollPosition: CGFloat = .zero
     @State private var iconIndex = 0
-
-    private let placeHolderImage = UIImage(named: "success")!
     var parentViewModel: V
 
     @Environment(\.dismiss) var dismiss
@@ -49,28 +45,15 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
             segmentView()
 
             scrollView()
-            
+
             Rectangle()
                 .fill(AppColor.Background.first)
-                .frame(height: viewModel.isLoading ? 48 : 24)
-                .overlay {
-                    if viewModel.isLoading {
-                        loadingView()
-                            .frame(width: 64, height: 64)
-                    }
-                }
+                .frame(height: 24)
         }
         .ignoresSafeArea(edges: .bottom)
         .tint(AppColor.Label.second)
         .background(AppColor.Background.first)
-        .onAppear {
-            setUpDependencies()
-        }
 
-    }
-
-    func setUpDependencies() {
-        SDImageCodersManager.shared.addCoder(SDImageSVGNativeCoder.shared)
     }
 }
 
@@ -159,7 +142,7 @@ extension IconGridView {
                                     if viewModel.selectedSource == .appIcons {
                                         viewModel.filterIcons(text: newValue.lowercased())
                                     } else {
-                                        viewModel.filterSimpleIcons(text: newValue.lowercased())
+                                        viewModel.searchSimpleIcons(text: newValue.lowercased())
                                     }
                                 }
                         }
@@ -179,15 +162,18 @@ extension IconGridView {
                             Spacer()
                             Image(systemName: "arrow.up")
                                 .font(.custom(.robotoMedium, size: 16))
-                            Text("당겨서 더 보기")
+                            Button("당겨서 더 보기") {
+                                    viewModel.fetchIconNames()
+                            }
                                 .font(.custom(.robotoMedium, size: 16))
                         }
                     }
                 }
 
                 ScrollView {
-
                     let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
+                    VStack {
+
                     LazyVGrid(columns: columns, spacing: 12) {
 
                         switch viewModel.selectedSource {
@@ -196,24 +182,31 @@ extension IconGridView {
                                 imageCell(imageName: image)
                             }
                         case .simpleIcons:
-                            let names = ["swift", "kakao", "apple"]
-                            ForEach(0..<2) { nameIndex in
-                                    imageCell(simpleIconName: names[nameIndex])
-                                        .onAppear {
-                                            print("\(self.cellCount = CGFloat(viewModel.simpleIcons.count))")
-                                        }
-
+                            ForEach($viewModel.iconNames.indices, id: \.self) { nameIndex in
+                                    imageCell(simpleIconName: viewModel.iconNames[nameIndex])
+                                    .onAppear {
+                                        print("\(self.cellCount = CGFloat(viewModel.iconNames.count))")
+                                    }
                             }
-
                         }
                     }
                     .background(
                         GeometryReader { geometry in
                             let scrollViewHeight = geometry.size.height * 0.5
-
-                            Color.blue
+                            Color.clear
                                 .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin.y)
                         })
+
+                        if $viewModel.isLoading.wrappedValue {
+                            ZStack {
+                                loadingView(type: .loadingDot)
+                                    .frame(width: 200, height: 100)
+                            }
+                            .frame(width: 100, height: 28)
+
+                        }
+                    }
+
                 }
                 .coordinateSpace(name: "scroll")
                 .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
@@ -254,8 +247,8 @@ extension IconGridView {
 // MARK: Subviews
 extension IconGridView {
 
-    private func loadingView() -> some View {
-        let lottieView = LottieFactory.create(type: .loading)
+    private func loadingView(type: LottieFactory.AnimationType = .loading) -> some View {
+        let lottieView = LottieFactory.create(type: type)
         lottieView.play()
         return LottieContainerView(animationView: lottieView)
     }
@@ -280,14 +273,17 @@ extension IconGridView {
     }
 
     private func imageCell(simpleIconName: String, isLast: Bool = false) -> some View {
+
         ZStack {
+
             RoundedRectangle(cornerRadius: 8)
                 .fill(appConstant.isDarkMode ? Color.white.opacity(0.27) : AppColor.Background.second)
                 .shadow(color: Color.init(uiColor: .label).opacity(0.2), radius: 2, x: 1, y: 1)
+            let url = URL(string: "\(viewModel.baseUrl)\(simpleIconName)")
 
-            let url = URL(string: "\(viewModel.baseUrl)\(simpleIconName)")!
             AsyncImageView(url: url) {
                 loadingView()
+                    .frame(width: 32, height: 32)
             }
             .scaledToFit()
             .frame(width: 32, height: 32)
@@ -299,6 +295,7 @@ extension IconGridView {
             self.dismiss()
         }
         .frame(width: 64, height: 64)
+
     }
 
 }
@@ -312,4 +309,3 @@ struct IconGridView_Previews: PreviewProvider {
     }
 }
 #endif
-

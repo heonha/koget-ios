@@ -14,13 +14,14 @@ struct LottieFactory {
     typealias Animation = LottieAnimation
 
     enum AnimationType: String {
-        case loading = "loading_animation"
+        case loading = "loading-animation"
+        case loadingDot = "loading-dots-animation"
     }
 
     static func create(type: AnimationType) -> AnimationView {
 
         let animationView = AnimationView()
-        var animationName = type.rawValue
+        let animationName = type.rawValue
 
         let animation = Animation.named(animationName)
         animationView.animation = animation

@@ -66,7 +66,7 @@
 		394D69F32A34319400EC0A02 /* Image+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69F02A3430CF00EC0A02 /* Image+Extestion.swift */; };
 		394D69F62A3432AD00EC0A02 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 394D69F52A3432AD00EC0A02 /* Lottie */; };
 		394D69F92A3432D100EC0A02 /* LottieFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69F82A3432D100EC0A02 /* LottieFactory.swift */; };
-		394D69FB2A343F3900EC0A02 /* loading_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 394D69FA2A343F3800EC0A02 /* loading_animation.json */; };
+		394D69FB2A343F3900EC0A02 /* loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 394D69FA2A343F3800EC0A02 /* loading-animation.json */; };
 		394D69FF2A3467D600EC0A02 /* LottieContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D69FE2A3467D600EC0A02 /* LottieContainerView.swift */; };
 		394D6A012A3468FE00EC0A02 /* View+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D6A002A3468FE00EC0A02 /* View+Extenstion.swift */; };
 		394D6A042A347D8E00EC0A02 /* ScrollOffsetPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D6A032A347D8E00EC0A02 /* ScrollOffsetPreferenceKey.swift */; };
@@ -141,6 +141,7 @@
 		39D8B2842A3599880034514B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D8B2832A3599880034514B /* AsyncImageView.swift */; };
 		39D8B2862A35999D0034514B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D8B2852A35999D0034514B /* ImageLoader.swift */; };
 		39D8B2892A359BBD0034514B /* TestImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D8B2882A359BBD0034514B /* TestImageView.swift */; };
+		39D8B28D2A35BD240034514B /* loading-dots-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 39D8B28C2A35BD240034514B /* loading-dots-animation.json */; };
 		39E0FAE729D132940081E169 /* PatchNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E0FAE629D132940081E169 /* PatchNoteViewModel.swift */; };
 		39E456E329C7120C0017B1AB /* ContactType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E456E229C7120C0017B1AB /* ContactType.swift */; };
 		39E456E529C7122F0017B1AB /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E456E429C7122F0017B1AB /* RequestType.swift */; };
@@ -282,7 +283,7 @@
 		394D69EC2A342CDA00EC0A02 /* CommonImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonImages.swift; sourceTree = "<group>"; };
 		394D69F02A3430CF00EC0A02 /* Image+Extestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extestion.swift"; sourceTree = "<group>"; };
 		394D69F82A3432D100EC0A02 /* LottieFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieFactory.swift; sourceTree = "<group>"; };
-		394D69FA2A343F3800EC0A02 /* loading_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_animation.json; sourceTree = "<group>"; };
+		394D69FA2A343F3800EC0A02 /* loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-animation.json"; sourceTree = "<group>"; };
 		394D69FE2A3467D600EC0A02 /* LottieContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieContainerView.swift; sourceTree = "<group>"; };
 		394D6A002A3468FE00EC0A02 /* View+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extenstion.swift"; sourceTree = "<group>"; };
 		394D6A032A347D8E00EC0A02 /* ScrollOffsetPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffsetPreferenceKey.swift; sourceTree = "<group>"; };
@@ -330,6 +331,7 @@
 		39D8B2832A3599880034514B /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		39D8B2852A35999D0034514B /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		39D8B2882A359BBD0034514B /* TestImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImageView.swift; sourceTree = "<group>"; };
+		39D8B28C2A35BD240034514B /* loading-dots-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-dots-animation.json"; sourceTree = "<group>"; };
 		39E0FAE629D132940081E169 /* PatchNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteViewModel.swift; sourceTree = "<group>"; };
 		39E456E229C7120C0017B1AB /* ContactType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactType.swift; sourceTree = "<group>"; };
 		39E456E429C7122F0017B1AB /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
@@ -542,7 +544,8 @@
 		394D6A022A3469A000EC0A02 /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				394D69FA2A343F3800EC0A02 /* loading_animation.json */,
+				39D8B28C2A35BD240034514B /* loading-dots-animation.json */,
+				394D69FA2A343F3800EC0A02 /* loading-animation.json */,
 			);
 			path = resource;
 			sourceTree = "<group>";
@@ -1126,13 +1129,14 @@
 				3964E5ED29C9DFEE0010409B /* downloadToAppStoreKr.svg in Resources */,
 				3ABA6C2628C60440005AA8E4 /* LaunchScreen.storyboard in Resources */,
 				3964E5EF29C9DFFA0010409B /* README.md in Resources */,
-				394D69FB2A343F3900EC0A02 /* loading_animation.json in Resources */,
+				394D69FB2A343F3900EC0A02 /* loading-animation.json in Resources */,
 				39737B8429D25A1500228A58 /* swiftgen.yml in Resources */,
 				3915108A2A2F5D58000BDC14 /* Roboto-Light.ttf in Resources */,
 				391510872A2F5D58000BDC14 /* Roboto-Bold.ttf in Resources */,
 				3915108D2A2F5D58000BDC14 /* Roboto-Regular.ttf in Resources */,
 				395307F729C9CB5600225951 /* GoogleService-Info.plist in Resources */,
 				39223B6129A5E12800F59F54 /* InfoPlist.strings in Resources */,
+				39D8B28D2A35BD240034514B /* loading-dots-animation.json in Resources */,
 				39223B6E29A5E34600F59F54 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

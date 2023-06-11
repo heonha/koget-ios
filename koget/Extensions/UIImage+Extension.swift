@@ -40,8 +40,8 @@ extension UIImage {
         return transparentImage
     }
 
-    func addClearBackground(backgroundSize: CGSize,
-                            sourceResizeRatio: CGFloat = 0.75) -> UIImage? {
+    func addClearBackground(sourceResizeRatio: CGFloat = 0.75) -> UIImage? {
+        let backgroundSize = self.size
 
         let width = backgroundSize.width * sourceResizeRatio
         let height = backgroundSize.height * sourceResizeRatio
@@ -61,4 +61,3 @@ extension UIImage {
     }
 
 }
-

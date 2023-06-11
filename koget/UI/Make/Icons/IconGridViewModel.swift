@@ -10,6 +10,7 @@ import Combine
 import SFSafeSymbols
 import SVGKit
 
+// TODO: 검색기능 구현할 것
 final class IconGridViewModel: ObservableObject {
 
     // 스크롤 맨아래 감지
@@ -20,18 +21,23 @@ final class IconGridViewModel: ObservableObject {
     // -> 메소드 실행 -> 데이터 Array에 UIImage로 저장
 
     // Simple Icons
-    @Published var simpleIcons = [UIImage?]()
-
     @Published var iconNames = [String]()
-    private var startIndex = 0
-    @Published var baseUrl = "https://cdn.simpleicons.org/"
-    @Published var maxIndex: Int = .zero
+    private var allNames = [String]()
+    @Published var devidedNames = [[String]]()
+    var namesIndex = 0 {
+        willSet {
+            print("INDEX: \(newValue)")
+        }
+    }
+
+    var baseUrl = "https://cdn.simpleicons.org/"
     @Published var isLoading = false
     @Published var searchText = "" {
         willSet {
             if newValue == "" {
-                self.simpleIcons = []
-                self.fetchSimpleIcon()
+                if selectedSource == .appIcons {
+                    self.fetchAssetsIcon()
+                }
             }
         }
         
@@ -44,7 +50,6 @@ final class IconGridViewModel: ObservableObject {
                 self.searchText = ""
             case .appIcons:
                 self.searchText = ""
-                self.fetchAssetsIcon()
             }
         }
     }
@@ -68,15 +73,13 @@ final class IconGridViewModel: ObservableObject {
             .debounce(for: .seconds(3), scheduler: DispatchQueue.main)
             .sink { [weak self] shouldExecute in
                 if shouldExecute {
-                    self?.fetchSimpleIcon()
+                    self?.fetchIconNames()
                 }
             }
             .store(in: &cancellables)
 
         getIconNames()
         fetchAssetsIcon()
-        fetchSimpleIcon()
-
     }
     
     deinit {
@@ -102,21 +105,13 @@ extension IconGridViewModel {
             }
         }
     }
-    
-    func filterSimpleIcons(text: String) {
+
+    func searchSimpleIcons(text: String) {
         if text.isEmpty {
-            print("EMPTY")
-            if simpleIcons.count == 1 {
-                fetchSimpleIcon()
-            }
             return
         } else {
-            print("NOT EMPTY")
-            searchIcon(name: text) { image in
-                if let image = image {
-                    self.simpleIcons = [image]
-                }
-            }
+            iconNames = []
+            iconNames = allNames.filter{ $0.contains(text)}
         }
     }
     
@@ -134,7 +129,7 @@ extension IconGridViewModel {
 
         let deviceType = UIDevice.current.deviceType()
 
-        var limit = -0.1
+        var limit = -0.3
 
         if result >= limit { // 일반적인 당김 0.10 ~ 0.25정도
             return true
@@ -151,7 +146,7 @@ extension IconGridViewModel {
         let numberOfCellsPerRow = CGFloat(Int(ceil(Double(cellCount) / 4.0))) // 한 행에 표시될 셀의 수
         let a = (spacing * numberOfCellsPerRow) - spacing
         let b = (cellHeight * numberOfCellsPerRow)
-        let scrollViewHeight = Constants.deviceSize.height * 0.65// 약 0.67이 스크롤 맨 아래.
+        let scrollViewHeight = Constants.deviceSize.height * 0.67// 약 0.67이 스크롤 맨 아래.
         print("DEBUG: \(scrollViewHeight)")
 
         return (a + b - scrollViewHeight)
@@ -165,23 +160,18 @@ extension IconGridViewModel {
         }
     }
 
-    func fetchSimpleIcon(of batchSize: Int = 50) {
+    func fetchIconNames() {
+        if namesIndex == devidedNames.endIndex { return }
         if !searchText.isEmpty { return }
-        let endIndex = min(startIndex + batchSize, iconNames.count)
-        if endIndex >= iconNames.endIndex { return }
-        let itemsToFetch = Array(iconNames[startIndex..<endIndex])
+        print("Fetch Icons Called")
+        let names = self.devidedNames[self.namesIndex]
 
-        for name in itemsToFetch {
-            getSvgImageToUIImage(name: name) { image in
-                if let image = image {
-                    self.simpleIcons.append(image)
-                }
-            }
-        }
+        self.iconNames += names
+        self.namesIndex += 1
 
-        isLoading = false
-        excuteLoadImage = false
-        startIndex += batchSize
+        self.isLoading = false
+        self.excuteLoadImage = false
+
     }
 
     func getSelectedImage(name: String, target: any VMPhotoEditProtocol) {
@@ -218,7 +208,7 @@ extension IconGridViewModel {
                                 imageName: String? = "") -> UIImage? {
 
         if let uiImage = svgImage.uiImage {
-            if let resizedImage = uiImage.addClearBackground(backgroundSize: CGSize(width: 256, height: 256)) {
+            if let resizedImage = uiImage.addClearBackground() {
                 resizedImage.metadata = imageName!
                 return resizedImage
             } else {
@@ -250,11 +240,14 @@ extension IconGridViewModel {
                 case .failure(let error):
                     print("Error: \(error)")
                 case .finished:
+                    self.fetchIconNames()
                     break
                 }
             }, receiveValue: { [weak self] receivedIcons in
                 guard let self = self else { return }
-                self.iconNames = receivedIcons.compactMap { $0.title }
+                let names = receivedIcons.compactMap { $0.title.cleanedString() }
+                self.allNames = names
+                self.devidedNames = names.chunked(into: 50)
             })
             .store(in: &cancellables)
     }
@@ -281,10 +274,10 @@ extension IconGridViewModel {
                     break
                 }
             }, receiveValue: { uiImage in
-                if let resizedImage = uiImage.addClearBackground(backgroundSize: CGSize(width: 256, height: 256)) {
+                if let resizedImage = uiImage.addClearBackground() {
                     resizedImage.metadata = name
                     completion(.success(resizedImage))
-                } 
+                }
             })
             .store(in: &cancellables)
     }
@@ -299,3 +292,11 @@ struct IconGridViewModel_Previews: PreviewProvider {
     }
 }
 #endif
+
+extension String {
+
+    func cleanedString() -> String {
+        return self.replacingOccurrences(of: "[^a-zA-Z0-9]", with: "").replacingOccurrences(of: " ", with: "")
+    }
+
+}

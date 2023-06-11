@@ -11,11 +11,11 @@ import SVGKit
 
 class ImageLoader: ObservableObject {
     @Published var image: UIImage?
-    private let url: URL
+    private let url: URL?
 
     private var cancellables: AnyCancellable?
 
-    init(url: URL) {
+    init(url: URL?) {
         self.url = url
     }
 
@@ -25,7 +25,7 @@ class ImageLoader: ObservableObject {
     }
 
     func load() {
-        cancellables = URLSession.shared.dataTaskPublisher(for: url)
+        cancellables = URLSession.shared.dataTaskPublisher(for: url!)
             .map { UIImage(data: $0.data) }
             .replaceError(with: nil)
             .receive(on: DispatchQueue.main)
@@ -33,14 +33,16 @@ class ImageLoader: ObservableObject {
     }
 
     func loadSVG() {
-        let size = CGSize(width: 256, height: 256)
+        let size = CGSize(width: 64, height: 64)
+
+        guard let url = self.url else { return }
+
         self.cancellables = URLSession.shared
             .dataTaskPublisher(for: url)
             .compactMap { (data: $0.data, response: $0.response as? HTTPURLResponse) }
             .filter{ $0.response?.statusCode == 200 }
             .compactMap { SVGKImage(data: $0.data) }
             .compactMap { svgImage in
-                print("SVGProcessing")
                 svgImage.size = size
                 return svgImage.uiImage
             }
@@ -54,8 +56,8 @@ class ImageLoader: ObservableObject {
                     break
                 }
             }, receiveValue: { [weak self] uiImage in
-                if let resizedImage = uiImage.addClearBackground(backgroundSize: CGSize(width: 256, height: 256)) {
-                    self?.image = uiImage
+                if let resizedImage = uiImage.addClearBackground() {
+                    self?.image = resizedImage
                 }
             })
     }
