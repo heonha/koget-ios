@@ -7,6 +7,17 @@
 
 import SwiftUI
 import SFSafeSymbols
+import SVGKit
+import SDWebImageSwiftUI
+import SDWebImageSVGNativeCoder
+
+extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0 ..< Swift.min($0 + size, count)])
+        }
+    }
+}
 
 struct IconGridView<V: VMPhotoEditProtocol>: View {
 
@@ -14,6 +25,7 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
     @EnvironmentObject var appConstant: AppStateConstant
     @State private var cellCount: CGFloat = .zero
     @State private var scrollPosition: CGFloat = .zero
+    @State private var iconIndex = 0
 
     private let placeHolderImage = UIImage(named: "success")!
     var parentViewModel: V
@@ -51,6 +63,14 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
         .ignoresSafeArea(edges: .bottom)
         .tint(AppColor.Label.second)
         .background(AppColor.Background.first)
+        .onAppear {
+            setUpDependencies()
+        }
+
+    }
+
+    func setUpDependencies() {
+        SDImageCodersManager.shared.addCoder(SDImageSVGNativeCoder.shared)
     }
 }
 
@@ -176,12 +196,15 @@ extension IconGridView {
                                 imageCell(imageName: image)
                             }
                         case .simpleIcons:
-                            ForEach(viewModel.simpleIcons.indices, id: \.self) { index in
-                                    imageCell(image: viewModel.simpleIcons[index] ?? placeHolderImage)
+                            let names = ["swift", "kakao", "apple"]
+                            ForEach(0..<2) { nameIndex in
+                                    imageCell(simpleIconName: names[nameIndex])
                                         .onAppear {
                                             print("\(self.cellCount = CGFloat(viewModel.simpleIcons.count))")
                                         }
+
                             }
+
                         }
                     }
                     .background(
@@ -256,22 +279,23 @@ extension IconGridView {
         .frame(width: 64, height: 64)
     }
 
-    private func imageCell(image: UIImage, isLast: Bool = false) -> some View {
+    private func imageCell(simpleIconName: String, isLast: Bool = false) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
                 .fill(appConstant.isDarkMode ? Color.white.opacity(0.27) : AppColor.Background.second)
                 .shadow(color: Color.init(uiColor: .label).opacity(0.2), radius: 2, x: 1, y: 1)
 
-            Image
-                .uiImage(image)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 32, height: 32)
-                .clipShape(Circle())
+            let url = URL(string: "\(viewModel.baseUrl)\(simpleIconName)")!
+            AsyncImageView(url: url) {
+                loadingView()
+            }
+            .scaledToFit()
+            .frame(width: 32, height: 32)
+            .clipShape(Circle())
         }
         .onTapGesture {
-            print(image.metadata)
-            viewModel.getSelectedImage(name: image.metadata, target: parentViewModel)
+            print(simpleIconName)
+            viewModel.getSelectedImage(name: simpleIconName, target: parentViewModel)
             self.dismiss()
         }
         .frame(width: 64, height: 64)
@@ -288,3 +312,4 @@ struct IconGridView_Previews: PreviewProvider {
     }
 }
 #endif
+

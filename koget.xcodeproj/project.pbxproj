@@ -136,6 +136,11 @@
 		39C308072A1CDF7400172DA2 /* KogetTestsCoredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C308062A1CDF7400172DA2 /* KogetTestsCoredata.swift */; };
 		39C308092A1CDFBA00172DA2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 39C308082A1CDFBA00172DA2 /* FirebaseAuth */; };
 		39C3080B2A1CDFC400172DA2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 39C3080A2A1CDFC400172DA2 /* FirebaseFirestore */; };
+		39D8B27F2A3593410034514B /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 39D8B27E2A3593410034514B /* SDWebImageSwiftUI */; };
+		39D8B2822A3596720034514B /* SDWebImageSVGNativeCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 39D8B2812A3596720034514B /* SDWebImageSVGNativeCoder */; };
+		39D8B2842A3599880034514B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D8B2832A3599880034514B /* AsyncImageView.swift */; };
+		39D8B2862A35999D0034514B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D8B2852A35999D0034514B /* ImageLoader.swift */; };
+		39D8B2892A359BBD0034514B /* TestImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D8B2882A359BBD0034514B /* TestImageView.swift */; };
 		39E0FAE729D132940081E169 /* PatchNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E0FAE629D132940081E169 /* PatchNoteViewModel.swift */; };
 		39E456E329C7120C0017B1AB /* ContactType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E456E229C7120C0017B1AB /* ContactType.swift */; };
 		39E456E529C7122F0017B1AB /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E456E429C7122F0017B1AB /* RequestType.swift */; };
@@ -322,6 +327,9 @@
 		39C307F42A1CDC5A00172DA2 /* WidgetSortKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSortKeys.swift; sourceTree = "<group>"; };
 		39C307FD2A1CDF5700172DA2 /* kogetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kogetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C308062A1CDF7400172DA2 /* KogetTestsCoredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogetTestsCoredata.swift; sourceTree = "<group>"; };
+		39D8B2832A3599880034514B /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		39D8B2852A35999D0034514B /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		39D8B2882A359BBD0034514B /* TestImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImageView.swift; sourceTree = "<group>"; };
 		39E0FAE629D132940081E169 /* PatchNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteViewModel.swift; sourceTree = "<group>"; };
 		39E456E229C7120C0017B1AB /* ContactType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactType.swift; sourceTree = "<group>"; };
 		39E456E429C7122F0017B1AB /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
@@ -415,7 +423,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39D8B27F2A3593410034514B /* SDWebImageSwiftUI in Frameworks */,
 				394D69F62A3432AD00EC0A02 /* Lottie in Frameworks */,
+				39D8B2822A3596720034514B /* SDWebImageSVGNativeCoder in Frameworks */,
 				39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */,
 				39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */,
 				39822CFA29B367C800B687E4 /* QGrid in Frameworks */,
@@ -520,6 +530,7 @@
 		394D69FD2A3467AB00EC0A02 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				39D8B2872A359A7A0034514B /* ImageLoader */,
 				394D69F72A3432C200EC0A02 /* Lottie */,
 				394D69FE2A3467D600EC0A02 /* LottieContainerView.swift */,
 				394D6A032A347D8E00EC0A02 /* ScrollOffsetPreferenceKey.swift */,
@@ -636,6 +647,16 @@
 				392C81DA2A2B8F8B00C516DD /* SimpleIconTests.swift */,
 			);
 			path = kogetTests;
+			sourceTree = "<group>";
+		};
+		39D8B2872A359A7A0034514B /* ImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				39D8B2832A3599880034514B /* AsyncImageView.swift */,
+				39D8B2852A35999D0034514B /* ImageLoader.swift */,
+				39D8B2882A359BBD0034514B /* TestImageView.swift */,
+			);
+			path = ImageLoader;
 			sourceTree = "<group>";
 		};
 		39E0FAE329D132070081E169 /* UI */ = {
@@ -984,6 +1005,8 @@
 				392C81E52A2C3B4E00C516DD /* SVGKit */,
 				392C81F02A2C913000C516DD /* SVGKitSwift */,
 				394D69F52A3432AD00EC0A02 /* Lottie */,
+				39D8B27E2A3593410034514B /* SDWebImageSwiftUI */,
+				39D8B2812A3596720034514B /* SDWebImageSVGNativeCoder */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -1053,6 +1076,8 @@
 				39EBEB4829BDF7A000B1FD54 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				392C81E42A2C3B4E00C516DD /* XCRemoteSwiftPackageReference "SVGKit" */,
 				394D69F42A3432AC00EC0A02 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				39D8B27D2A3593410034514B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				39D8B2802A3596720034514B /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -1201,6 +1226,7 @@
 				391510692A2EFBBD000BDC14 /* WidgetCoreData.swift in Sources */,
 				3A9BC0DA28E6E1AE0041DA1B /* Constants.swift in Sources */,
 				3AE9DC0D28F8F87B008A3316 /* WidgetModel.xcdatamodeld in Sources */,
+				39D8B2862A35999D0034514B /* ImageLoader.swift in Sources */,
 				39C1F3D529D181B300C26919 /* CustomFont.swift in Sources */,
 				39691F4629ACDA58002BD874 /* OpacitySlider.swift in Sources */,
 				392EDF6529BD55CA000B1353 /* WidgetListCell.swift in Sources */,
@@ -1237,6 +1263,7 @@
 				394D69ED2A342CDA00EC0A02 /* CommonImages.swift in Sources */,
 				39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */,
 				39694FE129E69B2400F2C75C /* DeepLinkWidget.swift in Sources */,
+				39D8B2842A3599880034514B /* AsyncImageView.swift in Sources */,
 				39BBB53E29F96BBD0071EBB5 /* BaseViewModel.swift in Sources */,
 				39504AA129B43796008A7BA4 /* UIScreen+Extension.swift in Sources */,
 				390853B629A24EB2006E8311 /* AssetRequestView.swift in Sources */,
@@ -1246,6 +1273,7 @@
 				3AD4691D297D1FAE0090B2D3 /* GuestAuthService.swift in Sources */,
 				395DC33E2A1CC1A500EA310E /* EntityCreating.swift in Sources */,
 				39504A9D29B429AF008A7BA4 /* AlertFactory.swift in Sources */,
+				39D8B2892A359BBD0034514B /* TestImageView.swift in Sources */,
 				394D69F92A3432D100EC0A02 /* LottieFactory.swift in Sources */,
 				39E0FAE729D132940081E169 /* PatchNoteViewModel.swift in Sources */,
 				3A17026229727151001FB0E5 /* FloatingMenu.swift in Sources */,
@@ -1841,6 +1869,22 @@
 				minimumVersion = 0.1.4;
 			};
 		};
+		39D8B27D2A3593410034514B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.2.3;
+			};
+		};
+		39D8B2802A3596720034514B /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGNativeCoder.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.1;
+			};
+		};
 		39EBEB4829BDF7A000B1FD54 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1912,6 +1956,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		39D8B27E2A3593410034514B /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39D8B27D2A3593410034514B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		39D8B2812A3596720034514B /* SDWebImageSVGNativeCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39D8B2802A3596720034514B /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */;
+			productName = SDWebImageSVGNativeCoder;
 		};
 		39EBEB4929BDF7A000B1FD54 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

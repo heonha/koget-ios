@@ -21,10 +21,10 @@ final class IconGridViewModel: ObservableObject {
 
     // Simple Icons
     @Published var simpleIcons = [UIImage?]()
-    var nextBatch = [UIImage?]()
-    private var iconNames = [String]()
+
+    @Published var iconNames = [String]()
     private var startIndex = 0
-    private let baseUrl = "https://cdn.simpleicons.org/"
+    @Published var baseUrl = "https://cdn.simpleicons.org/"
     @Published var maxIndex: Int = .zero
     @Published var isLoading = false
     @Published var searchText = "" {
@@ -255,7 +255,6 @@ extension IconGridViewModel {
             }, receiveValue: { [weak self] receivedIcons in
                 guard let self = self else { return }
                 self.iconNames = receivedIcons.compactMap { $0.title }
-                self.fetchSimpleIcon(of: 300)
             })
             .store(in: &cancellables)
     }
