@@ -10,28 +10,20 @@ import Combine
 import SFSafeSymbols
 import SVGKit
 
-// TODO: 검색기능 구현할 것
+// TODO: SimpleIcons 검색기능 구현할 것
 final class IconGridViewModel: ObservableObject {
 
-    // 스크롤 맨아래 감지
-    // view의 특정 조건 일치하면 viewModel에 알린다 -> viewModel에서 특정 메소드 실행 (3초 내 동시 요청 무시한다.)
-    @Published var excuteLoadImage = false
-    private var cancellables: Set<AnyCancellable>!
-
-    // -> 메소드 실행 -> 데이터 Array에 UIImage로 저장
+    @Published var isLoading = false
+    @Published var isShouldLoadImage = false
+    private var cancellables = Set<AnyCancellable>()
 
     // Simple Icons
-    @Published var iconNames = [String]()
+    private var baseUrl = "https://cdn.simpleicons.org/"
     private var allNames = [String]()
-    @Published var devidedNames = [[String]]()
-    var namesIndex = 0 {
-        willSet {
-            print("INDEX: \(newValue)")
-        }
-    }
+    private var devidedNames = [[String]]()
+    @Published var iconNames = [String]()
+    var simpleIconNameIndex = 0
 
-    var baseUrl = "https://cdn.simpleicons.org/"
-    @Published var isLoading = false
     @Published var searchText = "" {
         willSet {
             if newValue == "" {
@@ -40,7 +32,6 @@ final class IconGridViewModel: ObservableObject {
                 }
             }
         }
-        
     }
     @Published var icons = [(imgName: String, name: [String])]()
     @Published var selectedSource: IconGridType = .simpleIcons{
@@ -53,31 +44,16 @@ final class IconGridViewModel: ObservableObject {
             }
         }
     }
-
-    private var resultSubject: PassthroughSubject<CGFloat, Never> = .init()
-    var resultPublisher: AnyPublisher<CGFloat, Never> {
-        return resultSubject.eraseToAnyPublisher()
-    }
-    
     private let aliasTuple: [(imgName: String, name: [String])] = {
         let alias = BaseWidgetService().apps
             .compactMap{ (imgName: $0.imageName, name: [$0.name, $0.nameEn, $0.nameEn]) }
         return alias
     }()
-    
+
     init() {
         print("init")
         cancellables = .init()
-
-        $excuteLoadImage
-            .debounce(for: .seconds(3), scheduler: DispatchQueue.main)
-            .sink { [weak self] shouldExecute in
-                if shouldExecute {
-                    self?.fetchIconNames()
-                }
-            }
-            .store(in: &cancellables)
-
+        subscribeLoadImage()
         getIconNames()
         fetchAssetsIcon()
     }
@@ -85,25 +61,56 @@ final class IconGridViewModel: ObservableObject {
     deinit {
         print("deinit: IconGridVeiwModel")
     }
-    
+
+    private func subscribeLoadImage() {
+        $isShouldLoadImage
+            .debounce(for: .seconds(3), scheduler: DispatchQueue.main)
+            .sink { [weak self] shouldExecute in
+                if shouldExecute {
+                    self?.fetchSimpleIconsName()
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    func disposeServices() {
+        cancellables = .init()
+    }
+
 }
 
+// MARK: - App Icons
 extension IconGridViewModel {
-    
-    func fetchAssetsIcon() {
-        icons = aliasTuple
+
+    func searchIcon(name: String, completion: @escaping (UIImage?) -> Void) {
+        getSvgImageToUIImage(name: name) { image in
+            completion(image)
+        }
     }
-    
+
     func filterIcons(text: String) {
         if text.isEmpty {
             return
         }
-        
+
         self.icons = aliasTuple.filter { tuple in
             tuple.name.contains { name in
                 name.lowercased().contains(text.lowercased())
             }
         }
+    }
+
+    private func fetchAssetsIcon() {
+        icons = aliasTuple
+    }
+
+}
+
+// MARK: - SimpleIcons
+extension IconGridViewModel {
+
+    func getSimpleIconsURL(iconName: String) -> URL? {
+       return URL(string: "\(baseUrl)\(iconName)")
     }
 
     func searchSimpleIcons(text: String) {
@@ -114,70 +121,11 @@ extension IconGridViewModel {
             iconNames = allNames.filter{ $0.contains(text)}
         }
     }
-    
-    func disposeServices() {
-        cancellables = nil
-    }
-
-}
-
-extension IconGridViewModel {
-
-    func isScrollBottom(currentY: CGFloat, maxY: CGFloat) -> Bool {
-        print("isScrollBottom: \((-(currentY) / maxY - 1.0))")
-        let result = -(currentY) / maxY - 1.0
-
-        let deviceType = UIDevice.current.deviceType()
-
-        var limit = -0.3
-
-        if result >= limit { // 일반적인 당김 0.10 ~ 0.25정도
-            return true
-        } else {
-            return false
-        }
-    }
-
-    // Calculate Scoll Y Position
-    func calculateScrollMinYPosition(cellCount: CGFloat,
-                                     spacing: CGFloat = 12,
-                                     cellHeight: CGFloat = 64) -> CGFloat {
-
-        let numberOfCellsPerRow = CGFloat(Int(ceil(Double(cellCount) / 4.0))) // 한 행에 표시될 셀의 수
-        let a = (spacing * numberOfCellsPerRow) - spacing
-        let b = (cellHeight * numberOfCellsPerRow)
-        let scrollViewHeight = Constants.deviceSize.height * 0.67// 약 0.67이 스크롤 맨 아래.
-        print("DEBUG: \(scrollViewHeight)")
-
-        return (a + b - scrollViewHeight)
-
-    }
-
-    func searchIcon(name: String,
-                    completion: @escaping (UIImage?) -> Void) {
-        getSvgImageToUIImage(name: name) { image in
-            completion(image)
-        }
-    }
-
-    func fetchIconNames() {
-        if namesIndex == devidedNames.endIndex { return }
-        if !searchText.isEmpty { return }
-        print("Fetch Icons Called")
-        let names = self.devidedNames[self.namesIndex]
-
-        self.iconNames += names
-        self.namesIndex += 1
-
-        self.isLoading = false
-        self.excuteLoadImage = false
-
-    }
 
     func getSelectedImage(name: String, target: any VMPhotoEditProtocol) {
         self.getSvgImageToUIImage(name: name,
-                         size: CGSize(width: 192, height: 192),
-                         completion: { image in
+                                  size: CGSize(width: 192, height: 192),
+                                  completion: { image in
             if let image = image {
                 target.image = image
             } else {
@@ -186,38 +134,52 @@ extension IconGridViewModel {
         })
     }
 
-    private func getSvgImageToUIImage(name: String, size: CGSize = CGSize(width: 64, height: 64),
-                     completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: "\(baseUrl)\(name)") else { return }
+    private func fetchSimpleIconsName() {
+        if simpleIconNameIndex == devidedNames.endIndex { return }
+        if !searchText.isEmpty { return }
+        let names = self.devidedNames[self.simpleIconNameIndex]
 
-        self.getSVGImage(url: url, name: name, size: size) { result in
-            switch result {
-            case .success(let image):
-                if let image = image {
-                    completion(image)
-                }
-            case .failure(let error):
-                print("Error")
-                print("SVG File Get Error : \(error.localizedDescription)")
-                completion(nil)
-            }
-        }
+        self.iconNames += names
+        self.simpleIconNameIndex += 1
+
+        self.isLoading = false
+        self.isShouldLoadImage = false
     }
+}
 
-    private func convertUIImage(from svgImage: SVGKImage,
-                                imageName: String? = "") -> UIImage? {
+// MARK: - View Calculators
+extension IconGridViewModel {
 
-        if let uiImage = svgImage.uiImage {
-            if let resizedImage = uiImage.addClearBackground() {
-                resizedImage.metadata = imageName!
-                return resizedImage
-            } else {
-                return nil
-            }
+    func scrollBottomPositionCalculator(currentY: CGFloat, maxY: CGFloat) -> Bool {
+        #if DEBUG
+        print("isScrollBottom: \((-(currentY) / maxY - 1.0))")
+        #endif
+
+        let comparePositionPercent = -(currentY) / maxY - 1.0
+        let limit = -0.3
+
+        if comparePositionPercent >= limit {
+            return true
         } else {
-            return nil
+            return false
         }
     }
+
+    func calculateScrollMinYPosition(cellCount: CGFloat,
+                                     spacing: CGFloat = 12,
+                                     cellHeight: CGFloat = 64) -> CGFloat {
+
+        let numberOfCellsPerRow = CGFloat(Int(ceil(Double(cellCount) / 4.0)))
+        let a = (spacing * numberOfCellsPerRow) - spacing
+        let b = (cellHeight * numberOfCellsPerRow)
+        let scrollViewHeight = Constants.deviceSize.height * 0.67 // ScrollView대비 보이는 높이 px
+
+        return (a + b - scrollViewHeight)
+    }
+}
+
+// MARK: - ImageProcessing
+extension IconGridViewModel {
 
     private func getIconNames() {
 
@@ -240,16 +202,33 @@ extension IconGridViewModel {
                 case .failure(let error):
                     print("Error: \(error)")
                 case .finished:
-                    self.fetchIconNames()
+                    self.fetchSimpleIconsName()
                     break
                 }
             }, receiveValue: { [weak self] receivedIcons in
-                guard let self = self else { return }
-                let names = receivedIcons.compactMap { $0.title.cleanedString() }
-                self.allNames = names
-                self.devidedNames = names.chunked(into: 50)
+                let names = receivedIcons.compactMap { $0.title.replaceOnlyAlphabetAndNumbers() }
+                self?.allNames = names
+                self?.devidedNames = names.chunked(into: 50)
             })
             .store(in: &cancellables)
+    }
+
+    private func getSvgImageToUIImage(name: String, size: CGSize = CGSize(width: 64, height: 64),
+                                      completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: "\(baseUrl)\(name)") else { return }
+
+        self.getSVGImage(url: url, name: name, size: size) { result in
+            switch result {
+            case .success(let image):
+                if let image = image {
+                    completion(image)
+                }
+            case .failure(let error):
+                print("Error")
+                print("SVG File Get Error : \(error.localizedDescription)")
+                completion(nil)
+            }
+        }
     }
 
     private func getSVGImage(url: URL, name: String = "",
@@ -281,7 +260,6 @@ extension IconGridViewModel {
             })
             .store(in: &cancellables)
     }
-
 }
 
 #if DEBUG
@@ -292,11 +270,3 @@ struct IconGridViewModel_Previews: PreviewProvider {
     }
 }
 #endif
-
-extension String {
-
-    func cleanedString() -> String {
-        return self.replacingOccurrences(of: "[^a-zA-Z0-9]", with: "").replacingOccurrences(of: " ", with: "")
-    }
-
-}
