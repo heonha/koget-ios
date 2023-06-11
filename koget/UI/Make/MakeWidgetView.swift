@@ -11,6 +11,7 @@ enum WidgetType {
     case image
 }
 
+// TODO: 다크모드 아이콘 배경 수정
 struct MakeWidgetView: View {
     let navigationBarColor = AppColor.Background.second
     
@@ -22,6 +23,7 @@ struct MakeWidgetView: View {
 
     @State var assetList: WidgetAssetList?
     @State var widgetType: WidgetType = .image
+
     //Present Views
     @State var isAppPickerPresent = false
     @State var isPresentQustionmark = false
@@ -55,7 +57,6 @@ struct MakeWidgetView: View {
 
                     VStack(spacing: 8) {
                         EditTextField(systemSymbol: .tag, placeHolder: namePlaceholder, viewModel: viewModel, text: $viewModel.name)
-
                         urlTextField
                     }
 

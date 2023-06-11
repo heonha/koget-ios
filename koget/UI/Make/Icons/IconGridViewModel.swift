@@ -10,12 +10,6 @@ import Combine
 import SFSafeSymbols
 import SVGKit
 
-// TODO: SimpleIcons 검색기능 구현할 것
-// 검색어가 ""가 아니면 -> 검색 array로 전환하기
-// 검색을 취소하면 -> 초기 상태로 돌아오기.
-
-// TODO: segment전환할때 스크롤 맨위로 올리기
-
 final class IconGridViewModel: ObservableObject {
 
     @Published var isLoading = false

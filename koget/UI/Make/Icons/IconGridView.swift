@@ -180,32 +180,32 @@ extension IconGridView {
     
     private func scrollView() -> some View {
         Group {
-                ScrollView {
-                    VStack {
-                        Divider()
-                            .id("top")
-                        iconCellInLazyVGrid
-                    }
+            ScrollView {
+                VStack {
+                    Divider()
+                        .id("top")
+                    iconCellInLazyVGrid
                 }
-                .coordinateSpace(name: "scroll")
-                .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                    let maxY = viewModel.calculateScrollMinYPosition(cellCount: cellCount)
-                    let isLoadMore = viewModel.scrollBottomPositionCalculator(currentY: value, maxY: maxY)
-                    if isLoadMore {
-                        if viewModel.isLoading == false {
-                            viewModel.isLoading = true
-                            HapticManager.shared.triggerHapticFeedback(style: .heavy)
-                            viewModel.isShouldLoadImage.toggle()
-                        }
-                    }
-                    self.scrollPosition = value
-                }
-                .padding(.horizontal, 8)
-                .animation(.interactiveSpring(response: 0.4,
-                                              dampingFraction: 1.0,
-                                              blendDuration: 0.5),
-                           value: viewModel.selectedSource)
             }
+            .coordinateSpace(name: "scroll")
+            .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                let maxY = viewModel.calculateScrollMinYPosition(cellCount: cellCount)
+                let isLoadMore = viewModel.scrollBottomPositionCalculator(currentY: value, maxY: maxY)
+                if isLoadMore {
+                    if viewModel.isLoading == false {
+                        viewModel.isLoading = true
+                        HapticManager.shared.triggerHapticFeedback(style: .heavy)
+                        viewModel.isShouldLoadImage.toggle()
+                    }
+                }
+                self.scrollPosition = value
+            }
+            .padding(.horizontal, 8)
+            .animation(.interactiveSpring(response: 0.4,
+                                          dampingFraction: 1.0,
+                                          blendDuration: 0.5),
+                       value: viewModel.selectedSource)
+        }
     }
 
     private func customSafeArea(height: CGFloat = 24) -> some View {

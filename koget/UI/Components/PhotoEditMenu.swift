@@ -103,7 +103,7 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
             if viewModel.isOpacitySliderEditing {
                 Color.clear
             } else {
-                Color.white
+                AppColor.Background.first
             }
 
             if let image = viewModel.image {
@@ -111,6 +111,7 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
                     .uiImage(image)
                     .resizable()
                     .scaledToFit()
+                    .background(AppColor.Background.third)
 
             } else {
                 ZStack {
