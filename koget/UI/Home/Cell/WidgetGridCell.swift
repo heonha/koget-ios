@@ -37,7 +37,7 @@ struct WidgetGridCell: View {
                 // 아이콘배경
                 AppColor.Background.first
                     .clipShape(Circle())
-                    // .shadow(radius: 1, x: 2, y: 2)
+                    .shadow(color: .black.opacity(0.2), radius: 2, x: 0.5, y: 0.5)
                 
                 Image
                     .uiImage(widgetImage)

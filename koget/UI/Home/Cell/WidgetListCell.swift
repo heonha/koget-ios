@@ -10,12 +10,15 @@ import SFSafeSymbols
 
 struct WidgetListCell: View {
 
+    @State var expanded: Bool = false
+    @State var isDeleting: Bool = false
+    @State var horzdrag: CGFloat = 0
+    @State var predictedEnd: CGFloat = 0
+
     var name: String
     var url: String
     var widgetImage: UIImage
-    var cellWidth: CGFloat
     var runCount: Int
-    var cellHeight: CGFloat
 
     let app: String = S.WidgetCell.WidgetType.app
     let web: String = S.WidgetCell.WidgetType.web
@@ -23,6 +26,7 @@ struct WidgetListCell: View {
     let titleColor: Color = AppColor.Label.first
 
     @ObservedObject var viewModel: MainWidgetViewModel
+    @EnvironmentObject var appConstant: AppStateConstant
 
 }
 
@@ -31,26 +35,147 @@ extension WidgetListCell {
     // 리스트 셀
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 8)
-                .fill(AppColor.Background.first)
 
-            HStack(spacing: 16) {
-                imageView
+            VStack {
+                HStack(spacing: 16) {
+                    imageView
 
-                textVStack
+                    textVStack
 
-                Spacer()
+                    Spacer()
 
-                runCountView
+                    HStack {
+                        runCountView
+
+                        Image(systemSymbol: .chevronRight)
+                            .font(.custom(.robotoBold, size: 14))
+                            .foregroundColor(AppColor.Label.second)
+                            .rotationEffect(.degrees(expanded ? 90 : 0))
+                    }
+                }
+                .frame(height: 58)
+                .padding(.horizontal, 12)
+
+                if expanded {
+
+                    Spacer()
+
+                        HStack {
+                            actionButton(title: "실행") {
+
+                            }
+
+                            actionButton(title: "편집") {
+
+                            }
+
+                            actionButton(title: "삭제", isDelete: true) {
+
+                            }
+
+                        }
+                        .frame(height: 30)
+
+                    Spacer()
+                }
+                
+            }
+            .background(.ultraThinMaterial)
+        }
+        .offset(x: isDeleting ? -400 : 0)
+        .animation(.spring(), value: isDeleting)
+        .transition(.move(edge: .leading))
+        .gesture(
+            DragGesture()
+                .onChanged { gesture in
+                    onDragChange(gesture: gesture)
+                }
+                .onEnded { _ in
+                    onDragEnd()
+                }
+        )
+        .cornerRadius(15)
+        .onTapGesture {
+            withAnimation(.spring()) {
+                expanded.toggle()
             }
         }
-        .frame(height: cellHeight)
+        .frame(maxHeight: expanded ? 140 : 60)
+        .clipped()
+        .shadow(color: .black.opacity(0.25), radius: 1.5, x: 0.8, y: 0.7)
+    }
+
+    var buttonBg: some View {
+        RoundedRectangle(cornerRadius: 5)
+            .fill(Color(red: 1, green: 1, blue: 1).opacity(0.15))
+    }
+
+    private func onDragChange(gesture: DragGesture.Value) {
+        horzdrag = gesture.translation.width
+        predictedEnd = gesture.predictedEndTranslation.width
+    }
+
+    private func onDragEnd() {
+        if getOffset(horzdrag: horzdrag) <= -400 {
+            withAnimation(.spring()) {
+                isDeleting = true
+            }
+        }
+
+        horzdrag = .zero
+    }
+
+    // used to calculate how far to move the teal rectangle
+    private func getOffset(horzdrag: CGFloat) -> CGFloat {
+        if isDeleting {
+            return -400
+        } else if horzdrag < -165 {
+            return -400
+        } else if predictedEnd < -60 && horzdrag == 0 {
+            return -80
+        } else if predictedEnd < -60 {
+            return horzdrag
+        } else if predictedEnd < 50 && horzdrag > 0 && (-80 + horzdrag <= 0) {
+            return -80 + horzdrag
+        } else if horzdrag < 0 {
+            return horzdrag
+        } else {
+            return 0
+        }
+    }
+
+    private func actionButton(title: String, isDelete: Bool = false, action: @escaping () -> Void) -> some View {
+        Button {
+            action()
+        } label: {
+            ZStack {
+
+                if isDelete {
+                    AppColor.kogetRed
+                        .cornerRadius(8)
+                } else {
+                    if appConstant.isDarkMode {
+                        AppColor.GrayFamily.dark1
+                            .cornerRadius(8)
+                    } else {
+                        AppColor.Label.second
+                            .cornerRadius(8)
+                    }
+                }
+
+
+                Text(title)
+                    .font(.custom(.robotoMedium, size: 16))
+                    .foregroundColor(.white)
+            }
+        }
+        .frame(width: 100, height: 30)
     }
 
     var imageView: some View {
         ZStack {
             Circle()
-                .fill(.white)
+                .fill(AppStateConstant.shared.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
                 .shadow(color: .black.opacity(0.1), radius: 1.5, x: -0.3, y: -0.5)
                 .shadow(color: .black.opacity(0.2), radius: 1.5, x: 0.3, y: 0.5)
             
@@ -64,7 +189,7 @@ extension WidgetListCell {
 
     var textVStack: some View {
 
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 4) {
             // title
             Text(name)
                 .font(.custom(.robotoMedium, size: 16))
@@ -91,8 +216,9 @@ extension WidgetListCell {
     var runCountView: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(AppColor.Fill.third.opacity(0.7))
+                .foregroundColor(AppColor.Fill.third.opacity(0.6))
                 .frame(width: 70, height: 30)
+                .shadow(color: .black.opacity(0.3), radius: 0.5, x: 0.3, y: 0.3)
                 .overlay {
                     HStack(spacing: 6) {
                         Image(systemSymbol: .boltHorizontalFill)
@@ -112,6 +238,7 @@ extension WidgetListCell {
 
 struct WidgetListCell_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetListCell(name: "이름", url: "https://google.com", widgetImage: UIImage(named: "Koget")!, cellWidth: 40, runCount: 999, cellHeight: 40, viewModel: MainWidgetViewModel())
+        WidgetListCell(name: "이름", url: "https://google.com", widgetImage: UIImage(named: "Koget")!, runCount: 999, viewModel: MainWidgetViewModel())
+            .padding(.horizontal, 8)
     }
 }

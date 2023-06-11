@@ -37,6 +37,10 @@ enum AppColor {
         static let third = Color.init(uiColor: .tertiarySystemFill)
     }
 
+    enum GrayFamily {
+        static let dark1 = Color(hex: "404040")
+    }
+
     static let kogetBlue = Color("kogetBlue")
     static let kogetRed = Color("kogetRed")
 

@@ -58,9 +58,8 @@ struct WidgetContainerCell: View {
                     WidgetListCell(name: name,
                                    url: url,
                                    widgetImage: widgetImage,
-                                   cellWidth: cellSize.list,
                                    runCount: Int(widget.runCount),
-                                   cellHeight: cellSize.list, viewModel: viewModel)
+                                   viewModel: viewModel)
                 }
             }
             .swipeActions(edge: .leading, allowsFullSwipe: true) {

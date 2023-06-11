@@ -59,9 +59,7 @@ struct MainWidgetView: View {
                 AdPageContainer()
                     .padding(.vertical, 4)
 
-                Spacer()
                 WidgetListContainerView(viewModel: viewModel, coreData: _coreData)
-                Spacer()
             }
             MainFloatingButton(isOpen: $isFloatingButtonOpen)
         }

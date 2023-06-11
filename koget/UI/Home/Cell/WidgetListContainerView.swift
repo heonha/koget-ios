@@ -26,7 +26,7 @@ struct WidgetListContainerView: View {
     @State var currentUserInteractionCellID: String?
 
     var body: some View {
-        Group {
+        ScrollView {
             if !$coreData.linkWidgets.wrappedValue.isEmpty {
                 if viewModel.isGridView {
                     gridView
@@ -53,14 +53,14 @@ struct WidgetListContainerView: View {
 
     // List
     var listView: some View {
-        List {
+        VStack(spacing: 12) {
             ForEach($coreData.linkWidgets.indices, id: \.self) { index in
                 let widget = coreData.linkWidgets[index]
                 WidgetContainerCell(widget: widget, viewModel: viewModel, type: .list)
-                    .listRowBackground(Color.clear)
             }
+            Spacer()
         }
-        .listStyle(.plain)
+        .padding(.horizontal, 16)
         .background(Color.clear)
     }
 
@@ -90,6 +90,7 @@ struct WidgetListContainerView: View {
         }
     }
 }
+
 //
 // struct WidgetListGridView_Previews: PreviewProvider {
 //     static var previews: some View {

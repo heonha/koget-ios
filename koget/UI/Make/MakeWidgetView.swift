@@ -11,7 +11,6 @@ enum WidgetType {
     case image
 }
 
-// TODO: 다크모드 아이콘 배경 수정
 struct MakeWidgetView: View {
     let navigationBarColor = AppColor.Background.second
     
