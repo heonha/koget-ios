@@ -16,6 +16,7 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
     var parentViewModel: V
 
+    @State private var scrollViewProxy: ScrollViewProxy? = nil
     @ObservedObject private var viewModel = IconGridViewModel()
     @EnvironmentObject var appConstant: AppStateConstant
     @Environment(\.dismiss) var dismiss
@@ -31,10 +32,15 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
                 .padding(.horizontal)
             
             searchView()
-            
-            segmentView()
-            
-            scrollView()
+
+            ScrollViewReader { proxy in
+                segmentView()
+
+                scrollView()
+                    .onAppear {
+                        self.scrollViewProxy = proxy
+                    }
+            }
 
             customSafeArea()
         }
@@ -68,6 +74,9 @@ extension IconGridView {
     func segmentButton(name: String, select: IconGridType) -> some View {
         Button {
             viewModel.selectedSource = select
+            withAnimation {
+                self.scrollViewProxy?.scrollTo("top")
+            }
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
@@ -78,7 +87,6 @@ extension IconGridView {
                     .foregroundColor(viewModel.selectedSource == select ? .white : AppColor.Label.second )
             }
         }
-
     }
     
     private func segmentView() -> some View {
@@ -96,7 +104,7 @@ extension IconGridView {
         .frame(height: 40)
         .padding(.horizontal)
     }
-    
+
     private func searchView() -> some View {
         ZStack {
             Rectangle()
@@ -126,6 +134,9 @@ extension IconGridView {
                                         viewModel.searchSimpleIcons(text: newValue.lowercased())
                                     }
                                 }
+                                .onAppear {
+                                    UITextField.appearance().clearButtonMode = .whileEditing
+                                }
                         }
                     }
                     .padding(.horizontal, 16)
@@ -142,8 +153,8 @@ extension IconGridView {
                         imageCell(imageName: image)
                     }
                 case .simpleIcons:
-                    ForEach($viewModel.iconNames.indices, id: \.self) { nameIndex in
-                        simpleIconCell(name: viewModel.iconNames[nameIndex])
+                    ForEach($viewModel.iconNames.wrappedValue, id: \.self) { name in
+                        simpleIconCell(name: name)
                             .onAppear {
                                 print("\(self.cellCount = CGFloat(viewModel.iconNames.count))")
                             }
@@ -169,30 +180,32 @@ extension IconGridView {
     
     private func scrollView() -> some View {
         Group {
-            ScrollView {
-                iconCellInLazyVGrid
-            }
-            .coordinateSpace(name: "scroll")
-            .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                let maxY = viewModel.calculateScrollMinYPosition(cellCount: cellCount)
-                let isLoadMore = viewModel.scrollBottomPositionCalculator(currentY: value, maxY: maxY)
-
-                if isLoadMore {
-                    if viewModel.isLoading == false {
-                        viewModel.isLoading = true
-                        HapticManager.shared.triggerHapticFeedback(style: .heavy)
-                        viewModel.isShouldLoadImage.toggle()
+                ScrollView {
+                    VStack {
+                        Divider()
+                            .id("top")
+                        iconCellInLazyVGrid
                     }
                 }
-                self.scrollPosition = value
+                .coordinateSpace(name: "scroll")
+                .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                    let maxY = viewModel.calculateScrollMinYPosition(cellCount: cellCount)
+                    let isLoadMore = viewModel.scrollBottomPositionCalculator(currentY: value, maxY: maxY)
+                    if isLoadMore {
+                        if viewModel.isLoading == false {
+                            viewModel.isLoading = true
+                            HapticManager.shared.triggerHapticFeedback(style: .heavy)
+                            viewModel.isShouldLoadImage.toggle()
+                        }
+                    }
+                    self.scrollPosition = value
+                }
+                .padding(.horizontal, 8)
+                .animation(.interactiveSpring(response: 0.4,
+                                              dampingFraction: 1.0,
+                                              blendDuration: 0.5),
+                           value: viewModel.selectedSource)
             }
-            .padding(.horizontal, 8)
-            .animation(.interactiveSpring(response: 0.4,
-                                          dampingFraction: 1.0,
-                                          blendDuration: 0.5),
-                       value: viewModel.selectedSource)
-            
-        }
     }
 
     private func customSafeArea(height: CGFloat = 24) -> some View {
@@ -238,7 +251,7 @@ extension IconGridView {
                 .shadow(color: Color.init(uiColor: .label).opacity(0.2), radius: 2, x: 1, y: 1)
 
             let url = viewModel.getSimpleIconsURL(iconName: name)
-            
+
             AsyncImageView(url: url) {
                 loadingView()
                     .frame(width: 32, height: 32)
@@ -252,7 +265,6 @@ extension IconGridView {
             self.dismiss()
         }
         .frame(width: 64, height: 64)
-        
     }
     
 }

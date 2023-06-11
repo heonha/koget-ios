@@ -11,7 +11,11 @@ import SFSafeSymbols
 import SVGKit
 
 // TODO: SimpleIcons 검색기능 구현할 것
+// 검색어가 ""가 아니면 -> 검색 array로 전환하기
+// 검색을 취소하면 -> 초기 상태로 돌아오기.
+
 // TODO: segment전환할때 스크롤 맨위로 올리기
+
 final class IconGridViewModel: ObservableObject {
 
     @Published var isLoading = false
@@ -115,10 +119,14 @@ extension IconGridViewModel {
 
     func searchSimpleIcons(text: String) {
         if text.isEmpty {
+            iconNames = []
+            fetchSimpleIconsName()
             return
         } else {
             iconNames = []
-            iconNames = allNames.filter{ $0.contains(text)}
+            let filtered = allNames.filter { $0.contains(text) }
+            iconNames += filtered
+            print(iconNames)
         }
     }
 
@@ -199,7 +207,8 @@ extension IconGridViewModel {
                     break
                 }
             }, receiveValue: { [weak self] receivedIcons in
-                let names = receivedIcons.compactMap { $0.title.replaceOnlyAlphabetAndNumbers() }
+                let names = receivedIcons.compactMap { $0.title.lowercased().replaceOnlyAlphabetAndNumbers() }
+                print("NAME: \(names)")
                 self?.allNames = names
                 self?.devidedNames = names.chunked(into: 50)
             })

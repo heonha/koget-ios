@@ -18,7 +18,7 @@ struct AsyncImageView<Placeholder: View>: View {
 
     var body: some View {
         content
-            .onAppear(perform: loader.loadSVG)
+            .onAppear{ loader.loadSVG() }
     }
 
     private var content: some View {

@@ -56,6 +56,7 @@ class ImageLoader: ObservableObject {
                 }
             }, receiveValue: { [weak self] uiImage in
                 if let resizedImage = uiImage.addClearBackground() {
+                    print("이미지 로드됨 \(url)")
                     self?.image = resizedImage
                 }
             })
