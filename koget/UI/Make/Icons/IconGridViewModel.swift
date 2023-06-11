@@ -11,6 +11,7 @@ import SFSafeSymbols
 import SVGKit
 
 // TODO: SimpleIcons 검색기능 구현할 것
+// TODO: segment전환할때 스크롤 맨위로 올리기
 final class IconGridViewModel: ObservableObject {
 
     @Published var isLoading = false
@@ -51,7 +52,6 @@ final class IconGridViewModel: ObservableObject {
     }()
 
     init() {
-        print("init")
         cancellables = .init()
         subscribeLoadImage()
         getIconNames()
@@ -151,10 +151,6 @@ extension IconGridViewModel {
 extension IconGridViewModel {
 
     func scrollBottomPositionCalculator(currentY: CGFloat, maxY: CGFloat) -> Bool {
-        #if DEBUG
-        print("isScrollBottom: \((-(currentY) / maxY - 1.0))")
-        #endif
-
         let comparePositionPercent = -(currentY) / maxY - 1.0
         let limit = -0.3
 
@@ -182,9 +178,6 @@ extension IconGridViewModel {
 extension IconGridViewModel {
 
     private func getIconNames() {
-
-        print("아이콘 가져오기")
-
         let urlString = "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/_data/simple-icons.json"
 
         guard let url = URL(string: urlString) else {

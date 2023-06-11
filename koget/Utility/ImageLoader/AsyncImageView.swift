@@ -26,9 +26,6 @@ struct AsyncImageView<Placeholder: View>: View {
                if let image = loader.image {
                    Image(uiImage: image)
                        .resizable()
-                       .onAppear {
-                           print("이미지셋됨")
-                       }
                } else {
                    placeholder
                }

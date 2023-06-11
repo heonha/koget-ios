@@ -20,7 +20,6 @@ class ImageLoader: ObservableObject {
     }
 
     deinit {
-        print("DEINIT ImageLoader")
         cancel()
     }
 
