@@ -194,7 +194,6 @@ extension IconGridView {
                 if isLoadMore {
                     if viewModel.isLoading == false {
                         viewModel.isLoading = true
-                        HapticManager.shared.triggerHapticFeedback(style: .heavy)
                         viewModel.isShouldLoadImage.toggle()
                     }
                 }

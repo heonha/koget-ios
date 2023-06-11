@@ -19,7 +19,7 @@ struct WidgetContainerCell: View {
     var widget: DeepLink
     var type: WidgetCellType
     var cellSize: (grid: CGFloat, list: CGFloat)
-    
+
     @State var isPresentDetailView = false
     @State var isDelete: Bool = false
     @State var imageSize: CGSize = .zero
@@ -55,7 +55,8 @@ struct WidgetContainerCell: View {
                              cellWidth: cellSize.grid,
                              viewModel: viewModel)
                 case .list:
-                    WidgetListCell(name: name,
+                    WidgetListCell(widget: widget,
+                                   name: name,
                                    url: url,
                                    widgetImage: widgetImage,
                                    runCount: Int(widget.runCount),

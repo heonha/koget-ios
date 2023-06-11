@@ -8,12 +8,21 @@
 import SwiftUI
 import SFSafeSymbols
 
+// TODO: GridView 개선
+// TODO: 드래그 앤 드롭기능 추가
+// TODO: 편집 뷰 UI개선
+// TODO: MakeView Flow로 진행하기
+// TODO: 도움말 추가
+
 struct WidgetListCell: View {
+
+    let widget: DeepLink
 
     @State var expanded: Bool = false
     @State var isDeleting: Bool = false
     @State var horzdrag: CGFloat = 0
     @State var predictedEnd: CGFloat = 0
+    @State var isDelete = false
 
     var name: String
     var url: String
@@ -27,6 +36,9 @@ struct WidgetListCell: View {
 
     @ObservedObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var appConstant: AppStateConstant
+    @EnvironmentObject var coreData: WidgetCoreData
+    @Environment(\.viewController) var viewControllerHolder: UIViewController?
+    @Environment(\.dismiss) var dismiss
 
 }
 
@@ -62,16 +74,33 @@ extension WidgetListCell {
 
                         HStack {
                             actionButton(title: "실행") {
-
+                                if let url = widget.url, let id = widget.id {
+                                    viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
+                                }
                             }
 
                             actionButton(title: "편집") {
-
+                                self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                                    DetailWidgetView(selectedWidget: widget)
+                                })
                             }
 
                             actionButton(title: "삭제", isDelete: true) {
-
+                                isDelete.toggle()
                             }
+                            .alert("\(widget.name ?? "알수없는 위젯")", isPresented: $isDelete, actions: {
+                                Button(S.Button.delete, role: .destructive) {
+                                    coreData.deleteData(data: widget)
+                                    dismiss()
+                                    viewModel.displayAlertView()
+                                    isDelete = false
+                                }
+                                Button(S.Button.cancel, role: .cancel) {
+                                    isDelete = false
+                                }
+                            }, message: {
+                                Text(S.Alert.Message.checkWidgetDelete)
+                            })
 
                         }
                         .frame(height: 30)
@@ -96,10 +125,17 @@ extension WidgetListCell {
         )
         .cornerRadius(15)
         .onTapGesture {
+            HapticManager.shared.triggerHapticFeedback(style: .rigid)
             withAnimation(.spring()) {
                 expanded.toggle()
             }
         }
+        .onLongPressGesture(perform: {
+            HapticManager.shared.triggerHapticFeedback(style: .heavy)
+            if let url = widget.url, let id = widget.id {
+                viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
+            }
+        })
         .frame(maxHeight: expanded ? 140 : 60)
         .clipped()
         .shadow(color: .black.opacity(0.25), radius: 1.5, x: 0.8, y: 0.7)
@@ -162,7 +198,6 @@ extension WidgetListCell {
                             .cornerRadius(8)
                     }
                 }
-
 
                 Text(title)
                     .font(.custom(.robotoMedium, size: 16))
@@ -234,11 +269,12 @@ extension WidgetListCell {
         }
     }
 
+
 }
 
 struct WidgetListCell_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetListCell(name: "이름", url: "https://google.com", widgetImage: UIImage(named: "Koget")!, runCount: 999, viewModel: MainWidgetViewModel())
+        WidgetListCell(widget: DeepLink.example, name: "이름", url: "https://google.com", widgetImage: UIImage(named: "Koget")!, runCount: 999, viewModel: MainWidgetViewModel())
             .padding(.horizontal, 8)
     }
 }
