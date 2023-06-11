@@ -21,11 +21,21 @@ final class IconGridViewModel: ObservableObject {
 
     // Simple Icons
     @Published var simpleIcons = [UIImage?]()
+    var nextBatch = [UIImage?]()
     private var iconNames = [String]()
     private var startIndex = 0
     private let baseUrl = "https://cdn.simpleicons.org/"
+    @Published var maxIndex: Int = .zero
     @Published var isLoading = false
-    @Published var searchText = ""
+    @Published var searchText = "" {
+        willSet {
+            if newValue == "" {
+                self.simpleIcons = []
+                self.fetchSimpleIcon()
+            }
+        }
+        
+    }
     @Published var icons = [(imgName: String, name: [String])]()
     @Published var selectedSource: IconGridType = .simpleIcons{
         willSet {
@@ -121,7 +131,12 @@ extension IconGridViewModel {
     func isScrollBottom(currentY: CGFloat, maxY: CGFloat) -> Bool {
         print("isScrollBottom: \((-(currentY) / maxY - 1.0))")
         let result = -(currentY) / maxY - 1.0
-        if result >= 0.10 { // 일반적인 당김 0.10 ~ 0.25정도
+
+        let deviceType = UIDevice.current.deviceType()
+
+        var limit = -0.1
+
+        if result >= limit { // 일반적인 당김 0.10 ~ 0.25정도
             return true
         } else {
             return false
@@ -133,16 +148,10 @@ extension IconGridViewModel {
                                      spacing: CGFloat = 12,
                                      cellHeight: CGFloat = 64) -> CGFloat {
 
-        // TODO: 공식 : (12*16) - 12 + (64*16) - 534.257 = 669.743
-        // 최대 아래 스크롤 = 669.666667
-        // 16 = 현재 Cell 수 / 4
-        // (12*16) - 12 = (spacer - 맨아래 Spacer 제거)
-        // (64*16) = (Cell 크기 * 라인 수)
-        // 534.257 = ScrollView 크기
         let numberOfCellsPerRow = CGFloat(Int(ceil(Double(cellCount) / 4.0))) // 한 행에 표시될 셀의 수
         let a = (spacing * numberOfCellsPerRow) - spacing
         let b = (cellHeight * numberOfCellsPerRow)
-        let scrollViewHeight = Constants.deviceSize.height * 0.67// 약 0.67이 스크롤 맨 아래.
+        let scrollViewHeight = Constants.deviceSize.height * 0.65// 약 0.67이 스크롤 맨 아래.
         print("DEBUG: \(scrollViewHeight)")
 
         return (a + b - scrollViewHeight)
@@ -157,7 +166,7 @@ extension IconGridViewModel {
     }
 
     func fetchSimpleIcon(of batchSize: Int = 50) {
-        
+        if !searchText.isEmpty { return }
         let endIndex = min(startIndex + batchSize, iconNames.count)
         if endIndex >= iconNames.endIndex { return }
         let itemsToFetch = Array(iconNames[startIndex..<endIndex])
@@ -246,7 +255,7 @@ extension IconGridViewModel {
             }, receiveValue: { [weak self] receivedIcons in
                 guard let self = self else { return }
                 self.iconNames = receivedIcons.compactMap { $0.title }
-                self.fetchSimpleIcon(of: 100)
+                self.fetchSimpleIcon(of: 300)
             })
             .store(in: &cancellables)
     }

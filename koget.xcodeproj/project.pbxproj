@@ -71,6 +71,7 @@
 		394D6A012A3468FE00EC0A02 /* View+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D6A002A3468FE00EC0A02 /* View+Extenstion.swift */; };
 		394D6A042A347D8E00EC0A02 /* ScrollOffsetPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D6A032A347D8E00EC0A02 /* ScrollOffsetPreferenceKey.swift */; };
 		394D6A062A34840500EC0A02 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D6A052A34840500EC0A02 /* HapticManager.swift */; };
+		394D6A082A348A9200EC0A02 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D6A072A348A9200EC0A02 /* UIDevice+Extension.swift */; };
 		39504A9329B3A059008A7BA4 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 39504A9229B3A059008A7BA4 /* SwiftEntryKit */; };
 		39504A9D29B429AF008A7BA4 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9C29B429AF008A7BA4 /* AlertFactory.swift */; };
 		39504A9F29B4374F008A7BA4 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39504A9E29B4374F008A7BA4 /* CGRect+Extension.swift */; };
@@ -281,6 +282,7 @@
 		394D6A002A3468FE00EC0A02 /* View+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extenstion.swift"; sourceTree = "<group>"; };
 		394D6A032A347D8E00EC0A02 /* ScrollOffsetPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffsetPreferenceKey.swift; sourceTree = "<group>"; };
 		394D6A052A34840500EC0A02 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		394D6A072A348A9200EC0A02 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		39504A9C29B429AF008A7BA4 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		39504A9E29B4374F008A7BA4 /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		39504AA029B43796008A7BA4 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
@@ -803,6 +805,7 @@
 				391510712A2F5A67000BDC14 /* Font+Extension.swift */,
 				394D69F02A3430CF00EC0A02 /* Image+Extestion.swift */,
 				394D6A002A3468FE00EC0A02 /* View+Extenstion.swift */,
+				394D6A072A348A9200EC0A02 /* UIDevice+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1276,6 +1279,7 @@
 				39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */,
 				39EBEB5029BE06E900B1FD54 /* PatchNoteList.swift in Sources */,
 				3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */,
+				394D6A082A348A9200EC0A02 /* UIDevice+Extension.swift in Sources */,
 				39835ACF299D1F6600BEDF88 /* WidgetGridCell.swift in Sources */,
 				3A9C0500292DB03C00442017 /* PhotoPicker.swift in Sources */,
 				39BD3EE12A13766000E14DCA /* UIApplication+Extension.swift in Sources */,

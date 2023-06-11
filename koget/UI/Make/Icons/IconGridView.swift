@@ -14,6 +14,7 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
     @EnvironmentObject var appConstant: AppStateConstant
     @State private var cellCount: CGFloat = .zero
     @State private var scrollPosition: CGFloat = .zero
+
     private let placeHolderImage = UIImage(named: "success")!
     var parentViewModel: V
 
@@ -36,22 +37,16 @@ struct IconGridView<V: VMPhotoEditProtocol>: View {
             segmentView()
 
             scrollView()
-                .overlay(content: {
-                    if viewModel.isLoading {
-                        VStack {
-                            Spacer()
-
-                            loadingView()
-                                .padding(.bottom, -12)
-                                .frame(width: 96, height: 96)
-                        }
-                        .background(.clear)
-                        .ignoresSafeArea(edges: .bottom)
-                    }
-                })
+            
             Rectangle()
                 .fill(AppColor.Background.first)
-                .frame(height: 24)
+                .frame(height: viewModel.isLoading ? 48 : 24)
+                .overlay {
+                    if viewModel.isLoading {
+                        loadingView()
+                            .frame(width: 64, height: 64)
+                    }
+                }
         }
         .ignoresSafeArea(edges: .bottom)
         .tint(AppColor.Label.second)
@@ -71,7 +66,7 @@ extension IconGridView {
             HStack {
                 Spacer()
 
-                Text("y: \(scrollPosition)")
+                Text("아이콘 선택하기")
                     .bold()
 
                 Spacer()
@@ -156,54 +151,68 @@ extension IconGridView {
 
     private func scrollView() -> some View {
         Group {
-            ScrollView {
-                let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
-                LazyVGrid(columns: columns, spacing: 12) {
+            ZStack {
 
-                    switch viewModel.selectedSource {
-                    case .appIcons:
-                        ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
-                            imageCell(imageName: image)
+                if viewModel.selectedSource == .simpleIcons {
+                    if viewModel.isLoading == false {
+                        VStack {
+                            Spacer()
+                            Image(systemName: "arrow.up")
+                                .font(.custom(.robotoMedium, size: 16))
+                            Text("당겨서 더 보기")
+                                .font(.custom(.robotoMedium, size: 16))
                         }
-                    case .simpleIcons:
-                        ForEach(viewModel.simpleIcons.indices, id: \.self) { index in
-                            if let image = viewModel.simpleIcons[index] {
-                                imageCell(image: viewModel.simpleIcons[index] ?? placeHolderImage)
-                                    .onAppear {
-                                        print("\(self.cellCount = CGFloat(viewModel.simpleIcons.count))")
-                                    }
-                            } else {
-                                imageCell(image: UIImage(named: "success.red")!)
+                    }
+                }
+
+                ScrollView {
+
+                    let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
+                    LazyVGrid(columns: columns, spacing: 12) {
+
+                        switch viewModel.selectedSource {
+                        case .appIcons:
+                            ForEach(viewModel.icons.map{ $0.imgName }, id: \.self) { image in
+                                imageCell(imageName: image)
+                            }
+                        case .simpleIcons:
+                            ForEach(viewModel.simpleIcons.indices, id: \.self) { index in
+                                    imageCell(image: viewModel.simpleIcons[index] ?? placeHolderImage)
+                                        .onAppear {
+                                            print("\(self.cellCount = CGFloat(viewModel.simpleIcons.count))")
+                                        }
                             }
                         }
                     }
-                }
-                .background(
-                    GeometryReader { geometry in
-                        Color.clear
-                            .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin.y)
-                    })
-            }
-            .coordinateSpace(name: "scroll")
-            .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                let maxY = viewModel.calculateScrollMinYPosition(cellCount: cellCount)
+                    .background(
+                        GeometryReader { geometry in
+                            let scrollViewHeight = geometry.size.height * 0.5
 
-                let result = viewModel.isScrollBottom(currentY: value, maxY: maxY)
-                print("결과: true면 업데이트 ->\(result)")
-                if result {
-                    if viewModel.isLoading == false {
-                        viewModel.isLoading = true
-                        HapticManager.shared.triggerHapticFeedback(style: .heavy)
-                        viewModel.excuteLoadImage.toggle()
-                    }
+                            Color.blue
+                                .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin.y)
+                        })
                 }
-                self.scrollPosition = value
+                .coordinateSpace(name: "scroll")
+                .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                    let maxY = viewModel.calculateScrollMinYPosition(cellCount: cellCount)
+
+                    let result = viewModel.isScrollBottom(currentY: value, maxY: maxY)
+                    if result {
+                        if viewModel.isLoading == false {
+                            viewModel.isLoading = true
+                            HapticManager.shared.triggerHapticFeedback(style: .heavy)
+                            viewModel.excuteLoadImage.toggle()
+                        }
+                    }
+                    self.scrollPosition = value
+                }
+                .padding(.horizontal, 8)
+                .animation(.interactiveSpring(response: 0.4,
+                                              dampingFraction: 1.0,
+                                              blendDuration: 0.5),
+                           value: viewModel.selectedSource)
             }
-            .padding(.horizontal, 8)
-            .animation(.interactiveSpring(response: 0.4,
-                                          dampingFraction: 1.0,
-                                          blendDuration: 0.5),
-                                          value: viewModel.selectedSource)
+
         }
         .background(
             GeometryReader { geometry in
@@ -224,7 +233,7 @@ extension IconGridView {
 
     private func loadingView() -> some View {
         let lottieView = LottieFactory.create(type: .loading)
-            lottieView.play()
+        lottieView.play()
         return LottieContainerView(animationView: lottieView)
     }
 
