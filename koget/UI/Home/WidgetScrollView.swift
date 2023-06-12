@@ -30,19 +30,20 @@ struct WidgetScrollView: View {
     }
 
     private func widgetGridView() -> some View {
-        let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
+        let columns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 4)
         return LazyVGrid(columns: columns) {
             ForEach($coreData.linkWidgets.wrappedValue, id: \.self) { widget in
-                WidgetGridCell(name: widget.name ?? "", url: widget.url ?? "", widgetImage: UIImage(data: widget.image ?? Data()) ?? CommonImages.emptyIcon, viewModel: viewModel)
+                WidgetGridCell(widget: widget, viewModel: viewModel)
             }
         }
+        .padding(8)
     }
 
     // List
     private func widgetListView() -> some View {
         VStack(spacing: 12) {
             ForEach($coreData.linkWidgets.wrappedValue, id: \.self) { widget in
-                WidgetListCell(widget: widget, name: widget.name ?? "", url: widget.url ?? "", widgetImage: UIImage(data: widget.image ?? Data()) ?? CommonImages.emptyIcon, runCount: Int(widget.runCount), viewModel: viewModel)
+                WidgetListCell(widget: widget, viewModel: viewModel)
             }
             Spacer()
         }

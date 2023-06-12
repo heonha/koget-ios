@@ -20,7 +20,8 @@ class GuestAuthService: ObservableObject {
     func guestSignin() {
         Auth.auth().signInAnonymously { authResult, error in
             if let error = error {
-                // debugPrint("Guest Login Error -> \(error.localizedDescription)")
+                print("Guest Login Error -> \(error.localizedDescription)")
+                return
             } else {
                 guard let user = authResult?.user else { return }
                 // print(user.uid)
