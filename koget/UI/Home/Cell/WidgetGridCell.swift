@@ -20,7 +20,11 @@ struct WidgetGridCell: View {
     private var url: String = ""
     private var image: UIImage = UIImage()
     private let titleColor: Color = AppColor.Label.first
-
+    @State var isDelete: Bool = false
+    @EnvironmentObject private var coreData: WidgetCoreData
+    @EnvironmentObject private var appConstant: AppStateConstant
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     @ObservedObject var viewModel: MainWidgetViewModel
 
     init(widget: DeepLink, viewModel: MainWidgetViewModel) {
@@ -36,6 +40,14 @@ struct WidgetGridCell: View {
     }
 
     var body: some View {
+        Menu {
+            widgetMenu()
+        } label: {
+            widgetIcon()
+        }
+    }
+    
+    private func widgetIcon() -> some View {
         VStack(spacing: 2) {
             //MARK: 위젯 아이콘
             ZStack {
@@ -65,8 +77,75 @@ struct WidgetGridCell: View {
         .background(viewModel.isEditingMode ? Color.init(uiColor: .secondarySystemFill) : .clear)
         .frame(width: cellWidth, height: cellWidth * 1.15)
         .clipShape(RoundedRectangle(cornerRadius: 8))
-
     }
+    
+    private func widgetMenu() -> some View {
+        Group {
+            Button {
+                if let url = widget.url, let id = widget.id {
+                    viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
+                }
+            } label: {
+                Label("실행", systemImage: "arrow.up.left.square")
+            }
+            
+            Button {
+                self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+                    DetailWidgetView(selectedWidget: widget)
+                })
+            } label: {
+                Label("편집", systemImage: "slider.horizontal.3")
+            }
+            Button {
+                isDelete.toggle()
+            } label: {
+                Label("삭제", systemImage: "xmark.bin.circle.fill")
+                    .foregroundColor(.red)
+            }
+            .alert("\(widget.name ?? "알수없는 위젯")", isPresented: $isDelete, actions: {
+                Button(S.Button.delete, role: .destructive) {
+                    coreData.deleteData(data: widget)
+                    dismiss()
+                    viewModel.displayAlertView()
+                    isDelete = false
+                }
+                Button(S.Button.cancel, role: .cancel) {
+                    isDelete = false
+                }
+            }, message: {
+                Text(S.Alert.Message.checkWidgetDelete)
+            })
+            
+        }
+    }
+    
+    private func actionButton(title: String, isDelete: Bool = false, action: @escaping () -> Void) -> some View {
+        Button {
+            action()
+        } label: {
+            ZStack {
+                
+                if isDelete {
+                    AppColor.kogetRed
+                        .cornerRadius(8)
+                } else {
+                    if appConstant.isDarkMode {
+                        AppColor.GrayFamily.dark1
+                            .cornerRadius(8)
+                    } else {
+                        AppColor.Label.second
+                            .cornerRadius(8)
+                    }
+                }
+                
+                Text(title)
+                    .font(.custom(.robotoMedium, size: 16))
+                    .foregroundColor(.white)
+            }
+        }
+        .frame(width: 100, height: 30)
+    }
+
 }
 
 struct WidgetButton_Previews: PreviewProvider {
