@@ -115,9 +115,7 @@
 		3979FA6D29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3979FA7029D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		3979FA6E29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3979FA7029D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		39822CF429B3677400B687E4 /* FloatingButton in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CF329B3677400B687E4 /* FloatingButton */; };
-		39822CFA29B367C800B687E4 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CF929B367C800B687E4 /* QGrid */; };
 		39835ACF299D1F6600BEDF88 /* WidgetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */; };
-		39835AD1299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */; };
 		39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */; };
 		39BA5F2C29D2B4730020138E /* WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA5F2A29D2B1AF0020138E /* WidgetsBundle.swift */; };
 		39BB37AF29C0B5DD00BD91EC /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB37AE29C0B5DD00BD91EC /* Strings+Generated.swift */; };
@@ -159,6 +157,7 @@
 		39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274C29B98431001C368E /* SFSafeSymbols */; };
 		39ED274F29B98707001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED274E29B98707001C368E /* SFSafeSymbols */; };
 		39ED275129B9871C001C368E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 39ED275029B9871C001C368E /* SFSafeSymbols */; };
+		39EFB92A2A371EB80004C5D4 /* WidgetScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EFB9292A371EB80004C5D4 /* WidgetScrollView.swift */; };
 		39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8474E29B3990B000B817E /* FirebaseAnalytics */; };
 		39F8475129B3990B000B817E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8475029B3990B000B817E /* FirebaseAuth */; };
 		39F8475329B3990B000B817E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 39F8475229B3990B000B817E /* FirebaseFirestore */; };
@@ -169,8 +168,6 @@
 		3A01E777296AADEF0019CD2D /* URLTestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E776296AADEF0019CD2D /* URLTestButton.swift */; };
 		3A01E785296AD3470019CD2D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E784296AD3470019CD2D /* ContactView.swift */; };
 		3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */; };
-		3A0566CE2931E87D007B0A7A /* WidgetContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */; };
-		3A0566D32931E9A0007B0A7A /* WidgetListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0566D22931E9A0007B0A7A /* WidgetListContainerView.swift */; };
 		3A0ADDB9292CC9DE006E8EA5 /* MakeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */; };
 		3A0ADDBB292CEAF0006E8EA5 /* WidgetAssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */; };
 		3A0C03422935131600868B70 /* PhotoEditMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0C03412935131600868B70 /* PhotoEditMenu.swift */; };
@@ -315,7 +312,6 @@
 		3979FA7229D1D8F000900FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LockScreenWidgetIntents.strings; sourceTree = "<group>"; };
 		3979FA7429D1D8F100900FBA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LockScreenWidgetIntents.strings; sourceTree = "<group>"; };
 		39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridCell.swift; sourceTree = "<group>"; };
-		39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridLinkTypeIcon.swift; sourceTree = "<group>"; };
 		39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeToggleStyle.swift; sourceTree = "<group>"; };
 		39B5BC6529C6EB5D007AB072 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetViewModel.swift; sourceTree = "<group>"; };
@@ -348,6 +344,7 @@
 		39EBEB4D29BE03C300B1FD54 /* PatchNoteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteListCell.swift; sourceTree = "<group>"; };
 		39EBEB4F29BE06E900B1FD54 /* PatchNoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteList.swift; sourceTree = "<group>"; };
 		39EBEB5129BE0A7900B1FD54 /* PatchNoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNoteManager.swift; sourceTree = "<group>"; };
+		39EFB9292A371EB80004C5D4 /* WidgetScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScrollView.swift; sourceTree = "<group>"; };
 		39F0455F29D3AC6A00F4323F /* 1-2-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-2-1.png"; sourceTree = "<group>"; };
 		39F0456029D3AC6B00F4323F /* 1-2-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-2-2.png"; sourceTree = "<group>"; };
 		39FADE5A29CBC67F00E7A3FF /* 1-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-2.png"; sourceTree = "<group>"; };
@@ -356,8 +353,6 @@
 		3A01E776296AADEF0019CD2D /* URLTestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLTestButton.swift; sourceTree = "<group>"; };
 		3A01E784296AD3470019CD2D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		3A01E786296AD5A30019CD2D /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
-		3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContainerCell.swift; sourceTree = "<group>"; };
-		3A0566D22931E9A0007B0A7A /* WidgetListContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListContainerView.swift; sourceTree = "<group>"; };
 		3A0ADDB8292CC9DE006E8EA5 /* MakeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWidgetView.swift; sourceTree = "<group>"; };
 		3A0ADDBA292CEAF0006E8EA5 /* WidgetAssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAssetList.swift; sourceTree = "<group>"; };
 		3A0C03412935131600868B70 /* PhotoEditMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditMenu.swift; sourceTree = "<group>"; };
@@ -434,7 +429,6 @@
 				394D69F62A3432AD00EC0A02 /* Lottie in Frameworks */,
 				39ED274D29B98431001C368E /* SFSafeSymbols in Frameworks */,
 				39F8474F29B3990B000B817E /* FirebaseAnalytics in Frameworks */,
-				39822CFA29B367C800B687E4 /* QGrid in Frameworks */,
 				39822CF429B3677400B687E4 /* FloatingButton in Frameworks */,
 				39F8475529B3990B000B817E /* FirebaseFirestoreSwift in Frameworks */,
 				39F8475329B3990B000B817E /* FirebaseFirestore in Frameworks */,
@@ -582,11 +576,9 @@
 		397FEB202A131B0A007319DD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				3A0566D22931E9A0007B0A7A /* WidgetListContainerView.swift */,
-				3A0566CD2931E87D007B0A7A /* WidgetContainerCell.swift */,
+				39EFB9292A371EB80004C5D4 /* WidgetScrollView.swift */,
 				392EDF6429BD55CA000B1353 /* WidgetListCell.swift */,
 				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
-				39835AD0299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift */,
 				39D8B29F2A360EEA0034514B /* TestCellAnimation.swift */,
 			);
 			path = Cell;
@@ -1035,7 +1027,6 @@
 			name = koget;
 			packageProductDependencies = (
 				39822CF329B3677400B687E4 /* FloatingButton */,
-				39822CF929B367C800B687E4 /* QGrid */,
 				39F8474E29B3990B000B817E /* FirebaseAnalytics */,
 				39F8475029B3990B000B817E /* FirebaseAuth */,
 				39F8475229B3990B000B817E /* FirebaseFirestore */,
@@ -1109,7 +1100,6 @@
 			mainGroup = 3ABA6C0A28C6043F005AA8E4;
 			packageReferences = (
 				39822CF229B3677400B687E4 /* XCRemoteSwiftPackageReference "FloatingButton" */,
-				39822CF829B367C800B687E4 /* XCRemoteSwiftPackageReference "QGrid" */,
 				39F8474D29B3990B000B817E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				39504A9129B3A059008A7BA4 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 				39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
@@ -1284,7 +1274,6 @@
 				39D8B2A02A360EEA0034514B /* TestCellAnimation.swift in Sources */,
 				39694FE529E6AE8900F2C75C /* DeepLinkProvider.swift in Sources */,
 				392C7FC92A2ABE5A00C516DD /* IconGridView.swift in Sources */,
-				3A0566CE2931E87D007B0A7A /* WidgetContainerCell.swift in Sources */,
 				394D6A042A347D8E00EC0A02 /* ScrollOffsetPreferenceKey.swift in Sources */,
 				3A559C7028EB1D4900D5D9E4 /* AppColor.swift in Sources */,
 				3A8339D92932167500DC9527 /* TextButton.swift in Sources */,
@@ -1296,7 +1285,6 @@
 				3A6D80A12974429500E62389 /* FloatingDestinationView.swift in Sources */,
 				392EDF6B29BD8E54000B1353 /* SettingMenuButton.swift in Sources */,
 				391510702A2F545E000BDC14 /* Color+Extension.swift in Sources */,
-				39835AD1299D1FC900BEDF88 /* WidgetGridLinkTypeIcon.swift in Sources */,
 				394D6A062A34840500EC0A02 /* HapticManager.swift in Sources */,
 				39737B8229D2517B00228A58 /* WidgetConstant.swift in Sources */,
 				3ABFEFCA292F4D1400455730 /* ViewControllerHolderHelper.swift in Sources */,
@@ -1335,11 +1323,11 @@
 				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,
 				39EBEB4729BDDC4500B1FD54 /* CheckmarkToggleStyle.swift in Sources */,
+				39EFB92A2A371EB80004C5D4 /* WidgetScrollView.swift in Sources */,
 				390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */,
 				39EBEB4C29BDF7F400B1FD54 /* PatchNoteContentView.swift in Sources */,
 				391510722A2F5A67000BDC14 /* Font+Extension.swift in Sources */,
 				39D8B2992A35CAC40034514B /* String+Extension.swift in Sources */,
-				3A0566D32931E9A0007B0A7A /* WidgetListContainerView.swift in Sources */,
 				3ACCB355294C3D3500A85E0F /* TextFieldView.swift in Sources */,
 				3A1F89082978F9DC00E1B4C4 /* AddWidgetVideoView.swift in Sources */,
 				392C81CF2A2AFCEB00C516DD /* IconGridViewModel.swift in Sources */,
@@ -1905,14 +1893,6 @@
 				minimumVersion = 1.0.1;
 			};
 		};
-		39822CF829B367C800B687E4 /* XCRemoteSwiftPackageReference "QGrid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Q-Mobile/QGrid.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.4;
-			};
-		};
 		39EBEB4829BDF7A000B1FD54 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1969,11 +1949,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39822CF229B3677400B687E4 /* XCRemoteSwiftPackageReference "FloatingButton" */;
 			productName = FloatingButton;
-		};
-		39822CF929B367C800B687E4 /* QGrid */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 39822CF829B367C800B687E4 /* XCRemoteSwiftPackageReference "QGrid" */;
-			productName = QGrid;
 		};
 		39C308082A1CDFBA00172DA2 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
