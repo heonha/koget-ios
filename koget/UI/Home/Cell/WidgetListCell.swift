@@ -119,7 +119,7 @@ extension WidgetListCell {
                 }
                 
             }
-            .background(.ultraThinMaterial)
+            .background(appConstant.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
         }
         .offset(x: isDeleting ? -400 : 0)
         .animation(.spring(), value: isDeleting)
@@ -148,7 +148,8 @@ extension WidgetListCell {
         })
         .frame(maxHeight: expanded ? 140 : 60)
         .clipped()
-        .shadow(color: .black.opacity(0.25), radius: 1.5, x: 0.8, y: 0.7)
+        .shadow(color: .black.opacity(0.12), radius: 2, x: 0.8, y: 0.2)
+
     }
     
     var buttonBg: some View {

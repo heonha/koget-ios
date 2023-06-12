@@ -47,6 +47,7 @@ struct WidgetScrollView: View {
             }
             Spacer()
         }
+        .padding(.vertical, 4)
         .padding(.horizontal, 16)
         .background(Color.clear)
     }
