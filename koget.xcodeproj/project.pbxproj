@@ -492,14 +492,6 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
-		393AF0F62A034EBD00F913CF /* Injectors */ = {
-			isa = PBXGroup;
-			children = (
-				39BBB53D29F96BBD0071EBB5 /* BaseViewModel.swift */,
-			);
-			path = Injectors;
-			sourceTree = "<group>";
-		};
 		393AF0F72A03507900F913CF /* Widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -532,6 +524,7 @@
 				394D69F72A3432C200EC0A02 /* Lottie */,
 				394D69FE2A3467D600EC0A02 /* LottieContainerView.swift */,
 				394D6A032A347D8E00EC0A02 /* ScrollOffsetPreferenceKey.swift */,
+				39BBB53D29F96BBD0071EBB5 /* BaseViewModel.swift */,
 				394D6A052A34840500EC0A02 /* HapticManager.swift */,
 			);
 			path = Utility;
@@ -661,6 +654,7 @@
 				39504A9E29B4374F008A7BA4 /* CGRect+Extension.swift */,
 				392140A32A0BC1C400D0F527 /* Date+Extention.swift */,
 				39BD3EE32A13D1EC00E14DCA /* URL+Extension.swift */,
+				39D8B2982A35CAC40034514B /* String+Extension.swift */,
 				39D8B28E2A35BED10034514B /* Array+Extension.swift */,
 			);
 			path = Foundation;
@@ -857,7 +851,6 @@
 			children = (
 				39D8B2912A35BEF10034514B /* Apple */,
 				39D8B2902A35BEE00034514B /* Foundation */,
-				39D8B2982A35CAC40034514B /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -930,7 +923,6 @@
 				394D69FC2A34679800EC0A02 /* New Group */,
 				3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */,
 				3AE4B13D296D8A2D00DB219B /* KogetApp.swift */,
-				393AF0F62A034EBD00F913CF /* Injectors */,
 				39E0FAE329D132070081E169 /* UI */,
 				394D69FD2A3467AB00EC0A02 /* Utility */,
 				39E0FAE829D133500081E169 /* Services */,
@@ -1458,7 +1450,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/koget.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/koget";
 			};
 			name = Debug;
@@ -1480,7 +1472,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/koget.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/koget";
 			};
 			name = Release;

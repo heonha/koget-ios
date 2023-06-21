@@ -8,12 +8,13 @@
 import SwiftUI
 import SFSafeSymbols
 
-// TODO: GridView 메뉴 추가
-// TODO: 드래그 앤 드롭기능 추가 -https://stackoverflow.com/questions/62606907/swiftui-using-ondrag-and-ondrop-to-reorder-items-within-one-single-lazygrid
+// TODO: - 1.3버전 계획
 // TODO: 편집 뷰 UI개선
 // TODO: MakeView Flow로 진행하기
 // TODO: 온보딩 추가
 // TODO: 도움말 추가
+// TODO: 드래그 앤 드롭기능 추가 -https://stackoverflow.com/questions/62606907/swiftui-using-ondrag-and-ondrop-to-reorder-items-within-one-single-lazygrid
+
 
 struct WidgetListCell: View {
     
