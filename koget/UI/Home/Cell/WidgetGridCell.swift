@@ -90,9 +90,9 @@ struct WidgetGridCell: View {
             }
             
             Button {
-                self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
-                    DetailWidgetView(selectedWidget: widget)
-                })
+//                self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
+//                    DetailWidgetView(selectedWidget: widget)
+//                })
             } label: {
                 Label("편집", systemImage: "slider.horizontal.3")
             }

@@ -21,6 +21,7 @@ struct DetailWidgetView: View {
     @State var isDelete = false
     @State var isPresentQustionmark = false
 
+    @ObservedObject var target: MainWidgetViewModel
     @ObservedObject var constant = AppStateConstant.shared
     @ObservedObject var coreData = WidgetCoreData.shared
     @StateObject var viewModel = DetailWidgetViewModel()
@@ -52,7 +53,6 @@ struct DetailWidgetView: View {
 
                 // MARK: - 이름, URL
                 VStack(spacing: 12) {
-
                     EditTextField(systemSymbol: .tag,
                                   placeHolder: S.Textfield.Placeholder.widgetName,
                                   viewModel: viewModel,
@@ -73,7 +73,9 @@ struct DetailWidgetView: View {
                 ToggleButton(viewModel: viewModel, widget: selectedWidget)
                 // 닫기 버튼
                 TextButton(title: S.Button.close, backgroundColor: AppColor.Fill.third, size: (width: 200, height: 40)) {
-                    dismiss()
+                    withAnimation {
+                        target.isPresentEditSheet = false
+                    }
                 }
 
                 // 하단 텍스트: 반영까지 15분 걸립니다.
@@ -172,7 +174,7 @@ struct DetailWidgetView: View {
 struct EditWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DetailWidgetView(selectedWidget: DeepLink.example)
+            DetailWidgetView(selectedWidget: DeepLink.example, target: MainWidgetViewModel())
         }
     }
 }

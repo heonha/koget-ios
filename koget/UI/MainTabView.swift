@@ -9,14 +9,15 @@ import SwiftUI
 import SFSafeSymbols
 
 struct MainTabView: View {
-    @ObservedObject var viewModel: MainWidgetViewModel
+    @ObservedObject var viewModel: HomeWidgetViewModel = .init()
 
     var body: some View {
         TabView {
-            MainWidgetView(viewModel: viewModel)
+            HomeWidgetView(viewModel: viewModel)
                 .tabItem {
                     Image(systemSymbol: SFSymbol.rectangleGrid1x2)
                 }
+            
             SettingMenu()
                 .tabItem {
                     Image(systemSymbol: SFSymbol.gearshape)
@@ -25,8 +26,8 @@ struct MainTabView: View {
     }
 }
 
-struct MainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView(viewModel: MainWidgetViewModel())
-    }
-}
+//struct MainTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainTabView(viewModel: MainWidgetViewModel())
+//    }
+//}

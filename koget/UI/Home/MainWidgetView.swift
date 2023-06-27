@@ -75,6 +75,14 @@ struct MainWidgetView: View {
             MainFloatingButton(isOpen: $isFloatingButtonOpen)
         }
         .background(AppColor.Background.first)
+        .overlay {
+            if viewModel.isPresentEditSheet {
+                if let widget = viewModel.editTarget {
+                    DetailWidgetView(selectedWidget: widget, target: viewModel)
+                        .transition(.move(edge: .bottom))
+                }
+            }
+        }
     }
     
     private func noWidgetPlaceholder() -> some View {
@@ -142,6 +150,8 @@ struct MainWidgetView_Previews: PreviewProvider {
         
         NavigationView {
             MainWidgetView(viewModel: MainWidgetViewModel())
+                .environmentObject(WidgetCoreData.shared)
+                .environmentObject(AppStateConstant.shared)
         }
         
     }

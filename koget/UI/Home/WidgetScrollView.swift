@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum WidgetViewType {
     case list, grid
@@ -16,17 +17,21 @@ struct WidgetScrollView: View {
     @Binding var viewType: WidgetViewType
     @ObservedObject var viewModel: MainWidgetViewModel
     @EnvironmentObject var coreData: WidgetCoreData
-
+    
+    @State private var scrollToTop: Bool = false
+    @State private var scrollPosition: CGFloat = 0
+    
     var body: some View {
-        ScrollView {
-            if viewType == .list {
+        if viewType == .list {
+            ScrollView {
                 widgetListView()
             }
-            
-            if viewType == .grid {
+        } else {
+            ScrollView {
                 widgetGridView()
             }
         }
+        
     }
 
     private func widgetGridView() -> some View {
@@ -43,13 +48,13 @@ struct WidgetScrollView: View {
     private func widgetListView() -> some View {
         VStack(spacing: 12) {
             ForEach($coreData.linkWidgets.wrappedValue, id: \.self) { widget in
-                WidgetListCell(widget: widget, viewModel: viewModel)
+                WidgetListCell(widget: widget,
+                               viewModel: viewModel)
             }
             Spacer()
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 16)
-        .background(Color.clear)
     }
 
 }
@@ -57,7 +62,6 @@ struct WidgetScrollView: View {
 #if DEBUG
 struct WidgetListView_Previews: PreviewProvider {
     static var previews: some View {
-
         WidgetScrollView(viewType: .constant(.list), viewModel: .init())
             .environmentObject(WidgetCoreData.shared)
     }

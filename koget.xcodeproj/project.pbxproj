@@ -117,6 +117,9 @@
 		39822CF429B3677400B687E4 /* FloatingButton in Frameworks */ = {isa = PBXBuildFile; productRef = 39822CF329B3677400B687E4 /* FloatingButton */; };
 		39835ACF299D1F6600BEDF88 /* WidgetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */; };
 		39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */; };
+		39ADB2752A4A6C1B00AED318 /* HomeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ADB2742A4A6C1B00AED318 /* HomeWidgetView.swift */; };
+		39ADB2772A4A6C9A00AED318 /* HomeWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ADB2762A4A6C9A00AED318 /* HomeWidgetViewModel.swift */; };
+		39ADB2792A4A7BFB00AED318 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ADB2782A4A7BFB00AED318 /* ListCell.swift */; };
 		39BA5F2C29D2B4730020138E /* WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA5F2A29D2B1AF0020138E /* WidgetsBundle.swift */; };
 		39BB37AF29C0B5DD00BD91EC /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB37AE29C0B5DD00BD91EC /* Strings+Generated.swift */; };
 		39BBB53E29F96BBD0071EBB5 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BBB53D29F96BBD0071EBB5 /* BaseViewModel.swift */; };
@@ -312,6 +315,9 @@
 		3979FA7429D1D8F100900FBA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LockScreenWidgetIntents.strings; sourceTree = "<group>"; };
 		39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGridCell.swift; sourceTree = "<group>"; };
 		39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeToggleStyle.swift; sourceTree = "<group>"; };
+		39ADB2742A4A6C1B00AED318 /* HomeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWidgetView.swift; sourceTree = "<group>"; };
+		39ADB2762A4A6C9A00AED318 /* HomeWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWidgetViewModel.swift; sourceTree = "<group>"; };
+		39ADB2782A4A7BFB00AED318 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		39B5BC6529C6EB5D007AB072 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetViewModel.swift; sourceTree = "<group>"; };
 		39BA5F2A29D2B1AF0020138E /* WidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsBundle.swift; sourceTree = "<group>"; };
@@ -573,6 +579,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		39ADB2732A4A6C0100AED318 /* NewHome */ = {
+			isa = PBXGroup;
+			children = (
+				39ADB2742A4A6C1B00AED318 /* HomeWidgetView.swift */,
+				39ADB2762A4A6C9A00AED318 /* HomeWidgetViewModel.swift */,
+				39ADB2782A4A7BFB00AED318 /* ListCell.swift */,
+			);
+			path = NewHome;
+			sourceTree = "<group>";
+		};
 		39BBB53F29F973830071EBB5 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,6 +714,7 @@
 				390B5CBB29B1AED900B61E35 /* MainTabView.swift */,
 				393AF0F72A03507900F913CF /* Widget */,
 				39E0FAF529D149DD0081E169 /* Ad */,
+				39ADB2732A4A6C0100AED318 /* NewHome */,
 				39C1F3DF29D1C87C00C26919 /* PatchNote */,
 				39E0FAF229D149650081E169 /* Home */,
 				39E0FAF329D149890081E169 /* Make */,
@@ -1302,6 +1319,7 @@
 				39BD3EE42A13D1EC00E14DCA /* URL+Extension.swift in Sources */,
 				3A01E785296AD3470019CD2D /* ContactView.swift in Sources */,
 				39E7AA1E2A1BC6290012616D /* UIImage+Extension.swift in Sources */,
+				39ADB2752A4A6C1B00AED318 /* HomeWidgetView.swift in Sources */,
 				3A1591742985194C001924C3 /* AppStoreService.swift in Sources */,
 				39EBEB4E29BE03C300B1FD54 /* PatchNoteListCell.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
@@ -1310,6 +1328,7 @@
 				3979FA6C29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,
+				39ADB2792A4A7BFB00AED318 /* ListCell.swift in Sources */,
 				39EBEB4729BDDC4500B1FD54 /* CheckmarkToggleStyle.swift in Sources */,
 				39EFB92A2A371EB80004C5D4 /* WidgetScrollView.swift in Sources */,
 				390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */,
@@ -1324,6 +1343,7 @@
 				39E9410729C6CFD4008F8E9F /* LicenseView.swift in Sources */,
 				3A01E787296AD5A30019CD2D /* CustomTextEditor.swift in Sources */,
 				39691F4429ACD4E9002BD874 /* DetailWidgetViewModel.swift in Sources */,
+				39ADB2772A4A6C9A00AED318 /* HomeWidgetViewModel.swift in Sources */,
 				39EBEB5029BE06E900B1FD54 /* PatchNoteList.swift in Sources */,
 				3A6D809F2974426900E62389 /* FloatingMainButton.swift in Sources */,
 				394D6A082A348A9200EC0A02 /* UIDevice+Extension.swift in Sources */,

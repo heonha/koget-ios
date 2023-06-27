@@ -10,8 +10,8 @@ import UIKit
 
 struct MainView: View {
 
-    @EnvironmentObject var constant: AppStateConstant
-    @StateObject var viewModel = MainWidgetViewModel()
+    @EnvironmentObject private var constant: AppStateConstant
+    @StateObject var viewModel = HomeWidgetViewModel()
 
     var body: some View {
         MainTabView(viewModel: viewModel)

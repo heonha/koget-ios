@@ -52,7 +52,6 @@ struct AdPageCell: View {
             }
             .background(AppColor.Background.second.opacity(0.4))
             .cornerRadius(10)
-            .padding(.horizontal)
         }
     }
 }

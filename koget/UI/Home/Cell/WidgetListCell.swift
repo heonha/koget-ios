@@ -9,38 +9,37 @@ import SwiftUI
 import SFSafeSymbols
 
 // TODO: - 1.3버전 계획
-// TODO: 편집 뷰 UI개선
-// TODO: MakeView Flow로 진행하기
-// TODO: 온보딩 추가
-// TODO: 도움말 추가
-// TODO: 드래그 앤 드롭기능 추가 -https://stackoverflow.com/questions/62606907/swiftui-using-ondrag-and-ondrop-to-reorder-items-within-one-single-lazygrid
-
+// [] 편집 뷰 UI개선
+// [] MakeView Flow로 진행하기
+// [] 온보딩 추가
+// [] 도움말 추가
+// [] 드래그 앤 드롭기능 추가 -https://stackoverflow.com/questions/62606907/swiftui-using-ondrag-and-ondrop-to-reorder-items-within-one-single-lazygrid
 
 struct WidgetListCell: View {
     
-    let widget: DeepLink
+    private let widget: DeepLink
     
     private var name: String = ""
     private var url: String = ""
     private var image: UIImage = UIImage()
     private var runCount: Int = 0
     
-    @State var expanded: Bool = false
-    @State var isDeleting: Bool = false
-    @State var horzdrag: CGFloat = 0
-    @State var predictedEnd: CGFloat = 0
-    @State var isDelete = false
+    @State private var runDeepLink: Bool = false
+    @State private var showDeleteAlert = false
+    @State private var showEditSheet = false
+    @State private var offsetX: CGFloat = .zero
+    @State private var isSlideMode = false
     
-    let app: String = S.WidgetCell.WidgetType.app
-    let web: String = S.WidgetCell.WidgetType.web
-    var imageSize = CGSize(width: 40, height: 40)
-    let titleColor: Color = AppColor.Label.first
+    private let app: String = S.WidgetCell.WidgetType.app
+    private let web: String = S.WidgetCell.WidgetType.web
+    private var imageSize = CGSize(width: 40, height: 40)
+    private let titleColor: Color = AppColor.Label.first
     
-    @ObservedObject var viewModel: MainWidgetViewModel
-    @EnvironmentObject var appConstant: AppStateConstant
-    @EnvironmentObject var coreData: WidgetCoreData
-    @Environment(\.viewController) var viewControllerHolder: UIViewController?
-    @Environment(\.dismiss) var dismiss
+    @ObservedObject private var viewModel: MainWidgetViewModel
+    @EnvironmentObject private var appConstant: AppStateConstant
+    @EnvironmentObject private var coreData: WidgetCoreData
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
+    @Environment(\.dismiss) private var dismiss
     
     init(widget: DeepLink, viewModel: MainWidgetViewModel) {
         self.widget = widget
@@ -55,160 +54,101 @@ struct WidgetListCell: View {
 
 extension WidgetListCell {
     
-    // 리스트 셀
     var body: some View {
         ZStack {
-            
-            VStack {
-                HStack(spacing: 16) {
-                    imageView
-                    
-                    textVStack
-                    
-                    Spacer()
-                    
-                    HStack {
-                        runCountView
-                        
-                        Image(systemSymbol: .chevronRight)
-                            .font(.custom(.robotoBold, size: 14))
-                            .foregroundColor(AppColor.Label.second)
-                            .rotationEffect(.degrees(expanded ? 90 : 0))
+            mainBody
+                .offset(x: offsetX)
+            HStack {
+                Spacer()
+                
+                Button {
+                    viewModel.editTarget = widget
+                    withAnimation(.easeIn) {
+                        viewModel.isPresentEditSheet.toggle()
+                    }
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(hex: "FFE4A7"))
+
+                        Image(systemName: "slider.horizontal.3")
+                            .font(.system(size: 27))
+                            .foregroundColor(.white)
                     }
                 }
-                .frame(height: 58)
-                .padding(.horizontal, 12)
-                
-                if expanded {
-                    
-                    Spacer()
-                    
-                    HStack {
-                        actionButton(title: "실행") {
-                            if let url = widget.url, let id = widget.id {
-                                viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
-                            }
-                        }
-                        
-                        actionButton(title: "편집") {
-                            self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
-                                DetailWidgetView(selectedWidget: widget)
-                            })
-                        }
-                        
-                        actionButton(title: "삭제", isDelete: true) {
-                            isDelete.toggle()
-                        }
-                        .alert("\(widget.name ?? "알수없는 위젯")", isPresented: $isDelete, actions: {
-                            Button(S.Button.delete, role: .destructive) {
-                                coreData.deleteData(data: widget)
-                                dismiss()
-                                viewModel.displayAlertView()
-                                isDelete = false
-                            }
-                            Button(S.Button.cancel, role: .cancel) {
-                                isDelete = false
-                            }
-                        }, message: {
-                            Text(S.Alert.Message.checkWidgetDelete)
-                        })
-                        
+                .frame(width: 60)
+
+                Button {
+                    showDeleteAlert.toggle()
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(hex: "FEA1A1"))
+
+                        Image(systemName: "xmark.octagon.fill")
+                            .font(.system(size: 27))
+                            .foregroundColor(.white)
                     }
-                    .frame(height: 30)
-                    
-                    Spacer()
+
                 }
-                
+                .frame(width: 60)
+                .alert("\(widget.name ?? "알수없는 위젯")", isPresented: $showDeleteAlert, actions: {
+                    Button(S.Button.delete, role: .destructive) {
+                        coreData.deleteData(data: widget)
+                        dismiss()
+                        viewModel.displayAlertView()
+                        showDeleteAlert = false
+                    }
+                    Button(S.Button.cancel, role: .cancel) {
+                        showDeleteAlert = false
+                    }
+                }, message: {
+                    Text(S.Alert.Message.checkWidgetDelete)
+                })
             }
-            .background(appConstant.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
+            .offset(x: offsetX + 150)
         }
-        .offset(x: isDeleting ? -400 : 0)
-        .animation(.spring(), value: isDeleting)
-        .transition(.move(edge: .leading))
-        .gesture(
-            DragGesture()
-                .onChanged { gesture in
-                    onDragChange(gesture: gesture)
-                }
-                .onEnded { _ in
-                    onDragEnd()
-                }
-        )
-        .cornerRadius(15)
-        .onTapGesture {
-            HapticManager.shared.triggerHapticFeedback(style: .rigid)
-            withAnimation(.spring()) {
-                expanded.toggle()
-            }
-        }
-        .onLongPressGesture(perform: {
-            HapticManager.shared.triggerHapticFeedback(style: .heavy)
-            if let url = widget.url, let id = widget.id {
-                viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
-            }
-        })
-        .frame(maxHeight: expanded ? 140 : 60)
-        .clipped()
-        .shadow(color: .black.opacity(0.12), radius: 2, x: 0.8, y: 0.2)
+        .frame(height: 60)
+  
 
     }
     
-    var buttonBg: some View {
-        RoundedRectangle(cornerRadius: 5)
-            .fill(Color(red: 1, green: 1, blue: 1).opacity(0.15))
-    }
-    
-    private func onDragChange(gesture: DragGesture.Value) {
-        horzdrag = gesture.translation.width
-        predictedEnd = gesture.predictedEndTranslation.width
-    }
-    
-    private func onDragEnd() {
-        if getOffset(horzdrag: horzdrag) <= -400 {
-            withAnimation(.spring()) {
-                isDeleting = true
+    // 리스트 셀
+    private var mainBody: some View {
+        ZStack {
+            VStack {
+                HStack(spacing: 16) {
+                    imageView(with: image)
+                    
+                    textVStack(name: name)
+                    
+                    Spacer()
+                    
+                    runCountView(with: runCount)
+                }
+                .frame(height: 58)
+                .padding(.horizontal, 12)
             }
+            .background(appConstant.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
         }
-        
-        horzdrag = .zero
+        .cornerRadius(15)
+        .clipped()
+        .shadow(color: .black.opacity(0.12), radius: 2, x: 0.8, y: 0.2)
     }
     
-    // used to calculate how far to move the teal rectangle
-    private func getOffset(horzdrag: CGFloat) -> CGFloat {
-        if isDeleting {
-            return -400
-        } else if horzdrag < -165 {
-            return -400
-        } else if predictedEnd < -60 && horzdrag == 0 {
-            return -80
-        } else if predictedEnd < -60 {
-            return horzdrag
-        } else if predictedEnd < 50 && horzdrag > 0 && (-80 + horzdrag <= 0) {
-            return -80 + horzdrag
-        } else if horzdrag < 0 {
-            return horzdrag
-        } else {
-            return 0
-        }
-    }
-    
-    private func actionButton(title: String, isDelete: Bool = false, action: @escaping () -> Void) -> some View {
+    private func actionButton(title: String,
+                              isDelete: Bool = false,
+                              action: @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {
             ZStack {
-                
-                if isDelete {
-                    AppColor.kogetRed
+                if appConstant.isDarkMode {
+                    AppColor.GrayFamily.dark1
                         .cornerRadius(8)
                 } else {
-                    if appConstant.isDarkMode {
-                        AppColor.GrayFamily.dark1
-                            .cornerRadius(8)
-                    } else {
-                        AppColor.Label.second
-                            .cornerRadius(8)
-                    }
+                    AppColor.Label.second
+                        .cornerRadius(8)
                 }
                 
                 Text(title)
@@ -219,7 +159,7 @@ extension WidgetListCell {
         .frame(width: 100, height: 30)
     }
     
-    var imageView: some View {
+    private func imageView(with image: UIImage) -> some View {
         ZStack {
             Circle()
                 .fill(AppStateConstant.shared.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
@@ -234,7 +174,7 @@ extension WidgetListCell {
         .frame(width: imageSize.width, height: imageSize.height)
     }
     
-    var textVStack: some View {
+    private func textVStack(name: String) -> some View {
         
         VStack(alignment: .leading, spacing: 4) {
             // title
@@ -260,7 +200,7 @@ extension WidgetListCell {
     }
     
     // 실행 횟수 카운터
-    var runCountView: some View {
+    private func runCountView(with runCount: Int) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
                 .foregroundColor(AppColor.Fill.third.opacity(0.6))
@@ -272,7 +212,7 @@ extension WidgetListCell {
                             .font(.custom(.robotoMedium, size: 11))
                             .shadow(color: .black.opacity(0.7), radius: 0.5, x: 0.5, y: 0.5)
                             .foregroundColor(.yellow)
-                        Text("\(Int(runCount))")
+                        Text("\(runCount)")
                             .font(.custom(.robotoMedium, size: 14))
                             .foregroundColor(.white)
                             .shadow(color: .black.opacity(0.8), radius: 0.3, x: 0.3, y: 0.5)
@@ -286,5 +226,8 @@ struct WidgetListCell_Previews: PreviewProvider {
     static var previews: some View {
         WidgetListCell(widget: DeepLink.example, viewModel: MainWidgetViewModel())
             .padding(.horizontal, 8)
+            .environmentObject(AppStateConstant.shared)
+            .environmentObject(WidgetCoreData.shared)
+        
     }
 }

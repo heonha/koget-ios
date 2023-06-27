@@ -12,6 +12,8 @@ final class MainWidgetViewModel: BaseViewModel {
     //MARK: Published Variables
     @Published var isEditingMode: Bool = false
     @Published var selection = [DeepLink]()
+    @Published var isPresentEditSheet = false
+    @Published var editTarget: DeepLink?
 
     //MARK: User Defaults
     @AppStorage("isGridView") var isGridView = false
