@@ -21,7 +21,7 @@ struct DetailWidgetView: View {
     @State var isDelete = false
     @State var isPresentQustionmark = false
 
-    @ObservedObject var target: MainWidgetViewModel
+    @EnvironmentObject var target: HomeWidgetViewModel
     @ObservedObject var constant = AppStateConstant.shared
     @ObservedObject var coreData = WidgetCoreData.shared
     @StateObject var viewModel = DetailWidgetViewModel()
@@ -74,7 +74,9 @@ struct DetailWidgetView: View {
                 // 닫기 버튼
                 TextButton(title: S.Button.close, backgroundColor: AppColor.Fill.third, size: (width: 200, height: 40)) {
                     withAnimation {
-                        target.isPresentEditSheet = false
+                        DispatchQueue.main.async {
+                            target.showDetail = false
+                        }
                     }
                 }
 
@@ -170,11 +172,11 @@ struct DetailWidgetView: View {
     }
 
 }
-
-struct EditWidgetView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            DetailWidgetView(selectedWidget: DeepLink.example, target: MainWidgetViewModel())
-        }
-    }
-}
+//
+//struct EditWidgetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            DetailWidgetView(selectedWidget: DeepLink.example, target: MainWidgetViewModel())
+//        }
+//    }
+//}

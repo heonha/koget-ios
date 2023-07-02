@@ -18,6 +18,7 @@ struct HomeWidgetView: View {
     @State private var onDarkMode = false
     @State private var onListView = false
     @State private var viewType: WidgetViewType = .list
+    @State private var offsetX: CGFloat = .zero
     
     var body: some View {
         NavigationView {
@@ -26,27 +27,54 @@ struct HomeWidgetView: View {
                     createToolbar()
                 }
         }
+        .overlay {
+            overlayDetailView(widget: viewModel.targetWidget)
+        }
+        .environmentObject(viewModel)
         
     }
-    
+
 }
 
 extension HomeWidgetView {
     
+    
     private func mainBody() -> some View {
         VStack {
             AdPageContainer()
-            
+                .padding(.horizontal, 15)
+
             ScrollView {
                 VStack {
                     ForEach($viewModel.widgets.wrappedValue) { widget in
-                        ListCell(widget: widget)
+                        SlideableWidgetCell(widget: widget)
                     }
+                }
+                .onTapGesture {
+                    offsetX = .zero
+                }
+            }
+
+        }
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    
+    private func overlayDetailView(widget: DeepLink?) -> some View {
+        Group {
+            if viewModel.showDetail {
+                if let widget = viewModel.targetWidget {
+                    ZStack {
+                        Rectangle()
+                            .fill(.black.opacity(0.3))
+                            .blur(radius: 4)
+                            .ignoresSafeArea()
+                        DetailWidgetView(selectedWidget: widget)
+                    }
+                    
                 }
             }
         }
-        .padding(.horizontal, 15)
-        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func widgetListCell(_ widget: DeepLink) -> some View {

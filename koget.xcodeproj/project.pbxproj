@@ -119,7 +119,8 @@
 		39A2B11129B8597A0062D56F /* DarkModeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */; };
 		39ADB2752A4A6C1B00AED318 /* HomeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ADB2742A4A6C1B00AED318 /* HomeWidgetView.swift */; };
 		39ADB2772A4A6C9A00AED318 /* HomeWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ADB2762A4A6C9A00AED318 /* HomeWidgetViewModel.swift */; };
-		39ADB2792A4A7BFB00AED318 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ADB2782A4A7BFB00AED318 /* ListCell.swift */; };
+		39ADB2792A4A7BFB00AED318 /* SlideableWidgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ADB2782A4A7BFB00AED318 /* SlideableWidgetCell.swift */; };
+		39ADB27B2A4AA49500AED318 /* SlideableCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ADB27A2A4AA49500AED318 /* SlideableCellType.swift */; };
 		39BA5F2C29D2B4730020138E /* WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA5F2A29D2B1AF0020138E /* WidgetsBundle.swift */; };
 		39BB37AF29C0B5DD00BD91EC /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB37AE29C0B5DD00BD91EC /* Strings+Generated.swift */; };
 		39BBB53E29F96BBD0071EBB5 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BBB53D29F96BBD0071EBB5 /* BaseViewModel.swift */; };
@@ -317,7 +318,8 @@
 		39A2B11029B8597A0062D56F /* DarkModeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeToggleStyle.swift; sourceTree = "<group>"; };
 		39ADB2742A4A6C1B00AED318 /* HomeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWidgetView.swift; sourceTree = "<group>"; };
 		39ADB2762A4A6C9A00AED318 /* HomeWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWidgetViewModel.swift; sourceTree = "<group>"; };
-		39ADB2782A4A7BFB00AED318 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		39ADB2782A4A7BFB00AED318 /* SlideableWidgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideableWidgetCell.swift; sourceTree = "<group>"; };
+		39ADB27A2A4AA49500AED318 /* SlideableCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideableCellType.swift; sourceTree = "<group>"; };
 		39B5BC6529C6EB5D007AB072 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		39B7B69629AA032E0028AE10 /* DetailWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWidgetViewModel.swift; sourceTree = "<group>"; };
 		39BA5F2A29D2B1AF0020138E /* WidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsBundle.swift; sourceTree = "<group>"; };
@@ -574,7 +576,6 @@
 			isa = PBXGroup;
 			children = (
 				392EDF6429BD55CA000B1353 /* WidgetListCell.swift */,
-				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -584,7 +585,9 @@
 			children = (
 				39ADB2742A4A6C1B00AED318 /* HomeWidgetView.swift */,
 				39ADB2762A4A6C9A00AED318 /* HomeWidgetViewModel.swift */,
-				39ADB2782A4A7BFB00AED318 /* ListCell.swift */,
+				39ADB2782A4A7BFB00AED318 /* SlideableWidgetCell.swift */,
+				39ADB27A2A4AA49500AED318 /* SlideableCellType.swift */,
+				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
 			);
 			path = NewHome;
 			sourceTree = "<group>";
@@ -1322,13 +1325,14 @@
 				39ADB2752A4A6C1B00AED318 /* HomeWidgetView.swift in Sources */,
 				3A1591742985194C001924C3 /* AppStoreService.swift in Sources */,
 				39EBEB4E29BE03C300B1FD54 /* PatchNoteListCell.swift in Sources */,
+				39ADB27B2A4AA49500AED318 /* SlideableCellType.swift in Sources */,
 				3A00CA692931F3F1004FBF80 /* StorageProvider.swift in Sources */,
 				39691F4829ACE9D8002BD874 /* OpacityPickerContainer.swift in Sources */,
 				39D8B28F2A35BED10034514B /* Array+Extension.swift in Sources */,
 				3979FA6C29D1D8EB00900FBA /* LockScreenWidgetIntents.intentdefinition in Sources */,
 				3A6449BD297E66A3002A710C /* MainWidgetViewModel.swift in Sources */,
 				3A9C0505292DDB6D00442017 /* MakeWidgetViewModel.swift in Sources */,
-				39ADB2792A4A7BFB00AED318 /* ListCell.swift in Sources */,
+				39ADB2792A4A7BFB00AED318 /* SlideableWidgetCell.swift in Sources */,
 				39EBEB4729BDDC4500B1FD54 /* CheckmarkToggleStyle.swift in Sources */,
 				39EFB92A2A371EB80004C5D4 /* WidgetScrollView.swift in Sources */,
 				390B5CBA29B1A70600B61E35 /* AdPageContainer.swift in Sources */,

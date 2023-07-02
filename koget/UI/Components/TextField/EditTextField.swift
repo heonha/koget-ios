@@ -94,7 +94,8 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
 struct EditTextField_Previews: PreviewProvider {
     static var previews: some View {
                 
-        DetailWidgetView(selectedWidget: DeepLink.example, target: MainWidgetViewModel())
+        DetailWidgetView(selectedWidget: DeepLink.example)
+            .environmentObject(HomeWidgetViewModel())
         
     }
 }
