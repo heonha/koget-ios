@@ -21,14 +21,9 @@ struct OverlayHomeWidgetView: View {
                         .ignoresSafeArea()
                     DetailWidgetView(selectedWidget: widget)
                 }
-                .onAppear {
-                    print("DEBUG: \(#function)is Appear")
-                }
                 .onDisappear {
                     viewModel.fetchAllWidgets()
-                    viewModel.objectWillChange.send()
                 }
-
             }
         }
     }

@@ -598,7 +598,7 @@
 			path = readme;
 			sourceTree = SOURCE_ROOT;
 		};
-		39ADB2732A4A6C0100AED318 /* NewHome */ = {
+		39ADB2732A4A6C0100AED318 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				392DA3CB2A518A7C00175203 /* Cell */,
@@ -606,7 +606,7 @@
 				39ADB2762A4A6C9A00AED318 /* HomeWidgetViewModel.swift */,
 				392DA3D22A51C63900175203 /* OverlayHomeWidgetView.swift */,
 			);
-			path = NewHome;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		39BBB53F29F973830071EBB5 /* Persistence */ = {
@@ -734,7 +734,7 @@
 				390B5CBB29B1AED900B61E35 /* MainTabView.swift */,
 				393AF0F72A03507900F913CF /* Widget */,
 				39E0FAF529D149DD0081E169 /* Ad */,
-				39ADB2732A4A6C0100AED318 /* NewHome */,
+				39ADB2732A4A6C0100AED318 /* Home */,
 				39E0FAF329D149890081E169 /* Make */,
 				39E0FAF729D14A470081E169 /* Detail */,
 				39E0FAF429D149C30081E169 /* Setting */,

@@ -11,11 +11,12 @@ import SwiftUI
 struct SlideableWidgetCell: View {
     
     @State var widget: DeepLink
-    @EnvironmentObject private var viewModel: HomeWidgetViewModel
-    @Environment(\.dismiss) private var dismiss
 
     @State private var showDeleteAlert = false
+    @State var index: Int = 0
     @State var isSlided: Bool = false
+    @EnvironmentObject private var viewModel: HomeWidgetViewModel
+    @Environment(\.dismiss) private var dismiss
     
     // Slider 관련
     @State private var offsetX: CGFloat = .zero

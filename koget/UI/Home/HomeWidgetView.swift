@@ -129,7 +129,8 @@ extension HomeWidgetView {
                       ? "checklist.unchecked"
                       : "circle.grid.2x2")
                 .font(.system(size: 14, weight: .bold))
-                .foregroundColor(Color(hex: "000000").opacity(0.8))
+                .foregroundColor(Color.init(uiColor: .secondaryLabel))
+                .shadow(color: .black.opacity(0.3), radius: 1, x: 0.5, y: 0.5)
             }
             .frame(width: 32, height: 32)
         }
