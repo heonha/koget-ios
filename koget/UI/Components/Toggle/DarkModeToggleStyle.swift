@@ -20,7 +20,7 @@ struct DarkModeToggleStyle: ToggleStyle {
         ZStack {
             configuration.label
             RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(configuration.isOn ? onBGColor : OffBGColor )
+                .fill(.regularMaterial)
                 .frame(width: toggleSize.width, height: toggleSize.height, alignment: .center)
                 .overlay(
                     ZStack(content: {
@@ -35,5 +35,6 @@ struct DarkModeToggleStyle: ToggleStyle {
                 .animation(.linear(duration: 0.2), value: configuration.isOn)
                 .onTapGesture { configuration.isOn.toggle() }
         }
+        .clipShape(Circle())
     }
 }

@@ -20,17 +20,14 @@ struct WidgetGridCell: View {
     private var url: String = ""
     private var image: UIImage = UIImage()
     private let titleColor: Color = AppColor.Label.first
-    @State var isDelete: Bool = false
+    @State var showDeleteAlert = false
     @EnvironmentObject private var coreData: WidgetCoreData
-    @EnvironmentObject private var appConstant: AppStateConstant
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
-    @ObservedObject var viewModel: MainWidgetViewModel
+    @EnvironmentObject var viewModel: HomeWidgetViewModel
 
-    init(widget: DeepLink, viewModel: MainWidgetViewModel) {
+    @Environment(\.dismiss) private var dismiss
+
+    init(widget: DeepLink) {
         self.widget = widget
-        self.viewModel = viewModel
-        
         name = widget.name ?? ""
         url = widget.url ?? ""
         let imageData = widget.image ?? Data()
@@ -52,7 +49,8 @@ struct WidgetGridCell: View {
             //MARK: 위젯 아이콘
             ZStack {
                 // 아이콘배경
-                AppColor.Background.first
+                Color.clear
+                    .background(.white)
                     .clipShape(Circle())
                     .shadow(color: .black.opacity(0.25), radius: 0.5, x: 0.5, y: 0.5)
                     .shadow(color: .black.opacity(0.25), radius: 0.5, x: -0.5, y: -0.5)
@@ -74,7 +72,7 @@ struct WidgetGridCell: View {
                 .frame(height: 30)
             
         }
-        .background(viewModel.isEditingMode ? Color.init(uiColor: .secondarySystemFill) : .clear)
+        .padding()
         .frame(width: cellWidth, height: cellWidth * 1.15)
         .clipShape(RoundedRectangle(cornerRadius: 8))
     }
@@ -88,29 +86,27 @@ struct WidgetGridCell: View {
             } label: {
                 Label("실행", systemImage: "arrow.up.left.square")
             }
-            
             Button {
-//                self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve, builder: {
-//                    DetailWidgetView(selectedWidget: widget)
-//                })
+                viewModel.targetWidget = self.widget
+                viewModel.showDetail.toggle()
             } label: {
                 Label("편집", systemImage: "slider.horizontal.3")
             }
             Button {
-                isDelete.toggle()
+                showDeleteAlert.toggle()
             } label: {
                 Label("삭제", systemImage: "xmark.bin.circle.fill")
                     .foregroundColor(.red)
             }
-            .alert("\(widget.name ?? "알수없는 위젯")", isPresented: $isDelete, actions: {
+            .alert("\(widget.name ?? "알수없는 위젯")", isPresented: $showDeleteAlert, actions: {
                 Button(S.Button.delete, role: .destructive) {
                     coreData.deleteData(data: widget)
                     dismiss()
                     viewModel.displayAlertView()
-                    isDelete = false
+                    showDeleteAlert = false
                 }
                 Button(S.Button.cancel, role: .cancel) {
-                    isDelete = false
+                    showDeleteAlert = false
                 }
             }, message: {
                 Text(S.Alert.Message.checkWidgetDelete)
@@ -118,38 +114,11 @@ struct WidgetGridCell: View {
             
         }
     }
-    
-    private func actionButton(title: String, isDelete: Bool = false, action: @escaping () -> Void) -> some View {
-        Button {
-            action()
-        } label: {
-            ZStack {
-                
-                if isDelete {
-                    AppColor.kogetRed
-                        .cornerRadius(8)
-                } else {
-                    if appConstant.isDarkMode {
-                        AppColor.GrayFamily.dark1
-                            .cornerRadius(8)
-                    } else {
-                        AppColor.Label.second
-                            .cornerRadius(8)
-                    }
-                }
-                
-                Text(title)
-                    .font(.custom(.robotoMedium, size: 16))
-                    .foregroundColor(.white)
-            }
-        }
-        .frame(width: 100, height: 30)
-    }
 
 }
 
 struct WidgetButton_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetGridCell(widget: DeepLink.example, viewModel: MainWidgetViewModel())
+        WidgetGridCell(widget: DeepLink.example)
     }
 }

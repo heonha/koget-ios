@@ -29,7 +29,7 @@ struct DetailWidgetView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(.regularMaterial)
+                .fill(constant.isDarkMode ? .thinMaterial : .regularMaterial)
 
             VStack {
                 titleBar
@@ -41,7 +41,6 @@ struct DetailWidgetView: View {
                 HStack(spacing: 8) {
                     PhotoEditMenu(isEditingMode: $viewModel.isEditingMode,
                                   viewModel: viewModel)
-                    // 투명도 Preview
                 }
                 .shadow(radius: 1, x: 0.2, y: 0.3)
                 .padding(4)
@@ -126,7 +125,7 @@ struct DetailWidgetView: View {
         ZStack {
             // TitleBar
             AppColor.Fill.first
-                .background(.regularMaterial)
+                .background(.thinMaterial)
             
             HStack(alignment: .center) {
                 Text(viewModel.name)

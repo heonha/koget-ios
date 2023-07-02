@@ -11,16 +11,18 @@ import SwiftUI
 struct SlideableWidgetCell: View {
     
     @State var widget: DeepLink
+    @EnvironmentObject private var viewModel: HomeWidgetViewModel
+    @Environment(\.dismiss) private var dismiss
+
+    @State private var showDeleteAlert = false
+    @State var isSlided: Bool = false
+    
+    // Slider 관련
     @State private var offsetX: CGFloat = .zero
     @State private var widgetIcon: UIImage = UIImage()
     @State private var slideAnimation: Animation = .spring(response: 0.5,
                                                            dampingFraction: 1,
                                                            blendDuration: 0.7)
-    
-    @State var index: Int = 0
-    @State var isSlided: Bool = false
-    @EnvironmentObject private var viewModel: HomeWidgetViewModel
-    //    @State private var showDetail = false
 
     var body: some View {
         ZStack {
@@ -33,35 +35,14 @@ struct SlideableWidgetCell: View {
 
     }
     
-    var slideIcons: some View {
-        HStack {
-            Spacer()
-            
-            slideButton(.edit) {
-                viewModel.targetWidget = widget
-                withAnimation(slideAnimation) {
-                    offsetX = .zero
-                }
-                viewModel.showDetail = true
-            }
-
-            slideButton(.delete) {
-                withAnimation(slideAnimation) {
-                    offsetX = .zero
-                }
-            }
-
-        }
-        .offset(x: offsetX + 140)
-    }
-    
     var mainBody: some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
                     .fill(.regularMaterial)
 
                 HStack {
-                    Image(uiImage: $widgetIcon.wrappedValue)
+                    Image
+                        .uiImage(UIImage(data: widget.image ?? Data()) ?? UIImage())
                         .resizable()
                         .scaledToFit()
                         .frame(width: 40, height: 40)
@@ -69,9 +50,6 @@ struct SlideableWidgetCell: View {
                         .clipShape(Circle())
                         .shadow(color: .black.opacity(0.18), radius: 4, x: 0.3, y: 0.3)
                         .padding(.leading)
-                        .onAppear {
-                            setIcon()
-                        }
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text(widget.name ?? "")
@@ -85,7 +63,7 @@ struct SlideableWidgetCell: View {
                     Spacer()
                     
                     Capsule()
-                        .fill(AppColor.toggleOffBGColor)
+                        .fill(.ultraThinMaterial)
                         .frame(width: 80 ,height: 24)
                         .overlay {
                             HStack {
@@ -130,6 +108,48 @@ struct SlideableWidgetCell: View {
                 }
             }
     }
+    
+    private var slideIcons: some View {
+        HStack {
+            Spacer()
+            
+            slideButton(.edit) {
+                viewModel.targetWidget = widget
+                withAnimation(slideAnimation) {
+                    offsetX = .zero
+                }
+                viewModel.showDetail = true
+            }
+
+            slideButton(.delete) {
+                withAnimation(slideAnimation) {
+                    offsetX = .zero
+                }
+                showDeleteAlert.toggle()
+            }
+            .alert("\(widget.name ?? "알수없는 위젯")",
+                   isPresented: $showDeleteAlert,
+                   actions: {
+                
+                Button("삭제", role: .destructive) {
+                    viewModel.deleteWidget(self.widget)
+                    showDeleteAlert = false
+                    dismiss()
+                }
+                
+                Button("취소", role: .cancel) {
+                    showDeleteAlert = false
+                }
+                
+            }, message: {
+                
+                Text("이 위젯을 삭제 할까요?")
+                
+            })
+
+        }
+        .offset(x: offsetX + 140)
+    }
         
     private func slideButton(_ type: SlideableButtonType,
                              action: @escaping () -> Void) -> some View {
@@ -138,28 +158,16 @@ struct SlideableWidgetCell: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(type.getBackgroundColor().gradient)
+                    .fill(type.getBackgroundColor())
 
                 Image(systemName: type.getSymbolName())
                     .font(.system(size: 27))
-                    .mask(
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(.regularMaterial)
-
-                    )
-                
+                    .foregroundColor(.init(uiColor: .systemBackground))
             }
         }
         .frame(width: 60)
     }
-    
-    private func setIcon() {
-        if let data = widget.image, let image = UIImage(data: data) {
-            self.widgetIcon = image
-        } else {
-            self.widgetIcon = UIImage(systemName: "person")!
-        }
-    }
+
 }
 
 #if DEBUG

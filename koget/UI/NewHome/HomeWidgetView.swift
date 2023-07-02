@@ -6,24 +6,25 @@
 //
 
 import SwiftUI
-import SFSafeSymbols
+
+enum WidgetViewType {
+    case list
+    case grid
+}
 
 struct HomeWidgetView: View {
     
-    // Flow -> 다른 셀이 클릭됨 (ParentView에서 감지) 다른 선택된 셀이 있다면 false로 업데이트
-    // 그때 Cell은 다른셀이 클릭 되었음을 감지하고 flase가 되야함.
-    // ViewModel -> Cell으로 업데이트 내용 전달 -> Cell 업데이트.
-    @StateObject var viewModel: HomeWidgetViewModel = .init()
+    @StateObject private var viewModel = HomeWidgetViewModel()
     
-    @EnvironmentObject private var constant: AppStateConstant
-    @EnvironmentObject private var coredata: WidgetCoreData
-
     @State private var onDarkMode = false
     @State private var onListView = false
     @State private var viewType: WidgetViewType = .list
     @State private var offsetX: CGFloat = .zero
-    @State var isFloatingButtonOpen = false
-
+    @State private var isFloatingButtonOpen = false
+    
+    @EnvironmentObject private var constant: AppStateConstant
+    @EnvironmentObject private var coredata: WidgetCoreData
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -35,19 +36,18 @@ struct HomeWidgetView: View {
                         isFloatingButtonOpen = false
                     }
                 
-                    MainFloatingButton(isOpen: $isFloatingButtonOpen)
-                    .offset(x: Constants.deviceSize.width/3,
-                            y: Constants.deviceSize.height/3)
+                MainFloatingButton(isOpen: $isFloatingButtonOpen)
+                    .offset(x: Constants.deviceSize.width / 3,
+                            y: Constants.deviceSize.height / 3)
             }
-
         }
         .overlay {
-            overlayDetailView(widget: viewModel.targetWidget)
+            OverlayHomeWidgetView()
         }
         .environmentObject(viewModel)
         
     }
-
+    
 }
 
 extension HomeWidgetView {
@@ -56,65 +56,34 @@ extension HomeWidgetView {
         VStack {
             AdPageContainer()
                 .padding(.horizontal, 15)
-
-            vstackCellScrollView
-
+                .padding(.bottom, 12)
+            
+            Group {
+                switch viewType {
+                case .grid:
+                    GridScrollView()
+                case .list:
+                    ListScrollView()
+                }
+            }
+            .background(
+                ZStack {
+                    VStack {
+                        Circle()
+                            .fill(Color.blue)
+                            .scaleEffect (0.40, anchor: .leading)
+                            .offset(x: 20)
+                            .blur(radius: 120)
+                        Circle()
+                            .fill(Color.red)
+                            .scaleEffect (0.40, anchor: .trailing)
+                            .offset(y: -20)
+                            .blur (radius: 120)
+                    }
+                }
+            )
         }
         .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    private var vstackCellScrollView: some View {
-        ScrollView {
-            VStack {
-                ForEach(0..<$viewModel.widgets.count) { index in
-                    SlideableWidgetCell(widget: viewModel.widgets[index])
-                        .onAppear {
-                            print("DEBUG: INDEX: \(index)")
-                        }
-                }
-            }
-        }
-        .background(
-            ZStack {
-                VStack {
-                    Circle()
-                        .fill(Color.blue)
-                        .scaleEffect (0.4, anchor: .leading)
-                        .offset(x: 20)
-                        .blur(radius: 120)
-                    Circle()
-                        .fill(Color.red)
-                        .scaleEffect (0.4, anchor: .trailing)
-                        .offset(y: -30)
-                        .blur (radius: 120)
-                }
-            }
-        )
-    }
-    
-    private func overlayDetailView(widget: DeepLink?) -> some View {
-        Group {
-            if viewModel.showDetail {
-                if let widget = viewModel.targetWidget {
-                    ZStack {
-                        Rectangle()
-                            .fill(.black.opacity(0.3))
-                            .blur(radius: 4)
-                            .ignoresSafeArea()
-                        DetailWidgetView(selectedWidget: widget)
-                            .environmentObject(viewModel)
-                    }
-                    .onAppear {
-                        print("DEBUG: \(#function)is Appear")
-                    }
-                    .onDisappear {
-                        viewModel.fetchAllWidgets()
-                        viewModel.objectWillChange.send()
-                    }
-
-                }
-            }
-        }
     }
     
     private func widgetListCell(_ widget: DeepLink) -> some View {
@@ -146,54 +115,47 @@ extension HomeWidgetView {
     
     private func viewTypeToggle(type: WidgetViewType) -> some View {
         Button {
-            if type == .list {
+            switch type {
+            case .list:
                 viewType = .grid
-            } else {
+            case .grid:
                 viewType = .list
             }
         } label: {
             ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor($constant.isDarkMode.wrappedValue
-                                     ? AppColor.toggleOnBGColor
-                                     : AppColor.toggleOffBGColor)
-                    .shadow(color: .black.opacity(0.3), radius: 1, x: 0.7, y: 0.7)
-                
-                Image(systemSymbol: type == .list
-                      ? SFSymbol.listBullet
-                      : SFSymbol.squareGrid3x3)
-                .foregroundColor(AppColor.Label.first)
-                .font(.system(size: 14))
-                .padding(4)
+                Circle()
+                    .fill(.regularMaterial)
+                Image(systemName: type == .list
+                      ? "checklist.unchecked"
+                      : "circle.grid.2x2")
+                .font(.system(size: 14, weight: .bold))
+                .foregroundColor(Color(hex: "000000").opacity(0.8))
             }
+            .frame(width: 32, height: 32)
         }
-        .frame(width: 32, height: 32)
-
     }
     
-    func createToolbar() -> some ToolbarContent {
+    private func createToolbar() -> some ToolbarContent {
         Group {
             // Center
             ToolbarItem(placement: .navigationBarLeading) {
                 kogetLogoView()
             }
             
-            // trailing 2
             ToolbarItem(placement: .navigationBarTrailing) {
                 Toggle(isOn: $constant.isDarkMode) { }
                     .toggleStyle(DarkModeToggleStyle())
             }
             
-            // trailing 1
             if !coredata.linkWidgets.isEmpty {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     viewTypeToggle(type: viewType)
                 }
             }
         }
-
+        
     }
-
+    
     private func kogetLogoView() -> some View {
         CommonImages.koget
             .toImage()

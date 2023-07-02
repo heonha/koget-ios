@@ -37,7 +37,7 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                 
                     TextField(placeHolder, text: $text)
                         .font(.custom(.robotoMedium, size: 16))
-                        .modifier(BaseModifierForTextField())
+                        .modifier(TextFieldBaseModifier())
                         .background(viewModel.isEditingMode ? .regularMaterial : .ultraThinMaterial)
                         .disabled(viewModel.isEditingMode ? false : true)
 
@@ -99,21 +99,3 @@ struct EditTextField_Previews: PreviewProvider {
 // }
 
 
-struct BaseModifierForTextField: ViewModifier {
-    
-    func body(content: Content) -> some View {
-        
-        ZStack {
-            content
-                .autocorrectionDisabled()
-                .textInputAutocapitalization(.never)
-                .textCase(.none)
-                .frame(height: 35)
-                .padding(.trailing)
-                .background(.clear)
-        }
-        .padding(.horizontal)
-        .cornerRadius(5)
-     
-    }
-}

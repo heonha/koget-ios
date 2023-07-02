@@ -29,36 +29,39 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
 
         HStack(spacing: 16) {
 
-            Menu {
-
-                Button {
-                    isIconViewPresent.toggle()
-                } label: {
-                    Label("아이콘 선택", systemImage: "square.grid.3x3.topleft.filled")
+            mainManu
+                .sheet(isPresented: $isPhotoViewPresent) {
+                    PhotoPicker(viewModel: viewModel)
                 }
-
-                Button {
-                    isPhotoViewPresent.toggle()
-                } label: {
-                    Label("앨범에서 가져오기", systemImage: "photo")
+                .sheet(isPresented: $isIconViewPresent) {
+                    IconGridView(parentViewModel: viewModel)
                 }
-
-            } label: {
-                imageLabel()
-            }
-            .frame(width: 90, height: 90)
-            .sheet(isPresented: $isPhotoViewPresent) {
-                PhotoPicker(viewModel: viewModel)
-            }
-            .sheet(isPresented: $isIconViewPresent) {
-                IconGridView(parentViewModel: viewModel)
-            }
-            .disabled(!isEditingMode)
-
+                .disabled(!isEditingMode)
+            
             opacityPreview
         }
         .animation(.linear(duration: 0.2), value: viewModel.isOpacitySliderEditing)
 
+    }
+    
+    private var mainManu: some View {
+        Menu {
+            Button {
+                isIconViewPresent.toggle()
+            } label: {
+                Label("아이콘 선택", systemImage: "square.grid.3x3.topleft.filled")
+            }
+
+            Button {
+                isPhotoViewPresent.toggle()
+            } label: {
+                Label("앨범에서 가져오기", systemImage: "photo")
+            }
+
+        } label: {
+            imageLabel()
+        }
+        .frame(width: 90, height: 90)
     }
 
     private var opacityPreview: some View {
@@ -80,30 +83,12 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
         }
     }
 
-    func whiteRender(image: UIImage) -> UIImage {
-        let size = image.size
-        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-
-        let context = UIGraphicsGetCurrentContext()
-        context?.setFillColor(UIColor.white.cgColor)
-        context?.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
-
-        image.draw(at: CGPoint.zero, blendMode: .normal, alpha: 1.0)
-
-        if let maskedImage = UIGraphicsGetImageFromCurrentImageContext() {
-            UIGraphicsEndImageContext()
-            return maskedImage
-        } else {
-            return UIImage()
-        }
-    }
-
     private func imageLabel() -> some View {
         ZStack {
             if viewModel.isOpacitySliderEditing {
                 Color.clear
             } else {
-                AppColor.Background.first
+                Color.white
             }
 
             if let image = viewModel.image {
@@ -116,8 +101,9 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
             } else {
                 ZStack {
                     Circle()
-                        .fill(constant.isDarkMode ? .black : .white)
+                        .fill(.white)
                         .opacity(constant.isDarkMode ? 0.3 : 1.0)
+                    
                     Image("plus.circle")
                         .resizable()
                         .scaledToFit()
@@ -125,6 +111,7 @@ struct PhotoEditMenu<V: VMPhotoEditProtocol>: View {
                         .shadow(radius: 1)
                         .clipShape(Circle())
                         .opacity(constant.isDarkMode ? 0.4 : 0.7)
+                    
                     Text(selectImageLabel)
                         .foregroundColor(AppColor.Label.second)
                         .font(.custom(.robotoBold, size: 16))

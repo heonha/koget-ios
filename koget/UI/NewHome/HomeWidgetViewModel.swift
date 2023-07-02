@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-class HomeWidgetViewModel: ObservableObject {
+class HomeWidgetViewModel: ObservableObject, DisplayAlert {
     
     @Published var targetWidget: DeepLink?
     @Published var widgets: [DeepLink] = []
     @Published var showDetail = false
     @Published var slidedCellIndex: CGFloat = .zero
+    private var coredata = WidgetCoreData.shared
     
     init() {
         fetchAllWidgets()
@@ -23,19 +24,12 @@ class HomeWidgetViewModel: ObservableObject {
     }
     
     func fetchAllWidgets() {
-        if !self.widgets.isEmpty {
-            print("DEBUG: 빈셀이 아닙니다. 다시업데이트합니다.")
-            self.widgets = []
-            print("DEBUG: Widget Count \(widgets.count)")
-        }
         self.widgets = WidgetCoreData.shared.linkWidgets
-        self.objectWillChange.send()
-        print("DEBUG: Widget Count(fetched) \(widgets.count)")
-
     }
     
-    func replaceOtherCell() {
-        
+    func deleteWidget(_ widget: DeepLink) {
+        coredata.deleteData(data: widget)
+        displayAlertView()
     }
     
     func urlOpenedInApp(urlString: String) {

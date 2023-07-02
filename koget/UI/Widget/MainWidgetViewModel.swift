@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class MainWidgetViewModel: BaseViewModel {
+final class MainWidgetViewModel: BaseViewModel, DisplayAlert {
     
     //MARK: Published Variables
     @Published var isEditingMode: Bool = false
@@ -69,4 +69,20 @@ final class MainWidgetViewModel: BaseViewModel {
         alertFactory.showAlert()
     }
 
+}
+
+protocol DisplayAlert {
+    ///
+    func setAlertView(title: String, subtitle: String, imageName: String)
+    func displayAlertView()
+}
+
+extension DisplayAlert {
+    func setAlertView(title: String, subtitle: String, imageName: String) {
+        AlertFactory.shared.setAlertView(title: title, subtitle: subtitle, imageName: imageName)
+    }
+    
+    func displayAlertView() {
+        AlertFactory.shared.showAlert()
+    }
 }
