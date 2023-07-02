@@ -10,7 +10,10 @@ import SFSafeSymbols
 
 struct HomeWidgetView: View {
     
-    @ObservedObject var viewModel: HomeWidgetViewModel
+    // Flow -> 다른 셀이 클릭됨 (ParentView에서 감지) 다른 선택된 셀이 있다면 false로 업데이트
+    // 그때 Cell은 다른셀이 클릭 되었음을 감지하고 flase가 되야함.
+    // ViewModel -> Cell으로 업데이트 내용 전달 -> Cell 업데이트.
+    @StateObject var viewModel: HomeWidgetViewModel = .init()
     
     @EnvironmentObject private var constant: AppStateConstant
     @EnvironmentObject private var coredata: WidgetCoreData
@@ -19,13 +22,24 @@ struct HomeWidgetView: View {
     @State private var onListView = false
     @State private var viewType: WidgetViewType = .list
     @State private var offsetX: CGFloat = .zero
-    
+    @State var isFloatingButtonOpen = false
+
     var body: some View {
         NavigationView {
-            mainBody()
-                .toolbar {
-                    createToolbar()
-                }
+            ZStack {
+                mainBody()
+                    .toolbar {
+                        createToolbar()
+                    }
+                    .onDisappear {
+                        isFloatingButtonOpen = false
+                    }
+                
+                    MainFloatingButton(isOpen: $isFloatingButtonOpen)
+                    .offset(x: Constants.deviceSize.width/3,
+                            y: Constants.deviceSize.height/3)
+            }
+
         }
         .overlay {
             overlayDetailView(widget: viewModel.targetWidget)
@@ -38,27 +52,45 @@ struct HomeWidgetView: View {
 
 extension HomeWidgetView {
     
-    
     private func mainBody() -> some View {
         VStack {
             AdPageContainer()
                 .padding(.horizontal, 15)
 
-            ScrollView {
-                VStack {
-                    ForEach($viewModel.widgets.wrappedValue) { widget in
-                        SlideableWidgetCell(widget: widget)
-                    }
-                }
-                .onTapGesture {
-                    offsetX = .zero
-                }
-            }
+            vstackCellScrollView
 
         }
         .navigationBarTitleDisplayMode(.inline)
     }
     
+    private var vstackCellScrollView: some View {
+        ScrollView {
+            VStack {
+                ForEach(0..<$viewModel.widgets.count) { index in
+                    SlideableWidgetCell(widget: viewModel.widgets[index])
+                        .onAppear {
+                            print("DEBUG: INDEX: \(index)")
+                        }
+                }
+            }
+        }
+        .background(
+            ZStack {
+                VStack {
+                    Circle()
+                        .fill(Color.blue)
+                        .scaleEffect (0.4, anchor: .leading)
+                        .offset(x: 20)
+                        .blur(radius: 120)
+                    Circle()
+                        .fill(Color.red)
+                        .scaleEffect (0.4, anchor: .trailing)
+                        .offset(y: -30)
+                        .blur (radius: 120)
+                }
+            }
+        )
+    }
     
     private func overlayDetailView(widget: DeepLink?) -> some View {
         Group {
@@ -70,8 +102,16 @@ extension HomeWidgetView {
                             .blur(radius: 4)
                             .ignoresSafeArea()
                         DetailWidgetView(selectedWidget: widget)
+                            .environmentObject(viewModel)
                     }
-                    
+                    .onAppear {
+                        print("DEBUG: \(#function)is Appear")
+                    }
+                    .onDisappear {
+                        viewModel.fetchAllWidgets()
+                        viewModel.objectWillChange.send()
+                    }
+
                 }
             }
         }
@@ -151,6 +191,7 @@ extension HomeWidgetView {
                 }
             }
         }
+
     }
 
     private func kogetLogoView() -> some View {
@@ -165,7 +206,7 @@ extension HomeWidgetView {
 #if DEBUG
 struct HomeWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeWidgetView(viewModel: HomeWidgetViewModel())
+        HomeWidgetView()
             .environmentObject(WidgetCoreData.shared)
             .environmentObject(AppStateConstant.shared)
     }

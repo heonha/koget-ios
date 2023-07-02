@@ -34,47 +34,12 @@ struct EditTextField<V: VMTextFieldProtocol>: View {
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(AppColor.Label.second)
                     .frame(width: 40)
-
-                if viewModel.isEditingMode {
-                    // 편집 모드
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(AppColor.Fill.second)
-                        if trailingPadding != nil {
-                            TextField(placeHolder, text: $text)
-                                .font(.custom(.robotoLight, size: 16))
-                                .frame(height: 35)
-                                .autocorrectionDisabled()
-                                .textInputAutocapitalization(.never)
-                                .textCase(.none)
-                                .padding(.horizontal, 4)
-                                .background(.clear)
-                                .padding(.trailing, trailingPadding)
-                        } else {
-                            TextField(placeHolder, text: $text)
-                                .font(.custom(.robotoLight, size: 16))
-                                .frame(height: 35)
-                                .autocorrectionDisabled()
-                                .textInputAutocapitalization(.never)
-                                .textCase(.none)
-                                .padding(.horizontal, 4)
-                                .background(.clear)
-                        }
-
-                    }
-                } else {
-                    // 뷰어 모드
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(constant.isDarkMode ? AppColor.Background.second : AppColor.Background.first)
-                        TextField(placeHolder, text: $text)
-                            .font(.custom(.robotoMedium, size: 16))
-                            .frame(height: 35)
-                            .background(.clear)
-                            .padding(.horizontal, 4)
-                            .disabled(true)
-                    }
-                }
+                
+                    TextField(placeHolder, text: $text)
+                        .font(.custom(.robotoMedium, size: 16))
+                        .modifier(BaseModifierForTextField())
+                        .background(viewModel.isEditingMode ? .regularMaterial : .ultraThinMaterial)
+                        .disabled(viewModel.isEditingMode ? false : true)
 
             }
             .cornerRadius(8)
@@ -132,3 +97,23 @@ struct EditTextField_Previews: PreviewProvider {
 //         }
 //     }
 // }
+
+
+struct BaseModifierForTextField: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        
+        ZStack {
+            content
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+                .textCase(.none)
+                .frame(height: 35)
+                .padding(.trailing)
+                .background(.clear)
+        }
+        .padding(.horizontal)
+        .cornerRadius(5)
+     
+    }
+}

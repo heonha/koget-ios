@@ -45,5 +45,6 @@ enum AppColor {
     static let kogetRed = Color("kogetRed")
     static let toggleOnBGColor = AppColor.Fill.first
     static let toggleOffBGColor = AppColor.Background.second
+    static let buttonEditColor = Color("ButtonEditColor")
 
 }

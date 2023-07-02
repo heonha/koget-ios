@@ -61,7 +61,7 @@ final class AssetRequestViewModel: BaseViewModel {
             ]
 
             Firestore.firestore().collection("Request-Add-App").addDocument(data: data) { error in
-                if let error = error {
+                if let _ = error {
                     completion(.error)
                 } else {
                     completion(.success)

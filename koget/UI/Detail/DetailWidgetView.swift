@@ -9,8 +9,8 @@ import SwiftUI
 import SFSafeSymbols
 
 struct DetailWidgetView: View {
-    var size: CGSize = .init(width: 350, height: 600)
     
+    var size: CGSize = .init(width: 350, height: 600)
     var selectedWidget: DeepLink
 
     // Present Views
@@ -22,18 +22,15 @@ struct DetailWidgetView: View {
     @State var isPresentQustionmark = false
 
     @EnvironmentObject var target: HomeWidgetViewModel
-    @ObservedObject var constant = AppStateConstant.shared
-    @ObservedObject var coreData = WidgetCoreData.shared
+    @EnvironmentObject var constant: AppStateConstant
+    @EnvironmentObject var coreData: WidgetCoreData
     @StateObject var viewModel = DetailWidgetViewModel()
-    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         ZStack {
-            if constant.isDarkMode {
-                AppColor.Background.second
-            } else {
-                AppColor.Background.first
-            }
+            Rectangle()
+                .fill(.regularMaterial)
+
             VStack {
                 titleBar
                     .frame(height: 45)
@@ -71,6 +68,7 @@ struct DetailWidgetView: View {
                 Spacer()
                 // 편집버튼
                 ToggleButton(viewModel: viewModel, widget: selectedWidget)
+                
                 // 닫기 버튼
                 TextButton(title: S.Button.close, backgroundColor: AppColor.Fill.third, size: (width: 200, height: 40)) {
                     withAnimation {
@@ -103,9 +101,6 @@ struct DetailWidgetView: View {
         .onAppear {
             setupView()
         }
-        .onDisappear {
-            coreData.loadData()
-        }
 
     }
 
@@ -115,6 +110,7 @@ struct DetailWidgetView: View {
         viewModel.name = selectedWidget.name ?? S.unknown
         viewModel.url = selectedWidget.url ?? S.unknown
         viewModel.image = UIImage(data: selectedWidget.image!)!
+        
         if selectedWidget.opacity == nil {
             selectedWidget.opacity = 1.0
             viewModel.opacityValue = 1.0
@@ -130,6 +126,8 @@ struct DetailWidgetView: View {
         ZStack {
             // TitleBar
             AppColor.Fill.first
+                .background(.regularMaterial)
+            
             HStack(alignment: .center) {
                 Text(viewModel.name)
                     .frame(maxWidth: .infinity, maxHeight: 45, alignment: .center)
@@ -151,15 +149,18 @@ struct DetailWidgetView: View {
                 }
                 .alert(S.Alert.checkDelete, isPresented: $isDeleteAlertPresent, actions: {
                     Button(S.Button.delete, role: .destructive) {
-                        WidgetCoreData.shared.deleteData(data: selectedWidget)
-                        self.dismiss()
+                        coreData.deleteData(data: selectedWidget)
                     }
                     Button(S.Button.cancel, role: .cancel) {}
                 }, message: { Text(S.Alert.Message.checkWidgetDelete) })
+                
                 Spacer()
+                
                 // MARK: 닫기버튼
                 Button {
-                    dismiss()
+                    coreData.loadData()
+                    target.fetchAllWidgets()
+                    target.showDetail.toggle()
                 } label: {
                     Image(systemSymbol: .xmark)
                         .font(.custom(.robotoMedium, size: 18))

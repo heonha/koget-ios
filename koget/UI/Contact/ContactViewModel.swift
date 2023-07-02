@@ -88,7 +88,7 @@ final class ContactViewModel: BaseViewModel {
             ]
             
             Firestore.firestore().collection("Questions").addDocument(data: data) { error in
-                if let error = error {
+                if let _ = error {
                     completion(.error)
                 } else {
                     completion(.success)

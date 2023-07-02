@@ -4,32 +4,30 @@
 //
 //  Created by HeonJin Ha on 2023/06/27.
 //
+// 원 지점의 offset이 아닐 경우 true로 함 (초기값을 받아서 설정)
 
 import SwiftUI
 
 struct SlideableWidgetCell: View {
     
-    @State private var widget: DeepLink
+    @State var widget: DeepLink
     @State private var offsetX: CGFloat = .zero
     @State private var widgetIcon: UIImage = UIImage()
     @State private var slideAnimation: Animation = .spring(response: 0.5,
                                                            dampingFraction: 1,
                                                            blendDuration: 0.7)
-//    @State private var showDetail = false
+    
+    @State var index: Int = 0
+    @State var isSlided: Bool = false
     @EnvironmentObject private var viewModel: HomeWidgetViewModel
-    
-    init(widget: DeepLink) {
-        self.widget = widget
-    }
-    
-    
+    //    @State private var showDetail = false
+
     var body: some View {
         ZStack {
             mainBody
                 .offset(x: offsetX)
 
             slideIcons
-
         }
         .frame(height: 58)
 
@@ -60,7 +58,7 @@ struct SlideableWidgetCell: View {
     var mainBody: some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(Color(hex: "F9F9F9"))
+                    .fill(.regularMaterial)
 
                 HStack {
                     Image(uiImage: $widgetIcon.wrappedValue)
@@ -118,8 +116,10 @@ struct SlideableWidgetCell: View {
                         withAnimation(slideAnimation) {
                             if value.translation.width < -70 {
                                 offsetX = -150
+                                isSlided = true
                             } else {
                                 offsetX = .zero
+                                isSlided = false
                             }
                         }
                     }
@@ -138,12 +138,16 @@ struct SlideableWidgetCell: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(type.getBackgroundColor())
- 
+                    .fill(type.getBackgroundColor().gradient)
 
                 Image(systemName: type.getSymbolName())
                     .font(.system(size: 27))
-                    .foregroundColor(.white)
+                    .mask(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(.regularMaterial)
+
+                    )
+                
             }
         }
         .frame(width: 60)

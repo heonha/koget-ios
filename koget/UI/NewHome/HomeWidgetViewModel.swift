@@ -10,15 +10,32 @@ import SwiftUI
 class HomeWidgetViewModel: ObservableObject {
     
     @Published var targetWidget: DeepLink?
-    @Published var widgets = [DeepLink]()
+    @Published var widgets: [DeepLink] = []
     @Published var showDetail = false
+    @Published var slidedCellIndex: CGFloat = .zero
     
     init() {
         fetchAllWidgets()
     }
     
+    func updateView(){
+        self.objectWillChange.send()
+    }
+    
     func fetchAllWidgets() {
+        if !self.widgets.isEmpty {
+            print("DEBUG: 빈셀이 아닙니다. 다시업데이트합니다.")
+            self.widgets = []
+            print("DEBUG: Widget Count \(widgets.count)")
+        }
         self.widgets = WidgetCoreData.shared.linkWidgets
+        self.objectWillChange.send()
+        print("DEBUG: Widget Count(fetched) \(widgets.count)")
+
+    }
+    
+    func replaceOtherCell() {
+        
     }
     
     func urlOpenedInApp(urlString: String) {

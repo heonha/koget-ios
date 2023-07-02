@@ -11,10 +11,9 @@ import UIKit
 struct MainView: View {
 
     @EnvironmentObject private var constant: AppStateConstant
-    @StateObject var viewModel = HomeWidgetViewModel()
 
     var body: some View {
-        MainTabView(viewModel: viewModel)
+        MainTabView()
             .preferredColorScheme(constant.isDarkMode ? .dark : .light)
             .animation(.linear(duration: 0.2), value: constant.isDarkMode)
     }

@@ -50,9 +50,7 @@
 		392C81DB2A2B8F8C00C516DD /* SimpleIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C81DA2A2B8F8B00C516DD /* SimpleIconTests.swift */; };
 		392C81DC2A2B8FEE00C516DD /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 392C81D22A2B593000C516DD /* swiftlint.yml */; };
 		392C81DD2A2B8FEE00C516DD /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 392C81D22A2B593000C516DD /* swiftlint.yml */; };
-		392C81E62A2C3B4E00C516DD /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 392C81E52A2C3B4E00C516DD /* SVGKit */; };
-		392C81EA2A2C41C900C516DD /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 392C81E92A2C41C900C516DD /* SVGKit */; };
-		392C81F12A2C913000C516DD /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 392C81F02A2C913000C516DD /* SVGKitSwift */; };
+		392DA3CA2A51677B00175203 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 392DA3C92A51677B00175203 /* SVGKit */; };
 		392EDF6129BD508A000B1353 /* AdPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6029BD508A000B1353 /* AdPageCell.swift */; };
 		392EDF6529BD55CA000B1353 /* WidgetListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6429BD55CA000B1353 /* WidgetListCell.swift */; };
 		392EDF6929BD5FAC000B1353 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EDF6829BD5FAC000B1353 /* ToggleButton.swift */; };
@@ -413,7 +411,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				392C81EA2A2C41C900C516DD /* SVGKit in Frameworks */,
 				39C308092A1CDFBA00172DA2 /* FirebaseAuth in Frameworks */,
 				39C3080B2A1CDFC400172DA2 /* FirebaseFirestore in Frameworks */,
 			);
@@ -441,8 +438,7 @@
 				39504A9329B3A059008A7BA4 /* SwiftEntryKit in Frameworks */,
 				39EBEB4A29BDF7A000B1FD54 /* Kingfisher in Frameworks */,
 				39F8475729B3990B000B817E /* FirebaseStorage in Frameworks */,
-				392C81F12A2C913000C516DD /* SVGKitSwift in Frameworks */,
-				392C81E62A2C3B4E00C516DD /* SVGKit in Frameworks */,
+				392DA3CA2A51677B00175203 /* SVGKit in Frameworks */,
 				39F8475129B3990B000B817E /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +494,16 @@
 				391EB11F2A2E18D900F87B52 /* SimpleIcons.swift */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		392DA3CB2A518A7C00175203 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				39ADB2782A4A7BFB00AED318 /* SlideableWidgetCell.swift */,
+				39ADB27A2A4AA49500AED318 /* SlideableCellType.swift */,
+				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		393AF0F72A03507900F913CF /* Widget */ = {
@@ -583,11 +589,9 @@
 		39ADB2732A4A6C0100AED318 /* NewHome */ = {
 			isa = PBXGroup;
 			children = (
+				392DA3CB2A518A7C00175203 /* Cell */,
 				39ADB2742A4A6C1B00AED318 /* HomeWidgetView.swift */,
 				39ADB2762A4A6C9A00AED318 /* HomeWidgetViewModel.swift */,
-				39ADB2782A4A7BFB00AED318 /* SlideableWidgetCell.swift */,
-				39ADB27A2A4AA49500AED318 /* SlideableCellType.swift */,
-				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
 			);
 			path = NewHome;
 			sourceTree = "<group>";
@@ -717,9 +721,8 @@
 				390B5CBB29B1AED900B61E35 /* MainTabView.swift */,
 				393AF0F72A03507900F913CF /* Widget */,
 				39E0FAF529D149DD0081E169 /* Ad */,
-				39ADB2732A4A6C0100AED318 /* NewHome */,
-				39C1F3DF29D1C87C00C26919 /* PatchNote */,
 				39E0FAF229D149650081E169 /* Home */,
+				39ADB2732A4A6C0100AED318 /* NewHome */,
 				39E0FAF329D149890081E169 /* Make */,
 				39E0FAF729D14A470081E169 /* Detail */,
 				39E0FAF429D149C30081E169 /* Setting */,
@@ -789,6 +792,7 @@
 		39E0FAF529D149DD0081E169 /* Ad */ = {
 			isa = PBXGroup;
 			children = (
+				39C1F3DF29D1C87C00C26919 /* PatchNote */,
 				390B5CB929B1A70600B61E35 /* AdPageContainer.swift */,
 				392EDF6029BD508A000B1353 /* AdPageCell.swift */,
 			);
@@ -991,7 +995,6 @@
 			packageProductDependencies = (
 				39C308082A1CDFBA00172DA2 /* FirebaseAuth */,
 				39C3080A2A1CDFC400172DA2 /* FirebaseFirestore */,
-				392C81E92A2C41C900C516DD /* SVGKit */,
 			);
 			productName = kogetTests;
 			productReference = 39C307FD2A1CDF5700172DA2 /* kogetTests.xctest */;
@@ -1044,9 +1047,8 @@
 				39504A9229B3A059008A7BA4 /* SwiftEntryKit */,
 				39ED274C29B98431001C368E /* SFSafeSymbols */,
 				39EBEB4929BDF7A000B1FD54 /* Kingfisher */,
-				392C81E52A2C3B4E00C516DD /* SVGKit */,
-				392C81F02A2C913000C516DD /* SVGKitSwift */,
 				394D69F52A3432AD00EC0A02 /* Lottie */,
+				392DA3C92A51677B00175203 /* SVGKit */,
 			);
 			productName = BackgroundMaker;
 			productReference = 3ABA6C1328C6043F005AA8E4 /* koget.app */;
@@ -1113,8 +1115,8 @@
 				39504A9129B3A059008A7BA4 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 				39ED274B29B98431001C368E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				39EBEB4829BDF7A000B1FD54 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				392C81E42A2C3B4E00C516DD /* XCRemoteSwiftPackageReference "SVGKit" */,
 				394D69F42A3432AC00EC0A02 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				392DA3C82A51677B00175203 /* XCRemoteSwiftPackageReference "SVGKit" */,
 			);
 			productRefGroup = 3ABA6C1428C6043F005AA8E4 /* Products */;
 			projectDirPath = "";
@@ -1873,9 +1875,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		392C81E42A2C3B4E00C516DD /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+		392DA3C82A51677B00175203 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SVGKit/SVGKit.git";
+			repositoryURL = "https://github.com/SVGKit/SVGKit";
 			requirement = {
 				kind = revision;
 				revision = 87fcc6384bee87a7eba12eb367abcad315433478;
@@ -1902,7 +1904,7 @@
 			repositoryURL = "https://github.com/exyte/FloatingButton.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 1.0.1;
+				minimumVersion = 1.1.4;
 			};
 		};
 		39EBEB4829BDF7A000B1FD54 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -1926,26 +1928,16 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 10.6.0;
+				minimumVersion = 10.11.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		392C81E52A2C3B4E00C516DD /* SVGKit */ = {
+		392DA3C92A51677B00175203 /* SVGKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 392C81E42A2C3B4E00C516DD /* XCRemoteSwiftPackageReference "SVGKit" */;
+			package = 392DA3C82A51677B00175203 /* XCRemoteSwiftPackageReference "SVGKit" */;
 			productName = SVGKit;
-		};
-		392C81E92A2C41C900C516DD /* SVGKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 392C81E42A2C3B4E00C516DD /* XCRemoteSwiftPackageReference "SVGKit" */;
-			productName = SVGKit;
-		};
-		392C81F02A2C913000C516DD /* SVGKitSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 392C81E42A2C3B4E00C516DD /* XCRemoteSwiftPackageReference "SVGKit" */;
-			productName = SVGKitSwift;
 		};
 		394D69F52A3432AD00EC0A02 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

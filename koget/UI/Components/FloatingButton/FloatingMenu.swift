@@ -26,7 +26,6 @@ struct FloatingMenu: View {
             .alignment(.right)
             .initialOpacity(0)
             .delays(delayDelta: 0.05)
-            .padding(16)
     }
 }
 // 

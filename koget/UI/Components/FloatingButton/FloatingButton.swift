@@ -15,18 +15,12 @@ struct MainFloatingButton: View {
     
     var body: some View {
         
-        HStack {
-            Spacer().layoutPriority(10)
-            VStack {
-                Spacer().layoutPriority(10)
-                FloatingMenu(isOpen: $isOpen,
-                             buttons: [
-                                FloatingMenuButton(systemName: .plusCircleFill, text: S.FloatingButton.makeWidget, link: .add,  type: .navigationLink),
-                             ].reversed())
-                .opacity(0.95)
-            }
-        }
-        .padding()
+        FloatingMenu(isOpen: $isOpen,
+                     buttons: [
+                        FloatingMenuButton(systemName: .plusCircleFill, text: S.FloatingButton.makeWidget, link: .add,  type: .navigationLink),
+                     ].reversed())
+        .opacity(0.95)
+
     }
 }
 

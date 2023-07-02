@@ -14,7 +14,7 @@ enum SlideableButtonType: String {
     func getBackgroundColor() -> Color {
         switch self {
         case .edit:
-            return Color(hex: "FFE4A7")
+            return AppColor.buttonEditColor
         case .delete:
             return Color(hex: "FEA1A1")
         }
