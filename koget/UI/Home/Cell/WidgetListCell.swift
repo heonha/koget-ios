@@ -28,6 +28,7 @@ struct WidgetListCell: View {
     @State private var showDeleteAlert = false
     @State private var showEditSheet = false
     @State private var offsetX: CGFloat = .zero
+    @State private var currentDragOffsetX: CGFloat = 0
     @State private var isSlideMode = false
     
     private let app: String = S.WidgetCell.WidgetType.app
@@ -106,10 +107,45 @@ extension WidgetListCell {
                     Text(S.Alert.Message.checkWidgetDelete)
                 })
             }
-            .offset(x: offsetX + 150)
+//            .offset(x: offsetX + 150)
         }
         .frame(height: 60)
-  
+        .gesture(
+            DragGesture(minimumDistance: 30)
+                .onChanged { value in
+                    let changedOffset = value.translation.width
+                        withAnimation(.spring()) {
+                            offsetX = changedOffset
+                        }
+                    print(changedOffset)
+                }
+                .onEnded { value in
+                    if value.translation.width < -70 {
+                        withAnimation(.spring()) {
+                            offsetX = -150
+                        }
+                    }
+                    else {
+                        withAnimation(.spring()) {
+                            offsetX = .zero
+                        }
+                    }
+                    
+                }
+        )
+        .gesture(
+            LongPressGesture()
+                .onChanged { Bool in
+                    print("On Changed!")
+                }
+                .onEnded { value in
+                    HapticManager.shared.triggerHapticFeedback(style: .heavy)
+                    
+                    if let url = widget.url, let id = widget.id {
+                        viewModel.urlOpenedInApp(urlString: "\(WidgetConstant.mainURL)\(url)\(WidgetConstant.idSeparator)\(id.uuidString)")
+                    }
+                }
+        )
 
     }
     

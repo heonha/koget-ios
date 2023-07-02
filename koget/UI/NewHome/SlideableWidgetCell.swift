@@ -1,5 +1,5 @@
 //
-//  ListCell.swift
+//  SlideableWidgetCell.swift
 //  koget
 //
 //  Created by HeonJin Ha on 2023/06/27.
@@ -7,29 +7,68 @@
 
 import SwiftUI
 
-struct ListCell: View {
+
+
+struct SlideableWidgetCell: View {
     
     @State private var widget: DeepLink
     @State private var offsetX: CGFloat = .zero
     @State private var widgetIcon: UIImage = UIImage()
+    @State private var slideAnimation: Animation = .spring(response: 0.5, dampingFraction: 1, blendDuration: 0.7)
+    @State private var showDetail = false
     
     init(widget: DeepLink) {
         self.widget = widget
     }
     
-    private func setIcon() {
-        if let data = widget.image, let image = UIImage(data: data) {
-            self.widgetIcon = image
-        } else {
-            self.widgetIcon = UIImage(systemName: "person")!
+    private func slideButton(_ type: SlideableButtonType, action: @escaping () -> Void) -> some View {
+        Button {
+            action()
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(type.getBackgroundColor())
+
+                Image(systemName: type.getSymbolName())
+                    .font(.system(size: 27))
+                    .foregroundColor(.white)
+            }
         }
+        .frame(width: 60)
     }
     
     var body: some View {
         ZStack {
+            mainBody
+                .offset(x: offsetX)
+
+            HStack {
+                Spacer()
+                
+                slideButton(.edit) {
+                    print("EDIT SHEET PRESENT")
+                    showDetail.toggle()
+                }
+
+                slideButton(.delete) {
+                    print("DELETE SHEET PRESENT")
+                }
+
+            }
+            .offset(x: offsetX + 140)
+
+        }
+        .frame(height: 58)
+        .sheet(isPresented: $showDetail) {
+            DetailWidgetView(selectedWidget: widget, showDetail: $showDetail)
+        }
+
+    }
+    var mainBody: some View {
+        ZStack {
             RoundedRectangle(cornerRadius: 8)
                 .fill(Color(hex: "F9F9F9"))
-            
+
             HStack {
                 Image(uiImage: $widgetIcon.wrappedValue)
                     .resizable()
@@ -72,23 +111,24 @@ struct ListCell: View {
                     
             }
         }
+        .padding(.horizontal, 15)
         .cornerRadius(8)
         .shadow(color: .black.opacity(0.20), radius: 2, x: 0.3, y: 0.3)
-        .frame(height: 58)
-        .padding(.horizontal, 2)
-        .offset(x: offsetX)
         .gesture(
             DragGesture(minimumDistance: 30)
                 .onChanged { value in
-                    let changedOffset = value.translation.width
-                    offsetX = changedOffset
+                    withAnimation(slideAnimation) {
+                        offsetX = value.translation.width
+                    }
                 }
                 .onEnded { value in
+                    withAnimation(slideAnimation) {
                     if value.translation.width < -70 {
-                             offsetX = -150
+                            offsetX = -150
                      } else {
                              offsetX = .zero
                      }
+                    }
                 }
         )
         .gesture(
@@ -105,14 +145,22 @@ struct ListCell: View {
 //                    }
                 }
         )
-        .animation(.spring(response: 0.5, dampingFraction: 1, blendDuration: 0.7), value: offsetX)
+//        .animation(, value: offsetX)
+    }
+    
+    private func setIcon() {
+        if let data = widget.image, let image = UIImage(data: data) {
+            self.widgetIcon = image
+        } else {
+            self.widgetIcon = UIImage(systemName: "person")!
+        }
     }
 }
 
 #if DEBUG
 struct ListCell_Previews: PreviewProvider {
     static var previews: some View {
-        ListCell(widget: DeepLink.example)
+        SlideableWidgetCell(widget: DeepLink.example)
     }
 }
 #endif
