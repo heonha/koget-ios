@@ -29,11 +29,3 @@ struct OverlayHomeWidgetView: View {
     }
     
 }
-
-
-
-private func overlayDetailView(widget: DeepLink?) -> some View {
-    Group {
-
-    }
-}

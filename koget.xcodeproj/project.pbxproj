@@ -544,13 +544,6 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
-		394D69FC2A34679800EC0A02 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		394D69FD2A3467AB00EC0A02 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -947,7 +940,6 @@
 		3ABA6C1528C6043F005AA8E4 /* koget */ = {
 			isa = PBXGroup;
 			children = (
-				394D69FC2A34679800EC0A02 /* New Group */,
 				3A9BC0CD28E6C92A0041DA1B /* koget.entitlements */,
 				3AE4B13D296D8A2D00DB219B /* KogetApp.swift */,
 				39E0FAE329D132070081E169 /* UI */,

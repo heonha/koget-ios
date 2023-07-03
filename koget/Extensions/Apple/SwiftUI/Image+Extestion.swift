@@ -12,5 +12,15 @@ extension Image {
     static func uiImage(_ uiImage: UIImage) -> Image {
         return Image(uiImage: uiImage)
     }
+    
+    
+    init?(data: Data) {
+        guard let uiImage = UIImage(data: data) else {
+            return nil
+        }
+        
+        self.init(uiImage: uiImage)
+    }
+
 
 }
