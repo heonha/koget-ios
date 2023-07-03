@@ -4,50 +4,17 @@
 //
 //  Created by HeonJin Ha on 2023/06/27.
 //
-// 원 지점의 offset이 아닐 경우 true로 함 (초기값을 받아서 설정)
 
 import SwiftUI
 
 struct SlideableWidgetCell: View {
     
     @State var widget: DeepLink
-
     @State private var showDeleteAlert = false
-    @State var index: Int = 0
-    @State var isSlided: Bool = false
+    
     @EnvironmentObject private var viewModel: HomeWidgetViewModel
+    
     @Environment(\.dismiss) private var dismiss
-    
-    // Slider 관련
-    @State private var offsetX: CGFloat = .zero
-    @State private var widgetIcon: UIImage = UIImage()
-    @State private var slideAnimation: Animation = .spring(response: 0.5,
-                                                           dampingFraction: 1,
-                                                           blendDuration: 1)
-    
-    var drag: some Gesture {
-        DragGesture(minimumDistance: 10, coordinateSpace: .local)
-            .onChanged { value in
-                if value.translation.width < 10 {
-                    print(value.translation.width)
-                    withAnimation(slideAnimation) {
-                        offsetX = value.translation.width
-                    }
-                } else {
-                    withAnimation(slideAnimation) {
-                        offsetX = .zero
-                    }
-                }
-            }
-            .onEnded { value in
-                if value.translation.width < -70 {
-                    offsetX = -150
-                } else {
-                    print("DEBUG:\(value.translation.width)")
-                    offsetX = .zero
-                }
-            }
-    }
 
     var body: some View {
         ZStack {
@@ -82,9 +49,7 @@ struct SlideableWidgetCell: View {
             Text("이 위젯을 삭제 할까요?")
         })
 
-
     }
-    
     
     var mainBody: some View {
             ZStack {
@@ -130,7 +95,6 @@ struct SlideableWidgetCell: View {
                     
                 }
             }
-            .offset(x: offsetX)
             .padding(.horizontal, 15)
             .cornerRadius(8)
             .shadow(color: .black.opacity(0.20), radius: 2, x: 0.3, y: 0.3)

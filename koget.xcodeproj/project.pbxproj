@@ -498,32 +498,24 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
-		392DA3CB2A518A7C00175203 /* Cell */ = {
+		392DA3CB2A518A7C00175203 /* WidgetCell */ = {
 			isa = PBXGroup;
 			children = (
-				392DA3D72A51CFB400175203 /* List */,
-				392DA3D62A51CFA800175203 /* Grid */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		392DA3D62A51CFA800175203 /* Grid */ = {
-			isa = PBXGroup;
-			children = (
-				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
+				392DA3D02A51C56000175203 /* ListScrollView.swift */,
 				392DA3D42A51C7C600175203 /* GridScrollView.swift */,
+				392DA3D72A51CFB400175203 /* Cells */,
 			);
-			path = Grid;
+			path = WidgetCell;
 			sourceTree = "<group>";
 		};
-		392DA3D72A51CFB400175203 /* List */ = {
+		392DA3D72A51CFB400175203 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				39ADB2782A4A7BFB00AED318 /* SlideableWidgetCell.swift */,
 				39ADB27A2A4AA49500AED318 /* SlideableCellType.swift */,
-				392DA3D02A51C56000175203 /* ListScrollView.swift */,
+				39835ACE299D1F6600BEDF88 /* WidgetGridCell.swift */,
 			);
-			path = List;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		393AF0F72A03507900F913CF /* Widget */ = {
@@ -594,7 +586,7 @@
 		39ADB2732A4A6C0100AED318 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				392DA3CB2A518A7C00175203 /* Cell */,
+				392DA3CB2A518A7C00175203 /* WidgetCell */,
 				39ADB2742A4A6C1B00AED318 /* HomeWidgetView.swift */,
 				39ADB2762A4A6C9A00AED318 /* HomeWidgetViewModel.swift */,
 				392DA3D22A51C63900175203 /* OverlayHomeWidgetView.swift */,

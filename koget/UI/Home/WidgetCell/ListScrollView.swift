@@ -21,7 +21,6 @@ struct ListScrollView: View {
         .background(Color.clear)
         .listStyle(.plain)
         .padding(.vertical, 2)
-        
     }
     
     private func slideButton(_ type: SlideableButtonType,
